@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="Iklr1EoFbTWomWKqz4mZCbEiVE_HuchAJDxBFDBSXqY" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="R,绘图," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="本文转载自Category: DataVisualization，对于不明白的地方加了自己检索后的说明。  使用demo(graphics)，可以查看R漂亮的图像演示。 点12345set.seed(1234)x&amp;lt;-sample(1:100,80,replace = FALSE)y&amp;lt;-2*x+20+rnorm(80,0,10)plot(x = x,y = y)plot(x,y) 其">
+<meta name="keywords" content="R,绘图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="R语言绘图">
+<meta property="og:url" content="https://toypipi.github.io/2017/02/28/R语言绘图/index.html">
+<meta property="og:site_name" content="toypipi&#39;s blog">
+<meta property="og:description" content="本文转载自Category: DataVisualization，对于不明白的地方加了自己检索后的说明。  使用demo(graphics)，可以查看R漂亮的图像演示。 点12345set.seed(1234)x&amp;lt;-sample(1:100,80,replace = FALSE)y&amp;lt;-2*x+20+rnorm(80,0,10)plot(x = x,y = y)plot(x,y) 其">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-08T08:30:36.152Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="R语言绘图">
+<meta name="twitter:description" content="本文转载自Category: DataVisualization，对于不明白的地方加了自己检索后的说明。  使用demo(graphics)，可以查看R漂亮的图像演示。 点12345set.seed(1234)x&amp;lt;-sample(1:100,80,replace = FALSE)y&amp;lt;-2*x+20+rnorm(80,0,10)plot(x = x,y = y)plot(x,y) 其">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://toypipi.github.io/2017/02/28/R语言绘图/"/>
+
+
+
+
+
+  <title>R语言绘图 | toypipi's blog</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-90328755-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c15b2aef6df09056158d71d4cc56bf34";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">toypipi's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2017/02/28/R语言绘图/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="toypipi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/13879860?v=3&amp;s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="toypipi's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">R语言绘图</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-28T17:00:19+08:00">
+                2017-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/R/" itemprop="url" rel="index">
+                    <span itemprop="name">R</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            <!--noindex-->
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/02/28/R语言绘图/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2017/02/28/R语言绘图/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+              <!--/noindex-->
+            
+          
+
+          
+          
+             <span id="/2017/02/28/R语言绘图/" class="leancloud_visitors" data-flag-title="R语言绘图">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                &nbsp; | &nbsp;<span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<blockquote>
+<p>本文转载自<a href="http://jackycode.github.io/blog/categories/datavisualization/" target="_blank" rel="noopener">Category: DataVisualization</a>，对于不明白的地方加了自己检索后的说明。</p>
+</blockquote>
+<p>使用demo(graphics)，可以查看R漂亮的图像演示。</p>
+<h1 id="点"><a href="#点" class="headerlink" title="点"></a>点</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set.seed(<span class="number">1234</span>)</span><br><span class="line">x&lt;-sample(<span class="number">1</span>:<span class="number">100</span>,<span class="number">80</span>,replace = <span class="literal">FALSE</span>)</span><br><span class="line">y&lt;-<span class="number">2</span>*x+<span class="number">20</span>+rnorm(<span class="number">80</span>,<span class="number">0</span>,<span class="number">10</span>)</span><br><span class="line">plot(x = x,y = y)</span><br><span class="line">plot(x,y)</span><br></pre></td></tr></table></figure>
+<p>其中set.seed()，该命令的作用是设定生成随机数的种子，种子是为了让结果具有重复性。如果不设定种子，生成的随机数无法重现。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sample(x, size, replace = <span class="literal">FALSE</span>, prob = <span class="literal">NULL</span>)</span><br></pre></td></tr></table></figure>
+<p>x可以是任何对象，<br>size规定了从对象中抽出多少个数，size应该小于x的规模，否则会报错<br>replace默认是FALSE，表示每次抽取后的数就不能在下一次被抽取；TRUE表示抽取过的数可以继续拿来被抽取<br><a id="more"></a></p>
+<blockquote>
+<p>正态分布随机数rnorm()</p>
+</blockquote>
+<p>句法是：rnorm（n,mean=0,sd=1）  其中n表示生成的随机数数量，mean是正态分布的均值，默认为0，sd是正态分布的标准差，默认时为1</p>
+<h2 id="绘制一个最简单的散点图："><a href="#绘制一个最简单的散点图：" class="headerlink" title="绘制一个最简单的散点图："></a>绘制一个最简单的散点图：</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plot(x=x,y=y)</span><br></pre></td></tr></table></figure>
+<p>其中x=x左侧的x表示横坐标，右侧的是数据名，y的相同。当然，x和y都是可以省略的。也可以使用<code>plot(formula)</code>这样的形式去绘制散点图：<code>plot(y~x)</code></p>
+<h2 id="添加标题和标签"><a href="#添加标题和标签" class="headerlink" title="添加标题和标签"></a>添加标题和标签</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plot(x,y,xlab=<span class="string">"name of x"</span>,ylab=<span class="string">"name of y"</span>,main=<span class="string">"Scatter Plot"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="设置坐标界限"><a href="#设置坐标界限" class="headerlink" title="设置坐标界限"></a>设置坐标界限</h2><p>可先用<code>range(x)</code>或<code>range(y)</code>查看x,y的取值范围</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plot(x,y,xlab=<span class="string">"name of x"</span>,ylab=<span class="string">"name of y"</span>,main=<span class="string">"Scatter Plot"</span>,xlim=c(<span class="number">1</span>,<span class="number">100</span>),ylim=c(<span class="number">0</span>,<span class="number">250</span>))</span><br></pre></td></tr></table></figure>
+<h2 id="更改字符"><a href="#更改字符" class="headerlink" title="更改字符"></a>更改字符</h2><p>默认情形下，绘图字符为空心点，可以使用pch选项参数进行更改</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plot(x,y,xlab=<span class="string">"name of x"</span>,ylab=<span class="string">"name of y"</span>,main=<span class="string">"Scatter Plot"</span>,xlim=c(<span class="number">1</span>,<span class="number">100</span>),ylim=c(<span class="number">0</span>,<span class="number">250</span>),pch=<span class="number">19</span>)</span><br></pre></td></tr></table></figure>
+<p>pch的取值与其对应的图形字符，也可以使用plot绘制：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a&lt;-rep(<span class="number">1</span>:<span class="number">5</span>,each=<span class="number">5</span>)</span><br><span class="line">b&lt;-rep(<span class="number">1</span>:<span class="number">5</span>,<span class="number">5</span>)</span><br><span class="line">plot(a,b,pch=<span class="number">1</span>:<span class="number">25</span>)</span><br><span class="line">text(a,b,<span class="number">1</span>:<span class="number">25</span>,pos=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="更改颜色"><a href="#更改颜色" class="headerlink" title="更改颜色"></a>更改颜色</h2><p>默认情况下，R绘制的图像是黑白的。但其实，R中有若干和颜色相关的参数：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plot(x,y,main=<span class="string">"Plot"</span>,sub=<span class="string">"Scatter Plot"</span>,col=<span class="string">"red"</span>,col.axis=<span class="string">"green"</span>,col.lab=<span class="string">"blue"</span>,col.main=<span class="string">"#999000"</span>,col.sub=<span class="string">"#000999"</span>,fg=<span class="string">"gray"</span>,bg=<span class="string">"white"</span>)</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>col</td>
+<td>绘图字符的颜色</td>
+</tr>
+<tr>
+<td>col.axis</td>
+<td>坐标轴文字颜色</td>
+</tr>
+<tr>
+<td>col.lab</td>
+<td>坐标轴标签颜色</td>
+</tr>
+<tr>
+<td>col.main</td>
+<td>标题颜色</td>
+</tr>
+<tr>
+<td>col.sub</td>
+<td>副标题颜色</td>
+</tr>
+<tr>
+<td>fg</td>
+<td>前景色</td>
+</tr>
+<tr>
+<td>bg</td>
+<td>背景色</td>
+</tr>
+</tbody>
+</table>
+<h2 id="更改尺寸"><a href="#更改尺寸" class="headerlink" title="更改尺寸"></a>更改尺寸</h2><p>与颜色类似，存在若干参数可以用来设置图形中元素的尺寸，而且与上表中设置颜色的参数相对应，只需将col更换成cex即可：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plot(x,y,main=<span class="string">"Plot"</span>,sub=<span class="string">"Scatter Plot"</span>,cex=<span class="number">0.5</span>,cex.axis=<span class="number">1</span>,cex.lab=<span class="number">0.8</span>,cex.main=<span class="number">2</span>,cex.sub=<span class="number">1.5</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="线"><a href="#线" class="headerlink" title="线"></a>线</h1><p>有时候，我们不仅需要散点图，更需要折线图，比如在时间序列当中：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">t &lt;- <span class="number">1</span>:<span class="number">50</span></span><br><span class="line">set.seed(<span class="number">1234</span>)</span><br><span class="line">v&lt;-rnorm(<span class="number">50</span>,<span class="number">0</span>,<span class="number">10</span>)</span><br><span class="line">plot(t,v,type=<span class="string">"l"</span>)</span><br></pre></td></tr></table></figure>
+<p>注意，type的取值：</p>
+<p>what type of plot should be drawn. Possible types are</p>
+<ul>
+<li>“p” for points,</li>
+<li>“l” for lines,</li>
+<li>“b” for both,</li>
+<li>“c” for the lines part alone of “b”,</li>
+<li>“o” for both ‘overplotted’,</li>
+<li>“h” for ‘histogram’ like (or ‘high-density’) vertical lines,</li>
+<li>“s” for stair steps,</li>
+<li>“S” for other steps, see ‘Details’ below,</li>
+<li>“n” for no plotting.</li>
+</ul>
+<h2 id="更改线条类型"><a href="#更改线条类型" class="headerlink" title="更改线条类型"></a>更改线条类型</h2><p>R中提供了很多类型的线条，可以通过lty选项来设定，如下：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a&lt;-c()</span><br><span class="line">plot(a,xlim=c(<span class="number">0</span>,<span class="number">10</span>),ylim=c(<span class="number">1</span>,<span class="number">6</span>),xlab=<span class="string">""</span>,ylab = <span class="string">"lty"</span>)</span><br><span class="line"><span class="keyword">for</span>(i <span class="keyword">in</span> <span class="number">1</span>:<span class="number">6</span>)&#123;abline(h=i,lty=i)&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="更改颜色-1"><a href="#更改颜色-1" class="headerlink" title="更改颜色"></a>更改颜色</h2><p>与前面更改点的颜色方法相同！</p>
+<h2 id="线条变宽"><a href="#线条变宽" class="headerlink" title="线条变宽"></a>线条变宽</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plot(t,v,type=<span class="string">"l"</span>,lwd=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="点与线"><a href="#点与线" class="headerlink" title="点与线"></a>点与线</h2><p>有时候，我们还需要将点突出出来，此时需要利用type选型：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plot(t,v,type=<span class="string">"b"</span>)</span><br></pre></td></tr></table></figure>
+<p>type选项可以指定plot()函数绘制的类型，可以使用help(plot)查看。</p>
+<h1 id="散点图与平滑线"><a href="#散点图与平滑线" class="headerlink" title="散点图与平滑线"></a>散点图与平滑线</h1><p>在做线性回归时，我们常常会在散点图中添加一条拟合直线以查看效果：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">model &lt;- lm(y~x)</span><br><span class="line">plot(x,y)</span><br><span class="line">abline(model,col=<span class="string">"blue"</span>)</span><br></pre></td></tr></table></figure>
+<p>有时候，我们需要在散点图上画一条拟合的平滑线，一般使用loess:</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plot(x,y)</span><br><span class="line">model_loess&lt;-loess(y~x)</span><br><span class="line">fit&lt;-fitted(model_loess)</span><br><span class="line">ord&lt;-order(x)</span><br><span class="line">lines(x[ord],fit[ord],lwd=<span class="number">2</span>,lty=<span class="number">2</span>,col=<span class="string">"blue"</span>)</span><br></pre></td></tr></table></figure>
+<p>当然，在R语言中要实现上面的图形有很多简单地方法，这里介绍两个：</p>
+<ol>
+<li>使用car包中的scatterplot()函数</li>
+</ol>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(car)</span><br><span class="line">scatterplot(y~x,spread=<span class="literal">FALSE</span>,lty=<span class="number">1</span>,lwd=<span class="number">2</span>,smoother.args=list(lty=<span class="number">2</span>,lwd=<span class="number">2</span>),smoother=loessLine)</span><br></pre></td></tr></table></figure>
+<p>其中，直线为线性拟合，虚线为loess曲线拟合，边界为箱线图！<br>在函数中smoother.args选项指定曲拟合的参数，smoother选项指定是否使用曲线拟合，以及用什么方法进行曲线拟合。当然，如果不需要曲线平滑拟合，那么可以将smoother=FALSE。<br>使用以下语句安装需要的软件包</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">install.packages( pkgs = <span class="string">"car"</span>, dependencies = <span class="literal">TRUE</span> )</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>使用ggplot2包<br>ggplot2是学习R语言制图的一座大山，它提供了一个基于全面而连贯的语法的绘图系统。功能非常强大，而且弥补了R中自带图形绘制的很多缺点。<br>使用这个包，实现的方法一般有两种，就是使用qplot()函数和ggplot()函数</li>
+</ol>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qplot(x,y,geom=c(<span class="string">"point"</span>,<span class="string">"smooth"</span>),method=<span class="string">"lm"</span>,se=<span class="literal">FALSE</span>)+geom_smooth(method=<span class="string">"loess"</span>,color=<span class="string">"red"</span>,se=<span class="literal">FALSE</span>,LTY=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ggplot(aes(x,y),data=dataSet)+geom_point() + geom_smooth(method=<span class="string">"lm"</span>,color=<span class="string">"green"</span>,lty=<span class="number">1</span>,se=<span class="literal">FALSE</span>) +geom_smooth(method=<span class="string">"loess"</span>,color=<span class="string">"red"</span>,lty=<span class="number">2</span>,se=<span class="literal">FALSE</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="饼图"><a href="#饼图" class="headerlink" title="饼图"></a>饼图</h1><p>饼图，就是将一个圆（或者圆饼)按分类变量分成几块，每一块所占的面积比例就是相对应的变量在总体中所占的比例。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">year&lt;-<span class="number">2001</span>:<span class="number">2010</span></span><br><span class="line">set.seed(<span class="number">1234</span>)</span><br><span class="line">counts &lt;- sample(<span class="number">100</span>:<span class="number">500</span>,<span class="number">10</span>)</span><br><span class="line">par(<span class="string">"mar"</span>)</span><br><span class="line">[<span class="number">1</span>] <span class="number">5.1</span> <span class="number">4.1</span> <span class="number">4.1</span> <span class="number">2.1</span></span><br><span class="line">par(mar=c(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>))</span><br><span class="line">pie(counts,labels=year)</span><br><span class="line">pie(counts,labels=year,col=gray(seq(<span class="number">0.1</span>,<span class="number">1</span>,length=<span class="number">10</span>)),clockwise = <span class="literal">TRUE</span>)</span><br><span class="line">lb &lt;-paste(year,counts,sep=<span class="string">":"</span>)</span><br><span class="line">pie(counts,labels=lb,col=rainbow(<span class="number">10</span>))</span><br></pre></td></tr></table></figure>
+<h1 id="条形图"><a href="#条形图" class="headerlink" title="条形图"></a>条形图</h1><p>条形图就是通过垂直或者水平的条形去展示分类变量的频数。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">year&lt;-<span class="number">2001</span>:<span class="number">2010</span></span><br><span class="line">set.seed(<span class="number">1234</span>)</span><br><span class="line">counts &lt;- sample(<span class="number">100</span>:<span class="number">500</span>,<span class="number">10</span>)</span><br><span class="line">par(<span class="string">"mar"</span>)</span><br><span class="line">[<span class="number">1</span>] <span class="number">5.1</span> <span class="number">4.1</span> <span class="number">4.1</span> <span class="number">2.1</span></span><br><span class="line">par(mar=c(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>))</span><br><span class="line">barplot(counts,names.arg=year)</span><br><span class="line">barplot(counts,names.arg=year,horiz=<span class="literal">TRUE</span>)</span><br><span class="line">barplot(counts,names.arg=year,col = rainbow(<span class="number">10</span>))</span><br><span class="line">barplot(counts,names.arg=year,col = grey(seq(<span class="number">0.1</span>,<span class="number">1</span>,length=<span class="number">10</span>)),horiz=<span class="literal">TRUE</span>)</span><br></pre></td></tr></table></figure>
+<p>当每一年有两个变量指标时，可以绘制堆砌条形图和分组条形图：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">set.seed(<span class="number">4321</span>)</span><br><span class="line">counts2&lt;-sample(<span class="number">100</span>:<span class="number">500</span>,<span class="number">10</span>)</span><br><span class="line">count&lt;-cbind(c1=counts,x2=counts2)</span><br><span class="line">rownames(count)&lt;-year</span><br><span class="line">par(mfrow=c(<span class="number">1</span>,<span class="number">1</span>))</span><br><span class="line">barplot(count,col=rainbow(<span class="number">10</span>),legend=rownames(count))</span><br></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">barplot(count,col=rainbow(<span class="number">10</span>),beside = <span class="literal">TRUE</span>,legend=rownames(count))</span><br></pre></td></tr></table></figure>
+<h1 id="直方图"><a href="#直方图" class="headerlink" title="直方图"></a>直方图</h1><p>前面介绍的两种图形，一般都是用来处理离散数据的。那么对于连续数据，常用的图形就有这里所说的直方图。直方图在横轴上将数据值域划分成若干个组别，然后在纵轴上显示其频数。通过这种方式，可以将连续的点离散化，从而来描述连续型变量的分布。<br>在R语言中，可以使用hist()函数来绘制直方图：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##构造数据</span></span><br><span class="line">set.seed(<span class="number">1234</span>)</span><br><span class="line">x&lt;-rnorm(<span class="number">100</span>,<span class="number">0</span>,<span class="number">1</span>)</span><br><span class="line"><span class="comment">##设置画布</span></span><br><span class="line">par(mfrow=c(<span class="number">2</span>,<span class="number">2</span>))</span><br><span class="line"><span class="comment">##1</span></span><br><span class="line">hist(x)</span><br><span class="line">box()</span><br><span class="line"><span class="comment">##2 修改颜色，组数</span></span><br><span class="line">hist(x,breaks=<span class="number">10</span>,col=<span class="string">"gray"</span>)</span><br><span class="line">box()</span><br><span class="line"><span class="comment">##3 添加核密度曲线</span></span><br><span class="line">hist(x,breaks = <span class="number">10</span>,freq=<span class="literal">FALSE</span>,col = <span class="string">"gray"</span>)</span><br><span class="line">lines(density(x),col=<span class="string">"red"</span>,lwd=<span class="number">2</span>)</span><br><span class="line">box()</span><br><span class="line"><span class="comment">##4 添加正态密度曲线</span></span><br><span class="line">h &lt;- hist(x,breaks=<span class="number">10</span>,col=<span class="string">"gray"</span>)</span><br><span class="line">xfit&lt;-seq(min(x),max(x),length=<span class="number">100</span>)</span><br><span class="line">yfit&lt;-dnorm(xfit,mean = mean(x),sd=sd(x))</span><br><span class="line">yfit&lt;-yfit*diff(h$mids[<span class="number">1</span>:<span class="number">2</span>])*length(x)</span><br><span class="line">lines(xfit,yfit,col=<span class="string">"blue"</span>,lwd=<span class="number">2</span>)</span><br><span class="line">box()</span><br></pre></td></tr></table></figure>
+<p>当然，可以使用ggplot2包中的函数绘制直方图：<br>先试试<code>qplot()</code>函数：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x&lt;-rnorm(<span class="number">100</span>,<span class="number">0</span>,<span class="number">1</span>)</span><br><span class="line">qplot(x,geom=<span class="string">"histogram"</span>,binwidth=<span class="number">0.5</span>,fill=..count..)</span><br></pre></td></tr></table></figure>
+<p>再试试<code>ggplot()</code>函数：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">x&lt;-rnorm(<span class="number">100</span>,<span class="number">0</span>,<span class="number">1</span>)</span><br><span class="line">dataSet &lt;- data.frame(x)</span><br><span class="line">h&lt;-ggplot(data=dataSet,aes(x=x))</span><br><span class="line">h+geom_histogram(aes(fill=..count..),binwidth = <span class="number">0.5</span>)</span><br><span class="line"><span class="comment">##添加核密度曲线</span></span><br><span class="line">h+geom_histogram(aes(y=..density..,fill=..count..),binwidth = <span class="number">0.5</span>)+geom_density(color=<span class="string">"red"</span>)</span><br><span class="line"><span class="comment">##添加正态密度曲线</span></span><br><span class="line">dataSet2&lt;- data.frame(xfit,yfit)</span><br><span class="line">h+geom_histogram(aes(fill=..count..),binwidth = <span class="number">0.5</span>)+geom_line(data=dataSet2,aes(x=xfit,y=yfit),color=<span class="string">"red"</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="箱线图"><a href="#箱线图" class="headerlink" title="箱线图"></a>箱线图</h1><p>还有一种常用的图形，就是<strong>箱线图</strong>，也称<strong>盒须图</strong>。它通过绘制连续型变量的五个分位数（最大最小值、25%和75%分位数以及中位数），描述变量的分布。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">x1&lt;-x</span><br><span class="line">x2&lt;-rnorm(<span class="number">100</span>,<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">x3&lt;-rnorm(<span class="number">100</span>,<span class="number">2</span>,<span class="number">4</span>)</span><br><span class="line">all_x &lt;- c(x1,x2,x3)</span><br><span class="line">label &lt;- rep(<span class="number">1</span>:<span class="number">3</span>,each=<span class="number">100</span>)</span><br><span class="line">dataSet3&lt;-data.frame(x=all_x,label=label)</span><br><span class="line">boxplot(dataSet3$x)</span><br><span class="line"><span class="comment">##考虑类别</span></span><br><span class="line">boxplot(x~label,data = dataSet3)</span><br></pre></td></tr></table></figure>
+<h1 id="基础绘图系统"><a href="#基础绘图系统" class="headerlink" title="基础绘图系统"></a>基础绘图系统</h1><p>基础绘图系统，即是R语言自带的绘图系统。R中核心的绘图系统主要基于以下两个包：</p>
+<ul>
+<li>graphics包，此包包含了基础绘图系统的绘图函数，比如：plot(),hist()等等；</li>
+<li>grDevices包，此包包含了各类型的图形设备（graphics devices），包括：X11,PDF,PNG等等。</li>
+</ul>
+<p>基础绘图系统总是从一幅空画布开始绘制图形，<strong>首先使用plot()这样的函数在空画布上画出图形，然后使用注释函数对图形进行添加或者修改</strong>，一般来说就是添加或者修改显示的文本、辅助线、辅助点以及标题等等。对于这样的一个流程，它可以很方便我们去使用，因为这样的流程可以完全将我们的思路反应出来。<strong>它就是通过一系列的R语言命令，一步一步地按照心中预想的绘图方式将其绘制出来</strong>。</p>
+<p>这样的绘图方式在给予我们方便的同时，也带来了一些弊端。首先，我们必须事先安排好图形应该如何绘制，因为一旦我们开始绘制就不能后退了；此外，当一幅图形绘制完成，我们就不能对其进行修改了，因为基础绘图系统没有绘图语言（graphical “language”)。</p>
+<p>基础绘图一般来说：<strong>就是使用一系列单独的函数调用，将图形的各个零散的部分组合起来</strong>。</p>
+<p>利用mtcar数据集，做个示例：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 取出感兴趣的数据</span></span><br><span class="line">dataSet &lt;-mtcars[c(<span class="string">"mpg"</span>,<span class="string">"disp"</span>,<span class="string">"carb"</span>)]</span><br><span class="line"><span class="comment">## 转换数据的格式</span></span><br><span class="line">dataSet&lt;-transform(dataSet,carb=factor(carb))</span><br><span class="line">par(mar=c(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>))</span><br><span class="line"><span class="comment">## 绘图查看数据 散点图</span></span><br><span class="line">plot(dataSet$mpg,dataSet$disp,xlab=<span class="string">"mpg"</span>,ylab=<span class="string">"disp"</span>)</span><br><span class="line">title(<span class="string">"The Scatter Plot"</span>)</span><br><span class="line">model&lt;-lm(disp~mpg,data=dataSet)</span><br><span class="line">abline(model,col=<span class="string">"red"</span>)</span><br><span class="line"><span class="comment">## 加上条件</span></span><br><span class="line">with(dataSet,plot(mpg,disp,type=<span class="string">"n"</span>))</span><br><span class="line"><span class="keyword">for</span>(i <span class="keyword">in</span> unique(dataSet$carb))&#123;with(subset(dataSet,carb==i),points(mpg,disp,col=i))&#125;</span><br><span class="line"><span class="comment">## 对于carb==4的数据，添加拟合直线</span></span><br><span class="line">model1&lt;-lm(disp~mpg,data=subset(dataSet,carb==<span class="number">4</span>))</span><br><span class="line">abline(model1,lty=<span class="number">2</span>,lwd=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="Lattice"><a href="#Lattice" class="headerlink" title="Lattice"></a>Lattice</h1><p>Lattice一般会使用以下两个包：</p>
+<ul>
+<li>lattice包：包含于基础绘图独立的，能够生成Trellis graphics的代码，包括xyplot,bwplot等等；</li>
+<li>grid包：lattice包建立在此包之上，在使用中很少直接调用这个包。</li>
+</ul>
+<p>Lattice与基础绘图系统的一个非常明显的区别在于：<strong>所有的绘图以及注释都在一次函数调用中完成</strong>。<br>Lattice很擅长绘制需要分类的图形，比如说，想要根据不同的level，绘制y与x的散点图。这个在基础绘制系统中还是蛮麻烦的，但是在Lattice中就比较容易。也就是说，<strong>Lattice通过一维、二维或三维的条件绘图（即是Trellis）</strong>，对多元变量关系进行直观展示。<br>由于其所有的绘图与注释都需要在一次函数调用中完成，所以在使用之前就需要做好准备，因为一旦图形绘制好，就什么也不能添加了，接着上面的数据集做实例：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(lattice)</span><br><span class="line">xyplot(disp~mpg,data=dataSet)</span><br><span class="line">xyplot(disp~mpg|carb,data=dataSet,layout=c(<span class="number">6</span>,<span class="number">1</span>))</span><br><span class="line"><span class="comment">## 使用panel function</span></span><br><span class="line">xyplot(disp~mpg|carb,data=dataSet,panel = <span class="keyword">function</span>(x,y,<span class="keyword">...</span>)&#123;</span><br><span class="line">  panel.xyplot(x,y,<span class="keyword">...</span>)</span><br><span class="line">  panel.abline(h=median(y),lty=<span class="number">2</span>,col=<span class="string">"gray"</span>)</span><br><span class="line">  panel.lmline(x,y,col=<span class="string">"red"</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="ggplot2"><a href="#ggplot2" class="headerlink" title="ggplot2"></a>ggplot2</h1><p>ggplot2是基于一种全面的图形语法，提供了一种全新的图形创建方法。能够自动处理位置、文本等等注释，也能够按照需求自定义设置。默认情况下有很多选项以供选择，在不设置时会直接使用默认值。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(ggplot2)</span><br><span class="line"><span class="comment">## 查看qplot函数</span></span><br><span class="line">str(qplot)</span><br><span class="line"><span class="comment">## 散点图</span></span><br><span class="line">qplot(mpg,disp,data=dataSet)</span><br><span class="line"><span class="comment">## 按carb区分 按颜色</span></span><br><span class="line">qplot(mpg,disp,data=dataSet,color=carb)</span><br><span class="line"><span class="comment">## 按形状</span></span><br><span class="line">qplot(mpg,disp,data=dataSet,shape=carb)</span><br><span class="line"><span class="comment">## 添加拟合直线</span></span><br><span class="line">qplot(mpg,disp,data=dataSet,geom=c(<span class="string">"point"</span>,<span class="string">"smooth"</span>),method=<span class="string">"lm"</span>)</span><br><span class="line"><span class="comment">## 使用facets</span></span><br><span class="line">qplot(mpg,disp,data=dataSet,facets = .~carb)</span><br><span class="line"><span class="comment">## 添加颜色和形状</span></span><br><span class="line">qplot(mpg,disp,data=dataSet,facets = .~carb,color=carb,shape=carb)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>请我家喵吃条小鱼干吧  ฅ(๑*д*๑)ฅ</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.JPG" alt="toypipi WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.JPG" alt="toypipi Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    toypipi
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://toypipi.github.io/2017/02/28/R语言绘图/" title="R语言绘图">https://toypipi.github.io/2017/02/28/R语言绘图/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/R/" rel="tag"># R</a>
+          
+            <a href="/tags/绘图/" rel="tag"># 绘图</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/28/Mahout算法库/" rel="next" title="Mahout 算法库">
+                <i class="fa fa-chevron-left"></i> Mahout 算法库
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/10/关于OpenType-1-8/" rel="prev" title="关于OpenType 1.8">
+                关于OpenType 1.8 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="hypercomments_widget"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars3.githubusercontent.com/u/13879860?v=3&amp;s=460"
+               alt="toypipi" />
+          <p class="site-author-name" itemprop="name">toypipi</p>
+           
+              <p class="site-description motion-element" itemprop="description">善始者实繁，克终者盖寡</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">86</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">122</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#点"><span class="nav-number">1.</span> <span class="nav-text">点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#绘制一个最简单的散点图："><span class="nav-number">1.1.</span> <span class="nav-text">绘制一个最简单的散点图：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加标题和标签"><span class="nav-number">1.2.</span> <span class="nav-text">添加标题和标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置坐标界限"><span class="nav-number">1.3.</span> <span class="nav-text">设置坐标界限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改字符"><span class="nav-number">1.4.</span> <span class="nav-text">更改字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改颜色"><span class="nav-number">1.5.</span> <span class="nav-text">更改颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改尺寸"><span class="nav-number">1.6.</span> <span class="nav-text">更改尺寸</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线"><span class="nav-number">2.</span> <span class="nav-text">线</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#更改线条类型"><span class="nav-number">2.1.</span> <span class="nav-text">更改线条类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改颜色-1"><span class="nav-number">2.2.</span> <span class="nav-text">更改颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线条变宽"><span class="nav-number">2.3.</span> <span class="nav-text">线条变宽</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#点与线"><span class="nav-number">2.4.</span> <span class="nav-text">点与线</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#散点图与平滑线"><span class="nav-number">3.</span> <span class="nav-text">散点图与平滑线</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#饼图"><span class="nav-number">4.</span> <span class="nav-text">饼图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#条形图"><span class="nav-number">5.</span> <span class="nav-text">条形图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#直方图"><span class="nav-number">6.</span> <span class="nav-text">直方图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#箱线图"><span class="nav-number">7.</span> <span class="nav-text">箱线图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础绘图系统"><span class="nav-number">8.</span> <span class="nav-text">基础绘图系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lattice"><span class="nav-number">9.</span> <span class="nav-text">Lattice</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ggplot2"><span class="nav-number">10.</span> <span class="nav-text">ggplot2</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">toypipi</span>
+</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+		<script type="text/javascript">
+		_hcwp = window._hcwp || [];
+
+		_hcwp.push({widget:"Bloggerstream", widget_id: 102928, selector:".hc-comment-count", label: "{\%COUNT%\}" });
+
+		
+		_hcwp.push({widget:"Stream", widget_id: 102928, xid: "2017/02/28/R语言绘图/"});
+		
+
+		(function() {
+		if("HC_LOAD_INIT" in window)return;
+		HC_LOAD_INIT = true;
+		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/102928/"+lang+"/widget.js";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hcc, s.nextSibling);
+		})();
+		</script>
+
+	
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("tbIJcfswUFaknkcghWzvRaEM-gzGzoHsz", "ABRMf9eANJrcKAqn9xOgu5tt");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
