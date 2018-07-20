@@ -387,18 +387,6 @@
 
           
             
-            <!--noindex-->
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/11/23/Highcharts-plotOptions-设置无效问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count hc-comment-count" data-xid="2017/11/23/Highcharts-plotOptions-设置无效问题/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-              <!--/noindex-->
-            
           
 
           
@@ -454,8 +442,8 @@
 
       
         <hr>
-<p>今天在柱形图上添加数字标签时，总是不能生效。绘图插件使用的是 Highcharts 。后来突然想到之前引入的是Highmaps js 文件，而不是 Highcharts js 文件。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script th:src=<span class="string">"@&#123;/js/highcharts/highmaps.js&#125;"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
-<p>抱着试试看的心态，我将 Highcharts js 文件引入到 html 页面中，<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script th:src=<span class="string">"@&#123;/js/highcharts/highcharts.js&#125;"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script th:src=<span class="string">"@&#123;/js/highcharts/highmaps.js&#125;"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>今天在柱形图上添加数字标签时，总是不能生效。绘图插件使用的是 Highcharts 。后来突然想到之前引入的是Highmaps js 文件，而不是 Highcharts js 文件。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script th:src=<span class="string">"@&#123;/js/highcharts/highmaps.js&#125;"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<p>抱着试试看的心态，我将 Highcharts js 文件引入到 html 页面中，<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script th:src=<span class="string">"@&#123;/js/highcharts/highcharts.js&#125;"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script th:src=<span class="string">"@&#123;/js/highcharts/highmaps.js&#125;"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
 <p>刷新页面发现还是不行，然后我又将 Highmaps js 文件屏蔽掉，这下就可以了。难道是两个文件相互干扰了。<br><a id="more"></a><br>于是到 Highcharts 官网，找到了这个说明：<br><div class="note danger"><p>同 Highcharts 使用方法一样，Highmaps 只需要一个 highmaps.js 文件即可运行。<br>如果是结合 Highcharts 一起使用，则是引入 map.js 即可。</p></div></p>
 <p><strong>参考文档：</strong><br><a href="https://www.hcharts.cn/docs/highmaps-started" target="_blank" rel="noopener">开始使用 Highmaps</a><br><a href="https://www.hcharts.cn/docs/start-download" target="_blank" rel="noopener"> Highcharts + Highstock + Highmaps 混合使用</a></p>
 
@@ -603,8 +591,6 @@
 
           
   <div class="comments" id="comments">
-    
-      <div id="hypercomments_widget"></div>
     
   </div>
 
@@ -843,31 +829,17 @@
 
 	
 
-		<script type="text/javascript">
-		_hcwp = window._hcwp || [];
-
-		_hcwp.push({widget:"Bloggerstream", widget_id: 102928, selector:".hc-comment-count", label: "{\%COUNT%\}" });
-
-		
-		_hcwp.push({widget:"Stream", widget_id: 102928, xid: "2017/11/23/Highcharts-plotOptions-设置无效问题/"});
-		
-
-		(function() {
-		if("HC_LOAD_INIT" in window)return;
-		HC_LOAD_INIT = true;
-		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
-		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
-		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/102928/"+lang+"/widget.js";
-		var s = document.getElementsByTagName("script")[0];
-		s.parentNode.insertBefore(hcc, s.nextSibling);
-		})();
-		</script>
-
-	
 
 
 
 
+  
+
+
+
+
+
+  
 
 
 
