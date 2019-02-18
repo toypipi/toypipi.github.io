@@ -2,15 +2,24 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
 
 
 
@@ -20,12 +29,9 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
-  <meta name="google-site-verification" content="Iklr1EoFbTWomWKqz4mZCbEiVE_HuchAJDxBFDBSXqY" />
 
 
 
@@ -39,107 +45,41 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
+<link rel="stylesheet" href="/css/main.css?v=7.0.0"/>
 
 
-  
-  
-  
-  
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
 
-  
-    
-    
-  
 
-  
-    
-      
-    
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
 
-    
-  
 
-  
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
 
-  
-    
-      
-    
 
-    
-  
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
 
-  
-    
-      
-    
 
-    
-  
 
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
 
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="MySQL, XtraBackup, 技术, 数据库, 数据分析, 大数据, toypipi" />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
-
-
-
-
-
-
-<meta name="description" content="善始者实繁，克终者盖寡">
-<meta property="og:type" content="website">
-<meta property="og:title" content="toypipi&#39;s blog">
-<meta property="og:url" content="https://toypipi.github.io/index.html">
-<meta property="og:site_name" content="toypipi&#39;s blog">
-<meta property="og:description" content="善始者实繁，克终者盖寡">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="toypipi&#39;s blog">
-<meta name="twitter:description" content="善始者实繁，克终者盖寡">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -151,12 +91,36 @@
 </script>
 
 
+  
+
+
+
+
+  <meta name="description" content="善始者实繁，克终者盖寡">
+<meta property="og:type" content="website">
+<meta property="og:title" content="toypipi&#39;s blog">
+<meta property="og:url" content="https://toypipi.github.io/index.html">
+<meta property="og:site_name" content="toypipi&#39;s blog">
+<meta property="og:description" content="善始者实繁，克终者盖寡">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="toypipi&#39;s blog">
+<meta name="twitter:description" content="善始者实繁，克终者盖寡">
+
+
+
+
+
 
   <link rel="canonical" href="https://toypipi.github.io/"/>
 
 
 
-
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>toypipi's blog</title>
   
@@ -164,17 +128,17 @@
 
 
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-90328755-1', 'auto');
-  ga('send', 'pageview');
-</script>
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-90328755-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-90328755-1');
+  </script>
 
 
-  <script type="text/javascript">
+
+  <script>
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -190,12 +154,34 @@
 
 
 
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -203,29 +189,27 @@
   
 
   <div class="container sidebar-position-left 
-   page-home 
- ">
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">toypipi's blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
+    
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -233,65 +217,103 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
+          
+          <li class="menu-item menu-item-home menu-item-active">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+
+  </li>
 
       
+      
     </ul>
+  
+
   
 
   
@@ -299,12 +321,23 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -317,21 +350,23 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2019/01/03/2019-读书计划/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2019/01/03/2019-读书计划/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="toypipi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/13879860?v=3&amp;s=460">
+      <meta itemprop="name" content="toypipi"/>
+      <meta itemprop="description" content="善始者实繁，克终者盖寡"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="toypipi's blog">
+      <meta itemprop="name" content="toypipi's blog"/>
     </span>
 
     
@@ -341,11 +376,20 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/01/03/2019-读书计划/" itemprop="url">2019 读书计划</a></h1>
+                
+                <a href="/2019/01/03/2019-读书计划/" class="post-title-link" itemprop="url">2019 读书计划</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -353,18 +397,35 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-03T16:48:00+08:00">
-                2019-01-03
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-03 16:48:00" itemprop="dateCreated datePublished" datetime="2019-01-03T16:48:00+08:00">2019-01-03</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-01-23 10:54:15" itemprop="dateModified" datetime="2019-01-23T10:54:15+08:00">2019-01-23</time>
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -375,11 +436,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/阅读/" itemprop="url" rel="index">
-                    <span itemprop="name">阅读</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/阅读/" itemprop="url" rel="index"><span itemprop="name">阅读</span></a></span>
 
                 
                 
@@ -389,43 +446,27 @@
 
           
             
-          
-
-          
-          
-             <span id="/2019/01/03/2019-读书计划/" class="leancloud_visitors" data-flag-title="2019 读书计划">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
+            
               
-                
-                &nbsp; | &nbsp;<span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  48
-                </span>
-              
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/01/03/2019-读书计划/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/03/2019-读书计划/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-              
+          
+          
 
-              
-            </div>
+          
+
           
 
           
@@ -459,21 +500,29 @@ table th:nth-of-type(4) {
 
 <p>2018 年初定的阅读计划已经圆满完成。新的一年新的开始，2019 年计划阅读 20 本书。</p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/03/2019-读书计划/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/01/03/2019-读书计划/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -506,21 +555,23 @@ table th:nth-of-type(4) {
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/09/13/CentOS7-4-安装-CDH5-15-0/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/09/13/CentOS7-4-安装-CDH5-15-0/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="toypipi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/13879860?v=3&amp;s=460">
+      <meta itemprop="name" content="toypipi"/>
+      <meta itemprop="description" content="善始者实繁，克终者盖寡"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="toypipi's blog">
+      <meta itemprop="name" content="toypipi's blog"/>
     </span>
 
     
@@ -530,11 +581,20 @@ table th:nth-of-type(4) {
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/13/CentOS7-4-安装-CDH5-15-0/" itemprop="url">CentOS 7.4 安装 CDH 5.15.0</a></h1>
+                
+                <a href="/2018/09/13/CentOS7-4-安装-CDH5-15-0/" class="post-title-link" itemprop="url">CentOS 7.4 安装 CDH 5.15.0</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -542,18 +602,35 @@ table th:nth-of-type(4) {
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-13T18:00:03+08:00">
-                2018-09-13
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-13 18:00:03" itemprop="dateCreated datePublished" datetime="2018-09-13T18:00:03+08:00">2018-09-13</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-09-17 20:33:06" itemprop="dateModified" datetime="2018-09-17T20:33:06+08:00">2018-09-17</time>
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -564,11 +641,7 @@ table th:nth-of-type(4) {
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hadoop/" itemprop="url" rel="index">
-                    <span itemprop="name">hadoop</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/hadoop/" itemprop="url" rel="index"><span itemprop="name">hadoop</span></a></span>
 
                 
                 
@@ -578,43 +651,27 @@ table th:nth-of-type(4) {
 
           
             
-          
-
-          
-          
-             <span id="/2018/09/13/CentOS7-4-安装-CDH5-15-0/" class="leancloud_visitors" data-flag-title="CentOS 7.4 安装 CDH 5.15.0">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
+            
               
-                
-                &nbsp; | &nbsp;<span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  144
-                </span>
-              
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/09/13/CentOS7-4-安装-CDH5-15-0/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/13/CentOS7-4-安装-CDH5-15-0/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-              
+          
+          
 
-              
-            </div>
+          
+
           
 
           
@@ -643,12 +700,18 @@ table th:nth-of-type(4) {
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -681,21 +744,23 @@ table th:nth-of-type(4) {
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/09/12/MariaDB-Keepalived-双主热备之采坑记/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/09/12/MariaDB-Keepalived-双主热备之采坑记/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="toypipi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/13879860?v=3&amp;s=460">
+      <meta itemprop="name" content="toypipi"/>
+      <meta itemprop="description" content="善始者实繁，克终者盖寡"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="toypipi's blog">
+      <meta itemprop="name" content="toypipi's blog"/>
     </span>
 
     
@@ -705,11 +770,20 @@ table th:nth-of-type(4) {
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/12/MariaDB-Keepalived-双主热备之采坑记/" itemprop="url">MariaDB Keepalived 双主热备之踩坑记</a></h1>
+                
+                <a href="/2018/09/12/MariaDB-Keepalived-双主热备之采坑记/" class="post-title-link" itemprop="url">MariaDB Keepalived 双主热备之踩坑记</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -717,18 +791,35 @@ table th:nth-of-type(4) {
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-12T14:16:55+08:00">
-                2018-09-12
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-12 14:16:55" itemprop="dateCreated datePublished" datetime="2018-09-12T14:16:55+08:00">2018-09-12</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-12-27 09:29:58" itemprop="dateModified" datetime="2018-12-27T09:29:58+08:00">2018-12-27</time>
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -739,11 +830,7 @@ table th:nth-of-type(4) {
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MySQL/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a></span>
 
                 
                 
@@ -753,43 +840,27 @@ table th:nth-of-type(4) {
 
           
             
-          
-
-          
-          
-             <span id="/2018/09/12/MariaDB-Keepalived-双主热备之采坑记/" class="leancloud_visitors" data-flag-title="MariaDB Keepalived 双主热备之踩坑记">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
+            
               
-                
-                &nbsp; | &nbsp;<span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  391
-                </span>
-              
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/09/12/MariaDB-Keepalived-双主热备之采坑记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/12/MariaDB-Keepalived-双主热备之采坑记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-              
+          
+          
 
-              
-            </div>
+          
+
           
 
           
@@ -816,21 +887,29 @@ table th:nth-of-type(4) {
 <li>当没有解决思路时，可以放一放，不要一味纠结其中。配置文件我也检查了好几遍，发现了其他没有加空格的地方，唯独单单没发现这点，可能当时自己一心急于解决问题，头脑已经混乱了。</li>
 </ol>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/12/MariaDB-Keepalived-双主热备之采坑记/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/09/12/MariaDB-Keepalived-双主热备之采坑记/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -863,21 +942,23 @@ table th:nth-of-type(4) {
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/07/20/MySQL-server-PID-file-could-not-be-found/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/07/20/MySQL-server-PID-file-could-not-be-found/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="toypipi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/13879860?v=3&amp;s=460">
+      <meta itemprop="name" content="toypipi"/>
+      <meta itemprop="description" content="善始者实繁，克终者盖寡"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="toypipi's blog">
+      <meta itemprop="name" content="toypipi's blog"/>
     </span>
 
     
@@ -887,11 +968,20 @@ table th:nth-of-type(4) {
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/07/20/MySQL-server-PID-file-could-not-be-found/" itemprop="url">MySQL server PID file could not be found!</a></h1>
+                
+                <a href="/2018/07/20/MySQL-server-PID-file-could-not-be-found/" class="post-title-link" itemprop="url">MySQL server PID file could not be found!</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -899,18 +989,23 @@ table th:nth-of-type(4) {
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-20T15:22:17+08:00">
-                2018-07-20
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-07-20 15:22:17 / 修改时间：15:41:32" itemprop="dateCreated datePublished" datetime="2018-07-20T15:22:17+08:00">2018-07-20</time>
             
 
             
+              
 
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -921,11 +1016,7 @@ table th:nth-of-type(4) {
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MySQL/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a></span>
 
                 
                 
@@ -935,43 +1026,27 @@ table th:nth-of-type(4) {
 
           
             
-          
-
-          
-          
-             <span id="/2018/07/20/MySQL-server-PID-file-could-not-be-found/" class="leancloud_visitors" data-flag-title="MySQL server PID file could not be found!">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
+            
               
-                
-                &nbsp; | &nbsp;<span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  230
-                </span>
-              
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/07/20/MySQL-server-PID-file-could-not-be-found/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/20/MySQL-server-PID-file-could-not-be-found/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-              
+          
+          
 
-              
-            </div>
+          
+
           
 
           
@@ -994,21 +1069,29 @@ table th:nth-of-type(4) {
 <p>今天使用测试数据库时发现突然无法连接了，然后登录到服务器上查看 MySQL 进程还在，使用命令 <code>service restart mysql</code> 重启 MySQL 报错:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MySQL server PID file could not be found!     [FAILED]</span><br><span class="line">Starting MySQL...The server quit without updating PID file (/usr/local/mysql/data/mysql.pid).</span><br></pre></td></tr></table></figure></p>
 <p>经过一番网上查询，有说磁盘满会导致此问题，马上检查了一下，果然 <code>/</code> 目录已经使用了 98% ，删除一些不再使用的程序包后。重启 MySQL 还是同样的问题。</p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/07/20/MySQL-server-PID-file-could-not-be-found/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/07/20/MySQL-server-PID-file-could-not-be-found/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -1041,21 +1124,23 @@ table th:nth-of-type(4) {
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/07/12/mooc-学习记录/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/07/12/mooc-学习记录/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="toypipi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/13879860?v=3&amp;s=460">
+      <meta itemprop="name" content="toypipi"/>
+      <meta itemprop="description" content="善始者实繁，克终者盖寡"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="toypipi's blog">
+      <meta itemprop="name" content="toypipi's blog"/>
     </span>
 
     
@@ -1065,11 +1150,20 @@ table th:nth-of-type(4) {
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/07/12/mooc-学习记录/" itemprop="url">mooc 学习记录</a></h1>
+                
+                <a href="/2018/07/12/mooc-学习记录/" class="post-title-link" itemprop="url">mooc 学习记录</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1077,18 +1171,35 @@ table th:nth-of-type(4) {
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-12T10:54:13+08:00">
-                2018-07-12
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-07-12 10:54:13" itemprop="dateCreated datePublished" datetime="2018-07-12T10:54:13+08:00">2018-07-12</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-12-30 16:05:01" itemprop="dateModified" datetime="2018-12-30T16:05:01+08:00">2018-12-30</time>
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -1099,11 +1210,7 @@ table th:nth-of-type(4) {
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活/" itemprop="url" rel="index">
-                    <span itemprop="name">生活</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/生活/" itemprop="url" rel="index"><span itemprop="name">生活</span></a></span>
 
                 
                 
@@ -1113,43 +1220,27 @@ table th:nth-of-type(4) {
 
           
             
-          
-
-          
-          
-             <span id="/2018/07/12/mooc-学习记录/" class="leancloud_visitors" data-flag-title="mooc 学习记录">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
+            
               
-                
-                &nbsp; | &nbsp;<span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  134
-                </span>
-              
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/07/12/mooc-学习记录/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/12/mooc-学习记录/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-              
+          
+          
 
-              
-            </div>
+          
+
           
 
           
@@ -1171,21 +1262,29 @@ table th:nth-of-type(4) {
           <hr>
 <p>记录一下学习的 mooc 课程。</p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/07/12/mooc-学习记录/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/07/12/mooc-学习记录/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -1218,21 +1317,23 @@ table th:nth-of-type(4) {
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/06/30/排序算法图示/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/06/30/排序算法图示/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="toypipi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/13879860?v=3&amp;s=460">
+      <meta itemprop="name" content="toypipi"/>
+      <meta itemprop="description" content="善始者实繁，克终者盖寡"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="toypipi's blog">
+      <meta itemprop="name" content="toypipi's blog"/>
     </span>
 
     
@@ -1242,11 +1343,20 @@ table th:nth-of-type(4) {
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/30/排序算法图示/" itemprop="url">排序算法图示</a></h1>
+                
+                <a href="/2018/06/30/排序算法图示/" class="post-title-link" itemprop="url">排序算法图示</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1254,18 +1364,23 @@ table th:nth-of-type(4) {
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-30T10:39:10+08:00">
-                2018-06-30
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-30 10:39:10 / 修改时间：10:44:19" itemprop="dateCreated datePublished" datetime="2018-06-30T10:39:10+08:00">2018-06-30</time>
             
 
             
+              
 
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -1276,11 +1391,7 @@ table th:nth-of-type(4) {
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
 
                 
                 
@@ -1290,43 +1401,27 @@ table th:nth-of-type(4) {
 
           
             
-          
-
-          
-          
-             <span id="/2018/06/30/排序算法图示/" class="leancloud_visitors" data-flag-title="排序算法图示">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
+            
               
-                
-                &nbsp; | &nbsp;<span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  17
-                </span>
-              
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/06/30/排序算法图示/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/06/30/排序算法图示/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-              
+          
+          
 
-              
-            </div>
+          
+
           
 
           
@@ -1354,12 +1449,18 @@ table th:nth-of-type(4) {
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -1392,21 +1493,23 @@ table th:nth-of-type(4) {
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/05/31/Python-爬取道指成分股数据/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/05/31/Python-爬取道指成分股数据/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="toypipi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/13879860?v=3&amp;s=460">
+      <meta itemprop="name" content="toypipi"/>
+      <meta itemprop="description" content="善始者实繁，克终者盖寡"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="toypipi's blog">
+      <meta itemprop="name" content="toypipi's blog"/>
     </span>
 
     
@@ -1416,11 +1519,20 @@ table th:nth-of-type(4) {
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/31/Python-爬取道指成分股数据/" itemprop="url">Python 爬取道指成分股数据</a></h1>
+                
+                <a href="/2018/05/31/Python-爬取道指成分股数据/" class="post-title-link" itemprop="url">Python 爬取道指成分股数据</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1428,18 +1540,35 @@ table th:nth-of-type(4) {
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-31T16:10:12+08:00">
-                2018-05-31
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-31 16:10:12" itemprop="dateCreated datePublished" datetime="2018-05-31T16:10:12+08:00">2018-05-31</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-06-08 16:40:28" itemprop="dateModified" datetime="2018-06-08T16:40:28+08:00">2018-06-08</time>
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -1450,11 +1579,7 @@ table th:nth-of-type(4) {
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
 
                 
                 
@@ -1464,43 +1589,27 @@ table th:nth-of-type(4) {
 
           
             
-          
-
-          
-          
-             <span id="/2018/05/31/Python-爬取道指成分股数据/" class="leancloud_visitors" data-flag-title="Python 爬取道指成分股数据">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
+            
               
-                
-                &nbsp; | &nbsp;<span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  76
-                </span>
-              
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/05/31/Python-爬取道指成分股数据/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/31/Python-爬取道指成分股数据/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-              
+          
+          
 
-              
-            </div>
+          
+
           
 
           
@@ -1529,12 +1638,18 @@ table th:nth-of-type(4) {
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -1567,21 +1682,23 @@ table th:nth-of-type(4) {
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/05/31/Python-爬取豆瓣图书评论/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/05/31/Python-爬取豆瓣图书评论/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="toypipi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/13879860?v=3&amp;s=460">
+      <meta itemprop="name" content="toypipi"/>
+      <meta itemprop="description" content="善始者实繁，克终者盖寡"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="toypipi's blog">
+      <meta itemprop="name" content="toypipi's blog"/>
     </span>
 
     
@@ -1591,11 +1708,20 @@ table th:nth-of-type(4) {
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/31/Python-爬取豆瓣图书评论/" itemprop="url">Python 爬取豆瓣图书评论</a></h1>
+                
+                <a href="/2018/05/31/Python-爬取豆瓣图书评论/" class="post-title-link" itemprop="url">Python 爬取豆瓣图书评论</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1603,18 +1729,35 @@ table th:nth-of-type(4) {
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-31T15:11:44+08:00">
-                2018-05-31
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-31 15:11:44" itemprop="dateCreated datePublished" datetime="2018-05-31T15:11:44+08:00">2018-05-31</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-06-08 16:38:48" itemprop="dateModified" datetime="2018-06-08T16:38:48+08:00">2018-06-08</time>
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -1625,11 +1768,7 @@ table th:nth-of-type(4) {
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
 
                 
                 
@@ -1639,43 +1778,27 @@ table th:nth-of-type(4) {
 
           
             
-          
-
-          
-          
-             <span id="/2018/05/31/Python-爬取豆瓣图书评论/" class="leancloud_visitors" data-flag-title="Python 爬取豆瓣图书评论">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
+            
               
-                
-                &nbsp; | &nbsp;<span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  278
-                </span>
-              
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/05/31/Python-爬取豆瓣图书评论/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/31/Python-爬取豆瓣图书评论/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-              
+          
+          
 
-              
-            </div>
+          
+
           
 
           
@@ -1695,23 +1818,33 @@ table th:nth-of-type(4) {
       
         
           <hr>
-<p>代码来自中国大学慕课 <a href="https://www.icourse163.org/learn/NJU-1001571005?tid=1002097008#/learn/announce" target="_blank" rel="noopener">用 Python 玩转数据</a>。添加了详细的注释，修改了计算平均分的循环条件。<br><div class="note danger"><p><code>time.sleep(5)</code> 一定要加，不然会被豆瓣检测到异常流量而屏蔽 get 请求。</p></div><br>
+<p>代码来自中国大学慕课 <a href="https://www.icourse163.org/learn/NJU-1001571005?tid=1002097008#/learn/announce" target="_blank" rel="noopener">用 Python 玩转数据</a>。添加了详细的注释，修改了计算平均分的循环条件。<br><div class="note danger">
+            <p><code>time.sleep(5)</code> 一定要加，不然会被豆瓣检测到异常流量而屏蔽 get 请求。</p>
+          </div><br>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/31/Python-爬取豆瓣图书评论/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/05/31/Python-爬取豆瓣图书评论/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -1744,21 +1877,23 @@ table th:nth-of-type(4) {
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/05/17/MariaDB中开启TokuDB/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/05/17/MariaDB中开启TokuDB/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="toypipi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/13879860?v=3&amp;s=460">
+      <meta itemprop="name" content="toypipi"/>
+      <meta itemprop="description" content="善始者实繁，克终者盖寡"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="toypipi's blog">
+      <meta itemprop="name" content="toypipi's blog"/>
     </span>
 
     
@@ -1768,11 +1903,20 @@ table th:nth-of-type(4) {
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/17/MariaDB中开启TokuDB/" itemprop="url">MariaDB 中开启 TokuDB</a></h1>
+                
+                <a href="/2018/05/17/MariaDB中开启TokuDB/" class="post-title-link" itemprop="url">MariaDB 中开启 TokuDB</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1780,18 +1924,35 @@ table th:nth-of-type(4) {
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-17T10:51:44+08:00">
-                2018-05-17
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-17 10:51:44" itemprop="dateCreated datePublished" datetime="2018-05-17T10:51:44+08:00">2018-05-17</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-06-08 16:38:48" itemprop="dateModified" datetime="2018-06-08T16:38:48+08:00">2018-06-08</time>
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -1802,11 +1963,7 @@ table th:nth-of-type(4) {
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MySQL/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a></span>
 
                 
                 
@@ -1816,43 +1973,27 @@ table th:nth-of-type(4) {
 
           
             
-          
-
-          
-          
-             <span id="/2018/05/17/MariaDB中开启TokuDB/" class="leancloud_visitors" data-flag-title="MariaDB 中开启 TokuDB">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
+            
               
-                
-                &nbsp; | &nbsp;<span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  6
-                </span>
-              
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/05/17/MariaDB中开启TokuDB/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/17/MariaDB中开启TokuDB/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-              
+          
+          
 
-              
-            </div>
+          
+
           
 
           
@@ -1879,12 +2020,18 @@ table th:nth-of-type(4) {
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -1917,21 +2064,23 @@ table th:nth-of-type(4) {
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/05/17/MySQL中批量创建表/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/05/17/MySQL中批量创建表/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="toypipi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/13879860?v=3&amp;s=460">
+      <meta itemprop="name" content="toypipi"/>
+      <meta itemprop="description" content="善始者实繁，克终者盖寡"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="toypipi's blog">
+      <meta itemprop="name" content="toypipi's blog"/>
     </span>
 
     
@@ -1941,11 +2090,20 @@ table th:nth-of-type(4) {
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/17/MySQL中批量创建表/" itemprop="url">MySQL 中批量创建表</a></h1>
+                
+                <a href="/2018/05/17/MySQL中批量创建表/" class="post-title-link" itemprop="url">MySQL 中批量创建表</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1953,18 +2111,35 @@ table th:nth-of-type(4) {
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-17T09:51:44+08:00">
-                2018-05-17
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-17 09:51:44" itemprop="dateCreated datePublished" datetime="2018-05-17T09:51:44+08:00">2018-05-17</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-06-08 16:38:48" itemprop="dateModified" datetime="2018-06-08T16:38:48+08:00">2018-06-08</time>
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -1975,11 +2150,7 @@ table th:nth-of-type(4) {
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MySQL/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a></span>
 
                 
                 
@@ -1989,43 +2160,27 @@ table th:nth-of-type(4) {
 
           
             
-          
-
-          
-          
-             <span id="/2018/05/17/MySQL中批量创建表/" class="leancloud_visitors" data-flag-title="MySQL 中批量创建表">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
+            
               
-                
-                &nbsp; | &nbsp;<span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  345
-                </span>
-              
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/05/17/MySQL中批量创建表/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/17/MySQL中批量创建表/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-              
+          
+          
 
-              
-            </div>
+          
+
           
 
           
@@ -2047,21 +2202,29 @@ table th:nth-of-type(4) {
           <hr>
 <p>当需要在 MySQL 数据库中创建表名类似于 <code>log_20180101</code>、<code>log_20180102</code> 这样基于日期的数据表时，可以使用下面的存储过程一次创建一个月的数据表：<br>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/17/MySQL中批量创建表/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/05/17/MySQL中批量创建表/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -2090,15 +2253,12 @@ table th:nth-of-type(4) {
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
 
           </div>
-          
-
-
           
 
         </div>
@@ -2121,67 +2281,365 @@ table th:nth-of-type(4) {
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars3.githubusercontent.com/u/13879860?v=3&amp;s=460"
-               alt="toypipi" />
-          <p class="site-author-name" itemprop="name">toypipi</p>
-           
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">toypipi</p>
               <p class="site-description motion-element" itemprop="description">善始者实繁，克终者盖寡</p>
+          </div>
+
           
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">92</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">130</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">92</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">17</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">130</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
+      </div>
 
       
 
@@ -2197,15 +2655,22 @@ table th:nth-of-type(4) {
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2016 - 
-  <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">toypipi</span>
+
+  
+
+  
 </div>
+
+
+
+
+
+
 
 
 
@@ -2214,21 +2679,34 @@ table th:nth-of-type(4) {
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   
-    <span class="site-uv">
+    <span class="post-meta-item-icon">
       <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-      
     </span>
   
 
   
-    <span class="site-pv">
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
       <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-      
     </span>
   
 </div>
+
+
+
+
+
+
+
 
 
         
@@ -2242,11 +2720,16 @@ table th:nth-of-type(4) {
       </div>
     
 
+    
+
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -2260,7 +2743,6 @@ table th:nth-of-type(4) {
 
 
 
-  
 
 
 
@@ -2270,65 +2752,6 @@ table th:nth-of-type(4) {
 
 
 
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
-
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
-
-
-
-  
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
-
-
-
-  
-
-
-  
 
 
 
@@ -2338,7 +2761,71 @@ table th:nth-of-type(4) {
 
 
   
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
 
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+  
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'tbIJcfswUFaknkcghWzvRaEM-gzGzoHsz',
+    appKey: 'ABRMf9eANJrcKAqn9xOgu5tt',
+    placeholder: '',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+</script>
 
 
 
@@ -2349,143 +2836,27 @@ table th:nth-of-type(4) {
 
 
 
-
   
 
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("tbIJcfswUFaknkcghWzvRaEM-gzGzoHsz", "ABRMf9eANJrcKAqn9xOgu5tt");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
 
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
+  
 
   
 
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
+  
+
+  
+
+  
+
+  
 
   
 

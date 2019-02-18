@@ -2,15 +2,24 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
 
 
 
@@ -20,12 +29,9 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
-  <meta name="google-site-verification" content="Iklr1EoFbTWomWKqz4mZCbEiVE_HuchAJDxBFDBSXqY" />
 
 
 
@@ -39,108 +45,41 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
+<link rel="stylesheet" href="/css/main.css?v=7.0.0"/>
 
 
-  
-  
-  
-  
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
 
-  
-    
-    
-  
 
-  
-    
-      
-    
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
 
-    
-  
 
-  
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
 
-  
-    
-      
-    
 
-    
-  
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
 
-  
-    
-      
-    
 
-    
-  
 
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
 
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="MySQL, XtraBackup, 技术, 数据库, 数据分析, 大数据, toypipi" />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
-
-
-
-
-
-
-<meta name="description" content="善始者实繁，克终者盖寡">
-<meta property="og:type" content="website">
-<meta property="og:title" content="标签云">
-<meta property="og:url" content="https://toypipi.github.io/tags/index.html">
-<meta property="og:site_name" content="toypipi&#39;s blog">
-<meta property="og:description" content="善始者实繁，克终者盖寡">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-08T08:38:48.528Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="标签云">
-<meta name="twitter:description" content="善始者实繁，克终者盖寡">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -152,12 +91,37 @@
 </script>
 
 
+  
+
+
+
+
+  <meta name="description" content="善始者实繁，克终者盖寡">
+<meta property="og:type" content="website">
+<meta property="og:title" content="标签云">
+<meta property="og:url" content="https://toypipi.github.io/tags/index.html">
+<meta property="og:site_name" content="toypipi&#39;s blog">
+<meta property="og:description" content="善始者实繁，克终者盖寡">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-08T08:38:48.528Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="标签云">
+<meta name="twitter:description" content="善始者实繁，克终者盖寡">
+
+
+
+
+
 
   <link rel="canonical" href="https://toypipi.github.io/tags/"/>
 
 
 
-
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>标签云 | toypipi's blog</title>
   
@@ -165,17 +129,17 @@
 
 
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-90328755-1', 'auto');
-  ga('send', 'pageview');
-</script>
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-90328755-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-90328755-1');
+  </script>
 
 
-  <script type="text/javascript">
+
+  <script>
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -191,40 +155,61 @@
 
 
 
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">toypipi's blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
+    
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -232,65 +217,103 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags menu-item-active">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+
+  </li>
 
       
+      
     </ul>
+  
+
   
 
   
@@ -298,12 +321,45 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
+          
           <div id="content" class="content">
             
 
@@ -314,9 +370,17 @@
     <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">标签云</h1>
+<h1 class="post-title" itemprop="name headline">标签云
+
+</h1>
+
+<div class="post-meta">
+  
+  
 
 
+
+</div>
 
 </header>
 
@@ -328,7 +392,529 @@
         
           <div class="tag-cloud">
             <div class="tag-cloud-title">
-                目前共计 130 个标签
+              
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+                
+                  
+                
+              
+              目前共计 130 个标签
             </div>
             <div class="tag-cloud-tags">
               <a href="/tags/2017/" style="font-size: 12px; color: #ccc">2017</a> <a href="/tags/Bootstrap/" style="font-size: 12px; color: #ccc">Bootstrap</a> <a href="/tags/CDH5-15-0/" style="font-size: 12px; color: #ccc">CDH5.15.0</a> <a href="/tags/CentOS-7/" style="font-size: 12px; color: #ccc">CentOS 7</a> <a href="/tags/CentOS7-4/" style="font-size: 12px; color: #ccc">CentOS7.4</a> <a href="/tags/DataTables/" style="font-size: 12px; color: #ccc">DataTables</a> <a href="/tags/ER图/" style="font-size: 12px; color: #ccc">ER图</a> <a href="/tags/ETL/" style="font-size: 12px; color: #ccc">ETL</a> <a href="/tags/Git/" style="font-size: 21px; color: #6f6f6f">Git</a> <a href="/tags/Hexo/" style="font-size: 25.5px; color: #404040">Hexo</a> <a href="/tags/Highcharts/" style="font-size: 25.5px; color: #404040">Highcharts</a> <a href="/tags/Highstock/" style="font-size: 12px; color: #ccc">Highstock</a> <a href="/tags/IntelliJ-IDEA/" style="font-size: 12px; color: #ccc">IntelliJ IDEA</a> <a href="/tags/KB2919335/" style="font-size: 12px; color: #ccc">KB2919335</a> <a href="/tags/KB2999226/" style="font-size: 12px; color: #ccc">KB2999226</a> <a href="/tags/Keepalived/" style="font-size: 12px; color: #ccc">Keepalived</a> <a href="/tags/Kettle/" style="font-size: 12px; color: #ccc">Kettle</a> <a href="/tags/Kettle-7/" style="font-size: 12px; color: #ccc">Kettle 7</a> <a href="/tags/LVM/" style="font-size: 12px; color: #ccc">LVM</a> <a href="/tags/Linux-环境变量/" style="font-size: 12px; color: #ccc">Linux 环境变量</a> <a href="/tags/MD5摘要/" style="font-size: 12px; color: #ccc">MD5摘要</a> <a href="/tags/Mahout/" style="font-size: 12px; color: #ccc">Mahout</a> <a href="/tags/MariaDB/" style="font-size: 21px; color: #6f6f6f">MariaDB</a> <a href="/tags/Markdown语法/" style="font-size: 12px; color: #ccc">Markdown语法</a> <a href="/tags/Microsoft-Word/" style="font-size: 12px; color: #ccc">Microsoft Word</a> <a href="/tags/MyISAM/" style="font-size: 12px; color: #ccc">MyISAM</a> <a href="/tags/MySQL/" style="font-size: 21px; color: #6f6f6f">MySQL</a> <a href="/tags/MySQL-5-7/" style="font-size: 12px; color: #ccc">MySQL 5.7</a> <a href="/tags/MySQL-Workbench/" style="font-size: 12px; color: #ccc">MySQL Workbench</a> <a href="/tags/OpenType-1-8/" style="font-size: 12px; color: #ccc">OpenType 1.8</a> <a href="/tags/PID/" style="font-size: 12px; color: #ccc">PID</a> <a href="/tags/Photoshop/" style="font-size: 12px; color: #ccc">Photoshop</a> <a href="/tags/Python/" style="font-size: 16.5px; color: #9d9d9d">Python</a> <a href="/tags/R/" style="font-size: 12px; color: #ccc">R</a> <a href="/tags/Redis/" style="font-size: 12px; color: #ccc">Redis</a> <a href="/tags/R语言/" style="font-size: 12px; color: #ccc">R语言</a> <a href="/tags/SQL/" style="font-size: 12px; color: #ccc">SQL</a> <a href="/tags/SecureCRT/" style="font-size: 12px; color: #ccc">SecureCRT</a> <a href="/tags/TIMESTAMP/" style="font-size: 12px; color: #ccc">TIMESTAMP</a> <a href="/tags/TokuDB/" style="font-size: 12px; color: #ccc">TokuDB</a> <a href="/tags/UTC/" style="font-size: 12px; color: #ccc">UTC</a> <a href="/tags/Windows-Server-2012-R2/" style="font-size: 12px; color: #ccc">Windows Server 2012 R2</a> <a href="/tags/XTRABACKUP/" style="font-size: 12px; color: #ccc">XTRABACKUP</a> <a href="/tags/XtraBackup/" style="font-size: 30px; color: #111">XtraBackup</a> <a href="/tags/extended-status/" style="font-size: 12px; color: #ccc">extended-status</a> <a href="/tags/git/" style="font-size: 12px; color: #ccc">git</a> <a href="/tags/hadoop/" style="font-size: 12px; color: #ccc">hadoop</a> <a href="/tags/hypercommetns/" style="font-size: 12px; color: #ccc">hypercommetns</a> <a href="/tags/innobackupex/" style="font-size: 12px; color: #ccc">innobackupex</a> <a href="/tags/libc-2-12-so/" style="font-size: 12px; color: #ccc">libc-2.12.so</a> <a href="/tags/libc-so-6/" style="font-size: 12px; color: #ccc">libc.so.6</a> <a href="/tags/maven/" style="font-size: 12px; color: #ccc">maven</a> <a href="/tags/mooc/" style="font-size: 12px; color: #ccc">mooc</a> <a href="/tags/my-cnf/" style="font-size: 12px; color: #ccc">my.cnf</a> <a href="/tags/oh-my-zsh/" style="font-size: 12px; color: #ccc">oh-my-zsh</a> <a href="/tags/pentaho/" style="font-size: 12px; color: #ccc">pentaho</a> <a href="/tags/plotOptions/" style="font-size: 12px; color: #ccc">plotOptions</a> <a href="/tags/tab/" style="font-size: 12px; color: #ccc">tab</a> <a href="/tags/win7/" style="font-size: 12px; color: #ccc">win7</a> <a href="/tags/不显示/" style="font-size: 12px; color: #ccc">不显示</a> <a href="/tags/中文乱码/" style="font-size: 16.5px; color: #9d9d9d">中文乱码</a> <a href="/tags/书单/" style="font-size: 12px; color: #ccc">书单</a> <a href="/tags/佳句欣赏/" style="font-size: 12px; color: #ccc">佳句欣赏</a> <a href="/tags/健康/" style="font-size: 12px; color: #ccc">健康</a> <a href="/tags/免密码登录/" style="font-size: 12px; color: #ccc">免密码登录</a> <a href="/tags/内建标签/" style="font-size: 12px; color: #ccc">内建标签</a> <a href="/tags/分类/" style="font-size: 12px; color: #ccc">分类</a> <a href="/tags/删除重复记录/" style="font-size: 12px; color: #ccc">删除重复记录</a> <a href="/tags/别名/" style="font-size: 12px; color: #ccc">别名</a> <a href="/tags/加密/" style="font-size: 12px; color: #ccc">加密</a> <a href="/tags/博客迁移/" style="font-size: 12px; color: #ccc">博客迁移</a> <a href="/tags/压缩表/" style="font-size: 12px; color: #ccc">压缩表</a> <a href="/tags/双主热备/" style="font-size: 12px; color: #ccc">双主热备</a> <a href="/tags/启动异常/" style="font-size: 12px; color: #ccc">启动异常</a> <a href="/tags/备份/" style="font-size: 12px; color: #ccc">备份</a> <a href="/tags/多个字段/" style="font-size: 12px; color: #ccc">多个字段</a> <a href="/tags/多说/" style="font-size: 12px; color: #ccc">多说</a> <a href="/tags/密码/" style="font-size: 12px; color: #ccc">密码</a> <a href="/tags/工作空间/" style="font-size: 12px; color: #ccc">工作空间</a> <a href="/tags/常用命令/" style="font-size: 12px; color: #ccc">常用命令</a> <a href="/tags/建表/" style="font-size: 12px; color: #ccc">建表</a> <a href="/tags/快捷键/" style="font-size: 16.5px; color: #9d9d9d">快捷键</a> <a href="/tags/成长感悟/" style="font-size: 12px; color: #ccc">成长感悟</a> <a href="/tags/扩容/" style="font-size: 12px; color: #ccc">扩容</a> <a href="/tags/批处理/" style="font-size: 12px; color: #ccc">批处理</a> <a href="/tags/批量/" style="font-size: 12px; color: #ccc">批量</a> <a href="/tags/技巧/" style="font-size: 12px; color: #ccc">技巧</a> <a href="/tags/排序算法/" style="font-size: 12px; color: #ccc">排序算法</a> <a href="/tags/故障/" style="font-size: 12px; color: #ccc">故障</a> <a href="/tags/数学符号发音/" style="font-size: 12px; color: #ccc">数学符号发音</a> <a href="/tags/数据分析/" style="font-size: 12px; color: #ccc">数据分析</a> <a href="/tags/文档/" style="font-size: 12px; color: #ccc">文档</a> <a href="/tags/新年计划/" style="font-size: 12px; color: #ccc">新年计划</a> <a href="/tags/方法/" style="font-size: 12px; color: #ccc">方法</a> <a href="/tags/无效/" style="font-size: 12px; color: #ccc">无效</a> <a href="/tags/日期/" style="font-size: 12px; color: #ccc">日期</a> <a href="/tags/暴力破解/" style="font-size: 12px; color: #ccc">暴力破解</a> <a href="/tags/曲线范围/" style="font-size: 12px; color: #ccc">曲线范围</a> <a href="/tags/最大值/" style="font-size: 12px; color: #ccc">最大值</a> <a href="/tags/最小值/" style="font-size: 12px; color: #ccc">最小值</a> <a href="/tags/服务器/" style="font-size: 12px; color: #ccc">服务器</a> <a href="/tags/术语/" style="font-size: 12px; color: #ccc">术语</a> <a href="/tags/标签/" style="font-size: 16.5px; color: #9d9d9d">标签</a> <a href="/tags/格式化/" style="font-size: 12px; color: #ccc">格式化</a> <a href="/tags/正则表达式/" style="font-size: 12px; color: #ccc">正则表达式</a> <a href="/tags/深入浅出/" style="font-size: 12px; color: #ccc">深入浅出</a> <a href="/tags/爬虫/" style="font-size: 21px; color: #6f6f6f">爬虫</a> <a href="/tags/百度统计/" style="font-size: 12px; color: #ccc">百度统计</a> <a href="/tags/目标/" style="font-size: 12px; color: #ccc">目标</a> <a href="/tags/知足/" style="font-size: 12px; color: #ccc">知足</a> <a href="/tags/禁用本地连接/" style="font-size: 12px; color: #ccc">禁用本地连接</a> <a href="/tags/算法/" style="font-size: 12px; color: #ccc">算法</a> <a href="/tags/绘图/" style="font-size: 12px; color: #ccc">绘图</a> <a href="/tags/统计学/" style="font-size: 16.5px; color: #9d9d9d">统计学</a> <a href="/tags/网页爬虫/" style="font-size: 12px; color: #ccc">网页爬虫</a> <a href="/tags/翻译/" style="font-size: 16.5px; color: #9d9d9d">翻译</a> <a href="/tags/英文/" style="font-size: 12px; color: #ccc">英文</a> <a href="/tags/表头/" style="font-size: 12px; color: #ccc">表头</a> <a href="/tags/表引擎/" style="font-size: 12px; color: #ccc">表引擎</a> <a href="/tags/误删除/" style="font-size: 12px; color: #ccc">误删除</a> <a href="/tags/读书/" style="font-size: 16.5px; color: #9d9d9d">读书</a> <a href="/tags/读书笔记/" style="font-size: 12px; color: #ccc">读书笔记</a> <a href="/tags/远程仓库/" style="font-size: 12px; color: #ccc">远程仓库</a> <a href="/tags/逻辑思维/" style="font-size: 12px; color: #ccc">逻辑思维</a> <a href="/tags/部署/" style="font-size: 12px; color: #ccc">部署</a> <a href="/tags/配置文件/" style="font-size: 12px; color: #ccc">配置文件</a> <a href="/tags/配色/" style="font-size: 12px; color: #ccc">配色</a> <a href="/tags/阅读/" style="font-size: 12px; color: #ccc">阅读</a> <a href="/tags/零秒思考/" style="font-size: 12px; color: #ccc">零秒思考</a> <a href="/tags/验证码/" style="font-size: 12px; color: #ccc">验证码</a>
@@ -341,15 +927,16 @@
       
     </div>
     
+
+
+
+    
     
     
   </div>
 
 
           </div>
-          
-
-
           
 
         </div>
@@ -372,67 +959,365 @@
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars3.githubusercontent.com/u/13879860?v=3&amp;s=460"
-               alt="toypipi" />
-          <p class="site-author-name" itemprop="name">toypipi</p>
-           
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">toypipi</p>
               <p class="site-description motion-element" itemprop="description">善始者实繁，克终者盖寡</p>
+          </div>
+
           
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">92</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">130</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">92</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">17</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">130</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
+      </div>
 
       
 
@@ -448,15 +1333,22 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2016 - 
-  <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">toypipi</span>
+
+  
+
+  
 </div>
+
+
+
+
+
+
 
 
 
@@ -465,21 +1357,34 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   
-    <span class="site-uv">
+    <span class="post-meta-item-icon">
       <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-      
     </span>
   
 
   
-    <span class="site-pv">
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
       <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-      
     </span>
   
 </div>
+
+
+
+
+
+
+
 
 
         
@@ -493,11 +1398,16 @@
       </div>
     
 
+    
+
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -511,7 +1421,6 @@
 
 
 
-  
 
 
 
@@ -521,65 +1430,6 @@
 
 
 
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
-
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
-
-
-
-  
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
-
-
-
-  
-
-
-  
 
 
 
@@ -589,7 +1439,75 @@
 
 
   
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
 
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'tbIJcfswUFaknkcghWzvRaEM-gzGzoHsz',
+    appKey: 'ABRMf9eANJrcKAqn9xOgu5tt',
+    placeholder: '',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+</script>
 
 
 
@@ -600,143 +1518,27 @@
 
 
 
-
   
 
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("tbIJcfswUFaknkcghWzvRaEM-gzGzoHsz", "ABRMf9eANJrcKAqn9xOgu5tt");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
 
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
+  
 
   
 
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
+  
+
+  
+
+  
+
+  
 
   
 

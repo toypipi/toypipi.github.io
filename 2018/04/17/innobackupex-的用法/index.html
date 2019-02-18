@@ -2,15 +2,24 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
 
 
 
@@ -20,12 +29,9 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
-  <meta name="google-site-verification" content="Iklr1EoFbTWomWKqz4mZCbEiVE_HuchAJDxBFDBSXqY" />
 
 
 
@@ -39,109 +45,41 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
+<link rel="stylesheet" href="/css/main.css?v=7.0.0"/>
 
 
-  
-  
-  
-  
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
 
-  
-    
-    
-  
 
-  
-    
-      
-    
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
 
-    
-  
 
-  
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
 
-  
-    
-      
-    
 
-    
-  
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
 
-  
-    
-      
-    
 
-    
-  
 
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
 
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="innobackupex," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
-
-
-
-
-
-
-<meta name="description" content="制作本地完整备份（创建，准备和还原）创建备份这是最简单的用例。 它将所有的 MySQL 数据复制到指定的目录中。 以下是如何备份 my.cnf 中指定的 datadir 中的所有数据库。 它会将备份置于 /data/backups/ 由时间标记的子目录中，在本例中为 /data/backups/2010-03-13_02-42-44，1$ innobackupex /data/backups 备">
-<meta name="keywords" content="innobackupex">
-<meta property="og:type" content="article">
-<meta property="og:title" content="innobackupex 的用法">
-<meta property="og:url" content="https://toypipi.github.io/2018/04/17/innobackupex-的用法/index.html">
-<meta property="og:site_name" content="toypipi&#39;s blog">
-<meta property="og:description" content="制作本地完整备份（创建，准备和还原）创建备份这是最简单的用例。 它将所有的 MySQL 数据复制到指定的目录中。 以下是如何备份 my.cnf 中指定的 datadir 中的所有数据库。 它会将备份置于 /data/backups/ 由时间标记的子目录中，在本例中为 /data/backups/2010-03-13_02-42-44，1$ innobackupex /data/backups 备">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-08T08:38:48.523Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="innobackupex 的用法">
-<meta name="twitter:description" content="制作本地完整备份（创建，准备和还原）创建备份这是最简单的用例。 它将所有的 MySQL 数据复制到指定的目录中。 以下是如何备份 my.cnf 中指定的 datadir 中的所有数据库。 它会将备份置于 /data/backups/ 由时间标记的子目录中，在本例中为 /data/backups/2010-03-13_02-42-44，1$ innobackupex /data/backups 备">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -153,12 +91,38 @@
 </script>
 
 
+  
+
+
+
+
+  <meta name="description" content="制作本地完整备份（创建，准备和还原）创建备份这是最简单的用例。 它将所有的 MySQL 数据复制到指定的目录中。 以下是如何备份 my.cnf 中指定的 datadir 中的所有数据库。 它会将备份置于 /data/backups/ 由时间标记的子目录中，在本例中为 /data/backups/2010-03-13_02-42-44，1$ innobackupex /data/backups 备">
+<meta name="keywords" content="innobackupex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="innobackupex 的用法">
+<meta property="og:url" content="https://toypipi.github.io/2018/04/17/innobackupex-的用法/index.html">
+<meta property="og:site_name" content="toypipi&#39;s blog">
+<meta property="og:description" content="制作本地完整备份（创建，准备和还原）创建备份这是最简单的用例。 它将所有的 MySQL 数据复制到指定的目录中。 以下是如何备份 my.cnf 中指定的 datadir 中的所有数据库。 它会将备份置于 /data/backups/ 由时间标记的子目录中，在本例中为 /data/backups/2010-03-13_02-42-44，1$ innobackupex /data/backups 备">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-08T08:38:48.523Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="innobackupex 的用法">
+<meta name="twitter:description" content="制作本地完整备份（创建，准备和还原）创建备份这是最简单的用例。 它将所有的 MySQL 数据复制到指定的目录中。 以下是如何备份 my.cnf 中指定的 datadir 中的所有数据库。 它会将备份置于 /data/backups/ 由时间标记的子目录中，在本例中为 /data/backups/2010-03-13_02-42-44，1$ innobackupex /data/backups 备">
+
+
+
+
+
 
   <link rel="canonical" href="https://toypipi.github.io/2018/04/17/innobackupex-的用法/"/>
 
 
 
-
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>innobackupex 的用法 | toypipi's blog</title>
   
@@ -166,17 +130,17 @@
 
 
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-90328755-1', 'auto');
-  ga('send', 'pageview');
-</script>
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-90328755-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-90328755-1');
+  </script>
 
 
-  <script type="text/javascript">
+
+  <script>
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -192,40 +156,61 @@
 
 
 
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">toypipi's blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
+    
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -233,65 +218,103 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+
+  </li>
 
       
+      
     </ul>
+  
+
   
 
   
@@ -299,12 +322,23 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
+          
           <div id="content" class="content">
             
 
@@ -317,21 +351,23 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/04/17/innobackupex-的用法/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/04/17/innobackupex-的用法/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="toypipi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/13879860?v=3&amp;s=460">
+      <meta itemprop="name" content="toypipi"/>
+      <meta itemprop="description" content="善始者实繁，克终者盖寡"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="toypipi's blog">
+      <meta itemprop="name" content="toypipi's blog"/>
     </span>
 
     
@@ -339,11 +375,20 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">innobackupex 的用法</h1>
+          <h1 class="post-title" itemprop="name headline">innobackupex 的用法
+
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -351,18 +396,35 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-17T10:15:18+08:00">
-                2018-04-17
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-17 10:15:18" itemprop="dateCreated datePublished" datetime="2018-04-17T10:15:18+08:00">2018-04-17</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-06-08 16:38:48" itemprop="dateModified" datetime="2018-06-08T16:38:48+08:00">2018-06-08</time>
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -373,11 +435,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MySQL/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a></span>
 
                 
                 
@@ -387,43 +445,35 @@
 
           
             
-          
-
-          
-          
-             <span id="/2018/04/17/innobackupex-的用法/" class="leancloud_visitors" data-flag-title="innobackupex 的用法">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
+            
               
-                
-                &nbsp; | &nbsp;<span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  3,795
-                </span>
-              
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/04/17/innobackupex-的用法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/17/innobackupex-的用法/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-              
+          
+          
 
-              
-            </div>
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
           
 
           
@@ -456,7 +506,9 @@
 <p>现在，位于 <code>/data/backups/2010-03-13_02-42-44</code> 的文件已经准备好可以使用了。</p>
 <h2 id="还原备份"><a href="#还原备份" class="headerlink" title="还原备份"></a>还原备份</h2><p>要还原刚才准备好的备份，首先需要停止数据库服务器，然后使用 <strong>innobackupex</strong> 函数 <code>--copy-back</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">innobackupex --copy-back /data/backups/2010-03-13_02-42-44/</span><br><span class="line">## Use chmod to correct the permissions, if necessary!</span><br></pre></td></tr></table></figure></p>
 <p>这将会把数据拷贝回你在 <code>my.cnf</code> 文件中定义的 <code>datadir</code> 目录中。</p>
-<div class="note default"><p>注意<br><code>datadir</code> 目录必须为空; 目录不为空时，<em>Percona XtraBackup</em> <code>innobackupex --copy-back</code> 选项不会复制现有文件，除非指定了 <code>innobackupex --force-non-empty-directories</code> 选项。 另外需要注意的是，在执行恢复之前需要关闭 <em>MySQL</em> 服务器。 您无法将备份还原到一个正在运行的 mysqld 实例的 <code>datadir</code> 目录（导入部分备份时除外）。</p></div>
+<div class="note default">
+            <p>注意<br><code>datadir</code> 目录必须为空; 目录不为空时，<em>Percona XtraBackup</em> <code>innobackupex --copy-back</code> 选项不会复制现有文件，除非指定了 <code>innobackupex --force-non-empty-directories</code> 选项。 另外需要注意的是，在执行恢复之前需要关闭 <em>MySQL</em> 服务器。 您无法将备份还原到一个正在运行的 mysqld 实例的 <code>datadir</code> 目录（导入部分备份时除外）。</p>
+          </div>
 <p>确认信息：</p>
 <blockquote>
 <p>100313 02:58:44  innobackupex: completed OK!</p>
@@ -464,7 +516,9 @@
 <p>您应该在复制数据后检查文件权限。 您可能需要使用类似的方法调整它们：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chown -R mysql:mysql /var/lib/mysql</span><br></pre></td></tr></table></figure></p>
 <p>现在 <code>datadir</code> 目录已经包含还原后的数据。 您可以启动服务器了。</p>
 <h1 id="制作流式备份"><a href="#制作流式备份" class="headerlink" title="制作流式备份"></a>制作流式备份</h1><p>流式备份将备份以 tar 格式发送到 <code>STDOUT</code> ，而不是将其复制到第一个参数指定的目录中。 您可以将输出传送到 <strong>gzip</strong>，或通过网络传送到另一台服务器。</p>
-<p>要提取生成的tar文件，<strong>必须</strong>使用 <code>-i</code> 选项，例如 <code>tar -ixvf backup.tar</code>。<br><div class="note danger"><p>警告<br>请记住使用 <code>-i</code> 选项来提取备份的 tar 文件。 有关更多信息，请参阅<a href="https://www.percona.com/doc/percona-xtrabackup/LATEST/innobackupex/streaming_backups_innobackupex.html" target="_blank" rel="noopener">流式备份和压缩备份</a>。</p></div></p>
+<p>要提取生成的tar文件，<strong>必须</strong>使用 <code>-i</code> 选项，例如 <code>tar -ixvf backup.tar</code>。<br><div class="note danger">
+            <p>警告<br>请记住使用 <code>-i</code> 选项来提取备份的 tar 文件。 有关更多信息，请参阅<a href="https://www.percona.com/doc/percona-xtrabackup/LATEST/innobackupex/streaming_backups_innobackupex.html" target="_blank" rel="noopener">流式备份和压缩备份</a>。</p>
+          </div></p>
 <p>以下是使用 <code>tar</code> 选项进行流式处理的一些示例：</p>
 <ul>
 <li><p>将流式备份传输到名为 ‘backup.tar’ 的 tar 归档文件中  </p>
@@ -545,11 +599,15 @@
 </blockquote>
 <h2 id="准备备份-1"><a href="#准备备份-1" class="headerlink" title="准备备份"></a>准备备份</h2><p>在准备备份之前，您需要使用 <a href="http://www.quicklz.com/" target="_blank" rel="noopener">qpress</a> 解压缩所有文件（可从 <a href="https://www.percona.com/doc/percona-xtrabackup/2.1/installation.html#using-percona-software-repositories" target="_blank" rel="noopener">Percona 软件库</a>)中获取）。 您可以使用以下内容来解压缩所有文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ for bf in `find . -iname &quot;*\.qp&quot;`; do qpress -d $bf $(dirname $bf) &amp;&amp; rm $bf; done</span><br></pre></td></tr></table></figure></p>
 <p>在 <em>Percona XtraBackup</em> 2.1.4 中新增了 <code>innobackupex --decompress</code> 选项，可用于解压备份：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ innobackupex --decompress /data/backup/2013-08-01_11-24-04/</span><br></pre></td></tr></table></figure></p>
-<div class="note default"><p>注意<br>为了成功使用 <code>innobackupex --decompress</code> 选项，需要安装 qpress 二进制文件并包含在路径当中。 <code>innobackupex --parallel</code> 可以和 <code>innobackupex --decompress</code> 选项一起使用同时解压缩多个文件。</p></div>
+<div class="note default">
+            <p>注意<br>为了成功使用 <code>innobackupex --decompress</code> 选项，需要安装 qpress 二进制文件并包含在路径当中。 <code>innobackupex --parallel</code> 可以和 <code>innobackupex --decompress</code> 选项一起使用同时解压缩多个文件。</p>
+          </div>
 <p>一旦文件解压完成后，您可以使用 <code>--apply-log</code> 准备备份。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ innobackupex --apply-log /data/backup/2013-08-01_11-24-04/</span><br></pre></td></tr></table></figure></p>
 <p>您需要检查备份完成信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">130802 02:51:02  innobackupex: completed OK!</span><br></pre></td></tr></table></figure></p>
 <p>现在，位于 <code>/data/backups/2013-08-01_11-24-0</code> 目录中的文件已经可以被数据库使用了。</p>
-<div class="note default"><p>注意<br><em>Percona XtraBackup</em> 不会自动删除压缩文件。为了清理备份目录，用户需要手动删除 <code>*.qp</code> 文件。</p></div>
+<div class="note default">
+            <p>注意<br><em>Percona XtraBackup</em> 不会自动删除压缩文件。为了清理备份目录，用户需要手动删除 <code>*.qp</code> 文件。</p>
+          </div>
 <h2 id="还原备份-1"><a href="#还原备份-1" class="headerlink" title="还原备份"></a>还原备份</h2><p>一旦备份准备完成，您可以使用 <code>--copy-back</code> 选项还原备份。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ innobackupex --copy-back /data/backups/2013-08-01_11-24-04/</span><br></pre></td></tr></table></figure></p>
 <p>这将会把准备好的数据拷贝回您在 <code>my.cnf</code> 文件中定义的 <code>datadir</code> 目录中。</p>
 <p>还原后输出确认信息。</p>
@@ -584,15 +642,21 @@
 <p>120828 19:25:38  innobackupex: completed OK!</p>
 </blockquote>
 <h2 id="从备份文件还原表"><a href="#从备份文件还原表" class="headerlink" title="从备份文件还原表"></a>从备份文件还原表</h2><p>应通过将部分备份中的表<a href="https://www.percona.com/doc/percona-xtrabackup/LATEST/innobackupex/restoring_individual_tables_ibk.html" target="_blank" rel="noopener">导入服务器</a>来完成还原。</p>
-<div class="note default"><p>注意<br>改进的表/分区导入仅在 <em>Percona Server</em> 和 <em>MySQL 5.6</em> 中可用，这意味着也可以导入从不同服务器备份的分区。 对于早于 <em>MySQL 5.6</em> 的版本，只能从该服务器导入分区，并且还有另外一些重要限制。 在进行备份和导入分区之间不应该发出 DROP/CREATE/TRUNCATE/ALTER TABLE 命令。</p></div>
+<div class="note default">
+            <p>注意<br>改进的表/分区导入仅在 <em>Percona Server</em> 和 <em>MySQL 5.6</em> 中可用，这意味着也可以导入从不同服务器备份的分区。 对于早于 <em>MySQL 5.6</em> 的版本，只能从该服务器导入分区，并且还有另外一些重要限制。 在进行备份和导入分区之间不应该发出 DROP/CREATE/TRUNCATE/ALTER TABLE 命令。</p>
+          </div>
 <p>第一步是创建要恢复数据的新表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE `name_p4` (</span><br><span class="line">`id` int(11) NOT NULL AUTO_INCREMENT,</span><br><span class="line">`name` text NOT NULL,</span><br><span class="line">`imdb_index` varchar(12) DEFAULT NULL,</span><br><span class="line">`imdb_id` int(11) DEFAULT NULL,</span><br><span class="line">`name_pcode_cf` varchar(5) DEFAULT NULL,</span><br><span class="line">`name_pcode_nf` varchar(5) DEFAULT NULL,</span><br><span class="line">`surname_pcode` varchar(5) DEFAULT NULL,</span><br><span class="line">PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=2812744 DEFAULT CHARSET=utf8</span><br></pre></td></tr></table></figure></p>
 <p>要从备份文件中还原数据，需要丢弃该表的表空间：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;  ALTER TABLE name_p4 DISCARD TABLESPACE;</span><br></pre></td></tr></table></figure></p>
 <p>接下来需要将 <code>.exp</code> 和 <em>ibd</em> 文件从备份目录中拷贝到 <em>MySQL</em> 数据目录中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cp /mnt/backup/2012-08-28_10-29-09/imdb/name#P#p4.exp /var/lib/mysql/imdb/name_p4.exp</span><br><span class="line">$ cp /mnt/backup/2012-08-28_10-29-09/imdb/name#P#p4.ibd /var/lib/mysql/imdb/name_p4.ibd</span><br></pre></td></tr></table></figure></p>
-<div class="note default"><p>注意<br>确保复制的文件可以被运行 <em>MySQL</em> 数据库的用户读取。</p></div>
+<div class="note default">
+            <p>注意<br>确保复制的文件可以被运行 <em>MySQL</em> 数据库的用户读取。</p>
+          </div>
 <p>如果您运行的是 <code>Percona Server</code>,请确保 <em>innodb_import_table_from_xtrabackup</em> 变量已经启用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET GLOBAL innodb_import_table_from_xtrabackup=1;</span><br></pre></td></tr></table></figure></p>
 <p>最后一步是导入表空间：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;  ALTER TABLE name_p4 IMPORT TABLESPACE;</span><br></pre></td></tr></table></figure></p>
 <h2 id="在版本-5-6-中还原备份"><a href="#在版本-5-6-中还原备份" class="headerlink" title="在版本 5.6 中还原备份"></a>在版本 5.6 中还原备份</h2><p>服务器版本高于 5.5 的问题在于没有服务器支持导入单个分区或分区表的所有分区，因此分区只能作为独立表导入。 在 <em>MySQL</em> 和 <em>Percona Server</em>  5.6 中，可以使用 <code>ALTER TABLE ... EXCHANGE PARTITION</code> 命令将单个表变为单个分区。</p>
-<div class="note default"><p>注意<br>在 <em>Percona Server</em> 5.6 中，变量 <code>innodb_import_table_from_xtrabackup</code> 已被删除，以支持 <em>MySQL</em> <a href="https://dev.mysql.com/doc/refman/5.6/en/tablespace-copying.html" target="_blank" rel="noopener">可传输表空间</a>实现。</p></div>
+<div class="note default">
+            <p>注意<br>在 <em>Percona Server</em> 5.6 中，变量 <code>innodb_import_table_from_xtrabackup</code> 已被删除，以支持 <em>MySQL</em> <a href="https://dev.mysql.com/doc/refman/5.6/en/tablespace-copying.html" target="_blank" rel="noopener">可传输表空间</a>实现。</p>
+          </div>
 <p>导入整个分区表时，首先将所有（子）分区导入为独立表：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE `name_p4` (</span><br><span class="line">`id` int(11) NOT NULL AUTO_INCREMENT,</span><br><span class="line">`name` text NOT NULL,</span><br><span class="line">`imdb_index` varchar(12) DEFAULT NULL,</span><br><span class="line">`imdb_id` int(11) DEFAULT NULL,</span><br><span class="line">`name_pcode_cf` varchar(5) DEFAULT NULL,</span><br><span class="line">`name_pcode_nf` varchar(5) DEFAULT NULL,</span><br><span class="line">`surname_pcode` varchar(5) DEFAULT NULL,</span><br><span class="line">PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=2812744 DEFAULT CHARSET=utf8</span><br></pre></td></tr></table></figure></p>
 <p>要从备份文件中还原数据，需要丢弃该表的表空间：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;  ALTER TABLE name_p4 DISCARD TABLESPACE;</span><br></pre></td></tr></table></figure></p>
 <p>接下来需要将 <code>.cfg</code> 和 <em>ibd</em> 文件从备份目录中拷贝到 <em>MySQL</em> 数据目录中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cp /mnt/backup/2013-07-18_10-29-09/imdb/name#P#p4.cfg /var/lib/mysql/imdb/name_p4.cfg</span><br><span class="line">$ cp /mnt/backup/2013-07-18_10-29-09/imdb/name#P#p4.ibd /var/lib/mysql/imdb/name_p4.ibd</span><br></pre></td></tr></table></figure></p>
@@ -603,32 +667,38 @@
 
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
       <div>
         <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
   <div>请我家喵吃条小鱼干吧  ฅ(๑*д*๑)ฅ</div>
-  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>Donate</span>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
   </button>
   <div id="QR" style="display: none;">
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/wechatpay.JPG" alt="toypipi WeChat Pay"/>
-        <p>WeChat Pay</p>
+        <img id="wechat_qr" src="/images/wechatpay.JPG" alt="toypipi 微信支付"/>
+        <p>微信支付</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/alipay.JPG" alt="toypipi Alipay"/>
-        <p>Alipay</p>
+        <img id="alipay_qr" src="/images/alipay.JPG" alt="toypipi 支付宝"/>
+        <p>支付宝</p>
       </div>
     
 
@@ -640,24 +710,6 @@
       </div>
     
 
-    
-      <div>
-        <ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者：</strong>
-    toypipi
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="https://toypipi.github.io/2018/04/17/innobackupex-的用法/" title="innobackupex 的用法">https://toypipi.github.io/2018/04/17/innobackupex-的用法/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>
-    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
-
-      </div>
     
 
     <footer class="post-footer">
@@ -705,44 +757,18 @@
   </article>
 
 
-
-    <div class="post-spread">
-      
-        <!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-  <a class="jiathis_button_tsina"></a>
-  <a class="jiathis_button_tqq"></a>
-  <a class="jiathis_button_weixin"></a>
-  <a class="jiathis_button_cqq"></a>
-  <a class="jiathis_button_douban"></a>
-  <a class="jiathis_button_renren"></a>
-  <a class="jiathis_button_qzone"></a>
-  <a class="jiathis_button_kaixin001"></a>
-  <a class="jiathis_button_copy"></a>
-  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
-  <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" >
-  var jiathis_config={
-    hideMore:false
-  }
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<!-- JiaThis Button END -->
-
-      
-    </div>
   </div>
 
 
           </div>
           
 
+  
+    <div class="comments" id="comments">
+    </div>
 
-          
-  <div class="comments" id="comments">
-    
-  </div>
+  
+
 
 
         </div>
@@ -765,84 +791,383 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
             站点概览
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars3.githubusercontent.com/u/13879860?v=3&amp;s=460"
-               alt="toypipi" />
-          <p class="site-author-name" itemprop="name">toypipi</p>
-           
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">toypipi</p>
               <p class="site-description motion-element" itemprop="description">善始者实繁，克终者盖寡</p>
+          </div>
+
           
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">92</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">130</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">92</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">17</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">130</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
-              
+            
+            
             
 
             
@@ -850,7 +1175,7 @@
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
       
 
@@ -866,15 +1191,22 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2016 - 
-  <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">toypipi</span>
+
+  
+
+  
 </div>
+
+
+
+
+
+
 
 
 
@@ -883,21 +1215,34 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   
-    <span class="site-uv">
+    <span class="post-meta-item-icon">
       <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-      
     </span>
   
 
   
-    <span class="site-pv">
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
       <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-      
     </span>
   
 </div>
+
+
+
+
+
+
+
 
 
         
@@ -911,11 +1256,16 @@
       </div>
     
 
+    
+
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -929,7 +1279,6 @@
 
 
 
-  
 
 
 
@@ -939,65 +1288,6 @@
 
 
 
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
-
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
-
-
-
-  
-
-
-  
 
 
 
@@ -1007,8 +1297,75 @@
 
 
   
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
 
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'tbIJcfswUFaknkcghWzvRaEM-gzGzoHsz',
+    appKey: 'ABRMf9eANJrcKAqn9xOgu5tt',
+    placeholder: '',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+</script>
 
 
 
@@ -1016,115 +1373,8 @@
   
 
 
-
-
-
   
 
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("tbIJcfswUFaknkcghWzvRaEM-gzGzoHsz", "ABRMf9eANJrcKAqn9xOgu5tt");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
 
 
 
@@ -1133,28 +1383,22 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
   
 

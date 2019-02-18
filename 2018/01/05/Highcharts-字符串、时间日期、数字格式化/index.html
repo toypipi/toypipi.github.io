@@ -2,15 +2,24 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
 
 
 
@@ -20,12 +29,9 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
-  <meta name="google-site-verification" content="Iklr1EoFbTWomWKqz4mZCbEiVE_HuchAJDxBFDBSXqY" />
 
 
 
@@ -39,111 +45,41 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
+<link rel="stylesheet" href="/css/main.css?v=7.0.0"/>
 
 
-  
-  
-  
-  
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
 
-  
-    
-    
-  
 
-  
-    
-      
-    
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
 
-    
-  
 
-  
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
 
-  
-    
-      
-    
 
-    
-  
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
 
-  
-    
-      
-    
 
-    
-  
 
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
 
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Highcharts,格式化," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
-
-
-
-
-
-
-<meta name="description" content="格式化字符串是包含了变量的标签模板。具体的使用实例是在 xAxis.labels.format、tooltip.pointFormat 及 legend.labelFormat.变量是格式化中用大括号包括的字符，例如 “The point value at {point.x} is {point.y}”.">
-<meta name="keywords" content="Highcharts,格式化">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Highcharts 字符串、时间日期、数字格式化">
-<meta property="og:url" content="https://toypipi.github.io/2018/01/05/Highcharts-字符串、时间日期、数字格式化/index.html">
-<meta property="og:site_name" content="toypipi&#39;s blog">
-<meta property="og:description" content="格式化字符串是包含了变量的标签模板。具体的使用实例是在 xAxis.labels.format、tooltip.pointFormat 及 legend.labelFormat.变量是格式化中用大括号包括的字符，例如 “The point value at {point.x} is {point.y}”.">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://oio4l6s3j.bkt.clouddn.com/image/20180105/format%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E8%AF%B4%E6%98%8E.jpg">
-<meta property="og:updated_time" content="2018-06-08T08:38:48.517Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Highcharts 字符串、时间日期、数字格式化">
-<meta name="twitter:description" content="格式化字符串是包含了变量的标签模板。具体的使用实例是在 xAxis.labels.format、tooltip.pointFormat 及 legend.labelFormat.变量是格式化中用大括号包括的字符，例如 “The point value at {point.x} is {point.y}”.">
-<meta name="twitter:image" content="http://oio4l6s3j.bkt.clouddn.com/image/20180105/format%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E8%AF%B4%E6%98%8E.jpg">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -155,12 +91,40 @@
 </script>
 
 
+  
+
+
+
+
+  <meta name="description" content="格式化字符串是包含了变量的标签模板。具体的使用实例是在 xAxis.labels.format、tooltip.pointFormat 及 legend.labelFormat.变量是格式化中用大括号包括的字符，例如 “The point value at {point.x} is {point.y}”.">
+<meta name="keywords" content="Highcharts,格式化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Highcharts 字符串、时间日期、数字格式化">
+<meta property="og:url" content="https://toypipi.github.io/2018/01/05/Highcharts-字符串、时间日期、数字格式化/index.html">
+<meta property="og:site_name" content="toypipi&#39;s blog">
+<meta property="og:description" content="格式化字符串是包含了变量的标签模板。具体的使用实例是在 xAxis.labels.format、tooltip.pointFormat 及 legend.labelFormat.变量是格式化中用大括号包括的字符，例如 “The point value at {point.x} is {point.y}”.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://oio4l6s3j.bkt.clouddn.com/image/20180105/format%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E8%AF%B4%E6%98%8E.jpg">
+<meta property="og:updated_time" content="2018-06-08T08:38:48.517Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Highcharts 字符串、时间日期、数字格式化">
+<meta name="twitter:description" content="格式化字符串是包含了变量的标签模板。具体的使用实例是在 xAxis.labels.format、tooltip.pointFormat 及 legend.labelFormat.变量是格式化中用大括号包括的字符，例如 “The point value at {point.x} is {point.y}”.">
+<meta name="twitter:image" content="http://oio4l6s3j.bkt.clouddn.com/image/20180105/format%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E8%AF%B4%E6%98%8E.jpg">
+
+
+
+
+
 
   <link rel="canonical" href="https://toypipi.github.io/2018/01/05/Highcharts-字符串、时间日期、数字格式化/"/>
 
 
 
-
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>Highcharts 字符串、时间日期、数字格式化 | toypipi's blog</title>
   
@@ -168,17 +132,17 @@
 
 
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-90328755-1', 'auto');
-  ga('send', 'pageview');
-</script>
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-90328755-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-90328755-1');
+  </script>
 
 
-  <script type="text/javascript">
+
+  <script>
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -194,40 +158,61 @@
 
 
 
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">toypipi's blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
+    
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -235,65 +220,103 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+
+  </li>
 
       
+      
     </ul>
+  
+
   
 
   
@@ -301,12 +324,23 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
+          
           <div id="content" class="content">
             
 
@@ -319,21 +353,23 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/01/05/Highcharts-字符串、时间日期、数字格式化/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/01/05/Highcharts-字符串、时间日期、数字格式化/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="toypipi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/13879860?v=3&amp;s=460">
+      <meta itemprop="name" content="toypipi"/>
+      <meta itemprop="description" content="善始者实繁，克终者盖寡"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="toypipi's blog">
+      <meta itemprop="name" content="toypipi's blog"/>
     </span>
 
     
@@ -341,11 +377,20 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Highcharts 字符串、时间日期、数字格式化</h1>
+          <h1 class="post-title" itemprop="name headline">Highcharts 字符串、时间日期、数字格式化
+
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -353,18 +398,35 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-05T09:27:36+08:00">
-                2018-01-05
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-01-05 09:27:36" itemprop="dateCreated datePublished" datetime="2018-01-05T09:27:36+08:00">2018-01-05</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-06-08 16:38:48" itemprop="dateModified" datetime="2018-06-08T16:38:48+08:00">2018-06-08</time>
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -375,11 +437,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Highcharts/" itemprop="url" rel="index">
-                    <span itemprop="name">Highcharts</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Highcharts/" itemprop="url" rel="index"><span itemprop="name">Highcharts</span></a></span>
 
                 
                 
@@ -389,43 +447,35 @@
 
           
             
-          
-
-          
-          
-             <span id="/2018/01/05/Highcharts-字符串、时间日期、数字格式化/" class="leancloud_visitors" data-flag-title="Highcharts 字符串、时间日期、数字格式化">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
+            
               
-                
-                &nbsp; | &nbsp;<span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  794
-                </span>
-              
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/01/05/Highcharts-字符串、时间日期、数字格式化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/01/05/Highcharts-字符串、时间日期、数字格式化/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-              
+          
+          
 
-              
-            </div>
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
           
 
           
@@ -447,45 +497,57 @@
 <p>格式化字符串是包含了变量的标签模板。具体的使用实例是在 xAxis.labels.format、tooltip.pointFormat 及 legend.labelFormat.<br>变量是格式化中用大括号包括的字符，例如 “The point value at {point.x} is {point.y}”.<br><a id="more"></a></p>
 <h2 id="字符串格式化"><a href="#字符串格式化" class="headerlink" title="字符串格式化"></a>字符串格式化</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">'#container'</span>).highcharts(&#123;</span><br><span class="line">        chart: &#123;</span><br><span class="line">            type: <span class="string">'column'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        title: &#123;</span><br><span class="line">            text: <span class="string">'月平均降雨量'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        subtitle: &#123;</span><br><span class="line">            text: <span class="string">'数据来源: WorldClimate.com'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        xAxis: &#123;</span><br><span class="line">            categories: [</span><br><span class="line">                <span class="string">'一月'</span>,</span><br><span class="line">                <span class="string">'二月'</span>,</span><br><span class="line">                <span class="string">'三月'</span>,</span><br><span class="line">                <span class="string">'四月'</span>,</span><br><span class="line">                <span class="string">'五月'</span>,</span><br><span class="line">                <span class="string">'六月'</span>,</span><br><span class="line">                <span class="string">'七月'</span>,</span><br><span class="line">                <span class="string">'八月'</span>,</span><br><span class="line">                <span class="string">'九月'</span>,</span><br><span class="line">                <span class="string">'十月'</span>,</span><br><span class="line">                <span class="string">'十一月'</span>,</span><br><span class="line">                <span class="string">'十二月'</span></span><br><span class="line">            ],</span><br><span class="line">            crosshair: <span class="literal">true</span></span><br><span class="line">        &#125;,</span><br><span class="line">        yAxis: &#123;</span><br><span class="line">            min: <span class="number">0</span>,</span><br><span class="line">            title: &#123;</span><br><span class="line">                text: <span class="string">'降雨量 (mm)'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        tooltip: &#123;</span><br><span class="line">            headerFormat: <span class="string">'&lt;span style="font-size:10px"&gt;&#123;point.key&#125;&lt;/span&gt;&lt;table&gt;'</span>,</span><br><span class="line">            pointFormat: <span class="string">'&lt;tr&gt;&lt;td style="color:&#123;series.color&#125;;padding:0"&gt;&#123;series.name&#125;: &lt;/td&gt;'</span> +</span><br><span class="line">            <span class="string">'&lt;td style="padding:0"&gt;&lt;b&gt;&#123;point.y:.1f&#125; mm&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;'</span>,</span><br><span class="line">            footerFormat: <span class="string">'&lt;/table&gt;'</span>,</span><br><span class="line">            shared: <span class="literal">true</span>,</span><br><span class="line">            useHTML: <span class="literal">true</span></span><br><span class="line">        &#125;,</span><br><span class="line">        plotOptions: &#123;</span><br><span class="line">            column: &#123;</span><br><span class="line">                borderWidth: <span class="number">0</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        series: [&#123;</span><br><span class="line">            name: <span class="string">'东京'</span>,</span><br><span class="line">            data: [<span class="number">49.9</span>, <span class="number">71.5</span>, <span class="number">106.4</span>, <span class="number">129.2</span>, <span class="number">144.0</span>, <span class="number">176.0</span>, <span class="number">135.6</span>, <span class="number">148.5</span>, <span class="number">216.4</span>, <span class="number">194.1</span>, <span class="number">95.6</span>, <span class="number">54.4</span>]</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            name: <span class="string">'纽约'</span>,</span><br><span class="line">            data: [<span class="number">83.6</span>, <span class="number">78.8</span>, <span class="number">98.5</span>, <span class="number">93.4</span>, <span class="number">106.0</span>, <span class="number">84.5</span>, <span class="number">105.0</span>, <span class="number">104.3</span>, <span class="number">91.2</span>, <span class="number">83.5</span>, <span class="number">106.6</span>, <span class="number">92.3</span>]</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            name: <span class="string">'伦敦'</span>,</span><br><span class="line">            data: [<span class="number">48.9</span>, <span class="number">38.8</span>, <span class="number">39.3</span>, <span class="number">41.4</span>, <span class="number">47.0</span>, <span class="number">48.3</span>, <span class="number">59.0</span>, <span class="number">59.6</span>, <span class="number">52.4</span>, <span class="number">65.2</span>, <span class="number">59.3</span>, <span class="number">51.2</span>]</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            name: <span class="string">'柏林'</span>,</span><br><span class="line">            data: [<span class="number">42.4</span>, <span class="number">33.2</span>, <span class="number">34.5</span>, <span class="number">39.7</span>, <span class="number">52.6</span>, <span class="number">75.5</span>, <span class="number">57.4</span>, <span class="number">60.4</span>, <span class="number">47.6</span>, <span class="number">39.1</span>, <span class="number">46.8</span>, <span class="number">51.1</span>]</span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <h2 id="时间日期格式化"><a href="#时间日期格式化" class="headerlink" title="时间日期格式化"></a>时间日期格式化</h2><h3 id="构造函数："><a href="#构造函数：" class="headerlink" title="构造函数："></a>构造函数：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Highcharts.dateFormat(String format, [Number time], [Boolean capitalize])</span><br></pre></td></tr></table></figure>
-<p>参数列表：<br><div class="note default"><p>String format 格式化字符串，下面详细说明<br>Number time 需要格式化的时间戳，可选参数，留空则取当前时间<br>Boolean capitalize 返回结果是否大写（例如英文时间表示中的 Sunday, January 等），可选参数</p></div></p>
+<p>参数列表：<br><div class="note default">
+            <p>String format 格式化字符串，下面详细说明<br>Number time 需要格式化的时间戳，可选参数，留空则取当前时间<br>Boolean capitalize 返回结果是否大写（例如英文时间表示中的 Sunday, January 等），可选参数</p>
+          </div></p>
 <p>返回值类型：String</p>
 <h3 id="format-格式化字符说明"><a href="#format-格式化字符说明" class="headerlink" title="format 格式化字符说明"></a>format 格式化字符说明</h3><p><img src="http://oio4l6s3j.bkt.clouddn.com/image/20180105/format%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E8%AF%B4%E6%98%8E.jpg" alt=""></p>
 <h3 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#container'</span>).highcharts(&#123;</span><br><span class="line">    tooltip: &#123;</span><br><span class="line">        pointFormat: <span class="string">"Value: &#123;point.y:,.1f&#125; mm"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    xAxis: &#123;</span><br><span class="line">        type: <span class="string">'datetime'</span>,</span><br><span class="line">        labels: &#123;</span><br><span class="line">            format: <span class="string">'&#123;value:%Y-%m-%d&#125;'</span>,</span><br><span class="line">            rotation: <span class="number">45</span>,</span><br><span class="line">            align: <span class="string">'left'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    series: [&#123;</span><br><span class="line">        data: [<span class="number">1029.9</span>, <span class="number">1071.5</span>, <span class="number">1106.4</span>, <span class="number">1129.2</span>, <span class="number">1144.0</span>, <span class="number">1176.0</span>, <span class="number">1135.6</span>, <span class="number">1148.5</span>, <span class="number">1216.4</span>, <span class="number">1194.1</span>, <span class="number">1095.6</span>, <span class="number">1054.4</span>],</span><br><span class="line">        pointStart: <span class="built_in">Date</span>.UTC(<span class="number">2013</span>, <span class="number">0</span>, <span class="number">1</span>),</span><br><span class="line">        pointInterval: <span class="number">24</span> * <span class="number">36e5</span></span><br><span class="line">    &#125;]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <h2 id="数字格式化"><a href="#数字格式化" class="headerlink" title="数字格式化"></a>数字格式化</h2><h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Highcharts.numberFormat (Number number, [Number decimals], [String decimalPoint], [String thousandsSep])</span><br></pre></td></tr></table></figure>
-<p>参数列表:<br><div class="note default"><p>number          需要格式化的数字<br>decimals         小数保留位数，最后一位是四舍五入，默认为 0（可选参数）<br>decimalPoint      小数点符，默认是“.”（可选参数）<br>thousandsSep    千位符，默认是“,” （可选参数）</p></div></p>
+<p>参数列表:<br><div class="note default">
+            <p>number          需要格式化的数字<br>decimals         小数保留位数，最后一位是四舍五入，默认为 0（可选参数）<br>decimalPoint      小数点符，默认是“.”（可选参数）<br>thousandsSep    千位符，默认是“,” （可选参数）</p>
+          </div></p>
 <p>返回值类型：String</p>
-<h3 id="举个栗子-1"><a href="#举个栗子-1" class="headerlink" title="举个栗子"></a>举个栗子</h3><p>对于数字 12223.8723<br><div class="note info"><p>Highcharts.numberFormat(12223.87)              = 12,224            （默认精度是0）<br>Highcharts.numberFormat(12223.87, 2)          = 12223.87      （保留两位小数）<br>Highcharts.numberFormat(12223.87, 2, “,”, “ “)      = 12 223,87      （小数点用“,”，千分符用“ ”）<br>Highcharts.numberFormat(12223.87, 2, “.”, “”)       = 12223.87       （不显示千分符）</p></div></p>
+<h3 id="举个栗子-1"><a href="#举个栗子-1" class="headerlink" title="举个栗子"></a>举个栗子</h3><p>对于数字 12223.8723<br><div class="note info">
+            <p>Highcharts.numberFormat(12223.87)              = 12,224            （默认精度是0）<br>Highcharts.numberFormat(12223.87, 2)          = 12223.87      （保留两位小数）<br>Highcharts.numberFormat(12223.87, 2, “,”, “ “)      = 12 223,87      （小数点用“,”，千分符用“ ”）<br>Highcharts.numberFormat(12223.87, 2, “.”, “”)       = 12223.87       （不显示千分符）</p>
+          </div></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Highcharts.setOptions(&#123;</span><br><span class="line">    lang: &#123;</span><br><span class="line">        decimalPoint: <span class="string">','</span>,</span><br><span class="line">        thousandsSep: <span class="string">' '</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> chart = <span class="keyword">new</span> Highcharts.Chart(&#123;</span><br><span class="line">    chart: &#123;</span><br><span class="line">        renderTo: <span class="string">'container'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    xAxis: &#123;</span><br><span class="line">        categories: [<span class="string">'Jan'</span>, <span class="string">'Feb'</span>, <span class="string">'Mar'</span>, <span class="string">'Apr'</span>, <span class="string">'May'</span>, <span class="string">'Jun'</span>, <span class="string">'Jul'</span>, <span class="string">'Aug'</span>, <span class="string">'Sep'</span>, <span class="string">'Oct'</span>, <span class="string">'Nov'</span>, <span class="string">'Dec'</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    tooltip: &#123;</span><br><span class="line">        pointFormat: <span class="string">"Value: &#123;point.y:,.1f&#125; mm"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    series: [&#123;</span><br><span class="line">        data: [<span class="number">1029.9</span>, <span class="number">1071.5</span>, <span class="number">1106.4</span>, <span class="number">1129.2</span>, <span class="number">1144.0</span>, <span class="number">1176.0</span>, <span class="number">1135.6</span>, <span class="number">1148.5</span>, <span class="number">1216.4</span>, <span class="number">1194.1</span>, <span class="number">1095.6</span>, <span class="number">1054.4</span>]</span><br><span class="line">    &#125;]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p><strong>参考文档：</strong><br><a href="https://www.hcharts.cn/docs/basic-labels-string-formatting" target="_blank" rel="noopener">标签及字符串格式化 | Highcharts 使用教程</a><br><a href="https://bbs.hcharts.cn/article-124-1.html" target="_blank" rel="noopener">Highcharts 时间格式化函数 </a><br><a href="https://bbs.hcharts.cn/article-54-1.html" target="_blank" rel="noopener">数字格式化函数：Highcharts.numberFormat() </a></p>
 
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
       <div>
         <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
   <div>请我家喵吃条小鱼干吧  ฅ(๑*д*๑)ฅ</div>
-  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>Donate</span>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
   </button>
   <div id="QR" style="display: none;">
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/wechatpay.JPG" alt="toypipi WeChat Pay"/>
-        <p>WeChat Pay</p>
+        <img id="wechat_qr" src="/images/wechatpay.JPG" alt="toypipi 微信支付"/>
+        <p>微信支付</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/alipay.JPG" alt="toypipi Alipay"/>
-        <p>Alipay</p>
+        <img id="alipay_qr" src="/images/alipay.JPG" alt="toypipi 支付宝"/>
+        <p>支付宝</p>
       </div>
     
 
@@ -497,24 +559,6 @@
       </div>
     
 
-    
-      <div>
-        <ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者：</strong>
-    toypipi
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="https://toypipi.github.io/2018/01/05/Highcharts-字符串、时间日期、数字格式化/" title="Highcharts 字符串、时间日期、数字格式化">https://toypipi.github.io/2018/01/05/Highcharts-字符串、时间日期、数字格式化/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>
-    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
-
-      </div>
     
 
     <footer class="post-footer">
@@ -564,44 +608,18 @@
   </article>
 
 
-
-    <div class="post-spread">
-      
-        <!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-  <a class="jiathis_button_tsina"></a>
-  <a class="jiathis_button_tqq"></a>
-  <a class="jiathis_button_weixin"></a>
-  <a class="jiathis_button_cqq"></a>
-  <a class="jiathis_button_douban"></a>
-  <a class="jiathis_button_renren"></a>
-  <a class="jiathis_button_qzone"></a>
-  <a class="jiathis_button_kaixin001"></a>
-  <a class="jiathis_button_copy"></a>
-  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
-  <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" >
-  var jiathis_config={
-    hideMore:false
-  }
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<!-- JiaThis Button END -->
-
-      
-    </div>
   </div>
 
 
           </div>
           
 
+  
+    <div class="comments" id="comments">
+    </div>
 
-          
-  <div class="comments" id="comments">
-    
-  </div>
+  
+
 
 
         </div>
@@ -624,84 +642,383 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
             站点概览
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars3.githubusercontent.com/u/13879860?v=3&amp;s=460"
-               alt="toypipi" />
-          <p class="site-author-name" itemprop="name">toypipi</p>
-           
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">toypipi</p>
               <p class="site-description motion-element" itemprop="description">善始者实繁，克终者盖寡</p>
+          </div>
+
           
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">92</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">130</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">92</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">17</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">130</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
-              
+            
+            
             
 
             
@@ -709,7 +1026,7 @@
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
       
 
@@ -725,15 +1042,22 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2016 - 
-  <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">toypipi</span>
+
+  
+
+  
 </div>
+
+
+
+
+
+
 
 
 
@@ -742,21 +1066,34 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   
-    <span class="site-uv">
+    <span class="post-meta-item-icon">
       <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-      
     </span>
   
 
   
-    <span class="site-pv">
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
       <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-      
     </span>
   
 </div>
+
+
+
+
+
+
+
 
 
         
@@ -770,11 +1107,16 @@
       </div>
     
 
+    
+
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -788,7 +1130,6 @@
 
 
 
-  
 
 
 
@@ -798,65 +1139,6 @@
 
 
 
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
-
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
-
-
-
-  
-
-
-  
 
 
 
@@ -866,8 +1148,75 @@
 
 
   
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
 
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'tbIJcfswUFaknkcghWzvRaEM-gzGzoHsz',
+    appKey: 'ABRMf9eANJrcKAqn9xOgu5tt',
+    placeholder: '',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+</script>
 
 
 
@@ -875,115 +1224,8 @@
   
 
 
-
-
-
   
 
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("tbIJcfswUFaknkcghWzvRaEM-gzGzoHsz", "ABRMf9eANJrcKAqn9xOgu5tt");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
 
 
 
@@ -992,28 +1234,22 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
   
 

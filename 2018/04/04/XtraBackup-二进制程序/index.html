@@ -2,15 +2,24 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
 
 
 
@@ -20,12 +29,9 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
-  <meta name="google-site-verification" content="Iklr1EoFbTWomWKqz4mZCbEiVE_HuchAJDxBFDBSXqY" />
 
 
 
@@ -39,112 +45,41 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
+<link rel="stylesheet" href="/css/main.css?v=7.0.0"/>
 
 
-  
-  
-  
-  
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
 
-  
-    
-    
-  
 
-  
-    
-      
-    
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
 
-    
-  
 
-  
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
 
-  
-    
-      
-    
 
-    
-  
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
 
-  
-    
-      
-    
 
-    
-  
 
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
 
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="XtraBackup," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
-
-
-
-
-
-
-<meta name="description" content="xtrabackup 二进制程序是一个已经编译好的，链接到 InnoDB 库和标准 MySQL 客户端库的 C 程序。 InnoDB 库提供了将日志文件应用于数据文件所需的功能，MySQL 客户端库提供了命令行选项解析，配置文件解析等，以使 xtrabackup  二进制具有 MySQL 客户端类似的外观。 该工具以 --backup 或 --prepare 模式运行，分别对应于它执行的两个主要">
-<meta name="keywords" content="XtraBackup">
-<meta property="og:type" content="article">
-<meta property="og:title" content="XtraBackup 二进制程序">
-<meta property="og:url" content="https://toypipi.github.io/2018/04/04/XtraBackup-二进制程序/index.html">
-<meta property="og:site_name" content="toypipi&#39;s blog">
-<meta property="og:description" content="xtrabackup 二进制程序是一个已经编译好的，链接到 InnoDB 库和标准 MySQL 客户端库的 C 程序。 InnoDB 库提供了将日志文件应用于数据文件所需的功能，MySQL 客户端库提供了命令行选项解析，配置文件解析等，以使 xtrabackup  二进制具有 MySQL 客户端类似的外观。 该工具以 --backup 或 --prepare 模式运行，分别对应于它执行的两个主要">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://oio4l6s3j.bkt.clouddn.com/image/20180410/throttle.png">
-<meta property="og:image" content="http://oio4l6s3j.bkt.clouddn.com/image/20180416/lru_dump.png">
-<meta property="og:updated_time" content="2018-06-08T08:38:48.522Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="XtraBackup 二进制程序">
-<meta name="twitter:description" content="xtrabackup 二进制程序是一个已经编译好的，链接到 InnoDB 库和标准 MySQL 客户端库的 C 程序。 InnoDB 库提供了将日志文件应用于数据文件所需的功能，MySQL 客户端库提供了命令行选项解析，配置文件解析等，以使 xtrabackup  二进制具有 MySQL 客户端类似的外观。 该工具以 --backup 或 --prepare 模式运行，分别对应于它执行的两个主要">
-<meta name="twitter:image" content="http://oio4l6s3j.bkt.clouddn.com/image/20180410/throttle.png">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -156,12 +91,41 @@
 </script>
 
 
+  
+
+
+
+
+  <meta name="description" content="xtrabackup 二进制程序是一个已经编译好的，链接到 InnoDB 库和标准 MySQL 客户端库的 C 程序。 InnoDB 库提供了将日志文件应用于数据文件所需的功能，MySQL 客户端库提供了命令行选项解析，配置文件解析等，以使 xtrabackup  二进制具有 MySQL 客户端类似的外观。 该工具以 --backup 或 --prepare 模式运行，分别对应于它执行的两个主要">
+<meta name="keywords" content="XtraBackup">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XtraBackup 二进制程序">
+<meta property="og:url" content="https://toypipi.github.io/2018/04/04/XtraBackup-二进制程序/index.html">
+<meta property="og:site_name" content="toypipi&#39;s blog">
+<meta property="og:description" content="xtrabackup 二进制程序是一个已经编译好的，链接到 InnoDB 库和标准 MySQL 客户端库的 C 程序。 InnoDB 库提供了将日志文件应用于数据文件所需的功能，MySQL 客户端库提供了命令行选项解析，配置文件解析等，以使 xtrabackup  二进制具有 MySQL 客户端类似的外观。 该工具以 --backup 或 --prepare 模式运行，分别对应于它执行的两个主要">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://oio4l6s3j.bkt.clouddn.com/image/20180410/throttle.png">
+<meta property="og:image" content="http://oio4l6s3j.bkt.clouddn.com/image/20180416/lru_dump.png">
+<meta property="og:updated_time" content="2018-06-08T08:38:48.522Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="XtraBackup 二进制程序">
+<meta name="twitter:description" content="xtrabackup 二进制程序是一个已经编译好的，链接到 InnoDB 库和标准 MySQL 客户端库的 C 程序。 InnoDB 库提供了将日志文件应用于数据文件所需的功能，MySQL 客户端库提供了命令行选项解析，配置文件解析等，以使 xtrabackup  二进制具有 MySQL 客户端类似的外观。 该工具以 --backup 或 --prepare 模式运行，分别对应于它执行的两个主要">
+<meta name="twitter:image" content="http://oio4l6s3j.bkt.clouddn.com/image/20180410/throttle.png">
+
+
+
+
+
 
   <link rel="canonical" href="https://toypipi.github.io/2018/04/04/XtraBackup-二进制程序/"/>
 
 
 
-
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>XtraBackup 二进制程序 | toypipi's blog</title>
   
@@ -169,17 +133,17 @@
 
 
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-90328755-1', 'auto');
-  ga('send', 'pageview');
-</script>
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-90328755-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-90328755-1');
+  </script>
 
 
-  <script type="text/javascript">
+
+  <script>
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -195,40 +159,61 @@
 
 
 
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">toypipi's blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
+    
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -236,65 +221,103 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+
+  </li>
 
       
+      
     </ul>
+  
+
   
 
   
@@ -302,12 +325,23 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
+          
           <div id="content" class="content">
             
 
@@ -320,21 +354,23 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/04/04/XtraBackup-二进制程序/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/04/04/XtraBackup-二进制程序/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="toypipi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/13879860?v=3&amp;s=460">
+      <meta itemprop="name" content="toypipi"/>
+      <meta itemprop="description" content="善始者实繁，克终者盖寡"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="toypipi's blog">
+      <meta itemprop="name" content="toypipi's blog"/>
     </span>
 
     
@@ -342,11 +378,20 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">XtraBackup 二进制程序</h1>
+          <h1 class="post-title" itemprop="name headline">XtraBackup 二进制程序
+
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -354,18 +399,35 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-04T10:50:58+08:00">
-                2018-04-04
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-04 10:50:58" itemprop="dateCreated datePublished" datetime="2018-04-04T10:50:58+08:00">2018-04-04</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-06-08 16:38:48" itemprop="dateModified" datetime="2018-06-08T16:38:48+08:00">2018-06-08</time>
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -376,11 +438,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MySQL/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a></span>
 
                 
                 
@@ -390,43 +448,35 @@
 
           
             
-          
-
-          
-          
-             <span id="/2018/04/04/XtraBackup-二进制程序/" class="leancloud_visitors" data-flag-title="XtraBackup 二进制程序">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
+            
               
-                
-                &nbsp; | &nbsp;<span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  7,397
-                </span>
-              
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/04/04/XtraBackup-二进制程序/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/04/XtraBackup-二进制程序/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-              
+          
+          
 
-              
-            </div>
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
           
 
           
@@ -478,10 +528,14 @@
 <p>再说一次，LSN 应该与先前检查第一次增量备份时看到的一致。如果您从 <code>/data/backups/base</code> 恢复文件，则应该可以看到第一次增量备份时的数据库状态。</p>
 <p>准备第二次增量备份是一个类似的过程：对（已修改的）基础备份应用增量，并且及时将数据前滚到第二次增量备份时的状态：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup --prepare --target-dir=/data/backups/base \</span><br><span class="line">--incremental-dir=/data/backups/inc2</span><br></pre></td></tr></table></figure>
-<div class="note default"><p>注意<br>合并除最后一个之外的所有增量备份时，都应该使用 <code>--apply-log-only</code>。这就是上一行不包含 <code>--apply-log-only</code> 选项的原因。即使在最后一步使用了 <code>--apply-log-only</code> ，备份仍然是一致的，但在这种情况下，服务器将执行回滚阶段。</p></div>
+<div class="note default">
+            <p>注意<br>合并除最后一个之外的所有增量备份时，都应该使用 <code>--apply-log-only</code>。这就是上一行不包含 <code>--apply-log-only</code> 选项的原因。即使在最后一步使用了 <code>--apply-log-only</code> ，备份仍然是一致的，但在这种情况下，服务器将执行回滚阶段。</p>
+          </div>
 <p>当您已将所需增量应用于基本备份时, 如果想避免收到关于 InnoDB 未正常关闭的通知。那么，可以再次运行 <code>--prepare</code> 而不禁用回滚阶段。</p>
 <h2 id="部分备份"><a href="#部分备份" class="headerlink" title="部分备份"></a>部分备份</h2><p>当启用 <code>innodb_file_per_table</code> 选项时，<strong>xtrabackup</strong> 支持部分备份。有三种方法可以创建部分备份：使用正则表达式匹配表名，提供一个包含表明列表的文件或提供一个包含数据库和表名列表的文件。</p>
-<div class="note danger"><p>警告<br>如果在备份过程中删除了任何匹配到的或已经列出的表，则 <strong>xtrabackup</strong> 将会执行失败。</p></div>
+<div class="note danger">
+            <p>警告<br>如果在备份过程中删除了任何匹配到的或已经列出的表，则 <strong>xtrabackup</strong> 将会执行失败。</p>
+          </div>
 <p>为了达到演示本手册内容的目的，我们假设有一个名为 <code>test</code> 的数据库，其中包含名为 <code>t1</code> 和 <code>t2</code> 的表。</p>
 <h3 id="使用-tables-选项"><a href="#使用-tables-选项" class="headerlink" title="使用 --tables 选项"></a>使用 <code>--tables</code> 选项</h3><p>第一种备份方法是使用 <code>--tables</code> 选项。该选项的值是一个正则表达式，它以 <code>databasename.tablename</code> 的形式与完全限定的表名（包括数据库名称）相匹配。</p>
 <p>仅备份 <code>test</code> 数据库中的表，可以使用以下命令：</p>
@@ -497,7 +551,9 @@
 <h2 id="紧凑备份"><a href="#紧凑备份" class="headerlink" title="紧凑备份"></a>紧凑备份</h2><p>在进行 InnoDB 表的备份时，可以省略二级索引页面。这将使备份更加紧凑，占用更少的磁盘空间。这样做的缺点是准备备份的过程需要更长的时间，因为需要重新创建这些二级索引。备份大小的差异取决于二级索引的大小。</p>
 <p>例如，以下分别为不使用和使用 <code>--compact</code> 选项的完整备份大小：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#backup size without --compact</span><br><span class="line">2.0G  xb_backup</span><br><span class="line"></span><br><span class="line">#backup size taken with --compact option</span><br><span class="line">1.4G  xb_compact_backup</span><br></pre></td></tr></table></figure>
-<div class="note default"><p>注意<br>系统表空间不支持紧凑备份，因此为了能够正确运行备份程序，应该启用 <code>innodb-file-per-table</code> 选项。</p></div>
+<div class="note default">
+            <p>注意<br>系统表空间不支持紧凑备份，因此为了能够正确运行备份程序，应该启用 <code>innodb-file-per-table</code> 选项。</p>
+          </div>
 <p>此功能在 <em>Percona XtraBackup 2.1</em> 中引入。</p>
 <h3 id="创建紧凑备份"><a href="#创建紧凑备份" class="headerlink" title="创建紧凑备份"></a>创建紧凑备份</h3><p>要创建紧凑备份 innobackupex 启动时需要使用 <code>--compact</code> 选项：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup --backup --compact --target-dir=/data/backups</span><br></pre></td></tr></table></figure>
@@ -566,17 +622,22 @@
 <h2 id="恢复单表"><a href="#恢复单表" class="headerlink" title="恢复单表"></a>恢复单表</h2><p>在 5.6 之前的服务器版本中，即使使用 <code>innodb_file_per_table</code>，也不可能通过复制文件在服务器之间复制表。 但是，使用 <em>Percona XtraBackup</em>，您可以从任何 <em>InnoDB</em> 数据库中导出单张表，然后将它们导入到 <em>Percona Server</em> 的 <em>XtraDB</em> 或 <em>MySQL 5.6</em> 中。 （导出库不一定是 <em>XtraDB</em> 或 <em>MySQL 5.6</em> ，但是导入库必须是。）这只适用于单独的 <code>.ibd</code> 文件，并且不能导出不包含在其自己的 <code>.ibd</code> 文件中的表。</p>
 <p>我们来看看如何导出和导入下表：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE export_test (</span><br><span class="line">  a int(11) DEFAULT NULL</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=latin1;</span><br></pre></td></tr></table></figure>
-<div class="note default"><p>注意<br>如果您运行的是早于 <code>5.5.10-20.1</code> 的 <em>Percona Server</em> 版本，则应该使用变量 <code>innodb_expand_import</code> 而不是 <code>innodb_import_table_from_xtrabackup</code> 。</p></div>
+<div class="note default">
+            <p>注意<br>如果您运行的是早于 <code>5.5.10-20.1</code> 的 <em>Percona Server</em> 版本，则应该使用变量 <code>innodb_expand_import</code> 而不是 <code>innodb_import_table_from_xtrabackup</code> 。</p>
+          </div>
 <h3 id="导出表格"><a href="#导出表格" class="headerlink" title="导出表格"></a>导出表格</h3><p>这张表应该是在 <code>innodb_file_per_table</code> 模式下创建的，所以像 <code>xtrabackup --backup</code> 一样进行备份后，<code>.ibd</code> 文件应该存在于目标目录中：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ find /data/backups/mysql/ -name export_test.*</span><br><span class="line">/data/backups/mysql/test/export_test.ibd</span><br></pre></td></tr></table></figure>
 <p>准备备份时，将额外的参数 <code>xtrabackup --export</code> 添加到命令中。 这里是一个例子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup --prepare --export --target-dir=/data/backups/mysql/</span><br></pre></td></tr></table></figure>
-<div class="note default"><p>注意<br>如果你想恢复<a href="https://www.percona.com/doc/percona-xtrabackup/LATEST/advanced/encrypted_innodb_tablespace_backups.html#encrypted-innodb-tablespace-backups" target="_blank" rel="noopener">加密的 InnoDB 表空间表</a>，你还需要指定密钥文件：</p>
-undefined</div>
+<div class="note default">
+            <p>注意<br>如果你想恢复<a href="https://www.percona.com/doc/percona-xtrabackup/LATEST/advanced/encrypted_innodb_tablespace_backups.html#encrypted-innodb-tablespace-backups" target="_blank" rel="noopener">加密的 InnoDB 表空间表</a>，你还需要指定密钥文件：</p>undefined
+          </div>
 <p>现在你应该在目标目录中看到一个 <code>.exp</code> 文件：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ find /data/backups/mysql/ -name export_test.*</span><br><span class="line">/data/backups/mysql/test/export_test.exp</span><br><span class="line">/data/backups/mysql/test/export_test.ibd</span><br><span class="line">/data/backups/mysql/test/export_test.cfg</span><br></pre></td></tr></table></figure>
 <p>将表导入运行 <em>XtraDB</em> 的 <em>Percona服务器</em> 或 <em>MySQL 5.7</em> 需要以上三个文件。在服务器使用 <a href="https://dev.mysql.com/doc/refman/5.7/en/innodb-tablespace-encryption.html" target="_blank" rel="noopener"><code>InnoDB Tablespace Encryption</code></a> 的情况下，将会列出用于加密表的附加的 <code>.cfg</code> 文件。</p>
-<div class="note default"><p>注意<br><em>MySQL</em> 使用包含特殊格式的 <em>InnoDB</em> 字典转储的 <code>.cfg</code> 文件。这种格式与 <em>XtraDB</em> 中用于相同目的的 <code>.exp</code> 不同。严格地说，将表空间导入到 <em>MySQL 5.7</em> 或 <em>Percona Server 5.7</em> 中时不需要 <code>.cfg</code> 文件。即使是来自其他数据库版本的表空间也会成功导入，但如果相应的 <code>.cfg</code> 文件存在于同一目录中，<em>InnoDB</em> 将执行模式验证。</p></div>
+<div class="note default">
+            <p>注意<br><em>MySQL</em> 使用包含特殊格式的 <em>InnoDB</em> 字典转储的 <code>.cfg</code> 文件。这种格式与 <em>XtraDB</em> 中用于相同目的的 <code>.exp</code> 不同。严格地说，将表空间导入到 <em>MySQL 5.7</em> 或 <em>Percona Server 5.7</em> 中时不需要 <code>.cfg</code> 文件。即使是来自其他数据库版本的表空间也会成功导入，但如果相应的 <code>.cfg</code> 文件存在于同一目录中，<em>InnoDB</em> 将执行模式验证。</p>
+          </div>
 <h3 id="导入表格"><a href="#导入表格" class="headerlink" title="导入表格"></a>导入表格</h3><p>在使用 <code>XtraDB</code> 引擎和启用 <code>innodb_import_table_from_xtrabackup</code> 选项的 <em>Percona Server</em> 的目标服务器，或者 <em>MySQL 5.6</em> 上，创建一张具有相同结构的表，然后执行以下步骤：</p>
 <ul>
 <li>执行 <code>ALTER TABLE test.export_test DISCARD TABLESPACE</code>;<br>  如果看到以下消息，则必须启用 <code>innodb_file_per_table</code> 并再次创建该表：<code>ERROR 1030 (HY000): Got error -1 from storage engine</code></li>
@@ -584,7 +645,9 @@ undefined</div>
 <li>执行 <code>ALTER TABLE test.export_test IMPORT TABLESPACE</code>;</li>
 </ul>
 <p>该表现在应该已被导入，你应该能够从中执行 <code>SELECT</code> 语句并查看导入的数据。</p>
-<div class="note default"><p>注意<br>除非在导入的表上运行 <code>ANALYZE TABLE</code> ，导入的表空间的持久性统计信息将为空。因为它们存储在系统表 <code>mysql.innodb_table_stats</code> 和 <code>mysql.innodb_index_stats</code> 中，并且在导入期间它们不会被服务器更新，所以它们是空的。这是由于上游错误 <a href="https://bugs.mysql.com/bug.php?id=72368" target="_blank" rel="noopener">#72368</a>。</p></div>
+<div class="note default">
+            <p>注意<br>除非在导入的表上运行 <code>ANALYZE TABLE</code> ，导入的表空间的持久性统计信息将为空。因为它们存储在系统表 <code>mysql.innodb_table_stats</code> 和 <code>mysql.innodb_index_stats</code> 中，并且在导入期间它们不会被服务器更新，所以它们是空的。这是由于上游错误 <a href="https://bugs.mysql.com/bug.php?id=72368" target="_blank" rel="noopener">#72368</a>。</p>
+          </div>
 <h2 id="LRU-转储备份"><a href="#LRU-转储备份" class="headerlink" title="LRU 转储备份"></a>LRU 转储备份</h2><p>此功能通过在数据库重启后从 <code>ib_lru_dump</code> 文件恢复缓冲池状态来减少预热时间。 <em>Percona XtraBackup</em> 会查找 <code>ib_lru_dump</code> 并自动备份它。</p>
 <p><img src="http://oio4l6s3j.bkt.clouddn.com/image/20180416/lru_dump.png" alt=""></p>
 <p>如果在 <code>my.cnf</code> 文件中设置了启用缓冲区恢复选项，则备份恢复后缓冲池将处于预热好的状态。 要启用它，请在 Percona Server 5.5 中设置变量 <code>innodb_buffer_pool_restore_at_startup =1</code> 或在 Percona Server 5.1 中设置 <code>innodb_auto_lru_dump =1</code>。</p>
@@ -601,32 +664,38 @@ undefined</div>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><h2 id="xtrabackup-选项参考"><a href="#xtrabackup-选项参考" class="headerlink" title="xtrabackup 选项参考"></a>xtrabackup 选项参考</h2>
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
       <div>
         <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
   <div>请我家喵吃条小鱼干吧  ฅ(๑*д*๑)ฅ</div>
-  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>Donate</span>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
   </button>
   <div id="QR" style="display: none;">
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/wechatpay.JPG" alt="toypipi WeChat Pay"/>
-        <p>WeChat Pay</p>
+        <img id="wechat_qr" src="/images/wechatpay.JPG" alt="toypipi 微信支付"/>
+        <p>微信支付</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/alipay.JPG" alt="toypipi Alipay"/>
-        <p>Alipay</p>
+        <img id="alipay_qr" src="/images/alipay.JPG" alt="toypipi 支付宝"/>
+        <p>支付宝</p>
       </div>
     
 
@@ -638,24 +707,6 @@ undefined</div>
       </div>
     
 
-    
-      <div>
-        <ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者：</strong>
-    toypipi
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="https://toypipi.github.io/2018/04/04/XtraBackup-二进制程序/" title="XtraBackup 二进制程序">https://toypipi.github.io/2018/04/04/XtraBackup-二进制程序/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>
-    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
-
-      </div>
     
 
     <footer class="post-footer">
@@ -703,44 +754,18 @@ undefined</div>
   </article>
 
 
-
-    <div class="post-spread">
-      
-        <!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-  <a class="jiathis_button_tsina"></a>
-  <a class="jiathis_button_tqq"></a>
-  <a class="jiathis_button_weixin"></a>
-  <a class="jiathis_button_cqq"></a>
-  <a class="jiathis_button_douban"></a>
-  <a class="jiathis_button_renren"></a>
-  <a class="jiathis_button_qzone"></a>
-  <a class="jiathis_button_kaixin001"></a>
-  <a class="jiathis_button_copy"></a>
-  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
-  <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" >
-  var jiathis_config={
-    hideMore:false
-  }
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<!-- JiaThis Button END -->
-
-      
-    </div>
   </div>
 
 
           </div>
           
 
+  
+    <div class="comments" id="comments">
+    </div>
 
-          
-  <div class="comments" id="comments">
-    
-  </div>
+  
+
 
 
         </div>
@@ -763,84 +788,383 @@ undefined</div>
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
             站点概览
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="https://avatars3.githubusercontent.com/u/13879860?v=3&amp;s=460"
-               alt="toypipi" />
-          <p class="site-author-name" itemprop="name">toypipi</p>
-           
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">toypipi</p>
               <p class="site-description motion-element" itemprop="description">善始者实繁，克终者盖寡</p>
+          </div>
+
           
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">92</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">130</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">92</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">17</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">130</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
-              
+            
+            
             
 
             
@@ -848,7 +1172,7 @@ undefined</div>
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
       
 
@@ -864,15 +1188,22 @@ undefined</div>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2016 - 
-  <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">toypipi</span>
+
+  
+
+  
 </div>
+
+
+
+
+
+
 
 
 
@@ -881,21 +1212,34 @@ undefined</div>
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   
-    <span class="site-uv">
+    <span class="post-meta-item-icon">
       <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-      
     </span>
   
 
   
-    <span class="site-pv">
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
       <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-      
     </span>
   
 </div>
+
+
+
+
+
+
+
 
 
         
@@ -909,11 +1253,16 @@ undefined</div>
       </div>
     
 
+    
+
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -927,7 +1276,6 @@ undefined</div>
 
 
 
-  
 
 
 
@@ -937,65 +1285,6 @@ undefined</div>
 
 
 
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
-
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
-
-
-
-  
-
-
-  
 
 
 
@@ -1005,8 +1294,75 @@ undefined</div>
 
 
   
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
 
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'tbIJcfswUFaknkcghWzvRaEM-gzGzoHsz',
+    appKey: 'ABRMf9eANJrcKAqn9xOgu5tt',
+    placeholder: '',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+</script>
 
 
 
@@ -1014,115 +1370,8 @@ undefined</div>
   
 
 
-
-
-
   
 
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("tbIJcfswUFaknkcghWzvRaEM-gzGzoHsz", "ABRMf9eANJrcKAqn9xOgu5tt");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
 
 
 
@@ -1131,28 +1380,22 @@ undefined</div>
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
   
 
