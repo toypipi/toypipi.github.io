@@ -495,8 +495,8 @@
 
       
         <hr>
-<p>今天在柱形图上添加数字标签时，总是不能生效。绘图插件使用的是 Highcharts 。后来突然想到之前引入的是Highmaps js 文件，而不是 Highcharts js 文件。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script th:src=<span class="string">"@&#123;/js/highcharts/highmaps.js&#125;"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
-<p>抱着试试看的心态，我将 Highcharts js 文件引入到 html 页面中，<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script th:src=<span class="string">"@&#123;/js/highcharts/highcharts.js&#125;"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script th:src=<span class="string">"@&#123;/js/highcharts/highmaps.js&#125;"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>今天在柱形图上添加数字标签时，总是不能生效。绘图插件使用的是 Highcharts 。后来突然想到之前引入的是Highmaps js 文件，而不是 Highcharts js 文件。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script th:src=<span class="string">"@&#123;/js/highcharts/highmaps.js&#125;"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<p>抱着试试看的心态，我将 Highcharts js 文件引入到 html 页面中，<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script th:src=<span class="string">"@&#123;/js/highcharts/highcharts.js&#125;"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script th:src=<span class="string">"@&#123;/js/highcharts/highmaps.js&#125;"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
 <p>刷新页面发现还是不行，然后我又将 Highmaps js 文件屏蔽掉，这下就可以了。难道是两个文件相互干扰了。<br><a id="more"></a><br>于是到 Highcharts 官网，找到了这个说明：<br><div class="note danger">
             <p>同 Highcharts 使用方法一样，Highmaps 只需要一个 highmaps.js 文件即可运行。<br>如果是结合 Highcharts 一起使用，则是引入 map.js 即可。</p>
           </div></p>
@@ -1174,7 +1174,7 @@
     notify: false,
     appId: 'tbIJcfswUFaknkcghWzvRaEM-gzGzoHsz',
     appKey: 'ABRMf9eANJrcKAqn9xOgu5tt',
-    placeholder: '',
+    placeholder: '欢饮您给我留言~~',
     avatar: 'mm',
     meta: guest,
     pageSize: '10' || 10,
