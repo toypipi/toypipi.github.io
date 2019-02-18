@@ -464,6 +464,17 @@
 
           
           
+            <span id="/2018/03/28/配置-xtrabackup/" class="leancloud_visitors" data-flag-title="配置 xtrabackup">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
 
           
 
@@ -658,6 +669,17 @@
           
 
           
+          
+            <span id="/2018/03/27/Redis-常用命令/" class="leancloud_visitors" data-flag-title="Redis 常用命令">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -855,6 +877,17 @@
 
           
           
+            <span id="/2018/03/27/解决hexo-next-主题不显示-hypercomments-评论/" class="leancloud_visitors" data-flag-title="解决 hexo next 主题不显示 hypercomments 评论">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
 
           
 
@@ -1044,6 +1077,17 @@
           
 
           
+          
+            <span id="/2018/03/27/连接和权限/" class="leancloud_visitors" data-flag-title="连接和权限">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -1241,6 +1285,17 @@
           
 
           
+          
+            <span id="/2018/03/24/安装Percona-XtraBackup-2-4/" class="leancloud_visitors" data-flag-title="安装 Percona XtraBackup 2.4">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -1441,6 +1496,17 @@
 
           
           
+            <span id="/2018/03/23/Percona-XtraBackup-如何工作/" class="leancloud_visitors" data-flag-title="Percona XtraBackup 如何工作">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
 
           
 
@@ -1636,6 +1702,17 @@
           
 
           
+          
+            <span id="/2018/03/23/关于-Percona-XtraBackup/" class="leancloud_visitors" data-flag-title="关于 Percona XtraBackup">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -1840,6 +1917,17 @@
 
           
           
+            <span id="/2018/03/22/Percona-XtraBackup-文档翻译/" class="leancloud_visitors" data-flag-title="Percona XtraBackup 文档翻译">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
 
           
 
@@ -2038,6 +2126,17 @@
           
 
           
+          
+            <span id="/2018/03/21/CentOS6-安装-PERCONA-XTRABACKUP/" class="leancloud_visitors" data-flag-title="CentOS 6 安装 PERCONA XTRABACKUP">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -2245,6 +2344,17 @@
           
 
           
+          
+            <span id="/2018/03/20/Linux-配置免密码登录/" class="leancloud_visitors" data-flag-title="Linux 配置免密码登录">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -2920,6 +3030,74 @@
 
 
   
+  
+  <script>
+    
+    function showTime(Counter) {
+      var entries = [];
+      var $visitors = $('.leancloud_visitors');
+
+      $visitors.each(function() {
+        entries.push( $(this).attr('id').trim() );
+      });
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { '$in': entries } }) })
+        .done(function({ results }) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for (var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if (countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log(`LeanCloud Counter Error: ${responseJSON.code} ${responseJSON.error}`);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'tbIJcfswUFaknkcghWzvRaEM-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'tbIJcfswUFaknkcghWzvRaEM-gzGzoHsz',
+                'X-LC-Key': 'ABRMf9eANJrcKAqn9xOgu5tt',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            if ($('.post-title-link').length >= 1) {
+              showTime(Counter);
+            }
+          
+        });
+    });
+  </script>
+
+
 
   
 
