@@ -97,7 +97,7 @@
 
 
   <meta name="description" content="今天在将多个分表合并为一个表时，遇到了一个问题。这些分表由业务人员创建，其中一部分未加UNIQUE索引，导致这些表中的部分数据重复，需要删除其中的重复数据。 思路为：首先将数据按照字段A、B、C、D分组（如果A、B、C、D相同就认为数据重复），求出记录大于1的最大id，然后删除这个id的数据。sql语句如下:123DELETE FROM test WHERE id IN(SELECT id FR">
-<meta name="keywords" content="删除重复记录,多个字段,MySQL">
+<meta name="keywords" content="MySQL,删除重复记录,多个字段">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL中删除重复记录（多个字段）">
 <meta property="og:url" content="https://toypipi.github.io/2017/04/22/MySQL中删除重复记录（多个字段）/index.html">
@@ -463,18 +463,15 @@
 
           
           
-            <span id="/2017/04/22/MySQL中删除重复记录（多个字段）/" class="leancloud_visitors" data-flag-title="MySQL中删除重复记录（多个字段）">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
 
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
           
 
           
@@ -553,11 +550,11 @@
       
         <div class="post-tags">
           
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
             <a href="/tags/删除重复记录/" rel="tag"># 删除重复记录</a>
           
             <a href="/tags/多个字段/" rel="tag"># 多个字段</a>
-          
-            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
           
         </div>
       
@@ -1196,66 +1193,6 @@
 
 
   
-  
-  <script>
-    
-    function addCount(Counter) {
-      var $visitors = $('.leancloud_visitors');
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
-        .done(function({ results }) {
-          if (results.length > 0) {
-            var counter = results[0];
-            
-            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
-            
-              .done(function() {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.time + 1);
-              })
-            
-              .fail(function ({ responseJSON }) {
-                console.log(`Failed to save Visitor num, with error message: ${responseJSON.error}`);
-              })
-          } else {
-            
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
-            
-          }
-        })
-        .fail(function ({ responseJSON }) {
-          console.log(`LeanCloud Counter Error: ${responseJSON.code} ${responseJSON.error}`);
-        });
-    }
-    
-
-    $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'tbIJcfswUFaknkcghWzvRaEM-gzGzoHsz')
-        .done(function({ api_server }) {
-          var Counter = function(method, url, data) {
-            return $.ajax({
-              method: method,
-              url: 'https://' + api_server + '/1.1' + url,
-              headers: {
-                'X-LC-Id': 'tbIJcfswUFaknkcghWzvRaEM-gzGzoHsz',
-                'X-LC-Key': 'ABRMf9eANJrcKAqn9xOgu5tt',
-                'Content-Type': 'application/json',
-              },
-              data: data
-            });
-          };
-          
-            addCount(Counter);
-          
-        });
-    });
-  </script>
-
-
 
   
 

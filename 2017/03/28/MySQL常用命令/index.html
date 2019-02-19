@@ -97,7 +97,7 @@
 
 
   <meta name="description" content="创建用户创建MySQL用户有两种方式：  通过使用创建用户语句，如 CREATE USER 或 GRANT。首选方式，应为这种方式更加简洁而且更不容易出错。 通过使用 INSERT, UPDATE, DELETE 修改MySQL授权表。  1CREATE USER &apos;monty&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;some_pass&apos;; 删除用户1DROP USER &apos;use">
-<meta name="keywords" content="MySQL,常用命令">
+<meta name="keywords" content="常用命令,MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL常用命令">
 <meta property="og:url" content="https://toypipi.github.io/2017/03/28/MySQL常用命令/index.html">
@@ -463,18 +463,15 @@
 
           
           
-            <span id="/2017/03/28/MySQL常用命令/" class="leancloud_visitors" data-flag-title="MySQL常用命令">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
 
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
           
 
           
@@ -557,9 +554,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
-          
             <a href="/tags/常用命令/" rel="tag"># 常用命令</a>
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
           
         </div>
       
@@ -1224,66 +1221,6 @@
 
 
   
-  
-  <script>
-    
-    function addCount(Counter) {
-      var $visitors = $('.leancloud_visitors');
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
-        .done(function({ results }) {
-          if (results.length > 0) {
-            var counter = results[0];
-            
-            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
-            
-              .done(function() {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.time + 1);
-              })
-            
-              .fail(function ({ responseJSON }) {
-                console.log(`Failed to save Visitor num, with error message: ${responseJSON.error}`);
-              })
-          } else {
-            
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
-            
-          }
-        })
-        .fail(function ({ responseJSON }) {
-          console.log(`LeanCloud Counter Error: ${responseJSON.code} ${responseJSON.error}`);
-        });
-    }
-    
-
-    $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'tbIJcfswUFaknkcghWzvRaEM-gzGzoHsz')
-        .done(function({ api_server }) {
-          var Counter = function(method, url, data) {
-            return $.ajax({
-              method: method,
-              url: 'https://' + api_server + '/1.1' + url,
-              headers: {
-                'X-LC-Id': 'tbIJcfswUFaknkcghWzvRaEM-gzGzoHsz',
-                'X-LC-Key': 'ABRMf9eANJrcKAqn9xOgu5tt',
-                'Content-Type': 'application/json',
-              },
-              data: data
-            });
-          };
-          
-            addCount(Counter);
-          
-        });
-    });
-  </script>
-
-
 
   
 

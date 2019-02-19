@@ -464,17 +464,6 @@
 
           
           
-            <span id="/2017/03/21/《金字塔原理》读书笔记/" class="leancloud_visitors" data-flag-title="《金字塔原理》读书笔记">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
 
           
 
@@ -672,17 +661,6 @@
 
           
           
-            <span id="/2017/03/10/关于OpenType-1-8/" class="leancloud_visitors" data-flag-title="关于OpenType 1.8">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
 
           
 
@@ -871,17 +849,6 @@
           
 
           
-          
-            <span id="/2017/02/28/R语言绘图/" class="leancloud_visitors" data-flag-title="R语言绘图">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
           
 
           
@@ -1082,17 +1049,6 @@
           
 
           
-          
-            <span id="/2017/02/28/Mahout算法库/" class="leancloud_visitors" data-flag-title="Mahout 算法库">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
           
 
           
@@ -1346,17 +1302,6 @@
 
           
           
-            <span id="/2017/02/28/《爱上统计学》读书笔记/" class="leancloud_visitors" data-flag-title="《爱上统计学》读书笔记">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
 
           
 
@@ -1555,17 +1500,6 @@
 
           
           
-            <span id="/2017/02/22/数据库中用户密码的保存方式/" class="leancloud_visitors" data-flag-title="数据库中用户密码的保存方式">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
 
           
 
@@ -1755,17 +1689,6 @@
           
 
           
-          
-            <span id="/2017/02/14/爬取云图网站图书详细信息/" class="leancloud_visitors" data-flag-title="爬取云图网站图书详细信息">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
           
 
           
@@ -1962,17 +1885,6 @@
 
           
           
-            <span id="/2017/02/08/git-常用命令/" class="leancloud_visitors" data-flag-title="git 常用命令">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
 
           
 
@@ -2167,17 +2079,6 @@
 
           
           
-            <span id="/2017/02/06/《Take My Hand》/" class="leancloud_visitors" data-flag-title="《Take My Hand》">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
 
           
 
@@ -2370,17 +2271,6 @@
           
 
           
-          
-            <span id="/2017/01/16/英文翻译积累/" class="leancloud_visitors" data-flag-title="英文翻译积累">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
           
 
           
@@ -3044,74 +2934,6 @@
 
 
   
-  
-  <script>
-    
-    function showTime(Counter) {
-      var entries = [];
-      var $visitors = $('.leancloud_visitors');
-
-      $visitors.each(function() {
-        entries.push( $(this).attr('id').trim() );
-      });
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { '$in': entries } }) })
-        .done(function({ results }) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.url;
-            var time = item.time;
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for (var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if (countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function ({ responseJSON }) {
-          console.log(`LeanCloud Counter Error: ${responseJSON.code} ${responseJSON.error}`);
-        });
-    }
-    
-
-    $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'tbIJcfswUFaknkcghWzvRaEM-gzGzoHsz')
-        .done(function({ api_server }) {
-          var Counter = function(method, url, data) {
-            return $.ajax({
-              method: method,
-              url: 'https://' + api_server + '/1.1' + url,
-              headers: {
-                'X-LC-Id': 'tbIJcfswUFaknkcghWzvRaEM-gzGzoHsz',
-                'X-LC-Key': 'ABRMf9eANJrcKAqn9xOgu5tt',
-                'Content-Type': 'application/json',
-              },
-              data: data
-            });
-          };
-          
-            if ($('.post-title-link').length >= 1) {
-              showTime(Counter);
-            }
-          
-        });
-    });
-  </script>
-
-
 
   
 

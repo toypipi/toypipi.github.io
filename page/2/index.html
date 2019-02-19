@@ -464,17 +464,6 @@
 
           
           
-            <span id="/2018/05/17/MySQL中批量创建表/" class="leancloud_visitors" data-flag-title="MySQL 中批量创建表">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
 
           
 
@@ -667,17 +656,6 @@
           
 
           
-          
-            <span id="/2018/04/17/innobackupex-的用法/" class="leancloud_visitors" data-flag-title="innobackupex 的用法">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
           
 
           
@@ -875,17 +853,6 @@
           
 
           
-          
-            <span id="/2018/04/17/入门指南和用法/" class="leancloud_visitors" data-flag-title="入门指南和用法">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
           
 
           
@@ -1090,17 +1057,6 @@
 
           
           
-            <span id="/2018/04/11/MySQL-运行状态-extended-status-详解/" class="leancloud_visitors" data-flag-title="MySQL 运行状态 extended-status 详解">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
 
           
 
@@ -1297,17 +1253,6 @@
 
           
           
-            <span id="/2018/04/04/XtraBackup-二进制程序/" class="leancloud_visitors" data-flag-title="XtraBackup 二进制程序">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
 
           
 
@@ -1502,17 +1447,6 @@
           
 
           
-          
-            <span id="/2018/04/03/Percona-XtraBackup-用户手册/" class="leancloud_visitors" data-flag-title="Percona XtraBackup 用户手册">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
           
 
           
@@ -1712,17 +1646,6 @@
 
           
           
-            <span id="/2018/04/02/git-别名配置/" class="leancloud_visitors" data-flag-title="git 别名配置">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
 
           
 
@@ -1915,17 +1838,6 @@
           
 
           
-          
-            <span id="/2018/04/02/加密备份/" class="leancloud_visitors" data-flag-title="加密备份">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
           
 
           
@@ -2129,17 +2041,6 @@
 
           
           
-            <span id="/2018/03/31/压缩备份/" class="leancloud_visitors" data-flag-title="压缩备份">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
 
           
 
@@ -2337,17 +2238,6 @@
           
 
           
-          
-            <span id="/2018/03/30/增量备份/" class="leancloud_visitors" data-flag-title="增量备份">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
           
 
           
@@ -3013,74 +2903,6 @@
 
 
   
-  
-  <script>
-    
-    function showTime(Counter) {
-      var entries = [];
-      var $visitors = $('.leancloud_visitors');
-
-      $visitors.each(function() {
-        entries.push( $(this).attr('id').trim() );
-      });
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { '$in': entries } }) })
-        .done(function({ results }) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.url;
-            var time = item.time;
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for (var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if (countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function ({ responseJSON }) {
-          console.log(`LeanCloud Counter Error: ${responseJSON.code} ${responseJSON.error}`);
-        });
-    }
-    
-
-    $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'tbIJcfswUFaknkcghWzvRaEM-gzGzoHsz')
-        .done(function({ api_server }) {
-          var Counter = function(method, url, data) {
-            return $.ajax({
-              method: method,
-              url: 'https://' + api_server + '/1.1' + url,
-              headers: {
-                'X-LC-Id': 'tbIJcfswUFaknkcghWzvRaEM-gzGzoHsz',
-                'X-LC-Key': 'ABRMf9eANJrcKAqn9xOgu5tt',
-                'Content-Type': 'application/json',
-              },
-              data: data
-            });
-          };
-          
-            if ($('.post-title-link').length >= 1) {
-              showTime(Counter);
-            }
-          
-        });
-    });
-  </script>
-
-
 
   
 
