@@ -492,7 +492,7 @@
 
       
         <hr>
-<p>使用以下命令查看 MySQL 详细运行状态：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqladmin -u root -p extended-status</span><br></pre></td></tr></table></figure></p>
+<p>使用以下命令查看 MySQL 详细运行状态：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqladmin -u root -<span class="selector-tag">p</span> extended-status</span><br></pre></td></tr></table></figure></p>
 <p>不同版本的 MySQL 输出的参数个数不同。以下为从 MySQL 5.7 版本官方文档截取的输出，各个参数的详细解释见下，中文含义后续用到哪个再去翻译吧。<br><div class="note info">
             <p>TIP<br>以下表格内容是从 MySQL 官网复制过来的，但是官网复制的是 html ，使用 <a href="https://tool.lu/markdown/" target="_blank" rel="noopener">html 转 markdown</a> 在线工具转换为 markdown，但是转换后的文本是这样的 <strong>| <a href="server-status-variables.html#statvar_Aborted_clients"> <code>Aborted_clients</code> </a> | integer | <code>GLOBAL</code> |</strong> ，有些不需要的字符，这时候可以使用 IDEA 编辑器的查找/替换功能，使用正则表达式匹配不需要的字符，然后替换为空字符就可以了。其中，替换小括号和里面内容的正则表达式语法如下 <code>[\(（][^\)）]+[\)）]</code></p>
           </div></p>
@@ -3215,6 +3215,29 @@ table th:nth-of-type(3) {
     
 
     
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>toypipi</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://toypipi.github.io/2018/04/11/MySQL-运行状态-extended-status-详解/" title="MySQL 运行状态 extended-status 详解">https://toypipi.github.io/2018/04/11/MySQL-运行状态-extended-status-详解/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
 
     <footer class="post-footer">
       
@@ -3369,6 +3392,8 @@ table th:nth-of-type(3) {
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
+                    
+                      
                     
                       
                     

@@ -491,9 +491,9 @@
       
 
       
-        <p>使用oh-my-zsh过程中遇到了中文乱码问题，经过上网查询，多数答案都是修改<code>~/.zshrc</code>文件，增如下内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export LC_ALL=en.UTF-8</span><br><span class="line">export LANG=en_US.UTF-8</span><br></pre></td></tr></table></figure></p>
-<p>然后：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure></p>
-<p>可是我更改了之后依然是乱码，使用<code>locale</code>命令报如下错误：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locale:Cannot set LC-ALL to default locale:No such file or directory</span><br></pre></td></tr></table></figure></p>
+        <p>使用oh-my-zsh过程中遇到了中文乱码问题，经过上网查询，多数答案都是修改<code>~/.zshrc</code>文件，增如下内容：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">export</span> <span class="attribute">LC_ALL</span>=en.UTF-8</span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">LANG</span>=en_US.UTF-8</span><br></pre></td></tr></table></figure></p>
+<p>然后：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure></p>
+<p>可是我更改了之后依然是乱码，使用<code>locale</code>命令报如下错误：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locale:Cannot <span class="builtin-name">set</span> LC-ALL <span class="keyword">to</span><span class="built_in"> default </span>locale:No such file <span class="keyword">or</span> directory</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <p>突然想到前几日<a href="https://toypipi.github.io/2017/06/20/%E5%8D%87%E7%BA%A7%E6%9C%8D%E5%8A%A1%E5%99%A8libc-2-12-so/">升级了CentOS 6.5的libc</a>，莫不是这个原因导致的？果断切换回libc-2.12.so，再次执行<code>locale</code>命令，没有报错，而且zsh也能正常显示中文了。</p>
 
@@ -542,6 +542,29 @@
       </div>
     
 
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>toypipi</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://toypipi.github.io/2017/07/04/oh-my-zsh中文乱码/" title="oh-my-zsh中文乱码">https://toypipi.github.io/2017/07/04/oh-my-zsh中文乱码/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -699,6 +722,8 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
+                    
+                      
                     
                       
                     

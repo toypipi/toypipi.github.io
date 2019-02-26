@@ -495,22 +495,22 @@
 <p>CentOS 6 安装 PERCONA XTRABACKUP MySQL 备份工具。</p>
 <ol>
 <li><p>首先去 <a href="https://www.percona.com/downloads/XtraBackup/LATEST/" target="_blank" rel="noopener">PERCONA</a> 下载并解压安装包。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf Percona-XtraBackup-2.4.9-ra467167cdd4-el7-x86_64-bundle.tar</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">tar</span> <span class="selector-tag">-xvf</span> <span class="selector-tag">Percona-XtraBackup-2</span><span class="selector-class">.4</span><span class="selector-class">.9-ra467167cdd4-el7-x86_64-bundle</span><span class="selector-class">.tar</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>下载并安装 <code>libev.so.4</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget ftp://rpmfind.net/linux/atrpms/el6-x86_64/atrpms/stable/libev-4.04-2.el6.x86_64.rpm</span><br><span class="line">rpm -ivh libev-4.04-2.el6.x86_64.rpm</span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget ftp:<span class="comment">//rpmfind.net/linux/atrpms/el6-x86_64/atrpms/stable/libev-4.04-2.el6.x86_64.rpm</span></span><br><span class="line">rpm -ivh libev-<span class="number">4.04</span>-<span class="number">2</span><span class="selector-class">.el6</span><span class="selector-class">.x86_64</span><span class="selector-class">.rpm</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>下载并安装 <code>perl-DBD-MySQL</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install  perl-DBD-MySQL</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span>  perl-DBD-MySQL</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安装 XTRABACKUP</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh percona-xtrabackup-24-2.4.9-1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">rpm</span> <span class="selector-tag">-ivh</span> <span class="selector-tag">percona-xtrabackup-24-2</span><span class="selector-class">.4</span><span class="selector-class">.9-1</span><span class="selector-class">.el7</span><span class="selector-class">.x86_64</span><span class="selector-class">.rpm</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Done!</p>
 <a id="more"></a>
 </li>
 </ol>
-<p><strong>NOTICE</strong><br>CentOS 7 安装 XTRABACKUP 还需要安装 perl 相关依赖包。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y perl-Digest-MD5</span><br></pre></td></tr></table></figure></p>
+<p><strong>NOTICE</strong><br>CentOS 7 安装 XTRABACKUP 还需要安装 perl 相关依赖包。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> -y perl-Digest-<span class="keyword">MD5</span></span><br></pre></td></tr></table></figure></p>
 <p><strong>参考文档</strong><br><a href="http://www.laozuo.org/11514.html" target="_blank" rel="noopener">解决安装XtraBackup出现”libev.so.4()(64bit) is needed”问题</a><br><a href="http://blog.csdn.net/evils798/article/details/51433073" target="_blank" rel="noopener">解决 libev.so.4()(64bit) is needed by percona-xtrabackup-2.3.4-1.el6.x86_64案例 </a></p>
 
       
@@ -558,6 +558,29 @@
       </div>
     
 
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>toypipi</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://toypipi.github.io/2018/03/21/CentOS6-安装-PERCONA-XTRABACKUP/" title="CentOS 6 安装 PERCONA XTRABACKUP">https://toypipi.github.io/2018/03/21/CentOS6-安装-PERCONA-XTRABACKUP/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -715,6 +738,8 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
+                    
+                      
                     
                       
                     

@@ -496,7 +496,7 @@
 <li>将 <a href="http://oio4l6s3j.bkt.clouddn.com/file/20170927/git-completion.bash" target="_blank" rel="noopener">git-completion.bash</a>  保存在你的 root 目录中。</li>
 <li>将 <a href="http://oio4l6s3j.bkt.clouddn.com/file/20170927/git-prompt.sh" target="_blank" rel="noopener">git-prompt.sh</a> 保存在你的 root 中。</li>
 <li><p>修改 .bash_profile 文件，添加如下内容。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> Enable tab completion</span><br><span class="line">source ~/git-completion.bash</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> colors!</span><br><span class="line">green="\[\033[0;32m\]"</span><br><span class="line">blue="\[\033[0;34m\]"</span><br><span class="line">purple="\[\033[0;35m\]"</span><br><span class="line">reset="\[\033[0m\]"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> Change command prompt</span><br><span class="line">source ~/git-prompt.sh</span><br><span class="line"></span><br><span class="line">export GIT_PS1_SHOWDIRTYSTATE=1</span><br><span class="line"><span class="meta">#</span> '\u' adds the name of the current user to the prompt</span><br><span class="line"><span class="meta">#</span> '\$(__git_ps1)' adds git-related stuff</span><br><span class="line"><span class="meta">#</span> '\W' adds the name of the current directory</span><br><span class="line">export PS1="$purple\u$green\$(__git_ps1)$blue \W $ $reset"</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Enable tab completion</span></span><br><span class="line">source ~/git-completion.bash</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> colors!</span></span><br><span class="line">green="\[\033[0;32m\]"</span><br><span class="line">blue="\[\033[0;34m\]"</span><br><span class="line">purple="\[\033[0;35m\]"</span><br><span class="line">reset="\[\033[0m\]"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> Change <span class="built_in">command</span> prompt</span></span><br><span class="line">source ~/git-prompt.sh</span><br><span class="line"></span><br><span class="line">export GIT_PS1_SHOWDIRTYSTATE=1</span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="string">'\u'</span> adds the name of the current user to the prompt</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="string">'\$(__git_ps1)'</span> adds git-related stuff</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="string">'\W'</span> adds the name of the current directory</span></span><br><span class="line">export PS1="$purple\u$green\$(__git_ps1)$blue \W $ $reset"</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Done !</p>
 </li>
@@ -547,6 +547,29 @@
       </div>
     
 
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>toypipi</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://toypipi.github.io/2017/09/27/CentOS-6-5-配置-git-工作空间/" title="CentOS 6.5 配置 Git 工作空间">https://toypipi.github.io/2017/09/27/CentOS-6-5-配置-git-工作空间/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -704,6 +727,8 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
+                    
+                      
                     
                       
                     

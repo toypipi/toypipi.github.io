@@ -881,7 +881,7 @@
           <hr>
 <p>所有 <strong>xtrabackup</strong> 配置都是通过选项完成的，这些选项的行为与标准 MySQL 程序选项完全相同：它们可以在命令行或通过诸如 <code>/etc/my.cnf</code> 的文件中指定。</p>
 <p><strong>xtrabackup</strong> 以 [mysqld] 和 [xtrabackup] 的顺序从任意配置文件中读取配置选项。因此它可以从现有的 MySQL 安装中读取已经配置的选项，例如 datadi r或一些 InnoDB 选项。如果您想要覆盖这些内容，只需在 [xtrabackup] 部分中指定它们，因为它稍后被读取，所以优先级更高。</p>
-<p>如果你不想这么做，你也可以不用在 my.cnf 中添加任何配置。您可以简单地在命令行上指定选项。通常，您可能会发现在 my.cnf 文件中的 [xtrabackup] 使用 target_dir 选项来指定默认备份目录会很方便，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[xtrabackup]</span><br><span class="line">target_dir = /data/backups/mysql/</span><br></pre></td></tr></table></figure></p>
+<p>如果你不想这么做，你也可以不用在 my.cnf 中添加任何配置。您可以简单地在命令行上指定选项。通常，您可能会发现在 my.cnf 文件中的 [xtrabackup] 使用 target_dir 选项来指定默认备份目录会很方便，例如：<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[xtrabackup]</span></span><br><span class="line"><span class="attr">target_dir</span> = /data/backups/mysql/</span><br></pre></td></tr></table></figure></p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1075,8 +1075,8 @@
         
           <hr>
 <p>找到 Redis 安装目录，进入 src 文件夹下，使用 <code>./redis-cli</code> 进入到 Redis 命令行交互界面。</p>
-<h3 id="是否启动"><a href="#是否启动" class="headerlink" title="是否启动"></a>是否启动</h3><p>检查 Redis 是否启动，如果返回 <code>PONG</code> 则表明 Redis 已经启动<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt;ping</span><br></pre></td></tr></table></figure></p>
-<h3 id="获取所有配置项"><a href="#获取所有配置项" class="headerlink" title="获取所有配置项"></a>获取所有配置项</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt;config get *</span><br></pre></td></tr></table></figure>
+<h3 id="是否启动"><a href="#是否启动" class="headerlink" title="是否启动"></a>是否启动</h3><p>检查 Redis 是否启动，如果返回 <code>PONG</code> 则表明 Redis 已经启动<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127<span class="selector-class">.0</span><span class="selector-class">.0</span><span class="selector-class">.1</span><span class="selector-pseudo">:6379</span>&gt;<span class="selector-tag">ping</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="获取所有配置项"><a href="#获取所有配置项" class="headerlink" title="获取所有配置项"></a>获取所有配置项</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127<span class="selector-class">.0</span><span class="selector-class">.0</span><span class="selector-class">.1</span><span class="selector-pseudo">:6379</span>&gt;<span class="selector-tag">config</span> <span class="selector-tag">get</span> *</span><br></pre></td></tr></table></figure>
 <p>Redis支持五种数据类型：string（字符串），hash（哈希），list（列表），set（集合）及 zset(sorted set：有序集合)。<br>
           <!--noindex-->
           
@@ -2416,6 +2416,8 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
+                    
+                      
                     
                       
                     

@@ -496,7 +496,7 @@
       
         <hr>
 <p>使用 <code>git status</code> 显示中文文件名乱码：</p>
-<p><img src="http://oio4l6s3j.bkt.clouddn.com/image/20170909/TIM%E6%88%AA%E5%9B%BE20170909093159.png" alt="中文乱码"><br>解决办法，在 Git Bash 中执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#不对0x80以上的字符进行quote，解决git status/commit时中文文件名乱码</span><br><span class="line">git config --global core.quotepath false</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://oio4l6s3j.bkt.clouddn.com/image/20170909/TIM%E6%88%AA%E5%9B%BE20170909093159.png" alt="中文乱码"><br>解决办法，在 Git Bash 中执行：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#不对0x80以上的字符进行quote，解决git status/commit时中文文件名乱码</span></span><br><span class="line">git<span class="built_in"> config </span>--global core.quotepath <span class="literal">false</span></span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <p>再次执行 <code>git status</code> ，中文名已经可以正常显示：</p>
 <p><img src="http://oio4l6s3j.bkt.clouddn.com/image/20170909/TIM%E6%88%AA%E5%9B%BE20170909093403.png" alt="正常显示"></p>
@@ -547,6 +547,29 @@
       </div>
     
 
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>toypipi</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://toypipi.github.io/2017/09/09/解决Git中文文件名显示乱码/" title="解决Git中文文件名显示乱码">https://toypipi.github.io/2017/09/09/解决Git中文文件名显示乱码/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -704,6 +727,8 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
+                    
+                      
                     
                       
                     

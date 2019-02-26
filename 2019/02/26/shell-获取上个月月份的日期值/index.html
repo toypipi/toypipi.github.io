@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="工作中有这样一个需求，每月一号将生产服务器中的数据备份到数据仓库中。之前是每月一号手动执行备份的命令，现在将其写成 shell 脚本，结合定时任务实现自动化备份。 以下为生产服务器上的脚本：定时任务10 9 1 * * /root/transform_data.sh">
-<meta name="keywords" content="shell,月份值">
+  <meta name="description" content="工作中有这样一个需求，每月一号将生产服务器中的数据备份到数据仓库中。之前是每月一号手动执行备份的命令，现在将其写成 shell 脚本，结合定时任务实现自动化备份。              以下为生产服务器上的脚本：            定时任务10 9 1 * * /root/transform_data.sh">
+<meta name="keywords" content="shell,月份日期值">
 <meta property="og:type" content="article">
 <meta property="og:title" content="shell 获取上个月月份的日期值">
-<meta property="og:url" content="https://toypipi.github.io/2019/02/26/shell-获取上个月的值/index.html">
+<meta property="og:url" content="https://toypipi.github.io/2019/02/26/shell-获取上个月月份的日期值/index.html">
 <meta property="og:site_name" content="toypipi&#39;s blog">
-<meta property="og:description" content="工作中有这样一个需求，每月一号将生产服务器中的数据备份到数据仓库中。之前是每月一号手动执行备份的命令，现在将其写成 shell 脚本，结合定时任务实现自动化备份。 以下为生产服务器上的脚本：定时任务10 9 1 * * /root/transform_data.sh">
+<meta property="og:description" content="工作中有这样一个需求，每月一号将生产服务器中的数据备份到数据仓库中。之前是每月一号手动执行备份的命令，现在将其写成 shell 脚本，结合定时任务实现自动化备份。              以下为生产服务器上的脚本：            定时任务10 9 1 * * /root/transform_data.sh">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-26T07:22:08.186Z">
+<meta property="og:updated_time" content="2019-02-26T07:49:58.174Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell 获取上个月月份的日期值">
-<meta name="twitter:description" content="工作中有这样一个需求，每月一号将生产服务器中的数据备份到数据仓库中。之前是每月一号手动执行备份的命令，现在将其写成 shell 脚本，结合定时任务实现自动化备份。 以下为生产服务器上的脚本：定时任务10 9 1 * * /root/transform_data.sh">
+<meta name="twitter:description" content="工作中有这样一个需求，每月一号将生产服务器中的数据备份到数据仓库中。之前是每月一号手动执行备份的命令，现在将其写成 shell 脚本，结合定时任务实现自动化备份。              以下为生产服务器上的脚本：            定时任务10 9 1 * * /root/transform_data.sh">
 
 
 
 
 
 
-  <link rel="canonical" href="https://toypipi.github.io/2019/02/26/shell-获取上个月的值/"/>
+  <link rel="canonical" href="https://toypipi.github.io/2019/02/26/shell-获取上个月月份的日期值/"/>
 
 
 
@@ -358,7 +358,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2019/02/26/shell-获取上个月的值/"/>
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2019/02/26/shell-获取上个月月份的日期值/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="toypipi"/>
@@ -401,7 +401,7 @@
                 
               
 
-              <time title="创建时间：2019-02-26 15:08:55 / 修改时间：15:22:08" itemprop="dateCreated datePublished" datetime="2019-02-26T15:08:55+08:00">2019-02-26</time>
+              <time title="创建时间：2019-02-26 15:08:55 / 修改时间：15:49:58" itemprop="dateCreated datePublished" datetime="2019-02-26T15:08:55+08:00">2019-02-26</time>
             
 
             
@@ -442,8 +442,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/02/26/shell-获取上个月的值/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/26/shell-获取上个月的值/" itemprop="commentCount"></span>
+                <a href="/2019/02/26/shell-获取上个月月份的日期值/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/26/shell-获取上个月月份的日期值/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -481,9 +481,12 @@
       
         <hr>
 <p>工作中有这样一个需求，每月一号将生产服务器中的数据备份到数据仓库中。之前是每月一号手动执行备份的命令，现在将其写成 shell 脚本，结合定时任务实现自动化备份。</p>
-<p>以下为生产服务器上的脚本：<br>定时任务<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 9 1 * * /root/transform_data.sh</span><br></pre></td></tr></table></figure></p>
+<div class="note info">
+            <p>以下为生产服务器上的脚本：</p>
+          </div>
+<p>定时任务<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 9 1 * * /root/transform_data.sh</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<p>shell 脚本 transform_data.sh. 注意 transform_data.sh 要赋予执行权限， X.X.X.X 为数据仓库的 ip 地址。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>! /bin/sh</span><br><span class="line"><span class="meta">#</span>此脚本用于将10.3.0.98数据上的水机数据备份到10.2.46.247，结合定时任务执行</span><br><span class="line"></span><br><span class="line">nowdate=`date +%Y%m01`  #本月第一天</span><br><span class="line">lastyearmonth=`date -d"$nowdate last month" +%Y%m` #显示年和上月</span><br><span class="line">echo "rsync -av /usr/local/mysql/water/slave_status_$lastyearmonth* X.X.X.X:/var/lib/mysql/water_gprs_backup"</span><br></pre></td></tr></table></figure></p>
+<p>shell 脚本 transform_data.sh. 注意 transform_data.sh 要赋予执行权限， X.X.X.X 为数据仓库的 ip 地址。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>! /bin/sh</span><br><span class="line"><span class="meta">#</span>此脚本用于将10.3.0.98数据上的水机数据备份到10.2.46.247，结合定时任务执行</span><br><span class="line"></span><br><span class="line">nowdate=`date +%Y%m01`  #本月第一天</span><br><span class="line">lastyearmonth=`date -d"$nowdate last month" +%Y%m` #显示年和上月月份值，如：201901</span><br><span class="line">echo "rsync -av /usr/local/mysql/water/slave_status_$lastyearmonth* X.X.X.X:/var/lib/mysql/water_gprs_backup"</span><br></pre></td></tr></table></figure></p>
 <p><strong>参考文档：</strong><br><a href="https://blog.csdn.net/xiaowenK/article/details/54019501" target="_blank" rel="noopener">在shell脚本中获取上个月最后一天的日期</a><br><a href="https://cloud.tencent.com/developer/article/1027570" target="_blank" rel="noopener">linux下监控某个目录是否被更改</a></p>
 
       
@@ -532,6 +535,29 @@
     
 
     
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>toypipi</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://toypipi.github.io/2019/02/26/shell-获取上个月月份的日期值/" title="shell 获取上个月月份的日期值">https://toypipi.github.io/2019/02/26/shell-获取上个月月份的日期值/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
 
     <footer class="post-footer">
       
@@ -539,7 +565,7 @@
           
             <a href="/tags/shell/" rel="tag"># shell</a>
           
-            <a href="/tags/月份值/" rel="tag"># 月份值</a>
+            <a href="/tags/月份日期值/" rel="tag"># 月份日期值</a>
           
         </div>
       
@@ -684,6 +710,8 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
+                    
+                      
                     
                       
                     

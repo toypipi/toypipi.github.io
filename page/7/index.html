@@ -869,10 +869,10 @@
       
         
           <hr>
-<h3 id="1-安装所需依赖包"><a href="#1-安装所需依赖包" class="headerlink" title="1.安装所需依赖包"></a>1.安装所需依赖包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc gcc-c++ ncurses ncurses-devel cmake bison bison-devel</span><br></pre></td></tr></table></figure>
+<h3 id="1-安装所需依赖包"><a href="#1-安装所需依赖包" class="headerlink" title="1.安装所需依赖包"></a>1.安装所需依赖包</h3><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y <span class="keyword">install </span>gcc gcc-c++ ncurses ncurses-devel cmake <span class="keyword">bison </span><span class="keyword">bison-devel</span></span><br></pre></td></tr></table></figure>
 <h3 id="2-下载源码包"><a href="#2-下载源码包" class="headerlink" title="2.下载源码包"></a>2.下载源码包</h3><p>可以去<a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">官网</a>下载，也可以从<a href="http://pan.baidu.com/s/1i4PjkQ5" target="_blank" rel="noopener">百度网盘</a> ，密码：7u29，下载。<br><strong>注意：</strong> mysql 5.7 需要boost 1.59 及以上版本，可以在下载MySQL源码包时选择以包含boost版本。</p>
-<h3 id="3-新建mysql用户及用户组"><a href="#3-新建mysql用户及用户组" class="headerlink" title="3.新建mysql用户及用户组"></a>3.新建mysql用户及用户组</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">groupadd -r mysql</span><br><span class="line">useradd -r -g mysql mysql</span><br></pre></td></tr></table></figure>
-<h3 id="4-新建MySQL数据库数据文件目录"><a href="#4-新建MySQL数据库数据文件目录" class="headerlink" title="4.新建MySQL数据库数据文件目录"></a>4.新建MySQL数据库数据文件目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /home/mysql/data</span><br><span class="line">mkdir -p /home/mysql/logs</span><br><span class="line">mkdir -p /home/mysql/temp</span><br></pre></td></tr></table></figure>
+<h3 id="3-新建mysql用户及用户组"><a href="#3-新建mysql用户及用户组" class="headerlink" title="3.新建mysql用户及用户组"></a>3.新建mysql用户及用户组</h3><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">groupadd -r mysql</span></span><br><span class="line"><span class="attribute">useradd -r -g mysql mysql</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-新建MySQL数据库数据文件目录"><a href="#4-新建MySQL数据库数据文件目录" class="headerlink" title="4.新建MySQL数据库数据文件目录"></a>4.新建MySQL数据库数据文件目录</h3><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /<span class="built_in">home</span>/mysql/data</span><br><span class="line"><span class="built_in">mkdir</span> -p /<span class="built_in">home</span>/mysql/logs</span><br><span class="line"><span class="built_in">mkdir</span> -p /<span class="built_in">home</span>/mysql/temp</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -2396,6 +2396,8 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
+                    
+                      
                     
                       
                     

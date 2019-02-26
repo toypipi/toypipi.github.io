@@ -357,7 +357,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2019/02/26/shell-获取上个月的值/"/>
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2019/02/26/shell-获取上个月月份的日期值/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="toypipi"/>
@@ -377,7 +377,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/02/26/shell-获取上个月的值/" class="post-title-link" itemprop="url">shell 获取上个月月份的日期值</a>
+                <a href="/2019/02/26/shell-获取上个月月份的日期值/" class="post-title-link" itemprop="url">shell 获取上个月月份的日期值</a>
               
             
           </h1>
@@ -402,7 +402,7 @@
                 
               
 
-              <time title="创建时间：2019-02-26 15:08:55 / 修改时间：15:22:08" itemprop="dateCreated datePublished" datetime="2019-02-26T15:08:55+08:00">2019-02-26</time>
+              <time title="创建时间：2019-02-26 15:08:55 / 修改时间：15:49:58" itemprop="dateCreated datePublished" datetime="2019-02-26T15:08:55+08:00">2019-02-26</time>
             
 
             
@@ -443,8 +443,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/02/26/shell-获取上个月的值/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/26/shell-获取上个月的值/" itemprop="commentCount"></span>
+                <a href="/2019/02/26/shell-获取上个月月份的日期值/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/26/shell-获取上个月月份的日期值/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -475,11 +475,14 @@
         
           <hr>
 <p>工作中有这样一个需求，每月一号将生产服务器中的数据备份到数据仓库中。之前是每月一号手动执行备份的命令，现在将其写成 shell 脚本，结合定时任务实现自动化备份。</p>
-<p>以下为生产服务器上的脚本：<br>定时任务<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 9 1 * * /root/transform_data.sh</span><br></pre></td></tr></table></figure></p>
+<div class="note info">
+            <p>以下为生产服务器上的脚本：</p>
+          </div>
+<p>定时任务<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 9 1 * * /root/transform_data.sh</span><br></pre></td></tr></table></figure></p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2019/02/26/shell-获取上个月的值/#more" rel="contents">
+              <a class="btn" href="/2019/02/26/shell-获取上个月月份的日期值/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1438,7 +1441,7 @@ table th:nth-of-type(4) {
       
         
           <hr>
-<p>今天使用测试数据库时发现突然无法连接了，然后登录到服务器上查看 MySQL 进程还在，使用命令 <code>service restart mysql</code> 重启 MySQL 报错:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MySQL server PID file could not be found!     [FAILED]</span><br><span class="line">Starting MySQL...The server quit without updating PID file (/usr/local/mysql/data/mysql.pid).</span><br></pre></td></tr></table></figure></p>
+<p>今天使用测试数据库时发现突然无法连接了，然后登录到服务器上查看 MySQL 进程还在，使用命令 <code>service restart mysql</code> 重启 MySQL 报错:<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MySQL<span class="built_in"> server </span>PID file could <span class="keyword">not</span> be found!     [FAILED]</span><br><span class="line">Starting MySQL<span class="built_in">..</span>.The<span class="built_in"> server </span>quit without updating PID file (/usr/local/mysql/data/mysql.pid).</span><br></pre></td></tr></table></figure></p>
 <p>经过一番网上查询，有说磁盘满会导致此问题，马上检查了一下，果然 <code>/</code> 目录已经使用了 98% ，删除一些不再使用的程序包后。重启 MySQL 还是同样的问题。</p>
           <!--noindex-->
           
@@ -2359,6 +2362,8 @@ table th:nth-of-type(4) {
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
+                    
+                      
                     
                       
                     

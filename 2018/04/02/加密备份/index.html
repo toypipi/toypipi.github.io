@@ -501,33 +501,33 @@
 <li><code>--encrypt-key-file=KEYFILE</code> - 可从中读取适当长度的原始密钥的文件的名称。该文件必须是一个简单的二进制（或文本）文件，其中准确存储了需要使用的密钥。</li>
 </ul>
 <p><code>xtrabackup --encrypt-key</code> 选项和<code>xtrabackup --encrypt-key-file</code> 选项均可用于指定加密密钥。加密密钥可以使用如下命令生成：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ openssl rand -base64 24</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> openssl rand -base64 24</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>该命令的输出示例如下所示：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GCHFLrDFVx6UAsRb88uLVbAVWbK+Yzfs</span><br></pre></td></tr></table></figure>
 <p>该值稍后可以用作加密密钥</p>
 <h1 id="使用-encrypt-key-选项"><a href="#使用-encrypt-key-选项" class="headerlink" title="使用 --encrypt-key 选项"></a>使用 <code>--encrypt-key</code> 选项</h1><p>使用 <code>xtrabackup --encrypt-key</code> 的 xtrabackup 命令示例应如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup --backup --target-dir=/data/backups --encrypt=AES256 \</span><br><span class="line">--encrypt-key=&quot;GCHFLrDFVx6UAsRb88uLVbAVWbK+Yzfs&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup --backup <span class="attribute">--target-dir</span>=/data/backups <span class="attribute">--encrypt</span>=AES256 \</span><br><span class="line"><span class="attribute">--encrypt-key</span>=<span class="string">"GCHFLrDFVx6UAsRb88uLVbAVWbK+Yzfs"</span></span><br></pre></td></tr></table></figure>
 <h1 id="使用-encrypt-key-file-选项"><a href="#使用-encrypt-key-file-选项" class="headerlink" title="使用 --encrypt-key-file 选项"></a>使用 <code>--encrypt-key-file</code> 选项</h1><p>使用 <code>xtrabackup --encrypt-key-file</code> 的 xtrabackup 命令示例应如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup --backup --target-dir=/data/backups/ --encrypt=AES256 \</span><br><span class="line">--encrypt-key-file=/data/backups/keyfile</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup --backup <span class="attribute">--target-dir</span>=/data/backups/ <span class="attribute">--encrypt</span>=AES256 \</span><br><span class="line"><span class="attribute">--encrypt-key-file</span>=/data/backups/keyfile</span><br></pre></td></tr></table></figure>
 <div class="note default">
             <p>注意<br>在某些情况下，使用不同的文本编辑器生成 <code>KEYFILE</code> ，文本文件可能包含 CRLF，这将导致密钥大小增大，从而使其无效。建议使用如下方法创建密钥文件：<code>echo -n &quot;GCHFLrDFVx6UAsRb88uLVbAVWbK+Yzfs&quot; &gt; /data/backups/keyfile</code></p>
           </div>
 <h1 id="优化加密过程"><a href="#优化加密过程" class="headerlink" title="优化加密过程"></a>优化加密过程</h1><p>有两个可用于加速加密过程的加密备份选项。分别是 <code>xtrabackup --encrypt-threads</code> 和 <code>xtrabackup --encrypt-chunk-size</code>。通过使用 <code>xtrabackup --encrypt-threads</code> 选项，可以指定多个线程用于并行加密。选项 <code>xtrabackup --encrypt-chunk-size</code> 可用于指定每个加密线程的加密缓冲区的大小（以字节为单位）（默认值为64K）。</p>
 <h1 id="解密加密备份"><a href="#解密加密备份" class="headerlink" title="解密加密备份"></a>解密加密备份</h1><p>Percona XtraBackup 已经实现了用于解密备份的解密选项 <code>xtrabackup --decrypt</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup --decrypt=AES256 --encrypt-key=&quot;GCHFLrDFVx6UAsRb88uLVbAVWbK+Yzfs&quot;\</span><br><span class="line">--target-dir=/data/backups/</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup <span class="attribute">--decrypt</span>=AES256 <span class="attribute">--encrypt-key</span>=<span class="string">"GCHFLrDFVx6UAsRb88uLVbAVWbK+Yzfs"</span>\</span><br><span class="line"><span class="attribute">--target-dir</span>=/data/backups/</span><br></pre></td></tr></table></figure>
 <p>Percona XtraBackup 不会自动删除加密文件。为了清理备份目录，用户应该自行删除 <code>*.xbcrypt</code> 文件。在 Percona XtraBackup 2.4.6 中，您可以使用 <code>xtrabackup --remove-original</code> 选项在解密后删除加密文件。要在解密文件后删除文件，您应该运行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup --decrypt=AES256 --encrypt-key=&quot;GCHFLrDFVx6UAsRb88uLVbAVWbK+Yzfs&quot;\</span><br><span class="line">--target-dir=/data/backups/ --remove-original</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup <span class="attribute">--decrypt</span>=AES256 <span class="attribute">--encrypt-key</span>=<span class="string">"GCHFLrDFVx6UAsRb88uLVbAVWbK+Yzfs"</span>\</span><br><span class="line"><span class="attribute">--target-dir</span>=/data/backups/ --remove-original</span><br></pre></td></tr></table></figure>
 <div class="note default">
             <p>注意<br><code>xtrabackup --parallel</code> 可与 <code>xtrabackup --decrypt</code> 选项一起使用，同时解密多个文件。</p>
           </div>
 <p>当文件已经被解密时，可以准备备份了。</p>
 <h1 id="准备加密备份"><a href="#准备加密备份" class="headerlink" title="准备加密备份"></a>准备加密备份</h1><p>备份解密后，可以使用 <code>xtrabackup --prepare</code> 选项以与标准完整备份相同的方式进行准备：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup --prepare --target-dir=/data/backups/</span><br></pre></td></tr></table></figure>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">$</span> <span class="comment">xtrabackup</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">prepare</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">target</span><span class="literal">-</span><span class="comment">dir=/data/backups/</span></span><br></pre></td></tr></table></figure>
 <h1 id="恢复加密的备份"><a href="#恢复加密的备份" class="headerlink" title="恢复加密的备份"></a>恢复加密的备份</h1><p><strong>xtrabackup</strong> 有一个 <code>xtrabackup --copy-back</code> 选项，可用于将备份还原到服务器的 <code>datadir</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup --copy-back --target-dir=/data/backups/</span><br></pre></td></tr></table></figure>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup --copy-<span class="keyword">back </span>--target-dir=/<span class="meta">data</span>/<span class="keyword">backups/</span></span><br></pre></td></tr></table></figure>
 <p>它会将所有与数据相关的文件复制到服务器的 <code>datadir</code>，需要复制的文件由服务器的 <code>my.cnf</code> 配置文件决定。您应该检查输出的最后一行以获取成功消息：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">170214 12:37:01 completed OK!</span><br></pre></td></tr></table></figure>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">170214 </span><span class="number">12</span>:<span class="number">37</span>:<span class="number">01</span> completed OK!</span><br></pre></td></tr></table></figure>
 <h1 id="其他阅读"><a href="#其他阅读" class="headerlink" title="其他阅读"></a>其他阅读</h1><ul>
 <li><a href="https://www.gnupg.org/documentation/manuals/gcrypt/" target="_blank" rel="noopener">Libgcrypt 参考手册</a></li>
 </ul>
@@ -577,6 +577,29 @@
       </div>
     
 
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>toypipi</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://toypipi.github.io/2018/04/02/加密备份/" title="加密备份">https://toypipi.github.io/2018/04/02/加密备份/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -741,6 +764,8 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
+                    
+                      
                     
                       
                     

@@ -498,7 +498,7 @@
 <h2 id="1-数据和表：保存所有东西的地方"><a href="#1-数据和表：保存所有东西的地方" class="headerlink" title="1.数据和表：保存所有东西的地方"></a>1.数据和表：保存所有东西的地方</h2><h3 id="什么是数据库"><a href="#什么是数据库" class="headerlink" title="什么是数据库"></a>什么是数据库</h3><p>数据库是保存表和其他相关SQL结构的容器。</p>
 <h3 id="数据库包含关联数据"><a href="#数据库包含关联数据" class="headerlink" title="数据库包含关联数据"></a>数据库包含关联数据</h3><p>数据库中所有的表应该能以某种方式相互关联。<br><strong>列</strong>是存储在表中的一列数据。行是一组能够描述某个事物的列的集合。列和行构成了表。<br><a id="more"></a><br>创建数据库和表<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> gregs_list;</span><br><span class="line"><span class="keyword">USE</span> gregs_list;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> my_contacts</span><br><span class="line">(</span><br><span class="line">last_name VARBINARY(<span class="number">30</span>),</span><br><span class="line">first_name <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">email <span class="built_in">VARCHAR</span>(<span class="number">50</span>),</span><br><span class="line">gender <span class="built_in">CHAR</span>(<span class="number">1</span>),</span><br><span class="line">birthday <span class="built_in">DATE</span>,</span><br><span class="line">profession <span class="built_in">VARCHAR</span>(<span class="number">50</span>),</span><br><span class="line">location VARBINARY(<span class="number">50</span>),</span><br><span class="line"><span class="keyword">status</span> <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">interests VARBINARY(<span class="number">100</span>),</span><br><span class="line">seeking <span class="built_in">VARCHAR</span>(<span class="number">100</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
 <p>检查创建的数据库表<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DESC my_contacts;</span><br></pre></td></tr></table></figure></p>
-<p>删除已经创建的表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE my_contacts;</span><br></pre></td></tr></table></figure></p>
+<p>删除已经创建的表<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> my_contacts;</span><br></pre></td></tr></table></figure></p>
 <p><strong>NULL</strong>是未定义的值。它不等于零，也不等于空值。</p>
 <h2 id="2-SELECT语句：取得精美包装里的数据"><a href="#2-SELECT语句：取得精美包装里的数据" class="headerlink" title="2.SELECT语句：取得精美包装里的数据"></a>2.SELECT语句：取得精美包装里的数据</h2><h3 id="单引号是特殊字符"><a href="#单引号是特殊字符" class="headerlink" title="单引号是特殊字符"></a>单引号是特殊字符</h3><p>在试着插入包含单引号的VARCHAR、CHAR、BLOB数据时，必须对RDBMS说明，这些数据值中的单引号并非表示文本的结束，而是文本的一部分，应该保留在行中。在单引号字符的前面加上反斜线就能达到说明的效果。</p>
 <h2 id="3-DELETE和UPDATE：改变是件好事"><a href="#3-DELETE和UPDATE：改变是件好事" class="headerlink" title="3.DELETE和UPDATE：改变是件好事"></a>3.DELETE和UPDATE：改变是件好事</h2><p>使用DELETE语句需要注意，当不加WHERE条件时，将删除表中的所有行。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> your_table;</span><br></pre></td></tr></table></figure></p>
@@ -549,6 +549,29 @@
       </div>
     
 
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>toypipi</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://toypipi.github.io/2017/05/05/《深入浅出SQL》读书笔记/" title="《深入浅出SQL》读书笔记">https://toypipi.github.io/2017/05/05/《深入浅出SQL》读书笔记/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -715,6 +738,8 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
+                    
+                      
                     
                       
                     

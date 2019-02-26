@@ -482,7 +482,7 @@
 
       
         <hr>
-<p>今天使用测试数据库时发现突然无法连接了，然后登录到服务器上查看 MySQL 进程还在，使用命令 <code>service restart mysql</code> 重启 MySQL 报错:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MySQL server PID file could not be found!     [FAILED]</span><br><span class="line">Starting MySQL...The server quit without updating PID file (/usr/local/mysql/data/mysql.pid).</span><br></pre></td></tr></table></figure></p>
+<p>今天使用测试数据库时发现突然无法连接了，然后登录到服务器上查看 MySQL 进程还在，使用命令 <code>service restart mysql</code> 重启 MySQL 报错:<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MySQL<span class="built_in"> server </span>PID file could <span class="keyword">not</span> be found!     [FAILED]</span><br><span class="line">Starting MySQL<span class="built_in">..</span>.The<span class="built_in"> server </span>quit without updating PID file (/usr/local/mysql/data/mysql.pid).</span><br></pre></td></tr></table></figure></p>
 <p>经过一番网上查询，有说磁盘满会导致此问题，马上检查了一下，果然 <code>/</code> 目录已经使用了 98% ，删除一些不再使用的程序包后。重启 MySQL 还是同样的问题。</p>
 <a id="more"></a>
 <p>网上的其他解决方案试了也不行。后来我想要不使用 MySQL 安全模式启动试试看。执行命令 <code>./mysqld_safe</code> 后，检查 MySQL 日志文件 <code>tail -100  /var/log/mysqld.log</code> ，终于发现了问题所在：</p>
@@ -535,6 +535,29 @@
       </div>
     
 
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>toypipi</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://toypipi.github.io/2018/07/20/MySQL-server-PID-file-could-not-be-found/" title="MySQL server PID file could not be found!">https://toypipi.github.io/2018/07/20/MySQL-server-PID-file-could-not-be-found/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -690,6 +713,8 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
+                    
+                      
                     
                       
                     

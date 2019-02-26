@@ -866,7 +866,7 @@
       
         
           <hr>
-<h1 id="制作本地完整备份（创建，准备和还原）"><a href="#制作本地完整备份（创建，准备和还原）" class="headerlink" title="制作本地完整备份（创建，准备和还原）"></a>制作本地完整备份（创建，准备和还原）</h1><h2 id="创建备份"><a href="#创建备份" class="headerlink" title="创建备份"></a>创建备份</h2><p>这是最简单的用例。 它将所有的 <em>MySQL</em> 数据复制到指定的目录中。 以下是如何备份 <code>my.cnf</code> 中指定的 <code>datadir</code> 中的所有数据库。 它会将备份置于 <code>/data/backups/</code> 由时间标记的子目录中，在本例中为 <code>/data/backups/2010-03-13_02-42-44</code>，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ innobackupex /data/backups</span><br></pre></td></tr></table></figure></p>
+<h1 id="制作本地完整备份（创建，准备和还原）"><a href="#制作本地完整备份（创建，准备和还原）" class="headerlink" title="制作本地完整备份（创建，准备和还原）"></a>制作本地完整备份（创建，准备和还原）</h1><h2 id="创建备份"><a href="#创建备份" class="headerlink" title="创建备份"></a>创建备份</h2><p>这是最简单的用例。 它将所有的 <em>MySQL</em> 数据复制到指定的目录中。 以下是如何备份 <code>my.cnf</code> 中指定的 <code>datadir</code> 中的所有数据库。 它会将备份置于 <code>/data/backups/</code> 由时间标记的子目录中，在本例中为 <code>/data/backups/2010-03-13_02-42-44</code>，<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ innobackupex /<span class="class"><span class="keyword">data</span>/backups</span></span><br></pre></td></tr></table></figure></p>
 <p>备份过程中有很多输出，但你需要确保在备份结束时看到以下内容。 如果你没有看到这个输出，那么表示你的备份失败：</p>
 <blockquote>
 <p>100313 02:43:07  innobackupex: completed OK!</p>
@@ -1266,7 +1266,7 @@
       
         
           <hr>
-<p>使用以下命令查看 MySQL 详细运行状态：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqladmin -u root -p extended-status</span><br></pre></td></tr></table></figure></p>
+<p>使用以下命令查看 MySQL 详细运行状态：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqladmin -u root -<span class="selector-tag">p</span> extended-status</span><br></pre></td></tr></table></figure></p>
 <p>不同版本的 MySQL 输出的参数个数不同。以下为从 MySQL 5.7 版本官方文档截取的输出，各个参数的详细解释见下，中文含义后续用到哪个再去翻译吧。<br><div class="note info">
             <p>TIP<br>以下表格内容是从 MySQL 官网复制过来的，但是官网复制的是 html ，使用 <a href="https://tool.lu/markdown/" target="_blank" rel="noopener">html 转 markdown</a> 在线工具转换为 markdown，但是转换后的文本是这样的 <strong>| <a href="server-status-variables.html#statvar_Aborted_clients"> <code>Aborted_clients</code> </a> | integer | <code>GLOBAL</code> |</strong> ，有些不需要的字符，这时候可以使用 IDEA 编辑器的查找/替换功能，使用正则表达式匹配不需要的字符，然后替换为空字符就可以了。其中，替换小括号和里面内容的正则表达式语法如下 <code>[\(（][^\)）]+[\)）]</code></p>
           </div></p>
@@ -1855,7 +1855,7 @@
       
         
           <hr>
-<p>记录我自己配置的 git 别名。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">root ~ $ cat .gitconfig</span><br><span class="line">[user]</span><br><span class="line">	name = toypipi</span><br><span class="line">	email = 275688469@qq.com</span><br><span class="line">[credential]</span><br><span class="line">	helper = store</span><br><span class="line">[i18n]</span><br><span class="line">	commitencoding = utf-8</span><br><span class="line">	logoutputencoidng = utf-8</span><br><span class="line">	encoding = utf-8</span><br><span class="line">[core]</span><br><span class="line">	autocrlf = input</span><br><span class="line">[alias]</span><br><span class="line">	lg = log --color --graph --pretty=format:&apos;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&apos; --abbrev-commit</span><br><span class="line">	ci = commit</span><br><span class="line">	st = status</span><br><span class="line">	pl = pull</span><br><span class="line">	ph = push</span><br></pre></td></tr></table></figure></p>
+<p>记录我自己配置的 git 别名。<br><figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">root ~ $ cat .gitconfig</span><br><span class="line">[user]</span><br><span class="line">	name = toypipi</span><br><span class="line">	email = <span class="number">275688469</span><span class="title">@qq.com</span></span><br><span class="line">[credential]</span><br><span class="line">	helper = <span class="keyword">store</span></span><br><span class="line">[<span class="keyword">i18</span>n]</span><br><span class="line">	commitencoding = utf<span class="number">-8</span></span><br><span class="line">	logoutputencoidng = utf<span class="number">-8</span></span><br><span class="line">	encoding = utf<span class="number">-8</span></span><br><span class="line">[core]</span><br><span class="line">	autocrlf = input</span><br><span class="line">[<span class="keyword">alias</span>]</span><br><span class="line">	lg = log --color --graph --pretty=format:'<span class="symbol">%Cred</span><span class="symbol">%h</span><span class="symbol">%Creset</span> -<span class="symbol">%C</span>(yellow)<span class="symbol">%d</span><span class="symbol">%Creset</span> <span class="symbol">%s</span> <span class="symbol">%Cgreen</span>(<span class="symbol">%cr</span>) <span class="symbol">%C</span>(bold blue)&lt;<span class="symbol">%an</span>&gt;<span class="symbol">%Creset</span>' --abbrev-commit</span><br><span class="line">	ci = commit</span><br><span class="line">	st = status</span><br><span class="line">	pl = pull</span><br><span class="line">	ph = push</span><br></pre></td></tr></table></figure></p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -2057,7 +2057,7 @@
 <li><code>--encrypt-key-file=KEYFILE</code> - 可从中读取适当长度的原始密钥的文件的名称。该文件必须是一个简单的二进制（或文本）文件，其中准确存储了需要使用的密钥。</li>
 </ul>
 <p><code>xtrabackup --encrypt-key</code> 选项和<code>xtrabackup --encrypt-key-file</code> 选项均可用于指定加密密钥。加密密钥可以使用如下命令生成：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ openssl rand -base64 24</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> openssl rand -base64 24</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -2252,9 +2252,9 @@
           <hr>
 <p>Percona XtraBackup 实现了对压缩备份的支持。它可以使用 <a href="https://www.percona.com/doc/percona-xtrabackup/LATEST/glossary.html#term-xbstream" target="_blank" rel="noopener">xbstream</a> 压缩、解压缩本地备份或流式备份。</p>
 <h1 id="创建压缩备份"><a href="#创建压缩备份" class="headerlink" title="创建压缩备份"></a>创建压缩备份</h1><p>为了进行压缩备份，您需要使用 <code>xtrabackup --compress</code> 选项：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup --backup --compress --target-dir=/data/compressed/</span><br></pre></td></tr></table></figure>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">$</span> <span class="comment">xtrabackup</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">backup</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">compress</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">target</span><span class="literal">-</span><span class="comment">dir=/data/compressed/</span></span><br></pre></td></tr></table></figure>
 <p>如果您想加快压缩速度，可以使用并行压缩，可以使用 <code>xtrabackup --compress-threads</code> 选项启用并行压缩。以下示例将使用四个线程进行压缩：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup --backup --compress --compress-threads=4 \</span><br><span class="line">--target-dir=/data/compressed/</span><br></pre></td></tr></table></figure>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">$</span> <span class="comment">xtrabackup</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">backup</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">compress</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">compress</span><span class="literal">-</span><span class="comment">threads=4</span> <span class="comment">\</span></span><br><span class="line"><span class="comment"></span><span class="literal">-</span><span class="literal">-</span><span class="comment">target</span><span class="literal">-</span><span class="comment">dir=/data/compressed/</span></span><br></pre></td></tr></table></figure>
 <p>输出看起来像这样<br>
           <!--noindex-->
           
@@ -2410,6 +2410,8 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
+                    
+                      
                     
                       
                     

@@ -494,30 +494,30 @@
         <hr>
 <p>Percona XtraBackup 实现了对压缩备份的支持。它可以使用 <a href="https://www.percona.com/doc/percona-xtrabackup/LATEST/glossary.html#term-xbstream" target="_blank" rel="noopener">xbstream</a> 压缩、解压缩本地备份或流式备份。</p>
 <h1 id="创建压缩备份"><a href="#创建压缩备份" class="headerlink" title="创建压缩备份"></a>创建压缩备份</h1><p>为了进行压缩备份，您需要使用 <code>xtrabackup --compress</code> 选项：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup --backup --compress --target-dir=/data/compressed/</span><br></pre></td></tr></table></figure>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">$</span> <span class="comment">xtrabackup</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">backup</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">compress</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">target</span><span class="literal">-</span><span class="comment">dir=/data/compressed/</span></span><br></pre></td></tr></table></figure>
 <p>如果您想加快压缩速度，可以使用并行压缩，可以使用 <code>xtrabackup --compress-threads</code> 选项启用并行压缩。以下示例将使用四个线程进行压缩：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup --backup --compress --compress-threads=4 \</span><br><span class="line">--target-dir=/data/compressed/</span><br></pre></td></tr></table></figure>
-<p>输出看起来像这样<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">170223 13:00:38 [01] Compressing ./test/sbtest1.frm to /tmp/compressed/test/sbtest1.frm.qp</span><br><span class="line">170223 13:00:38 [01]        ...done</span><br><span class="line">170223 13:00:38 [01] Compressing ./test/sbtest2.frm to /tmp/compressed/test/sbtest2.frm.qp</span><br><span class="line">170223 13:00:38 [01]        ...done</span><br><span class="line">...</span><br><span class="line">170223 13:00:39 [00] Compressing xtrabackup_info</span><br><span class="line">170223 13:00:39 [00]        ...done</span><br><span class="line">xtrabackup: Transaction log of lsn (9291934) to (9291934) was copied.</span><br><span class="line">170223 13:00:39 completed OK!</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">$</span> <span class="comment">xtrabackup</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">backup</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">compress</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">compress</span><span class="literal">-</span><span class="comment">threads=4</span> <span class="comment">\</span></span><br><span class="line"><span class="comment"></span><span class="literal">-</span><span class="literal">-</span><span class="comment">target</span><span class="literal">-</span><span class="comment">dir=/data/compressed/</span></span><br></pre></td></tr></table></figure>
+<p>输出看起来像这样<br><a id="more"></a><br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="selector-tag">170223</span> <span class="selector-tag">13</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:38</span> <span class="selector-attr">[01]</span> <span class="selector-tag">Compressing</span> ./<span class="selector-tag">test</span>/<span class="selector-tag">sbtest1</span><span class="selector-class">.frm</span> <span class="selector-tag">to</span> /<span class="selector-tag">tmp</span>/<span class="selector-tag">compressed</span>/<span class="selector-tag">test</span>/<span class="selector-tag">sbtest1</span><span class="selector-class">.frm</span><span class="selector-class">.qp</span></span><br><span class="line"><span class="selector-tag">170223</span> <span class="selector-tag">13</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:38</span> <span class="selector-attr">[01]</span>        ..<span class="selector-class">.done</span></span><br><span class="line"><span class="selector-tag">170223</span> <span class="selector-tag">13</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:38</span> <span class="selector-attr">[01]</span> <span class="selector-tag">Compressing</span> ./<span class="selector-tag">test</span>/<span class="selector-tag">sbtest2</span><span class="selector-class">.frm</span> <span class="selector-tag">to</span> /<span class="selector-tag">tmp</span>/<span class="selector-tag">compressed</span>/<span class="selector-tag">test</span>/<span class="selector-tag">sbtest2</span><span class="selector-class">.frm</span><span class="selector-class">.qp</span></span><br><span class="line"><span class="selector-tag">170223</span> <span class="selector-tag">13</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:38</span> <span class="selector-attr">[01]</span>        ..<span class="selector-class">.done</span></span><br><span class="line">...</span><br><span class="line"><span class="selector-tag">170223</span> <span class="selector-tag">13</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:39</span> <span class="selector-attr">[00]</span> <span class="selector-tag">Compressing</span> <span class="selector-tag">xtrabackup_info</span></span><br><span class="line"><span class="selector-tag">170223</span> <span class="selector-tag">13</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:39</span> <span class="selector-attr">[00]</span>        ..<span class="selector-class">.done</span></span><br><span class="line"><span class="selector-tag">xtrabackup</span>: <span class="selector-tag">Transaction</span> <span class="selector-tag">log</span> <span class="selector-tag">of</span> <span class="selector-tag">lsn</span> (<span class="number">9291934</span>) <span class="selector-tag">to</span> (<span class="number">9291934</span>) <span class="selector-tag">was</span> <span class="selector-tag">copied</span>.</span><br><span class="line"><span class="selector-tag">170223</span> <span class="selector-tag">13</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:39</span> <span class="selector-tag">completed</span> <span class="selector-tag">OK</span>!</span><br></pre></td></tr></table></figure></p>
 <h1 id="准备备份"><a href="#准备备份" class="headerlink" title="准备备份"></a>准备备份</h1><p>在准备备份之前，您需要解压所有文件。 Percona XtraBackup 提供 <code>xtrabackup --decompress</code> 选项，可用于解压备份。</p>
 <div class="note default">
             <p>注意<br>在继续操作之前，您需要确保已安装 <a href="http://www.quicklz.com/" target="_blank" rel="noopener">qpress</a>。它可以从 <a href="https://www.percona.com/doc/percona-xtrabackup/LATEST/installation.html#installing-from-binaries" target="_blank" rel="noopener">Percona软件仓库</a>获得</p>
           </div>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup --decompress --target-dir=/data/compressed/</span><br></pre></td></tr></table></figure>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">$</span> <span class="comment">xtrabackup</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">decompress</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">target</span><span class="literal">-</span><span class="comment">dir=/data/compressed/</span></span><br></pre></td></tr></table></figure>
 <div class="note default">
             <p>注意<br><code>xtrabackup --parallel</code> 可与 <code>xtrabackup --decompress</code> 选项一起使用,可同时解压缩多个文件。</p>
           </div>
 <p>Percona XtraBackup 不会自动删除压缩文件。你可以使用 <code>xtrabackup --remove-original</code> 选项清理备份目录。即使它们未被删除，如果使用了 <code>xtrabackup --copy-back</code> 或 <code>xtrabackup --move-back</code>，这些文件也不会被复制或移动到  <code>datadir</code>。</p>
 <p>当文件解压后，可以使用 <code>xtrabackup --prepare</code> 选项准备备份：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup --prepare --target-dir=/data/compressed/</span><br></pre></td></tr></table></figure>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">$</span> <span class="comment">xtrabackup</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">prepare</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">target</span><span class="literal">-</span><span class="comment">dir=/data/compressed/</span></span><br></pre></td></tr></table></figure>
 <p>你应该检查确认信息：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">InnoDB: Starting shutdown...</span><br><span class="line">InnoDB: Shutdown completed; log sequence number 9293846</span><br><span class="line">170223 13:39:31 completed OK!</span><br></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">InnoDB</span>: Starting shutdown...</span><br><span class="line"><span class="attribute">InnoDB</span>: Shutdown completed; <span class="selector-tag">log</span> <span class="selector-tag">sequence</span> <span class="selector-tag">number</span> <span class="selector-tag">9293846</span></span><br><span class="line"><span class="selector-tag">170223</span> <span class="selector-tag">13</span><span class="selector-pseudo">:39</span><span class="selector-pseudo">:31</span> <span class="selector-tag">completed</span> <span class="selector-tag">OK</span>!</span><br></pre></td></tr></table></figure>
 <p>现在 <code>/data/compressed/</code> 中的文件已准备好供服务器使用了。</p>
 <h1 id="恢复备份"><a href="#恢复备份" class="headerlink" title="恢复备份"></a>恢复备份</h1><p><strong>xtrabackup</strong> 有一个 <code>xtrabackup --copy-back</code> 选项，它执行将备份还原到服务器的 <code>datadir</code> 目录中：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup --copy-back --target-dir=/data/backups/</span><br></pre></td></tr></table></figure>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup --copy-<span class="keyword">back </span>--target-dir=/<span class="meta">data</span>/<span class="keyword">backups/</span></span><br></pre></td></tr></table></figure>
 <p>它会将所有与数据相关的文件复制回服务器的 <code>datadir</code> 目录中，<code>datadir</code> 的位置由服务器的 <code>my.cnf</code> 配置文件决定。您应该检查输出的最后一行以获取成功消息：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">170223 13:49:13 completed OK!</span><br></pre></td></tr></table></figure>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">170223 </span><span class="number">13</span>:<span class="number">49</span>:<span class="number">13</span> completed OK!</span><br></pre></td></tr></table></figure>
 <p>复制数据后应检查文件权限。你可能需要用类似的方法来调整它们：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chown -R mysql:mysql /var/lib/mysql</span><br></pre></td></tr></table></figure>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chown -R <span class="symbol">mysql:</span>mysql /var/<span class="class"><span class="keyword">lib</span>/<span class="title">mysql</span></span></span><br></pre></td></tr></table></figure>
 <p>现在 <a href="https://www.percona.com/doc/percona-xtrabackup/LATEST/glossary.html#term-datadir" target="_blank" rel="noopener">datadir</a> 包含还原的数据。您现在可以启动服务器了。</p>
 
       
@@ -565,6 +565,29 @@
       </div>
     
 
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>toypipi</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://toypipi.github.io/2018/03/31/压缩备份/" title="压缩备份">https://toypipi.github.io/2018/03/31/压缩备份/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -729,6 +752,8 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
+                    
+                      
                     
                       
                     

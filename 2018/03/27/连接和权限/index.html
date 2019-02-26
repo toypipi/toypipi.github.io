@@ -497,7 +497,7 @@
 <p>许可是允许用户在系统上执行操作的权限，例如读取、写入某个目录或启动、停止系统服务。<strong>它们设置在系统级别，仅适用于系统用户</strong>。</p>
 <p>无论使用 <strong>xtrabackup</strong> 还是 <strong>innobackupex</strong> ，都有两个参与者：用户调用程序既系统用户，用户在数据库服务器中执行操作既数据库用户。请注意，这两个用户的作用域是不同的，尽管他们可能有相同的用户名。</p>
 <p>在本文档中，<strong>innobackupex</strong> 和 <strong>xtrabackup</strong> 的所有调用都假定系统用户已经具有适当的权限，并且除了要执行的操作选项外，您还提供了用于连接数据库服务器的相关选项，并且数据库用户具有足够的权限。<br><a id="more"></a></p>
-<h1 id="连接到服务器"><a href="#连接到服务器" class="headerlink" title="连接到服务器"></a>连接到服务器</h1><p>用于连接服务器的数据库用户及其密码由 <code>xtrabackup --user</code> 和 <code>xtrabackup --password</code> 选项指定：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup --user=DVADER --password=14MY0URF4TH3R --backup \</span><br><span class="line">  --target-dir=/data/bkps/</span><br><span class="line">$ innobackupex --user=DBUSER --password=SECRET /path/to/backup/dir/</span><br><span class="line">$ innobackupex --user=LUKE --password=US3TH3F0RC3 --stream=tar ./ | bzip2 -</span><br></pre></td></tr></table></figure></p>
+<h1 id="连接到服务器"><a href="#连接到服务器" class="headerlink" title="连接到服务器"></a>连接到服务器</h1><p>用于连接服务器的数据库用户及其密码由 <code>xtrabackup --user</code> 和 <code>xtrabackup --password</code> 选项指定：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup <span class="attribute">--user</span>=DVADER <span class="attribute">--password</span>=14MY0URF4TH3R --backup \</span><br><span class="line">  <span class="attribute">--target-dir</span>=/data/bkps/</span><br><span class="line">$ innobackupex <span class="attribute">--user</span>=DBUSER <span class="attribute">--password</span>=SECRET /path/<span class="keyword">to</span>/backup/dir/</span><br><span class="line">$ innobackupex <span class="attribute">--user</span>=LUKE <span class="attribute">--password</span>=US3TH3F0RC3 <span class="attribute">--stream</span>=tar ./ | bzip2 -</span><br></pre></td></tr></table></figure></p>
 <p>如果您不使用 <code>xtrabackup --user</code> 选项，Percona XtraBackup 将假定数据库用户名为正在执行备份的系统用户名。</p>
 <h1 id="其他连接选项"><a href="#其他连接选项" class="headerlink" title="其他连接选项"></a>其他连接选项</h1><p>根据您的系统环境，您可能需要指定一个或多个以下选项才能连接到服务器：</p>
 <table>
@@ -539,7 +539,7 @@
 <li><code>SELECT</code> 权限以便使用 <code>innobackupex --incremental-history-name</code> 或 <code>innobackupex --incremental-history-uuid</code> ，以便该功能查找<code>PERCONA_SCHEMA.xtrabackup_history</code> 表中的 <code>innodb_to_lsn</code> 值。</li>
 </ul>
 <p>在<a href="https://toypipi.github.io/2018/03/23/Percona-XtraBackup-%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C/">Percona XtraBackup 如何工作</a>中可以找到何时使用它们的解释。</p>
-<p>使用完整备份所需的最小权限创建数据库用户的SQL示例为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE USER &apos;bkpuser&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;s3cret&apos;;</span><br><span class="line">mysql&gt; GRANT RELOAD, LOCK TABLES, PROCESS, REPLICATION CLIENT ON *.* TO</span><br><span class="line">       &apos;bkpuser&apos;@&apos;localhost&apos;;</span><br><span class="line">mysql&gt; FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure></p>
+<p>使用完整备份所需的最小权限创建数据库用户的SQL示例为：<br><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; <span class="keyword">CREATE</span> USER <span class="string">'bkpuser'</span>@<span class="string">'localhost'</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">'s3cret'</span>;</span><br><span class="line">mysql&gt; GRANT RELOAD, LOCK TABLES, PROCESS, REPLICATION CLIENT <span class="keyword">ON</span> *.* <span class="keyword">TO</span></span><br><span class="line">       <span class="string">'bkpuser'</span>@<span class="string">'localhost'</span>;</span><br><span class="line">mysql&gt; FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -586,6 +586,29 @@
       </div>
     
 
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>toypipi</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://toypipi.github.io/2018/03/27/连接和权限/" title="连接和权限">https://toypipi.github.io/2018/03/27/连接和权限/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -750,6 +773,8 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
+                    
+                      
                     
                       
                     
