@@ -486,7 +486,7 @@
           </div>
 <p>定时任务<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 9 1 * * /root/transform_data.sh</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<p>shell 脚本 transform_data.sh. 注意 transform_data.sh 要赋予执行权限， X.X.X.X 为数据仓库的 ip 地址。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>! /bin/sh</span><br><span class="line"><span class="meta">#</span>此脚本用于将10.3.0.98数据上的水机数据备份到10.2.46.247，结合定时任务执行</span><br><span class="line"></span><br><span class="line">nowdate=`date +%Y%m01`  #本月第一天</span><br><span class="line">lastyearmonth=`date -d"$nowdate last month" +%Y%m` #显示年和上月月份值，如：201901</span><br><span class="line">echo "rsync -av /usr/local/mysql/water/slave_status_$lastyearmonth* X.X.X.X:/var/lib/mysql/water_gprs_backup"</span><br></pre></td></tr></table></figure></p>
+<p>shell 脚本 transform_data.sh. 注意 transform_data.sh 要赋予执行权限， X.X.X.X 为数据仓库的 ip 地址。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">! /bin/sh</span></span><br><span class="line"><span class="meta">#</span><span class="bash">此脚本用于将10.3.0.98数据上的水机数据备份到10.2.46.247，结合定时任务执行</span></span><br><span class="line"></span><br><span class="line">nowdate=`date +%Y%m01`  #本月第一天</span><br><span class="line">lastyearmonth=`date -d"$nowdate last month" +%Y%m` #显示年和上月月份值，如：201901</span><br><span class="line">echo "rsync -av /usr/local/mysql/water/slave_status_$lastyearmonth* X.X.X.X:/var/lib/mysql/water_gprs_backup"</span><br></pre></td></tr></table></figure></p>
 <p><strong>参考文档：</strong><br><a href="https://blog.csdn.net/xiaowenK/article/details/54019501" target="_blank" rel="noopener">在shell脚本中获取上个月最后一天的日期</a><br><a href="https://cloud.tencent.com/developer/article/1027570" target="_blank" rel="noopener">linux下监控某个目录是否被更改</a></p>
 
       
@@ -710,8 +710,6 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
-                    
-                      
                     
                       
                     

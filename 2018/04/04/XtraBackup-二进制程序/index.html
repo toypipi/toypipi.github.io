@@ -104,13 +104,13 @@
 <meta property="og:site_name" content="toypipi&#39;s blog">
 <meta property="og:description" content="xtrabackup 二进制程序是一个已经编译好的，链接到 InnoDB 库和标准 MySQL 客户端库的 C 程序。 InnoDB 库提供了将日志文件应用于数据文件所需的功能，MySQL 客户端库提供了命令行选项解析，配置文件解析等，以使 xtrabackup  二进制具有 MySQL 客户端类似的外观。 该工具以 --backup 或 --prepare 模式运行，分别对应于它执行的两个主要">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://oio4l6s3j.bkt.clouddn.com/image/20180410/throttle.png">
-<meta property="og:image" content="http://oio4l6s3j.bkt.clouddn.com/image/20180416/lru_dump.png">
-<meta property="og:updated_time" content="2018-06-08T08:38:48.522Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20180410/throttle.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20180416/lru_dump.png">
+<meta property="og:updated_time" content="2019-02-27T02:07:27.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XtraBackup 二进制程序">
 <meta name="twitter:description" content="xtrabackup 二进制程序是一个已经编译好的，链接到 InnoDB 库和标准 MySQL 客户端库的 C 程序。 InnoDB 库提供了将日志文件应用于数据文件所需的功能，MySQL 客户端库提供了命令行选项解析，配置文件解析等，以使 xtrabackup  二进制具有 MySQL 客户端类似的外观。 该工具以 --backup 或 --prepare 模式运行，分别对应于它执行的两个主要">
-<meta name="twitter:image" content="http://oio4l6s3j.bkt.clouddn.com/image/20180410/throttle.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20180410/throttle.png">
 
 
 
@@ -421,7 +421,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-06-08 16:38:48" itemprop="dateModified" datetime="2018-06-08T16:38:48+08:00">2018-06-08</time>
+                <time title="修改时间：2019-02-27 10:07:27" itemprop="dateModified" datetime="2019-02-27T10:07:27+08:00">2019-02-27</time>
               
             
           </span>
@@ -574,7 +574,7 @@
 <h3 id="其他阅读"><a href="#其他阅读" class="headerlink" title="其他阅读"></a>其他阅读</h3><p><a href="https://www.percona.com/blog/2013/01/29/feature-preview-compact-backups-in-percona-xtrabackup/" target="_blank" rel="noopener">功能预览：Percona XtraBackup 中的紧凑备份</a></p>
 <h1 id="高级功能"><a href="#高级功能" class="headerlink" title="高级功能"></a>高级功能</h1><h2 id="节流备份"><a href="#节流备份" class="headerlink" title="节流备份"></a>节流备份</h2><p>尽管 xtrabackup 不会阻止数据库操作，但任何备份都可以将负载添加到正在备份的系统中。 在没有太多备用 I/O 容量的系统上，调节xtrabackup 读取和写入数据的速率可能会有所帮助。 您可以使用 <code>--throttle</code> 选项执行此操作，该选将项限制每秒的 I/O 操作数为 1 MB。</p>
 <p>下图显示了当 <code>--throttle = 1</code> 时节流备份是如何工作的。</p>
-<p><img src="http://oio4l6s3j.bkt.clouddn.com/image/20180410/throttle.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20180410/throttle.png" alt=""></p>
 <p>在 <code>--backup</code> 模式下，此选项限制 xtrabackup 每秒执行的读写操作对的数量。 如果您正在创建增量备份，则限制的是每秒读 IO 操作的次数。</p>
 <p>默认情况下，不存在限制，并且 xtrabackup 尽可能快地读取和写入数据。 如果您对 I/O 操作的限制设置过于严格，备份可能会变得非常缓慢，以致于它永远无法跟上 InnoDB 写事务日志的速度，因此备份可能永远无法完成。</p>
 <h2 id="使用-xtrabackup-编写脚本备份"><a href="#使用-xtrabackup-编写脚本备份" class="headerlink" title="使用 xtrabackup 编写脚本备份"></a>使用 xtrabackup 编写脚本备份</h2><p><strong>xtrabackup</strong> 工具具有若干功能，以便脚本在执行相关任务时对其进行控制。 <a href="https://www.percona.com/doc/percona-xtrabackup/LATEST/innobackupex/innobackupex_script.html" target="_blank" rel="noopener">innobackupex 脚本</a>就是一个例子，但是也很容易用您自己的命令行脚本来控制 <strong>xtrabackup</strong>。</p>
@@ -649,7 +649,7 @@
             <p>注意<br>除非在导入的表上运行 <code>ANALYZE TABLE</code> ，导入的表空间的持久性统计信息将为空。因为它们存储在系统表 <code>mysql.innodb_table_stats</code> 和 <code>mysql.innodb_index_stats</code> 中，并且在导入期间它们不会被服务器更新，所以它们是空的。这是由于上游错误 <a href="https://bugs.mysql.com/bug.php?id=72368" target="_blank" rel="noopener">#72368</a>。</p>
           </div>
 <h2 id="LRU-转储备份"><a href="#LRU-转储备份" class="headerlink" title="LRU 转储备份"></a>LRU 转储备份</h2><p>此功能通过在数据库重启后从 <code>ib_lru_dump</code> 文件恢复缓冲池状态来减少预热时间。 <em>Percona XtraBackup</em> 会查找 <code>ib_lru_dump</code> 并自动备份它。</p>
-<p><img src="http://oio4l6s3j.bkt.clouddn.com/image/20180416/lru_dump.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20180416/lru_dump.png" alt=""></p>
 <p>如果在 <code>my.cnf</code> 文件中设置了启用缓冲区恢复选项，则备份恢复后缓冲池将处于预热好的状态。 要启用它，请在 Percona Server 5.5 中设置变量 <code>innodb_buffer_pool_restore_at_startup =1</code> 或在 Percona Server 5.1 中设置 <code>innodb_auto_lru_dump =1</code>。</p>
 <h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="实现细节"><a href="#实现细节" class="headerlink" title="实现细节"></a>实现细节</h2><p>该页面包含 <strong>xtrabackup</strong> 工具操作的内部实现原理的解释。</p>
 <h3 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h3><p><strong>xtrabackup</strong> 以读写模式打开源数据文件，虽然它并不修改源文件。这意味着您必须以拥有写入权限的用户运行 <strong>xtrabackup</strong> 。以读写模式打开文件的原因是 <strong>xtrabackup</strong> 使用嵌入式 <em>InnoDB</em> 库打开和读取文件， <em>InnoDB</em> 以读写模式打开它们，因为它通常假定它将写入数据。</p>
@@ -894,8 +894,6 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
-                    
-                      
                     
                       
                     

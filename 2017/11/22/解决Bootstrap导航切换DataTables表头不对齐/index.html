@@ -104,14 +104,14 @@
 <meta property="og:site_name" content="toypipi&#39;s blog">
 <meta property="og:description" content="使用Ajax从后台获取数据后，分别将最大、最小和平均值显示在三个tab中。表格插件使用的是 DataTables。初始化表格以后，只有当前激活的表格可以正常显示，点击tab切换页面中的表格表头与内容不对齐。 图1.当前激活的tab表格显示正常">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://oio4l6s3j.bkt.clouddn.com/image/20171122/normal.png">
-<meta property="og:image" content="http://oio4l6s3j.bkt.clouddn.com/image/20171122/abnormal.png">
-<meta property="og:image" content="http://oio4l6s3j.bkt.clouddn.com/image/20171122/normalmin.png">
-<meta property="og:updated_time" content="2018-06-08T08:38:48.515Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20171122/normal.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20171122/abnormal.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20171122/normalmin.png">
+<meta property="og:updated_time" content="2019-02-27T02:01:18.605Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="解决Bootstrap导航切换DataTables表头不对齐">
 <meta name="twitter:description" content="使用Ajax从后台获取数据后，分别将最大、最小和平均值显示在三个tab中。表格插件使用的是 DataTables。初始化表格以后，只有当前激活的表格可以正常显示，点击tab切换页面中的表格表头与内容不对齐。 图1.当前激活的tab表格显示正常">
-<meta name="twitter:image" content="http://oio4l6s3j.bkt.clouddn.com/image/20171122/normal.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20171122/normal.png">
 
 
 
@@ -422,7 +422,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-06-08 16:38:48" itemprop="dateModified" datetime="2018-06-08T16:38:48+08:00">2018-06-08</time>
+                <time title="修改时间：2019-02-27 10:01:18" itemprop="dateModified" datetime="2019-02-27T10:01:18+08:00">2019-02-27</time>
               
             
           </span>
@@ -497,9 +497,9 @@
       
         <hr>
 <p>使用Ajax从后台获取数据后，分别将最大、最小和平均值显示在三个tab中。表格插件使用的是 DataTables。初始化表格以后，只有当前激活的表格可以正常显示，点击tab切换页面中的表格表头与内容不对齐。</p>
-<p><img src="http://oio4l6s3j.bkt.clouddn.com/image/20171122/normal.png" alt="当前激活的tab表格显示正常"><br>图1.当前激活的tab表格显示正常<br><a id="more"></a><br><img src="http://oio4l6s3j.bkt.clouddn.com/image/20171122/abnormal.png" alt="点击激活的tab表格显示异常"><br>图2.点击激活的tab表格显示异常</p>
+<p><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20171122/normal.png" alt="当前激活的tab表格显示正常"><br>图1.当前激活的tab表格显示正常<br><a id="more"></a><br><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20171122/abnormal.png" alt="点击激活的tab表格显示异常"><br>图2.点击激活的tab表格显示异常</p>
 <p>经过检索后找到了解决办法。如果是使用 Bootstrap 或者 zui 插件(zui 需要引入Bootstrap js 文件)，可以在控制表格的 js 文件中添加如下代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'a[data-toggle="tab"]'</span>).on(<span class="string">'shown.bs.tab'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    $.fn.dataTable.tables(&#123;<span class="attr">visible</span>:<span class="literal">true</span>,<span class="attr">api</span>:<span class="literal">true</span>&#125;).columns.adjust();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://oio4l6s3j.bkt.clouddn.com/image/20171122/normalmin.png" alt="点击激活的tab表格也可以正常显示了"><br>图3.点击激活的tab表格也可以正常显示了</p>
+<p><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20171122/normalmin.png" alt="点击激活的tab表格也可以正常显示了"><br>图3.点击激活的tab表格也可以正常显示了</p>
 <p><strong>参考文档：</strong><br><a href="https://datatables.net/examples/api/tabs_and_scrolling.html" target="_blank" rel="noopener">Scrolling and Bootstrap tabs</a><br><a href="https://github.com/ssy341/datatables-cn/issues/9" target="_blank" rel="noopener">datatables 采用bootstrap的tab方式，表头会缩在一起，为什么？</a><br><a href="http://www.runoob.com/bootstrap/bootstrap-tab-plugin.html" target="_blank" rel="noopener">Bootstrap 标签页（Tab）插件</a></p>
 
       
@@ -731,8 +731,6 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
-                    
-                      
                     
                       
                     
