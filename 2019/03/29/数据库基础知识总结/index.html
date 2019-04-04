@@ -105,7 +105,7 @@
 <meta property="og:description" content="关系数据库的三级结构模式">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20190329/%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F.png">
-<meta property="og:updated_time" content="2019-04-02T03:19:50.989Z">
+<meta property="og:updated_time" content="2019-04-03T02:55:29.338Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库基础知识总结">
 <meta name="twitter:description" content="关系数据库的三级结构模式">
@@ -420,7 +420,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-02 11:19:50" itemprop="dateModified" datetime="2019-04-02T11:19:50+08:00">2019-04-02</time>
+                <time title="修改时间：2019-04-03 10:55:29" itemprop="dateModified" datetime="2019-04-03T10:55:29+08:00">2019-04-03</time>
               
             
           </span>
@@ -537,6 +537,27 @@
 <li>序列化（Serializable）：提供严格的事务隔离。它要求事务序列化执行，事务只能一个接着一个地执行，但不能并发执行。如果仅仅通过”行级锁“是无法实现事务序列化的，必须通过其他机制保证新插入的数据不会被刚执行查询操作的事务访问到。</li>
 </ul>
 <p>隔离级别越高，越能保证数据的完整性和一致性，但是对并发性能影响也越大。</p>
+<h1 id="软件的可移植性（Portability）"><a href="#软件的可移植性（Portability）" class="headerlink" title="软件的可移植性（Portability）"></a>软件的可移植性（Portability）</h1><p>软件的可移植性是指一个软件从一个环境转移到另一个环境运行的能力有关的一组属性。包括：</p>
+<ul>
+<li>适应性（Adaptability）是指与软件无需采用有别于为该软件准备的活动或手段就可能适应不同的规定环境有关的软件属性。</li>
+<li>可安装性（Installability）是指与应指定环境下安装软件所需的有关软件的属性。</li>
+<li>遵循性（一致性，Conformance）是指软件遵循与可移植性有关的标准或约定的软件属性。</li>
+<li>可替换性（Replaceability）是指与软件在该软件环境中用来替代指定的其他软件的机会和努力有关的软件属性。为避免可能与互操作性（互用性）的含义相混淆，此处用易替换性而不用兼容性。特定软件的易替换性并不隐含此软件可由所考虑的软件所替代。易替换性可能包含易安装性和适应性这两个属性。</li>
+</ul>
+<h1 id="二叉排序树"><a href="#二叉排序树" class="headerlink" title="二叉排序树"></a>二叉排序树</h1><p>二叉排序树或者是一棵空树，或者是具有如下性质的二叉树：</p>
+<ul>
+<li>若它的左子树非空，则其左子树上所有的关键字均小于根节点的关键字；</li>
+<li>若它的右子树非空，则其右子树上所有的关键字均大于根节点的关键字；</li>
+<li>左、右子树本身就是两棵二叉排序树。</li>
+</ul>
+<h1 id="分布式数据库全局概念层"><a href="#分布式数据库全局概念层" class="headerlink" title="分布式数据库全局概念层"></a>分布式数据库全局概念层</h1><p>分布式数据库的全局概念层应具有三种模式描述信息；</p>
+<ul>
+<li>全局概念模式描述分布式数据库全局数据的逻辑结构，是分布式数据库的全局概念视图。</li>
+<li>分片模式描述全局数据逻辑划分的视图，是全局数据的逻辑结构根据某种条件的划分，每一个逻辑划分就是一个片段或分片。</li>
+<li>分配模式描述局部逻辑的局部物理结构，是划分后的片段或分片的物理分配视图。</li>
+</ul>
+<h1 id="进程间同步与互斥"><a href="#进程间同步与互斥" class="headerlink" title="进程间同步与互斥"></a>进程间同步与互斥</h1><p>在系统中，多个进程竞争同一资源可能会发生死锁，若无外力作用，这些进程将永远不能再向前推进。为此，在操作系统的进程管理中最常用的方法是采用信号量（Semaphore）机制。</p>
+<p>信号量是表示资源的实体，是一个与队列有关的整型变量，其值仅能由 P、V 操作改变。 “P” 操作是检测信号量是否为正值，若不是，则阻塞调用进程； “V” 操作是唤醒一个阻塞进程恢复执行。根据用途不同，信号量分为公用信号量和私用信号量。公用信号量用于实现进程间的互斥，初值通常设为 1 ，它所联系的一组并行进程均可对它实施 P、V 操作，私用信号量用于实现进程间的同步，初始值通常设为 0  或 n 。</p>
 
       
     </div>
@@ -1085,7 +1106,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关系数据库的三级结构模式"><span class="nav-number">1.</span> <span class="nav-text">关系数据库的三级结构模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#并行数据库体系结构"><span class="nav-number">2.</span> <span class="nav-text">并行数据库体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#共享内存（Shared-Memory-结构"><span class="nav-number">2.1.</span> <span class="nav-text">共享内存（Shared-Memory)结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#共享磁盘（Shared-Disk-结构"><span class="nav-number">2.2.</span> <span class="nav-text">共享磁盘（Shared-Disk)结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#无共享资源（Shared-Nothing）结构"><span class="nav-number">2.3.</span> <span class="nav-text">无共享资源（Shared-Nothing）结构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务调度"><span class="nav-number">3.</span> <span class="nav-text">事务调度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#以阶段划分的编译"><span class="nav-number">4.</span> <span class="nav-text">以阶段划分的编译</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#词法分析阶段"><span class="nav-number">4.1.</span> <span class="nav-text">词法分析阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法分析阶段"><span class="nav-number">4.2.</span> <span class="nav-text">语法分析阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语义分析阶段"><span class="nav-number">4.3.</span> <span class="nav-text">语义分析阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中间代码生成"><span class="nav-number">4.4.</span> <span class="nav-text">中间代码生成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目标代码生成"><span class="nav-number">4.5.</span> <span class="nav-text">目标代码生成</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务的并发操作"><span class="nav-number">5.</span> <span class="nav-text">事务的并发操作</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关系数据库的三级结构模式"><span class="nav-number">1.</span> <span class="nav-text">关系数据库的三级结构模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#并行数据库体系结构"><span class="nav-number">2.</span> <span class="nav-text">并行数据库体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#共享内存（Shared-Memory-结构"><span class="nav-number">2.1.</span> <span class="nav-text">共享内存（Shared-Memory)结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#共享磁盘（Shared-Disk-结构"><span class="nav-number">2.2.</span> <span class="nav-text">共享磁盘（Shared-Disk)结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#无共享资源（Shared-Nothing）结构"><span class="nav-number">2.3.</span> <span class="nav-text">无共享资源（Shared-Nothing）结构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务调度"><span class="nav-number">3.</span> <span class="nav-text">事务调度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#以阶段划分的编译"><span class="nav-number">4.</span> <span class="nav-text">以阶段划分的编译</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#词法分析阶段"><span class="nav-number">4.1.</span> <span class="nav-text">词法分析阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法分析阶段"><span class="nav-number">4.2.</span> <span class="nav-text">语法分析阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语义分析阶段"><span class="nav-number">4.3.</span> <span class="nav-text">语义分析阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中间代码生成"><span class="nav-number">4.4.</span> <span class="nav-text">中间代码生成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目标代码生成"><span class="nav-number">4.5.</span> <span class="nav-text">目标代码生成</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务的并发操作"><span class="nav-number">5.</span> <span class="nav-text">事务的并发操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件的可移植性（Portability）"><span class="nav-number">6.</span> <span class="nav-text">软件的可移植性（Portability）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二叉排序树"><span class="nav-number">7.</span> <span class="nav-text">二叉排序树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式数据库全局概念层"><span class="nav-number">8.</span> <span class="nav-text">分布式数据库全局概念层</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程间同步与互斥"><span class="nav-number">9.</span> <span class="nav-text">进程间同步与互斥</span></a></li></ol></div>
             
 
           </div>
