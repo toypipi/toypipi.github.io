@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="toypipi&#39;s blog">
 <meta property="og:description" content="学习浙江大学【数据结构】做的笔记。 第二讲 线性结构2.1 线性表及其实现多项式表示问题的启示：1.同一个问题可以有不同的表示（存储）方法2.有一类共性问题：有序线性序列的组织和管理 线性表（Linear List）：由同类型 数据元素 构成 有序序列 的线性结构 表中元素个数称为线性表的 长度 线性表没有元素时，称为 空表 表起始位置称为 表头，表结束位置称为 表尾">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-04T03:31:23.120Z">
+<meta property="og:updated_time" content="2019-04-10T03:45:16.546Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【数据结构】笔记">
 <meta name="twitter:description" content="学习浙江大学【数据结构】做的笔记。 第二讲 线性结构2.1 线性表及其实现多项式表示问题的启示：1.同一个问题可以有不同的表示（存储）方法2.有一类共性问题：有序线性序列的组织和管理 线性表（Linear List）：由同类型 数据元素 构成 有序序列 的线性结构 表中元素个数称为线性表的 长度 线性表没有元素时，称为 空表 表起始位置称为 表头，表结束位置称为 表尾">
@@ -418,7 +418,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-04 11:31:23" itemprop="dateModified" datetime="2019-04-04T11:31:23+08:00">2019-04-04</time>
+                <time title="修改时间：2019-04-10 11:45:16" itemprop="dateModified" datetime="2019-04-10T11:45:16+08:00">2019-04-10</time>
               
             
           </span>
@@ -531,6 +531,33 @@
 <li>数据删除：出队</li>
 <li>先来先服务</li>
 <li>先进先出：FIFO</li>
+</ul>
+<h1 id="第三讲-树"><a href="#第三讲-树" class="headerlink" title="第三讲 树"></a>第三讲 树</h1><h2 id="3-1-树与树的表示"><a href="#3-1-树与树的表示" class="headerlink" title="3.1 树与树的表示"></a>3.1 树与树的表示</h2><p>查找：根据某个给定关键字 K， 从集合 R 中找出关键字 K 相同的记录</p>
+<ul>
+<li>静态查找：集合中记录是固定的，没有插入和删除操作，只有查找</li>
+<li>动态查找：集合中记录是动态的，除查找，还可能发生插入和删除</li>
+</ul>
+<h3 id="树的一些基本术语"><a href="#树的一些基本术语" class="headerlink" title="树的一些基本术语"></a>树的一些基本术语</h3><ol>
+<li>结点的度（Degree）：节点的字树个数</li>
+<li>树的度：树的所有节点中最大的度数</li>
+<li>叶节点（Leaf）：度为 0 的节点</li>
+<li>父节点（Parent）：有子树的节点是其子树的根节点的父节点</li>
+<li>子节点（Child）：若 A 结点是 B 结点的父节点，则称 B 结点是 A 结点的子结点；子结点也称孩子结点</li>
+<li>兄弟节点（Sibling）：具有同一父节点的各结点彼此是兄弟节点</li>
+<li>路径和路径长度：从结点 n<sub>1</sub> 到 n<sub>k</sub> 的路径为一个节点序列 n<sub>1</sub>，n<sub>2</sub>，n<sub>3</sub>，……，n<sub>k</sub>， n<sub>i</sub> 是 n<sub>i+1</sub> 的父结点。路径所包含边的个数为路径的长度。</li>
+<li>祖先节点（Ancestor）：沿树根到某一结点路径上的所有节点都是这个结点的祖先节点。</li>
+<li>子孙结点（Descendant）：某一结点的子树中的所有结点是这个结点的子孙。</li>
+<li>结点的层次（Level）：规定根节点在 1 层，其它任一节点的层数是其父结点的层数加 1 。</li>
+<li>树的深度（Depth）：树种所有结点中的最大层次是这棵树的深度。</li>
+</ol>
+<h2 id="3-2-二叉树及其存储结构"><a href="#3-2-二叉树及其存储结构" class="headerlink" title="3.2 二叉树及其存储结构"></a>3.2 二叉树及其存储结构</h2><p>二叉树 T：一个有穷的结点集合。</p>
+<ul>
+<li>这个集合可以为空。</li>
+<li>若不为空，则它是由根结点和称为其左子树 TL 和右字树 TR 的两个不相交的二叉树组成。</li>
+</ul>
+<p>二叉树几个重要性质</p>
+<ul>
+<li>一个二叉树第 i 层的最大结点数为 2<sup>i-1</sup>，i ≥ 1</li>
 </ul>
 
       
@@ -706,7 +733,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">97</span>
+                    <span class="site-state-item-count">98</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1080,7 +1107,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第二讲-线性结构"><span class="nav-number">1.</span> <span class="nav-text">第二讲 线性结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-线性表及其实现"><span class="nav-number">1.1.</span> <span class="nav-text">2.1 线性表及其实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性表（Linear-List）：由同类型-数据元素-构成-有序序列-的线性结构"><span class="nav-number">1.1.1.</span> <span class="nav-text">线性表（Linear List）：由同类型 数据元素 构成 有序序列 的线性结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广义表（Generalized-List）"><span class="nav-number">1.1.2.</span> <span class="nav-text">广义表（Generalized List）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多重链表"><span class="nav-number">1.1.3.</span> <span class="nav-text">多重链表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-堆栈"><span class="nav-number">1.2.</span> <span class="nav-text">2.2 堆栈</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#后缀表达式"><span class="nav-number">1.2.1.</span> <span class="nav-text">后缀表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆栈的抽象数据类型描述"><span class="nav-number">1.2.2.</span> <span class="nav-text">堆栈的抽象数据类型描述</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-队列"><span class="nav-number">1.3.</span> <span class="nav-text">2.3 队列</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第二讲-线性结构"><span class="nav-number">1.</span> <span class="nav-text">第二讲 线性结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-线性表及其实现"><span class="nav-number">1.1.</span> <span class="nav-text">2.1 线性表及其实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性表（Linear-List）：由同类型-数据元素-构成-有序序列-的线性结构"><span class="nav-number">1.1.1.</span> <span class="nav-text">线性表（Linear List）：由同类型 数据元素 构成 有序序列 的线性结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广义表（Generalized-List）"><span class="nav-number">1.1.2.</span> <span class="nav-text">广义表（Generalized List）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多重链表"><span class="nav-number">1.1.3.</span> <span class="nav-text">多重链表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-堆栈"><span class="nav-number">1.2.</span> <span class="nav-text">2.2 堆栈</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#后缀表达式"><span class="nav-number">1.2.1.</span> <span class="nav-text">后缀表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆栈的抽象数据类型描述"><span class="nav-number">1.2.2.</span> <span class="nav-text">堆栈的抽象数据类型描述</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-队列"><span class="nav-number">1.3.</span> <span class="nav-text">2.3 队列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三讲-树"><span class="nav-number">2.</span> <span class="nav-text">第三讲 树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-树与树的表示"><span class="nav-number">2.1.</span> <span class="nav-text">3.1 树与树的表示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#树的一些基本术语"><span class="nav-number">2.1.1.</span> <span class="nav-text">树的一些基本术语</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-二叉树及其存储结构"><span class="nav-number">2.2.</span> <span class="nav-text">3.2 二叉树及其存储结构</span></a></li></ol></li></ol></div>
             
 
           </div>
