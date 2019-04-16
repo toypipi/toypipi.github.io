@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="MongoDB 简介MongoDB 是一款强大、灵活，且易于扩展的通用型数据库。它能扩展出非常多的功能，如二级索引（Secondary index）、范围查询（range query）、排序、聚合（aggregation），以及地理空间索引（geospatial inde）。 易于使用MongoDB 是一个面向文档（document-oriented）的数据库，而不是关系型数据库。 与关系型数据">
+  <meta name="description" content="第1章 MongoDB 简介MongoDB 是一款强大、灵活，且易于扩展的通用型数据库。它能扩展出非常多的功能，如二级索引（Secondary index）、范围查询（range query）、排序、聚合（aggregation），以及地理空间索引（geospatial inde）。 1.1 易于使用MongoDB 是一个面向文档（document-oriented）的数据库，而不是关系型数据库">
 <meta name="keywords" content="MongoDB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《MongoDB 权威指南（第2版）》阅读笔记">
 <meta property="og:url" content="https://toypipi.github.io/2019/04/12/《MongoDB-权威指南（第2版）》阅读笔记/index.html">
 <meta property="og:site_name" content="toypipi&#39;s blog">
-<meta property="og:description" content="MongoDB 简介MongoDB 是一款强大、灵活，且易于扩展的通用型数据库。它能扩展出非常多的功能，如二级索引（Secondary index）、范围查询（range query）、排序、聚合（aggregation），以及地理空间索引（geospatial inde）。 易于使用MongoDB 是一个面向文档（document-oriented）的数据库，而不是关系型数据库。 与关系型数据">
+<meta property="og:description" content="第1章 MongoDB 简介MongoDB 是一款强大、灵活，且易于扩展的通用型数据库。它能扩展出非常多的功能，如二级索引（Secondary index）、范围查询（range query）、排序、聚合（aggregation），以及地理空间索引（geospatial inde）。 1.1 易于使用MongoDB 是一个面向文档（document-oriented）的数据库，而不是关系型数据库">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-12T09:21:51.809Z">
+<meta property="og:updated_time" content="2019-04-15T09:29:23.395Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《MongoDB 权威指南（第2版）》阅读笔记">
-<meta name="twitter:description" content="MongoDB 简介MongoDB 是一款强大、灵活，且易于扩展的通用型数据库。它能扩展出非常多的功能，如二级索引（Secondary index）、范围查询（range query）、排序、聚合（aggregation），以及地理空间索引（geospatial inde）。 易于使用MongoDB 是一个面向文档（document-oriented）的数据库，而不是关系型数据库。 与关系型数据">
+<meta name="twitter:description" content="第1章 MongoDB 简介MongoDB 是一款强大、灵活，且易于扩展的通用型数据库。它能扩展出非常多的功能，如二级索引（Secondary index）、范围查询（range query）、排序、聚合（aggregation），以及地理空间索引（geospatial inde）。 1.1 易于使用MongoDB 是一个面向文档（document-oriented）的数据库，而不是关系型数据库">
 
 
 
@@ -401,12 +401,24 @@
                 
               
 
-              <time title="创建时间：2019-04-12 17:02:37 / 修改时间：17:21:51" itemprop="dateCreated datePublished" datetime="2019-04-12T17:02:37+08:00">2019-04-12</time>
+              <time title="创建时间：2019-04-12 17:02:37" itemprop="dateCreated datePublished" datetime="2019-04-12T17:02:37+08:00">2019-04-12</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-15 17:29:23" itemprop="dateModified" datetime="2019-04-15T17:29:23+08:00">2019-04-15</time>
               
             
           </span>
@@ -480,12 +492,116 @@
 
       
         <hr>
-<h1 id="MongoDB-简介"><a href="#MongoDB-简介" class="headerlink" title="MongoDB 简介"></a>MongoDB 简介</h1><p>MongoDB 是一款强大、灵活，且易于扩展的通用型数据库。它能扩展出非常多的功能，如二级索引（Secondary index）、范围查询（range query）、排序、聚合（aggregation），以及地理空间索引（geospatial inde）。</p>
-<h2 id="易于使用"><a href="#易于使用" class="headerlink" title="易于使用"></a>易于使用</h2><p>MongoDB 是一个面向文档（document-oriented）的数据库，而不是关系型数据库。</p>
+<h1 id="第1章-MongoDB-简介"><a href="#第1章-MongoDB-简介" class="headerlink" title="第1章 MongoDB 简介"></a>第1章 MongoDB 简介</h1><p>MongoDB 是一款强大、灵活，且易于扩展的通用型数据库。它能扩展出非常多的功能，如二级索引（Secondary index）、范围查询（range query）、排序、聚合（aggregation），以及地理空间索引（geospatial inde）。</p>
+<h2 id="1-1-易于使用"><a href="#1-1-易于使用" class="headerlink" title="1.1 易于使用"></a>1.1 易于使用</h2><p>MongoDB 是一个面向文档（document-oriented）的数据库，而不是关系型数据库。</p>
 <p>与关系型数据库相比，面向文档的数据库不再有“行”（row）的概念，取而代之的是更为灵活的“文档”（document）模型。通过在文档中嵌入文档和数组，面向文档的方法能够仅使用一条记录来表现复杂的层次关系。</p>
-<p>另外，不再有预定义模式（predefined schema）：文档的键（key）和值（value）不再是固定的类型和大小。根据需要添加或删除字段变得更容易了。通常，由于开发者能够进行快速迭代，所以开发进程得以加快。而且，试验更容易进行。开发者能尝试大量的数据模型，从中选择一个最好的。</p>
-<h2 id="易于扩展"><a href="#易于扩展" class="headerlink" title="易于扩展"></a>易于扩展</h2><p>MongoDB 的设计采用横向扩展。面向文档的数据模型使它能很容易的在多台服务器之间进行数据分割。MongoDB 能自动处理跨集群的数据和负载，自动重新分配文档，以及将用户请求路由到正确的机器上。开发者只需要集中精力编写应用程序，而不需要考虑如何扩展的问题。如果一个集群需要更大的容量，只需要向集群添加新服务器，MongoDB 就会自动将现有数据向新服务传送。</p>
-<h2 id="丰富的功能"><a href="#丰富的功能" class="headerlink" title="丰富的功能"></a>丰富的功能</h2><a id="more"></a>
+<p>另外，不再有预定义模式（predefined schema）：文档的键（key）和值（value）不再是固定的类型和大小。根据需要添加或删除字段变得更容易了。通常，由于开发者能够进行快速迭代，所以开发进程得以加快。而且，试验更容易进行。开发者能尝试大量的数据模型，从中选择一个最好的。<br><a id="more"></a></p>
+<h2 id="1-2-易于扩展"><a href="#1-2-易于扩展" class="headerlink" title="1.2 易于扩展"></a>1.2 易于扩展</h2><p>MongoDB 的设计采用横向扩展。面向文档的数据模型使它能很容易的在多台服务器之间进行数据分割。MongoDB 能自动处理跨集群的数据和负载，自动重新分配文档，以及将用户请求路由到正确的机器上。开发者只需要集中精力编写应用程序，而不需要考虑如何扩展的问题。如果一个集群需要更大的容量，只需要向集群添加新服务器，MongoDB 就会自动将现有数据向新服务传送。</p>
+<h2 id="1-3-丰富的功能"><a href="#1-3-丰富的功能" class="headerlink" title="1.3 丰富的功能"></a>1.3 丰富的功能</h2><ul>
+<li>索引<br>MongoDB 支持通用二级索引，允许多种快速查询，且提供唯一索引、复合索引、地理空间索引，以及全文索引。</li>
+<li>聚合<br>MongoDB 支持“聚合管道”（aggregation pipeline）。用户能通过简单地片段创建复杂的聚合，并通过数据库自动优化。</li>
+<li>特殊的集合类型<br>MongoDB 支持存在时间有限的集合，适用于那些将在某个时刻过期的数据，如会话（session）。类似地，MongoDB 也支持固定大小的集合，用于保存近期数据，如日志。</li>
+<li>文件存储（file storage）<br>MongoDB 支持一种非常易用的协议，用于存储大文件和文件元数据。</li>
+</ul>
+<h1 id="第2章-MongoDB-基础知识"><a href="#第2章-MongoDB-基础知识" class="headerlink" title="第2章 MongoDB 基础知识"></a>第2章 MongoDB 基础知识</h1><ul>
+<li>文档是 MongoDB 中数据库基本单元，非常类似于关系数据库管理系统中的行。</li>
+<li>集合（collection）可以看作是一个拥有动态模式（dynamic schema）的表。</li>
+<li>MongoDB 的一个实例可以拥有多个相互独立的数据库（database)，每一个数据库都有自己的集合。</li>
+<li>每一个文档都有一个特殊的键“_id“，这个键在文档所属的集合中是惟一的。</li>
+<li>MongoDB 自带了一个简单但功能强大的 JavaScript shell，可用于管理 MongoDB 的实例或数据操作。</li>
+</ul>
+<h2 id="2-1-文档"><a href="#2-1-文档" class="headerlink" title="2.1 文档"></a>2.1 文档</h2><p>文档是 MongoDB 的核心概念。文档就是键值对的一个有序集。文档中的值可以是多种不同的数据类型（甚至可以是一个完整的内嵌文档）。</p>
+<p>文档的键是字符串，除了少数例外情况，键可以使用任意 UTF-8 字符。</p>
+<ul>
+<li>键不能含有 \0 (空字符)。这个字符用于表示键的结尾。</li>
+<li>. 和 $ 具有特殊意义，只能在特定环境下使用。通常这两个字符是被保留的。</li>
+</ul>
+<p>MongoDB 不但区分类型，还区分大小写。</p>
+<p>MongoDB 的文档不能有重复的键。</p>
+<h2 id="2-2-集合"><a href="#2-2-集合" class="headerlink" title="2.2 集合"></a>2.2 集合</h2><p>集合就是一组文档。</p>
+<h3 id="2-2-1-动态模式"><a href="#2-2-1-动态模式" class="headerlink" title="2.2.1 动态模式"></a>2.2.1 动态模式</h3><p>集合是动态模式的。在一个集合里面的文档可以是各式各样的。例如，下面两个文档可以存储在同一个集合里面：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"greeting"</span>:<span class="string">"hello,world!"</span>&#125;</span><br><span class="line">&#123;<span class="attr">"foo"</span>:<span class="number">5</span>&#125;</span><br></pre></td></tr></table></figure></p>
+<p>既然没有必要区分不同类型文档的模式，为什么还要使用多个集合呢？这里有几个重要的原因：</p>
+<ul>
+<li>如果把各种各样的文档不加区分地放在同一个集合里，无论对开发者还是管理员来说都是噩梦。开发者要么确保每次查询只返回固定类型的文档，要么让执行查询的应用程序来处理所有不同类型的文档。</li>
+<li>在一个集合里查询特定类型的文档在速度上也不划算，分开查询多个集合要快得多。</li>
+<li>把同种类型的文档放在一个集合里，数据会更加集中。</li>
+<li>创建索引时，需要使用文档的附加结构（特别是创建唯一索引时）。索引时按照集合来定义的。在一个集合中只放入一种类型的文档，可以更有效地对集合进行索引。</li>
+</ul>
+<h3 id="2-2-2-命名"><a href="#2-2-2-命名" class="headerlink" title="2.2.2 命名"></a>2.2.2 命名</h3><p>集合名可以是满足下列条件的任意 UTF-8 字符串。</p>
+<ul>
+<li>集合名不能是空字符串（“”）。</li>
+<li>集合名不能包含 \0 字符（空字符），这个字符表示集合名的结束。</li>
+<li>集合名不能以 ”system.“ 开头，这是为系统集合保留的前缀。如，system.user 这个集合保存着数据库的用户信息。</li>
+<li>用户创建的集合不能在集合名中包含保留字符 ‘$’，。因为某些系统生成的集合中包含 $ ，很多驱动程序确实支持在集合名里包含该字符。除非你要访问这种系统创建的集合，否则不应该在集合名中包含 $ 。</li>
+</ul>
+<p><strong> 子集合 </strong><br>组织集合的一种惯例是使用 “.” 分隔不同命名空间的子集合。例如，一个具有博客功能的应用可能包含两个集合，分别是 blog.posts 和 blog.authors。这是为了使组织结构更清晰。</p>
+<h2 id="2-3-数据库"><a href="#2-3-数据库" class="headerlink" title="2.3 数据库"></a>2.3 数据库</h2><p>在 MongoDB 中，多个文档组成集合，而多个集合组成可以组成<strong>数据库</strong>。一个 MongoDB 实例可以承载多个数据库，每个数据库拥有 0 个或者多个集合。每个数据库都有独立的权限，在磁盘上，不同的数据库也放置在不同的文件中。一般将一个应用程序的所有数据都存储在同一个数据库中。要存储多个应用程序，就需要使用不同的数据库。</p>
+<p>数据库可以是满足以下条件的任意 UTF-8 字符串。</p>
+<ul>
+<li>不能是空字符串 (“”).</li>
+<li>不能含有 /、\、.、”、*、&lt;、&gt;、:、|、?、$、\0. 基本上，只能使用 ASCII 中的字母和数字。</li>
+<li>数据库名区分大小写。简单起见，数据库名应全部小写。</li>
+<li>数据库名最多为 64 字节。</li>
+</ul>
+<p>保留的数据库名：</p>
+<ul>
+<li>admin</li>
+<li>local</li>
+<li>config</li>
+</ul>
+<p>把数据库名添加到集合名前，得到集合的完全限定名，即命名空间（namdspace）。命名空间的长度不得超过 121 字节，且在实际使用中应小于 100 字节。</p>
+<h2 id="2-4-启动-MongoDB"><a href="#2-4-启动-MongoDB" class="headerlink" title="2.4 启动 MongoDB"></a>2.4 启动 MongoDB</h2><p>MongoDB 在没有参数的情况下会使用默认目录 /data/db . 如果参数目录不存在或不可写，服务器会启动失败。因此，在启动前创建数据目录非常重要。</p>
+<p>MongoDB 默认监听 27017 端口。如果端口被占用，则启动失败。</p>
+<h2 id="2-5-MongoDB-shell-简介"><a href="#2-5-MongoDB-shell-简介" class="headerlink" title="2.5 MongoDB shell 简介"></a>2.5 MongoDB shell 简介</h2><h3 id="2-5-1-运行-shell"><a href="#2-5-1-运行-shell" class="headerlink" title="2.5.1 运行 shell"></a>2.5.1 运行 shell</h3><p>MongoDB shell是一个功能完备的 JavaScript 解释器，可运行任意 JavaScript 程序。如进行简单的数学运算、利用 JavaScript 的标准库还可以定义和调用 JavaScript 函数。</p>
+<h3 id="2-5-2-MongoDB-客户端"><a href="#2-5-2-MongoDB-客户端" class="headerlink" title="2.5.2 MongoDB 客户端"></a>2.5.2 MongoDB 客户端</h3><p>查看 db 当前指向哪个数据库<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db</span><br></pre></td></tr></table></figure></p>
+<p>选择数据库<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use test</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-5-3-shell-中的基本操作"><a href="#2-5-3-shell-中的基本操作" class="headerlink" title="2.5.3 shell 中的基本操作"></a>2.5.3 shell 中的基本操作</h3><p>创建、读取、更新和删除</p>
+<p>1.创建<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">post = &#123;<span class="string">"title"</span>:<span class="string">"My Blog Post"</span>,</span><br><span class="line"><span class="string">"content"</span>:<span class="string">"Here's my blog post."</span>,</span><br><span class="line"><span class="string">"date"</span>:<span class="keyword">new</span> <span class="built_in">Date</span>()&#125;</span><br></pre></td></tr></table></figure></p>
+<p>使用 insert 方法将其保存到 blog 集合中：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.blog.insert(post)</span><br></pre></td></tr></table></figure></p>
+<p>查看<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.blog.find()</span><br></pre></td></tr></table></figure></p>
+<p>2.读取<br>find 和 findOne 方法可以用于查询集合里的文档。若只想查看一个文档，可用 findOne:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.blog.findOne()</span><br></pre></td></tr></table></figure></p>
+<p>3.更新<br>update 接受（至少）两个参数：第一个是限定条件（用于匹配待更新的文档），第二个是新的文档。假设我们要为先前写的文章增加评论功能，就需要增加一个新的键，用于保存评论数组。</p>
+<p>首先，修改变量 post，增加 “comments” 键：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post.comments = []</span><br></pre></td></tr></table></figure></p>
+<p>然后执行 update 操作：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.blog.update(&#123;<span class="attr">title</span>:<span class="string">"My Blog Post"</span>&#125;,post)</span><br></pre></td></tr></table></figure></p>
+<p>4.删除<br>使用 remove 方法可将文档从数据库中永久删除。它可以接受一个作为限定条件的文档作为参数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.blog.remove(&#123;<span class="attr">title</span>:<span class="string">"My Blog Post"</span>&#125;)</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-6-数据类型"><a href="#2-6-数据类型" class="headerlink" title="2.6 数据类型"></a>2.6 数据类型</h2><ul>
+<li><p>null<br>null 用于表示空值或者不存在的字段：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">"x"</span>:<span class="literal">null</span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>布尔型<br>有两个值 true 或 false：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">"x"</span>:<span class="string">"false"</span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数值<br>shell 默认使用 64 位浮点型数值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">"x"</span>:<span class="number">3.14</span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>或：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">"x"</span>:<span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure></p>
+<p>对于整型值，可使用 NuberInt 类（4字节带符号整数）或 NumberLong 类（8字符带符号整数）：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">"x"</span>:NumberInt(<span class="string">"3"</span>)&#125;</span><br><span class="line">&#123;<span class="string">"x"</span>:NumberLong(<span class="string">"3"</span>)&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>字符串<br>UTF-8 字符串都可表示为字符串类型的数据：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">"x"</span>:<span class="string">"foobar"</span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>日期<br>日期被存储为自新纪元以来经过的毫秒数，不存储时区：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">"x"</span>:<span class="keyword">new</span> <span class="built_in">Date</span>()&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>正则表达式<br>查询时，使用正则表达式作为限定条件，语法也与 JavaScript 的正则表达式语法相同：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">"x"</span>:<span class="regexp">/foobar/i</span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数组<br>数据列表或数据集可以表示为数组；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">"x"</span>:[<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>]&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>内嵌文档<br>文档可嵌套其他文档，被嵌套的文档作为父文档的值：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">"x"</span>:&#123;<span class="string">"foo"</span>:<span class="string">"bar"</span>&#125;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对象 id<br>对象 id 是一个 12 字节的 ID，是文档的唯一标识</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">"x"</span>:ObjectId()&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>二进制数据<br>二进制数据时一个任意字节的字符串。它不能直接在 shell 中使用。如果要将非 UTF-8 字符保存到数据库中，二进制数据是唯一的方式。</p>
+</li>
+<li><p>代码</p>
+</li>
+</ul>
+
       
     </div>
 
@@ -1033,7 +1149,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MongoDB-简介"><span class="nav-number">1.</span> <span class="nav-text">MongoDB 简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#易于使用"><span class="nav-number">1.1.</span> <span class="nav-text">易于使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#易于扩展"><span class="nav-number">1.2.</span> <span class="nav-text">易于扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#丰富的功能"><span class="nav-number">1.3.</span> <span class="nav-text">丰富的功能</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第1章-MongoDB-简介"><span class="nav-number">1.</span> <span class="nav-text">第1章 MongoDB 简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-易于使用"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 易于使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-易于扩展"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 易于扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-丰富的功能"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 丰富的功能</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第2章-MongoDB-基础知识"><span class="nav-number">2.</span> <span class="nav-text">第2章 MongoDB 基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-文档"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-集合"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 集合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-动态模式"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 动态模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-命名"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 命名</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-数据库"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-启动-MongoDB"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 启动 MongoDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-MongoDB-shell-简介"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 MongoDB shell 简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-1-运行-shell"><span class="nav-number">2.5.1.</span> <span class="nav-text">2.5.1 运行 shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-2-MongoDB-客户端"><span class="nav-number">2.5.2.</span> <span class="nav-text">2.5.2 MongoDB 客户端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-3-shell-中的基本操作"><span class="nav-number">2.5.3.</span> <span class="nav-text">2.5.3 shell 中的基本操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-数据类型"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 数据类型</span></a></li></ol></li></ol></div>
             
 
           </div>

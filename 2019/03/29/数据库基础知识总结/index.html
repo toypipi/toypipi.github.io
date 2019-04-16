@@ -105,7 +105,7 @@
 <meta property="og:description" content="关系数据库的三级结构模式">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20190329/%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F.png">
-<meta property="og:updated_time" content="2019-04-12T06:18:43.018Z">
+<meta property="og:updated_time" content="2019-04-16T02:00:25.952Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库基础知识总结">
 <meta name="twitter:description" content="关系数据库的三级结构模式">
@@ -420,7 +420,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-12 14:18:43" itemprop="dateModified" datetime="2019-04-12T14:18:43+08:00">2019-04-12</time>
+                <time title="修改时间：2019-04-16 10:00:25" itemprop="dateModified" datetime="2019-04-16T10:00:25+08:00">2019-04-16</time>
               
             
           </span>
@@ -575,6 +575,38 @@
 <p>原型模型从初始的原型逐步演化成最终软件产品，特别适用于对软件需求缺乏准确认识的去情况。</p>
 <p>增量开发是把软件产品作为一系列的增量构建来设计、编码、集成和测试，可以在增量开发过程中逐步理解需求。</p>
 <p>螺旋将瀑布模型与快速原型模型结合起来，并且加入两种模型均忽略了的风险分析，适用于复杂的大型软件。</p>
+<h1 id="运算器与控制器"><a href="#运算器与控制器" class="headerlink" title="运算器与控制器"></a>运算器与控制器</h1><p>寄存器是 CPU 中的一个重要组成部分，它是 CPU 内部的临时存储单元。寄存器既可以用来存放数据和地址，也可以存放控制信息或 CPU 工作时的状态。在 CPU 中增加寄存器的数量，可以使 CPU 把执行程序所需的数据尽可能地放在寄存器件中，从而减少访问内存的次数，提高其运行速度。但是寄存器的数目也不能太多，除了增加成本外，由于寄存器地址编码增加也会增加指令的长度。CPU 中的寄存器通常分为存放数据的寄存器、存放地址的寄存器、存放控制信息的寄存器、存放状态信息的寄存器和其他寄存器等类型。</p>
+<p>程序计数器用于存放指令的地址。令当程序顺序执行时，每取出一条指令，PC 内容自动增加一个值，指向下一条要取的指令。当程序出现转移时，则将转移地址送入 PC ，然后由 PC 指向新的程序地址。</p>
+<p>程序状态寄存器用于记录运算中产生的的标志信息，典型的标志位为有进位标志、零标志位、符号标志位、溢出标志位、奇偶标志位等。</p>
+<p>地址寄存器通常简称为累加器，它是一个通用寄存器。其功能是当运算器的算术逻辑单元执行算术或逻辑运算时，为 ALU 提供一个工作区。例如，在执行一个减法运算前，先将被减数取出放在累加器中，再从内存储器取出减数，然后同累加器的内容相减，所得的结果送回累加器中。累加器在运算过程中暂时存放被操作数和中间运算结果，累加器不能用于长时间地保存一个数据。</p>
+<p>指令寄存器：一般用来保存当前正在执行的一条指令。<br>地址寄存器：一般用来保存当前 CPU 所访问的内存单元的地址，以方便对内存的读写操作。</p>
+<h1 id="设计-RISC"><a href="#设计-RISC" class="headerlink" title="设计 RISC"></a>设计 RISC</h1><p>在设计 RISC 时，需要遵循如下一些基本的原则：</p>
+<ul>
+<li>指令条数少，一般为几十条指令。</li>
+<li>寻址方式尽可能少。</li>
+<li>采用等长指令，不管功能复杂的指令还是简单的指令，均用同一长度。</li>
+<li>设计尽可能多的通用寄存器。</li>
+</ul>
+<h1 id="风险管理"><a href="#风险管理" class="headerlink" title="风险管理"></a>风险管理</h1><p>风险是一种具有负面后果的、人们不希望发生的事件。风险管理是软件项目管理的一项重要任务。在进行风险管理时，根据风险的优先级来确定风险控制策略，而优先级是根据风险暴露来确定的。风险暴露是一种量化风险影响的指标，等于风险影响乘以风险概率。风险影响是当风险发生时造成的损失。风险概率是风险发生的可能性。风险控制是风险管理的一个重要活动。</p>
+<h1 id="数据挖掘常用的技术"><a href="#数据挖掘常用的技术" class="headerlink" title="数据挖掘常用的技术"></a>数据挖掘常用的技术</h1><ul>
+<li>离群点：在样本空间中，与其他样本点的一般行为或特征不一致的点。</li>
+<li>分类：分类分析的内容有分析在此样本情况下能够被分类的程度，并且依据此分析重新分布数据，使得数据更容易被分析，相关技术有多类别分析、主成分分析。</li>
+<li>聚类：聚类分析是指将物理或抽象的集合分组成为由类似的对象组成的多个类的分析过程。它是一种重要的人类行为。聚类分析的目标就是在相似的基础上收集数据来分类。聚类与分类的不同在于，聚类所要求划分的类是未知的。分类和聚类的区别：分类要靠学习，聚类要靠启发式搜索。</li>
+<li>关联规则：其核心是基于两阶段频繁集思想的递推算法。该关联规则在分类上属于单维、单层及布尔关联规则，典型的算法是 Aprior 算法。Aprior 算法将发现关联规则的过程分为两个步骤：第一步通过迭代，检索出事务数据库中所有频繁项集，即支持度不低于用户设定的阈值的项集；第二步利用频繁项集构造出满足用户最小信任度的规则。其中，挖掘或识别出所有频繁项集是该算法的核心，占整个计算量的大部分。</li>
+</ul>
+<h1 id="电子邮件协议"><a href="#电子邮件协议" class="headerlink" title="电子邮件协议"></a>电子邮件协议</h1><ul>
+<li>POP3(Post Office Protocol 3) 协议是适用于 C/S 结构的脱机模型的电子邮件协议。</li>
+<li>SMTP(Simple Mail Transfer Protocol) 协议是简单邮件传输协议。</li>
+<li>IMAP(Internet Message Access Protocol) 是由美国华盛顿大学所研发的一种邮件获取协议。</li>
+<li>MPLS(Multiprotocol Label Switch) 即多协议标记交换，是一种标记（label）机制的交换技术。</li>
+</ul>
+<h1 id="编译与解释"><a href="#编译与解释" class="headerlink" title="编译与解释"></a>编译与解释</h1><ul>
+<li>符号表：符号表是一种用于语言翻译器（例如编译器和解释器）中的数据结构。在符号表中，程序源代码中的每个标示符都和它的声明或使用信息绑定在一起，比如数据类型、作用域以及内存地址。</li>
+<li>哈希表：也叫散列表，是根据关键码（key value）而直接进行访问的数据结构。也就是说，它通过把关键码值映射到表中一个位置来访问记录，以加快查找的速度。</li>
+<li>动态查找表：动态查找表的表结构本身是在查找过程中动态生成的，即对于给定值 key，若表中存在其关键字等于 key 的记录，则查找成功返回，否则插入关键字等于 key 的记录。</li>
+<li>栈和队列：基本的数据结构。栈的基本特点是“后进先出”，而队列的基本特点是“先进先出”。</li>
+</ul>
+<h1 id="ARP"><a href="#ARP" class="headerlink" title="ARP"></a>ARP</h1><p>ARP 协议的作用是由目标地址的 IP 地址发现对应的 MAC 地址。如果源站要和一个新的目标通信，首先由源站发出 ARP 请求广播包，其中包含目标的 IP 地址，然后目标返回 ARP 应答包，其中包含了自己的 MAC 地址。这时，源站一方面把目标的 MAC 地址装入要发送的数据帧中，一方面把得到的 MAC 地址添加到自己的 ARP 表中。当一个站与多个目标进行了通信后，在其 ARP 表就积累了多个事项，每一项都是 IP 地址与 MAC 地址的映射关系。 ARP 表通常用于由 IP 地址查找对应的 MAC 地址。</p>
 
       
     </div>
@@ -1131,7 +1163,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关系数据库的三级结构模式"><span class="nav-number">1.</span> <span class="nav-text">关系数据库的三级结构模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#并行数据库体系结构"><span class="nav-number">2.</span> <span class="nav-text">并行数据库体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#共享内存（Shared-Memory-结构"><span class="nav-number">2.1.</span> <span class="nav-text">共享内存（Shared-Memory)结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#共享磁盘（Shared-Disk-结构"><span class="nav-number">2.2.</span> <span class="nav-text">共享磁盘（Shared-Disk)结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#无共享资源（Shared-Nothing）结构"><span class="nav-number">2.3.</span> <span class="nav-text">无共享资源（Shared-Nothing）结构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务调度"><span class="nav-number">3.</span> <span class="nav-text">事务调度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#以阶段划分的编译"><span class="nav-number">4.</span> <span class="nav-text">以阶段划分的编译</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#词法分析阶段"><span class="nav-number">4.1.</span> <span class="nav-text">词法分析阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法分析阶段"><span class="nav-number">4.2.</span> <span class="nav-text">语法分析阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语义分析阶段"><span class="nav-number">4.3.</span> <span class="nav-text">语义分析阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中间代码生成"><span class="nav-number">4.4.</span> <span class="nav-text">中间代码生成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目标代码生成"><span class="nav-number">4.5.</span> <span class="nav-text">目标代码生成</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务的并发操作"><span class="nav-number">5.</span> <span class="nav-text">事务的并发操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件的可移植性（Portability）"><span class="nav-number">6.</span> <span class="nav-text">软件的可移植性（Portability）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二叉排序树"><span class="nav-number">7.</span> <span class="nav-text">二叉排序树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式数据库全局概念层"><span class="nav-number">8.</span> <span class="nav-text">分布式数据库全局概念层</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程间同步与互斥"><span class="nav-number">9.</span> <span class="nav-text">进程间同步与互斥</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#面向对象的分析（OOA"><span class="nav-number">10.</span> <span class="nav-text">面向对象的分析（OOA)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#音频信号的频率范围"><span class="nav-number">11.</span> <span class="nav-text">音频信号的频率范围</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络规划与设计"><span class="nav-number">12.</span> <span class="nav-text">网络规划与设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库设计"><span class="nav-number">13.</span> <span class="nav-text">数据库设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开发模型"><span class="nav-number">14.</span> <span class="nav-text">开发模型</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关系数据库的三级结构模式"><span class="nav-number">1.</span> <span class="nav-text">关系数据库的三级结构模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#并行数据库体系结构"><span class="nav-number">2.</span> <span class="nav-text">并行数据库体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#共享内存（Shared-Memory-结构"><span class="nav-number">2.1.</span> <span class="nav-text">共享内存（Shared-Memory)结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#共享磁盘（Shared-Disk-结构"><span class="nav-number">2.2.</span> <span class="nav-text">共享磁盘（Shared-Disk)结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#无共享资源（Shared-Nothing）结构"><span class="nav-number">2.3.</span> <span class="nav-text">无共享资源（Shared-Nothing）结构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务调度"><span class="nav-number">3.</span> <span class="nav-text">事务调度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#以阶段划分的编译"><span class="nav-number">4.</span> <span class="nav-text">以阶段划分的编译</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#词法分析阶段"><span class="nav-number">4.1.</span> <span class="nav-text">词法分析阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法分析阶段"><span class="nav-number">4.2.</span> <span class="nav-text">语法分析阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语义分析阶段"><span class="nav-number">4.3.</span> <span class="nav-text">语义分析阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中间代码生成"><span class="nav-number">4.4.</span> <span class="nav-text">中间代码生成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目标代码生成"><span class="nav-number">4.5.</span> <span class="nav-text">目标代码生成</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务的并发操作"><span class="nav-number">5.</span> <span class="nav-text">事务的并发操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件的可移植性（Portability）"><span class="nav-number">6.</span> <span class="nav-text">软件的可移植性（Portability）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二叉排序树"><span class="nav-number">7.</span> <span class="nav-text">二叉排序树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式数据库全局概念层"><span class="nav-number">8.</span> <span class="nav-text">分布式数据库全局概念层</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程间同步与互斥"><span class="nav-number">9.</span> <span class="nav-text">进程间同步与互斥</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#面向对象的分析（OOA"><span class="nav-number">10.</span> <span class="nav-text">面向对象的分析（OOA)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#音频信号的频率范围"><span class="nav-number">11.</span> <span class="nav-text">音频信号的频率范围</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络规划与设计"><span class="nav-number">12.</span> <span class="nav-text">网络规划与设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库设计"><span class="nav-number">13.</span> <span class="nav-text">数据库设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开发模型"><span class="nav-number">14.</span> <span class="nav-text">开发模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运算器与控制器"><span class="nav-number">15.</span> <span class="nav-text">运算器与控制器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设计-RISC"><span class="nav-number">16.</span> <span class="nav-text">设计 RISC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#风险管理"><span class="nav-number">17.</span> <span class="nav-text">风险管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据挖掘常用的技术"><span class="nav-number">18.</span> <span class="nav-text">数据挖掘常用的技术</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#电子邮件协议"><span class="nav-number">19.</span> <span class="nav-text">电子邮件协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编译与解释"><span class="nav-number">20.</span> <span class="nav-text">编译与解释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ARP"><span class="nav-number">21.</span> <span class="nav-text">ARP</span></a></li></ol></div>
             
 
           </div>
