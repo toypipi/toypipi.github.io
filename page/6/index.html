@@ -357,6 +357,195 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2017/11/08/win7-批处理启用禁用网络连接/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="toypipi"/>
+      <meta itemprop="description" content="善始者实繁，克终者盖寡"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="toypipi's blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/11/08/win7-批处理启用禁用网络连接/" class="post-title-link" itemprop="url">win7 批处理启用禁用网络连接</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-11-08 10:48:30" itemprop="dateCreated datePublished" datetime="2017-11-08T10:48:30+08:00">2017-11-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-06-08 16:38:48" itemprop="dateModified" datetime="2018-06-08T16:38:48+08:00">2018-06-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2017/11/08/win7-批处理启用禁用网络连接/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/08/win7-批处理启用禁用网络连接/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>如果 WIN7 有两张网卡，而且需要连接不同的网络 IP 地址时，可以编写一个批处理脚本，当需要切换 IP 的时候，直接点击对应的脚本，就可以实现快速切换，避免每次输入 IP 地址、子网掩码和网关等信息。<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netsh<span class="built_in"> interface </span><span class="builtin-name">set</span><span class="built_in"> interface </span><span class="attribute">name</span>=<span class="string">"本地连接"</span> <span class="attribute">admin</span>=ENABLED</span><br><span class="line">netsh<span class="built_in"> interface </span><span class="builtin-name">set</span><span class="built_in"> interface </span><span class="attribute">name</span>=<span class="string">"本地连接 2"</span> <span class="attribute">admin</span>=DISABLED</span><br></pre></td></tr></table></figure></p>
+<p>将以上脚本保存为一个后缀为 .bat 的文件，如 NetSwitch.bat ，需要切换的时候直接双击执行就可以了。<br>另付上通过批处理脚本修改 IP 地址、子网掩码和网关的命令：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">netsh<span class="built_in"> interface ip </span><span class="builtin-name">set</span><span class="built_in"> address </span><span class="attribute">name</span>=<span class="string">"本地连接"</span> <span class="attribute">source</span>=<span class="string">"static"</span> <span class="attribute">addr</span>=<span class="string">"192.168.1.110"</span> <span class="attribute">mask</span>=<span class="string">"255.255.255.0"</span> <span class="attribute">gateway</span>=<span class="string">"192.168.1.1"</span> <span class="attribute">gwmetric</span>=<span class="string">"1"</span></span><br><span class="line">netsh<span class="built_in"> interface ip </span><span class="builtin-name">set</span><span class="built_in"> dns </span><span class="attribute">name</span>=<span class="string">"本地连接"</span> <span class="attribute">source</span>=static <span class="attribute">addr</span>=<span class="string">"119.29.29.29"</span></span><br><span class="line">netsh<span class="built_in"> interface ip </span><span class="builtin-name">set</span><span class="built_in"> dns </span><span class="attribute">name</span>=<span class="string">"本地连接"</span> <span class="attribute">source</span>=static <span class="attribute">addr</span>=<span class="string">"182.254.116.116"</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>参考文档：</strong><br><a href="http://www.mamicode.com/info-detail-247745.html" target="_blank" rel="noopener">win7如何通过netsh命令禁用启用本地连接</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2017/11/01/Highstock-横坐标日期显示说明/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2096,206 +2285,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2017/07/15/Windows-Server-2012-R2-安装补丁KB2999226提示此更新不适合用于计算机/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="toypipi"/>
-      <meta itemprop="description" content="善始者实繁，克终者盖寡"/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="toypipi's blog"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/07/15/Windows-Server-2012-R2-安装补丁KB2999226提示此更新不适合用于计算机/" class="post-title-link" itemprop="url">Windows Server 2012 R2 安装补丁KB2999226提示此更新不适合用于计算机</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-07-15 10:06:50" itemprop="dateCreated datePublished" datetime="2017-07-15T10:06:50+08:00">2017-07-15</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-02-27 09:52:47" itemprop="dateModified" datetime="2019-02-27T09:52:47+08:00">2019-02-27</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2017/07/15/Windows-Server-2012-R2-安装补丁KB2999226提示此更新不适合用于计算机/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/07/15/Windows-Server-2012-R2-安装补丁KB2999226提示此更新不适合用于计算机/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <hr>
-<p>近期在内网服务器上安装MySQL Workbench时，遇到了一个小问题。</p>
-<p>由于MySQL Workbench 官网上明确说明安装此软件需要<a href="https://www.microsoft.com/en-us/download/details.aspx?id=30653" target="_blank" rel="noopener">“Microsoft .NET Framework 4.5”</a>和<a href="https://www.microsoft.com/en-us/download/details.aspx?id=48145" target="_blank" rel="noopener">“Visual C++ Redistributable for Visual Studio 2015”</a>。</p>
-<p><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20170715/TIM%E6%88%AA%E5%9B%BE20170715101315.png" alt="Mysql Workbench"><br>该服务器操作系统是Windows Server 2012 R2，已经自带了.NET Framework 4.5，所以只需要安装Visual Studio 2015就行了。</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2017/07/15/Windows-Server-2012-R2-安装补丁KB2999226提示此更新不适合用于计算机/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2338,7 +2332,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">100</span>
+                    <span class="site-state-item-count">101</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2723,7 +2717,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
