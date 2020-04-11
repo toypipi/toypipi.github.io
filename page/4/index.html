@@ -357,6 +357,204 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/03/31/压缩备份/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="toypipi"/>
+      <meta itemprop="description" content="善始者实繁，克终者盖寡"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="toypipi's blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/03/31/压缩备份/" class="post-title-link" itemprop="url">压缩备份</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-31 08:55:16" itemprop="dateCreated datePublished" datetime="2018-03-31T08:55:16+08:00">2018-03-31</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-06-08 16:38:48" itemprop="dateModified" datetime="2018-06-08T16:38:48+08:00">2018-06-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/03/31/压缩备份/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/31/压缩备份/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <hr>
+<p>Percona XtraBackup 实现了对压缩备份的支持。它可以使用 <a href="https://www.percona.com/doc/percona-xtrabackup/LATEST/glossary.html#term-xbstream" target="_blank" rel="noopener">xbstream</a> 压缩、解压缩本地备份或流式备份。</p>
+<h1 id="创建压缩备份"><a href="#创建压缩备份" class="headerlink" title="创建压缩备份"></a>创建压缩备份</h1><p>为了进行压缩备份，您需要使用 <code>xtrabackup --compress</code> 选项：</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">$</span> <span class="comment">xtrabackup</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">backup</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">compress</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">target</span><span class="literal">-</span><span class="comment">dir=/data/compressed/</span></span><br></pre></td></tr></table></figure>
+<p>如果您想加快压缩速度，可以使用并行压缩，可以使用 <code>xtrabackup --compress-threads</code> 选项启用并行压缩。以下示例将使用四个线程进行压缩：</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">$</span> <span class="comment">xtrabackup</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">backup</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">compress</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">compress</span><span class="literal">-</span><span class="comment">threads=4</span> <span class="comment">\</span></span><br><span class="line"><span class="comment"></span><span class="literal">-</span><span class="literal">-</span><span class="comment">target</span><span class="literal">-</span><span class="comment">dir=/data/compressed/</span></span><br></pre></td></tr></table></figure>
+<p>输出看起来像这样<br>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/03/31/压缩备份/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/03/30/增量备份/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2111,205 +2309,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/03/22/Percona-XtraBackup-文档翻译/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="toypipi"/>
-      <meta itemprop="description" content="善始者实繁，克终者盖寡"/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="toypipi's blog"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/03/22/Percona-XtraBackup-文档翻译/" class="post-title-link" itemprop="url">Percona XtraBackup 文档翻译</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-03-22 17:16:29" itemprop="dateCreated datePublished" datetime="2018-03-22T17:16:29+08:00">2018-03-22</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-06-08 16:38:48" itemprop="dateModified" datetime="2018-06-08T16:38:48+08:00">2018-06-08</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2018/03/22/Percona-XtraBackup-文档翻译/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/22/Percona-XtraBackup-文档翻译/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <hr>
-<div class="note danger">
-            <p>Percona XtraBackup 文档翻译已经迁移到 <a href="https://toypipi.gitbook.io/percona-xtrabackup-2-4-9/" target="_blank" rel="noopener">gitbook</a>，本博客后续将不再更新~~~</p>
-          </div>
-<p>翻译 Percona XtraBackup 官方文档，原文<a href="https://www.percona.com/doc/percona-xtrabackup/LATEST/index.html" target="_blank" rel="noopener">在这</a>。以下为翻译内容：</p>
-<p>Percona XtraBackup 是一款基于 MySQL 服务器的开源热备份实用程序，在备份过程中不会锁定数据库。</p>
-<p>它可以备份 MySQL 5.1（在Percona XtraBackup 2.1 中已经删除了对 InnoDB 5.1 的内置支持），5.5 , 5.6 和 5.7 服务器上的 InnoDB，XtraDB 和 MyISAM 表的数据，以及带有 XtraDB 的 Percona 服务器。有关其许多高级功能（包括功能比较）的高级概述，请参阅 <a href="https://www.percona.com/doc/percona-xtrabackup/LATEST/intro.html" target="_blank" rel="noopener">Percona XtraBackup</a>。</p>
-<p>无论是 24x7 高负载的服务器还是低事务量的环境，Percona XtraBackup 旨在使备份成为无缝过程，而不会中断生产环境中服务器的性能。<a href="https://www.percona.com/services/support/mysql-support" target="_blank" rel="noopener">支持商业合同</a>。<br>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/03/22/Percona-XtraBackup-文档翻译/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2357,7 +2356,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">104</span>
+                    <span class="site-state-item-count">105</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
