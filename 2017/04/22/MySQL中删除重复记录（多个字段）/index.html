@@ -97,7 +97,7 @@
 
 
   <meta name="description" content="今天在将多个分表合并为一个表时，遇到了一个问题。这些分表由业务人员创建，其中一部分未加UNIQUE索引，导致这些表中的部分数据重复，需要删除其中的重复数据。 思路为：首先将数据按照字段A、B、C、D分组（如果A、B、C、D相同就认为数据重复），求出记录大于1的最大id，然后删除这个id的数据。sql语句如下:123DELETE FROM test WHERE id IN(SELECT id FR">
-<meta name="keywords" content="MySQL,删除重复记录,多个字段">
+<meta name="keywords" content="删除重复记录,多个字段,MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL中删除重复记录（多个字段）">
 <meta property="og:url" content="https://toypipi.github.io/2017/04/22/MySQL中删除重复记录（多个字段）/index.html">
@@ -573,11 +573,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
-          
             <a href="/tags/删除重复记录/" rel="tag"># 删除重复记录</a>
           
             <a href="/tags/多个字段/" rel="tag"># 多个字段</a>
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
           
         </div>
       
