@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="1994 年 Ronny Kohavi 和 Barry Becker 针对美国某区域的居民做了一次人口普查，经过筛选，一共得到 32 561 条样本数据。数据中主要包含了关于居民的基本信息以及对应的年收入，其中年收入就是本文中需要预测的变量，基于上面的数据集，需要预测居民的年收入是否会超过 5 万美元。数据集下载">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python 预测居民的年收入">
+<meta property="og:url" content="https://toypipi.github.io/2020/06/04/python-预测居民的年收入/index.html">
+<meta property="og:site_name" content="toypipi&#39;s blog">
+<meta property="og:description" content="1994 年 Ronny Kohavi 和 Barry Becker 针对美国某区域的居民做了一次人口普查，经过筛选，一共得到 32 561 条样本数据。数据中主要包含了关于居民的基本信息以及对应的年收入，其中年收入就是本文中需要预测的变量，基于上面的数据集，需要预测居民的年收入是否会超过 5 万美元。数据集下载">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-06-04T03:30:00.298Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python 预测居民的年收入">
+<meta name="twitter:description" content="1994 年 Ronny Kohavi 和 Barry Becker 针对美国某区域的居民做了一次人口普查，经过筛选，一共得到 32 561 条样本数据。数据中主要包含了关于居民的基本信息以及对应的年收入，其中年收入就是本文中需要预测的变量，基于上面的数据集，需要预测居民的年收入是否会超过 5 万美元。数据集下载">
+
+
+
+
+
+
+  <link rel="canonical" href="https://toypipi.github.io/2020/06/04/python-预测居民的年收入/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>python 预测居民的年收入 | toypipi's blog</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-90328755-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-90328755-1');
+  </script>
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c15b2aef6df09056158d71d4cc56bf34";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">toypipi's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2020/06/04/python-预测居民的年收入/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="toypipi"/>
+      <meta itemprop="description" content="善始者实繁，克终者盖寡"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="toypipi's blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python 预测居民的年收入
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-06-04 10:53:06 / 修改时间：11:30:00" itemprop="dateCreated datePublished" datetime="2020-06-04T10:53:06+08:00">2020-06-04</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2020/06/04/python-预测居民的年收入/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/06/04/python-预测居民的年收入/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>1994 年 Ronny Kohavi 和 Barry Becker 针对美国某区域的居民做了一次人口普查，经过筛选，一共得到 32 561 条样本数据。数据中主要包含了关于居民的基本信息以及对应的年收入，其中年收入就是本文中需要预测的变量，基于上面的数据集，需要预测居民的年收入是否会超过 5 万美元。<br><a href="https://github.com/SnakeLiu/Python-Data-Aanalysis-and-Miner" target="_blank" rel="noopener">数据集下载</a><br><a id="more"></a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据读取</span></span><br><span class="line">income = pd.read_excel(<span class="string">'D:\Download\income.xlsx'</span>)</span><br><span class="line"><span class="comment"># 查看数据集是否存在缺失值</span></span><br><span class="line">print(income.apply(<span class="keyword">lambda</span> x: np.sum(x.isnull())))</span><br><span class="line"><span class="comment"># 使用各自的众数来替换缺失值</span></span><br><span class="line">income.fillna(value=&#123;<span class="string">'workclass'</span>: income.workclass.mode()[<span class="number">0</span>],</span><br><span class="line">                     <span class="string">'occupation'</span>: income.occupation.mode()[<span class="number">0</span>],</span><br><span class="line">                     <span class="string">'native-country'</span>: income[<span class="string">'native-country'</span>].mode()[<span class="number">0</span>]&#125;,</span><br><span class="line">              inplace=<span class="keyword">True</span>)</span><br><span class="line"><span class="comment"># 数值型变量的统计描述</span></span><br><span class="line">print(income.describe())</span><br><span class="line"><span class="comment"># 离散型变量的统计描述</span></span><br><span class="line">print(income.describe(include=[<span class="string">'object'</span>]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置绘图风格</span></span><br><span class="line">plt.style.use(<span class="string">'ggplot'</span>)</span><br><span class="line"><span class="comment"># 设置多图形的组合</span></span><br><span class="line">fig, axes = plt.subplots(<span class="number">2</span>, <span class="number">1</span>)</span><br><span class="line"><span class="comment"># 绘制不同收入水平下的年龄核密度图</span></span><br><span class="line">income.age[income.income == <span class="string">' &lt;=50K'</span>].plot(kind=<span class="string">'kde'</span>, label=<span class="string">'&lt;=50K'</span>, ax=axes[<span class="number">0</span>], legend=<span class="keyword">True</span>, linestyle=<span class="string">'-'</span>)</span><br><span class="line">income.age[income.income == <span class="string">' &gt;50K'</span>].plot(kind=<span class="string">'kde'</span>, label=<span class="string">'&gt;50K'</span>, ax=axes[<span class="number">0</span>], legend=<span class="keyword">True</span>, linestyle=<span class="string">'--'</span>)</span><br><span class="line"><span class="comment"># 绘制不同收入水平下的周工作小时数据核密度图</span></span><br><span class="line">income[<span class="string">'hours-per-week'</span>][income.income == <span class="string">' &lt;=50K'</span>].plot(kind=<span class="string">'kde'</span>, label=<span class="string">'&lt;=50K'</span>, ax=axes[<span class="number">1</span>], legend=<span class="keyword">True</span>,</span><br><span class="line">                                                         linestyle=<span class="string">'-'</span>)</span><br><span class="line">income[<span class="string">'hours-per-week'</span>][income.income == <span class="string">' &gt;50K'</span>].plot(kind=<span class="string">'kde'</span>, label=<span class="string">'&gt;50K'</span>, ax=axes[<span class="number">1</span>], legend=<span class="keyword">True</span>,</span><br><span class="line">                                                        linestyle=<span class="string">'--'</span>)</span><br><span class="line"><span class="comment"># 显示图形</span></span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 构造不同收入水平下各种族人数的数据</span></span><br><span class="line">race = pd.DataFrame(income.groupby(by=[<span class="string">'race'</span>, <span class="string">'income'</span>]).aggregate(np.size).loc[:, <span class="string">'age'</span>])</span><br><span class="line"><span class="comment"># 重设行索引</span></span><br><span class="line">race = race.reset_index()</span><br><span class="line"><span class="comment"># 变量重命名</span></span><br><span class="line">race.rename(columns=&#123;<span class="string">'age'</span>: <span class="string">'counts'</span>&#125;, inplace=<span class="keyword">True</span>)</span><br><span class="line"><span class="comment"># 排序</span></span><br><span class="line">race.sort_values(by=[<span class="string">'race'</span>, <span class="string">'counts'</span>], ascending=<span class="keyword">False</span>, inplace=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 构造不同收入水平下各家庭关系人数的数据</span></span><br><span class="line">relationship = pd.DataFrame(income.groupby(by=[<span class="string">'relationship'</span>, <span class="string">'income'</span>]).aggregate(np.size).loc[:, <span class="string">'age'</span>])</span><br><span class="line">relationship = relationship.reset_index()</span><br><span class="line">relationship.rename(columns=&#123;<span class="string">'age'</span>: <span class="string">'counts'</span>&#125;, inplace=<span class="keyword">True</span>)</span><br><span class="line">relationship.sort_values(by=[<span class="string">'relationship'</span>, <span class="string">'counts'</span>], ascending=<span class="keyword">False</span>, inplace=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置图框比例，并绘图</span></span><br><span class="line">plt.figure(figsize=(<span class="number">9</span>, <span class="number">5</span>))</span><br><span class="line">sns.barplot(x=<span class="string">'race'</span>, y=<span class="string">'counts'</span>, hue=<span class="string">'income'</span>, data=race)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">9</span>, <span class="number">5</span>))</span><br><span class="line">sns.barplot(x=<span class="string">'relationship'</span>, y=<span class="string">'counts'</span>, hue=<span class="string">'income'</span>, data=relationship)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 离散变量的重编码</span></span><br><span class="line"><span class="keyword">for</span> feature <span class="keyword">in</span> income.columns:</span><br><span class="line">    <span class="keyword">if</span> income[feature].dtype == <span class="string">'object'</span>:</span><br><span class="line">        income[feature] = pd.Categorical(income[feature]).codes</span><br><span class="line">print(income.head())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除无意义变量</span></span><br><span class="line">income.drop([<span class="string">'education'</span>, <span class="string">'fnlwgt'</span>], axis=<span class="number">1</span>, inplace=<span class="keyword">True</span>)</span><br><span class="line">print(income.head())</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据拆分</span></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(income.loc[:, <span class="string">'age'</span>:<span class="string">'native-country'</span>], income[<span class="string">'income'</span>],</span><br><span class="line">                                                    train_size=<span class="number">0.75</span>, test_size=<span class="number">0.25</span>, random_state=<span class="number">1234</span>)</span><br><span class="line">print(<span class="string">'训练数据集共有%d条观测'</span> % X_train.shape[<span class="number">0</span>])</span><br><span class="line">print(<span class="string">'训练数据集共有%d条观测'</span> % X_test.shape[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 导入 K 近邻模型的类</span></span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"></span><br><span class="line"><span class="comment"># 构建 K 近邻模型</span></span><br><span class="line">kn = KNeighborsClassifier()</span><br><span class="line">kn.fit(X_train, y_train)</span><br><span class="line">print(kn)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 导入 GBDT 模型的类</span></span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> GradientBoostingClassifier</span><br><span class="line"></span><br><span class="line"><span class="comment"># 构建 GBDT 模型</span></span><br><span class="line">gbdt = GradientBoostingClassifier()</span><br><span class="line">gbdt.fit(X_train, y_train)</span><br><span class="line">print(gbdt)</span><br><span class="line"></span><br><span class="line"><span class="comment"># K 近邻模型的网格搜索法</span></span><br><span class="line"><span class="comment"># 导入网格搜索法的函数</span></span><br><span class="line"><span class="keyword">from</span> sklearn.grid_search <span class="keyword">import</span> GridSearchCV</span><br><span class="line"></span><br><span class="line"><span class="comment"># 选择不同的参数</span></span><br><span class="line">k_options = list(range(<span class="number">1</span>, <span class="number">12</span>))</span><br><span class="line">parameters = &#123;<span class="string">'n_neighbors'</span>: k_options&#125;</span><br><span class="line"><span class="comment"># 搜索不同的 K 值</span></span><br><span class="line">grid_kn = GridSearchCV(estimator=KNeighborsClassifier(), param_grid=parameters, cv=<span class="number">10</span>, scoring=<span class="string">'accuracy'</span>)</span><br><span class="line">grid_kn.fit(X_train, y_train)</span><br><span class="line"><span class="comment"># 结果输出</span></span><br><span class="line">print(grid_kn.grid_scores_, grid_kn.best_params_, grid_kn.best_score_)</span><br><span class="line"></span><br><span class="line"><span class="comment"># GBDT 模型的网格搜索法</span></span><br><span class="line"><span class="comment"># 选择不同的参数</span></span><br><span class="line">learning_rate_options = [<span class="number">0.01</span>, <span class="number">0.05</span>, <span class="number">0.1</span>]</span><br><span class="line">max_depth_options = [<span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>]</span><br><span class="line">n_estimators_options = [<span class="number">100</span>, <span class="number">300</span>, <span class="number">500</span>]</span><br><span class="line">parameters = &#123;<span class="string">'learning_rate'</span>: learning_rate_options, <span class="string">'max_depth'</span>: max_depth_options,</span><br><span class="line">              <span class="string">'n_estimators'</span>: n_estimators_options&#125;</span><br><span class="line">grid_gbdt = GridSearchCV(estimator=GradientBoostingClassifier(), param_grid=parameters, cv=<span class="number">10</span>, scoring=<span class="string">'accuracy'</span>)</span><br><span class="line">grid_gbdt.fit(X_train, y_train)</span><br><span class="line"><span class="comment"># 结果输出</span></span><br><span class="line">print(grid_gbdt.grid_scores_, grid_gbdt.best_params_, grid_gbdt.best_score_)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 默认的 K 近邻模型</span></span><br><span class="line">kn_pred = kn.predict(X_test)</span><br><span class="line">print(pd.crosstab(kn_pred, y_test))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 模型得分</span></span><br><span class="line">print(<span class="string">'模型在训练集上的准确率%f'</span> % kn.score(X_train, y_train))</span><br><span class="line">print(<span class="string">'模型在测试集上的准确率%f'</span> % kn.score(X_test, y_test))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 导入模型评估模块</span></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> metrics</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算 ROC 曲线的 x 轴和 y 轴数据</span></span><br><span class="line">fpr, tpr, _ = metrics.roc_curve(y_test, kn.predict_proba(X_test)[:, <span class="number">1</span>])</span><br><span class="line"><span class="comment"># 绘制 ROC 曲线</span></span><br><span class="line">plt.plot(fpr, tpr, linestyle=<span class="string">'solid'</span>, color=<span class="string">'red'</span>)</span><br><span class="line"><span class="comment"># 添加阴影</span></span><br><span class="line">plt.stackplot(fpr, tpr, color=<span class="string">'steelblue'</span>)</span><br><span class="line"><span class="comment"># 绘制参考线</span></span><br><span class="line">plt.plot([<span class="number">0</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">1</span>], linestyle=<span class="string">'dashed'</span>, color=<span class="string">'black'</span>)</span><br><span class="line"><span class="comment"># 往图中添加文本</span></span><br><span class="line">plt.text(<span class="number">0.6</span>, <span class="number">0.4</span>, <span class="string">'AUC=%.3f'</span> % metrics.auc(fpr, tpr), fontdict=dict(size=<span class="number">18</span>))</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 预测测试集</span></span><br><span class="line">grid_kn_pred = grid_kn.predict(X_test)</span><br><span class="line">print(pd.crosstab(grid_kn_pred, y_test))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 模型得分</span></span><br><span class="line">print(<span class="string">'模型在训练集上的准确率%f'</span> % grid_kn.score(X_train, y_train))</span><br><span class="line">print(<span class="string">'模型在测试集上的准确率%f'</span> % grid_kn.score(X_test, y_test))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制 ROC 曲线</span></span><br><span class="line">fpr, tpr, _ = metrics.roc_curve(y_test, grid_kn.predict_proba(X_test)[:, <span class="number">1</span>])</span><br><span class="line">plt.plot(fpr, tpr, linestyle=<span class="string">'solid'</span>, color=<span class="string">'red'</span>)</span><br><span class="line">plt.stackplot(fpr, tpr, color=<span class="string">'steelblue'</span>)</span><br><span class="line">plt.plot([<span class="number">0</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">1</span>], linestyle=<span class="string">'dashed'</span>, color=<span class="string">'black'</span>)</span><br><span class="line">plt.text(<span class="number">0.6</span>, <span class="number">0.4</span>, <span class="string">'AUC=%.3f'</span> % metrics.auc(fpr, tpr), fontdict=dict(size=<span class="number">18</span>))</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 默认的 GBDT 模型</span></span><br><span class="line">gbdt_pred = gbdt.predict(X_test)</span><br><span class="line">print(pd.crosstab(gbdt_pred, y_test))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 模型得分</span></span><br><span class="line">print(<span class="string">'模型在训练集上的准确率%f'</span> % gbdt.score(X_train, y_train))</span><br><span class="line">print(<span class="string">'模型在测试集上的准确率%f'</span> % gbdt.score(X_test, y_test))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制 ROC 曲线</span></span><br><span class="line">fpr, tpr, _ = metrics.roc_curve(y_test, gbdt.predict_proba(X_test)[:, <span class="number">1</span>])</span><br><span class="line">plt.plot(fpr, tpr, linestyle=<span class="string">'solid'</span>, color=<span class="string">'red'</span>)</span><br><span class="line">plt.stackplot(fpr, tpr, color=<span class="string">'steelblue'</span>)</span><br><span class="line">plt.plot([<span class="number">0</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">1</span>], linestyle=<span class="string">'dashed'</span>, color=<span class="string">'black'</span>)</span><br><span class="line">plt.text(<span class="number">0.6</span>, <span class="number">0.4</span>, <span class="string">'AUC=%.3f'</span> % metrics.auc(fpr, tpr), fontdict=dict(size=<span class="number">18</span>))</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 网格搜索的 GBDT 模型</span></span><br><span class="line">grid_gbdt_pred = grid_gbdt.predict(X_test)</span><br><span class="line">print(pd.crosstab(grid_gbdt_pred, y_test))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 模型得分</span></span><br><span class="line">print(<span class="string">'模型在训练集上的准确率%f'</span> % grid_gbdt.score(X_train, y_train))</span><br><span class="line">print(<span class="string">'模型在测试集上的准确率%f'</span> % grid_gbdt.score(X_test, y_test))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制 ROC 曲线</span></span><br><span class="line">fpr, tpr, _ = metrics.roc_curve(y_test, grid_gbdt.predict_proba(X_test)[:, <span class="number">1</span>])</span><br><span class="line">plt.plot(fpr, tpr, linestyle=<span class="string">'solid'</span>, color=<span class="string">'red'</span>)</span><br><span class="line">plt.stackplot(fpr, tpr, color=<span class="string">'steelblue'</span>)</span><br><span class="line">plt.plot([<span class="number">0</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">1</span>], linestyle=<span class="string">'dashed'</span>, color=<span class="string">'black'</span>)</span><br><span class="line">plt.text(<span class="number">0.6</span>, <span class="number">0.4</span>, <span class="string">'AUC=%.3f'</span> % metrics.auc(fpr, tpr), fontdict=dict(size=<span class="number">18</span>))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><strong>转载：</strong><br><a href="https://book.douban.com/subject/30430786/" target="_blank" rel="noopener">从零开始学Python数据分析与挖掘</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>请我家喵吃条小鱼干吧  ฅ(๑*д*๑)ฅ</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.JPG" alt="toypipi 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.JPG" alt="toypipi 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>toypipi</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://toypipi.github.io/2020/06/04/python-预测居民的年收入/" title="python 预测居民的年收入">https://toypipi.github.io/2020/06/04/python-预测居民的年收入/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/06/03/as-far-as-和-so-far-as-的区别/" rel="next" title="as far as 和 so far as 的区别">
+                <i class="fa fa-chevron-left"></i> as far as 和 so far as 的区别
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/06/06/腹泻的家庭护理/" rel="prev" title="腹泻的家庭护理">
+                腹泻的家庭护理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">toypipi</p>
+              <p class="site-description motion-element" itemprop="description">善始者实繁，克终者盖寡</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">113</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">157</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">toypipi</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'tbIJcfswUFaknkcghWzvRaEM-gzGzoHsz',
+    appKey: 'ABRMf9eANJrcKAqn9xOgu5tt',
+    placeholder: '欢饮您给我留言~~',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+</script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
