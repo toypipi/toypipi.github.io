@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="修改倒数第 1 次的 commitscript1$ git rebase -i HEAD~1 修改 pick 为 edit 按 i 进入编辑模式 将要修改的那一条的pick修改成edit 按 esc 退出编辑模式，输入 :wq 保存并退出  修改commit注释内容script1$ git commit --amend  按 i 进入编辑模式 将要修改的那一条的pick修改成edit 按 esc">
+  <meta name="description" content="修改倒数第 1 次的 commitscript1$ git rebase -i HEAD~1 修改 pick 为 edit">
 <meta name="keywords" content="commit">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git 修改已经提交并 push 的 commit 注释">
 <meta property="og:url" content="https://toypipi.github.io/2020/08/06/git-修改已经提交并-push-的-commit-注释/index.html">
 <meta property="og:site_name" content="toypipi&#39;s blog">
-<meta property="og:description" content="修改倒数第 1 次的 commitscript1$ git rebase -i HEAD~1 修改 pick 为 edit 按 i 进入编辑模式 将要修改的那一条的pick修改成edit 按 esc 退出编辑模式，输入 :wq 保存并退出  修改commit注释内容script1$ git commit --amend  按 i 进入编辑模式 将要修改的那一条的pick修改成edit 按 esc">
+<meta property="og:description" content="修改倒数第 1 次的 commitscript1$ git rebase -i HEAD~1 修改 pick 为 edit">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-08-06T03:05:46.127Z">
+<meta property="og:updated_time" content="2020-08-06T05:36:05.851Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git 修改已经提交并 push 的 commit 注释">
-<meta name="twitter:description" content="修改倒数第 1 次的 commitscript1$ git rebase -i HEAD~1 修改 pick 为 edit 按 i 进入编辑模式 将要修改的那一条的pick修改成edit 按 esc 退出编辑模式，输入 :wq 保存并退出  修改commit注释内容script1$ git commit --amend  按 i 进入编辑模式 将要修改的那一条的pick修改成edit 按 esc">
+<meta name="twitter:description" content="修改倒数第 1 次的 commitscript1$ git rebase -i HEAD~1 修改 pick 为 edit">
 
 
 
@@ -401,7 +401,7 @@
                 
               
 
-              <time title="创建时间：2020-08-06 10:58:44 / 修改时间：11:05:46" itemprop="dateCreated datePublished" datetime="2020-08-06T10:58:44+08:00">2020-08-06</time>
+              <time title="创建时间：2020-08-06 10:58:44 / 修改时间：13:36:05" itemprop="dateCreated datePublished" datetime="2020-08-06T10:58:44+08:00">2020-08-06</time>
             
 
             
@@ -481,7 +481,8 @@
       
         <hr>
 <h1 id="修改倒数第-1-次的-commit"><a href="#修改倒数第-1-次的-commit" class="headerlink" title="修改倒数第 1 次的 commit"></a>修改倒数第 1 次的 commit</h1><figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git rebase -i HEAD~1</span></span><br></pre></td></tr></table></figure>
-<h1 id="修改-pick-为-edit"><a href="#修改-pick-为-edit" class="headerlink" title="修改 pick 为 edit"></a>修改 pick 为 edit</h1><ul>
+<h1 id="修改-pick-为-edit"><a href="#修改-pick-为-edit" class="headerlink" title="修改 pick 为 edit"></a>修改 pick 为 edit</h1><a id="more"></a>
+<ul>
 <li>按 i 进入编辑模式</li>
 <li>将要修改的那一条的pick修改成edit</li>
 <li>按 esc 退出编辑模式，输入 :wq 保存并退出</li>
@@ -490,10 +491,11 @@
 <ul>
 <li>按 i 进入编辑模式</li>
 <li>将要修改的那一条的pick修改成edit</li>
-<li>按 esc 退出编辑模式，输入 :wq 保存并退出<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git rebase --<span class="built_in">continue</span></span></span><br></pre></td></tr></table></figure>
-</li>
+<li>按 esc 退出编辑模式，输入 :wq 保存并退出      </li>
 </ul>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git rebase --<span class="built_in">continue</span></span></span><br></pre></td></tr></table></figure>
 <h1 id="强制push"><a href="#强制push" class="headerlink" title="强制push"></a>强制push</h1><figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git push --force github</span></span><br></pre></td></tr></table></figure>
+<p><strong> 参考文档 </strong><br><a href="https://www.cnblogs.com/superjishere/p/11578130.html" target="_blank" rel="noopener">git——修改已经提交并push后的commit注释</a></p>
 
       
     </div>
@@ -592,6 +594,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2020/08/06/意志力实验：5-分钟训练大脑冥想/" rel="prev" title="意志力实验：5 分钟训练大脑冥想">
+                意志力实验：5 分钟训练大脑冥想 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -664,7 +670,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">114</span>
+                    <span class="site-state-item-count">115</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1044,7 +1050,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">158</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">160</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
