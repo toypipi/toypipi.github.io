@@ -2246,7 +2246,7 @@
       
         
           <p>使用oh-my-zsh过程中遇到了中文乱码问题，经过上网查询，多数答案都是修改<code>~/.zshrc</code>文件，增如下内容：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">export</span> <span class="attribute">LC_ALL</span>=en.UTF-8</span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">LANG</span>=en_US.UTF-8</span><br></pre></td></tr></table></figure></p>
-<p>然后：<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure></p>
+<p>然后：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure></p>
 <p>可是我更改了之后依然是乱码，使用<code>locale</code>命令报如下错误：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locale:Cannot <span class="builtin-name">set</span> LC-ALL <span class="keyword">to</span><span class="built_in"> default </span>locale:No such file <span class="keyword">or</span> directory</span><br></pre></td></tr></table></figure></p>
           <!--noindex-->
           
