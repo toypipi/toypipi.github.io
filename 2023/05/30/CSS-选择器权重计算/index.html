@@ -79,17 +79,19 @@
 
 
 
-<meta name="description" content="权重是用来确定哪个样式规则应该应用于元素的。权重越高，优先级越高。 权重计算分为四个等级： 内联样式（Inline styles）：权重为 1000 ID 选择器（ID selectors）：权重为 100 类选择器（Class selectors）、属性选择器（Attribute selectors）和伪类选择器（Pseudo-classes）：权重为 10 元素选择器（Element sel">
+<meta name="description" content="权重是用来确定哪个样式规则应该应用于元素的。权重越高，优先级越高。 权重计算分为四个等级：行内 &gt; ID 选择器 &gt; 类选择器 &gt; 元素选择器 &gt; 通配选择器 *  内联样式（Inline styles）：权重为 1000 ID 选择器（ID selectors）：权重为 100 类选择器（Class selectors）、属性选择器（Attribute selector">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS 选择器权重计算">
 <meta property="og:url" content="https://toypipi.github.io/2023/05/30/CSS-%E9%80%89%E6%8B%A9%E5%99%A8%E6%9D%83%E9%87%8D%E8%AE%A1%E7%AE%97/index.html">
 <meta property="og:site_name" content="toypipi&#39;s blog">
-<meta property="og:description" content="权重是用来确定哪个样式规则应该应用于元素的。权重越高，优先级越高。 权重计算分为四个等级： 内联样式（Inline styles）：权重为 1000 ID 选择器（ID selectors）：权重为 100 类选择器（Class selectors）、属性选择器（Attribute selectors）和伪类选择器（Pseudo-classes）：权重为 10 元素选择器（Element sel">
+<meta property="og:description" content="权重是用来确定哪个样式规则应该应用于元素的。权重越高，优先级越高。 权重计算分为四个等级：行内 &gt; ID 选择器 &gt; 类选择器 &gt; 元素选择器 &gt; 通配选择器 *  内联样式（Inline styles）：权重为 1000 ID 选择器（ID selectors）：权重为 100 类选择器（Class selectors）、属性选择器（Attribute selector">
 <meta property="og:locale">
+<meta property="og:image" content="https://toypipi.github.io/2023/05/30/CSS-%E9%80%89%E6%8B%A9%E5%99%A8%E6%9D%83%E9%87%8D%E8%AE%A1%E7%AE%97/CSS2.jpg">
 <meta property="article:published_time" content="2023-05-30T07:16:48.000Z">
-<meta property="article:modified_time" content="2023-05-30T07:35:15.168Z">
+<meta property="article:modified_time" content="2023-05-30T08:01:18.501Z">
 <meta property="article:author" content="toypipi">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://toypipi.github.io/2023/05/30/CSS-%E9%80%89%E6%8B%A9%E5%99%A8%E6%9D%83%E9%87%8D%E8%AE%A1%E7%AE%97/CSS2.jpg">
 
 
 
@@ -333,7 +335,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  371
+                  446
                 </span>
               
 
@@ -372,7 +374,8 @@
       
         <hr>
 <p><strong>权重是用来确定哪个样式规则应该应用于元素的。权重越高，优先级越高。</strong></p>
-<h1 id="权重计算分为四个等级："><a href="#权重计算分为四个等级：" class="headerlink" title="权重计算分为四个等级："></a>权重计算分为四个等级：</h1><ul>
+<h1 id="权重计算分为四个等级："><a href="#权重计算分为四个等级：" class="headerlink" title="权重计算分为四个等级："></a>权重计算分为四个等级：</h1><p>行内 &gt; ID 选择器 &gt; 类选择器 &gt; 元素选择器 &gt; 通配选择器 *</p>
+<ul>
 <li>内联样式（Inline styles）：权重为 1000</li>
 <li>ID 选择器（ID selectors）：权重为 100</li>
 <li>类选择器（Class selectors）、属性选择器（Attribute selectors）和伪类选择器（Pseudo-classes）：权重为 10</li>
@@ -388,7 +391,10 @@
 <ul>
 <li>如果数字相等，则继续比较</li>
 <li>如果数字其中一个较大，则较大值的选择器权重高，胜出，后面不再比较。</li>
+<li>如果三位一样大，则按照出现顺序，后出现的将覆盖先前的选择器。</li>
 </ul>
+<p>TIPS: VSCode 鼠标移动到 CSS 选择器上时，会自动帮忙算出权重(Selector Specificity)。</p>
+<img src="/2023/05/30/CSS-%E9%80%89%E6%8B%A9%E5%99%A8%E6%9D%83%E9%87%8D%E8%AE%A1%E7%AE%97/CSS2.jpg" class="">
 
       
     </div>
