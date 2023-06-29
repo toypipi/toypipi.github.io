@@ -87,7 +87,7 @@
 <meta property="og:description" content="遇到的问题：VUE 项目里把 data 里定义的对象数组赋值给新的变量，新的变量对数组对象做了一些操作，但却把 data 里面原本的对象数组也修改了。 下面举一个简单例子： 12345678910111213window.onload &#x3D; function () &amp;#123;     const b &#x3D; [       &amp;#123; name: &quot;John&quot;, age: 25">
 <meta property="og:locale">
 <meta property="article:published_time" content="2023-06-20T01:13:07.000Z">
-<meta property="article:modified_time" content="2023-06-20T02:09:43.106Z">
+<meta property="article:modified_time" content="2023-06-29T01:45:14.744Z">
 <meta property="article:author" content="toypipi">
 <meta property="article:tag" content="对象数组">
 <meta property="article:tag" content="深拷贝">
@@ -358,7 +358,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  622
+                  628
                 </span>
               
 
@@ -406,8 +406,8 @@
 <p>在 JavaScript 中，可以使用多种方法执行深拷贝，其中一种常见的方法是使用 JSON.stringify 和 JSON.parse 组合来实现。下面是一个示例代码：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> b = [&#123;<span class="attr">name</span>: <span class="string">&#x27;John&#x27;</span>, <span class="attr">age</span>: <span class="number">30</span>&#125;, &#123;<span class="attr">name</span>: <span class="string">&#x27;Jane&#x27;</span>, <span class="attr">age</span>: <span class="number">25</span>&#125;];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 JSON.stringify 和 JSON.parse 执行深拷贝</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(b));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改变量a的值</span></span><br><span class="line">a[<span class="number">0</span>].<span class="property">name</span> = <span class="string">&#x27;Updated John&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">// 输出: [&#123;name: &#x27;Updated John&#x27;, age: 30&#125;, &#123;name: &#x27;Jane&#x27;, age: 25&#125;]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b); <span class="comment">// 输出: [&#123;name: &#x27;John&#x27;, age: 30&#125;, &#123;name: &#x27;Jane&#x27;, age: 25&#125;]</span></span><br></pre></td></tr></table></figure>
 
-<p>在上述代码中，我们使用JSON.stringify将数组b转换为JSON字符串，然后使用JSON.parse将该JSON字符串解析为新的数组a。这样做会创建一个新的数组a，其中包含与数组b相同的对象，但是它们在内存中的位置是不同的。因此，对变量a进行的更改不会影响变量b。</p>
-<p>请注意，这种方法只适用于包含原始数据类型和普通对象的数组。如果数组中包含复杂对象（例如函数、正则表达式、Map、Set等），则需要使用其他深拷贝方法，如递归复制或第三方库（例如lodash的cloneDeep函数）来确保完整的深拷贝。</p>
+<p>在上述代码中，我们使用 JSON.stringify 将数组 b 转换为 JSON 字符串，然后使用 JSON.parse 将该 JSON 字符串解析为新的数组 a。这样做会创建一个新的数组 a，其中包含与数组 b 相同的对象，但是它们在内存中的位置是不同的。因此，对变量 a 进行的更改不会影响变量 b。</p>
+<p>请注意，这种方法只适用于包含原始数据类型和普通对象的数组。如果数组中包含复杂对象（例如函数、正则表达式、Map、Set 等），则需要使用其他深拷贝方法，如递归复制或第三方库（例如 lodash 的 cloneDeep 函数）来确保完整的深拷贝。</p>
 <p>最好还要注意一点:</p>
 <p>1.slice 函数，newArr &#x3D; arr.slice(0)</p>
 <p>2.concat 函数，newArr &#x3D; [].concat(arr,arr2,…)</p>
@@ -577,7 +577,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">174</span>
+                  <span class="site-state-item-count">175</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -599,7 +599,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">244</span>
+                  <span class="site-state-item-count">245</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -650,7 +650,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">142.3k</span>
+    <span title="Site words total count">142.7k</span>
   
 </div>
 
