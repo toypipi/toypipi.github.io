@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="原型与原型链  原型(prototype)  函数的 prototype 属性 每个函数都有一个 prototype 属性，它默认指向一个 Object 空对象（即称为：原型对象) 原型对象中有一个 constructor ，它指向函数对象     显式原型与隐士原型  每个函数 function 都有一个 prototype，即显式原型(属性) 每个实例对象都有一个 proto，可称为隐式原">
+<meta name="description" content="原型与原型链  原型(prototype)  函数的 prototype 属性 每个函数都有一个 prototype 属性，它默认指向一个 Object 空对象（即称为：原型对象) 原型对象中有一个 constructor ，它指向函数对象     显式原型与隐式原型  每个函数 function 都有一个 prototype，即显式原型(属性) 每个实例对象都有一个 __proto__，可称">
 <meta property="og:type" content="article">
 <meta property="og:title" content="函数高级">
 <meta property="og:url" content="https://toypipi.github.io/2023/07/26/%E5%87%BD%E6%95%B0%E9%AB%98%E7%BA%A7/index.html">
 <meta property="og:site_name" content="toypipi&#39;s blog">
-<meta property="og:description" content="原型与原型链  原型(prototype)  函数的 prototype 属性 每个函数都有一个 prototype 属性，它默认指向一个 Object 空对象（即称为：原型对象) 原型对象中有一个 constructor ，它指向函数对象     显式原型与隐士原型  每个函数 function 都有一个 prototype，即显式原型(属性) 每个实例对象都有一个 proto，可称为隐式原">
+<meta property="og:description" content="原型与原型链  原型(prototype)  函数的 prototype 属性 每个函数都有一个 prototype 属性，它默认指向一个 Object 空对象（即称为：原型对象) 原型对象中有一个 constructor ，它指向函数对象     显式原型与隐式原型  每个函数 function 都有一个 prototype，即显式原型(属性) 每个实例对象都有一个 __proto__，可称">
 <meta property="og:locale">
 <meta property="article:published_time" content="2023-07-26T01:56:43.000Z">
-<meta property="article:modified_time" content="2023-07-26T07:11:52.809Z">
+<meta property="article:modified_time" content="2023-07-28T01:05:48.332Z">
 <meta property="article:author" content="toypipi">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="函数">
@@ -357,7 +357,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  865
+                  855
                 </span>
               
 
@@ -407,10 +407,10 @@
 </li>
 </ul>
 </li>
-<li><p>显式原型与隐士原型</p>
+<li><p>显式原型与隐式原型</p>
 <ul>
 <li>每个函数 function 都有一个 prototype，即显式原型(属性)</li>
-<li>每个实例对象都有一个 <strong>proto</strong>，可称为隐式原型（属性）</li>
+<li>每个实例对象都有一个 <code>__proto__</code>，可称为隐式原型（属性）</li>
 <li>对象的隐式原型的值为其对应构造函数的显示原型的值</li>
 </ul>
 </li>
@@ -418,7 +418,7 @@
 <ul>
 <li>访问一个对象的属性时：<ul>
 <li>先在自身属性中查找，找到返回</li>
-<li>如果没有，再沿着 <strong>proto</strong> 这条链向上查找，找到返回</li>
+<li>如果没有，再沿着 <code>__proto__</code> 这条链向上查找，找到返回</li>
 <li>如果最终没有找到，返回 undefined</li>
 </ul>
 </li>
@@ -445,6 +445,10 @@
 </li>
 </ul>
 </li>
+</ol>
+<span id="more"></span>
+
+<ol start="2">
 <li><p>执行上下文与执行上下文栈</p>
 <ul>
 <li><p>变量提升与函数提升</p>
@@ -459,7 +463,7 @@
 <li>值：函数定义（对象）</li>
 </ul>
 </li>
-<li>变量提升和函数提升时如何产生的</li>
+<li>变量提升和函数提升是如何产生的</li>
 </ul>
 </li>
 <li><p>执行上下文</p>
@@ -474,7 +478,7 @@
 <ul>
 <li>在执行全局代码前将 window 确定为全局执行上下文</li>
 <li>对全局数据进行预处理<ul>
-<li>var 定义的全局变量 &#x3D;&#x3D;&gt; undefined，添加为 window 的方法</li>
+<li>var 定义的全局变量 &#x3D;&#x3D;&gt; undefined，添加为 window 的属性</li>
 <li>function 声明的全局函数 &#x3D;&#x3D;&gt; 赋值（fun），添加为 window 的方法</li>
 <li>this &#x3D;&#x3D;&gt; 赋值（window）</li>
 </ul>
@@ -509,10 +513,6 @@
 </li>
 </ul>
 </li>
-<li><p>作用域与作用域链</p>
-</li>
-<li><p>闭包</p>
-<span id="more"></span></li>
 </ol>
 
       
@@ -603,6 +603,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2023/07/27/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" rel="prev" title="两数之和">
+                两数之和 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -672,7 +676,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">185</span>
+                  <span class="site-state-item-count">189</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -694,7 +698,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">255</span>
+                  <span class="site-state-item-count">257</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -745,7 +749,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">148.7k</span>
+    <span title="Site words total count">150.4k</span>
   
 </div>
 
