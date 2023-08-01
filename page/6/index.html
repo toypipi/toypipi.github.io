@@ -261,6 +261,397 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/03/20/%E3%80%8AWebpack-Babel%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E4%BE%8B%E8%AF%A6%E8%A7%A3%E3%80%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="toypipi's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2023/03/20/%E3%80%8AWebpack-Babel%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E4%BE%8B%E8%AF%A6%E8%A7%A3%E3%80%8B/" itemprop="url">《Webpack+Babel入门与实例详解》</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-03-20T09:10:35+08:00">
+                2023-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2023/03/20/%E3%80%8AWebpack-Babel%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E4%BE%8B%E8%AF%A6%E8%A7%A3%E3%80%8B/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2023/03/20/%E3%80%8AWebpack-Babel%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E4%BE%8B%E8%AF%A6%E8%A7%A3%E3%80%8B/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Webpack+Babel入门与实例详解</p>
+<p>姜瑞涛</p>
+<p>36个笔记（微信读书只能试读前两章，第三章开始笔记是自己手敲的）</p>
+<p>第1章 Webpack入门</p>
+<p><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTAiIGN5PSIxMCIgcj0iMTAiIGZpbGw9IiM3Nzc3NzciIGZpbGwtb3BhY2l0eT0iMC4xNyIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTEzLjM1MDUgMTIuMDgzMkgxMi4xMDQ3TDExLjU3MzggMTAuNTM0SDguNTI5NjhMNy45OTg4NCAxMi4wODMySDYuNzUzMDFMOS41ODA1MSA0LjM2OTg3SDEwLjUyM0wxMy4zNTA1IDEyLjA4MzJaTTExLjI0ODggOS41MzczN0wxMC4wNzg4IDYuMTE0MDRMOC44NzYzNCA5LjUzNzM3SDExLjI0ODhaTTEzLjMzMzQgMTMuNzVINi42NjY3NVYxNUgxMy4zMzM0VjEzLjc1WiIgZmlsbD0iIzk5QTBBQSIvPgo8L3N2Zz4K" alt="underline"></p>
+<p>执行如下命令，该命令是Webpack 5的命令行打包命令。[插图]上面命令的作用：从a.js文件开始，按照模块引入的顺序把所有代码打包到一个JS文件里，这个文件的默认名称是main.js。Webpack会自动处理打包后代码的顺序与依赖关系。–entry用来指定打包入口文件，-o是out的意思，表示输出目录，这里使用dist目录作为打包后的输出目录。注意，webpack是打包命令，后面的内容是打包参数。</p>
+<p><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTAiIGN5PSIxMCIgcj0iMTAiIGZpbGw9IiM3Nzc3NzciIGZpbGwtb3BhY2l0eT0iMC4xNyIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTEzLjM1MDUgMTIuMDgzMkgxMi4xMDQ3TDExLjU3MzggMTAuNTM0SDguNTI5NjhMNy45OTg4NCAxMi4wODMySDYuNzUzMDFMOS41ODA1MSA0LjM2OTg3SDEwLjUyM0wxMy4zNTA1IDEyLjA4MzJaTTExLjI0ODggOS41MzczN0wxMC4wNzg4IDYuMTE0MDRMOC44NzYzNCA5LjUzNzM3SDExLjI0ODhaTTEzLjMzMzQgMTMuNzVINi42NjY3NVYxNUgxMy4zMzM0VjEzLjc1WiIgZmlsbD0iIzk5QTBBQSIvPgo8L3N2Zz4K" alt="underline"></p>
+<p>Webpack的打包模式共有三种：production、development和none，这三种模式是通过mode参数来指定的。production和development这两种模式会分别按照线上生产环境和本地开发环境进行一些优化处理，而none模式会保留原始的打包结果。例如，production模式是给生产环境打包使用的，打包后的bundle.js文件代码是压缩后的</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2023/03/20/%E3%80%8AWebpack-Babel%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E4%BE%8B%E8%AF%A6%E8%A7%A3%E3%80%8B/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/03/16/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JavaScript%EF%BC%88%E4%B8%8A%E5%8D%B7%EF%BC%89%E3%80%8B%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="toypipi's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2023/03/16/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JavaScript%EF%BC%88%E4%B8%8A%E5%8D%B7%EF%BC%89%E3%80%8B%E7%AC%94%E8%AE%B0/" itemprop="url">《你不知道的JavaScript（上卷）》笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-03-16T10:31:45+08:00">
+                2023-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%98%85%E8%AF%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">阅读</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2023/03/16/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JavaScript%EF%BC%88%E4%B8%8A%E5%8D%B7%EF%BC%89%E3%80%8B%E7%AC%94%E8%AE%B0/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2023/03/16/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JavaScript%EF%BC%88%E4%B8%8A%E5%8D%B7%EF%BC%89%E3%80%8B%E7%AC%94%E8%AE%B0/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  8.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  28
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>你不知道的JavaScript（上卷）</p>
+<p>凯尔辛普森</p>
+<p>81个笔记</p>
+<p>点评</p>
+<p><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTAiIGN5PSIxMCIgcj0iMTAiIGZpbGw9IiM3Nzc3NzciIGZpbGwtb3BhY2l0eT0iMC4xNyIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTYuMjUgOC44MzkxOUM2LjI0OTUxIDYuMzM5MTkgOC4yNzM4MSA1LjAyOTY2IDEwLjA1OTUgNS4wMjk2NkMxMS44NDUyIDUuMDI5NjYgMTMuNjMxIDYuNjk2MzMgMTMuNjMxIDguMTI0OUMxMy42MzEgOC40MzQ3MyAxMy42NzkzIDguOTYyMjkgMTMuNzc2MSA5LjcwNzU2QzEzLjgyNzQgMTAuMTAzIDEzLjU5MTUgMTAuNDc5MyAxMy4yMTMyIDEwLjYwNTRMMTIuNzk3NiAxMC43NDM5VjEwLjkwNjhDMTIuNzk3NiAxMi4wNjY5IDExLjk5OTUgMTMuMDc0NiAxMC44NzAyIDEzLjM0MDNMMTAuNzczOCAxMy4zNjNWMTQuNTUzNUM5LjA3NDEzIDE0LjY3MTMgNy44ODM2NSAxNC4yNzQ1IDcuMjAyMzggMTMuMzYzQzcuMjAyMzggMTIuMTEyIDYuODg0OTIgMTAuNjA0MSA2LjI1IDguODM5MTlaTTkuNTIzODEgMTIuMzczTDEwLjU4MzkgMTIuMTIzNUMxMS4xNDg2IDExLjk5MDcgMTEuNTQ3NiAxMS40ODY4IDExLjU0NzYgMTAuOTA2OFY5Ljg0M0wxMi40OTM3IDkuNTI3NjRDMTIuNDE4OCA4LjkwNzM2IDEyLjM4MSA4LjQ0NjcgMTIuMzgxIDguMTI0OUMxMi4zODEgNy4zODE5NCAxMS4xNDA5IDYuMjc5NjYgMTAuMDU5NSA2LjI3OTY2QzguNzI0OSA2LjI3OTY2IDcuNjAwOTMgNy4yMTUyNSA3LjUwNjQzIDguNjQyMzVDOC4wNTcxOSAxMC4yMTk1IDguMzcwMjYgMTEuNjIyMiA4LjQzODI1IDEyLjg1ODlDOC42OTU5NCAxMy4wNjk0IDkuMDUyMDIgMTMuMjEzNCA5LjUyMzgxIDEzLjI4MDhWMTIuMzczWk0xMS45NjI0IDE0LjI3MDZDMTEuOTkyNSAxNC42MTQ1IDEyLjI5NTcgMTQuODY4OSAxMi42Mzk1IDE0LjgzODhDMTMuOTAwNCAxNC43Mjg1IDE0LjgzMyAxMy42MTY5IDE0LjcyMjcgMTIuMzU2MUMxNC42OTI3IDEyLjAxMjIgMTQuMzg5NSAxMS43NTc5IDE0LjA0NTYgMTEuNzg3OUMxMy43MDE4IDExLjgxOCAxMy40NDc0IDEyLjEyMTIgMTMuNDc3NSAxMi40NjVDMTMuNTI3NiAxMy4wMzgxIDEzLjEwMzcgMTMuNTQzNCAxMi41MzA2IDEzLjU5MzVDMTIuMTg2NyAxMy42MjM2IDExLjkzMjMgMTMuOTI2OCAxMS45NjI0IDE0LjI3MDZaIiBmaWxsPSIjOTlBMEFBIi8+Cjwvc3ZnPgo=" alt="underline"></p>
+<p>认为好看</p>
+<p>非常好的一本书，作者把 JavaScript 中的一些难点讲的非常透彻，包括作用域、this 、对象、Prototype 和委托，值得仔细阅读理解！本书翻译作者也是鬼才，翻译的很接地气，不像有些技术书籍翻译的很晦涩，哈哈哈哈哈！ </p>
+<p>1.2 理解作用域</p>
+<p><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTAiIGN5PSIxMCIgcj0iMTAiIGZpbGw9IiM3Nzc3NzciIGZpbGwtb3BhY2l0eT0iMC4xNyIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTYuMjUgOC44MzkxOUM2LjI0OTUxIDYuMzM5MTkgOC4yNzM4MSA1LjAyOTY2IDEwLjA1OTUgNS4wMjk2NkMxMS44NDUyIDUuMDI5NjYgMTMuNjMxIDYuNjk2MzMgMTMuNjMxIDguMTI0OUMxMy42MzEgOC40MzQ3MyAxMy42NzkzIDguOTYyMjkgMTMuNzc2MSA5LjcwNzU2QzEzLjgyNzQgMTAuMTAzIDEzLjU5MTUgMTAuNDc5MyAxMy4yMTMyIDEwLjYwNTRMMTIuNzk3NiAxMC43NDM5VjEwLjkwNjhDMTIuNzk3NiAxMi4wNjY5IDExLjk5OTUgMTMuMDc0NiAxMC44NzAyIDEzLjM0MDNMMTAuNzczOCAxMy4zNjNWMTQuNTUzNUM5LjA3NDEzIDE0LjY3MTMgNy44ODM2NSAxNC4yNzQ1IDcuMjAyMzggMTMuMzYzQzcuMjAyMzggMTIuMTEyIDYuODg0OTIgMTAuNjA0MSA2LjI1IDguODM5MTlaTTkuNTIzODEgMTIuMzczTDEwLjU4MzkgMTIuMTIzNUMxMS4xNDg2IDExLjk5MDcgMTEuNTQ3NiAxMS40ODY4IDExLjU0NzYgMTAuOTA2OFY5Ljg0M0wxMi40OTM3IDkuNTI3NjRDMTIuNDE4OCA4LjkwNzM2IDEyLjM4MSA4LjQ0NjcgMTIuMzgxIDguMTI0OUMxMi4zODEgNy4zODE5NCAxMS4xNDA5IDYuMjc5NjYgMTAuMDU5NSA2LjI3OTY2QzguNzI0OSA2LjI3OTY2IDcuNjAwOTMgNy4yMTUyNSA3LjUwNjQzIDguNjQyMzVDOC4wNTcxOSAxMC4yMTk1IDguMzcwMjYgMTEuNjIyMiA4LjQzODI1IDEyLjg1ODlDOC42OTU5NCAxMy4wNjk0IDkuMDUyMDIgMTMuMjEzNCA5LjUyMzgxIDEzLjI4MDhWMTIuMzczWk0xMS45NjI0IDE0LjI3MDZDMTEuOTkyNSAxNC42MTQ1IDEyLjI5NTcgMTQuODY4OSAxMi42Mzk1IDE0LjgzODhDMTMuOTAwNCAxNC43Mjg1IDE0LjgzMyAxMy42MTY5IDE0LjcyMjcgMTIuMzU2MUMxNC42OTI3IDEyLjAxMjIgMTQuMzg5NSAxMS43NTc5IDE0LjA0NTYgMTEuNzg3OUMxMy43MDE4IDExLjgxOCAxMy40NDc0IDEyLjEyMTIgMTMuNDc3NSAxMi40NjVDMTMuNTI3NiAxMy4wMzgxIDEzLjEwMzcgMTMuNTQzNCAxMi41MzA2IDEzLjU5MzVDMTIuMTg2NyAxMy42MjM2IDExLjkzMjMgMTMuOTI2OCAxMS45NjI0IDE0LjI3MDZaIiBmaWxsPSIjOTlBMEFBIi8+Cjwvc3ZnPgo=" alt="underline"></p>
+<p>引擎、编译器和作用域是干什么的</p>
+<p>· 引擎从头到尾负责整个JavaScript程序的编译及执行过程。· 编译器引擎的好朋友之一，负责语法分析及代码生成等脏活累活（详见前一节的内容）。· 作用域引擎的另一位好朋友，负责收集并维护由所有声明的标识符（变量）组成的一系列查询，并实施一套非常严格的规则，确定当前执行的代码对这些标识符的访问权限。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2023/03/16/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JavaScript%EF%BC%88%E4%B8%8A%E5%8D%B7%EF%BC%89%E3%80%8B%E7%AC%94%E8%AE%B0/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/03/16/%E3%80%8A%E5%8D%9A%E5%BC%88%E8%AE%BA%E7%9A%84%E8%AF%A1%E8%AE%A1%E3%80%8B%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1781,391 +2172,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2022/03/11/%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="toypipi's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2022/03/11/%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7/" itemprop="url">迭代对象属性</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-03-11T15:58:12+08:00">
-                2022-03-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2022/03/11/%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2022/03/11/%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  275
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>如果想迭代对象的属性，可以使用 for&#x2F;in 循环，或者基于 Object.keys() 方法的结果使用 for&#x2F;of :</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> o = &#123;<span class="attr">x</span>:<span class="number">1</span>, <span class="attr">y</span>:<span class="number">2</span>, <span class="attr">z</span>:<span class="number">3</span>&#125;</span><br><span class="line"><span class="keyword">let</span> keys = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> k <span class="keyword">of</span> <span class="title class_">Object</span>.<span class="title function_">key</span>(o))&#123;</span><br><span class="line">    keys += k</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>也可以像下面这样迭代每个键对应的值：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> o = &#123;<span class="attr">x</span>:<span class="number">1</span>, <span class="attr">y</span>:<span class="number">2</span>, <span class="attr">z</span>:<span class="number">3</span>&#125;</span><br><span class="line"><span class="keyword">let</span> sum = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> v <span class="keyword">of</span> <span class="title class_">Object</span>.<span class="title function_">values</span>(o))&#123;</span><br><span class="line">    sum += v</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2022/03/11/%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2022/03/08/%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="toypipi's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2022/03/08/%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/" itemprop="url">解构赋值</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-03-08T14:05:53+08:00">
-                2022-03-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2022/03/08/%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2022/03/08/%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  288
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <hr>
-<p>解构赋值，ES6 新增语法，以下是解构赋值的一些示例代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [x,y] = [<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line">[x,y] = [x+<span class="number">1</span>,y+<span class="number">1</span>]</span><br><span class="line">[x,y] = [y,x]</span><br></pre></td></tr></table></figure>
-
-<p>解构赋值让使用返回数组的函数变得异常便捷：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">toPolar</span>(<span class="params">x, y</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> [<span class="title class_">Math</span>.<span class="title function_">sqrt</span>(x*x+y*y), <span class="title class_">Math</span>.<span class="title function_">atan2</span>(y,x)]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">toCartesian</span>(<span class="params">r, theta</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> [r*<span class="title class_">Math</span>,<span class="title function_">cos</span>(theta), r*<span class="title class_">Math</span>.<span class="title function_">sin</span>(theta)]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [r,theta] = <span class="title function_">toPolar</span>(<span class="number">1.0</span>, <span class="number">1.0</span>)</span><br><span class="line"><span class="keyword">let</span> [x,y] = <span class="title function_">toCartesian</span>(r,theta)</span><br></pre></td></tr></table></figure>
-
-<p>遍历一个对象所有属性的名&#x2F;值对：</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2022/03/08/%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2216,7 +2222,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">191</span>
+                  <span class="site-state-item-count">193</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2238,7 +2244,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">257</span>
+                  <span class="site-state-item-count">260</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2289,7 +2295,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">150.9k</span>
+    <span title="Site words total count">151.9k</span>
   
 </div>
 
