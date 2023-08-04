@@ -87,7 +87,7 @@
 <meta property="og:description" content="给你一幅由 N × N 矩阵表示的图像，其中每个像素的大小为 4 字节。请你设计一种算法，将图像旋转 90 度。 不占用额外内存空间能否做到？ 示例 1: 给定 matrix &#x3D;[[1,2,3],[4,5,6],[7,8,9]], 原地旋转输入矩阵，使其变为:[[7,4,1],[8,5,2],[9,6,3]]示例 2: 给定 matrix &#x3D;[[ 5, 1, 9,11],[">
 <meta property="og:locale">
 <meta property="article:published_time" content="2023-08-03T06:45:04.000Z">
-<meta property="article:modified_time" content="2023-08-03T07:57:12.082Z">
+<meta property="article:modified_time" content="2023-08-03T09:10:39.142Z">
 <meta property="article:author" content="toypipi">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
@@ -356,7 +356,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  518
+                  576
                 </span>
               
 
@@ -407,9 +407,15 @@
 <ol>
 <li>使用辅助数组</li>
 <li>原地旋转</li>
-<li>翻转代替旋转:① 沿主对角线翻转，然后再水平轴翻转；② 沿副对角线（左下到右上）翻转，再水平轴翻转。</li>
+<li>翻转代替旋转:<ul>
+<li>① <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Sq4y1t7tj/?spm_id_from=333.337.search-card.all.click&vd_source=feaed3bcf7c26260dd3b1715d154fdbe">沿主对角线翻转，然后再沿垂直中心轴翻转</a>；轴示意图：\ |</li>
+<li>② 沿水平轴翻转，再沿主对角线翻转（力扣解法三）；轴示意图：— \</li>
+<li>② 沿副对角线（左下到右上）翻转，再水平轴翻转（ gpt 解法）；轴示意图：&#x2F; —</li>
+<li>④ 沿垂直中心轴翻转，再沿副对角线翻转。轴示意图：| &#x2F;</li>
+</ul>
+</li>
 </ol>
-<p>第三种解法代码如下：</p>
+<p>第 ② 种解法代码如下：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number[][]</span>&#125; <span class="variable">matrix</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">void</span>&#125; Do not return anything, modify matrix in-place instead.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> rotate = <span class="keyword">function</span> (<span class="params">matrix</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> n = matrix.<span class="property">length</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Step 1: 沿着副对角线交换元素</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; n - i; j++) &#123;</span><br><span class="line">      <span class="comment">// 交换 matrix[i][j] 和 matrix[n-j-1][n-i-1]</span></span><br><span class="line">      [matrix[i][j], matrix[n - j - <span class="number">1</span>][n - i - <span class="number">1</span>]] = [</span><br><span class="line">        matrix[n - j - <span class="number">1</span>][n - i - <span class="number">1</span>],</span><br><span class="line">        matrix[i][j],</span><br><span class="line">      ];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(matrix); <span class="comment">// 可以先注释下面循环看打印信息，输出 [[9, 6, 3], [8, 5, 2], [7, 4, 1]]</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// Step 2: 沿着中心水平线翻转</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="title class_">Math</span>.<span class="title function_">floor</span>(n / <span class="number">2</span>); i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">      <span class="comment">// 交换 matrix[i][j] 和 matrix[n-i-1][j]</span></span><br><span class="line">      [matrix[i][j], matrix[n - i - <span class="number">1</span>][j]] = [</span><br><span class="line">        matrix[n - i - <span class="number">1</span>][j],</span><br><span class="line">        matrix[i][j],</span><br><span class="line">      ];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> matrix1 = [</span><br><span class="line">  [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">  [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>],</span><br><span class="line">  [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>],</span><br><span class="line">];</span><br><span class="line"><span class="title function_">rotate</span>(matrix1);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(matrix1); <span class="comment">// 输出 [[7, 4, 1], [8, 5, 2], [9, 6, 3]]</span></span><br></pre></td></tr></table></figure>
 
 <p>复杂度分析</p>
@@ -504,6 +510,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2023/08/04/%E9%9B%B6%E7%9F%A9%E9%98%B5/" rel="prev" title="零矩阵">
+                零矩阵 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -573,7 +583,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">195</span>
+                  <span class="site-state-item-count">196</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -646,7 +656,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">152.5k</span>
+    <span title="Site words total count">153k</span>
   
 </div>
 
