@@ -261,6 +261,377 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/04/28/bootstrap-datepicker-%E8%AE%BE%E7%BD%AE%E5%8F%AF%E9%80%89%E6%97%B6%E9%97%B4%E8%8C%83%E5%9B%B4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="toypipi's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2023/04/28/bootstrap-datepicker-%E8%AE%BE%E7%BD%AE%E5%8F%AF%E9%80%89%E6%97%B6%E9%97%B4%E8%8C%83%E5%9B%B4/" itemprop="url">bootstrap-datepicker 设置可选时间范围</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-04-28T11:44:25+08:00">
+                2023-04-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2023/04/28/bootstrap-datepicker-%E8%AE%BE%E7%BD%AE%E5%8F%AF%E9%80%89%E6%97%B6%E9%97%B4%E8%8C%83%E5%9B%B4/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2023/04/28/bootstrap-datepicker-%E8%AE%BE%E7%BD%AE%E5%8F%AF%E9%80%89%E6%97%B6%E9%97%B4%E8%8C%83%E5%9B%B4/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  202
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>datepicker 设置未来日期不可选，只能选择一年内日期。一开始通过 endDate 属性设置未来日期不可选，出现了一个奇怪的 bug，然后用如下方法实现该功能。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//初始化</span></span><br><span class="line"><span class="keyword">var</span> ops = &#123;</span><br><span class="line">    <span class="attr">multidate</span>: <span class="literal">true</span>,<span class="comment">//同时可以选中多个日期</span></span><br><span class="line">    <span class="attr">todayHighlight</span>: <span class="literal">true</span>, <span class="comment">//设置当天日期高亮</span></span><br><span class="line">    <span class="attr">language</span>: <span class="string">&#x27;zh-CN&#x27;</span>, <span class="comment">//语言</span></span><br><span class="line">    <span class="attr">autoclose</span>: <span class="literal">true</span>, <span class="comment">//选择后自动关闭</span></span><br><span class="line">    <span class="attr">clearBtn</span>: <span class="literal">true</span>,<span class="comment">//清除按钮</span></span><br><span class="line">    <span class="attr">format</span>: <span class="string">&quot;yyyy-mm-dd&quot;</span>,<span class="comment">//日期格式</span></span><br><span class="line">&#125;;</span><br><span class="line">$(<span class="string">&quot;#itxst&quot;</span>).<span class="title function_">datepicker</span>(ops);</span><br><span class="line"><span class="comment">//设置只能选择一年内日期</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setStartDate</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> dt = <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">setDate</span>(<span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getDate</span>() - <span class="number">365</span>));</span><br><span class="line">    $(<span class="string">&#x27;#itxst&#x27;</span>).<span class="title function_">datepicker</span>(<span class="string">&#x27;setStartDate&#x27;</span>, dt);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//设置不能选择当天日期起之后的日期</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setEndDate</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> dt = <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">setDate</span>(<span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getDate</span>()));</span><br><span class="line">    $(<span class="string">&#x27;#itxst&#x27;</span>).<span class="title function_">datepicker</span>(<span class="string">&#x27;setEndDate&#x27;</span>, dt);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">setStartDate</span>();</span><br><span class="line"><span class="title function_">setEndDate</span>();</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.itxst.com/bootstrap-datepicker/2uqarzaq.html">参考文档</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/04/28/antv-G6-%E6%A0%87%E7%AD%BE%E6%96%87%E6%9C%AC-label-%E5%8F%8A%E5%85%B6%E9%85%8D%E7%BD%AE-labelCfg/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="toypipi's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2023/04/28/antv-G6-%E6%A0%87%E7%AD%BE%E6%96%87%E6%9C%AC-label-%E5%8F%8A%E5%85%B6%E9%85%8D%E7%BD%AE-labelCfg/" itemprop="url">antv G6 标签文本 label 及其配置 labelCfg</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-04-28T10:04:39+08:00">
+                2023-04-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2023/04/28/antv-G6-%E6%A0%87%E7%AD%BE%E6%96%87%E6%9C%AC-label-%E5%8F%8A%E5%85%B6%E9%85%8D%E7%BD%AE-labelCfg/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2023/04/28/antv-G6-%E6%A0%87%E7%AD%BE%E6%96%87%E6%9C%AC-label-%E5%8F%8A%E5%85%B6%E9%85%8D%E7%BD%AE-labelCfg/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  17
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>官网文档见下，mark！<br><a target="_blank" rel="noopener" href="https://g6-v3-2.antv.vision/zh/docs/manual/middle/elements/nodes/defaultNode/#%E6%A0%87%E7%AD%BE%E6%96%87%E6%9C%AC-label-%E5%8F%8A%E5%85%B6%E9%85%8D%E7%BD%AE-labelcfg">标签文本 label 及其配置 labelCfg</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/04/27/%E5%86%99%E7%BB%99%E4%B8%AD%E5%9B%BD%E7%88%B6%E6%AF%8D%E7%9A%84%E8%AF%9D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1758,395 +2129,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/04/06/git-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%B7%B2%E5%AD%98%E5%9C%A8%E9%A1%B9%E7%9B%AE%E5%B9%B6%E4%B8%8A%E4%BC%A0-gitlab/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="toypipi's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2023/04/06/git-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%B7%B2%E5%AD%98%E5%9C%A8%E9%A1%B9%E7%9B%AE%E5%B9%B6%E4%B8%8A%E4%BC%A0-gitlab/" itemprop="url">git 初始化已存在项目并上传 gitlab</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-04-06T15:20:07+08:00">
-                2023-04-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2023/04/06/git-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%B7%B2%E5%AD%98%E5%9C%A8%E9%A1%B9%E7%9B%AE%E5%B9%B6%E4%B8%8A%E4%BC%A0-gitlab/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2023/04/06/git-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%B7%B2%E5%AD%98%E5%9C%A8%E9%A1%B9%E7%9B%AE%E5%B9%B6%E4%B8%8A%E4%BC%A0-gitlab/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  236
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <hr>
-<p>要在已存在的目录下新建 Git 仓库，可以按照以下步骤进行操作：</p>
-<ol>
-<li>打开命令行终端并进入要作为 Git 仓库的目录。</li>
-<li>运行 <code>git init</code> 命令初始化该目录为 Git 仓库。</li>
-<li>将需要进行版本控制的文件添加到 Git 仓库中。可以使用 <code>git add &lt;file&gt;</code> 命令将文件添加到暂存区。</li>
-<li>运行 <code>git commit -m &quot;&lt;commit message&gt;&quot;</code> 命令提交更改到 Git 仓库中，并添加一条提交说明。</li>
-</ol>
-<p>完成以上步骤后，已经成功在该目录下创建了一个 Git 仓库，并将文件添加到了版本控制中。</p>
-<p>其中 3、4 步骤可以在 sourceTree 中执行。 </p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2023/04/06/git-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%B7%B2%E5%AD%98%E5%9C%A8%E9%A1%B9%E7%9B%AE%E5%B9%B6%E4%B8%8A%E4%BC%A0-gitlab/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/04/06/webpack-dev-server-%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="toypipi's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2023/04/06/webpack-dev-server-%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0/" itemprop="url">webpack-dev-server 常用配置参数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-04-06T14:51:35+08:00">
-                2023-04-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2023/04/06/webpack-dev-server-%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2023/04/06/webpack-dev-server-%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  299
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <hr>
-<p>Webpack Dev Server的一些常用配置参数：</p>
-<p>host：指定服务器的主机名，默认为 localhost。</p>
-<p>port：指定服务器运行的端口号，默认为 8080。</p>
-<p>contentBase&#x2F;publicPath：指定静态文件的路径。contentBase参数用于指定提供文件的根目录，而publicPath则用于指定浏览器请求资源的基础路径。默认情况下，两个参数都指向项目根目录。</p>
-<p>hot：启用热模块替换（Hot Module Replacement），允许在不刷新整个页面的情况下更新模块。值为true或false。</p>
-<p>historyApiFallback：启用 HTML5 的历史记录 API ，解决使用单页应用时路由跳转404问题。值为true或false。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2023/04/06/webpack-dev-server-%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2197,7 +2179,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">196</span>
+                  <span class="site-state-item-count">198</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2270,7 +2252,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">153k</span>
+    <span title="Site words total count">153.9k</span>
   
 </div>
 
