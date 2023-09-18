@@ -87,7 +87,7 @@
 <meta property="og:description" content="1.问题：get 请求参数为数组时，自动添加了[]，导致后台没有收到请求参数。 123456axios.get(url, &amp;#123;  params: &amp;#123;    tag: [1, 2, 3, 4],  &amp;#125;,&amp;#125;);&#x2F;&#x2F; ...tag[]&#x3D;1&amp;tag[]&#x3D;2&amp;tag[]&#x3D;3&amp;tag[]&#x3D;4">
 <meta property="og:locale">
 <meta property="article:published_time" content="2023-09-11T10:22:10.000Z">
-<meta property="article:modified_time" content="2023-09-15T01:38:15.699Z">
+<meta property="article:modified_time" content="2023-09-18T06:32:53.166Z">
 <meta property="article:author" content="toypipi">
 <meta property="article:tag" content="get">
 <meta property="article:tag" content="数组参数">
@@ -358,7 +358,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  143
+                  142
                 </span>
               
 
@@ -404,7 +404,7 @@
 <p>2.解决方案：在 Axios 拦截器中新增如下配置。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> qs <span class="keyword">from</span> <span class="string">&quot;qs&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (config.<span class="property">method</span> === <span class="string">&quot;get&quot;</span>) &#123;</span><br><span class="line">  <span class="comment">// 如果是get请求，且params是数组类型如arr=[1,2]，则转换成arr=1&amp;arr=2</span></span><br><span class="line">  config.<span class="property">paramsSerializer</span> = <span class="keyword">function</span> (<span class="params">params</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> qs.<span class="title function_">stringify</span>(params, &#123; <span class="attr">arrayFormat</span>: <span class="string">&quot;repeat&quot;</span> &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>References：<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6995362880996507656">axios 传递数组参数，后台接收不到填坑之旅</a></p>
+<p>References<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6995362880996507656">axios 传递数组参数，后台接收不到填坑之旅</a></p>
 
       
     </div>
@@ -569,7 +569,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">227</span>
+                  <span class="site-state-item-count">228</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -591,7 +591,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">285</span>
+                  <span class="site-state-item-count">287</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -642,7 +642,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">167.1k</span>
+    <span title="Site words total count">167.8k</span>
   
 </div>
 
