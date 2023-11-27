@@ -356,7 +356,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  91
+                  160
                 </span>
               
 
@@ -396,8 +396,9 @@
         
           
             <hr>
+<p>今天用暴力猴脚本下载的 youtube 视频音频和视频是分开的，查找了一下解决办法，记录一下：</p>
 <ol>
-<li>win7 安装 ffmpeg。</li>
+<li>首先，win7 安装 ffmpeg。注意配置环境变量，如果环境变量不生效，最好把用户环境变量也配置一下。</li>
 <li>将需要合并的音频和视频文件放在同一个目录下，打开 cmd，输入 <code>ffmpeg -i 1.mp4 -i 2.mp4  -vcodec copy -acodec copy output.mp4</code><br>其中，<code>1.mp4</code> 和 <code>2.mp4</code> 为需要合并的文件名，<code>output.mp4</code> 为输出文件名，可任意修改。</li>
 <li>执行命令后，合并后的文件保存在当前目录下。</li>
 </ol>
@@ -2315,7 +2316,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">185.1k</span>
+    <span title="Site words total count">185.2k</span>
   
 </div>
 
