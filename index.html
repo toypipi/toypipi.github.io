@@ -261,6 +261,200 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/11/29/Echarts-%E6%9F%B1%E7%8A%B6%E5%9B%BE%E4%B8%8B%E9%92%BB%E4%B8%A4%E5%B1%82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="toypipi's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2023/11/29/Echarts-%E6%9F%B1%E7%8A%B6%E5%9B%BE%E4%B8%8B%E9%92%BB%E4%B8%A4%E5%B1%82/" itemprop="url">Echarts 柱状图下钻两层</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-11-29T13:51:33+08:00">
+                2023-11-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2023/11/29/Echarts-%E6%9F%B1%E7%8A%B6%E5%9B%BE%E4%B8%8B%E9%92%BB%E4%B8%A4%E5%B1%82/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2023/11/29/Echarts-%E6%9F%B1%E7%8A%B6%E5%9B%BE%E4%B8%8B%E9%92%BB%E4%B8%A4%E5%B1%82/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  517
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <hr>
+<h1 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h1><p>后台返回数据包含年，月和日，希望实现一个柱状图，当点击年数据时，下钻到月数据，点击月数据时，下钻到日数据。并包含返回功能。</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>通过重绘图表的方式实现，实现思路如下：</p>
+<ol>
+<li>默认显示年数据</li>
+<li>当点击年数据柱子时，销毁图例，使用月数据重绘图表，下钻月数据类似</li>
+<li>增加一个按钮用来返回上层图表，使用相对定位定位在图表右上方</li>
+</ol>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2023/11/29/Echarts-%E6%9F%B1%E7%8A%B6%E5%9B%BE%E4%B8%8B%E9%92%BB%E4%B8%A4%E5%B1%82/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/11/27/%E5%90%88%E5%B9%B6%E9%9F%B3%E9%A2%91%E5%92%8C%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1995,204 +2189,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/10/27/Vue-2-x-%E7%9A%84-diff-%E7%AE%97%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="toypipi's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2023/10/27/Vue-2-x-%E7%9A%84-diff-%E7%AE%97%E6%B3%95/" itemprop="url">Vue 2.x 的 diff 算法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-10-27T16:35:28+08:00">
-                2023-10-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2023/10/27/Vue-2-x-%E7%9A%84-diff-%E7%AE%97%E6%B3%95/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2023/10/27/Vue-2-x-%E7%9A%84-diff-%E7%AE%97%E6%B3%95/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  384
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<p>Vue 2.x 的虚拟 DOM 采用的是基于 Snabbdom 库实现的 diff 算法。其基本思想是通过比较新旧节点，找出它们之间的差异，然后将这些差异应用于真实 DOM 上，从而最小化 DOM 操作次数，提高渲染效率。</p>
-<p>Vue 2.x 的 diff 算法主要分为以下几个步骤：</p>
-<ol>
-<li><p>新旧节点的比较：首先比较新旧节点的类型和标签名，如果不同，则直接替换整个节点；如果相同，则继续比较节点的属性和子节点。</p>
-</li>
-<li><p>属性的比较：对于同一节点，比较它们的属性是否相同，如果不同，则更新属性值。</p>
-</li>
-<li><p>子节点的比较：对于同一节点，比较它们的子节点是否相同，如果不同，则递归地对子节点进行比较。</p>
-</li>
-<li><p>列表的比较：对于列表节点，比较它们的子节点是否相同，如果不同，则使用 diff 算法找出它们之间的差异，然后更新列表。</p>
-</li>
-<li><p>键值的比较：在进行列表比较时，如果节点具有 key 值，则通过 key 值来快速定位节点，从而提高比较效率。</p>
-</li>
-</ol>
-<p>总的来说，Vue 2.x 的 diff 算法是一种高效的算法，可以最小化 DOM 操作次数，提高渲染效率。但是，开发者仍然需要注意一些性能问题，如避免过多的嵌套组件、避免重复渲染等，以优化应用程序的性能。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2243,7 +2239,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">268</span>
+                  <span class="site-state-item-count">269</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2265,7 +2261,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">330</span>
+                  <span class="site-state-item-count">332</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2316,7 +2312,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">185.2k</span>
+    <span title="Site words total count">185.7k</span>
   
 </div>
 
