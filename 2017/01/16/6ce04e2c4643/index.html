@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="学习《用Python写网络爬虫》，为了加深记忆，边读边做笔记。如有侵权，立即删除。  网络爬虫简介背景调研识别网站所用技术使用builtwith模块，可以检查网站构建的技术类型。安装方法如下： 1pip install builtwith">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《用Python写网络爬虫》读书笔记">
+<meta property="og:url" content="https://toypipi.github.io/2017/01/16/6ce04e2c4643/index.html">
+<meta property="og:site_name" content="Toypipi&#39;s blog">
+<meta property="og:description" content="学习《用Python写网络爬虫》，为了加深记忆，边读边做笔记。如有侵权，立即删除。  网络爬虫简介背景调研识别网站所用技术使用builtwith模块，可以检查网站构建的技术类型。安装方法如下： 1pip install builtwith">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-01-16T01:18:59.000Z">
+<meta property="article:modified_time" content="2020-11-03T03:44:00.547Z">
+<meta property="article:author" content="toypipi">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="爬虫">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://toypipi.github.io/2017/01/16/6ce04e2c4643/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://toypipi.github.io/2017/01/16/6ce04e2c4643/","path":"2017/01/16/6ce04e2c4643/","title":"《用Python写网络爬虫》读书笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>《用Python写网络爬虫》读书笔记 | Toypipi's blog</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?c228072b8c3657dfa7236914b308712c"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Toypipi's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">网络爬虫简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E8%B0%83%E7%A0%94"><span class="nav-number">1.1.</span> <span class="nav-text">背景调研</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%86%E5%88%AB%E7%BD%91%E7%AB%99%E6%89%80%E7%94%A8%E6%8A%80%E6%9C%AF"><span class="nav-number">1.1.1.</span> <span class="nav-text">识别网站所用技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BB%E6%89%BE%E7%BD%91%E7%AB%99%E7%9A%84%E6%89%80%E6%9C%89%E8%80%85"><span class="nav-number">1.1.2.</span> <span class="nav-text">寻找网站的所有者</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB"><span class="nav-number">1.2.</span> <span class="nav-text">编写第一个网络爬虫</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E7%BD%91%E9%A1%B5"><span class="nav-number">1.2.1.</span> <span class="nav-text">下载网页</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E8%AF%95%E4%B8%8B%E8%BD%BD"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">重试下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%94%A8%E6%88%B7%E4%BB%A3%E7%90%86"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">设置用户代理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%AB%99%E5%9C%B0%E5%9B%BE%E7%88%AC%E8%99%AB"><span class="nav-number">1.2.2.</span> <span class="nav-text">网站地图爬虫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ID%E9%81%8D%E5%8E%86%E7%88%AC%E8%99%AB"><span class="nav-number">1.2.3.</span> <span class="nav-text">ID遍历爬虫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5%E7%88%AC%E8%99%AB"><span class="nav-number">1.2.4.</span> <span class="nav-text">链接爬虫</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">高级功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%94%AF%E6%8C%81%E4%BB%A3%E7%90%86"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">支持代理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E9%99%90%E9%80%9F"><span class="nav-number">1.2.4.3.</span> <span class="nav-text">下载限速</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="toypipi"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">toypipi</p>
+  <div class="site-description" itemprop="description">Stay focused, be present</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">289</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">381</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/toypipi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;toypipi" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:275688469@qq.com" title="E-Mail → mailto:275688469@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2017/01/16/6ce04e2c4643/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="《用Python写网络爬虫》读书笔记 | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《用Python写网络爬虫》读书笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-01-16 09:18:59" itemprop="dateCreated datePublished" datetime="2017-01-16T09:18:59+08:00">2017-01-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2020-11-03 11:44:00" itemprop="dateModified" datetime="2020-11-03T11:44:00+08:00">2020-11-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>10 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<blockquote>
+<p>学习<a target="_blank" rel="noopener" href="https://book.douban.com/subject/26869992/">《用Python写网络爬虫》</a>，为了加深记忆，边读边做笔记。如有侵权，立即删除。</p>
+</blockquote>
+<h1 id="网络爬虫简介"><a href="#网络爬虫简介" class="headerlink" title="网络爬虫简介"></a>网络爬虫简介</h1><h2 id="背景调研"><a href="#背景调研" class="headerlink" title="背景调研"></a>背景调研</h2><h3 id="识别网站所用技术"><a href="#识别网站所用技术" class="headerlink" title="识别网站所用技术"></a>识别网站所用技术</h3><p>使用builtwith模块，可以检查网站构建的技术类型。安装方法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install builtwith</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>该模块将URL作为参数，下载该URL并对其进行分析，然后返回该网站使用的技术。下面是使用该模块的一个例子。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> builtwith</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>builtwith.parse(<span class="string">&#x27;http://example.webscraping.com&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="寻找网站的所有者"><a href="#寻找网站的所有者" class="headerlink" title="寻找网站的所有者"></a>寻找网站的所有者</h3><p>我们可以使用WHOIS协议查询域名的注册者是是谁。Python中有一个针对该协议的封装库，通过pig安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install python-whois</span><br></pre></td></tr></table></figure>
+<p>使用该模块对appspot.com这个域名进行WHOIS查询。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> whois</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span> whois.whois(<span class="string">&#x27;appspot.com&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="编写第一个网络爬虫"><a href="#编写第一个网络爬虫" class="headerlink" title="编写第一个网络爬虫"></a>编写第一个网络爬虫</h2><h3 id="下载网页"><a href="#下载网页" class="headerlink" title="下载网页"></a>下载网页</h3><p>要想爬取网页，我们首先要将其下载下来。使用Python的urllib2模块下载URL。当下载网页时，我们可能会遇到一些无法控制的错误，比如请求的页面可能不存在。此时，urllib2会抛出异常，然后退出脚本。安全起见，可以捕获这些异常。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> urllib2</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">download</span>(<span class="params">url</span>):</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;Downloading:&#x27;</span>, url</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        html = urllib2.urlopen(url).read()</span><br><span class="line">    <span class="keyword">except</span> urllib2.URLError <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;Download error:&#x27;</span>,e.reason</span><br><span class="line">        html = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>现在，当出现下载错误时，该函数能够捕获到异常，然后返回None。</p>
+<h4 id="重试下载"><a href="#重试下载" class="headerlink" title="重试下载"></a>重试下载</h4><p>下载时遇到的错误经常是临时性的，比如服务器过载时返回的503 Service Unavailable错误。对于此类错误，我们可以尝试重新下载，因为这个服务器问题现在可能已经解决。不过，我们不需要对所有错误都尝试重新下载。如果服务器返回的是404 Not Found这种错误，则说明该网页目前并不存在，再次尝试同样的请求一般也不会出现不同的结果。所以，我们只需要确保download函数在发生5xx错误时重试下载即可。下面是支持重试下载功能的新版本代码。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> urllib2</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">download</span>(<span class="params">url, num_retries=<span class="number">2</span></span>):</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;Downloading:&#x27;</span>, url</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        html = urllib2.urlopen(url).read()</span><br><span class="line">    <span class="keyword">except</span> urllib2.URLError <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;Download error:&#x27;</span>, e.reason</span><br><span class="line">        html = <span class="literal">None</span></span><br><span class="line">        <span class="keyword">if</span> num_retries &gt; <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">hasattr</span>(e, <span class="string">&#x27;code&#x27;</span>) <span class="keyword">and</span> <span class="number">500</span> &lt;= e.code &lt; <span class="number">600</span>:</span><br><span class="line">                <span class="comment"># recursively retry 5xx HTTP errors</span></span><br><span class="line">                <span class="keyword">return</span> download(url, num_retries-<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>现在，当download函数遇到5xx错误码时，将会递归调用函数自身进行重试。此外，该函数还增加了一个参数，用于设定重试下载的次数，其默认值为两次。我们在这里限制网页下载的尝试次数，是因为服务器错误可能暂时还没有解决。可以通过下载<a target="_blank" rel="noopener" href="http://httpstat.us/500">http://httpstat.us/500</a> ，该网址始终返回500错误，测试该函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>download(<span class="string">&#x27;http://httpstat.us/500&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="设置用户代理"><a href="#设置用户代理" class="headerlink" title="设置用户代理"></a>设置用户代理</h4><p>下面的代码对download函数进行了修改，设定了一个默认的用户代理“wswp”（即Web Scraping with Python的首字母缩写）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> urllib2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">download</span>(<span class="params">url, user_agent=<span class="string">&#x27;wswp&#x27;</span>, num_retries=<span class="number">2</span></span>):</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;Downloading:&#x27;</span>, url</span><br><span class="line">    headers = &#123;<span class="string">&#x27;User-agent&#x27;</span>: user_agent&#125;</span><br><span class="line">    request = urllib2.Request(url, headers=headers)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        html = urllib2.urlopen(request).read()</span><br><span class="line">    <span class="keyword">except</span> urllib2.URLError <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;Download error:&#x27;</span>, e.reason</span><br><span class="line">        html = <span class="literal">None</span></span><br><span class="line">        <span class="keyword">if</span> num_retries &gt; <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">hasattr</span>(e, <span class="string">&#x27;code&#x27;</span>) <span class="keyword">and</span> <span class="number">500</span> &lt;= e.code &lt; <span class="number">600</span>:</span><br><span class="line">                <span class="comment"># recursively retry 5xx HTTP errors</span></span><br><span class="line">                <span class="keyword">return</span> download(url, user_agent, num_retries - <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">download(<span class="string">&#x27;http://www.meetup.com/&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="网站地图爬虫"><a href="#网站地图爬虫" class="headerlink" title="网站地图爬虫"></a>网站地图爬虫</h3><p>在第一个简单的爬虫中，我们将使用实例网站robots.txt文件中发现的网站地图来下载所有网页。为了解析网站地图，我们将会使用一个简单的正则表达式，从<loc>标签中提取出URL。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> urllib2</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">download</span>(<span class="params">url</span>):</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;Downloading:&#x27;</span>, url</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        html = urllib2.urlopen(url).read()</span><br><span class="line">    <span class="keyword">except</span> urllib2.URLError <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;Download error:&#x27;</span>,e.reason</span><br><span class="line">        html = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">crawl_sitemap</span>(<span class="params">url</span>):</span><br><span class="line">    <span class="comment"># download the sitemap file</span></span><br><span class="line">    sitemap = download(url)</span><br><span class="line">    <span class="comment"># extract the sitemap links</span></span><br><span class="line">    links = re.findall(<span class="string">&#x27;&lt;loc&gt;(.*?)&lt;/loc&gt;&#x27;</span>,sitemap)</span><br><span class="line">    <span class="comment"># download each link</span></span><br><span class="line">    <span class="keyword">for</span> link <span class="keyword">in</span> links:</span><br><span class="line">        html = download(link)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    crawl_sitemap(<span class="string">&#x27;http://example.webscraping.com/sitemap.xml&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="ID遍历爬虫"><a href="#ID遍历爬虫" class="headerlink" title="ID遍历爬虫"></a>ID遍历爬虫</h3><p>分析实例url</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://example.webscraping.com/view/Afghanistan-1">http://example.webscraping.com/view/Afghanistan-1</a></li>
+<li><a target="_blank" rel="noopener" href="http://example.webscraping.com/view/Aland-Islands-2">http://example.webscraping.com/view/Aland-Islands-2</a></li>
+<li><a target="_blank" rel="noopener" href="http://example.webscraping.com/view/Albania-3">http://example.webscraping.com/view/Albania-3</a></li>
+</ul>
+<p>可以看出，这些URL只在结尾处有所区别，包括国家名（作为页面别名）和ID。在URL中包含页面别名是非常普遍的做法，可以对搜索引擎优化起到帮助作用。一般情况下，Web服务器会忽略这个字符串，只使用ID来匹配数据库中的相关记录。下面我们将别名移除，加载<a target="_blank" rel="noopener" href="http://example.webscraping.com/view/1">http://example.webscraping.com/view/1</a> ，测试连接仍然可用。<br>因此，我们可以忽略页面别名，只遍历ID来下载所有国家的页面。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> urllib2</span><br><span class="line"><span class="keyword">import</span> itertools</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">download</span>(<span class="params">url</span>):</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;Downloading:&#x27;</span>, url</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        html = urllib2.urlopen(url).read()</span><br><span class="line">    <span class="keyword">except</span> urllib2.URLError <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;Download error:&#x27;</span>,e.reason</span><br><span class="line">        html = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> page <span class="keyword">in</span> itertools.count(<span class="number">1</span>):</span><br><span class="line">    url = <span class="string">&#x27;http://example.webscraping.com/view/-%d&#x27;</span> % page</span><br><span class="line">    html = download(url)</span><br><span class="line">    <span class="keyword">if</span> html <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># success - can scrape the result</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在这段代码中，我们对ID进行遍历，直到出现下载错误时停止，我们假设此时已到达最后一个国家的页面。不过，这种实现方式存在一个缺陷，那就是某些记录可能已被删除，数据库ID之间并不是连续的。此时，只要访问到某个间隔点，爬虫就会立即退出。下面是这段代码的改进版本，在该版本中连续发生多次下载错误后才会退出程序。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> urllib2</span><br><span class="line"><span class="keyword">import</span> itertools</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">download</span>(<span class="params">url</span>):</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;Downloading:&#x27;</span>, url</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        html = urllib2.urlopen(url).read()</span><br><span class="line">    <span class="keyword">except</span> urllib2.URLError <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;Download error:&#x27;</span>,e.reason</span><br><span class="line">        html = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line"></span><br><span class="line"><span class="comment"># maximum number of consecutive download errors allowed</span></span><br><span class="line">max_errors = <span class="number">5</span></span><br><span class="line"><span class="comment"># current number of consecutive download errors</span></span><br><span class="line">num_errors = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> page <span class="keyword">in</span> itertools.count(<span class="number">1</span>):</span><br><span class="line">    url = <span class="string">&#x27;http://example.webscraping.com/view/-%d&#x27;</span> % page</span><br><span class="line">    html = download(url)</span><br><span class="line">    <span class="keyword">if</span> html <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="comment"># received an error trying to download this webpage</span></span><br><span class="line">        num_errors += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> num_errors == max_errors:</span><br><span class="line">            <span class="comment"># reached maximum number of</span></span><br><span class="line">            <span class="comment"># consecutive errors so exit</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># success - can scrape the result</span></span><br><span class="line">        <span class="comment"># ...</span></span><br><span class="line">        num_errors = <span class="number">0</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>上面代码中实现的爬虫需要连续5次下载错误才会停止遍历，这样就很大程度上降低了遇到被删除记录时过早停止遍历的风险。</p>
+<h3 id="链接爬虫"><a href="#链接爬虫" class="headerlink" title="链接爬虫"></a>链接爬虫</h3><p>如果想要爬取的是国家列表索引页和国家页面。其中，索引页链接格式如下：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://example.webscraping.com/index/1">http://example.webscraping.com/index/1</a></li>
+<li><a target="_blank" rel="noopener" href="http://example.webscraping.com/index/2">http://example.webscraping.com/index/2</a></li>
+</ul>
+<p>国家页链接格式如下：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://example.webscraping.com/view/Afghanistan-1">http://example.webscraping.com/view/Afghanistan-1</a></li>
+<li><a target="_blank" rel="noopener" href="http://example.webscraping.com/view/Aland-Islands-2">http://example.webscraping.com/view/Aland-Islands-2</a></li>
+</ul>
+<p>因此，我们可以用<code>/(index|view)</code>这个简单的正则表达式来匹配这两类网页。可以使用如下代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> urllib2</span><br><span class="line"><span class="keyword">import</span> urlparse</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">download</span>(<span class="params">url</span>):</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;Downloading:&#x27;</span>, url</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        html = urllib2.urlopen(url).read()</span><br><span class="line">    <span class="keyword">except</span> urllib2.URLError <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;Download error:&#x27;</span>, e.reason</span><br><span class="line">        html = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">link_crawler</span>(<span class="params">seed_url, link_regex</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Crawl from the given seed URL following links matched by link_regex&quot;&quot;&quot;</span></span><br><span class="line">    crawl_queue = [seed_url]</span><br><span class="line">    <span class="keyword">while</span> crawl_queue:</span><br><span class="line">        url = crawl_queue.pop()</span><br><span class="line">        html = download(url)</span><br><span class="line">        <span class="comment"># filter for links matching our regular expression</span></span><br><span class="line">        <span class="keyword">for</span> link <span class="keyword">in</span> get_links(html):</span><br><span class="line">            <span class="keyword">if</span> re.<span class="keyword">match</span>(link_regex, link):</span><br><span class="line">                crawl_queue.append(link)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_links</span>(<span class="params">html</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return a list of links from html&quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># a regular expression to extract all links from the webpage</span></span><br><span class="line">    webpage_regex = re.<span class="built_in">compile</span>(<span class="string">&#x27;&lt;a[^&gt;]+href=[&quot;\&#x27;](.*?)[&quot;\&#x27;]&#x27;</span>, re.IGNORECASE)</span><br><span class="line">    <span class="comment"># list of all links from the webpage</span></span><br><span class="line">    <span class="keyword">return</span> webpage_regex.findall(html)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">link_crawler(<span class="string">&#x27;http://example.webscraping.com&#x27;</span>, <span class="string">&#x27;/(index|view)&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>你会发现我们会得到如下的下载错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ssh://root@192.168.1.122:22/usr/bin/python -u /root/pyFile/test.py</span><br><span class="line">Downloading: http://example.webscraping.com</span><br><span class="line">Downloading: /index/1</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  ...</span><br><span class="line">ValueError: unknown url type: /index/1</span><br></pre></td></tr></table></figure>
+<p>问题出在下载&#x2F;index&#x2F;1时，该链接只有网页的路径部分，而没有协议和服务器部分，也就是说这个一个<strong>相对链接</strong>。由于浏览器知道你正在浏览哪个网页，所以在浏览器浏览时，相对链接是能够正常工作的。但是urllib2是无法获知上下文的。为了让urllib2能够定位网页，我们需要将链接转换为<strong>绝对链接</strong>的形式，以便包含定位网页所有的细节。可以使用urlparse模块。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> urllib2</span><br><span class="line"><span class="keyword">import</span> urlparse</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">download</span>(<span class="params">url</span>):</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;Downloading:&#x27;</span>, url</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        html = urllib2.urlopen(url).read()</span><br><span class="line">    <span class="keyword">except</span> urllib2.URLError <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;Download error:&#x27;</span>, e.reason</span><br><span class="line">        html = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">link_crawler</span>(<span class="params">seed_url, link_regex</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Crawl from the given seed URL following links matched by link_regex&quot;&quot;&quot;</span></span><br><span class="line">    crawl_queue = [seed_url]</span><br><span class="line">    <span class="keyword">while</span> crawl_queue:</span><br><span class="line">        url = crawl_queue.pop()</span><br><span class="line">        html = download(url)</span><br><span class="line">        <span class="comment"># filter for links matching our regular expression</span></span><br><span class="line">        <span class="keyword">for</span> link <span class="keyword">in</span> get_links(html):</span><br><span class="line">            <span class="keyword">if</span> re.<span class="keyword">match</span>(link_regex, link):</span><br><span class="line">                link = urlparse.urljoin(seed_url,link)</span><br><span class="line">                crawl_queue.append(link)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_links</span>(<span class="params">html</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return a list of links from html&quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># a regular expression to extract all links from the webpage</span></span><br><span class="line">    webpage_regex = re.<span class="built_in">compile</span>(<span class="string">&#x27;&lt;a[^&gt;]+href=[&quot;\&#x27;](.*?)[&quot;\&#x27;]&#x27;</span>, re.IGNORECASE)</span><br><span class="line">    <span class="comment"># list of all links from the webpage</span></span><br><span class="line">    <span class="keyword">return</span> webpage_regex.findall(html)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">link_crawler(<span class="string">&#x27;http://example.webscraping.com&#x27;</span>, <span class="string">&#x27;/(index|view)&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>当你运行这段代码时，会发现虽然网页下载没有出现错误，但是同样的地点总是会被不断下载到。这是因为这些站点相互之间存在链接。比如，澳大利亚链接到了南极洲，而南极洲也存在到澳大利亚的链接，此时爬虫就会在它们之间不断循环下去。要想避免重复爬取相同的链接，我们需要记录哪些链接已经被爬取过。下面是修改后的link_crawler函数，已具备存储已发现URL的功能，可以避免重复下载。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> urllib2</span><br><span class="line"><span class="keyword">import</span> urlparse</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">download</span>(<span class="params">url</span>):</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;Downloading:&#x27;</span>, url</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        html = urllib2.urlopen(url).read()</span><br><span class="line">    <span class="keyword">except</span> urllib2.URLError <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;Download error:&#x27;</span>, e.reason</span><br><span class="line">        html = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">return</span> html</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">link_crawler</span>(<span class="params">seed_url, link_regex</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Crawl from the given seed URL following links matched by link_regex&quot;&quot;&quot;</span></span><br><span class="line">    crawl_queue = [seed_url]</span><br><span class="line">    <span class="comment"># keep track which URL&#x27;s have seen before</span></span><br><span class="line">    seen = <span class="built_in">set</span>(crawl_queue)</span><br><span class="line">    <span class="keyword">while</span> crawl_queue:</span><br><span class="line">        url = crawl_queue.pop()</span><br><span class="line">        html = download(url)</span><br><span class="line">        <span class="keyword">for</span> link <span class="keyword">in</span> get_links(html):</span><br><span class="line">            <span class="comment"># check if link matches expected regex</span></span><br><span class="line">            <span class="keyword">if</span> re.<span class="keyword">match</span>(link_regex, link):</span><br><span class="line">                <span class="comment"># from absolute link</span></span><br><span class="line">                link = urlparse.urljoin(seed_url, link)</span><br><span class="line">                <span class="comment"># check if have already seen this link</span></span><br><span class="line">                <span class="keyword">if</span> link <span class="keyword">not</span> <span class="keyword">in</span> seen:</span><br><span class="line">                    seen.add(link)</span><br><span class="line">                    crawl_queue.append(link)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_links</span>(<span class="params">html</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return a list of links from html&quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># a regular expression to extract all links from the webpage</span></span><br><span class="line">    webpage_regex = re.<span class="built_in">compile</span>(<span class="string">&#x27;&lt;a[^&gt;]+href=[&quot;\&#x27;](.*?)[&quot;\&#x27;]&#x27;</span>, re.IGNORECASE)</span><br><span class="line">    <span class="comment"># list of all links from the webpage</span></span><br><span class="line">    <span class="keyword">return</span> webpage_regex.findall(html)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">link_crawler(<span class="string">&#x27;http://example.webscraping.com&#x27;</span>, <span class="string">&#x27;/(index|view)&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>当运行该脚本时，它会爬取所有地点，并且能够如期停止。</p>
+<h4 id="高级功能"><a href="#高级功能" class="headerlink" title="高级功能"></a>高级功能</h4><p><strong>解析robot.txt</strong><br>首先，我们需要解析robots.txt文件，以避免下载禁止爬取的URL。使用Python自带的robotparser模块，就可以轻松完成这项工作。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> robotparser</span><br><span class="line"></span><br><span class="line">rp = robotparser.RobotFileParser()</span><br><span class="line">rp.set_url(<span class="string">&#x27;http://example.webscraping.com/robots.txt&#x27;</span>)</span><br><span class="line">rp.read()</span><br><span class="line">url = <span class="string">&#x27;http://example.webscraping.com&#x27;</span></span><br><span class="line">user_agent = <span class="string">&#x27;BadCrawler&#x27;</span></span><br><span class="line"><span class="built_in">print</span> rp.can_fetch(user_agent, url)</span><br><span class="line">user_agent = <span class="string">&#x27;GoodCrawler&#x27;</span></span><br><span class="line"><span class="built_in">print</span> rp.can_fetch(user_agent, url)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>当用户代理设置为’BadCrawler’时，robotparser模块会返回结果表明无法获取网页。</p>
+<h4 id="支持代理"><a href="#支持代理" class="headerlink" title="支持代理"></a>支持代理</h4><p>下面是集成了代理功能的新版download函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">download</span>(<span class="params">url, user_agent=<span class="string">&#x27;wswp&#x27;</span>, proxy=<span class="literal">None</span>, num_retries=<span class="number">2</span></span>):</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;Downloading:&#x27;</span>, url</span><br><span class="line">    headers = &#123;<span class="string">&#x27;User-agent&#x27;</span>: user_agent&#125;</span><br><span class="line">    request = urllib2.Request(url, headers=headers)</span><br><span class="line">    opener = urllib2.build_opener()</span><br><span class="line">    <span class="keyword">if</span> proxy:</span><br><span class="line">        proxy_params = &#123;urlparse.urlparse(url).scheme: proxy&#125;</span><br><span class="line">        opener.add_handler(urllib2.ProxyHandler(proxy_params))</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        html = opener.urlopen(request).read()</span><br><span class="line">    <span class="keyword">except</span> urllib2.URLError <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;Download error:&#x27;</span>, e.reason</span><br><span class="line">        html = <span class="literal">None</span></span><br><span class="line">        <span class="keyword">if</span> num_retries &gt; <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">hasattr</span>(e, <span class="string">&#x27;code&#x27;</span>) <span class="keyword">and</span> <span class="number">500</span> &lt;- e.code &lt; <span class="number">600</span>:</span><br><span class="line">                <span class="comment"># retry 5XX HTTP errors</span></span><br><span class="line">                html = download(url, user_agent, proxy, num_retries-<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> html</span><br></pre></td></tr></table></figure>
+<h4 id="下载限速"><a href="#下载限速" class="headerlink" title="下载限速"></a>下载限速</h4><p>如果我们爬取网站的速度过快，就会面临被封禁或是造成服务器过载的风险。为了降低这些风险，我们可以在两次下载之间添加延时，从而对爬虫限速。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.JPG" alt="toypipi 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.JPG" alt="toypipi 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>toypipi
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://toypipi.github.io/2017/01/16/6ce04e2c4643/" title="《用Python写网络爬虫》读书笔记">https://toypipi.github.io/2017/01/16/6ce04e2c4643/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+              <a href="/tags/%E7%88%AC%E8%99%AB/" rel="tag"><i class="fa fa-tag"></i> 爬虫</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/01/13/577ab87ecb70/" rel="prev" title="2017年书单">
+                  <i class="fa fa-angle-left"></i> 2017年书单
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2017/01/16/06ce5a19cd0b/" rel="next" title="英文翻译积累">
+                  英文翻译积累 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2016 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">toypipi</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">195k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">11:49</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

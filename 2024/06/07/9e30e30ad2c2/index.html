@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="这是我们 代码健康 系列中的另一篇文章。此文章的一个版本最初作为“Google 马桶测试” 系列的一集出现在全球的 Google 浴室中。您可以下载 适合打印的版本[1] 以在办公室中显示。 作者 孙一鸣 您可能在代码库中遇到过一些复杂、难以阅读的布尔表达式，并希望它们更容易理解。例如，假设我们想要确定披萨是否美味： 1234567&#x2F;&#x2F; Decide whether this pizza is">
+<meta property="og:type" content="article">
+<meta property="og:title" content="布尔表达式又长又复杂[译]">
+<meta property="og:url" content="https://toypipi.github.io/2024/06/07/9e30e30ad2c2/index.html">
+<meta property="og:site_name" content="Toypipi&#39;s blog">
+<meta property="og:description" content="这是我们 代码健康 系列中的另一篇文章。此文章的一个版本最初作为“Google 马桶测试” 系列的一集出现在全球的 Google 浴室中。您可以下载 适合打印的版本[1] 以在办公室中显示。 作者 孙一鸣 您可能在代码库中遇到过一些复杂、难以阅读的布尔表达式，并希望它们更容易理解。例如，假设我们想要确定披萨是否美味： 1234567&#x2F;&#x2F; Decide whether this pizza is">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-06-07T05:52:46.000Z">
+<meta property="article:modified_time" content="2024-06-07T06:49:45.707Z">
+<meta property="article:author" content="toypipi">
+<meta property="article:tag" content="布尔表达式">
+<meta property="article:tag" content="可读性">
+<meta property="article:tag" content="代码规范">
+<meta property="article:tag" content="代码健康">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://toypipi.github.io/2024/06/07/9e30e30ad2c2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://toypipi.github.io/2024/06/07/9e30e30ad2c2/","path":"2024/06/07/9e30e30ad2c2/","title":"布尔表达式又长又复杂[译]"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>布尔表达式又长又复杂[译] | Toypipi's blog</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?c228072b8c3657dfa7236914b308712c"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Toypipi's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BB%B6%E4%BC%B8%E9%98%85%E8%AF%BB"><span class="nav-number">1.</span> <span class="nav-text">延伸阅读</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="nav-number">2.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="toypipi"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">toypipi</p>
+  <div class="site-description" itemprop="description">Stay focused, be present</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">289</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">381</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/toypipi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;toypipi" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:275688469@qq.com" title="E-Mail → mailto:275688469@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2024/06/07/9e30e30ad2c2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="布尔表达式又长又复杂[译] | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          布尔表达式又长又复杂[译]
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-06-07 13:52:46 / 修改时间：14:49:45" itemprop="dateCreated datePublished" datetime="2024-06-07T13:52:46+08:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BF%BB%E8%AF%91/" itemprop="url" rel="index"><span itemprop="name">翻译</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>704</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<p>这是我们 <a target="_blank" rel="noopener" href="https://testing.googleblog.com/2017/04/code-health-googles-internal-code.html">代码健康</a> 系列中的另一篇文章。此文章的一个版本最初作为“Google <a target="_blank" rel="noopener" href="https://testing.googleblog.com/2007/01/introducing-testing-on-toilet.html">马桶测试</a>” 系列的一集出现在全球的 Google 浴室中。您可以下载 <a target="_blank" rel="noopener" href="https://docs.google.com/document/d/11nk0lxX6DHBq8AJtMtJnnLKf5CG3KTcntUBhVTKWRLg/edit">适合打印的版本</a><sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="Google 的马桶声名在外，不仅仅因为技术含量高，还因为从 2006 年开始，它们就被用来确保 Google 的产品完美无瑕，工程师们还会将软件测试题打印出来贴在厕所里，这是被内部员工称为 “马桶上的测试” 的企业文化。  
+">[1]</span></a></sup> 以在办公室中显示。</p>
+<p>作者 孙一鸣</p>
+<p>您可能在代码库中遇到过一些复杂、难以阅读的布尔表达式，并希望它们更容易理解。例如，假设我们想要确定披萨是否美味：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Decide whether this pizza is fantastic.</span></span><br><span class="line"><span class="comment">// 判断这个披萨是否美味。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ((!pepperoniService.<span class="title function_">empty</span>() || sausages.<span class="title function_">size</span>() &gt; <span class="number">0</span>)</span><br><span class="line">    &amp;&amp; (useOnionFlag.<span class="title function_">get</span>() || <span class="title function_">hasMushroom</span>(<span class="variable constant_">ENOKI</span>, <span class="variable constant_">PORTOBELLO</span>)) &amp;&amp; <span class="title function_">hasCheese</span>()) &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<p><font color=#FF0000>改进这一点的第一步是将条件表达式提取到一个命名良好的变量中：</font></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">boolean isPizzaFantastic =</span><br><span class="line">    (!pepperoniService.<span class="title function_">empty</span>() || sausages.<span class="title function_">size</span>() &gt; <span class="number">0</span>)</span><br><span class="line">    &amp;&amp; (useOnionFlag.<span class="title function_">get</span>() || <span class="title function_">hasMushroom</span>(<span class="variable constant_">ENOKI</span>, <span class="variable constant_">PORTOBELLO</span>)) &amp;&amp; <span class="title function_">hasCheese</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (isPizzaFantastic) &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然而，布尔表达式仍然太复杂。<font color=#FF0000>从给定的一组输入计算 isPizzaFantastic 的值可能会令人困惑。</font>您可能需要拿起笔和纸，或者在本地启动服务器并设置断点以调试代码。</p>
+<p>取而代之的是，尝试将<font color=#FF0000>细节分组到提供有意义、抽象的中间布尔值中</font>。下面的每个布尔值代表一个明确定义的条件，您可以避免在一个表达式中混合使用 &amp;&amp; 和 || 操作符。在不更改业务逻辑的情况下，您可以更轻松地了解布尔值之间的相互关系：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">boolean hasGoodMeat = !pepperoniService.<span class="title function_">empty</span>() || sausages.<span class="title function_">size</span>() &gt; <span class="number">0</span>;</span><br><span class="line">boolean hasGoodVeggies = useOnionFlag.<span class="title function_">get</span>() || <span class="title function_">hasMushroom</span>(<span class="variable constant_">ENOKI</span>, <span class="variable constant_">PORTOBELLO</span>);</span><br><span class="line">boolean isPizzaFantastic = hasGoodMeat &amp;&amp; hasGoodVeggies &amp;&amp; <span class="title function_">hasCheese</span>();</span><br></pre></td></tr></table></figure>
+
+<p><font color=#FF0000>另一种选择是将逻辑隐藏在单独的方法中</font>。这也提供了使用 <a target="_blank" rel="noopener" href="https://testing.googleblog.com/2017/06/code-health-reduce-nesting-reduce.html">保护子句</a> 提前返回的可能性，进一步减少了跟踪中间状态的需要：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">boolean <span class="title function_">isPizzaFantastic</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (!<span class="title function_">hasCheese</span>()) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (pepperoniService.<span class="title function_">empty</span>() &amp;&amp; sausages.<span class="title function_">size</span>() == <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> useOnionFlag.<span class="title function_">get</span>() || <span class="title function_">hasMushroom</span>(<span class="variable constant_">ENOKI</span>, <span class="variable constant_">PORTOBELLO</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="延伸阅读"><a href="#延伸阅读" class="headerlink" title="延伸阅读"></a>延伸阅读</h1><p><a target="_blank" rel="noopener" href="https://www.leiphone.com/category/a-eye/RIbtW1cYPJvMtjvG.html">Google 厕所文化：在马桶上测试程序</a></p>
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p>本文是 <a target="_blank" rel="noopener" href="https://testing.googleblog.com/2024/04/isbooleantoolongandcomplex.html">isBooleanTooLongAndComplex</a> 的中文翻译，感谢原文作者。更多信息请点击链接获取。</p>
+<p><strong>以下内容为译者注</strong>：</p>
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">Google 的马桶声名在外，不仅仅因为技术含量高，还因为从 2006 年开始，它们就被用来确保 Google 的产品完美无瑕，工程师们还会将软件测试题打印出来贴在厕所里，这是被内部员工称为 “马桶上的测试” 的企业文化。<a href="#fnref:1" rev="footnote"> ↩</a></span></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">2.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">&quot;guard clause（保护子句）&quot; 是指在方法的开头使用条件语句来提前返回，从而避免继续执行后续代码。通过这种方式，可以在满足某些条件时立即退出方法，而不需要处理剩余的逻辑。这种方法可以简化代码结构，减少对中间状态的跟踪需求，提高代码的可读性和维护性。<a href="#fnref:2" rev="footnote"> ↩</a></span></li></ol></div></div>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.JPG" alt="toypipi 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.JPG" alt="toypipi 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>toypipi
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://toypipi.github.io/2024/06/07/9e30e30ad2c2/" title="布尔表达式又长又复杂[译]">https://toypipi.github.io/2024/06/07/9e30e30ad2c2/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E5%B8%83%E5%B0%94%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag"><i class="fa fa-tag"></i> 布尔表达式</a>
+              <a href="/tags/%E5%8F%AF%E8%AF%BB%E6%80%A7/" rel="tag"><i class="fa fa-tag"></i> 可读性</a>
+              <a href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" rel="tag"><i class="fa fa-tag"></i> 代码规范</a>
+              <a href="/tags/%E4%BB%A3%E7%A0%81%E5%81%A5%E5%BA%B7/" rel="tag"><i class="fa fa-tag"></i> 代码健康</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/06/06/54543d86f880/" rel="prev" title="《我在 100 天内自学英文翻转人生》读书笔记">
+                  <i class="fa fa-angle-left"></i> 《我在 100 天内自学英文翻转人生》读书笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/06/21/f8e488e37ba3/" rel="next" title="Hexo NexT 主题配置 utterances 评论">
+                  Hexo NexT 主题配置 utterances 评论 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2016 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">toypipi</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">195k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">11:49</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

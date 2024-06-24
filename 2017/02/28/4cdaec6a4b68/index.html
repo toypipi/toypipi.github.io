@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="学习《爱上统计学》，为了加深记忆，边读边做笔记。如有侵权，立即删除。  计算和理解平均数描述统计(descriptive statistics)描述统计常用于整理、描述所收集数据的特征。如描述大学最流行的的专业是什么。 推论统计(inferential statistics)推论统计通常是（但并非总是）数据收集和汇总的下一步。推论统计常利用较小群体的数据来推论可能的较大群体的特征。 计算和理解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《爱上统计学》读书笔记">
+<meta property="og:url" content="https://toypipi.github.io/2017/02/28/4cdaec6a4b68/index.html">
+<meta property="og:site_name" content="Toypipi&#39;s blog">
+<meta property="og:description" content="学习《爱上统计学》，为了加深记忆，边读边做笔记。如有侵权，立即删除。  计算和理解平均数描述统计(descriptive statistics)描述统计常用于整理、描述所收集数据的特征。如描述大学最流行的的专业是什么。 推论统计(inferential statistics)推论统计通常是（但并非总是）数据收集和汇总的下一步。推论统计常利用较小群体的数据来推论可能的较大群体的特征。 计算和理解">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20170307/%E6%AD%A3%E6%80%81%E6%9B%B2%E7%BA%BF.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20170311/%E7%A1%AE%E5%AE%9A%E9%9D%9E%E7%8B%AC%E7%AB%8B%E5%9D%87%E5%80%BCt%E6%A3%80%E9%AA%8C%E7%9A%84%E8%BF%87%E7%A8%8B.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20170320/%E4%BF%A1%E5%BA%A6%E7%9A%84%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20170321/%E6%95%88%E5%BA%A6%E7%9A%84%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B.jpg">
+<meta property="article:published_time" content="2017-02-28T07:03:49.000Z">
+<meta property="article:modified_time" content="2019-02-27T01:48:34.161Z">
+<meta property="article:author" content="toypipi">
+<meta property="article:tag" content="统计学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20170307/%E6%AD%A3%E6%80%81%E6%9B%B2%E7%BA%BF.jpg">
+
+
+<link rel="canonical" href="https://toypipi.github.io/2017/02/28/4cdaec6a4b68/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://toypipi.github.io/2017/02/28/4cdaec6a4b68/","path":"2017/02/28/4cdaec6a4b68/","title":"《爱上统计学》读书笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>《爱上统计学》读书笔记 | Toypipi's blog</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?c228072b8c3657dfa7236914b308712c"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Toypipi's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%92%8C%E7%90%86%E8%A7%A3%E5%B9%B3%E5%9D%87%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">计算和理解平均数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1-descriptive-statistics"><span class="nav-number">1.1.</span> <span class="nav-text">描述统计(descriptive statistics)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A8%E8%AE%BA%E7%BB%9F%E8%AE%A1-inferential-statistics"><span class="nav-number">1.2.</span> <span class="nav-text">推论统计(inferential statistics)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%92%8C%E7%90%86%E8%A7%A3%E5%B9%B3%E5%9D%87%E6%95%B0-1"><span class="nav-number">1.3.</span> <span class="nav-text">计算和理解平均数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%9D%87%E5%80%BC"><span class="nav-number">1.3.1.</span> <span class="nav-text">计算均值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E4%B8%AD%E4%BD%8D%E6%95%B0"><span class="nav-number">1.3.2.</span> <span class="nav-text">计算中位数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E4%BC%97%E6%95%B0"><span class="nav-number">1.3.3.</span> <span class="nav-text">计算众数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%90%86%E8%A7%A3%E5%8F%98%E5%BC%82%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">理解变异性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9E%81%E5%B7%AE"><span class="nav-number">2.1.</span> <span class="nav-text">计算极差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%A0%87%E5%87%86%E5%B7%AE"><span class="nav-number">2.2.</span> <span class="nav-text">计算标准差</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8-n-1-%E8%80%8C%E4%B8%8D%E6%98%AF-n"><span class="nav-number">2.2.1.</span> <span class="nav-text">为什么使用$n - 1$,而不是$n$</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%96%B9%E5%B7%AE"><span class="nav-number">2.3.</span> <span class="nav-text">计算方差</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">计算相关系数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">3.1.</span> <span class="nav-text">相关系数到底是什么</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E7%AE%80%E5%8D%95%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0"><span class="nav-number">3.2.</span> <span class="nav-text">计算简单相关系数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E9%AA%8C%E4%BD%A0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">检验你的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9B%B6%E5%81%87%E8%AE%BE"><span class="nav-number">4.1.</span> <span class="nav-text">零假设</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9B%B6%E5%81%87%E8%AE%BE%E7%9A%84%E7%9B%AE%E7%9A%84"><span class="nav-number">4.1.1.</span> <span class="nav-text">零假设的目的</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A0%94%E7%A9%B6%E5%81%87%E8%AE%BE"><span class="nav-number">4.2.</span> <span class="nav-text">研究假设</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%97%A0%E6%96%B9%E5%90%91%E7%A0%94%E7%A9%B6%E5%81%87%E8%AE%BE"><span class="nav-number">4.2.1.</span> <span class="nav-text">无方向研究假设</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%89%E6%96%B9%E5%90%91%E7%A0%94%E7%A9%B6%E5%81%87%E8%AE%BE"><span class="nav-number">4.2.2.</span> <span class="nav-text">有方向研究假设</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E7%8E%87%E5%92%8C%E6%A6%82%E7%8E%87%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7"><span class="nav-number">5.</span> <span class="nav-text">概率和概率的重要性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A3%E6%80%81%E6%9B%B2%E7%BA%BF%EF%BC%88%E6%88%96%E9%92%9F%E5%BD%A2%E6%9B%B2%E7%BA%BF%EF%BC%89"><span class="nav-number">5.1.</span> <span class="nav-text">正态曲线（或钟形曲线）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#z-%E5%80%BC"><span class="nav-number">5.2.</span> <span class="nav-text">$z$ 值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E4%B8%AA%E7%BE%A4%E4%BD%93%E7%9A%84-t-%E6%A3%80%E9%AA%8C"><span class="nav-number">6.</span> <span class="nav-text">两个群体的$t$检验</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%A3%80%E9%AA%8C%E7%BB%9F%E8%AE%A1%E9%87%8F"><span class="nav-number">6.1.</span> <span class="nav-text">计算检验统计量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%92%8C%E7%90%86%E8%A7%A3%E6%95%88%E5%BA%94%E9%87%8F"><span class="nav-number">6.2.</span> <span class="nav-text">计算和理解效应量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E4%B8%AA%E7%9B%B8%E5%85%B3%E7%BE%A4%E4%BD%93%E7%9A%84%E5%9D%87%E5%80%BC%E6%A3%80%E9%AA%8C"><span class="nav-number">7.</span> <span class="nav-text">两个相关群体的均值检验</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%9E%E7%8B%AC%E7%AB%8B%E6%A0%B7%E6%9C%AC-t-%E6%A3%80%E9%AA%8C%E4%BB%8B%E7%BB%8D"><span class="nav-number">7.1.</span> <span class="nav-text">非独立样本$t$检验介绍</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%9D%E8%AF%95%E8%BF%9B%E8%A1%8C%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90"><span class="nav-number">8.</span> <span class="nav-text">尝试进行方差分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90%E7%9A%84%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B"><span class="nav-number">8.1.</span> <span class="nav-text">方差分析的不同类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%A3%80%E9%AA%8C%E7%BB%9F%E8%AE%A1%E9%87%8F-1"><span class="nav-number">8.2.</span> <span class="nav-text">计算检验统计量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="nav-number">9.</span> <span class="nav-text">使用线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%BC%B0%E8%AE%A1"><span class="nav-number">9.1.</span> <span class="nav-text">什么是估计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%B0%E8%AE%A1%E7%9A%84%E9%80%BB%E8%BE%91"><span class="nav-number">9.2.</span> <span class="nav-text">估计的逻辑</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%98%E5%88%B6%E6%8B%9F%E5%90%88%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%80%E4%BC%98%E7%9B%B4%E7%BA%BF"><span class="nav-number">9.3.</span> <span class="nav-text">绘制拟合数据的最优直线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E5%85%83%E5%9B%9E%E5%BD%92%EF%BC%88multiple-regression%EF%BC%89"><span class="nav-number">9.4.</span> <span class="nav-text">多元回归（multiple regression）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%A4%9A%E5%85%83%E4%BC%B0%E8%AE%A1%E5%8F%98%E9%87%8F%E5%BA%94%E9%81%B5%E5%AE%88%E7%9A%84%E9%87%8D%E8%A6%81%E5%AE%88%E5%88%99"><span class="nav-number">9.4.1.</span> <span class="nav-text">使用多元估计变量应遵守的重要守则</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%A1%E6%96%B9%E5%92%8C%E5%85%B6%E4%BB%96%E9%9D%9E%E5%8F%82%E6%95%B0%E6%A3%80%E9%AA%8C"><span class="nav-number">10.</span> <span class="nav-text">卡方和其他非参数检验</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E6%A0%B7%E6%9C%AC%E5%8D%A1%E6%96%B9%E6%A3%80%E9%AA%8C%E4%BB%8B%E7%BB%8D"><span class="nav-number">10.1.</span> <span class="nav-text">单样本卡方检验介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%8D%A1%E6%96%B9%E6%A3%80%E9%AA%8C%E7%BB%9F%E8%AE%A1%E9%87%8F"><span class="nav-number">10.2.</span> <span class="nav-text">计算卡方检验统计量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%90%86%E8%A7%A3%E4%BF%A1%E5%BA%A6%E5%92%8C%E6%95%88%E5%BA%A6"><span class="nav-number">11.</span> <span class="nav-text">理解信度和效度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%A1%E5%BA%A6"><span class="nav-number">11.1.</span> <span class="nav-text">信度</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BF%A1%E5%BA%A6%E7%9A%84%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B"><span class="nav-number">11.1.1.</span> <span class="nav-text">信度的不同类型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%88%E5%BA%A6"><span class="nav-number">11.2.</span> <span class="nav-text">效度</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%88%E5%BA%A6%E7%9A%84%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B"><span class="nav-number">11.2.1.</span> <span class="nav-text">效度的不同类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%85%E5%AE%B9%E6%95%88%E5%BA%A6"><span class="nav-number">11.2.2.</span> <span class="nav-text">内容效度</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%87%86%E5%88%99%E6%95%88%E5%BA%A6"><span class="nav-number">11.2.3.</span> <span class="nav-text">准则效度</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BB%BA%E6%9E%84%E6%95%88%E5%BA%A6"><span class="nav-number">11.2.4.</span> <span class="nav-text">建构效度</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="toypipi"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">toypipi</p>
+  <div class="site-description" itemprop="description">Stay focused, be present</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">289</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">381</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/toypipi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;toypipi" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:275688469@qq.com" title="E-Mail → mailto:275688469@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2017/02/28/4cdaec6a4b68/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="《爱上统计学》读书笔记 | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《爱上统计学》读书笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-02-28 15:03:49" itemprop="dateCreated datePublished" datetime="2017-02-28T15:03:49+08:00">2017-02-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2019-02-27 09:48:34" itemprop="dateModified" datetime="2019-02-27T09:48:34+08:00">2019-02-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">阅读</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>21 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<blockquote>
+<p>学习<a target="_blank" rel="noopener" href="https://book.douban.com/subject/2985995/">《爱上统计学》</a>，为了加深记忆，边读边做笔记。如有侵权，立即删除。</p>
+</blockquote>
+<h3 id="计算和理解平均数"><a href="#计算和理解平均数" class="headerlink" title="计算和理解平均数"></a>计算和理解平均数</h3><h4 id="描述统计-descriptive-statistics"><a href="#描述统计-descriptive-statistics" class="headerlink" title="描述统计(descriptive statistics)"></a>描述统计(descriptive statistics)</h4><p>描述统计常用于整理、描述所收集数据的特征。如描述大学最流行的的专业是什么。</p>
+<h4 id="推论统计-inferential-statistics"><a href="#推论统计-inferential-statistics" class="headerlink" title="推论统计(inferential statistics)"></a>推论统计(inferential statistics)</h4><p>推论统计通常是（但并非总是）数据收集和汇总的下一步。推论统计常利用较小群体的数据来推论可能的较大群体的特征。</p>
+<h4 id="计算和理解平均数-1"><a href="#计算和理解平均数-1" class="headerlink" title="计算和理解平均数"></a>计算和理解平均数</h4><p>平均数也叫做几种趋势量数（measures 偶发central tendency），一般有三种形式：均值、中位数和众数。参看<a target="_blank" rel="noopener" href="https://www.wikiwand.com/zh-hans/%E5%B9%B3%E5%9D%87%E6%95%B0">Wiki百科</a>。<span id="more"></span></p>
+<h5 id="计算均值"><a href="#计算均值" class="headerlink" title="计算均值"></a>计算均值</h5><p>均值（mean）是计算平均数最常用的形式。均值很简单，就是数据组中所有数值的总和除以该组数值的个数。均值计算公式如下：<br>$$ \overline{X} &#x3D; \frac{\sum{X}}{X} $$<br>其中</p>
+<ul>
+<li>上带横线的字母<em>X</em> (读做“<em>X</em> bar”)是数据组的平均数或均值。</li>
+<li>$\sum$ 或希腊字母西格玛是连加符号，也就是将其后的所有数值都加起来。</li>
+<li><em>X</em> 是数据组中每个具体的数值。</li>
+<li>最后，n是从中计算均值的样本的规模。</li>
+</ul>
+<p>均值对极值很敏感。</p>
+<h5 id="计算中位数"><a href="#计算中位数" class="headerlink" title="计算中位数"></a>计算中位数</h5><p>中位数（median）被定义为一系列数据的中点。计算中位数的步骤：</p>
+<ol>
+<li>以从大到小或者从小到大的顺序列出数值。</li>
+<li>找到位于中间位置的数值。那就是中位数。</li>
+</ol>
+<p>如果数值个数是偶数，中位数就是中间两个数值的平均是。中位数对极值不敏感。</p>
+<p>均值是一系列数值的中间点，而中位数是一系列个体的中间点。</p>
+<h5 id="计算众数"><a href="#计算众数" class="headerlink" title="计算众数"></a>计算众数</h5><p>众数（mode)就是出现次数最多的数值。</p>
+<h3 id="理解变异性"><a href="#理解变异性" class="headerlink" title="理解变异性"></a>理解变异性</h3><p>变异性（也叫做散布或离散度）可被看作是对不同数值之间的差异性的测量。如果把变异性看作是每个数值和特定值的差异程度可能更精确（而且也许更容易）。那么你认为哪一个“数值”可能被作为那个“特定值”呢？通常情况下这个“特定值”就是均值——很正确。因此，变异性成为测量数据组中每一个数值与均值的变异性的量数。</p>
+<h4 id="计算极差"><a href="#计算极差" class="headerlink" title="计算极差"></a>计算极差</h4><p>极差是对变异性最笼统的测量。极差可让你了解数值之间彼此差异的程度。极差（range）是通过数据分布中的最大值减去最小值来计算。其计算公式：<br>$$r &#x3D; h - l$$<br>其中</p>
+<ul>
+<li>$r$ 是极差</li>
+<li>$h$ 是数据集中的最大值</li>
+<li>$l$ 是数据集中的最小值</li>
+</ul>
+<p>以下面的数据组（以降序的形式排列）为例：98,86,77,56,48。在这个案例中，98-48&#x3D;50。极差是50。</p>
+<p><em>注意：实际上极差有两种类型。一种是不包含极差，也就是我们上面定义的。第二种是包含极差，就是最大值减去最小值再加1（$h - l + 1$）。</em></p>
+<h4 id="计算标准差"><a href="#计算标准差" class="headerlink" title="计算标准差"></a>计算标准差</h4><p>标准差（standard deviation,缩写为$s$或$SD$）表示一个数据组中变异性的平均数量。实际的含义是与均值的平均距离。标准差越大，每一个数据点与数据分布的均值的平均距离越大。计算标准差的公式：<br>$$s &#x3D; \sqrt{\frac{\sum{(X - \overline{X})^2}}{n - 1}}$$<br>其中</p>
+<ul>
+<li>$s$ 是标准差</li>
+<li>$\sum{}$ 是西格玛，表示将其后所有数值累加求和</li>
+<li>$X$ 是具体的数值</li>
+<li>$\overline{X}$ 是所有数值的均值</li>
+<li>$ n $ 是样本规模</li>
+</ul>
+<h5 id="为什么使用-n-1-而不是-n"><a href="#为什么使用-n-1-而不是-n" class="headerlink" title="为什么使用$n - 1$,而不是$n$"></a>为什么使用$n - 1$,而不是$n$</h5><p>答案是$s$(标准差)是总体标准差的估计值，但是只有我们用n减去1的情况下才是无偏估计。我们把分母减去1会使得标准差大于实际的大小。为什么我们要这样做？因为好的科学家一般都是保守的。保守的含义是，如果我们不得不出错，我们出错也是由于过高估计了总体的标准差。除以较小的分母可让我们做到这一点。</p>
+<p><strong>注意：</strong></p>
+<ol>
+<li>标准差越大，数值分布越广，则数值之间的相互差异越大。</li>
+<li>和均值一样，标准差对极值很敏感。当你计算样本的标准差时，若数据中存在极值，你就要在数据报告中注明这一点。</li>
+<li>如果$s &#x3D; 0$，数据组中就绝对没有变异性，而且在数值上完全一致。这种情况很少发生。</li>
+</ol>
+<h4 id="计算方差"><a href="#计算方差" class="headerlink" title="计算方差"></a>计算方差</h4><p>方差（variance），就是标准差的平方。公式：<br>$$s^2 &#x3D; \frac{\sum{(X - \overline{X})^2}}{n - 1}$$</p>
+<h3 id="计算相关系数"><a href="#计算相关系数" class="headerlink" title="计算相关系数"></a>计算相关系数</h3><h4 id="相关系数到底是什么"><a href="#相关系数到底是什么" class="headerlink" title="相关系数到底是什么"></a>相关系数到底是什么</h4><p>相关系数（correlation coefficient）是反映两个变量之间线性关系的数值性指标。这个描述统计值的值域范围是-1到1.两个变量的相关有时也叫做二元相关。</p>
+<p>相关反映变量间关系的动态性质。如果变量变化方向相同，相关是直接相关或正相关（direct correlation或positive correlation).如果变量变化方向相反，相关是间接相关或负相关（indirect correlation或negative correlation)。</p>
+<p>相关系数的绝对值反映相关的强度。</p>
+<p>皮尔逊积矩相关系数用小写字母$r$表示，$r$的下标表示相关的两个变量。例如：$r_{XY}$ 是变量$X$和变量$Y$之间的相关系数。</p>
+<h4 id="计算简单相关系数"><a href="#计算简单相关系数" class="headerlink" title="计算简单相关系数"></a>计算简单相关系数</h4><p>变量$X$和变量$Y之$间的简单皮尔逊积矩相关系数的计算公式：<br>$$r_{XY} &#x3D; \frac{n\sum{XY} - \sum{X}\sum{Y}}{\sqrt{\left[n\sum{X^2} - (\sum{X})^2 \right]\left[n\sum{Y^2} - (\sum{Y})^2 \right]}}$$<br>其中：</p>
+<ul>
+<li>$r_{XY}$是$X$与$Y$之间的相关系数</li>
+<li>$n$是样本规模</li>
+<li>$X$是变量$X$的具体数值</li>
+<li>$Y$是变量$Y$的具体数值</li>
+<li>$XY$是每一个$X$值与相应的$Y$值的乘积</li>
+<li>$X^2$是$X$值的平方</li>
+<li>$Y^2$是$Y$值的平方</li>
+</ul>
+<h3 id="检验你的问题"><a href="#检验你的问题" class="headerlink" title="检验你的问题"></a>检验你的问题</h3><h4 id="零假设"><a href="#零假设" class="headerlink" title="零假设"></a>零假设</h4><p>我们已经从总体中选择了一个样本来检验我们的研究假设，我们首先要建立零假设（null hypothesis）。零假设宣称两个或多个事物之间是等同的或没有关系的。</p>
+<h5 id="零假设的目的"><a href="#零假设的目的" class="headerlink" title="零假设的目的"></a>零假设的目的</h5><p>零假设既是研究起点也是测量实际的研究结果的基准。</p>
+<p>首先，零假设是研究的起点，因为在没有其他信息的情况下零假设就被看作可接受的真实状态。换句话说，直到你能证明存在差异，否则你只能假定没有差异。而无差异或无关的陈述正是零假设的所有内容。</p>
+<p>零假设的第二个目的是提供与观察到的结果进行比较的基准，进而分析是否是由于其他因素引起这些差异。零假设有助于定义观察到的群体间的差异范围是由偶然性引起（这是零假设的论点）还是由偶然性之外的因素引起。</p>
+<h4 id="研究假设"><a href="#研究假设" class="headerlink" title="研究假设"></a>研究假设</h4><p>研究假设（research hypothesis）是变量间有关系的明确陈述。</p>
+<p>如果研究假设假定不等价关系没有方向（例如“不同于”），假设就是无方向研究假设。如果研究假设假定不等价关系有方向（例如“多于”或“少于”），这个研究假设就是有方向研究假设。</p>
+<h5 id="无方向研究假设"><a href="#无方向研究假设" class="headerlink" title="无方向研究假设"></a>无方向研究假设</h5><p>无方向研究假设（nondirectional research hypothesis）反映群体间的差异，但是差异的方向是不确定的。可以用下面的式子表示:$$H_i:\overline{X}_9 \neq \overline{X}_{12}$$<br>其中</p>
+<ul>
+<li>$H_i$ 表示第一个（可能有几个）研究假设的符号</li>
+<li>$\overline{X}_9$ 表示12年级学生样本的平均记忆成绩</li>
+<li>$\overline{X}_{12}$ 表示9年级学生样本的平均记忆成绩</li>
+<li>$\neq$ 表示“不等于”</li>
+</ul>
+<h5 id="有方向研究假设"><a href="#有方向研究假设" class="headerlink" title="有方向研究假设"></a>有方向研究假设</h5><p>有方向研究假设（directional research hypothesis）反映群体间的差异，而且差异的方向是确定的。可以用下面的式子表示:$$H_i:\overline{X}_9 &lt; \overline{X}_{12}$$<br>其中</p>
+<ul>
+<li>$H_i$ 表示第一个（可能有几个）研究假设的符号</li>
+<li>$\overline{X}_9$ 表示12年级学生样本的平均记忆成绩</li>
+<li>$\overline{X}_{12}$ 表示9年级学生样本的平均记忆成绩</li>
+<li>$&lt;$ 表示“小于”</li>
+</ul>
+<h3 id="概率和概率的重要性"><a href="#概率和概率的重要性" class="headerlink" title="概率和概率的重要性"></a>概率和概率的重要性</h3><h4 id="正态曲线（或钟形曲线）"><a href="#正态曲线（或钟形曲线）" class="headerlink" title="正态曲线（或钟形曲线）"></a>正态曲线（或钟形曲线）</h4><p>正太曲线（normal curve，叫做钟型曲线，或钟形曲线）就是具备三个特征的数据分布的形象表示。下图表明了这三个特征。</p>
+<p><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20170307/%E6%AD%A3%E6%80%81%E6%9B%B2%E7%BA%BF.jpg" alt="正态曲线"><br>正态曲线表示均值、中位数和众数相等的数值分布。正态曲线没有偏度。正态曲线有一个很好的波峰（只有一个），而且波峰正好处于中间。</p>
+<p>正态曲线以均值为中心完全对称。曲线的一半是另一半的镜像。正态曲线的双尾是渐进的（asymptotic）。含义是曲线的双尾越来越逼近横轴，但是永远不会与横轴相交。</p>
+<h4 id="z-值"><a href="#z-值" class="headerlink" title="$z$ 值"></a>$z$ 值</h4><p>$z$ 值就是原始数据与数据分布均值的差除以标准差所得的结果。其公式为：$$z &#x3D; \frac{(X - \overline{X})}{s}$$<br>其中</p>
+<ul>
+<li>$z$ 是$z$ 值</li>
+<li>$X$ 是具体的数值</li>
+<li>$\overline{X}$ 是数据分布的数值</li>
+<li>$s$ 是数据分布的标准差</li>
+</ul>
+<h3 id="两个群体的-t-检验"><a href="#两个群体的-t-检验" class="headerlink" title="两个群体的$t$检验"></a>两个群体的$t$检验</h3><h4 id="计算检验统计量"><a href="#计算检验统计量" class="headerlink" title="计算检验统计量"></a>计算检验统计量</h4><p>以下公式是计算独立均值$t$检验中$t$值的公式。公式的分子是均值之间的差。群体内和群体间的变化的数量构成分母。<br>$$t &#x3D; \frac{\overline{X_1} - \overline{X_2}}{\sqrt{\left[ \frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2-2} \right]\left[ \frac{n_1 + n_2}{n_1n_2} \right]}}$$<br>其中</p>
+<ul>
+<li>$\overline{X_1}$ 表示群体1的均值</li>
+<li>$\overline{X_2}$ 表示群体2的均值</li>
+<li>$n_1$ 表示群体1中参与者的数量</li>
+<li>$n_2$ 表示群体2中参与者的数量</li>
+<li>$s_1^2$ 表示群体1的方差</li>
+<li>$s_2^2$ 表示群体2的方差</li>
+</ul>
+<h4 id="计算和理解效应量"><a href="#计算和理解效应量" class="headerlink" title="计算和理解效应量"></a>计算和理解效应量</h4><p>最简单的计算效应量（effect size）的方式就是以均值之间的差除以任何一个群体的标准差。这样做有一定的风险——因为假定两个群体的标准差（和方差）相等。<br>$$ES &#x3D; \frac{\overline{X_1} - \overline{X_2}}{SD}$$<br>其中</p>
+<ul>
+<li>$ES$ 表示效应量</li>
+<li>$\overline{x_1}$ 表示群体1的均值</li>
+<li>$\overline{x_2}$ 表示群体2的均值</li>
+<li>$SD$ 表示任何一个群体的标准差</li>
+</ul>
+<h3 id="两个相关群体的均值检验"><a href="#两个相关群体的均值检验" class="headerlink" title="两个相关群体的均值检验"></a>两个相关群体的均值检验</h3><h4 id="非独立样本-t-检验介绍"><a href="#非独立样本-t-检验介绍" class="headerlink" title="非独立样本$t$检验介绍"></a>非独立样本$t$检验介绍</h4><p>为什么用非独立均值检验？非独立均值检验表明是相同的群体在两种不同的条件下进行相同的研究。非独立均值$t$检验包含每一群体均值的比较，而且重点是不同数值之间的差异。如下公式，两次测试的差异总和构成分子，表示群体之间的差异。<br>$$t &#x3D; \frac{\sum{D}}{\sqrt{\frac{n\sum{D^2} - (\sum{D})^2}{n-1}}}$$<br>其中</p>
+<ul>
+<li>$\sum{D}$ 表示群体间差异的总和</li>
+<li>$\sum{D^2}$ 表示群体间差异的平方和</li>
+<li>$n$ 表示成对观察的参与者数量</li>
+</ul>
+<p>$t$ 检验统计量的计算步骤：</p>
+<ol>
+<li>零假设和研究假设的表述。</li>
+<li>设置零假设的风险水平（或显著性水平，或第一类错误）。</li>
+<li>选择合适的检验统计量。<br><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20170311/%E7%A1%AE%E5%AE%9A%E9%9D%9E%E7%8B%AC%E7%AB%8B%E5%9D%87%E5%80%BCt%E6%A3%80%E9%AA%8C%E7%9A%84%E8%BF%87%E7%A8%8B.jpg" alt="确定非独立均值t检验是合适的统计检验方法"></li>
+<li>计算检验统计值（也叫做实际值）。</li>
+<li>使用特定统计量的临界值分布表确定拒绝零假设需要的值。</li>
+<li>比较实际值和临界值。</li>
+<li>和 8. 做出决定。如果实际值大于临界值就不能接受零假设。如果实际值没有超过临界值，零假设就是最有力的解释。</li>
+</ol>
+<h3 id="尝试进行方差分析"><a href="#尝试进行方差分析" class="headerlink" title="尝试进行方差分析"></a>尝试进行方差分析</h3><h4 id="方差分析的不同类型"><a href="#方差分析的不同类型" class="headerlink" title="方差分析的不同类型"></a>方差分析的不同类型</h4><p>方差分析有许多不同的形式。最简单的形式是简单方差分析（simple analysis of variance），只分析一个因素或者一个处理变量，而有两个以上的群体受到这个因素的影响。简单方差分析也叫做一元方差分析（one-way analysis of variance），因为只有一个分组维度。</p>
+<p>实际上，方差分析在许多情况下类似于$t$检验。在这两项检验中都需要计算均值之间的差异。但方差分析要处理两个以上的均值。</p>
+<p>更复杂的方差分析类型是析因设计（factorial design），是分析一个以上的处理变量。</p>
+<h4 id="计算检验统计量-1"><a href="#计算检验统计量-1" class="headerlink" title="计算检验统计量"></a>计算检验统计量</h4><p>简单方差分析检验两个以上的群体在一个因素或一个维度上的均值差异。</p>
+<p>任何分析如果：</p>
+<ul>
+<li>只有一个维度或者一个处理变量</li>
+<li>分组因素有两个以上的层级，而且</li>
+<li>关注不同群体在平均成绩上的差异</li>
+</ul>
+<p>就需要使用简单方差分析。</p>
+<p>$F$ 值是检验假设也就是群体之间有差异的检验统计量，计算公式如下。<br>$$F &#x3D; \frac{MS_{between}}{MS_{within}}$$</p>
+<p>方差分析公式（是一个比率）比较组间的变化量（由于分组因素产生）与组内的变化量（由于随机因素产生）。如果比值为1，那么组内差异产生的变化量等于组间差异产生的变化量，而且组间的任何差异都不显著。如果组间差异的平均值变大（也就是比率的分子变大），$F$ 值也变大。如果$F$ 值变大，在所有的$F$ 值分布中就会更趋向于极值，也就是更可能由于随机因素之外的因素影响。</p>
+<p>$F$ 检验统计量的计算步骤：</p>
+<ol>
+<li>零假设和研究假设的表述。</li>
+<li>设置零假设的风险水平（或显著性水平、或第一类错误）。风险水平完全由研究者决定。</li>
+<li>选择合适的检验统计量。</li>
+<li>计算检验统计值（也叫做实际值）。</li>
+<li>使用特定统计量的临界值分布表确定拒绝零假设需要的值。</li>
+<li>比较实际值和临界值。</li>
+<li>和8.做出决定。如果实际值大于临界值就不能接受零假设。如果实际值没有超过临界值，零假设就是最有力的解释。</li>
+</ol>
+<h3 id="使用线性回归"><a href="#使用线性回归" class="headerlink" title="使用线性回归"></a>使用线性回归</h3><h4 id="什么是估计"><a href="#什么是估计" class="headerlink" title="什么是估计"></a>什么是估计</h4><p>估计的基本含义就是使用已经收集的数据集（如变量$X$、$Y$的数据），计算变量如何相关，接着使用相关系数以及$X$的信息来估计$Y$。</p>
+<p>相关系数的绝对值越大，依据相关以一个变量估计另一个变量的准确性越高，因为这两个变量共享的部分越多，依据第一个变量的了解就可以更多地了解第二个变量。</p>
+<h4 id="估计的逻辑"><a href="#估计的逻辑" class="headerlink" title="估计的逻辑"></a>估计的逻辑</h4><p>估计是以过去的结果估计未来结果的活动。当我们想通过一个变量估计另一个变量，我们首先需要计算两个变量之间的相关系数。</p>
+<p>通过建立回归等式（regression equation），并使用这个等式建立回归线（regression line）。回归线反映我们以变量$X$的值估计变量$Y$值的最好猜测。</p>
+<p>回归线也叫做<strong>最优拟合线（line of best fit）</strong>。回归线最好地拟合了数据，因为这条线将每个数据点与回归线的距离最小化。</p>
+<p>每一个具体数据点和回归线的距离就是估计误差（error in prediction）——是两个变量之间相关的直接反映。</p>
+<p>如果是完全相关，所有的数据点将沿着45°角成为一条直线，而且回归线通过每一个数据点、</p>
+<h4 id="绘制拟合数据的最优直线"><a href="#绘制拟合数据的最优直线" class="headerlink" title="绘制拟合数据的最优直线"></a>绘制拟合数据的最优直线</h4><p>理解估计的最简单的方式就是依据一个变量值（我们成为$X$——独立变量，independent variable或估计变量，predictor）确定另一个变量的值（我们成为$Y$——依赖变量，dependent variable 或标准变量，criterion）。<br>以下公式是回归线的一般公式，这个公式在高中或者大学的数学课程中都可能用到，对你来说应该很熟悉。这个公式与其他任何直线公式一样。<br>$$Y’ &#x3D; bX + a$$<br>其中</p>
+<ul>
+<li>$Y’$ 表示已知$X$值的$Y$的估计值。</li>
+<li>$b$ 表示直线的斜率或者方向。</li>
+<li>$a$ 表示直线与$y$ 轴相交的点。</li>
+<li>$X$ 表示用于估计的数值。</li>
+</ul>
+<p>以下公式用于计算回归线的斜率（直线公式中的b）：<br>$$b &#x3D; \frac{\sum{XY} - (\sum{X}\sum{Y})&#x2F;n}{\sum{X^2}-[(\sum{X})^2&#x2F;n]}$$</p>
+<p>以下公式用于计算直线与$y$轴相交的点（直线公式中的$a$）:<br>$$a &#x3D; \frac{\sum{Y}-b\sum{X}}{n}$$</p>
+<h4 id="多元回归（multiple-regression）"><a href="#多元回归（multiple-regression）" class="headerlink" title="多元回归（multiple regression）"></a>多元回归（multiple regression）</h4><p>多元回归的模型是：<br>$$Y’ &#x3D; bX_1 + bX_2 + a$$<br>其中<br>$X_1$ 表示第一个独立变量的数值<br>$X_2$ 表示第二个独立变量的数值<br>$b$ 表示特定变量的回归权重</p>
+<h5 id="使用多元估计变量应遵守的重要守则"><a href="#使用多元估计变量应遵守的重要守则" class="headerlink" title="使用多元估计变量应遵守的重要守则"></a>使用多元估计变量应遵守的重要守则</h5><p>如果要使用不止一个估计变量，要谨记遵守下面的两项重要的原则：</p>
+<ol>
+<li>如果选择一个独立变量估计一个结果，要选择与被估计变量（$Y$）相关的估计变量（$X$）。也就是这两个变量有共变的部分（记住，它们应该相关）。</li>
+<li>如果选择不止一个独立变量或估计变量（如$X_1$与$X_2$），要尽量选择相互独立或者不相关的变量，但是都要与结果变量或被估计变量（$Y$）相关。</li>
+</ol>
+<h3 id="卡方和其他非参数检验"><a href="#卡方和其他非参数检验" class="headerlink" title="卡方和其他非参数检验"></a>卡方和其他非参数检验</h3><h4 id="单样本卡方检验介绍"><a href="#单样本卡方检验介绍" class="headerlink" title="单样本卡方检验介绍"></a>单样本卡方检验介绍</h4><p>单样本卡方检验的原理是，就任何事件的发生而言都可以很容易地计算随机预期的结果。</p>
+<h4 id="计算卡方检验统计量"><a href="#计算卡方检验统计量" class="headerlink" title="计算卡方检验统计量"></a>计算卡方检验统计量</h4><p>卡方检验要进行观察值和随机预期值的比较。下列公式就是单样本卡方检验的卡方值计算公式。<br>$$X^2 &#x3D; \sum{\frac{(O - E)^2}{E}}$$<br>其中</p>
+<ul>
+<li>$X^2$ 表示卡方值</li>
+<li>$\sum$ 是连加符号</li>
+<li>$O$ 表示观察频数</li>
+<li>$E$ 表示预期频数</li>
+</ul>
+<h3 id="理解信度和效度"><a href="#理解信度和效度" class="headerlink" title="理解信度和效度"></a>理解信度和效度</h3><p><strong>1. 定类测量水平</strong><br>定类测量水平（nominal level of measurement）是以观察结果的属性特征定义，也就是观察结果只适合一个而且唯一的一个分类或层级。例如，性别是定类变量（男性和女性）。定类测量水平的各个类别相互排斥，例如，性别不能同时是男性和女性。</p>
+<p><strong>2. 定序测量水平</strong><br>定序测量水平（ordinal level of measurement）的“序”表示次序，而且被测量的事物按照它们的属性特征排序。最好的案例是一份工作的应征者的次序。</p>
+<p><strong>3. 定距测量水平</strong><br>定距测量水平（interval level of measurement），是指检验或评估工具是基于某种连续体。例如，你的词汇测试成绩是10个单词正确，是5个单词正确的两倍。</p>
+<p><strong>4. 定比例测量水平</strong><br>定比测量水平（ration level of measurement）的评估工具的特征是测量尺度中绝对零值的存在。这意味着没有要测量的任何特征。</p>
+<h4 id="信度"><a href="#信度" class="headerlink" title="信度"></a>信度</h4><p>信度就是一个测试或者你使用的其他任何测量工具对事物的测量可以保持一致性。</p>
+<h5 id="信度的不同类型"><a href="#信度的不同类型" class="headerlink" title="信度的不同类型"></a>信度的不同类型</h5><p>信度有几种不同的类型，现在主要介绍最重要也是最常用的四种类型。</p>
+<p><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20170320/%E4%BF%A1%E5%BA%A6%E7%9A%84%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B.jpg" alt="信度的不同类型"></p>
+<p><strong>1. 再测信度（前测-后测信度）</strong><br>再测信度（test-retest reliability）用于检验一个测试在不同时期是否可信。</p>
+<p>例如，你想建立检验不同类型职业项目的选择偏好的测试。你在六月份进行了测试，接着在九月份进行了相同的测试（保持相同很重要）。那么你计算两次测试的得分集（记住是相同的人进行了两次测试）是否相关，也就是进行了信度的测试。再测信度是检验不同时间的变化或差异所必需的信度。</p>
+<p>你必须确保你测量的内容是以可信的方式测量的，这样你得到的测试结果才能与每个个体每个时间的值更接近。</p>
+<p><strong>2. 平行形式信度</strong><br>平行形式信度（parallel forms reliability）用于检验相同测试的不同形式的等价性和相似性。</p>
+<p><strong>3. 内在一致性信度</strong><br>内在一致性信度（internal consistency reliability）用于确定测试中的项目是否彼此一致，都只表示一个维度、一个结构或一个关注的领域。<br>计算克隆巴赫系数的公式：<br>$$\delta &#x3D; (\frac{k}{k-1})(\frac{s_y^2-\sum{s_i^2}}{s_y^2})$$<br>其中</p>
+<ul>
+<li>$k$ 表示项目的个数</li>
+<li>$s_y^2$ 表示观察值的方差</li>
+<li>$\sum{s_y^2}$ 表示每一个项目的方差的总和</li>
+</ul>
+<p><strong>4. 评分者信度</strong><br>评分者信度（interrater reliability）是两个评分者对观察结果判断的一致程度的测量。<br>评分者信度可以使用下面的简单公式计算：<br>$$评分者之间的信度 &#x3D; \frac{一致的数量}{可能一致的数量}$$</p>
+<h4 id="效度"><a href="#效度" class="headerlink" title="效度"></a>效度</h4><p>效度（validity），就是表示工具能够测量要测量的内容的性质。有效的测试是测量应该测量的内容。</p>
+<h5 id="效度的不同类型"><a href="#效度的不同类型" class="headerlink" title="效度的不同类型"></a>效度的不同类型</h5><p>效度有不同的类型，我们介绍最重要也是最常用的三种类型。</p>
+<p><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20170321/%E6%95%88%E5%BA%A6%E7%9A%84%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B.jpg" alt="效度的不同类型"></p>
+<h5 id="内容效度"><a href="#内容效度" class="headerlink" title="内容效度"></a>内容效度</h5><p>内容效度（content validity）就是测试项目能代表设计测试要测量的总体项目的性质。内容效度常用于成绩测试（例如从一年级的拼写测试到学术能力测试的任何测试）。</p>
+<p>建立内容效度。建立内容效度实际上非常容易。所有你需要做的就是确定你的地方合作专家。</p>
+<h5 id="准则效度"><a href="#准则效度" class="headerlink" title="准则效度"></a>准则效度</h5><p>准则效度（criterion validity）是评价测试是否反映现在和未来的一组能力。如果准则是发生在现在，我们就讨论同步效度（concurrent criterion validity）。如果准则是发生在未来，我们就讨论预测效度（predictive concurrent validity）。对于准则效度的应用，不需要同时建立同步效度和预测效度，按照测试目的的需要选择适用的那个就行了。</p>
+<h5 id="建构效度"><a href="#建构效度" class="headerlink" title="建构效度"></a>建构效度</h5><p>建构效度（construct validity）是最有趣也是最难建立的效度，因为建构效度是基于测试或测量工具背后的基本的结构或概念的。</p>
+<hr>
+<p><strong>完！</strong></p>
+<p><strong>参考文档：</strong><br><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-hans/Help:%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F">数学公式</a><br><a target="_blank" rel="noopener" href="https://www.wikiwand.com/zh/%E9%9B%B6%E5%81%87%E8%AE%BE">零假设</a><br><a target="_blank" rel="noopener" href="http://draveness.me/hexozhong-latexde-shi-yong/">Hexo 中 LaTeX的使用</a><br><a target="_blank" rel="noopener" href="https://www.wikiwand.com/zh-hans/%E7%AC%AC%E4%B8%80%E5%9E%8B%E5%8F%8A%E7%AC%AC%E4%BA%8C%E5%9E%8B%E9%8C%AF%E8%AA%A4">第一型及第二型错误</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.JPG" alt="toypipi 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.JPG" alt="toypipi 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>toypipi
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://toypipi.github.io/2017/02/28/4cdaec6a4b68/" title="《爱上统计学》读书笔记">https://toypipi.github.io/2017/02/28/4cdaec6a4b68/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E7%BB%9F%E8%AE%A1%E5%AD%A6/" rel="tag"><i class="fa fa-tag"></i> 统计学</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/02/22/5760fb6d1814/" rel="prev" title="数据库中用户密码的保存方式">
+                  <i class="fa fa-angle-left"></i> 数据库中用户密码的保存方式
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2017/02/28/6f764316d8e0/" rel="next" title="Mahout 算法库">
+                  Mahout 算法库 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2016 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">toypipi</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">195k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">11:49</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

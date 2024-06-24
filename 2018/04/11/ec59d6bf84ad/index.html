@@ -1,0 +1,3131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="使用以下命令查看 MySQL 详细运行状态： 1mysqladmin -u root -p extended-status  不同版本的 MySQL 输出的参数个数不同。以下为从 MySQL 5.7 版本官方文档截取的输出，各个参数的详细解释见下，中文含义后续用到哪个再去翻译吧。 TIP以下表格内容是从 MySQL 官网复制过来的，但是官网复制的是 html ，使用 html 转 markdow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL 运行状态 extended-status 详解">
+<meta property="og:url" content="https://toypipi.github.io/2018/04/11/ec59d6bf84ad/index.html">
+<meta property="og:site_name" content="Toypipi&#39;s blog">
+<meta property="og:description" content="使用以下命令查看 MySQL 详细运行状态： 1mysqladmin -u root -p extended-status  不同版本的 MySQL 输出的参数个数不同。以下为从 MySQL 5.7 版本官方文档截取的输出，各个参数的详细解释见下，中文含义后续用到哪个再去翻译吧。 TIP以下表格内容是从 MySQL 官网复制过来的，但是官网复制的是 html ，使用 html 转 markdow">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-04-11T08:37:15.000Z">
+<meta property="article:modified_time" content="2020-11-03T03:44:00.208Z">
+<meta property="article:author" content="toypipi">
+<meta property="article:tag" content="extended-status">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://toypipi.github.io/2018/04/11/ec59d6bf84ad/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://toypipi.github.io/2018/04/11/ec59d6bf84ad/","path":"2018/04/11/ec59d6bf84ad/","title":"MySQL 运行状态 extended-status 详解"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>MySQL 运行状态 extended-status 详解 | Toypipi's blog</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?c228072b8c3657dfa7236914b308712c"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Toypipi's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="toypipi"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">toypipi</p>
+  <div class="site-description" itemprop="description">Stay focused, be present</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">289</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">381</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/toypipi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;toypipi" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:275688469@qq.com" title="E-Mail → mailto:275688469@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/04/11/ec59d6bf84ad/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="MySQL 运行状态 extended-status 详解 | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MySQL 运行状态 extended-status 详解
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-04-11 16:37:15" itemprop="dateCreated datePublished" datetime="2018-04-11T16:37:15+08:00">2018-04-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2020-11-03 11:44:00" itemprop="dateModified" datetime="2020-11-03T11:44:00+08:00">2020-11-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<p>使用以下命令查看 MySQL 详细运行状态：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqladmin -u root -p extended-status</span><br></pre></td></tr></table></figure>
+
+<p>不同版本的 MySQL 输出的参数个数不同。以下为从 MySQL 5.7 版本官方文档截取的输出，各个参数的详细解释见下，中文含义后续用到哪个再去翻译吧。</p>
+<div class="note info"><p>TIP<br>以下表格内容是从 MySQL 官网复制过来的，但是官网复制的是 html ，使用 <a target="_blank" rel="noopener" href="https://tool.lu/markdown/">html 转 markdown</a> 在线工具转换为 markdown，但是转换后的文本是这样的 <strong>| <a href="server-status-variables.html#statvar_Aborted_clients"> <code>Aborted_clients</code> </a> | integer | <code>GLOBAL</code> |</strong> ，有些不需要的字符，这时候可以使用 IDEA 编辑器的查找&#x2F;替换功能，使用正则表达式匹配不需要的字符，然后替换为空字符就可以了。其中，替换小括号和里面内容的正则表达式语法如下 <code>[\(（][^\)）]+[\)）]</code></p>
+</div>
+
+<span id="more"></span>
+
+<style>
+table th:nth-of-type(2) {
+    width: 60px;
+}
+table th:nth-of-type(3) {
+    width: 130px;
+}
+</style>
+
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数类型</th>
+<th>作用域</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Aborted_clients</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Aborted_connects</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Audit_log_current_size</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Audit_log_event_max_drop_size</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Audit_log_events</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Audit_log_events_filtered</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Audit_log_events_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Audit_log_events_written</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Audit_log_total_size</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Audit_log_write_waits</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Binlog_cache_disk_use</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Binlog_cache_use</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Binlog_stmt_cache_disk_use</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Binlog_stmt_cache_use</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Bytes_received</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Bytes_sent</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_admin_commands</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_alter_db</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_alter_db_upgrade</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_alter_event</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_alter_function</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_alter_procedure</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_alter_server</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_alter_table</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_alter_tablespace</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_alter_user</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_analyze</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_assign_to_keycache</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_begin</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_binlog</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_call_procedure</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_change_db</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_change_master</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_change_repl_filter</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_check</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_checksum</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_commit</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_create_db</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_create_event</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_create_function</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_create_index</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_create_procedure</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_create_server</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_create_table</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_create_trigger</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_create_udf</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_create_user</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_create_view</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_dealloc_sql</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_delete</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_delete_multi</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_do</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_drop_db</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_drop_event</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_drop_function</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_drop_index</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_drop_procedure</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_drop_server</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_drop_table</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_drop_trigger</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_drop_user</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_drop_view</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_empty_query</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_execute_sql</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_explain_other</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_flush</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_get_diagnostics</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_grant</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_group_replication_start</td>
+<td></td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Com_group_replication_stop</td>
+<td></td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Com_ha_close</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_ha_open</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_ha_read</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_help</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_insert</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_insert_select</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_install_plugin</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_kill</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_load</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_lock_tables</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_optimize</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_preload_keys</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_prepare_sql</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_purge</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_purge_before_date</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_release_savepoint</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_rename_table</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_rename_user</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_repair</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_replace</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_replace_select</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_reset</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_resignal</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_revoke</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_revoke_all</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_rollback</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_rollback_to_savepoint</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_savepoint</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_select</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_set_option</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_authors</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_binlog_events</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_binlogs</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_charsets</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_collations</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_contributors</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_create_db</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_create_event</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_create_func</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_create_proc</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_create_table</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_create_trigger</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_create_user</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_databases</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_engine_logs</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_engine_mutex</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_engine_status</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_errors</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_events</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_fields</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_function_code</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_function_status</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_grants</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_keys</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_master_status</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_ndb_status</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_new_master</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_open_tables</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_plugins</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_privileges</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_procedure_code</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_procedure_status</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_processlist</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_profile</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_profiles</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_relaylog_events</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_slave_hosts</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_slave_status</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_slave_status_nonblocking</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_status</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_storage_engines</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_table_status</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_tables</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_triggers</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_variables</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_show_warnings</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_shutdown</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_signal</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_slave_start</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_slave_stop</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_stmt_close</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_stmt_execute</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_stmt_fetch</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_stmt_prepare</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_stmt_reprepare</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_stmt_reset</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_stmt_send_long_data</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_truncate</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_uninstall_plugin</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_unlock_tables</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_update</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_update_multi</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_xa_commit</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_xa_end</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_xa_prepare</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_xa_recover</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_xa_rollback</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Com_xa_start</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Compression</td>
+<td>integer</td>
+<td>SESSION</td>
+</tr>
+<tr>
+<td>Connection_control_delay_generated</td>
+<td></td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Connection_errors_accept</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Connection_errors_internal</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Connection_errors_max_connections</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Connection_errors_peer_address</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Connection_errors_select</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Connection_errors_tcpwrap</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Connections</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Created_tmp_disk_tables</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Created_tmp_files</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Created_tmp_tables</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Delayed_errors</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Delayed_insert_threads</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Delayed_writes</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Firewall_access_denied</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Firewall_access_granted</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Firewall_cached_entries</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Flush_commands</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Handler_commit</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Handler_delete</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Handler_discover</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Handler_external_lock</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Handler_mrr_init</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Handler_prepare</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Handler_read_first</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Handler_read_key</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Handler_read_last</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Handler_read_next</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Handler_read_prev</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Handler_read_rnd</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Handler_read_rnd_next</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Handler_rollback</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Handler_savepoint</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Handler_savepoint_rollback</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Handler_update</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Handler_write</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Innodb_available_undo_logs</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_buffer_pool_bytes_data</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_buffer_pool_bytes_dirty</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_buffer_pool_dump_status</td>
+<td>string</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_buffer_pool_load_status</td>
+<td>string</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_buffer_pool_pages_data</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_buffer_pool_pages_dirty</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_buffer_pool_pages_flushed</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_buffer_pool_pages_free</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_buffer_pool_pages_latched</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_buffer_pool_pages_misc</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_buffer_pool_pages_total</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_buffer_pool_read_ahead</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_buffer_pool_read_ahead_evicted</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_buffer_pool_read_ahead_rnd</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_buffer_pool_read_requests</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_buffer_pool_reads</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_buffer_pool_resize_status</td>
+<td>string</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_buffer_pool_wait_free</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_buffer_pool_write_requests</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_data_fsyncs</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_data_pending_fsyncs</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_data_pending_reads</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_data_pending_writes</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_data_read</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_data_reads</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_data_writes</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_data_written</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_dblwr_pages_written</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_dblwr_writes</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_have_atomic_builtins</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_log_waits</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_log_write_requests</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_log_writes</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_num_open_files</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_os_log_fsyncs</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_os_log_pending_fsyncs</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_os_log_pending_writes</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_os_log_written</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_page_size</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_pages_created</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_pages_read</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_pages_written</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_row_lock_current_waits</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_row_lock_time</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_row_lock_time_avg</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_row_lock_time_max</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_row_lock_waits</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_rows_deleted</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_rows_inserted</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_rows_read</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_rows_updated</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Innodb_truncated_status_writes</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Key_blocks_not_flushed</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Key_blocks_unused</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Key_blocks_used</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Key_read_requests</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Key_reads</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Key_write_requests</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Key_writes</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Last_query_cost</td>
+<td>numeric</td>
+<td>SESSION</td>
+</tr>
+<tr>
+<td>Last_query_partial_plans</td>
+<td>integer</td>
+<td>SESSION</td>
+</tr>
+<tr>
+<td>Locked_connects</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Max_execution_time_exceeded</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Max_execution_time_set</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Max_execution_time_set_failed</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Max_statement_time_exceeded</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Max_statement_time_set</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Max_statement_time_set_failed</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Max_used_connections</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Max_used_connections_time</td>
+<td>datetime</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>mecab_charset</td>
+<td>string</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Mysqlx_aborted_clients</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Mysqlx_address</td>
+<td>string</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Mysqlx_bytes_received</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_bytes_sent</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_connection_accept_errors</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_connection_errors</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_connections_accepted</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Mysqlx_connections_closed</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Mysqlx_connections_rejected</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Mysqlx_crud_create_view</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_crud_delete</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_crud_drop_view</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_crud_find</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_crud_insert</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_crud_modify_view</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_crud_update</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_errors_sent</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_errors_unknown_message_type</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_expect_close</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_expect_open</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_init_error</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_notice_other_sent</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_notice_warning_sent</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_port</td>
+<td>string</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Mysqlx_rows_sent</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_sessions</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Mysqlx_sessions_accepted</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Mysqlx_sessions_closed</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Mysqlx_sessions_fatal_error</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Mysqlx_sessions_killed</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Mysqlx_sessions_rejected</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Mysqlx_socket</td>
+<td>string</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Mysqlx_ssl_accept_renegotiates</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Mysqlx_ssl_accepts</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Mysqlx_ssl_active</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_ssl_cipher</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_ssl_cipher_list</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_ssl_ctx_verify_depth</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_ssl_ctx_verify_mode</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_ssl_finished_accepts</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Mysqlx_ssl_server_not_after</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Mysqlx_ssl_server_not_before</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Mysqlx_ssl_verify_depth</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Mysqlx_ssl_verify_mode</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Mysqlx_ssl_version</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_stmt_create_collection</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_stmt_create_collection_index</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_stmt_disable_notices</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_stmt_drop_collection</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_stmt_drop_collection_index</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_stmt_enable_notices</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_stmt_ensure_collection</td>
+<td>string</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_stmt_execute_mysqlx</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_stmt_execute_sql</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_stmt_execute_xplugin</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_stmt_kill_client</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_stmt_list_clients</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_stmt_list_notices</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_stmt_list_objects</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_stmt_ping</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Mysqlx_worker_threads</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Mysqlx_worker_threads_active</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_bytes_received_count</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_bytes_received_count_session</td>
+<td>integer</td>
+<td>SESSION</td>
+</tr>
+<tr>
+<td>Ndb_api_bytes_received_count_slave</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_bytes_sent_count</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_bytes_sent_count_slave</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_event_bytes_count_injector</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_event_data_count_injector</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_event_nondata_count_injector</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_pk_op_count</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_pk_op_count_session</td>
+<td>integer</td>
+<td>SESSION</td>
+</tr>
+<tr>
+<td>Ndb_api_pk_op_count_slave</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_pruned_scan_count</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_pruned_scan_count_session</td>
+<td>integer</td>
+<td>SESSION</td>
+</tr>
+<tr>
+<td>Ndb_api_range_scan_count_slave</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_read_row_count</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_read_row_count_session</td>
+<td>integer</td>
+<td>SESSION</td>
+</tr>
+<tr>
+<td>Ndb_api_scan_batch_count_slave</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_table_scan_count</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_table_scan_count_session</td>
+<td>integer</td>
+<td>SESSION</td>
+</tr>
+<tr>
+<td>Ndb_api_trans_abort_count</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_trans_abort_count_session</td>
+<td>integer</td>
+<td>SESSION</td>
+</tr>
+<tr>
+<td>Ndb_api_trans_abort_count_slave</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_trans_close_count</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_trans_close_count_session</td>
+<td>integer</td>
+<td>SESSION</td>
+</tr>
+<tr>
+<td>Ndb_api_trans_close_count_slave</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_trans_commit_count</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_trans_commit_count_session</td>
+<td>integer</td>
+<td>SESSION</td>
+</tr>
+<tr>
+<td>Ndb_api_trans_commit_count_slave</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_trans_local_read_row_count_slave</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_trans_start_count</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_trans_start_count_session</td>
+<td>integer</td>
+<td>SESSION</td>
+</tr>
+<tr>
+<td>Ndb_api_trans_start_count_slave</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_uk_op_count</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_uk_op_count_slave</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_wait_exec_complete_count</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_wait_exec_complete_count_session</td>
+<td>integer</td>
+<td>SESSION</td>
+</tr>
+<tr>
+<td>Ndb_api_wait_exec_complete_count_slave</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_wait_meta_request_count</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_wait_meta_request_count_session</td>
+<td>integer</td>
+<td>SESSION</td>
+</tr>
+<tr>
+<td>Ndb_api_wait_nanos_count</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_wait_nanos_count_session</td>
+<td>integer</td>
+<td>SESSION</td>
+</tr>
+<tr>
+<td>Ndb_api_wait_nanos_count_slave</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_wait_scan_result_count</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_api_wait_scan_result_count_session</td>
+<td>integer</td>
+<td>SESSION</td>
+</tr>
+<tr>
+<td>Ndb_api_wait_scan_result_count_slave</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_cluster_node_id</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Ndb_config_from_host</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Ndb_config_from_port</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Ndb_conflict_fn_epoch_trans</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_conflict_fn_max</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_conflict_fn_old</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_conflict_trans_detect_iter_count</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_conflict_trans_row_reject_count</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_last_commit_epoch_server</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_last_commit_epoch_session</td>
+<td>integer</td>
+<td>SESSION</td>
+</tr>
+<tr>
+<td>Ndb_cluster_node_id</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_number_of_data_nodes</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_pushed_queries_defined</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_pushed_queries_executed</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ndb_scan_count</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Not_flushed_delayed_rows</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ongoing_anonymous_gtid_violating_transaction_count</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ongoing_anonymous_transaction_count</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ongoing_automatic_gtid_violating_transaction_count</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Open_files</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Open_streams</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Open_table_definitions</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Open_tables</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Opened_files</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Opened_table_definitions</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Opened_tables</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Performance_schema_accounts_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_cond_classes_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_cond_instances_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_digest_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_file_classes_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_file_handles_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_file_instances_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_hosts_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_index_stat_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_locker_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_memory_classes_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_metadata_lock_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_mutex_classes_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_mutex_instances_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_nested_statement_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_prepared_statements_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_program_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_rwlock_classes_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_rwlock_instances_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_session_connect_attrs_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_socket_classes_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_socket_instances_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_stage_classes_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_statement_classes_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_table_handles_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_table_instances_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_table_lock_stat_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_thread_classes_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_thread_instances_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Performance_schema_users_lost</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Prepared_stmt_count</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Qcache_free_blocks</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Qcache_free_memory</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Qcache_hits</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Qcache_inserts</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Qcache_lowmem_prunes</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Qcache_not_cached</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Qcache_queries_in_cache</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Qcache_total_blocks</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Queries</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Questions</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Rewriter_number_loaded_rules</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Rewriter_number_reloads</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Rewriter_number_rewritten_queries</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Rewriter_reload_error</td>
+<td>boolean</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Rpl_semi_sync_master_clients</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Rpl_semi_sync_master_net_avg_wait_time</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Rpl_semi_sync_master_net_wait_time</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Rpl_semi_sync_master_net_waits</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Rpl_semi_sync_master_no_times</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Rpl_semi_sync_master_no_tx</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Rpl_semi_sync_master_status</td>
+<td>boolean</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Rpl_semi_sync_master_timefunc_failures</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Rpl_semi_sync_master_tx_avg_wait_time</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Rpl_semi_sync_master_tx_wait_time</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Rpl_semi_sync_master_tx_waits</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Rpl_semi_sync_master_wait_pos_backtraverse</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Rpl_semi_sync_master_wait_sessions</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Rpl_semi_sync_master_yes_tx</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Rpl_semi_sync_slave_status</td>
+<td>boolean</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Rsa_public_key</td>
+<td>string</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Select_full_join</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Select_full_range_join</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Select_range</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Select_range_check</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Select_scan</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Slave_heartbeat_period</td>
+<td>numeric</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Slave_last_heartbeat</td>
+<td></td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Slave_open_temp_tables</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Slave_received_heartbeats</td>
+<td></td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Slave_retried_transactions</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Slave_rows_last_search_algorithm_used</td>
+<td>string</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Slave_running</td>
+<td>boolean</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Slow_launch_threads</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Slow_queries</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Sort_merge_passes</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Sort_range</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Sort_rows</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Sort_scan</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Ssl_accept_renegotiates</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ssl_accepts</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ssl_callback_cache_hits</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ssl_cipher</td>
+<td>string</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Ssl_cipher_list</td>
+<td>string</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Ssl_client_connects</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ssl_connect_renegotiates</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ssl_ctx_verify_depth</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ssl_ctx_verify_mode</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ssl_default_timeout</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Ssl_finished_accepts</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ssl_finished_connects</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ssl_server_not_after</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Ssl_server_not_before</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Ssl_session_cache_hits</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ssl_session_cache_misses</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ssl_session_cache_mode</td>
+<td>string</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ssl_session_cache_overflows</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ssl_session_cache_size</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ssl_session_cache_timeouts</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ssl_sessions_reused</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Ssl_used_session_cache_entries</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Ssl_verify_depth</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Ssl_verify_mode</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Ssl_version</td>
+<td>string</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Table_locks_immediate</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Table_locks_waited</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Table_open_cache_hits</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Table_open_cache_misses</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Table_open_cache_overflows</td>
+<td>integer</td>
+<td>GLOBAL&#x2F;SESSION</td>
+</tr>
+<tr>
+<td>Tc_log_max_pages_used</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Tc_log_page_size</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Tc_log_page_waits</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Threads_cached</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Threads_connected</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Threads_created</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Threads_running</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Uptime</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>Uptime_since_flush_status</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>validate_password_dictionary_file_last_parsed</td>
+<td>datetime</td>
+<td>GLOBAL</td>
+</tr>
+<tr>
+<td>validate_password_dictionary_file_words_count</td>
+<td>integer</td>
+<td>GLOBAL</td>
+</tr>
+</tbody></table>
+<p><strong>参考文档：</strong><br><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/server-status-variables.html">5.1.7 Server Status Variables</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/maxsky/article/details/54666998">Markdown 表格之调整宽度技巧 </a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.JPG" alt="toypipi 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.JPG" alt="toypipi 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>toypipi
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://toypipi.github.io/2018/04/11/ec59d6bf84ad/" title="MySQL 运行状态 extended-status 详解">https://toypipi.github.io/2018/04/11/ec59d6bf84ad/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/extended-status/" rel="tag"><i class="fa fa-tag"></i> extended-status</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/04/04/26ba0b5cc657/" rel="prev" title="XtraBackup 二进制程序">
+                  <i class="fa fa-angle-left"></i> XtraBackup 二进制程序
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/04/17/4fc04af3f002/" rel="next" title="入门指南和用法">
+                  入门指南和用法 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2016 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">toypipi</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">195k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">11:49</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
