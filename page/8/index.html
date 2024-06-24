@@ -199,7 +199,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/10/20/2c6405ef42fa/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/10/20/Directions-Reduction/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -217,7 +217,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/10/20/2c6405ef42fa/" class="post-title-link" itemprop="url">Directions Reduction</a>
+          <a href="/2023/10/20/Directions-Reduction/" class="post-title-link" itemprop="url">Directions Reduction</a>
         </h2>
 
         <div class="post-meta-container">
@@ -276,7 +276,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">dirReduc</span>(<span class="params">arr</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> opposites = &#123;</span><br><span class="line">    <span class="attr">NORTH</span>: <span class="string">&quot;SOUTH&quot;</span>,</span><br><span class="line">    <span class="attr">SOUTH</span>: <span class="string">&quot;NORTH&quot;</span>,</span><br><span class="line">    <span class="attr">EAST</span>: <span class="string">&quot;WEST&quot;</span>,</span><br><span class="line">    <span class="attr">WEST</span>: <span class="string">&quot;EAST&quot;</span>,</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">// 创建一个数组用来模拟一个栈，用于跟踪方向</span></span><br><span class="line">  <span class="keyword">const</span> stack = [];</span><br><span class="line">  <span class="comment">// 遍历输入的方向数组</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> direction <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="comment">// 获取当前方向的反方向</span></span><br><span class="line">    <span class="keyword">const</span> opposite = opposites[direction];</span><br><span class="line">    <span class="comment">// 如果栈顶方向等于当前方向的反方向，则弹出栈顶方向</span></span><br><span class="line">    <span class="keyword">if</span> (stack[stack.<span class="property">length</span> - <span class="number">1</span>] === opposite) &#123;</span><br><span class="line">      stack.<span class="title function_">pop</span>();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 否则，将当前方向压入栈顶</span></span><br><span class="line">      stack.<span class="title function_">push</span>(direction);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 最终，栈中剩下的方向就是去掉不必要的相反方向后的结果</span></span><br><span class="line">  <span class="keyword">return</span> stack;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2023/10/20/2c6405ef42fa/#more" rel="contents">
+              <a class="btn" href="/2023/10/20/Directions-Reduction/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -307,7 +307,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/10/19/3eefbb6f80d2/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/10/19/Create-Phone-Number/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -325,7 +325,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/10/19/3eefbb6f80d2/" class="post-title-link" itemprop="url">Create Phone Number</a>
+          <a href="/2023/10/19/Create-Phone-Number/" class="post-title-link" itemprop="url">Create Phone Number</a>
         </h2>
 
         <div class="post-meta-container">
@@ -386,7 +386,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">createPhoneNumber</span>(<span class="params">numbers</span>) &#123;</span><br><span class="line">  <span class="comment">// Create an array of the different parts of the phone number</span></span><br><span class="line">  <span class="keyword">const</span> areaCode = <span class="string">`(<span class="subst">$&#123;numbers.slice(<span class="number">0</span>, <span class="number">3</span>).join(<span class="string">&quot;&quot;</span>)&#125;</span>)`</span>;</span><br><span class="line">  <span class="keyword">const</span> prefix = numbers.<span class="title function_">slice</span>(<span class="number">3</span>, <span class="number">6</span>).<span class="title function_">join</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">  <span class="keyword">const</span> suffix = numbers.<span class="title function_">slice</span>(<span class="number">6</span>, <span class="number">10</span>).<span class="title function_">join</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Combine the parts into the final phone number string</span></span><br><span class="line">  <span class="keyword">const</span> phoneNumber = <span class="string">`<span class="subst">$&#123;areaCode&#125;</span> <span class="subst">$&#123;prefix&#125;</span>-<span class="subst">$&#123;suffix&#125;</span>`</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> phoneNumber;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2023/10/19/3eefbb6f80d2/#more" rel="contents">
+              <a class="btn" href="/2023/10/19/Create-Phone-Number/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -417,7 +417,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/10/18/b18a7f3c9fc4/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/10/18/Array-diff/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -435,7 +435,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/10/18/b18a7f3c9fc4/" class="post-title-link" itemprop="url">Array.diff</a>
+          <a href="/2023/10/18/Array-diff/" class="post-title-link" itemprop="url">Array.diff</a>
         </h2>
 
         <div class="post-meta-container">
@@ -496,7 +496,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">arrDiff</span>(<span class="params">a, b</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> a.<span class="title function_">filter</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> !b.<span class="title function_">includes</span>(item));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2023/10/18/b18a7f3c9fc4/#more" rel="contents">
+              <a class="btn" href="/2023/10/18/Array-diff/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -527,7 +527,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/10/17/5c39649068e4/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/10/17/%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E6%95%B0%E5%AD%97%E6%98%AF%E5%90%A6%E6%98%AF%E5%B9%B3%E6%96%B9%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -545,7 +545,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/10/17/5c39649068e4/" class="post-title-link" itemprop="url">判断一个数字是否是平方数</a>
+          <a href="/2023/10/17/%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E6%95%B0%E5%AD%97%E6%98%AF%E5%90%A6%E6%98%AF%E5%B9%B3%E6%96%B9%E6%95%B0/" class="post-title-link" itemprop="url">判断一个数字是否是平方数</a>
         </h2>
 
         <div class="post-meta-container">
@@ -600,7 +600,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isSquare = <span class="keyword">function</span> (<span class="params">n</span>) &#123;</span><br><span class="line">  <span class="comment">// 求平方根并取整</span></span><br><span class="line">  <span class="keyword">let</span> roundSqrt = <span class="title class_">Math</span>.<span class="title function_">round</span>(<span class="title class_">Math</span>.<span class="title function_">sqrt</span>(n));</span><br><span class="line">  <span class="comment">// 判断平方根相乘的结果是否与传入的数值相等</span></span><br><span class="line">  <span class="keyword">return</span> n === roundSqrt * roundSqrt;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2023/10/17/5c39649068e4/#more" rel="contents">
+              <a class="btn" href="/2023/10/17/%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E6%95%B0%E5%AD%97%E6%98%AF%E5%90%A6%E6%98%AF%E5%B9%B3%E6%96%B9%E6%95%B0/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -631,7 +631,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/10/16/ae4854b76e96/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/10/16/List-Filtering/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -649,7 +649,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/10/16/ae4854b76e96/" class="post-title-link" itemprop="url">List Filtering</a>
+          <a href="/2023/10/16/List-Filtering/" class="post-title-link" itemprop="url">List Filtering</a>
         </h2>
 
         <div class="post-meta-container">
@@ -709,7 +709,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">filter_list</span>(<span class="params">l</span>) &#123;</span><br><span class="line">  <span class="comment">// Return a new array with the strings filtered out</span></span><br><span class="line">  <span class="keyword">return</span> l.<span class="title function_">filter</span>(<span class="function">(<span class="params">word</span>) =&gt;</span> <span class="keyword">typeof</span> word === <span class="string">&quot;number&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2023/10/16/ae4854b76e96/#more" rel="contents">
+              <a class="btn" href="/2023/10/16/List-Filtering/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>

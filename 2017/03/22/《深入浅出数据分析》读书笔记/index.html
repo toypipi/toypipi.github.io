@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="学习《深入浅出数据分析》，为了加深记忆，边读边做笔记。如有侵权，立即删除。  数据分析引言：分解数据数据分析就是仔细推敲证据所有优秀的分析师，无论专长及目标如何，都会在工作过程中按顺序执行下面这个固定基本流程，同时通过经验数据来仔细推敲各种问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《深入浅出数据分析》读书笔记">
+<meta property="og:url" content="https://toypipi.github.io/2017/03/22/%E3%80%8A%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Toypipi&#39;s blog">
+<meta property="og:description" content="学习《深入浅出数据分析》，为了加深记忆，边读边做笔记。如有侵权，立即删除。  数据分析引言：分解数据数据分析就是仔细推敲证据所有优秀的分析师，无论专长及目标如何，都会在工作过程中按顺序执行下面这个固定基本流程，同时通过经验数据来仔细推敲各种问题。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20170322/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20170322/%E6%88%91%E4%BB%AC%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98%E9%94%80%E9%87%8F.png">
+<meta property="article:published_time" content="2017-03-22T08:21:18.000Z">
+<meta property="article:modified_time" content="2020-11-03T03:44:00.488Z">
+<meta property="article:author" content="toypipi">
+<meta property="article:tag" content="数据分析">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20170322/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B.png">
+
+
+<link rel="canonical" href="https://toypipi.github.io/2017/03/22/%E3%80%8A%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://toypipi.github.io/2017/03/22/%E3%80%8A%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/","path":"2017/03/22/《深入浅出数据分析》读书笔记/","title":"《深入浅出数据分析》读书笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>《深入浅出数据分析》读书笔记 | Toypipi's blog</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?c228072b8c3657dfa7236914b308712c"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Toypipi's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%BC%95%E8%A8%80%EF%BC%9A%E5%88%86%E8%A7%A3%E6%95%B0%E6%8D%AE"><span class="nav-number">1.</span> <span class="nav-text">数据分析引言：分解数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B0%B1%E6%98%AF%E4%BB%94%E7%BB%86%E6%8E%A8%E6%95%B2%E8%AF%81%E6%8D%AE"><span class="nav-number">1.1.</span> <span class="nav-text">数据分析就是仔细推敲证据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.1.</span> <span class="nav-text">确定问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8A%8A%E9%97%AE%E9%A2%98%E5%92%8C%E6%95%B0%E6%8D%AE%E5%88%86%E8%A7%A3%E4%B8%BA%E6%9B%B4%E5%B0%8F%E7%9A%84%E7%BB%84%E5%9D%97"><span class="nav-number">1.1.2.</span> <span class="nav-text">把问题和数据分解为更小的组块</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%EF%BC%9A%E6%A3%80%E9%AA%8C%E4%BD%A0%E7%9A%84%E7%90%86%E8%AE%BA"><span class="nav-number">2.</span> <span class="nav-text">实验：检验你的理论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A1%E5%BF%85%E4%BD%BF%E7%94%A8%E6%AF%94%E8%BE%83%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">务必使用比较法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E4%BC%98%E5%8C%96%EF%BC%9A%E5%AF%BB%E6%89%BE%E6%9C%80%E5%A4%A7%E5%80%BC"><span class="nav-number">3.</span> <span class="nav-text">最优化：寻找最大值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%80%9F%E5%8A%A9%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0%E5%8F%91%E7%8E%B0%E7%9B%AE%E6%A0%87"><span class="nav-number">3.1.</span> <span class="nav-text">借助目标函数发现目标</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%9B%BE%E5%BD%A2%E5%8C%96%EF%BC%9A%E5%9B%BE%E5%BD%A2%E8%AE%A9%E4%BD%A0%E6%9B%B4%E7%B2%BE%E6%98%8E"><span class="nav-number">4.</span> <span class="nav-text">数据图形化：图形让你更精明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%95%A3%E7%82%B9%E5%9B%BE%E6%8E%A2%E7%B4%A2%E5%8E%9F%E5%9B%A0"><span class="nav-number">4.1.</span> <span class="nav-text">使用散点图探索原因</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C%EF%BC%9A%E5%81%87%E8%AE%BE%E5%B9%B6%E9%9D%9E%E5%A6%82%E6%AD%A4"><span class="nav-number">5.</span> <span class="nav-text">假设检验：假设并非如此</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E4%B9%8B%E9%97%B4%E5%8F%AF%E4%BB%A5%E6%AD%A3%E7%9B%B8%E5%85%B3%EF%BC%8C%E4%B9%9F%E5%8F%AF%E4%BB%A5%E8%B4%9F%E7%9B%B8%E5%85%B3"><span class="nav-number">5.1.</span> <span class="nav-text">变量之间可以正相关，也可以负相关</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C%E7%9A%84%E6%A0%B8%E5%BF%83%E6%98%AF%E8%AF%81%E4%BC%AA"><span class="nav-number">5.2.</span> <span class="nav-text">假设检验的核心是证伪</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E8%A7%82%E6%A6%82%E7%8E%87%EF%BC%9A%E4%BF%A1%E5%BF%B5%E6%95%B0%E5%AD%97%E5%8C%96"><span class="nav-number">6.</span> <span class="nav-text">主观概率：信念数字化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E8%A7%82%E6%A6%82%E7%8E%87%E4%BD%93%E7%8E%B0%E4%B8%93%E5%AE%B6%E4%BF%A1%E5%BF%B5"><span class="nav-number">6.1.</span> <span class="nav-text">主观概率体现专家信念</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E6%96%B9%E5%9B%BE%EF%BC%9A%E6%95%B0%E5%AD%97%E7%9A%84%E5%BD%A2%E7%8A%B6"><span class="nav-number">7.</span> <span class="nav-text">直方图：数字的形状</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%86%E6%95%B0%E6%8D%AE%E5%8A%A0%E8%BD%BD%E5%88%B0R%E7%A8%8B%E5%BA%8F"><span class="nav-number">7.1.</span> <span class="nav-text">将数据加载到R程序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E5%BD%92%EF%BC%9A%E9%A2%84%E6%B5%8B"><span class="nav-number">8.</span> <span class="nav-text">回归：预测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%88%E7%90%86%E8%AF%AF%E5%B7%AE"><span class="nav-number">9.</span> <span class="nav-text">合理误差</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%BA%E4%BC%9A%E8%AF%AF%E5%B7%AE-%E5%AE%9E%E9%99%85%E7%BB%93%E6%9E%9C%E4%B8%8E%E6%A8%A1%E5%9E%8B%E9%A2%84%E6%B5%8B%E7%BB%93%E6%9E%9C%E4%B9%8B%E9%97%B4%E7%9A%84%E5%81%8F%E5%B7%AE"><span class="nav-number">9.1.</span> <span class="nav-text">机会误差&#x3D;实际结果与模型预测结果之间的偏差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E5%9D%87%E6%96%B9%E6%A0%B9%E8%AF%AF%E5%B7%AE%E5%AE%9A%E9%87%8F%E8%A1%A8%E7%A4%BA%E6%AE%8B%E5%B7%AE%E5%88%86%E5%B8%83"><span class="nav-number">9.2.</span> <span class="nav-text">用均方根误差定量表示残差分布</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B4%E7%90%86%E6%95%B0%E6%8D%AE"><span class="nav-number">10.</span> <span class="nav-text">整理数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B4%E7%90%86%E6%95%B0%E6%8D%AE%E7%9A%84%E4%B8%80%E8%88%AC%E6%AD%A5%E9%AA%A4"><span class="nav-number">10.1.</span> <span class="nav-text">整理数据的一般步骤</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="toypipi"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">toypipi</p>
+  <div class="site-description" itemprop="description">Stay focused, be present</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">289</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">381</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/toypipi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;toypipi" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:275688469@qq.com" title="E-Mail → mailto:275688469@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2017/03/22/%E3%80%8A%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="《深入浅出数据分析》读书笔记 | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《深入浅出数据分析》读书笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-03-22 16:21:18" itemprop="dateCreated datePublished" datetime="2017-03-22T16:21:18+08:00">2017-03-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2020-11-03 11:44:00" itemprop="dateModified" datetime="2020-11-03T11:44:00+08:00">2020-11-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<blockquote>
+<p>学习<a target="_blank" rel="noopener" href="https://book.douban.com/subject/5257905/">《深入浅出数据分析》</a>，为了加深记忆，边读边做笔记。如有侵权，立即删除。</p>
+</blockquote>
+<h3 id="数据分析引言：分解数据"><a href="#数据分析引言：分解数据" class="headerlink" title="数据分析引言：分解数据"></a>数据分析引言：分解数据</h3><h4 id="数据分析就是仔细推敲证据"><a href="#数据分析就是仔细推敲证据" class="headerlink" title="数据分析就是仔细推敲证据"></a>数据分析就是仔细推敲证据</h4><p>所有优秀的分析师，无论专长及目标如何，都会在工作过程中按顺序执行下面这个<strong>固定基本流程</strong>，同时通过经验数据来仔细推敲各种问题。<br><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20170322/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B.png" alt="数据分析的基本流程"></p>
+<span id="more"></span>
+<h5 id="确定问题"><a href="#确定问题" class="headerlink" title="确定问题"></a>确定问题</h5><p><strong>未明确</strong>确定自己的问题或目标就进行数据分析就如同未定下目的地就上路旅行一样。</p>
+<p>客户将帮助你确定问题，多向客户问问题。不断地问“是多少”，使你的各种目标和确信观点得到量化。</p>
+<h5 id="把问题和数据分解为更小的组块"><a href="#把问题和数据分解为更小的组块" class="headerlink" title="把问题和数据分解为更小的组块"></a>把问题和数据分解为更小的组块</h5><p><strong>将大问题划分为小问题</strong><br>你需要将问题划分为可管理、可解决的组块。你面对的问题常常含糊不清，例如：<br><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20170322/%E6%88%91%E4%BB%AC%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98%E9%94%80%E9%87%8F.png" alt="我们如何提高销量"></p>
+<p><strong>将数据分解为更小的组块</strong><br>如果你拿到的是汇总情况，你就会想知道哪些因子对你至关重要。如果你拿到的是原始数据表，你就会想对这些因子进行汇总，让数据更有用。</p>
+<h3 id="实验：检验你的理论"><a href="#实验：检验你的理论" class="headerlink" title="实验：检验你的理论"></a>实验：检验你的理论</h3><h4 id="务必使用比较法"><a href="#务必使用比较法" class="headerlink" title="务必使用比较法"></a>务必使用比较法</h4><p>统计与分析最基本的原理之一就是比较法，它指出，数据只有通过相互比较才会有意义。</p>
+<h3 id="最优化：寻找最大值"><a href="#最优化：寻找最大值" class="headerlink" title="最优化：寻找最大值"></a>最优化：寻找最大值</h3><h4 id="借助目标函数发现目标"><a href="#借助目标函数发现目标" class="headerlink" title="借助目标函数发现目标"></a>借助目标函数发现目标</h4><p>目标函数：<br>$$c_1x_1 + c_2x_2 &#x3D; P$$<br>其中：</p>
+<ul>
+<li>每个$c$ 表示一个约束条件</li>
+<li>每个$x$ 表示一个决策变量</li>
+<li>$P$ 是你的目标，即期望的最大化对象</li>
+</ul>
+<h3 id="数据图形化：图形让你更精明"><a href="#数据图形化：图形让你更精明" class="headerlink" title="数据图形化：图形让你更精明"></a>数据图形化：图形让你更精明</h3><h4 id="使用散点图探索原因"><a href="#使用散点图探索原因" class="headerlink" title="使用散点图探索原因"></a>使用散点图探索原因</h4><p>散点图是<strong>探索性数据分析</strong>的奇妙工具，统计学家用这个术语描述在一组数据中寻找一些假设条件进行测试的活动。<br>分析师喜欢用散点图发现因果关系，即一个变量影响另一个变量的关系。通常用散点图的$X$轴代表自变量（我们假想为原因的变量），用$Y$轴代表应变量（我们假想为结果的变量）。</p>
+<h3 id="假设检验：假设并非如此"><a href="#假设检验：假设并非如此" class="headerlink" title="假设检验：假设并非如此"></a>假设检验：假设并非如此</h3><h4 id="变量之间可以正相关，也可以负相关"><a href="#变量之间可以正相关，也可以负相关" class="headerlink" title="变量之间可以正相关，也可以负相关"></a>变量之间可以正相关，也可以负相关</h4><p>观察数据变量有一个好办法，问一问“这边变量是<strong>正相关</strong>还是<strong>负相关</strong>”，若一种变量增大意味着另一种变量也增大，则为正相关；若一种变量增大意味着另一种变量减小，则为负相关。</p>
+<h4 id="假设检验的核心是证伪"><a href="#假设检验的核心是证伪" class="headerlink" title="假设检验的核心是证伪"></a>假设检验的核心是证伪</h4><p>请勿试图选出最合理的假设，只需<strong>剔除无法证实的假设</strong>——这就是假设检验的基础：<strong>证伪</strong>。<br>选出看上去最可信的第一个假设的做法称为<strong>满意法</strong>。满意法的<strong>严重问题</strong>是，当人们在未对其他假设进行透彻分析的情况下选取某种假设时，往往会坚持这个假设，即使反面证据堆积如山，也往往视而不见。证伪法则让人们对各种假设<strong>感觉更敏锐</strong>，从而防止掉入认知陷阱。<br>进行假设检验时，要使用证伪法，回避满意法。</p>
+<h3 id="主观概率：信念数字化"><a href="#主观概率：信念数字化" class="headerlink" title="主观概率：信念数字化"></a>主观概率：信念数字化</h3><h4 id="主观概率体现专家信念"><a href="#主观概率体现专家信念" class="headerlink" title="主观概率体现专家信念"></a>主观概率体现专家信念</h4><p>如果用一个数字形式的概率来表示自己对某事的确认程度，利用的就是<strong>主观概率</strong>。<br>主观概率是根据规律进行分析的巧妙方法，尤其是在预测孤立事件却缺乏从前在相同条件下发生过的事件的可靠数据的情况下。</p>
+<h3 id="直方图：数字的形状"><a href="#直方图：数字的形状" class="headerlink" title="直方图：数字的形状"></a>直方图：数字的形状</h3><h4 id="将数据加载到R程序"><a href="#将数据加载到R程序" class="headerlink" title="将数据加载到R程序"></a>将数据加载到R程序</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source<span class="punctuation">(</span><span class="string">&quot;http://www.headfirstlabs.com/books/hfda/hfda.R&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<p>查看下载内容中的Employees<strong>数据框架</strong>，输入<code>employees</code>并回车。<br>在R中输入下面这条指令，生成直方图：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hist<span class="punctuation">(</span>employees<span class="operator">$</span>received<span class="punctuation">,</span>breaks <span class="operator">=</span> <span class="number">50</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<p>查看指定数据范围的标准偏差和汇总统计值</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sd<span class="punctuation">(</span>employees<span class="operator">$</span>received<span class="punctuation">)</span></span><br><span class="line">summary<span class="punctuation">(</span>employees<span class="operator">$</span>received<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<p>针对不同的数据分组计算直方图：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hist<span class="punctuation">(</span>employees<span class="operator">$</span>received<span class="punctuation">[</span>employees<span class="operator">$</span>year<span class="operator">==</span><span class="number">2007</span><span class="punctuation">]</span><span class="punctuation">,</span>breaks <span class="operator">=</span> <span class="number">50</span><span class="punctuation">)</span></span><br><span class="line">hist<span class="punctuation">(</span>employees<span class="operator">$</span>received<span class="punctuation">[</span>employees<span class="operator">$</span>year<span class="operator">==</span><span class="number">2008</span><span class="punctuation">]</span><span class="punctuation">,</span>breaks <span class="operator">=</span> <span class="number">50</span><span class="punctuation">)</span></span><br><span class="line">hist<span class="punctuation">(</span>employees<span class="operator">$</span>received<span class="punctuation">[</span>employees<span class="operator">$</span>gender<span class="operator">==</span><span class="string">&quot;F&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span>breaks <span class="operator">=</span> <span class="number">50</span><span class="punctuation">)</span></span><br><span class="line">hist<span class="punctuation">(</span>employees<span class="operator">$</span>received<span class="punctuation">[</span>employees<span class="operator">$</span>gender<span class="operator">==</span><span class="string">&quot;M&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span>breaks <span class="operator">=</span> <span class="number">50</span><span class="punctuation">)</span></span><br><span class="line">hist<span class="punctuation">(</span>employees<span class="operator">$</span>received<span class="punctuation">[</span>employees<span class="operator">$</span>negotiated<span class="operator">==</span><span class="literal">FALSE</span><span class="punctuation">]</span><span class="punctuation">,</span>breaks <span class="operator">=</span> <span class="number">50</span><span class="punctuation">)</span></span><br><span class="line">hist<span class="punctuation">(</span>employees<span class="operator">$</span>received<span class="punctuation">[</span>employees<span class="operator">$</span>negotiated<span class="operator">==</span><span class="literal">TRUE</span><span class="punctuation">]</span><span class="punctuation">,</span>breaks <span class="operator">=</span> <span class="number">50</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<h3 id="回归：预测"><a href="#回归：预测" class="headerlink" title="回归：预测"></a>回归：预测</h3><p>在R中运行这些指令，生成一张<strong>散点图</strong>，体现出<strong>要求加薪</strong>和<strong>实际加薪</strong>的情况。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">employees <span class="operator">&lt;-</span> read.csv<span class="punctuation">(</span><span class="string">&quot;http://www.headfirstlabs.com/books/hfda/hfda_ch10_employees.csv&quot;</span><span class="punctuation">,</span>header<span class="operator">=</span><span class="literal">TRUE</span><span class="punctuation">)</span></span><br><span class="line">head<span class="punctuation">(</span>employees<span class="punctuation">,</span>n<span class="operator">=</span><span class="number">30</span><span class="punctuation">)</span></span><br><span class="line">plot<span class="punctuation">(</span>employees<span class="operator">$</span>requested<span class="punctuation">[</span>employees<span class="operator">$</span>negotiated<span class="operator">==</span><span class="literal">TRUE</span><span class="punctuation">]</span><span class="punctuation">,</span>employees<span class="operator">$</span>received<span class="punctuation">[</span>employees<span class="operator">$</span>negotiated<span class="operator">==</span><span class="literal">TRUE</span><span class="punctuation">]</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<p>使用R计算加薪数据的相关系数$r$。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cor<span class="punctuation">(</span>employees<span class="operator">$</span>requested<span class="punctuation">[</span>employees<span class="operator">$</span>negotiated<span class="operator">==</span><span class="literal">TRUE</span><span class="punctuation">]</span><span class="punctuation">,</span>employees<span class="operator">$</span>received<span class="punctuation">[</span>employees<span class="operator">$</span>negotiated<span class="operator">==</span><span class="literal">TRUE</span><span class="punctuation">]</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<p>使用R创建自己的线性回归方程。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">myLm <span class="operator">&lt;-</span> lm<span class="punctuation">(</span>received<span class="punctuation">[</span>negotiated<span class="operator">==</span><span class="literal">TRUE</span><span class="punctuation">]</span><span class="operator">~</span>requested<span class="punctuation">[</span>negotiated<span class="operator">==</span><span class="literal">TRUE</span><span class="punctuation">]</span><span class="punctuation">,</span>data<span class="operator">=</span>employees<span class="punctuation">)</span></span><br><span class="line">myLm<span class="operator">$</span>coefficients</span><br></pre></td></tr></table></figure>
+
+<h3 id="合理误差"><a href="#合理误差" class="headerlink" title="合理误差"></a>合理误差</h3><h4 id="机会误差-实际结果与模型预测结果之间的偏差"><a href="#机会误差-实际结果与模型预测结果之间的偏差" class="headerlink" title="机会误差&#x3D;实际结果与模型预测结果之间的偏差"></a>机会误差&#x3D;实际结果与模型预测结果之间的偏差</h4><p>实际结果与预测结果之间的偏差叫做<strong>机会误差</strong>。在统计学中，机会误差又称为<strong>残差</strong>，对残差的分析是优秀的统计模型的核心。</p>
+<h4 id="用均方根误差定量表示残差分布"><a href="#用均方根误差定量表示残差分布" class="headerlink" title="用均方根误差定量表示残差分布"></a>用均方根误差定量表示残差分布</h4><p>使用R计算均方根误差：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 加载最新数据</span></span><br><span class="line">employees <span class="operator">&lt;-</span> read.csv<span class="punctuation">(</span><span class="string">&quot;http://www.headfirstlabs.com/books/hfda/hfda_ch10_employees.csv&quot;</span><span class="punctuation">,</span>header<span class="operator">=</span><span class="literal">TRUE</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment"># 线性模型对象</span></span><br><span class="line">myLm <span class="operator">&lt;-</span> lm<span class="punctuation">(</span>received<span class="punctuation">[</span>negotiated<span class="operator">==</span><span class="literal">TRUE</span><span class="punctuation">]</span><span class="operator">~</span>requested<span class="punctuation">[</span>negotiated<span class="operator">==</span><span class="literal">TRUE</span><span class="punctuation">]</span><span class="punctuation">,</span>data<span class="operator">=</span>employees<span class="punctuation">)</span></span><br><span class="line"><span class="comment"># R对模型的汇总</span></span><br><span class="line">summary<span class="punctuation">(</span>myLm<span class="punctuation">)</span></span><br><span class="line"><span class="comment"># 查看均方根误差</span></span><br><span class="line">summary<span class="punctuation">(</span>myLm<span class="punctuation">)</span><span class="operator">$</span>sigma</span><br></pre></td></tr></table></figure>
+
+<h3 id="整理数据"><a href="#整理数据" class="headerlink" title="整理数据"></a>整理数据</h3><h4 id="整理数据的一般步骤"><a href="#整理数据的一般步骤" class="headerlink" title="整理数据的一般步骤"></a>整理数据的一般步骤</h4><p>1.保存原始数据。<br>2.直观显示最终数据集。<br>3.识别数据中重复出现的模式。<br>4.整理和重新构建。<br>5.使用经过处理的数据。</p>
+<hr>
+<p><strong>完！</strong></p>
+<p><strong>参考文档：</strong><br><a target="_blank" rel="noopener" href="http://jingyan.baidu.com/article/59a015e343a664f795886544.html">如何用excel求解器solver求出最优化解</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.JPG" alt="toypipi 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.JPG" alt="toypipi 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>toypipi
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://toypipi.github.io/2017/03/22/%E3%80%8A%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" title="《深入浅出数据分析》读书笔记">https://toypipi.github.io/2017/03/22/《深入浅出数据分析》读书笔记/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag"><i class="fa fa-tag"></i> 数据分析</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/03/21/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E6%9C%AF%E8%AF%AD/" rel="prev" title="统计学术语">
+                  <i class="fa fa-angle-left"></i> 统计学术语
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2017/03/28/MySQL%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="next" title="MySQL常用命令">
+                  MySQL常用命令 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2016 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">toypipi</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">195k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">11:49</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="xtrabackup 二进制程序是一个已经编译好的，链接到 InnoDB 库和标准 MySQL 客户端库的 C 程序。 InnoDB 库提供了将日志文件应用于数据文件所需的功能，MySQL 客户端库提供了命令行选项解析，配置文件解析等，以使 xtrabackup  二进制具有 MySQL 客户端类似的外观。 该工具以 --backup 或 --prepare 模式运行，分别对应于它执行的两个主要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XtraBackup 二进制程序">
+<meta property="og:url" content="https://toypipi.github.io/2018/04/04/XtraBackup-%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%A8%8B%E5%BA%8F/index.html">
+<meta property="og:site_name" content="Toypipi&#39;s blog">
+<meta property="og:description" content="xtrabackup 二进制程序是一个已经编译好的，链接到 InnoDB 库和标准 MySQL 客户端库的 C 程序。 InnoDB 库提供了将日志文件应用于数据文件所需的功能，MySQL 客户端库提供了命令行选项解析，配置文件解析等，以使 xtrabackup  二进制具有 MySQL 客户端类似的外观。 该工具以 --backup 或 --prepare 模式运行，分别对应于它执行的两个主要">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20180410/throttle.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20180416/lru_dump.png">
+<meta property="article:published_time" content="2018-04-04T02:50:58.000Z">
+<meta property="article:modified_time" content="2020-11-03T03:44:00.215Z">
+<meta property="article:author" content="toypipi">
+<meta property="article:tag" content="XtraBackup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20180410/throttle.png">
+
+
+<link rel="canonical" href="https://toypipi.github.io/2018/04/04/XtraBackup-%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%A8%8B%E5%BA%8F/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://toypipi.github.io/2018/04/04/XtraBackup-%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%A8%8B%E5%BA%8F/","path":"2018/04/04/XtraBackup-二进制程序/","title":"XtraBackup 二进制程序"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>XtraBackup 二进制程序 | Toypipi's blog</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?c228072b8c3657dfa7236914b308712c"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Toypipi's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%A4%87%E4%BB%BD"><span class="nav-number">1.</span> <span class="nav-text">其他类型的备份</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A2%9E%E9%87%8F%E5%A4%87%E4%BB%BD"><span class="nav-number">1.1.</span> <span class="nav-text">增量备份</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%A2%9E%E9%87%8F%E5%A4%87%E4%BB%BD"><span class="nav-number">1.1.1.</span> <span class="nav-text">创建增量备份</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%A2%9E%E9%87%8F%E5%A4%87%E4%BB%BD"><span class="nav-number">1.1.2.</span> <span class="nav-text">准备增量备份</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E5%88%86%E5%A4%87%E4%BB%BD"><span class="nav-number">1.2.</span> <span class="nav-text">部分备份</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-tables-%E9%80%89%E9%A1%B9"><span class="nav-number">1.2.1.</span> <span class="nav-text">使用 --tables 选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-tables-file-%E9%80%89%E9%A1%B9"><span class="nav-number">1.2.2.</span> <span class="nav-text">使用 --tables-file 选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-databases-%E5%92%8C-databases-file-%E9%80%89%E9%A1%B9"><span class="nav-number">1.2.3.</span> <span class="nav-text">使用 --databases 和 --databases-file 选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%A4%87%E4%BB%BD"><span class="nav-number">1.2.4.</span> <span class="nav-text">准备备份</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A7%E5%87%91%E5%A4%87%E4%BB%BD"><span class="nav-number">1.3.</span> <span class="nav-text">紧凑备份</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%B4%A7%E5%87%91%E5%A4%87%E4%BB%BD"><span class="nav-number">1.3.1.</span> <span class="nav-text">创建紧凑备份</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E7%B4%A7%E5%87%91%E5%A4%87%E4%BB%BD"><span class="nav-number">1.3.2.</span> <span class="nav-text">准备紧凑备份</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%81%A2%E5%A4%8D%E7%B4%A7%E5%87%91%E5%A4%87%E4%BB%BD"><span class="nav-number">1.3.3.</span> <span class="nav-text">恢复紧凑备份</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E9%98%85%E8%AF%BB"><span class="nav-number">1.3.4.</span> <span class="nav-text">其他阅读</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD"><span class="nav-number">2.</span> <span class="nav-text">高级功能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8A%82%E6%B5%81%E5%A4%87%E4%BB%BD"><span class="nav-number">2.1.</span> <span class="nav-text">节流备份</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-xtrabackup-%E7%BC%96%E5%86%99%E8%84%9A%E6%9C%AC%E5%A4%87%E4%BB%BD"><span class="nav-number">2.2.</span> <span class="nav-text">使用 xtrabackup 编写脚本备份</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E5%88%B6%E5%90%8E%E6%9A%82%E5%81%9C"><span class="nav-number">2.2.1.</span> <span class="nav-text">复制后暂停</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%85%83%E6%95%B0%E6%8D%AE"><span class="nav-number">2.2.2.</span> <span class="nav-text">生成元数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E8%87%B4%E7%9A%84%E5%A4%87%E4%BB%BD%E6%BA%90%E7%9B%AE%E5%BD%95"><span class="nav-number">2.2.3.</span> <span class="nav-text">一致的备份源目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A5%E5%BF%97%E6%B5%81"><span class="nav-number">2.2.4.</span> <span class="nav-text">日志流</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E8%A1%A8%E7%BB%9F%E8%AE%A1%E4%BF%A1%E6%81%AF"><span class="nav-number">2.3.</span> <span class="nav-text">分析表统计信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA%E8%84%9A%E6%9C%AC"><span class="nav-number">2.3.1.</span> <span class="nav-text">格式化输出脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E8%84%9A%E6%9C%AC%E8%BE%93%E5%87%BA"><span class="nav-number">2.3.2.</span> <span class="nav-text">示例脚本输出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%97%A5%E5%BF%97"><span class="nav-number">2.4.</span> <span class="nav-text">使用二进制日志</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%97%A5%E5%BF%97%E4%BD%8D%E7%BD%AE"><span class="nav-number">2.4.1.</span> <span class="nav-text">查找二进制日志位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E7%82%B9%E6%81%A2%E5%A4%8D"><span class="nav-number">2.4.2.</span> <span class="nav-text">时间点恢复</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E6%96%B0%E7%9A%84%E4%BB%8E%E5%BA%93%E5%A4%8D%E5%88%B6"><span class="nav-number">2.4.3.</span> <span class="nav-text">设置新的从库复制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%81%A2%E5%A4%8D%E5%8D%95%E8%A1%A8"><span class="nav-number">2.5.</span> <span class="nav-text">恢复单表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E5%87%BA%E8%A1%A8%E6%A0%BC"><span class="nav-number">2.5.1.</span> <span class="nav-text">导出表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5%E8%A1%A8%E6%A0%BC"><span class="nav-number">2.5.2.</span> <span class="nav-text">导入表格</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LRU-%E8%BD%AC%E5%82%A8%E5%A4%87%E4%BB%BD"><span class="nav-number">2.6.</span> <span class="nav-text">LRU 转储备份</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E7%BB%86%E8%8A%82"><span class="nav-number">3.1.</span> <span class="nav-text">实现细节</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90"><span class="nav-number">3.1.1.</span> <span class="nav-text">文件权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E6%95%B4-OS-%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="nav-number">3.1.2.</span> <span class="nav-text">调整 OS 缓冲区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E5%88%B6%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6"><span class="nav-number">3.1.3.</span> <span class="nav-text">复制数据文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xtrabackup-%E9%80%80%E5%87%BA%E7%A0%81"><span class="nav-number">3.2.</span> <span class="nav-text">xtrabackup 退出码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#xtrabackup-%E9%80%89%E9%A1%B9%E5%8F%82%E8%80%83"><span class="nav-number">4.1.</span> <span class="nav-text">xtrabackup 选项参考</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="toypipi"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">toypipi</p>
+  <div class="site-description" itemprop="description">Stay focused, be present</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">289</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">381</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/toypipi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;toypipi" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:275688469@qq.com" title="E-Mail → mailto:275688469@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/04/04/XtraBackup-%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%A8%8B%E5%BA%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="XtraBackup 二进制程序 | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          XtraBackup 二进制程序
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-04-04 10:50:58" itemprop="dateCreated datePublished" datetime="2018-04-04T10:50:58+08:00">2018-04-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2020-11-03 11:44:00" itemprop="dateModified" datetime="2020-11-03T11:44:00+08:00">2020-11-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>7.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>26 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<p><strong>xtrabackup</strong> 二进制程序是一个已经编译好的，链接到 InnoDB 库和标准 MySQL 客户端库的 C 程序。 InnoDB 库提供了将日志文件应用于数据文件所需的功能，MySQL 客户端库提供了命令行选项解析，配置文件解析等，以使 <strong>xtrabackup</strong>  二进制具有 MySQL 客户端类似的外观。</p>
+<p>该工具以 <code>--backup</code> 或 <code>--prepare</code> 模式运行，分别对应于它执行的两个主要功能。这些函数有几种不同的变体来完成不同的任务，并且有两种不常用的模式 <code>--stats</code> 和 <code>--print-param</code>。</p>
+<h1 id="其他类型的备份"><a href="#其他类型的备份" class="headerlink" title="其他类型的备份"></a>其他类型的备份</h1><h2 id="增量备份"><a href="#增量备份" class="headerlink" title="增量备份"></a>增量备份</h2><p><strong>xtrabackup</strong> 和 <strong>innobackupex</strong> 工具都支持增量备份，这意味着它可以只复制自上次完全备份以来更改过的数据。您可以在每个完全备份之间执行多次增量备份，因此您可以设置这样的备份过程，例如每周一次完全备份和每天增量备份，或每天完全备份和每小时增量备份。</p>
+<span id="more"></span>
+
+<p>增量备份基于每个 InnoDB 页面（通常大小为16kb）都包含日志序列号或 <a target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/glossary.html#term-lsn">LSN</a> 而工作。 LSN 是整个数据库的系统版本号。每个页面的 LSN 显示了最近的数据变化。增量备份复制那些 LSN 比先前增量或完全备份的 LSN 更新的每个页面。有两种算法用于查找要复制的这类页面的集合。第一种可用于所有服务器类型和版本，通过读取所有数据页直接检查页面 LSN。 第二种方法仅适用于 Percona Server，Percona Server 通过启用服务器上更改页面跟踪功能，该功能会记录更改的页面。这些信息将被写入一个紧凑的单独的所谓的位图文件中。 <strong>xtrabackup</strong> 二进制程序将使用该文件读取增量备份所需的数据页面，这会节省很多读取请求。如果 <strong>xtrabackup</strong> 二进制程序找到位图文件，则默认启用后一种算法。即使位图文件可用，也可以指定 <code>--incremental-force-scan</code> 来读取所有页面。</p>
+<p>增量备份实际上不会将数据文件与先前备份的数据文件进行比较。实际上，如果您知道 LSN，则可以使用 <code>--incremental-lsn</code> 执行增量备份，而无需使用以前的备份。增量备份只需读取页面并将其 LSN 与最后一个备份的 LSN 进行比较。但是，您仍需要完整备份才能恢复增量备份;如果没有完整的备份作为基础，增量备份将毫无用处。</p>
+<h3 id="创建增量备份"><a href="#创建增量备份" class="headerlink" title="创建增量备份"></a>创建增量备份</h3><p>要进行增量备份，照例先进行完整备份。 <strong>xtrabackup</strong> 二进制程序将名为 <code>xtrabackup_checkpoints</code> 的文件写入备份的目标目录中。该文件包含一行显示<code>to_lsn</code>，这是备份结束时数据库的 LSN。使用以下命令创建完整备份：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup --backup --target-dir=/data/backups/base --datadir=/var/lib/mysql/</span><br></pre></td></tr></table></figure>
+
+<p>如果您想要一个可用的完整备份，请使用 <strong>innobackupex</strong>，因为 xtrabackup 本身不会复制表定义，触发器或其他任何不是 .ibd 的文件。</p>
+<p>如果您查看 <code>xtrabackup_checkpoints</code> 文件，您应该看到以下类似的内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">backup_type = full-backuped</span><br><span class="line">from_lsn = 0</span><br><span class="line">to_lsn = 1291135</span><br></pre></td></tr></table></figure>
+
+<p>现在您已经完成了一个完整备份，您可以根据它进行增量备份。使用如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup --backup --target-dir=/data/backups/inc1 \</span><br><span class="line">--incremental-basedir=/data/backups/base --datadir=/var/lib/mysql/</span><br></pre></td></tr></table></figure>
+
+<p><code>/data/backups/inc1/</code> 目录现在应该包含增量文件，例如 <code>ibdata1.delta</code> 和 <code>test/table1.ibd.delta</code>。这些表示自 <code>LSN 1291135</code> 以来数据库所做的更改。如果检查此目录中的 <code>xtrabackup_checkpoints</code> 文件，您应该看到以下类似内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">backup_type = incremental</span><br><span class="line">from_lsn = 1291135</span><br><span class="line">to_lsn = 1291340</span><br></pre></td></tr></table></figure>
+
+<p>含义是不言而喻的。现在可以将此目录用作另一个增量备份的基础：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup --backup --target-dir=/data/backups/inc2 \</span><br><span class="line">--incremental-basedir=/data/backups/inc1 --datadir=/var/lib/mysql/</span><br></pre></td></tr></table></figure>
+
+<h3 id="准备增量备份"><a href="#准备增量备份" class="headerlink" title="准备增量备份"></a>准备增量备份</h3><p>增量备份的 <code>--prepare</code> 步骤与完全备份的步骤不同。在完全备份中，执行两种类型的操作来使数据库保持一致：在数据文件上应用日志文件中已提交的事务，并回滚未提交的事务。在准备增量备份时，您必须跳过未提交事务的回滚，因为备份时未提交的事务可能正在进行，并且很可能会在下一次增量备份中提交。您应该使用<code>--apply-log-only</code> 选项来防止回滚阶段。</p>
+<p><strong>如果您不使用 <code>--apply-log-only</code> 选项来阻止回滚阶段，那么您的增量备份将毫无用处。</strong> 事务回滚后，也不能对其进行进一步的增量备份。</p>
+<p>从创建完整备份开始准备，然后将增量差异应用于该备份。回想一下，您有以下三个备份：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/data/backups/base</span><br><span class="line">/data/backups/inc1</span><br><span class="line">/data/backups/inc2</span><br></pre></td></tr></table></figure>
+
+<p>要准备完全备份，您需要像往常一样运行 <code>--prepare</code>，但要防止回滚阶段：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup --prepare --apply-log-only --target-dir=/data/backups/base</span><br></pre></td></tr></table></figure>
+
+<p>输出应该类似于下面的文本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">101107 20:49:43  InnoDB: Shutdown completed; log sequence number 1291135</span><br></pre></td></tr></table></figure>
+
+<p>日志序列号应该与您之前看到的基础备份的 <code>to_lsn</code> 一样。</p>
+<p>即使回滚阶段已被跳过，此备份实际上仍然可以安全地恢复到现在的状态。如果您恢复并启动 MySQL，InnoDB 会检测到回滚阶段没有执行，并且会在后台执行它，就像在启动时通常用于崩溃恢复一样。它会通知您数据库未正常关闭。</p>
+<p>要将第一次增量备份应用于完整备份，您应该使用以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup --prepare --apply-log-only --target-dir=/data/backups/base \</span><br><span class="line">--incremental-dir=/data/backups/inc1</span><br></pre></td></tr></table></figure>
+
+<p>这会将增量文件应用于 <code>/data/backups/base</code> 中的文件，这些文件会将它们及时前滚到增量备份的时间。然后像照例将重做日志应用于结果。最终数据位于&#x2F;  <code>/data/backups/base</code> 中，不在增量目录中。您应该看到如下的输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">incremental backup from 1291135 is enabled.</span><br><span class="line">xtrabackup: cd to /data/backups/base/</span><br><span class="line">xtrabackup: This target seems to be already prepared.</span><br><span class="line">xtrabackup: xtrabackup_logfile detected: size=2097152, start_lsn=(1291340)</span><br><span class="line">Applying /data/backups/inc1/ibdata1.delta ...</span><br><span class="line">Applying /data/backups/inc1/test/table1.ibd.delta ...</span><br><span class="line">.... snip</span><br><span class="line">101107 20:56:30  InnoDB: Shutdown completed; log sequence number 1291340</span><br></pre></td></tr></table></figure>
+
+<p>再说一次，LSN 应该与先前检查第一次增量备份时看到的一致。如果您从 <code>/data/backups/base</code> 恢复文件，则应该可以看到第一次增量备份时的数据库状态。</p>
+<p>准备第二次增量备份是一个类似的过程：对（已修改的）基础备份应用增量，并且及时将数据前滚到第二次增量备份时的状态：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup --prepare --target-dir=/data/backups/base \</span><br><span class="line">--incremental-dir=/data/backups/inc2</span><br></pre></td></tr></table></figure>
+
+<div class="note default"><p>注意<br>合并除最后一个之外的所有增量备份时，都应该使用 <code>--apply-log-only</code>。这就是上一行不包含 <code>--apply-log-only</code> 选项的原因。即使在最后一步使用了 <code>--apply-log-only</code> ，备份仍然是一致的，但在这种情况下，服务器将执行回滚阶段。</p>
+</div>
+
+<p>当您已将所需增量应用于基本备份时, 如果想避免收到关于 InnoDB 未正常关闭的通知。那么，可以再次运行 <code>--prepare</code> 而不禁用回滚阶段。</p>
+<h2 id="部分备份"><a href="#部分备份" class="headerlink" title="部分备份"></a>部分备份</h2><p>当启用 <code>innodb_file_per_table</code> 选项时，<strong>xtrabackup</strong> 支持部分备份。有三种方法可以创建部分备份：使用正则表达式匹配表名，提供一个包含表明列表的文件或提供一个包含数据库和表名列表的文件。</p>
+<div class="note danger"><p>警告<br>如果在备份过程中删除了任何匹配到的或已经列出的表，则 <strong>xtrabackup</strong> 将会执行失败。</p>
+</div>
+
+<p>为了达到演示本手册内容的目的，我们假设有一个名为 <code>test</code> 的数据库，其中包含名为 <code>t1</code> 和 <code>t2</code> 的表。</p>
+<h3 id="使用-tables-选项"><a href="#使用-tables-选项" class="headerlink" title="使用 --tables 选项"></a>使用 <code>--tables</code> 选项</h3><p>第一种备份方法是使用 <code>--tables</code> 选项。该选项的值是一个正则表达式，它以 <code>databasename.tablename</code> 的形式与完全限定的表名（包括数据库名称）相匹配。</p>
+<p>仅备份 <code>test</code> 数据库中的表，可以使用以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup --backup --datadir=/var/lib/mysql --target-dir=/data/backups/ \</span><br><span class="line">--tables=&quot;^test[.].*&quot;</span><br></pre></td></tr></table></figure>
+
+<p>仅备份 <code>test.t1</code> 表，可以使用以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup --backup --datadir=/var/lib/mysql --target-dir=/data/backups/ \</span><br><span class="line">--tables=&quot;^test[.]t1&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用-tables-file-选项"><a href="#使用-tables-file-选项" class="headerlink" title="使用 --tables-file 选项"></a>使用 <code>--tables-file</code> 选项</h3><p><code>--tables-file</code> 选项指定一个文件，该文件可以包含多张表名，文件中每行写入一张表名。只有在该文件中列出的表才会被备份。表名需要完全匹配，区分大小写，不能使用模式或正则表达式匹配。表名必须是完全限定的，采用 <code>databasename.tablename</code> 的格式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ echo &quot;mydatabase.mytable&quot; &gt; /tmp/tables.txt</span><br><span class="line">$ xtrabackup --backup --tables-file=/tmp/tables.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用-databases-和-databases-file-选项"><a href="#使用-databases-和-databases-file-选项" class="headerlink" title="使用 --databases 和 --databases-file 选项"></a>使用 <code>--databases</code> 和 <code>--databases-file</code> 选项</h3><p><code>--databases</code> 选项指定用空格分隔的数据库和表名列表，以 <code>databasename[.tablename]</code> 的形式。 <code>--databases-file</code>  选项指定一个包含上述格式的多张数据库和表文件，该文件中每行包含一张要备份的表名。只有列出的数据库和表将被备份。表名需要完全匹配，区分大小写，不能使用模式或正则表达式匹配。</p>
+<h3 id="准备备份"><a href="#准备备份" class="headerlink" title="准备备份"></a>准备备份</h3><p>在部分备份上使用 <code>--prepare</code> 选项时，会看到有关表不存在的警告。这是因为这些表存在于 <code>InnoDB</code> 内的数据字典中，但相应的 <code>.ibd</code> 文件不存在。这些表没有被复制到备份目录中。当您恢复备份并启动 <code>InnoDB</code> 时，这些表将从数据字典中删除，不再存在，并且不会有任何错误或警告打印到日志文件中。</p>
+<p>在准备阶段您将看到的错误消息的示例如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">InnoDB: Reading tablespace information from the .ibd files...</span><br><span class="line">101107 22:31:30  InnoDB: Error: table &#x27;test1/t&#x27;</span><br><span class="line">InnoDB: in InnoDB data dictionary has tablespace id 6,</span><br><span class="line">InnoDB: but tablespace with that id or name does not exist. It will be removed from data dictionary.</span><br></pre></td></tr></table></figure>
+
+<h2 id="紧凑备份"><a href="#紧凑备份" class="headerlink" title="紧凑备份"></a>紧凑备份</h2><p>在进行 InnoDB 表的备份时，可以省略二级索引页面。这将使备份更加紧凑，占用更少的磁盘空间。这样做的缺点是准备备份的过程需要更长的时间，因为需要重新创建这些二级索引。备份大小的差异取决于二级索引的大小。</p>
+<p>例如，以下分别为不使用和使用 <code>--compact</code> 选项的完整备份大小：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#backup size without --compact</span><br><span class="line">2.0G  xb_backup</span><br><span class="line"></span><br><span class="line">#backup size taken with --compact option</span><br><span class="line">1.4G  xb_compact_backup</span><br></pre></td></tr></table></figure>
+
+<div class="note default"><p>注意<br>系统表空间不支持紧凑备份，因此为了能够正确运行备份程序，应该启用 <code>innodb-file-per-table</code> 选项。</p>
+</div>
+
+<p>此功能在 <em>Percona XtraBackup 2.1</em> 中引入。</p>
+<h3 id="创建紧凑备份"><a href="#创建紧凑备份" class="headerlink" title="创建紧凑备份"></a>创建紧凑备份</h3><p>要创建紧凑备份 innobackupex 启动时需要使用 <code>--compact</code> 选项：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup --backup --compact --target-dir=/data/backups</span><br></pre></td></tr></table></figure>
+
+<p>这将在 <code>/data/backups</code> 目录中创建一个紧凑备份。</p>
+<p>如果您检查 <code>target-dir</code> 文件夹中的 <code>xtrabackup-checkpoints</code> 文件，您应该看到如下所示的内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">backup_type = full-backuped</span><br><span class="line">from_lsn = 0</span><br><span class="line">to_lsn = 2888984349</span><br><span class="line">last_lsn = 2888984349</span><br><span class="line">compact = 1</span><br></pre></td></tr></table></figure>
+
+<p>当未使用 <code>--compact</code> 时，<code>compact</code> 的值将为0。通过这种方式，很容易检查备份是否包含辅助索引页。</p>
+<h3 id="准备紧凑备份"><a href="#准备紧凑备份" class="headerlink" title="准备紧凑备份"></a>准备紧凑备份</h3><p>准备紧凑备份需要重建索引。为了准备备份，应该使用一个新选项 <code>--rebuild-indexes</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup --prepare --rebuild-indexes /data/backups/</span><br></pre></td></tr></table></figure>
+
+<p>除了标准 <strong>innobackupex</strong> 输出之外，输出还应包含重建索引的信息，如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[01] Checking if there are indexes to rebuild in table sakila/city (space id: 9)</span><br><span class="line">[01]   Found index idx_fk_country_id</span><br><span class="line">[01]   Rebuilding 1 index(es).</span><br><span class="line">[01] Checking if there are indexes to rebuild in table sakila/country (space id: 10)</span><br><span class="line">[01] Checking if there are indexes to rebuild in table sakila/customer (space id: 11)</span><br><span class="line">[01]   Found index idx_fk_store_id</span><br><span class="line">[01]   Found index idx_fk_address_id</span><br><span class="line">[01]   Found index idx_last_name</span><br><span class="line">[01]   Rebuilding 3 index(es).</span><br></pre></td></tr></table></figure>
+
+<p>此外，您还可以使用 <code>--rebuild-threads</code> 选项在重建索引时使用多线程，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup --prepare --rebuild-indexes --rebuild-threads=16 /data/backups/</span><br></pre></td></tr></table></figure>
+
+<p>在这种情况下，<em>Percona XtraBackup</em> 将一次为一张表创建 16 个工作线程，每个线程同时为一张表重建索引。它还会显示每条消息的线程ID</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Starting 16 threads to rebuild indexes.</span><br><span class="line"></span><br><span class="line">[09] Checking if there are indexes to rebuild in table sakila/city (space id: 9)</span><br><span class="line">[09]   Found index idx_fk_country_id</span><br><span class="line">[10] Checking if there are indexes to rebuild in table sakila/country (space id: 10)</span><br><span class="line">[11] Checking if there are indexes to rebuild in table sakila/customer (space id: 11)</span><br><span class="line">[11]   Found index idx_fk_store_id</span><br><span class="line">[11]   Found index idx_fk_address_id</span><br><span class="line">[11]   Found index idx_last_name</span><br><span class="line">[11]   Rebuilding 3 index(es).</span><br></pre></td></tr></table></figure>
+
+<p>由于 <em>Percona XtraBackup</em> 在将增量备份应用于紧凑完整备份时没有任何提示信息，因此不论以后是否会应用更多的增量备份，每次将增量备份应用于完整备份时，都需要用户显示指定重建索引。在每次增量备份合并时无条件地重建索引不是一种好的选择，因为这是一项非常昂贵的操作。</p>
+<h3 id="恢复紧凑备份"><a href="#恢复紧凑备份" class="headerlink" title="恢复紧凑备份"></a>恢复紧凑备份</h3><p><strong>xtrabackup</strong> 二进制程序没有提供任何恢复备份的功能。这是由用户来做的。您可以使用 <strong>rsync</strong> 或 <strong>cp</strong> 来恢复文件。您应该检查恢复的文件是否具有正确的所有权和许可权。</p>
+<h3 id="其他阅读"><a href="#其他阅读" class="headerlink" title="其他阅读"></a>其他阅读</h3><p><a target="_blank" rel="noopener" href="https://www.percona.com/blog/2013/01/29/feature-preview-compact-backups-in-percona-xtrabackup/">功能预览：Percona XtraBackup 中的紧凑备份</a></p>
+<h1 id="高级功能"><a href="#高级功能" class="headerlink" title="高级功能"></a>高级功能</h1><h2 id="节流备份"><a href="#节流备份" class="headerlink" title="节流备份"></a>节流备份</h2><p>尽管 xtrabackup 不会阻止数据库操作，但任何备份都可以将负载添加到正在备份的系统中。 在没有太多备用 I&#x2F;O 容量的系统上，调节xtrabackup 读取和写入数据的速率可能会有所帮助。 您可以使用 <code>--throttle</code> 选项执行此操作，该选将项限制每秒的 I&#x2F;O 操作数为 1 MB。</p>
+<p>下图显示了当 <code>--throttle = 1</code> 时节流备份是如何工作的。</p>
+<p><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20180410/throttle.png"></p>
+<p>在 <code>--backup</code> 模式下，此选项限制 xtrabackup 每秒执行的读写操作对的数量。 如果您正在创建增量备份，则限制的是每秒读 IO 操作的次数。</p>
+<p>默认情况下，不存在限制，并且 xtrabackup 尽可能快地读取和写入数据。 如果您对 I&#x2F;O 操作的限制设置过于严格，备份可能会变得非常缓慢，以致于它永远无法跟上 InnoDB 写事务日志的速度，因此备份可能永远无法完成。</p>
+<h2 id="使用-xtrabackup-编写脚本备份"><a href="#使用-xtrabackup-编写脚本备份" class="headerlink" title="使用 xtrabackup 编写脚本备份"></a>使用 xtrabackup 编写脚本备份</h2><p><strong>xtrabackup</strong> 工具具有若干功能，以便脚本在执行相关任务时对其进行控制。 <a target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/innobackupex/innobackupex_script.html">innobackupex 脚本</a>就是一个例子，但是也很容易用您自己的命令行脚本来控制 <strong>xtrabackup</strong>。</p>
+<h3 id="复制后暂停"><a href="#复制后暂停" class="headerlink" title="复制后暂停"></a>复制后暂停</h3><p>在备份模式下，xtrabackup 通常会使用后台线程复制日志文件，使用前台线程复制数据文件，最后停止日志复制线程并结束。如果使用 <code>--suspend-at-end</code> 选项，xtrabackup 将不会停止日志线程并结束，而是继续复制日志文件，并在名为 <code>xtrabackup_suspended</code> 的目标目录中创建一个文件。只要该文件存在，xtrabackup 就会继续观察日志文件并将其复制到目标目录中的 <code>xtrabackup_logfile</code> 中。当该文件被移除时，<strong>xtrabackup</strong> 将完成复制日志文件并退出。</p>
+<p>此功能对于协调 InnoDB 数据备份与其他操作非常有用。也许最明显的作用就是复制表定义（<code>.frm</code> 文件），以便可以恢复备份。您可以在后台启动 <strong>xtrabackup</strong>，等待创建 <code>xtrabackup_suspended</code> 文件，然后复制完成备份所需的任何其他文件。这正是 <code>innobackupex</code> 工具所做的（它也复制MyISAM 数据和其他文件）。 </p>
+<h3 id="生成元数据"><a href="#生成元数据" class="headerlink" title="生成元数据"></a>生成元数据</h3><p>备份包含恢复备份所需的所有信息是一个好主意。 <strong>xtrabackup</strong> 工具可以打印出需要恢复数据和日志文件的 <code>my.cnf</code> 文件的内容。如果添加 <code>--print-param</code> 选项，它将打印出如下所示的内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#  ThisMySQL options file was generated by XtraBackup.</span><br><span class="line">[mysqld]</span><br><span class="line">datadir = /data/mysql/</span><br><span class="line">innodb_data_home_dir = /data/innodb/</span><br><span class="line">innodb_data_file_path = ibdata1:10M:autoextend</span><br><span class="line">innodb_log_group_home_dir = /data/innodb-logs/</span><br></pre></td></tr></table></figure>
+
+<p>您可以将此输出重定向到备份目标目录中的文件当中。</p>
+<h3 id="一致的备份源目录"><a href="#一致的备份源目录" class="headerlink" title="一致的备份源目录"></a>一致的备份源目录</h3><p>可能存在缺省文件或其他因素导致 <strong>xtrabackup</strong> 不是从您预期的位置备份数据。为了防止这种情况发生，可以使用 <code>--print-param</code> 来询问将从何处复制数据。您可以使用输出来确保 <strong>xtrabackup</strong> 和您的脚本使用相同的数据集。</p>
+<h3 id="日志流"><a href="#日志流" class="headerlink" title="日志流"></a>日志流</h3><p>您可以指定 <strong>xtrabackup</strong> 省略复制数据文件，并简单地将日志文件流式传输到其标准输出，而不是使用 <code>--log-stream</code> 。这会自动添加 <code>--suspend-at-end</code> 选项。然后，您的脚本可以通过将日志文件传输到 SSH 连接并使用 <strong>rsync</strong> 或 <a target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/xbstream/xbstream.html">xbstream二进制程序</a>等工具将数据文件复制到另一台服务器来执行流式传输远程备份等任务。</p>
+<h2 id="分析表统计信息"><a href="#分析表统计信息" class="headerlink" title="分析表统计信息"></a>分析表统计信息</h2><p><strong>xtrabackup</strong> 程序可以在只读模式下分析 InnoDB 数据文件以提供统计信息。 要做到这一点，您应该使用 <code>--stats</code> 选项。 您可以将它与 <code>--tables</code> 选项结合使用，以限制要检查的文件。 它也适用于 <code>--use-memory</code> 选项。</p>
+<p>您可以在正在运行的服务器上执行分析，但是由于分析过程中数据发生更改而可能导致出现错误。 或者，您也可以分析数据库的备份副本。 无论哪种方式，要使用统计功能，您需要一个包含正确大小的日志文件的数据库的干净副本，因此您需要执行两次 <code>--prepare</code> 才能在备份数据库上使用此功能。</p>
+<p>在备份数据库上运行的结果可能如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;INDEX STATISTICS&gt;</span><br><span class="line">  table: test/table1, index: PRIMARY, space id: 12, root page 3</span><br><span class="line">  estimated statistics in dictionary:</span><br><span class="line">    key vals: 25265338, leaf pages 497839, size pages 498304</span><br><span class="line">  real statistics:</span><br><span class="line">     level 2 pages: pages=1, data=5395 bytes, data/pages=32%</span><br><span class="line">     level 1 pages: pages=415, data=6471907 bytes, data/pages=95%</span><br><span class="line">        leaf pages: recs=25958413, pages=497839, data=7492026403 bytes, data/pages=91%</span><br></pre></td></tr></table></figure>
+
+<p>这可以解释如下：</p>
+<ul>
+<li>第一行仅显示了表格和索引名称及其内部标识符。如果您看到名为 <code>GEN_CLUST_INDEX</code> 的索引，即表的聚簇索引，它是自动创建的，因为您没有明确创建 <code>PRIMARY KEY</code> 。</li>
+<li>字典信息中的估计统计信息类似于通过 InnoDB 内部的 <code>ANALYZE TABLE</code> 收集的数据，这些数据被存储为估计的基数统计信息，并传递给查询优化器。</li>
+<li>真正的统计信息是扫描数据页和计算有关索引的确切信息的结果。</li>
+<li><code>The level &lt;X&gt; pages</code> ：该输出表示该行对应索引树中的那个级别的页面的信息。越大的 <code>&lt;X&gt;</code> 离叶子页越远，它们是叶子页 0 级。第一行是根页面。</li>
+<li><code>leaf pages</code> 输出显示叶子页的信息。这是表格数据的存储位置。</li>
+<li><code>external pages</code> ：输出（上面未显示）显示保存那些其值太长而不适合存储于行本身的大型外部页面，如 <code>BLOB</code> 和 <code>TEXT</code> 类型值。</li>
+<li><code>recs</code> 是叶子页中记录（行）的实际数量。</li>
+<li><code>pages</code> 是页数。</li>
+<li><code>data</code> 是页面中数据的总大小（以字节为单位）。</li>
+<li><code>data/pages</code> 计算方法为 (<code>data</code> &#x2F; (<code>pages</code> * <code>PAGE_SIZE</code>)) * 100%。由于为页眉和页脚预留了空间，所以它永远不会达到100％。</li>
+</ul>
+<p>更详细的示例将作为 MySQL 性能博客文章<a target="_blank" rel="noopener" href="https://www.percona.com/blog/2009/09/14/statistics-of-innodb-tables-and-indexes-available-in-xtrabackup/">发布</a>。</p>
+<h3 id="格式化输出脚本"><a href="#格式化输出脚本" class="headerlink" title="格式化输出脚本"></a>格式化输出脚本</h3><p>以下脚本可用于汇总和制表统计信息的输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">tabulate-xtrabackup-stats.pl</span><br><span class="line"></span><br><span class="line">#!/usr/bin/env perl</span><br><span class="line">use strict;</span><br><span class="line">use warnings FATAL =&gt; &#x27;all&#x27;;</span><br><span class="line">my $script_version = &quot;0.1&quot;;</span><br><span class="line"></span><br><span class="line">my $PG_SIZE = 16_384; # InnoDB defaults to 16k pages, change if needed.</span><br><span class="line">my ($cur_idx, $cur_tbl);</span><br><span class="line">my (%idx_stats, %tbl_stats);</span><br><span class="line">my ($max_tbl_len, $max_idx_len) = (0, 0);</span><br><span class="line">while ( my $line = &lt;&gt; ) &#123;</span><br><span class="line">   if ( my ($t, $i) = $line =~ m/table: (.*), index: (.*), space id:/ ) &#123;</span><br><span class="line">      $t =~ s!/!.!;</span><br><span class="line">      $cur_tbl = $t;</span><br><span class="line">      $cur_idx = $i;</span><br><span class="line">      if ( length($i) &gt; $max_idx_len ) &#123;</span><br><span class="line">         $max_idx_len = length($i);</span><br><span class="line">      &#125;</span><br><span class="line">      if ( length($t) &gt; $max_tbl_len ) &#123;</span><br><span class="line">         $max_tbl_len = length($t);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   elsif ( my ($kv, $lp, $sp) = $line =~ m/key vals: (\d+), \D*(\d+), \D*(\d+)/ ) &#123;</span><br><span class="line">      @&#123;$idx_stats&#123;$cur_tbl&#125;-&gt;&#123;$cur_idx&#125;&#125;&#123;qw(est_kv est_lp est_sp)&#125; = ($kv, $lp, $sp);</span><br><span class="line">      $tbl_stats&#123;$cur_tbl&#125;-&gt;&#123;est_kv&#125; += $kv;</span><br><span class="line">      $tbl_stats&#123;$cur_tbl&#125;-&gt;&#123;est_lp&#125; += $lp;</span><br><span class="line">      $tbl_stats&#123;$cur_tbl&#125;-&gt;&#123;est_sp&#125; += $sp;</span><br><span class="line">   &#125;</span><br><span class="line">   elsif ( my ($l, $pages, $bytes) = $line =~ m/(?:level (\d+)|leaf) pages:.*pages=(\d+), data=(\d+) bytes/ ) &#123;</span><br><span class="line">      $l ||= 0;</span><br><span class="line">      $idx_stats&#123;$cur_tbl&#125;-&gt;&#123;$cur_idx&#125;-&gt;&#123;real_pages&#125; += $pages;</span><br><span class="line">      $idx_stats&#123;$cur_tbl&#125;-&gt;&#123;$cur_idx&#125;-&gt;&#123;real_bytes&#125; += $bytes;</span><br><span class="line">      $tbl_stats&#123;$cur_tbl&#125;-&gt;&#123;real_pages&#125; += $pages;</span><br><span class="line">      $tbl_stats&#123;$cur_tbl&#125;-&gt;&#123;real_bytes&#125; += $bytes;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">my $hdr_fmt = &quot;%$&#123;max_tbl_len&#125;s %$&#123;max_idx_len&#125;s %9s %10s %10s\n&quot;;</span><br><span class="line">my @headers = qw(TABLE INDEX TOT_PAGES FREE_PAGES PCT_FULL);</span><br><span class="line">printf $hdr_fmt, @headers;</span><br><span class="line"></span><br><span class="line">my $row_fmt = &quot;%$&#123;max_tbl_len&#125;s %$&#123;max_idx_len&#125;s %9d %10d %9.1f%%\n&quot;;</span><br><span class="line">foreach my $t ( sort keys %tbl_stats ) &#123;</span><br><span class="line">   my $tbl = $tbl_stats&#123;$t&#125;;</span><br><span class="line">   printf $row_fmt, $t, &quot;&quot;, $tbl-&gt;&#123;est_sp&#125;, $tbl-&gt;&#123;est_sp&#125; - $tbl-&gt;&#123;real_pages&#125;,</span><br><span class="line">      $tbl-&gt;&#123;real_bytes&#125; / ($tbl-&gt;&#123;real_pages&#125; * $PG_SIZE) * 100;</span><br><span class="line">   foreach my $i ( sort keys %&#123;$idx_stats&#123;$t&#125;&#125; ) &#123;</span><br><span class="line">      my $idx = $idx_stats&#123;$t&#125;-&gt;&#123;$i&#125;;</span><br><span class="line">      printf $row_fmt, $t, $i, $idx-&gt;&#123;est_sp&#125;, $idx-&gt;&#123;est_sp&#125; - $idx-&gt;&#123;real_pages&#125;,</span><br><span class="line">         $idx-&gt;&#123;real_bytes&#125; / ($idx-&gt;&#123;real_pages&#125; * $PG_SIZE) * 100;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="示例脚本输出"><a href="#示例脚本输出" class="headerlink" title="示例脚本输出"></a>示例脚本输出</h3><p>以上提到的博客文章中显示的示例运行上述 Perl 脚本时，输出将显示如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">          TABLE           INDEX TOT_PAGES FREE_PAGES   PCT_FULL</span><br><span class="line">art.link_out104                    832383      38561      86.8%</span><br><span class="line">art.link_out104         PRIMARY    498304         49      91.9%</span><br><span class="line">art.link_out104       domain_id     49600       6230      76.9%</span><br><span class="line">art.link_out104     domain_id_2     26495       3339      89.1%</span><br><span class="line">art.link_out104 from_message_id     28160        142      96.3%</span><br><span class="line">art.link_out104    from_site_id     38848       4874      79.4%</span><br><span class="line">art.link_out104   revert_domain    153984      19276      71.4%</span><br><span class="line">art.link_out104    site_message     36992       4651      83.4%</span><br></pre></td></tr></table></figure>
+
+<p>这些列分别是表、索引、该索引中的页面总数，数据未实际占用的页数，以实际数据页面总大小的百分比表示的实际数据的字节数。 上述输出中的第一行（ <code>INDEX</code> 列为空）是整个表格的摘要。</p>
+<h2 id="使用二进制日志"><a href="#使用二进制日志" class="headerlink" title="使用二进制日志"></a>使用二进制日志</h2><p><strong>xtrabackup</strong> 程序集成了 <em>InnoDB</em> 在其事务日志中存储的有关已提交事务的相应二进制日志位置的信息。 这使它能够打印出备份文件对应的二进制日志位置，因此您可以使用它来设置新的从库复制或执行时间点恢复。</p>
+<h3 id="查找二进制日志位置"><a href="#查找二进制日志位置" class="headerlink" title="查找二进制日志位置"></a>查找二进制日志位置</h3><p>准备备份完成后，您可以找到该备份对应的二进制日志位置。 <strong>xtrabackup</strong> 可以使用 <code>--prepare</code> , <strong>innobackupex</strong> 可以使用 <code>--apply-log</code> 。 如果备份文件来自于启用了二进制日志记录的服务器，则 <strong>xtrabackup</strong> 将在目标目录中创建一个名为 <code>xtrabackup_binlog_info</code> 的文件。 该文件包含二进制日志文件的名称和准备备份所对应的二进制日志中确切点的位置。</p>
+<p>在准备阶段，您还会看到类似于以下内容的输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">InnoDB: Last MySQL binlog file position 0 3252710, file name ./mysql-bin.000001</span><br><span class="line">... snip ...</span><br><span class="line">[notice (again)]</span><br><span class="line">  If you use binary log and don&#x27;t use any hack of group commit,</span><br><span class="line">  the binary log position seems to be:</span><br><span class="line">InnoDB: Last MySQL binlog file position 0 3252710, file name ./mysql-bin.000001</span><br></pre></td></tr></table></figure>
+
+<p>该输出也可以在 <code>xtrabackup_binlog_pos_innodb</code> 文件中找到，但只有在使用 <em>XtraDB</em> 或 <em>InnoDB</em> 作为存储引擎时才是正确的。</p>
+<p>如果使用其他存储引擎（例如 <em>MyISAM</em>），则应使用 <code>xtrabackup_binlog_info</code> 文件检索位置。</p>
+<p>上文提到的 <code>hack of group commit</code> 是指在 <em>Percona</em> 服务器中早期实现的模拟组提交。</p>
+<h3 id="时间点恢复"><a href="#时间点恢复" class="headerlink" title="时间点恢复"></a>时间点恢复</h3><p>要从 <code>xtrabackup</code> 备份执行时间点恢复，应首先准备并恢复备份，然后从 <code>xtrabackup_binlog_info</code> 文件中显示的二进制日志位置重演二进制日志。</p>
+<p>更详细的过程参见<a target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/innobackupex/pit_recovery_ibk.html">这里</a>（使用 <strong>innobackupex</strong>）。</p>
+<h3 id="设置新的从库复制"><a href="#设置新的从库复制" class="headerlink" title="设置新的从库复制"></a>设置新的从库复制</h3><p>要设置新的从库复制，您应该首先准备好备份，并将其恢复到新从库复制的数据目录中。然后在您的 <code>CHANGE MASTER TO</code> 命令中，使用 <code>xtrabackup_binlog_info</code> 文件中显示的二进制日志文件名和位置开始复制。</p>
+<p>更详细的步骤在<a target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/howtos/setting_up_replication.html">如何通过 Percona XtraBackup 轻松 6 步设置复制从库</a>。</p>
+<h2 id="恢复单表"><a href="#恢复单表" class="headerlink" title="恢复单表"></a>恢复单表</h2><p>在 5.6 之前的服务器版本中，即使使用 <code>innodb_file_per_table</code>，也不可能通过复制文件在服务器之间复制表。 但是，使用 <em>Percona XtraBackup</em>，您可以从任何 <em>InnoDB</em> 数据库中导出单张表，然后将它们导入到 <em>Percona Server</em> 的 <em>XtraDB</em> 或 <em>MySQL 5.6</em> 中。 （导出库不一定是 <em>XtraDB</em> 或 <em>MySQL 5.6</em> ，但是导入库必须是。）这只适用于单独的 <code>.ibd</code> 文件，并且不能导出不包含在其自己的 <code>.ibd</code> 文件中的表。</p>
+<p>我们来看看如何导出和导入下表：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE export_test (</span><br><span class="line">  a int(11) DEFAULT NULL</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=latin1;</span><br></pre></td></tr></table></figure>
+
+<div class="note default"><p>注意<br>如果您运行的是早于 <code>5.5.10-20.1</code> 的 <em>Percona Server</em> 版本，则应该使用变量 <code>innodb_expand_import</code> 而不是 <code>innodb_import_table_from_xtrabackup</code> 。</p>
+</div>
+
+<h3 id="导出表格"><a href="#导出表格" class="headerlink" title="导出表格"></a>导出表格</h3><p>这张表应该是在 <code>innodb_file_per_table</code> 模式下创建的，所以像 <code>xtrabackup --backup</code> 一样进行备份后，<code>.ibd</code> 文件应该存在于目标目录中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ find /data/backups/mysql/ -name export_test.*</span><br><span class="line">/data/backups/mysql/test/export_test.ibd</span><br></pre></td></tr></table></figure>
+
+<p>准备备份时，将额外的参数 <code>xtrabackup --export</code> 添加到命令中。 这里是一个例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup --prepare --export --target-dir=/data/backups/mysql/</span><br></pre></td></tr></table></figure>
+
+<div class="note default"><p>注意<br>如果你想恢复<a target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/advanced/encrypted_innodb_tablespace_backups.html#encrypted-innodb-tablespace-backups">加密的 InnoDB 表空间表</a>，你还需要指定密钥文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xtrabackup --prepare --export --target-dir=/tmp/table \</span><br><span class="line">--keyring-file-data=/var/lib/mysql-keyring/keyring</span><br></pre></td></tr></table></figure></div>
+
+<p>现在你应该在目标目录中看到一个 <code>.exp</code> 文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ find /data/backups/mysql/ -name export_test.*</span><br><span class="line">/data/backups/mysql/test/export_test.exp</span><br><span class="line">/data/backups/mysql/test/export_test.ibd</span><br><span class="line">/data/backups/mysql/test/export_test.cfg</span><br></pre></td></tr></table></figure>
+
+<p>将表导入运行 <em>XtraDB</em> 的 <em>Percona服务器</em> 或 <em>MySQL 5.7</em> 需要以上三个文件。在服务器使用 <a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-tablespace-encryption.html"><code>InnoDB Tablespace Encryption</code></a> 的情况下，将会列出用于加密表的附加的 <code>.cfg</code> 文件。</p>
+<div class="note default"><p>注意<br><em>MySQL</em> 使用包含特殊格式的 <em>InnoDB</em> 字典转储的 <code>.cfg</code> 文件。这种格式与 <em>XtraDB</em> 中用于相同目的的 <code>.exp</code> 不同。严格地说，将表空间导入到 <em>MySQL 5.7</em> 或 <em>Percona Server 5.7</em> 中时不需要 <code>.cfg</code> 文件。即使是来自其他数据库版本的表空间也会成功导入，但如果相应的 <code>.cfg</code> 文件存在于同一目录中，<em>InnoDB</em> 将执行模式验证。</p>
+</div>
+
+<h3 id="导入表格"><a href="#导入表格" class="headerlink" title="导入表格"></a>导入表格</h3><p>在使用 <code>XtraDB</code> 引擎和启用 <code>innodb_import_table_from_xtrabackup</code> 选项的 <em>Percona Server</em> 的目标服务器，或者 <em>MySQL 5.6</em> 上，创建一张具有相同结构的表，然后执行以下步骤：</p>
+<ul>
+<li>执行 <code>ALTER TABLE test.export_test DISCARD TABLESPACE</code>;<br>  如果看到以下消息，则必须启用 <code>innodb_file_per_table</code> 并再次创建该表：<code>ERROR 1030 (HY000): Got error -1 from storage engine</code></li>
+<li>将导出的文件复制到目标服务器的数据目录的 <code>test/</code> 子目录</li>
+<li>执行 <code>ALTER TABLE test.export_test IMPORT TABLESPACE</code>;</li>
+</ul>
+<p>该表现在应该已被导入，你应该能够从中执行 <code>SELECT</code> 语句并查看导入的数据。</p>
+<div class="note default"><p>注意<br>除非在导入的表上运行 <code>ANALYZE TABLE</code> ，导入的表空间的持久性统计信息将为空。因为它们存储在系统表 <code>mysql.innodb_table_stats</code> 和 <code>mysql.innodb_index_stats</code> 中，并且在导入期间它们不会被服务器更新，所以它们是空的。这是由于上游错误 <a target="_blank" rel="noopener" href="https://bugs.mysql.com/bug.php?id=72368">#72368</a>。</p>
+</div>
+
+<h2 id="LRU-转储备份"><a href="#LRU-转储备份" class="headerlink" title="LRU 转储备份"></a>LRU 转储备份</h2><p>此功能通过在数据库重启后从 <code>ib_lru_dump</code> 文件恢复缓冲池状态来减少预热时间。 <em>Percona XtraBackup</em> 会查找 <code>ib_lru_dump</code> 并自动备份它。</p>
+<p><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20180416/lru_dump.png"></p>
+<p>如果在 <code>my.cnf</code> 文件中设置了启用缓冲区恢复选项，则备份恢复后缓冲池将处于预热好的状态。 要启用它，请在 Percona Server 5.5 中设置变量 <code>innodb_buffer_pool_restore_at_startup =1</code> 或在 Percona Server 5.1 中设置 <code>innodb_auto_lru_dump =1</code>。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="实现细节"><a href="#实现细节" class="headerlink" title="实现细节"></a>实现细节</h2><p>该页面包含 <strong>xtrabackup</strong> 工具操作的内部实现原理的解释。</p>
+<h3 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h3><p><strong>xtrabackup</strong> 以读写模式打开源数据文件，虽然它并不修改源文件。这意味着您必须以拥有写入权限的用户运行 <strong>xtrabackup</strong> 。以读写模式打开文件的原因是 <strong>xtrabackup</strong> 使用嵌入式 <em>InnoDB</em> 库打开和读取文件， <em>InnoDB</em> 以读写模式打开它们，因为它通常假定它将写入数据。</p>
+<h3 id="调整-OS-缓冲区"><a href="#调整-OS-缓冲区" class="headerlink" title="调整 OS 缓冲区"></a>调整 OS 缓冲区</h3><p>由于 <strong>xtrabackup</strong> 从文件系统读取大量数据，因此它会尽可能使用 <code>posix_fadvise()</code>，以指示操作系统不要尝试缓存从磁盘读取的块。如果没有这个提示，操作系统会假设 <strong>xtrabackup</strong> 很可能需要它们而缓存块，但事实并非如此。缓存这些大文件会给操作系统的虚拟内存造成压力，并导致其他进程（如数据库）被换出。 <strong>xtrabackup</strong> 工具在源文件和目标文件上使用以下提示来避免这种情况：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">posix_fadvise(file, 0, 0, POSIX_FADV_DONTNEED)</span><br></pre></td></tr></table></figure>
+
+<p>另外， <strong>xtrabackup</strong> 要求操作系统对源文件执行更积极的预读优化：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">posix_fadvise(file, 0, 0, POSIX_FADV_SEQUENTIAL)</span><br></pre></td></tr></table></figure>
+
+<h3 id="复制数据文件"><a href="#复制数据文件" class="headerlink" title="复制数据文件"></a>复制数据文件</h3><p>将数据文件复制到目标目录时， <strong>xtrabackup</strong> 一次读取和写入 1MB 数据。这是不可配置的。在复制日志文件时， <strong>xtrabackup</strong> 每次读取和写入 512 个字节。这也无法配置，并且与 InnoDB 的复制行为相匹配（<em>Percona Server</em> 中存在解决方法，因为它可以选择调整 <em>XtraDB</em> 的 <code>innodb_log_block_size</code>，在这种情况下，<em>Percona XtraBackup</em> 将相应调整）。</p>
+<p>从文件中读取数据后， <strong>xtrabackup</strong> 每次迭代 1MB 缓冲页，并使用 InnoDB 的 <code>buf_page_is_corrupted()</code> 函数检查每个页面上的页面损坏情况。如果页面已损坏，则每页重新读取并重试 10 次。它跳过对双写缓冲区的检查。</p>
+<h2 id="xtrabackup-退出码"><a href="#xtrabackup-退出码" class="headerlink" title="xtrabackup 退出码"></a>xtrabackup 退出码</h2><p>在没有错误发生时， <strong>xtrabackup</strong> 将在备份完成后以成功值 0 退出。 如果在备份过程中发生错误，则退出值为 1 。</p>
+<p>在某些情况下，由于 <em>MySQL</em> 库包含的命令行选项代码，退出值可能不是 0 或 1 。 例如，未知的命令行选项会导致退出代码为 255。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><h2 id="xtrabackup-选项参考"><a href="#xtrabackup-选项参考" class="headerlink" title="xtrabackup 选项参考"></a>xtrabackup 选项参考</h2>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.JPG" alt="toypipi 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.JPG" alt="toypipi 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>toypipi
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://toypipi.github.io/2018/04/04/XtraBackup-%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%A8%8B%E5%BA%8F/" title="XtraBackup 二进制程序">https://toypipi.github.io/2018/04/04/XtraBackup-二进制程序/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/XtraBackup/" rel="tag"><i class="fa fa-tag"></i> XtraBackup</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/04/03/Percona-XtraBackup-%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C/" rel="prev" title="Percona XtraBackup 用户手册">
+                  <i class="fa fa-angle-left"></i> Percona XtraBackup 用户手册
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/04/11/MySQL-%E8%BF%90%E8%A1%8C%E7%8A%B6%E6%80%81-extended-status-%E8%AF%A6%E8%A7%A3/" rel="next" title="MySQL 运行状态 extended-status 详解">
+                  MySQL 运行状态 extended-status 详解 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2016 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">toypipi</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">195k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">11:49</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

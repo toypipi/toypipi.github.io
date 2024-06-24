@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="HTTP（Hypertext Transfer Protocol）是用于传输超文本的应用层协议，它被用于在客户端和服务器之间传输和呈现超文本。  HTTP 1.0：  特性： 使用明文传输数据，不提供数据加密。 请求-响应模型，每个请求都需要服务器单独响应。 不支持持久连接，每个请求&#x2F;响应都需要建立新的 TCP 连接。 无法复用连接，每个请求都会在单独的连接上处理。 不支持请求的优先级">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP 1.0、1.1、2.0、HTTPS 协议的特性及区别">
+<meta property="og:url" content="https://toypipi.github.io/2023/11/02/HTTP-1-0%E3%80%811-1%E3%80%812-0%E3%80%81HTTPS-%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%89%B9%E6%80%A7%E5%8F%8A%E5%8C%BA%E5%88%AB/index.html">
+<meta property="og:site_name" content="Toypipi&#39;s blog">
+<meta property="og:description" content="HTTP（Hypertext Transfer Protocol）是用于传输超文本的应用层协议，它被用于在客户端和服务器之间传输和呈现超文本。  HTTP 1.0：  特性： 使用明文传输数据，不提供数据加密。 请求-响应模型，每个请求都需要服务器单独响应。 不支持持久连接，每个请求&#x2F;响应都需要建立新的 TCP 连接。 无法复用连接，每个请求都会在单独的连接上处理。 不支持请求的优先级">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-11-02T05:35:23.000Z">
+<meta property="article:modified_time" content="2023-11-03T01:22:11.603Z">
+<meta property="article:author" content="toypipi">
+<meta property="article:tag" content="HTTP">
+<meta property="article:tag" content="HTTPS">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://toypipi.github.io/2023/11/02/HTTP-1-0%E3%80%811-1%E3%80%812-0%E3%80%81HTTPS-%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%89%B9%E6%80%A7%E5%8F%8A%E5%8C%BA%E5%88%AB/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://toypipi.github.io/2023/11/02/HTTP-1-0%E3%80%811-1%E3%80%812-0%E3%80%81HTTPS-%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%89%B9%E6%80%A7%E5%8F%8A%E5%8C%BA%E5%88%AB/","path":"2023/11/02/HTTP-1-0、1-1、2-0、HTTPS-协议的特性及区别/","title":"HTTP 1.0、1.1、2.0、HTTPS 协议的特性及区别"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>HTTP 1.0、1.1、2.0、HTTPS 协议的特性及区别 | Toypipi's blog</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?c228072b8c3657dfa7236914b308712c"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Toypipi's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">1.</span> <span class="nav-text">References</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="toypipi"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">toypipi</p>
+  <div class="site-description" itemprop="description">Stay focused, be present</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">289</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">381</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/toypipi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;toypipi" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:275688469@qq.com" title="E-Mail → mailto:275688469@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/11/02/HTTP-1-0%E3%80%811-1%E3%80%812-0%E3%80%81HTTPS-%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%89%B9%E6%80%A7%E5%8F%8A%E5%8C%BA%E5%88%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="HTTP 1.0、1.1、2.0、HTTPS 协议的特性及区别 | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HTTP 1.0、1.1、2.0、HTTPS 协议的特性及区别
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-11-02 13:35:23" itemprop="dateCreated datePublished" datetime="2023-11-02T13:35:23+08:00">2023-11-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-11-03 09:22:11" itemprop="dateModified" datetime="2023-11-03T09:22:11+08:00">2023-11-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>870</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<p>HTTP（Hypertext Transfer Protocol）是用于传输超文本的应用层协议，它被用于在客户端和服务器之间传输和呈现超文本。</p>
+<ol>
+<li><p><strong>HTTP 1.0</strong>：</p>
+<ul>
+<li><strong>特性</strong>：<ul>
+<li>使用明文传输数据，不提供数据加密。</li>
+<li>请求-响应模型，每个请求都需要服务器单独响应。</li>
+<li>不支持持久连接，每个请求&#x2F;响应都需要建立新的 TCP 连接。</li>
+<li>无法复用连接，每个请求都会在单独的连接上处理。</li>
+<li>不支持请求的优先级，请求之间平等对待。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>：<ul>
+<li>性能较差，多次连接建立和拆除的开销。</li>
+<li>安全性差，数据明文传输容易被窃听和篡改。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>HTTP 1.1</strong>：</p>
+<ul>
+<li><strong>特性</strong>：<ul>
+<li>引入持久连接，减少了连接的建立和拆除开销。</li>
+<li>引入请求的优先级，可以根据需求标识请求的优先级。</li>
+<li>支持管道化，允许多个请求&#x2F;响应在一个连接上同时处理。</li>
+<li>引入分块传输编码，允许数据分块传输。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>：<ul>
+<li>依然使用明文传输，存在安全风险。</li>
+<li>性能提升有限，管道化和请求优先级的支持不够强大。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<span id="more"></span>
+
+<ol>
+<li><p><strong>HTTP 2.0</strong>：</p>
+<ul>
+<li><strong>特性</strong>：<ul>
+<li>使用二进制格式传输数据，减少了传输数据的开销。</li>
+<li>多路复用，多个请求&#x2F;响应可以在一个连接上同时处理。</li>
+<li>头部压缩，减少了头部信息的传输开销。</li>
+<li>服务器推送，服务器可以在客户端请求之前主动推送数据。</li>
+<li>支持数据流优先级，可以更好地管理多个数据流。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>：<ul>
+<li>需要 HTTPS，否则不支持。</li>
+<li>需要现代的服务器和客户端支持。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>HTTPS</strong>：<br>SSL（Secure Sockets Layer）译为「安全套接字协议」，TLS（Transport Layer Security）译为「传输层安全性协议」。<br>SSL&#x2F;TLS 协议处于「传输层」和「应用层」之间，主要作用是对网络连接进行加解密，如下图：</p>
+
+
+<p>SSL&#x2F;TLS 四次握手:</p>
+<ol>
+<li>客户端向服务端所有证书。</li>
+<li>服务端发送证书。</li>
+<li>客户端验证证书，提取公钥，发送对称加密的密钥。</li>
+<li>服务端收到密钥，响应 OK。</li>
+</ol>
+
+
+<p>HTTPS&#x3D;HTTP+SSL&#x2F;TLS</p>
+
+
+<ul>
+<li><strong>特性</strong>：<ul>
+<li>基于 HTTP 协议，但使用 TLS&#x2F;SSL 加密保护数据传输。</li>
+<li>提供数据的机密性和完整性，防止窃听和篡改。</li>
+<li>使用加密证书，验证服务器的身份。</li>
+<li>需要额外的计算和加密开销，对性能有一定影响。</li>
+</ul>
+</li>
+<li><strong>优点</strong>：<ul>
+<li>更高的安全性，数据加密传输。</li>
+<li>更可信的身份验证。</li>
+<li>保护用户隐私。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>区别</strong>：</p>
+<ul>
+<li>HTTP 1.0 到 HTTP 1.1 的升级主要关注性能和复用连接，但仍然使用明文传输。</li>
+<li>HTTP 2.0 引入了二进制传输、多路复用、头部压缩和服务器推送等特性，但需要使用 HTTPS。</li>
+<li>HTTPS 是一种安全协议，它在 HTTP 的基础上增加了数据加密和身份验证，用于保护数据的安全性和完整性。</li>
+</ul>
+<p>总之，HTTP 2.0 和 HTTPS 是在性能和安全性方面的较大改进，特别是 HTTP 2.0 引入了多路复用和头部压缩等功能，从而提高了性能。HTTPS 提供了更高级别的安全性，通过加密和身份验证来保护数据。</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6963931777962344455">HTTP1.0、1.1、2.0 协议的特性及区别</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6952056937349382181">HTTPS 是如何保证数据传输安全的？</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.JPG" alt="toypipi 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.JPG" alt="toypipi 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>toypipi
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://toypipi.github.io/2023/11/02/HTTP-1-0%E3%80%811-1%E3%80%812-0%E3%80%81HTTPS-%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%89%B9%E6%80%A7%E5%8F%8A%E5%8C%BA%E5%88%AB/" title="HTTP 1.0、1.1、2.0、HTTPS 协议的特性及区别">https://toypipi.github.io/2023/11/02/HTTP-1-0、1-1、2-0、HTTPS-协议的特性及区别/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/HTTP/" rel="tag"><i class="fa fa-tag"></i> HTTP</a>
+              <a href="/tags/HTTPS/" rel="tag"><i class="fa fa-tag"></i> HTTPS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/11/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/" rel="prev" title="设计模式-适配器模式">
+                  <i class="fa fa-angle-left"></i> 设计模式-适配器模式
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/11/02/JavaScript-%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84%E6%95%B0%E6%8D%AE%E5%B9%B3%E9%93%BA%E5%B1%95%E5%BC%80/" rel="next" title="JavaScript 树形结构数据平铺展开">
+                  JavaScript 树形结构数据平铺展开 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2016 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">toypipi</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">195k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">11:49</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

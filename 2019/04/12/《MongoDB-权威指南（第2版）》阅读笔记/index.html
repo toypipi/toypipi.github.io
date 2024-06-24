@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="第 1 章 MongoDB 简介MongoDB 是一款强大、灵活，且易于扩展的通用型数据库。它能扩展出非常多的功能，如二级索引（Secondary index）、范围查询（range query）、排序、聚合（aggregation），以及地理空间索引（geospatial inde）。 1.1 易于使用MongoDB 是一个面向文档（document-oriented）的数据库，而不是关系型数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《MongoDB 权威指南（第2版）》阅读笔记">
+<meta property="og:url" content="https://toypipi.github.io/2019/04/12/%E3%80%8AMongoDB-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Toypipi&#39;s blog">
+<meta property="og:description" content="第 1 章 MongoDB 简介MongoDB 是一款强大、灵活，且易于扩展的通用型数据库。它能扩展出非常多的功能，如二级索引（Secondary index）、范围查询（range query）、排序、聚合（aggregation），以及地理空间索引（geospatial inde）。 1.1 易于使用MongoDB 是一个面向文档（document-oriented）的数据库，而不是关系型数">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-04-12T09:02:37.000Z">
+<meta property="article:modified_time" content="2020-11-03T03:44:54.203Z">
+<meta property="article:author" content="toypipi">
+<meta property="article:tag" content="MongoDB">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://toypipi.github.io/2019/04/12/%E3%80%8AMongoDB-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://toypipi.github.io/2019/04/12/%E3%80%8AMongoDB-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/","path":"2019/04/12/《MongoDB-权威指南（第2版）》阅读笔记/","title":"《MongoDB 权威指南（第2版）》阅读笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>《MongoDB 权威指南（第2版）》阅读笔记 | Toypipi's blog</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?c228072b8c3657dfa7236914b308712c"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Toypipi's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC-1-%E7%AB%A0-MongoDB-%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">第 1 章 MongoDB 简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E6%98%93%E4%BA%8E%E4%BD%BF%E7%94%A8"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 易于使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E6%98%93%E4%BA%8E%E6%89%A9%E5%B1%95"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 易于扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E4%B8%B0%E5%AF%8C%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 丰富的功能</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC-2-%E7%AB%A0-MongoDB-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">2.</span> <span class="nav-text">第 2 章 MongoDB 基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E6%96%87%E6%A1%A3"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E9%9B%86%E5%90%88"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 集合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-%E5%8A%A8%E6%80%81%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 动态模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-%E5%91%BD%E5%90%8D"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 命名</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-%E5%90%AF%E5%8A%A8-MongoDB"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 启动 MongoDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-MongoDB-shell-%E7%AE%80%E4%BB%8B"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 MongoDB shell 简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-1-%E8%BF%90%E8%A1%8C-shell"><span class="nav-number">2.5.1.</span> <span class="nav-text">2.5.1 运行 shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-2-MongoDB-%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="nav-number">2.5.2.</span> <span class="nav-text">2.5.2 MongoDB 客户端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-3-shell-%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">2.5.3.</span> <span class="nav-text">2.5.3 shell 中的基本操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-2-%E6%97%A5%E6%9C%9F"><span class="nav-number">2.6.1.</span> <span class="nav-text">2.6.2 日期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-5-id-%E5%92%8C-ObjectId"><span class="nav-number">2.6.2.</span> <span class="nav-text">2.6.5 _id 和 ObjectId</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-%E4%BD%BF%E7%94%A8-MongoDB-Shell"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 使用 MongoDB Shell</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-1-shell-%E5%B0%8F%E8%B4%B4%E5%A3%AB"><span class="nav-number">2.7.1.</span> <span class="nav-text">2.7.1 shell 小贴士</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-2-%E4%BD%BF%E7%94%A8-shell-%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC"><span class="nav-number">2.7.2.</span> <span class="nav-text">2.7.2 使用 shell 执行脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-3-%E5%88%9B%E5%BB%BA-mongorc-js-%E6%96%87%E4%BB%B6"><span class="nav-number">2.7.3.</span> <span class="nav-text">2.7.3 创建 .mongorc.js 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-5-%E7%BC%96%E8%BE%91%E5%A4%8D%E5%90%88%E5%8F%98%E9%87%8F"><span class="nav-number">2.7.4.</span> <span class="nav-text">2.7.5 编辑复合变量</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC-3-%E7%AB%A0-%E5%88%9B%E5%BB%BA%E3%80%81%E6%9B%B4%E6%96%B0%E5%92%8C%E5%88%A0%E9%99%A4%E6%96%87%E6%A1%A3"><span class="nav-number">3.</span> <span class="nav-text">第 3 章 创建、更新和删除文档</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E6%8F%92%E5%85%A5%E5%B9%B6%E4%BF%9D%E5%AD%98%E6%96%87%E6%A1%A3"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 插入并保存文档</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1-%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.1.1 批量插入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E5%88%A0%E9%99%A4%E6%96%87%E6%A1%A3"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 删除文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-%E6%9B%B4%E6%96%B0%E6%96%87%E6%A1%A3"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 更新文档</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-1-%E6%96%87%E6%A1%A3%E6%9B%BF%E6%8D%A2"><span class="nav-number">3.3.1.</span> <span class="nav-text">3.3.1 文档替换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-2-%E4%BD%BF%E7%94%A8%E4%BF%AE%E6%94%B9%E5%99%A8"><span class="nav-number">3.3.2.</span> <span class="nav-text">3.3.2 使用修改器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-3-update-%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0"><span class="nav-number">3.3.3.</span> <span class="nav-text">3.3.3 update 函数参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-5-%E8%BF%94%E5%9B%9E%E8%A2%AB%E6%9B%B4%E6%96%B0%E7%9A%84%E6%96%87%E6%A1%A3"><span class="nav-number">3.3.4.</span> <span class="nav-text">3.3.5 返回被更新的文档</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC-4-%E7%AB%A0-%E6%9F%A5%E8%AF%A2"><span class="nav-number">4.</span> <span class="nav-text">第 4 章 查询</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-find-%E7%AE%80%E4%BB%8B"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 find 简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-1-%E6%8C%87%E5%AE%9A%E9%9C%80%E8%A6%81%E8%BF%94%E5%9B%9E%E7%9A%84%E9%94%AE"><span class="nav-number">4.1.1.</span> <span class="nav-text">4.1.1 指定需要返回的键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-1-%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6"><span class="nav-number">4.1.2.</span> <span class="nav-text">4.2.1 查询条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-2-OR-%E6%9F%A5%E8%AF%A2"><span class="nav-number">4.1.3.</span> <span class="nav-text">4.2.2 OR 查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-1-null"><span class="nav-number">4.1.4.</span> <span class="nav-text">4.3.1 null</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-2-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">4.1.5.</span> <span class="nav-text">4.3.2 正则表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-3-%E6%9F%A5%E8%AF%A2%E6%95%B0%E7%BB%84"><span class="nav-number">4.1.6.</span> <span class="nav-text">4.3.3 查询数组</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC-5-%E7%AB%A0-%E7%B4%A2%E5%BC%95"><span class="nav-number">5.</span> <span class="nav-text">第 5 章 索引</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-%E7%B4%A2%E5%BC%95%E7%AE%80%E4%BB%8B"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 索引简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-5-%E7%B4%A2%E5%BC%95%E5%9F%BA%E6%95%B0"><span class="nav-number">5.1.1.</span> <span class="nav-text">5.1.5 索引基数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4-%E7%B4%A2%E5%BC%95%E7%B1%BB%E5%9E%8B"><span class="nav-number">5.2.</span> <span class="nav-text">5.4 索引类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-1-%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95"><span class="nav-number">5.2.1.</span> <span class="nav-text">5.4.1 唯一索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-2-%E7%A8%80%E7%96%8F%E7%B4%A2%E5%BC%95"><span class="nav-number">5.2.2.</span> <span class="nav-text">5.4.2 稀疏索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-5-1-%E6%A0%87%E8%AF%86%E7%B4%A2%E5%BC%95"><span class="nav-number">5.2.3.</span> <span class="nav-text">5.5.1 标识索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-5-2-%E5%88%A0%E9%99%A4%E7%B4%A2%E5%BC%95"><span class="nav-number">5.2.4.</span> <span class="nav-text">5.5.2 删除索引</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC-6-%E7%AB%A0-%E7%89%B9%E6%AE%8A%E7%9A%84%E7%B4%A2%E5%BC%95%E5%92%8C%E9%9B%86%E5%90%88"><span class="nav-number">6.</span> <span class="nav-text">第 6 章 特殊的索引和集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1-%E5%9B%BA%E5%AE%9A%E9%9B%86%E5%90%88"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 固定集合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-1-%E5%88%9B%E5%BB%BA%E5%9B%BA%E5%AE%9A%E9%9B%86%E5%90%88"><span class="nav-number">6.1.1.</span> <span class="nav-text">6.1.1 创建固定集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-2-%E8%87%AA%E7%84%B6%E6%8E%92%E5%BA%8F"><span class="nav-number">6.1.2.</span> <span class="nav-text">6.1.2 自然排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-3-%E5%BE%AA%E7%8E%AF%E6%B8%B8%E6%A0%87"><span class="nav-number">6.1.3.</span> <span class="nav-text">6.1.3 循环游标</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2-TTL-%E7%B4%A2%E5%BC%95"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 TTL 索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-4-%E5%9C%B0%E7%90%86%E7%A9%BA%E9%97%B4%E7%B4%A2%E5%BC%95"><span class="nav-number">6.3.</span> <span class="nav-text">6.4 地理空间索引</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-1-%E5%9C%B0%E7%90%86%E7%A9%BA%E9%97%B4%E6%9F%A5%E8%AF%A2%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">6.3.1.</span> <span class="nav-text">6.4.1 地理空间查询的类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-3-2D-%E7%B4%A2%E5%BC%95"><span class="nav-number">6.3.2.</span> <span class="nav-text">6.4.3 2D 索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-5-%E4%BD%BF%E7%94%A8-GridFS-%E5%AD%98%E5%82%A8%E6%96%87%E4%BB%B6"><span class="nav-number">6.4.</span> <span class="nav-text">6.5 使用 GridFS 存储文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-5-1-GridFS-%E5%85%A5%E9%97%A8"><span class="nav-number">6.4.1.</span> <span class="nav-text">6.5.1 GridFS 入门</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC-7-%E7%AB%A0-%E8%81%9A%E5%90%88"><span class="nav-number">7.</span> <span class="nav-text">第 7 章 聚合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-1-%E8%81%9A%E5%90%88%E6%A1%86%E6%9E%B6"><span class="nav-number">7.1.</span> <span class="nav-text">7.1 聚合框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-2-%E7%AE%A1%E9%81%93%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">7.2.</span> <span class="nav-text">7.2 管道操作符</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="toypipi"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">toypipi</p>
+  <div class="site-description" itemprop="description">Stay focused, be present</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">289</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">381</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/toypipi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;toypipi" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:275688469@qq.com" title="E-Mail → mailto:275688469@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2019/04/12/%E3%80%8AMongoDB-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="《MongoDB 权威指南（第2版）》阅读笔记 | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《MongoDB 权威指南（第2版）》阅读笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-04-12 17:02:37" itemprop="dateCreated datePublished" datetime="2019-04-12T17:02:37+08:00">2019-04-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2020-11-03 11:44:54" itemprop="dateModified" datetime="2020-11-03T11:44:54+08:00">2020-11-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>7.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>26 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<h1 id="第-1-章-MongoDB-简介"><a href="#第-1-章-MongoDB-简介" class="headerlink" title="第 1 章 MongoDB 简介"></a>第 1 章 MongoDB 简介</h1><p>MongoDB 是一款强大、灵活，且易于扩展的通用型数据库。它能扩展出非常多的功能，如二级索引（Secondary index）、范围查询（range query）、排序、聚合（aggregation），以及地理空间索引（geospatial inde）。</p>
+<h2 id="1-1-易于使用"><a href="#1-1-易于使用" class="headerlink" title="1.1 易于使用"></a>1.1 易于使用</h2><p>MongoDB 是一个面向文档（document-oriented）的数据库，而不是关系型数据库。</p>
+<p>与关系型数据库相比，面向文档的数据库不再有“行”（row）的概念，取而代之的是更为灵活的“文档”（document）模型。通过在文档中嵌入文档和数组，面向文档的方法能够仅使用一条记录来表现复杂的层次关系。</p>
+<p>另外，不再有预定义模式（predefined schema）：文档的键（key）和值（value）不再是固定的类型和大小。根据需要添加或删除字段变得更容易了。通常，由于开发者能够进行快速迭代，所以开发进程得以加快。而且，试验更容易进行。开发者能尝试大量的数据模型，从中选择一个最好的。</p>
+<span id="more"></span>
+<h2 id="1-2-易于扩展"><a href="#1-2-易于扩展" class="headerlink" title="1.2 易于扩展"></a>1.2 易于扩展</h2><p>MongoDB 的设计采用横向扩展。面向文档的数据模型使它能很容易的在多台服务器之间进行数据分割。MongoDB 能自动处理跨集群的数据和负载，自动重新分配文档，以及将用户请求路由到正确的机器上。开发者只需要集中精力编写应用程序，而不需要考虑如何扩展的问题。如果一个集群需要更大的容量，只需要向集群添加新服务器，MongoDB 就会自动将现有数据向新服务传送。</p>
+<h2 id="1-3-丰富的功能"><a href="#1-3-丰富的功能" class="headerlink" title="1.3 丰富的功能"></a>1.3 丰富的功能</h2><ul>
+<li>索引<br>MongoDB 支持通用二级索引，允许多种快速查询，且提供唯一索引、复合索引、地理空间索引，以及全文索引。</li>
+<li>聚合<br>MongoDB 支持“聚合管道”（aggregation pipeline）。用户能通过简单地片段创建复杂的聚合，并通过数据库自动优化。</li>
+<li>特殊的集合类型<br>MongoDB 支持存在时间有限的集合，适用于那些将在某个时刻过期的数据，如会话（session）。类似地，MongoDB 也支持固定大小的集合，用于保存近期数据，如日志。</li>
+<li>文件存储（file storage）<br>MongoDB 支持一种非常易用的协议，用于存储大文件和文件元数据。</li>
+</ul>
+<h1 id="第-2-章-MongoDB-基础知识"><a href="#第-2-章-MongoDB-基础知识" class="headerlink" title="第 2 章 MongoDB 基础知识"></a>第 2 章 MongoDB 基础知识</h1><ul>
+<li>文档是 MongoDB 中数据库基本单元，非常类似于关系数据库管理系统中的行。</li>
+<li>集合（collection）可以看作是一个拥有动态模式（dynamic schema）的表。</li>
+<li>MongoDB 的一个实例可以拥有多个相互独立的数据库（database)，每一个数据库都有自己的集合。</li>
+<li>每一个文档都有一个特殊的键“_id“，这个键在文档所属的集合中是惟一的。</li>
+<li>MongoDB 自带了一个简单但功能强大的 JavaScript shell，可用于管理 MongoDB 的实例或数据操作。</li>
+</ul>
+<h2 id="2-1-文档"><a href="#2-1-文档" class="headerlink" title="2.1 文档"></a>2.1 文档</h2><p>文档是 MongoDB 的核心概念。文档就是键值对的一个有序集。文档中的值可以是多种不同的数据类型（甚至可以是一个完整的内嵌文档）。</p>
+<p>文档的键是字符串，除了少数例外情况，键可以使用任意 UTF-8 字符。</p>
+<ul>
+<li>键不能含有 \0 (空字符)。这个字符用于表示键的结尾。</li>
+<li>. 和 $ 具有特殊意义，只能在特定环境下使用。通常这两个字符是被保留的。</li>
+</ul>
+<p>MongoDB 不但区分类型，还区分大小写。</p>
+<p>MongoDB 的文档不能有重复的键。</p>
+<h2 id="2-2-集合"><a href="#2-2-集合" class="headerlink" title="2.2 集合"></a>2.2 集合</h2><p>集合就是一组文档。</p>
+<h3 id="2-2-1-动态模式"><a href="#2-2-1-动态模式" class="headerlink" title="2.2.1 动态模式"></a>2.2.1 动态模式</h3><p>集合是动态模式的。在一个集合里面的文档可以是各式各样的。例如，下面两个文档可以存储在同一个集合里面：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;greeting&quot;:&quot;hello,world!&quot;&#125;</span><br><span class="line">&#123;&quot;foo&quot;:5&#125;</span><br></pre></td></tr></table></figure>
+
+<p>既然没有必要区分不同类型文档的模式，为什么还要使用多个集合呢？这里有几个重要的原因：</p>
+<ul>
+<li>如果把各种各样的文档不加区分地放在同一个集合里，无论对开发者还是管理员来说都是噩梦。开发者要么确保每次查询只返回固定类型的文档，要么让执行查询的应用程序来处理所有不同类型的文档。</li>
+<li>在一个集合里查询特定类型的文档在速度上也不划算，分开查询多个集合要快得多。</li>
+<li>把同种类型的文档放在一个集合里，数据会更加集中。</li>
+<li>创建索引时，需要使用文档的附加结构（特别是创建唯一索引时）。索引时按照集合来定义的。在一个集合中只放入一种类型的文档，可以更有效地对集合进行索引。</li>
+</ul>
+<h3 id="2-2-2-命名"><a href="#2-2-2-命名" class="headerlink" title="2.2.2 命名"></a>2.2.2 命名</h3><p>集合名可以是满足下列条件的任意 UTF-8 字符串。</p>
+<ul>
+<li>集合名不能是空字符串（“”）。</li>
+<li>集合名不能包含 \0 字符（空字符），这个字符表示集合名的结束。</li>
+<li>集合名不能以 ”system.“ 开头，这是为系统集合保留的前缀。如，system.user 这个集合保存着数据库的用户信息。</li>
+<li>用户创建的集合不能在集合名中包含保留字符 ‘$’，。因为某些系统生成的集合中包含 $ ，很多驱动程序确实支持在集合名里包含该字符。除非你要访问这种系统创建的集合，否则不应该在集合名中包含 $ 。</li>
+</ul>
+<p>** 子集合 **<br>组织集合的一种惯例是使用 “.” 分隔不同命名空间的子集合。例如，一个具有博客功能的应用可能包含两个集合，分别是 blog.posts 和 blog.authors。这是为了使组织结构更清晰。</p>
+<h2 id="2-3-数据库"><a href="#2-3-数据库" class="headerlink" title="2.3 数据库"></a>2.3 数据库</h2><p>在 MongoDB 中，多个文档组成集合，而多个集合组成可以组成<strong>数据库</strong>。一个 MongoDB 实例可以承载多个数据库，每个数据库拥有 0 个或者多个集合。每个数据库都有独立的权限，在磁盘上，不同的数据库也放置在不同的文件中。一般将一个应用程序的所有数据都存储在同一个数据库中。要存储多个应用程序，就需要使用不同的数据库。</p>
+<p>数据库可以是满足以下条件的任意 UTF-8 字符串。</p>
+<ul>
+<li>不能是空字符串 (“”).</li>
+<li>不能含有 &#x2F;、\、.、”、*、&lt;、&gt;、:、|、?、$、\0. 基本上，只能使用 ASCII 中的字母和数字。</li>
+<li>数据库名区分大小写。简单起见，数据库名应全部小写。</li>
+<li>数据库名最多为 64 字节。</li>
+</ul>
+<p>保留的数据库名：</p>
+<ul>
+<li>admin</li>
+<li>local</li>
+<li>config</li>
+</ul>
+<p>把数据库名添加到集合名前，得到集合的完全限定名，即命名空间（namdspace）。命名空间的长度不得超过 121 字节，且在实际使用中应小于 100 字节。</p>
+<h2 id="2-4-启动-MongoDB"><a href="#2-4-启动-MongoDB" class="headerlink" title="2.4 启动 MongoDB"></a>2.4 启动 MongoDB</h2><p>MongoDB 在没有参数的情况下会使用默认目录 &#x2F;data&#x2F;db . 如果参数目录不存在或不可写，服务器会启动失败。因此，在启动前创建数据目录非常重要。</p>
+<p>MongoDB 默认监听 27017 端口。如果端口被占用，则启动失败。</p>
+<h2 id="2-5-MongoDB-shell-简介"><a href="#2-5-MongoDB-shell-简介" class="headerlink" title="2.5 MongoDB shell 简介"></a>2.5 MongoDB shell 简介</h2><h3 id="2-5-1-运行-shell"><a href="#2-5-1-运行-shell" class="headerlink" title="2.5.1 运行 shell"></a>2.5.1 运行 shell</h3><p>MongoDB shell是一个功能完备的 JavaScript 解释器，可运行任意 JavaScript 程序。如进行简单的数学运算、利用 JavaScript 的标准库还可以定义和调用 JavaScript 函数。</p>
+<h3 id="2-5-2-MongoDB-客户端"><a href="#2-5-2-MongoDB-客户端" class="headerlink" title="2.5.2 MongoDB 客户端"></a>2.5.2 MongoDB 客户端</h3><p>查看 db 当前指向哪个数据库</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db</span><br></pre></td></tr></table></figure>
+<p>选择数据库</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use test</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-3-shell-中的基本操作"><a href="#2-5-3-shell-中的基本操作" class="headerlink" title="2.5.3 shell 中的基本操作"></a>2.5.3 shell 中的基本操作</h3><p>创建、读取、更新和删除</p>
+<p>1.创建</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">post = &#123;<span class="string">&quot;title&quot;</span>:<span class="string">&quot;My Blog Post&quot;</span>,</span><br><span class="line"><span class="string">&quot;content&quot;</span>:<span class="string">&quot;Here&#x27;s my blog post.&quot;</span>,</span><br><span class="line"><span class="string">&quot;date&quot;</span>:<span class="keyword">new</span> <span class="title class_">Date</span>()&#125;</span><br></pre></td></tr></table></figure>
+<p>使用 insert 方法将其保存到 blog 集合中：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">blog</span>.<span class="title function_">insert</span>(post)</span><br></pre></td></tr></table></figure>
+<p>查看</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">blog</span>.<span class="title function_">find</span>()</span><br></pre></td></tr></table></figure>
+
+<p>2.读取<br>find 和 findOne 方法可以用于查询集合里的文档。若只想查看一个文档，可用 findOne:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">blog</span>.<span class="title function_">findOne</span>()</span><br></pre></td></tr></table></figure>
+
+<p>3.更新<br>update 接受（至少）两个参数：第一个是限定条件（用于匹配待更新的文档），第二个是新的文档。假设我们要为先前写的文章增加评论功能，就需要增加一个新的键，用于保存评论数组。</p>
+<p>首先，修改变量 post，增加 “comments” 键：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post.<span class="property">comments</span> = []</span><br></pre></td></tr></table></figure>
+
+<p>然后执行 update 操作：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">blog</span>.<span class="title function_">update</span>(&#123;<span class="attr">title</span>:<span class="string">&quot;My Blog Post&quot;</span>&#125;,post)</span><br></pre></td></tr></table></figure>
+
+<p>4.删除<br>使用 remove 方法可将文档从数据库中永久删除。它可以接受一个作为限定条件的文档作为参数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">blog</span>.<span class="title function_">remove</span>(&#123;<span class="attr">title</span>:<span class="string">&quot;My Blog Post&quot;</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-6-数据类型"><a href="#2-6-数据类型" class="headerlink" title="2.6 数据类型"></a>2.6 数据类型</h2><ul>
+<li><p>null<br>null 用于表示空值或者不存在的字段：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;x&quot;</span>:<span class="literal">null</span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>布尔型<br>有两个值 true 或 false：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;x&quot;</span>:<span class="string">&quot;false&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数值<br>shell 默认使用 64 位浮点型数值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;x&quot;</span>:<span class="number">3.14</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>或：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;x&quot;</span>:<span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>对于整型值，可使用 NuberInt 类（4字节带符号整数）或 NumberLong 类（8字符带符号整数）：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;x&quot;</span>:<span class="title class_">NumberInt</span>(<span class="string">&quot;3&quot;</span>)&#125;</span><br><span class="line">&#123;<span class="string">&quot;x&quot;</span>:<span class="title class_">NumberLong</span>(<span class="string">&quot;3&quot;</span>)&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>字符串<br>UTF-8 字符串都可表示为字符串类型的数据：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;x&quot;</span>:<span class="string">&quot;foobar&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>日期<br>日期被存储为自新纪元以来经过的毫秒数，不存储时区：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;x&quot;</span>:<span class="keyword">new</span> <span class="title class_">Date</span>()&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>正则表达式<br>查询时，使用正则表达式作为限定条件，语法也与 JavaScript 的正则表达式语法相同：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;x&quot;</span>:<span class="regexp">/foobar/i</span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数组<br>数据列表或数据集可以表示为数组；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;x&quot;</span>:[<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;c&quot;</span>]&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>内嵌文档<br>文档可嵌套其他文档，被嵌套的文档作为父文档的值：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;x&quot;</span>:&#123;<span class="string">&quot;foo&quot;</span>:<span class="string">&quot;bar&quot;</span>&#125;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对象 id<br>对象 id 是一个 12 字节的 ID，是文档的唯一标识</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;x&quot;</span>:<span class="title class_">ObjectId</span>()&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>二进制数据<br>二进制数据时一个任意字节的字符串。它不能直接在 shell 中使用。如果要将非 UTF-8 字符保存到数据库中，二进制数据是唯一的方式。</p>
+</li>
+<li><p>代码<br>查询和文档中可以包括任意 JavaScript 代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;x&quot;</span>:<span class="keyword">function</span>(<span class="params"></span>)&#123;<span class="comment">/*...*/</span>&#125;&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2-6-2-日期"><a href="#2-6-2-日期" class="headerlink" title="2.6.2 日期"></a>2.6.2 日期</h3><p>在 JavaScript 中， Date 类可以用作 MongoDB 的日期类型。创建日期对象时，应使用 new Date(…).</p>
+<h3 id="2-6-5-id-和-ObjectId"><a href="#2-6-5-id-和-ObjectId" class="headerlink" title="2.6.5 _id 和 ObjectId"></a>2.6.5 _id 和 ObjectId</h3><p>MongoDB 中存储的文档必须包含一个 “_id” 键。这个键可以是任何类型的，默认是 ObjectId 对象。在一个集合里面，每个文档都有唯一的 “_id”, 确保集合里面每个文档都能被唯一标识。</p>
+<p>1.ObjectId<br>ObjectId 是 “_id” 的默认类型。它被设计成轻量型的，不同的机器都能用全局唯一的同种方法方便地生成它。</p>
+<p>ObjectId 使用 12 字节的存储空间，是一个由 24 个十六进制数字组成的字符串（每个字节可以存储两个十六进制数组）。</p>
+<p>ObjectId 的前 4 个字节是从标准纪元开始的时间戳，单位为秒。接下来的 3 字节是所在主机的唯一标示符。通常是机器主机名的散列值（hash）。这样就可以确保不同主机生成不同的 ObjectId 而不产生冲突。接下来的两字节来自产生 ObjectId 的进程的进程标识符（PID），这样可以确保在同一台机器上并发的多个进程产生的 ObjectId 是惟一的。</p>
+<p>前 9 字节保证了同一秒钟不同机器不同进程产生的 ObjectId 是惟一的。最后 3 字节是一个自动增加的计数器，确保相同进程同一秒产生的 ObjectId 也是不一样的。一秒钟最多允许每个进程拥有 256<sup>3</sup>(16 777 216) 个不同的 ObjectId。</p>
+<h2 id="2-7-使用-MongoDB-Shell"><a href="#2-7-使用-MongoDB-Shell" class="headerlink" title="2.7 使用 MongoDB Shell"></a>2.7 使用 MongoDB Shell</h2><p>连接 MongoDB 实例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo some-<span class="attr">host</span>:<span class="number">27017</span>/myDB</span><br></pre></td></tr></table></figure>
+<p>启动 mongo shell 时不连接到任何 mongod ：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo --nodb</span><br></pre></td></tr></table></figure>
+<p>启动之后，在需要时运行 new Mongo(hostname) 命令就可以连接到想要的 mongod 了：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conn = <span class="keyword">new</span> <span class="title class_">Mongo</span>(<span class="string">&quot;localhost:27017&quot;</span>)</span><br><span class="line">db = conn.<span class="title function_">getDB</span>(<span class="string">&quot;test&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-7-1-shell-小贴士"><a href="#2-7-1-shell-小贴士" class="headerlink" title="2.7.1 shell 小贴士"></a>2.7.1 shell 小贴士</h3><p>由于 mongo 是一个简化的 JavaScript shell，可以通过查看 JavaScript 的在线文档得到大量帮助。可以使用 help 命令查看 MongoDB 特有的功能。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">help</span><br><span class="line">db.<span class="title function_">help</span>() <span class="comment">//查看数据库级别的帮助</span></span><br><span class="line">db.<span class="property">foo</span>.<span class="title function_">help</span>() <span class="comment">//查看集合级别的帮助</span></span><br></pre></td></tr></table></figure>
+<p>如果想知道一个函数是做什么用的，可以直接在 shell 输入函数名（函数名后不要加小括号），这样就可以看到相应函数的 JavaScript 实现代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">foo</span>.<span class="property">update</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-7-2-使用-shell-执行脚本"><a href="#2-7-2-使用-shell-执行脚本" class="headerlink" title="2.7.2 使用 shell 执行脚本"></a>2.7.2 使用 shell 执行脚本</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo script1.<span class="property">js</span> script2.<span class="property">js</span> script3.<span class="property">js</span></span><br></pre></td></tr></table></figure>
+<p>mongo shell 会依次执行传入的脚本，然后退出。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo --quiet server-<span class="number">1</span>:<span class="number">27017</span>/foo script1.<span class="property">js</span> script2.<span class="property">js</span> script3.<span class="property">js</span></span><br></pre></td></tr></table></figure>
+<p>这样可以将 db 指向 server-1:27017 上的 foo 数据库，然后执行这三个脚本。运行 shell 时指定的命令行选项要出现在地址之前。</p>
+<p>可以使用 load() 函数，从交互式 shell 中运行脚本：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">load</span>(<span class="string">&quot;script1.js&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>可以使用脚本将变量注入到 shell 中。例如，在操作系统中创建如下脚本：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> connectTo = <span class="keyword">function</span>(<span class="params">port,dbname</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(!port)&#123;</span><br><span class="line">        port = <span class="number">27017</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(!dbname)&#123;</span><br><span class="line">        dbname = <span class="string">&quot;test&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    db = <span class="title function_">connect</span>(<span class="string">&quot;localhost:&quot;</span> + port + <span class="string">&quot;/&quot;</span> + dbname);</span><br><span class="line">    <span class="keyword">return</span> db</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>在 mongo shell 中加载这个脚本， connectTo 函数就可以使用了：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">load</span>(<span class="string">&#x27;defineConnectTo.js&#x27;</span>)</span><br><span class="line"><span class="keyword">typeof</span> connectTo</span><br></pre></td></tr></table></figure>
+<p>默认情况下，shell 会在运行 shell 时所处的目录中查找脚本（可以使用 run(“pwd””) 命令查看）。也可以在 load 函数中指定一个相对路径或者绝对路径。也可以使用 run() 函数来执行命令行程序。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">run</span>(<span class="string">&quot;ls&quot;</span>,<span class="string">&quot;-l&quot;</span>,<span class="string">&quot;/&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-7-3-创建-mongorc-js-文件"><a href="#2-7-3-创建-mongorc-js-文件" class="headerlink" title="2.7.3 创建 .mongorc.js 文件"></a>2.7.3 创建 .mongorc.js 文件</h3><p>如果某些脚本被频繁加载，可以将它们添加到 .mongorc.js 文件中，这个文件在启动 shell 时自动运行。将该文件放在当前用户的主目录下，如 &#x2F;root 目录下。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定制欢迎内容</span></span><br><span class="line"><span class="keyword">var</span> compliment = [<span class="string">&quot;attractive&quot;</span>,<span class="string">&quot;intelligent&quot;</span>,<span class="string">&quot;like Batman&quot;</span>];</span><br><span class="line"><span class="keyword">var</span> index = <span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>()*<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line"><span class="title function_">print</span>(<span class="string">&quot;Hello, you&#x27;re looking particularly &quot;</span> + compliment[index] + <span class="string">&quot; today!&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> no = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title function_">print</span>(<span class="string">&quot;Not on my watch.&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 禁止删除数据库</span></span><br><span class="line">db.<span class="property">dropDatabase</span> = <span class="variable constant_">DB</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">dropDatabase</span> = no;</span><br><span class="line"><span class="comment">// 禁止删除集合</span></span><br><span class="line"><span class="title class_">DBCollection</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">drop</span> = no;</span><br><span class="line"><span class="comment">// 禁止删除索引</span></span><br><span class="line"><span class="title class_">DBCollection</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">dropIndex</span> = no;</span><br><span class="line"><span class="comment">// 定制 shell 提示</span></span><br><span class="line">prompt = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> db == <span class="string">&#x27;undefined&#x27;</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;(nodb)&gt;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        db.<span class="title function_">runCommand</span>(&#123;<span class="attr">getLastError</span>:<span class="number">1</span>&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span>(e)&#123;</span><br><span class="line">        <span class="title function_">print</span>(e);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> db+<span class="string">&quot;&gt;&quot;</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="2-7-5-编辑复合变量"><a href="#2-7-5-编辑复合变量" class="headerlink" title="2.7.5 编辑复合变量"></a>2.7.5 编辑复合变量</h3><p>对于大块代码或者对象，可以调用操作系统编辑器。在 shell 中设置 EDITOR 变量，也可以在 .mongorc.js 文件中添加一行内容： EDITOR&#x3D;”编辑器路径”，以后就不用单独设置了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">EDITOR</span>=<span class="string">&quot;/usr/bin/vim&quot;</span></span><br><span class="line"><span class="keyword">var</span> wap = db.<span class="property">col</span>.<span class="title function_">findOne</span>(&#123;<span class="attr">x</span>:<span class="number">1</span>&#125;)</span><br><span class="line">edit wap</span><br></pre></td></tr></table></figure>
+<h1 id="第-3-章-创建、更新和删除文档"><a href="#第-3-章-创建、更新和删除文档" class="headerlink" title="第 3 章 创建、更新和删除文档"></a>第 3 章 创建、更新和删除文档</h1><h2 id="3-1-插入并保存文档"><a href="#3-1-插入并保存文档" class="headerlink" title="3.1 插入并保存文档"></a>3.1 插入并保存文档</h2><p>插入一个文档使用 insertOne 方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">inventory</span>.<span class="title function_">insertOne</span>(</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">&quot;canvas&quot;</span>, <span class="attr">qty</span>: <span class="number">100</span>, <span class="attr">tags</span>: [<span class="string">&quot;cotton&quot;</span>], <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">28</span>, <span class="attr">w</span>: <span class="number">35.5</span>, <span class="attr">uom</span>: <span class="string">&quot;cm&quot;</span> &#125; &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="3-1-1-批量插入"><a href="#3-1-1-批量插入" class="headerlink" title="3.1.1 批量插入"></a>3.1.1 批量插入</h3><p>批量插入速度会更快一些：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">inventory</span>.<span class="title function_">insertMany</span>([</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">&quot;journal&quot;</span>, <span class="attr">qty</span>: <span class="number">25</span>, <span class="attr">tags</span>: [<span class="string">&quot;blank&quot;</span>, <span class="string">&quot;red&quot;</span>], <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">14</span>, <span class="attr">w</span>: <span class="number">21</span>, <span class="attr">uom</span>: <span class="string">&quot;cm&quot;</span> &#125; &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">&quot;mat&quot;</span>, <span class="attr">qty</span>: <span class="number">85</span>, <span class="attr">tags</span>: [<span class="string">&quot;gray&quot;</span>], <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">27.9</span>, <span class="attr">w</span>: <span class="number">35.5</span>, <span class="attr">uom</span>: <span class="string">&quot;cm&quot;</span> &#125; &#125;,</span><br><span class="line">   &#123; <span class="attr">item</span>: <span class="string">&quot;mousepad&quot;</span>, <span class="attr">qty</span>: <span class="number">25</span>, <span class="attr">tags</span>: [<span class="string">&quot;gel&quot;</span>, <span class="string">&quot;blue&quot;</span>], <span class="attr">size</span>: &#123; <span class="attr">h</span>: <span class="number">19</span>, <span class="attr">w</span>: <span class="number">22.85</span>, <span class="attr">uom</span>: <span class="string">&quot;cm&quot;</span> &#125; &#125;</span><br><span class="line">])</span><br><span class="line">db.<span class="property">inventory</span>.<span class="title function_">find</span>()</span><br></pre></td></tr></table></figure>
+<p>如果集合当前不存在，则插入操作将创建集合。</p>
+<h2 id="3-2-删除文档"><a href="#3-2-删除文档" class="headerlink" title="3.2 删除文档"></a>3.2 删除文档</h2><p>删除集合中的所有元素，但不会删除集合本身。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">foo</span>.<span class="title function_">remove</span>(&#123;&#125;)</span><br></pre></td></tr></table></figure>
+<p>remove 函数接受一个查询文档作为可选参数。只有符合条件的文档才会被删除。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">mailing</span>.<span class="property">list</span>.<span class="title function_">remove</span>(&#123;<span class="string">&quot;opt-out&quot;</span>:<span class="literal">true</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>删除数据是永久性的，不能撤销，也不能恢复。</p>
+<p>删除集合中的所有元素，同时删除集合本身。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">foo</span>.<span class="title function_">drop</span>()</span><br></pre></td></tr></table></figure>
+<h2 id="3-3-更新文档"><a href="#3-3-更新文档" class="headerlink" title="3.3 更新文档"></a>3.3 更新文档</h2><h3 id="3-3-1-文档替换"><a href="#3-3-1-文档替换" class="headerlink" title="3.3.1 文档替换"></a>3.3.1 文档替换</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;_id&quot;</span>:<span class="title class_">ObjectId</span>(<span class="string">&quot;5cb6e441040c0c1ce40033a7&quot;</span>),</span><br><span class="line">    <span class="string">&quot;name&quot;</span>:<span class="string">&quot;joe&quot;</span>,</span><br><span class="line">    <span class="string">&quot;friends&quot;</span>:<span class="number">32</span>,</span><br><span class="line">    <span class="string">&quot;enimes&quot;</span>:<span class="number">2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>假如要将以上文档中的 “friends” 和 “enemies” 两个字段移到 “relationships” 子文档中，可以这么做：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> joe=db.<span class="property">users</span>.<span class="title function_">findOne</span>(&#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;joe&quot;</span>&#125;)</span><br><span class="line">joe.<span class="property">relationships</span>=&#123;<span class="string">&quot;friendd&quot;</span>:joe.<span class="property">friends</span>,<span class="string">&quot;enemies&quot;</span>:joe.<span class="property">enemies</span>&#125;</span><br><span class="line">joe.<span class="property">username</span>=joe.<span class="property">name</span></span><br><span class="line"><span class="keyword">delete</span> joe.<span class="property">friends</span></span><br><span class="line"><span class="keyword">delete</span> joe.<span class="property">enemies</span></span><br><span class="line"><span class="keyword">delete</span> joe.<span class="property">name</span></span><br><span class="line">db.<span class="property">users</span>.<span class="title function_">update</span>(&#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;joe&quot;</span>&#125;,joe)</span><br></pre></td></tr></table></figure>
+<h3 id="3-3-2-使用修改器"><a href="#3-3-2-使用修改器" class="headerlink" title="3.3.2 使用修改器"></a>3.3.2 使用修改器</h3><p>1.”$set” 修改器入门<br>“$set” 用来指定一个字段的值，如果该字段不存在，则创建它。</p>
+<p>例如，用户资料存储在下面的文档里：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;_id&quot;</span>: <span class="title class_">ObjectId</span>(<span class="string">&quot;5cb6ee4a040c0c1ce40033a9&quot;</span>),</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;joe&quot;</span>,</span><br><span class="line">    <span class="string">&quot;age&quot;</span>: <span class="number">30</span>,</span><br><span class="line">    <span class="string">&quot;sex&quot;</span>: <span class="string">&quot;male&quot;</span>,</span><br><span class="line">    <span class="string">&quot;location&quot;</span>: <span class="string">&quot;Wisconsin&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>要想添加喜欢的书籍进去，可以使用 “$set”：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">users</span>.<span class="title function_">update</span>(&#123;<span class="string">&quot;_id&quot;</span>:<span class="title class_">ObjectId</span>(<span class="string">&quot;5cb6ee4a040c0c1ce40033a9&quot;</span>)&#125;,&#123;<span class="string">&quot;$set&quot;</span>:&#123;<span class="string">&quot;favorite book&quot;</span>:<span class="string">&quot;War and Peace&quot;</span>&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<p>也可以将喜欢的书籍更改为其他值：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">users</span>.<span class="title function_">update</span>(&#123;<span class="string">&quot;_id&quot;</span>:<span class="title class_">ObjectId</span>(<span class="string">&quot;5cb6ee4a040c0c1ce40033a9&quot;</span>)&#125;,&#123;<span class="string">&quot;$set&quot;</span>:&#123;<span class="string">&quot;favorite book&quot;</span>:<span class="string">&quot;Green Eggs and Ham&quot;</span>&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<p>使用 “$set” 甚至可以修改键的类型：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">users</span>.<span class="title function_">update</span>(&#123;<span class="string">&quot;_id&quot;</span>:<span class="title class_">ObjectId</span>(<span class="string">&quot;5cb6ee4a040c0c1ce40033a9&quot;</span>)&#125;,&#123;<span class="string">&quot;$set&quot;</span>:&#123;<span class="string">&quot;favorite book&quot;</span>:[<span class="string">&quot;Green Eggs and Ham&quot;</span>,<span class="string">&quot;Cat&#x27;s Cradle&quot;</span>,<span class="string">&quot;Foundation Trilogy&quot;</span>]&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<p>可以使用 “$unset” 将这个键完全删除：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">users</span>.<span class="title function_">update</span>(&#123;<span class="string">&quot;_id&quot;</span>:<span class="title class_">ObjectId</span>(<span class="string">&quot;5cb6ee4a040c0c1ce40033a9&quot;</span>)&#125;,&#123;<span class="string">&quot;$unset&quot;</span>:&#123;<span class="string">&quot;favorite book&quot;</span>:<span class="number">1</span>&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<p>也可以使用 “$set” 修改内嵌文档。</p>
+<p>2.增加或减少<br>“$inc” 修改器用来增加已有键的值，没有该键则直接创建一个。例如，更新集合 inventory 中 item 为 canvas 的文档，使其 qty 值增加，可以这么写：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">inventory</span>.<span class="title function_">findOne</span>()</span><br><span class="line">db.<span class="property">inventory</span>.<span class="title function_">update</span>(&#123;<span class="string">&quot;item&quot;</span>:<span class="string">&quot;canvas&quot;</span>&#125;,&#123;<span class="string">&quot;$inc&quot;</span>:&#123;<span class="string">&quot;qty&quot;</span>:<span class="number">2</span>&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<p>3.数组修改器</p>
+<ul>
+<li>添加元素<br>如果数组已经存在，”$push” 会向已有的数组末尾加入一个元素，要是没有就创建一个新的数组。例如，假设要存储博客文章，要添加一个用于保存数组的 “comments” 键。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.<span class="property">blog</span>.<span class="property">posts</span>.<span class="title function_">findOne</span>(<span class="params"></span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;_id&quot;</span>: <span class="title class_">ObjectId</span>(<span class="string">&quot;5cb81579040c0c1ce40033aa&quot;</span>),</span><br><span class="line">    <span class="string">&quot;title&quot;</span>: <span class="string">&quot;A blog post&quot;</span>,</span><br><span class="line">    <span class="string">&quot;content&quot;</span>: <span class="string">&quot;bla bla bla&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">&gt; db.<span class="property">blog</span>.<span class="property">posts</span>.<span class="title function_">update</span>(&#123;<span class="string">&quot;title&quot;</span>:<span class="string">&quot;A blog post&quot;</span>&#125;, &#123;<span class="string">&quot;$push&quot;</span>:&#123;<span class="string">&quot;comments&quot;</span>:&#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;joe&quot;</span>,<span class="string">&quot;email&quot;</span>:<span class="string">&quot;joe@example.com&quot;</span>,<span class="string">&quot;content&quot;</span>:<span class="string">&quot;nice post.&quot;</span>&#125;&#125;&#125;)</span><br><span class="line">&gt; db.<span class="property">blog</span>.<span class="property">posts</span>.<span class="title function_">findOne</span>(<span class="params"></span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;_id&quot;</span>: <span class="title class_">ObjectId</span>(<span class="string">&quot;5cb81579040c0c1ce40033aa&quot;</span>),</span><br><span class="line">    <span class="string">&quot;title&quot;</span>: <span class="string">&quot;A blog post&quot;</span>,</span><br><span class="line">    <span class="string">&quot;content&quot;</span>: <span class="string">&quot;bla bla bla&quot;</span>,</span><br><span class="line">    <span class="string">&quot;comments&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&quot;name&quot;</span>: <span class="string">&quot;joe&quot;</span>,</span><br><span class="line">            <span class="string">&quot;email&quot;</span>: <span class="string">&quot;joe@example.com&quot;</span>,</span><br><span class="line">            <span class="string">&quot;content&quot;</span>: <span class="string">&quot;nice post.&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+如果还想添加一条评论，继续使用 “$push”：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.<span class="property">blog</span>.<span class="property">posts</span>.<span class="title function_">update</span>(&#123;<span class="string">&quot;title&quot;</span>:<span class="string">&quot;A blog post&quot;</span>&#125;, &#123;<span class="string">&quot;$push&quot;</span>:&#123;<span class="string">&quot;comments&quot;</span>:&#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;bob&quot;</span>,<span class="string">&quot;email&quot;</span>:<span class="string">&quot;bob@example.com&quot;</span>,<span class="string">&quot;content&quot;</span>:<span class="string">&quot;good post.&quot;</span>&#125;&#125;&#125;)</span><br><span class="line">&gt; db.<span class="property">blog</span>.<span class="property">posts</span>.<span class="title function_">findOne</span>(<span class="params"></span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;_id&quot;</span>: <span class="title class_">ObjectId</span>(<span class="string">&quot;5cb81579040c0c1ce40033aa&quot;</span>),</span><br><span class="line">    <span class="string">&quot;title&quot;</span>: <span class="string">&quot;A blog post&quot;</span>,</span><br><span class="line">    <span class="string">&quot;content&quot;</span>: <span class="string">&quot;bla bla bla&quot;</span>,</span><br><span class="line">    <span class="string">&quot;comments&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&quot;name&quot;</span>: <span class="string">&quot;joe&quot;</span>,</span><br><span class="line">            <span class="string">&quot;email&quot;</span>: <span class="string">&quot;joe@example.com&quot;</span>,</span><br><span class="line">            <span class="string">&quot;content&quot;</span>: <span class="string">&quot;nice post.&quot;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&quot;name&quot;</span>: <span class="string">&quot;bob&quot;</span>,</span><br><span class="line">            <span class="string">&quot;email&quot;</span>: <span class="string">&quot;bob@example.com&quot;</span>,</span><br><span class="line">            <span class="string">&quot;content&quot;</span>: <span class="string">&quot;good post.&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+使用 “$each” 子操作符，可以通过一次 “$push” 操作添加多个值：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.<span class="property">blog</span>.<span class="property">posts</span>.<span class="title function_">update</span>(&#123;<span class="string">&quot;title&quot;</span>:<span class="string">&quot;A blog post&quot;</span>&#125;, &#123;<span class="string">&quot;$push&quot;</span>:&#123;<span class="string">&quot;tickets&quot;</span>:&#123;<span class="string">&quot;$each&quot;</span>:[<span class="number">10</span>,<span class="number">20</span>,<span class="number">15</span>]&#125;&#125;&#125;)</span><br><span class="line">&gt; db.<span class="property">blog</span>.<span class="property">posts</span>.<span class="title function_">findOne</span>(<span class="params"></span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;_id&quot;</span>: <span class="title class_">ObjectId</span>(<span class="string">&quot;5cb81579040c0c1ce40033aa&quot;</span>),</span><br><span class="line">    <span class="string">&quot;title&quot;</span>: <span class="string">&quot;A blog post&quot;</span>,</span><br><span class="line">    <span class="string">&quot;content&quot;</span>: <span class="string">&quot;bla bla bla&quot;</span>,</span><br><span class="line">    <span class="string">&quot;comments&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&quot;name&quot;</span>: <span class="string">&quot;joe&quot;</span>,</span><br><span class="line">            <span class="string">&quot;email&quot;</span>: <span class="string">&quot;joe@example.com&quot;</span>,</span><br><span class="line">            <span class="string">&quot;content&quot;</span>: <span class="string">&quot;nice post.&quot;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&quot;name&quot;</span>: <span class="string">&quot;bob&quot;</span>,</span><br><span class="line">            <span class="string">&quot;email&quot;</span>: <span class="string">&quot;bob@example.com&quot;</span>,</span><br><span class="line">            <span class="string">&quot;content&quot;</span>: <span class="string">&quot;good post.&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;tickets&quot;</span>: [</span><br><span class="line">        <span class="number">10</span>,</span><br><span class="line">        <span class="number">20</span>,</span><br><span class="line">        <span class="number">15</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+如果希望数组的最大长度是固定的，那么可以将 “$slice” 和 “$push” 组合使用：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.<span class="property">blog</span>.<span class="property">posts</span>.<span class="title function_">update</span>(&#123;<span class="string">&quot;title&quot;</span>:<span class="string">&quot;A blog post&quot;</span>&#125;, &#123;<span class="string">&quot;$push&quot;</span>:&#123;<span class="string">&quot;top10&quot;</span>:&#123;<span class="string">&quot;$each&quot;</span>:[<span class="string">&quot;Nightmare on Elm Street&quot;</span>,<span class="string">&quot;Saw&quot;</span>],<span class="attr">$slice</span>:-<span class="number">10</span>&#125;&#125;&#125;)</span><br></pre></td></tr></table></figure>
+$slice 的值必须是负整数。</li>
+</ul>
+<p>如果数组的元素数量小于 10，那么所有元素都会保留。如果数组的元素数量大于 10，那么只要最后 10 个元素会保留。</p>
+<p>类似的用法如 $ne 和 $addToSet 不一一举例。用到的时候再查。</p>
+<ul>
+<li><p>删除元素<br>{$pop:{“key:”:1} 从数组末尾删除一个元素， {$pop:{“key:”:-1} 则从头部删除。<br>删除待办列表中的 laundry:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">lists</span>.<span class="title function_">update</span>(&#123;&#125;,&#123;<span class="attr">$pull</span>:&#123;<span class="string">&quot;todo:&quot;</span>:<span class="string">&quot;laundry&quot;</span>&#125;&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>基于位置的数组修改器<br>有两种方法操作数组中的值：通过位置或者定位操作符 “$” 。<br>数组下标都是从 0  开头的，可以将下标直接作为键来选择元素。<br>定位操作符 “$” 标识数组中要更新的元素，而不显式指定元素在数组中的位置。</p>
+</li>
+</ul>
+<p>例如，将 _id 为 1 的学生的成绩 80 改为 82，则可以这么做，而无需知道数组的下标：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.<span class="property">students</span>.<span class="title function_">insert</span>([</span><br><span class="line">   &#123; <span class="string">&quot;_id&quot;</span> : <span class="number">1</span>, <span class="string">&quot;grades&quot;</span> : [ <span class="number">85</span>, <span class="number">80</span>, <span class="number">80</span> ] &#125;,</span><br><span class="line">   &#123; <span class="string">&quot;_id&quot;</span> : <span class="number">2</span>, <span class="string">&quot;grades&quot;</span> : [ <span class="number">88</span>, <span class="number">90</span>, <span class="number">92</span> ] &#125;,</span><br><span class="line">   &#123; <span class="string">&quot;_id&quot;</span> : <span class="number">3</span>, <span class="string">&quot;grades&quot;</span> : [ <span class="number">85</span>, <span class="number">100</span>, <span class="number">90</span> ] &#125;</span><br><span class="line">])</span><br><span class="line">&gt; db.<span class="property">students</span>.<span class="title function_">updateOne</span>(</span><br><span class="line">   &#123; <span class="attr">_id</span>: <span class="number">1</span>, <span class="attr">grades</span>: <span class="number">80</span> &#125;,</span><br><span class="line">   &#123; <span class="attr">$set</span>: &#123; <span class="string">&quot;grades.$&quot;</span> : <span class="number">82</span> &#125; &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>定位符只更新第一个匹配的元素。</p>
+<p>以上更新操作符的具体用法请参考 mongoDB 官方文档 <a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/reference/operator/update/">Update Operators</a> 。</p>
+<h3 id="3-3-3-update-函数参数"><a href="#3-3-3-update-函数参数" class="headerlink" title="3.3.3 update 函数参数"></a>3.3.3 update 函数参数</h3><p>update 函数格式如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">collection</span>.<span class="title function_">update</span>(</span><br><span class="line">   &lt;query&gt;,</span><br><span class="line">   &lt;update&gt;,</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="attr">upsert</span>: &lt;boolean&gt;,</span><br><span class="line">     <span class="attr">multi</span>: &lt;boolean&gt;,</span><br><span class="line">     <span class="attr">writeConcern</span>: &lt;<span class="variable language_">document</span>&gt;,</span><br><span class="line">     <span class="attr">collation</span>: &lt;<span class="variable language_">document</span>&gt;,</span><br><span class="line">     <span class="attr">arrayFilters</span>: [ &lt;filterdocument1&gt;, ... ]</span><br><span class="line">   &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>当 upsert 设置为 true 时，则在没有文档与查询条件匹配时创建新文档。<br>当 multi 设置为true，则更新符合 query 条件的多个文档。</p>
+<h3 id="3-3-5-返回被更新的文档"><a href="#3-3-5-返回被更新的文档" class="headerlink" title="3.3.5 返回被更新的文档"></a>3.3.5 返回被更新的文档</h3><p>db.collection.findAndModify（） 方法可以修改并返回单个文档。其格式为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">collection</span>.<span class="property">findAndModify</span>（&#123; </span><br><span class="line">    query：&lt;<span class="variable language_">document</span>&gt;，</span><br><span class="line">    sort：&lt;<span class="variable language_">document</span>&gt;，</span><br><span class="line">    remove：&lt;boolean&gt;，</span><br><span class="line">    update：&lt;<span class="variable language_">document</span>&gt;，</span><br><span class="line">    <span class="keyword">new</span>：&lt;boolean&gt;，</span><br><span class="line">    fields：&lt;<span class="variable language_">document</span>&gt;，</span><br><span class="line">    upsert：&lt;boolean&gt;，</span><br><span class="line">    bypassDocumentValidation ：&lt;boolean&gt;，</span><br><span class="line">    writeConcern：&lt;<span class="variable language_">document</span>&gt;，</span><br><span class="line">    collat​​ion：&lt;<span class="variable language_">document</span>&gt;，</span><br><span class="line">    arrayFilters：[&lt;filterdocument1&gt;，...] </span><br><span class="line">&#125;）;</span><br></pre></td></tr></table></figure>
+<p>其中具体参数的使用请参照 mongoDB 官方文档。</p>
+<h1 id="第-4-章-查询"><a href="#第-4-章-查询" class="headerlink" title="第 4 章 查询"></a>第 4 章 查询</h1><h2 id="4-1-find-简介"><a href="#4-1-find-简介" class="headerlink" title="4.1 find 简介"></a>4.1 find 简介</h2><p>find 方法格式如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">collection</span>.<span class="title function_">find</span>(query, projection)</span><br></pre></td></tr></table></figure>
+<p>其中，参数说明如下:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>query</td>
+<td>document</td>
+<td>可选的。指定使用选择过滤查询操作。要返回集合中的所有文档，请省略此参数或传递空文档（{}）。</td>
+</tr>
+<tr>
+<td>projection</td>
+<td>document</td>
+<td>可选的。指定要在与查询过滤器匹配的文档中返回的字段。要返回匹配文档中的所有字段，请省略此参数。</td>
+</tr>
+</tbody></table>
+<p>例如：想要查找 “age” 值为 27 的所有文档，可以这样写：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.user.find(&#123;&quot;age&quot;:27&#125;)</span><br></pre></td></tr></table></figure>
+<p>可以向查询文档加入多个键&#x2F;值对，将多个查询条件组合在一起，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">user</span>.<span class="title function_">find</span>(&#123;<span class="string">&quot;age&quot;</span>:<span class="number">27</span>,<span class="string">&quot;username&quot;</span>:<span class="string">&quot;joe&quot;</span>&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="4-1-1-指定需要返回的键"><a href="#4-1-1-指定需要返回的键" class="headerlink" title="4.1.1 指定需要返回的键"></a>4.1.1 指定需要返回的键</h3><p>通过 find 或 findOne 的第二个参数指定想要返回的键。</p>
+<p>例如，如果只对用户集合的 “username” 和 “email” 键感兴趣，可以使用如下查询返回这些键：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">users</span>.<span class="title function_">find</span>(&#123;&#125;,&#123;<span class="string">&quot;username&quot;</span>:<span class="number">1</span>,<span class="string">&quot;email&quot;</span>:<span class="number">1</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>默认情况下， “_id” 这个键总是被返回。入股不需要查询返回某个键&#x2F;值对时，只需要将第二个参数的键的值设为 0 即可。</p>
+<p>##4.2 查询条件</p>
+<h3 id="4-2-1-查询条件"><a href="#4-2-1-查询条件" class="headerlink" title="4.2.1 查询条件"></a>4.2.1 查询条件</h3><p>比较操作符 “$lt”、”$lte”、”$gt” 、 “$gte” 和 “$ne” 分别对应 &lt;、&lt;&#x3D;、&gt; 、 &gt;&#x3D; 和 !&#x3D; 。例如，查询 18~30 岁（含）的用户，可以向下面这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">users</span>.<span class="title function_">find</span>(&#123;<span class="string">&quot;age&quot;</span>:&#123;<span class="string">&quot;$gte&quot;</span>:<span class="number">18</span>,<span class="string">&quot;$lte&quot;</span>:<span class="number">30</span>&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<p>这样的范围查询对日期尤为有用。例如，要查找在 2007 年 1 月 1 日前注册的人，可以像下面这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; start = <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&quot;01/01/2007&quot;</span>)</span><br><span class="line">&gt; db.<span class="property">users</span>.<span class="title function_">find</span>(&#123;<span class="string">&quot;registered&quot;</span>:&#123;<span class="string">&quot;$lt&quot;</span>:start&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="4-2-2-OR-查询"><a href="#4-2-2-OR-查询" class="headerlink" title="4.2.2 OR 查询"></a>4.2.2 OR 查询</h3><p>“$in” 可以查询一个键的多个值，”$or” 可以在多个键中查询任意的给定值。例如，抽奖活动的中奖号码是 725 、 542 和 390 ，要找出全部的中间文档的话，可以构建如下查询：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">raffle</span>.<span class="title function_">find</span>(&#123;<span class="string">&quot;ticket_no&quot;</span>:&#123;<span class="string">&quot;$in&quot;</span>:[<span class="number">725</span>,<span class="number">542</span>,<span class="number">390</span>]&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<p>“$in” 后面的数组可以包含不同类型的值。”$nin” 将返回与数组中所有条件都不匹配的文档。</p>
+<h3 id="4-3-1-null"><a href="#4-3-1-null" class="headerlink" title="4.3.1 null"></a>4.3.1 null</h3><p>null 不仅可以匹配自身，而且还会匹配不包含这个键的文档。。如果既要检查该键的值是否为 null，还要通过 “$exists” 条件判定键值已存在：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">c</span>.<span class="title function_">find</span>(&#123;<span class="string">&quot;z&quot;</span>:&#123;<span class="string">&quot;$in&quot;</span>:[<span class="literal">null</span>],<span class="string">&quot;$exists&quot;</span>:<span class="literal">true</span>&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="4-3-2-正则表达式"><a href="#4-3-2-正则表达式" class="headerlink" title="4.3.2 正则表达式"></a>4.3.2 正则表达式</h3><p>MongoDB 使用 <a target="_blank" rel="noopener" href="https://perldoc.perl.org/perlre.html">Perl 兼容的正则表达式库</a>(PCRE)来匹配正则表达式，任何 PCRE 支持的正则表达式语法都能被 MongoDB 接受。</p>
+<p>MongoDB 可以为前缀型正则表达式（比如 &#x2F;^joey&#x2F;）查询创建索引，所以这种类型的查询会非常高效。</p>
+<h3 id="4-3-3-查询数组"><a href="#4-3-3-查询数组" class="headerlink" title="4.3.3 查询数组"></a>4.3.3 查询数组</h3><p>1.$all<br>使用 $all 通过多个元素来匹配数组。例如，有以下数据：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;_id&quot;</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">&quot;fruit&quot;</span>: [</span><br><span class="line">        <span class="string">&quot;apple&quot;</span>,</span><br><span class="line">        <span class="string">&quot;banana&quot;</span>,</span><br><span class="line">        <span class="string">&quot;peach&quot;</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;_id&quot;</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">&quot;fruit&quot;</span>: [</span><br><span class="line">        <span class="string">&quot;apple&quot;</span>,</span><br><span class="line">        <span class="string">&quot;kumquat&quot;</span>,</span><br><span class="line">        <span class="string">&quot;orange&quot;</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;_id&quot;</span>: <span class="number">3</span>,</span><br><span class="line">    <span class="string">&quot;fruit&quot;</span>: [</span><br><span class="line">        <span class="string">&quot;cherry&quot;</span>,</span><br><span class="line">        <span class="string">&quot;banana&quot;</span>,</span><br><span class="line">        <span class="string">&quot;apple&quot;</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>想从中找到既有 “apple” 又有 “banana” 的文档，可以使用 $all ：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">food</span>.<span class="title function_">find</span>(&#123;<span class="attr">fruit</span>:&#123;<span class="attr">$all</span>:[<span class="string">&quot;apple&quot;</span>,<span class="string">&quot;banana&quot;</span>]&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<p>要是想查询数组特定位置的元素，需使用 key.index 语法指定的下标：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">food</span>.<span class="title function_">find</span>(&#123;<span class="string">&quot;fruit.2&quot;</span>:<span class="string">&quot;peach&quot;</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>数组下标都是从 0 开始的，所以上面的表达式会用数组的第 3 个元素和 “peach” 进行匹配。</p>
+<p>2.$size<br>可以使用 $size 查询特定长度的数组。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">food</span>.<span class="title function_">find</span>(&#123;<span class="string">&quot;fruit&quot;</span>:&#123;<span class="string">&quot;$size&quot;</span>:<span class="number">3</span>&#125;&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>2.$size<br>可以使用 $size 查询特定长度的数组。例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">food</span>.<span class="title function_">find</span>(&#123;<span class="string">&quot;fruit&quot;</span>:&#123;<span class="string">&quot;$size&quot;</span>:<span class="number">3</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>3.$slice 操作符<br>$slice 操作符可以返回某个键匹配的数组元素的一个子集。例如，返回博客文章的文档的前 10 条评论：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">blog</span>.<span class="property">posts</span>.<span class="title function_">findOne</span>(criteria,&#123;<span class="string">&quot;comments&quot;</span>:&#123;<span class="attr">$slice</span>:<span class="number">10</span>&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<p>其中，使用 -10 可以返回后 10 条评论。<br>也可以指定偏移值以及希望返回的元素数量。如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">blog</span>.<span class="property">posts</span>.<span class="title function_">findOne</span>(criteria,&#123;<span class="string">&quot;comments&quot;</span>:&#123;<span class="attr">$slice</span>:[<span class="number">23</span>,<span class="number">10</span>]&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<p>该操作会跳过前 23 个元素，返回第 24 ~ 33 个元素。<br>除非特别说明，否则使用 $slice 将返回文档中的所有键。</p>
+<p>返回一个匹配的数组元素：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">blog</span>.<span class="property">posts</span>.<span class="title function_">find</span>(&#123;<span class="string">&quot;comments.name&quot;</span>:<span class="string">&quot;bob&quot;</span>,&#123;<span class="string">&quot;comments.$&quot;</span>:<span class="number">1</span>&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<p>该查询只返回 Bob 在这篇博客文章下写过的评论的第一条。</p>
+<h1 id="第-5-章-索引"><a href="#第-5-章-索引" class="headerlink" title="第 5 章 索引"></a>第 5 章 索引</h1><h2 id="5-1-索引简介"><a href="#5-1-索引简介" class="headerlink" title="5.1 索引简介"></a>5.1 索引简介</h2><h3 id="5-1-5-索引基数"><a href="#5-1-5-索引基数" class="headerlink" title="5.1.5 索引基数"></a>5.1.5 索引基数</h3><p>基数（cardinality）就是集合中某个字段拥有不同值的数量。通常，一个字段的基数越高，这个键上的索引就越有用。一般来说，应该在基数比较高的键上建立索引，或者至少应该把基数较高的键放在复合索引的前面（低基数的键之前）。</p>
+<h2 id="5-4-索引类型"><a href="#5-4-索引类型" class="headerlink" title="5.4 索引类型"></a>5.4 索引类型</h2><h3 id="5-4-1-唯一索引"><a href="#5-4-1-唯一索引" class="headerlink" title="5.4.1 唯一索引"></a>5.4.1 唯一索引</h3><p>唯一索引可以确保集合的每一个文档的指定键都有唯一值。唯一索引会把 null 看做值，所以无法将多个缺少唯一索引中的键的文档插入到集合中。例如，如果想保证不同文档的“username”键拥有不同的值，创建一个唯一索引就好了：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">users</span>.<span class="title function_">ensureIndex</span>(&#123;<span class="string">&quot;username&quot;</span>:<span class="number">1</span>&#125;,&#123;<span class="string">&quot;unique&quot;</span>:<span class="literal">true</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>1.复合唯一索引<br>也可以创建复合的唯一索引。创建复合唯一索引时，单个键的值可以相同，但所有键的组合值必须是唯一的。</p>
+<p>2.去除重复<br>创建索引时使用“dropDups”选项，如果遇到重复的值，第一个会被保留，之后的重复文档都会被删除。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">people</span>.<span class="title function_">ensureIndex</span>(&#123;<span class="string">&quot;username&quot;</span>:<span class="number">1</span>&#125;,&#123;<span class="string">&quot;unique&quot;</span>:<span class="literal">true</span>,<span class="string">&quot;dropDups&quot;</span>:<span class="literal">true</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>对于比较重要的数据，千万不要使用“dropDups”。</p>
+<h3 id="5-4-2-稀疏索引"><a href="#5-4-2-稀疏索引" class="headerlink" title="5.4.2 稀疏索引"></a>5.4.2 稀疏索引</h3><p>创建稀疏索引时，只对键有值的情况进行唯一性约束。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="title function_">ensureIndex</span>(&#123;<span class="string">&quot;email&quot;</span>:<span class="number">1</span>&#125;,&#123;<span class="string">&quot;unique&quot;</span>:<span class="literal">true</span>,<span class="string">&quot;sparse&quot;</span>:<span class="literal">true</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>稀疏索引不必是唯一的，只要去掉 unique 选型，就可以创建一个非唯一的稀疏索引。</p>
+<h3 id="5-5-1-标识索引"><a href="#5-5-1-标识索引" class="headerlink" title="5.5.1 标识索引"></a>5.5.1 标识索引</h3><p>创建索引时指定索引的名称：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">foo</span>.<span class="title function_">ensureIndex</span>(&#123;<span class="string">&quot;a&quot;</span>:<span class="number">1</span>,<span class="string">&quot;b&quot;</span>:<span class="number">1</span>,<span class="string">&quot;c&quot;</span>:<span class="number">1</span>,...,<span class="string">&quot;z&quot;</span>:<span class="number">1</span>&#125;,&#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;alphabet&quot;</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-5-2-删除索引"><a href="#5-5-2-删除索引" class="headerlink" title="5.5.2 删除索引"></a>5.5.2 删除索引</h3><p>使用 dropIndex 命令删除不再需要的索引：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">people</span>.<span class="title function_">dropIndex</span>(<span class="string">&quot;x_1_y_1&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="第-6-章-特殊的索引和集合"><a href="#第-6-章-特殊的索引和集合" class="headerlink" title="第 6 章 特殊的索引和集合"></a>第 6 章 特殊的索引和集合</h1><h2 id="6-1-固定集合"><a href="#6-1-固定集合" class="headerlink" title="6.1 固定集合"></a>6.1 固定集合</h2><p>固定集合需要事先创建好，且大小是固定的。固定集合类似于循环队列，当固定集合被沾满时，如果再插入新文档，固定集合会自动将最老的文档从集合中删除。</p>
+<p>固定集合不能被分片。可以用于记录日志。</p>
+<h3 id="6-1-1-创建固定集合"><a href="#6-1-1-创建固定集合" class="headerlink" title="6.1.1 创建固定集合"></a>6.1.1 创建固定集合</h3><p>size 参数可以指定集合的固定大小，以字节为单位：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="title function_">createCollection</span>(<span class="string">&quot;my_collection&quot;</span>,&#123;<span class="string">&quot;capped&quot;</span>:<span class="literal">true</span>,<span class="string">&quot;size&quot;</span>:<span class="number">10000</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>也可以通过 max 参数指定固定集合的文档数量。指定文档数量限制时，必须同时指定固定集合的大小。</p>
+<p>可以使用 convertToCapped 命令将常规集合转换为固定集合：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="title function_">runCommand</span>(&#123;<span class="string">&quot;convertToCapped&quot;</span>:<span class="string">&quot;test&quot;</span>,<span class="string">&quot;size&quot;</span>:<span class="number">10000</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>固定集合无法转换为非固定集合。</p>
+<h3 id="6-1-2-自然排序"><a href="#6-1-2-自然排序" class="headerlink" title="6.1.2 自然排序"></a>6.1.2 自然排序</h3><p>对固定集合可以进行 自然排序（natural sort）。自然排序返回结果集中文档的顺序就是文档在磁盘上的顺序。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">my_collection</span>.<span class="title function_">find</span>().<span class="title function_">sort</span>(&#123;<span class="string">&quot;$natural&quot;</span>:<span class="number">1</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-1-3-循环游标"><a href="#6-1-3-循环游标" class="headerlink" title="6.1.3 循环游标"></a>6.1.3 循环游标</h3><p>循环游标（tailable cursor）：当循环游标的结果集被取光后，游标不会被关闭。如果超过 10 分钟没有新的结果，循环游标就会被释放。</p>
+<h2 id="6-2-TTL-索引"><a href="#6-2-TTL-索引" class="headerlink" title="6.2 TTL 索引"></a>6.2 TTL 索引</h2><p>TTL 索引是特殊的单字段索引，MongoDB 可以使用它在一定时间后或在特定时钟时间自动从集合中删除文档。数据到期对于某些类型的信息非常有用，例如机器生成的事件数据，日志和会话信息，这些信息只需要在数据库中持续有限的时间。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">eventlog</span>.<span class="title function_">createIndex</span>( &#123; <span class="string">&quot;lastModifiedDate&quot;</span>: <span class="number">1</span> &#125;, &#123; <span class="attr">expireAfterSeconds</span>: <span class="number">3600</span> &#125; )</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-4-地理空间索引"><a href="#6-4-地理空间索引" class="headerlink" title="6.4 地理空间索引"></a>6.4 地理空间索引</h2><p>MongoDB 支持 2dsphere 索引（用于地球表面类型的地图）和 2d 索引（用于平面地图和时间连续的数据）。</p>
+<p>2dsphere 允许使用 GeoJSON 格式指定点、线和多边形。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>:<span class="string">&quot;New York City&quot;</span>,</span><br><span class="line">    <span class="string">&quot;loc&quot;</span>:&#123;</span><br><span class="line">        <span class="string">&quot;type&quot;</span>:<span class="string">&quot;Point&quot;</span>,</span><br><span class="line">        <span class="string">&quot;coordinates&quot;</span>:[<span class="number">50</span>,<span class="number">2</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>线可以用一个有点组成的数组来表示：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>:<span class="string">&quot;Hudson River&quot;</span>,</span><br><span class="line">    <span class="string">&quot;loc&quot;</span>:&#123;</span><br><span class="line">        <span class="string">&quot;type&quot;</span>:<span class="string">&quot;Line&quot;</span>,</span><br><span class="line">        <span class="string">&quot;coordinates&quot;</span>:[[<span class="number">0</span>,<span class="number">1</span>],[<span class="number">0</span>,<span class="number">2</span>],[<span class="number">1</span>,<span class="number">2</span>]]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>多边形的 ”type“ 不同：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>:<span class="string">&quot;New England&quot;</span>,</span><br><span class="line">    <span class="string">&quot;loc&quot;</span>:&#123;</span><br><span class="line">        <span class="string">&quot;type&quot;</span>:<span class="string">&quot;Polygon&quot;</span>,</span><br><span class="line">        <span class="string">&quot;coordinates&quot;</span>:[[<span class="number">0</span>,<span class="number">1</span>],[<span class="number">0</span>,<span class="number">2</span>],[<span class="number">1</span>,<span class="number">2</span>]]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 ensureIndex 中使用 “2dsphere” 选型可以创建一个地理空间索引：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">world</span>.<span class="title function_">ensureIndex</span>(&#123;<span class="string">&quot;loc&quot;</span>:<span class="string">&quot;2dsphere&quot;</span>&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="6-4-1-地理空间查询的类型"><a href="#6-4-1-地理空间查询的类型" class="headerlink" title="6.4.1 地理空间查询的类型"></a>6.4.1 地理空间查询的类型</h3><p>可以使用多种不同的地理空间查询：交集（intersection）、包含（within）以及接近（nearness）。查询时，需要将希望查找的内容指定为形如 {“$geometry”:geoJsonDesc} 的 GeoJSON 对象。<br>例如，使用 “$geoIntersects” 操作符找出与查询位置相交的文档：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">places</span>.<span class="title function_">find</span>(</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="attr">loc</span>: &#123;</span><br><span class="line">       <span class="attr">$geoIntersects</span>: &#123;</span><br><span class="line">          <span class="attr">$geometry</span>: &#123;</span><br><span class="line">             <span class="attr">type</span>: <span class="string">&quot;Polygon&quot;</span> ,</span><br><span class="line">             <span class="attr">coordinates</span>: [</span><br><span class="line">               [ [ <span class="number">0</span>, <span class="number">0</span> ], [ <span class="number">3</span>, <span class="number">6</span> ], [ <span class="number">6</span>, <span class="number">1</span> ], [ <span class="number">0</span>, <span class="number">0</span> ] ]</span><br><span class="line">             ]</span><br><span class="line">          &#125;</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="6-4-3-2D-索引"><a href="#6-4-3-2D-索引" class="headerlink" title="6.4.3 2D 索引"></a>6.4.3 2D 索引</h3><p>对于非球面地图（游戏地图、时间连续的数据等），可以使用 2d 索引。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">hyrule</span>.<span class="title function_">ensureIndex</span>(&#123;<span class="attr">title</span>:<span class="string">&quot;2d&quot;</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-5-使用-GridFS-存储文件"><a href="#6-5-使用-GridFS-存储文件" class="headerlink" title="6.5 使用 GridFS 存储文件"></a>6.5 使用 GridFS 存储文件</h2><h3 id="6-5-1-GridFS-入门"><a href="#6-5-1-GridFS-入门" class="headerlink" title="6.5.1 GridFS 入门"></a>6.5.1 GridFS 入门</h3><p>在下面这个会话中，首先用 mongofiles 从文件系统中上传一个文件到 GridFS ，然后列出 GridFS 中的所有文件，最后再将之前上传过的文件从 GridFS 中下载下来：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="string">&quot;Hello,world&quot;</span> &gt; foo.<span class="property">txt</span></span><br><span class="line">mongofiles put foo.<span class="property">txt</span></span><br><span class="line">mongofiles list</span><br><span class="line">mongofiles get foo.<span class="property">txt</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="第-7-章-聚合"><a href="#第-7-章-聚合" class="headerlink" title="第 7 章 聚合"></a>第 7 章 聚合</h1><h2 id="7-1-聚合框架"><a href="#7-1-聚合框架" class="headerlink" title="7.1 聚合框架"></a>7.1 聚合框架</h2><p>例如，有一个保存着杂志文章的集合，假设每篇文章被保存为 MongoDB 中的一个文档，则可以构建如下查询：<br>1.将 “author” 从每个文档中投射出来</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;$project&quot;</span>:&#123;<span class="string">&quot;author&quot;</span>:<span class="number">1</span>&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>2.将作者按照名字排序，统计每个名字出现的次数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">$group</span>:&#123;<span class="string">&quot;_id&quot;</span>:<span class="string">&quot;$author&quot;</span>,<span class="string">&quot;count&quot;</span>:&#123;<span class="string">&quot;$sum&quot;</span>:<span class="number">1</span>&#125;&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>3.将作者按照名字出现次数降序排列</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;$sort&quot;</span>:&#123;<span class="string">&quot;count&quot;</span>:-<span class="number">1</span>&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>4.将返回结果限制为前 5 个</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;$limit&quot;</span>:<span class="number">5</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>在 MongoDB 中实际运行时，要将这些操作分别传给 aggregate() 函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">aticles</span>.<span class="title function_">aggregate</span>(&#123;<span class="string">&quot;$project&quot;</span>:&#123;<span class="string">&quot;author&quot;</span>:<span class="number">1</span>&#125;&#125;,</span><br><span class="line">&#123;<span class="attr">$group</span>:&#123;<span class="string">&quot;_id&quot;</span>:<span class="string">&quot;$author&quot;</span>,<span class="string">&quot;count&quot;</span>:&#123;<span class="string">&quot;$sum&quot;</span>:<span class="number">1</span>&#125;&#125;&#125;,</span><br><span class="line">&#123;<span class="string">&quot;$sort&quot;</span>:&#123;<span class="string">&quot;count&quot;</span>:-<span class="number">1</span>&#125;&#125;,</span><br><span class="line">&#123;<span class="string">&quot;$limit&quot;</span>:<span class="number">5</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-2-管道操作符"><a href="#7-2-管道操作符" class="headerlink" title="7.2 管道操作符"></a>7.2 管道操作符</h2>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.JPG" alt="toypipi 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.JPG" alt="toypipi 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>toypipi
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://toypipi.github.io/2019/04/12/%E3%80%8AMongoDB-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" title="《MongoDB 权威指南（第2版）》阅读笔记">https://toypipi.github.io/2019/04/12/《MongoDB-权威指南（第2版）》阅读笔记/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/MongoDB/" rel="tag"><i class="fa fa-tag"></i> MongoDB</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/04/08/Python-3-%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="[Python 3 网络爬虫开发实战] 学习笔记">
+                  <i class="fa fa-angle-left"></i> [Python 3 网络爬虫开发实战] 学习笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/04/19/13-%E7%A7%8D%E5%B7%9D%E8%8F%9C%E5%91%B3%E5%9E%8B%E8%B0%83%E6%B3%95/" rel="next" title="13 种川菜味型调法">
+                  13 种川菜味型调法 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2016 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">toypipi</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">195k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">11:49</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

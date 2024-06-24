@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="制作本地完整备份（创建，准备和还原）创建备份这是最简单的用例。 它将所有的 MySQL 数据复制到指定的目录中。 以下是如何备份 my.cnf 中指定的 datadir 中的所有数据库。 它会将备份置于 &#x2F;data&#x2F;backups&#x2F; 由时间标记的子目录中，在本例中为 &#x2F;data&#x2F;backups&#x2F;2010-03-13_02-42-44， 1$ innobackupex &#x2F;data&#x2F;backups">
+<meta property="og:type" content="article">
+<meta property="og:title" content="innobackupex 的用法">
+<meta property="og:url" content="https://toypipi.github.io/2018/04/17/innobackupex-%E7%9A%84%E7%94%A8%E6%B3%95/index.html">
+<meta property="og:site_name" content="Toypipi&#39;s blog">
+<meta property="og:description" content="制作本地完整备份（创建，准备和还原）创建备份这是最简单的用例。 它将所有的 MySQL 数据复制到指定的目录中。 以下是如何备份 my.cnf 中指定的 datadir 中的所有数据库。 它会将备份置于 &#x2F;data&#x2F;backups&#x2F; 由时间标记的子目录中，在本例中为 &#x2F;data&#x2F;backups&#x2F;2010-03-13_02-42-44， 1$ innobackupex &#x2F;data&#x2F;backups">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-04-17T02:15:18.000Z">
+<meta property="article:modified_time" content="2020-11-03T03:44:00.313Z">
+<meta property="article:author" content="toypipi">
+<meta property="article:tag" content="innobackupex">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://toypipi.github.io/2018/04/17/innobackupex-%E7%9A%84%E7%94%A8%E6%B3%95/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://toypipi.github.io/2018/04/17/innobackupex-%E7%9A%84%E7%94%A8%E6%B3%95/","path":"2018/04/17/innobackupex-的用法/","title":"innobackupex 的用法"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>innobackupex 的用法 | Toypipi's blog</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?c228072b8c3657dfa7236914b308712c"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Toypipi's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%B6%E4%BD%9C%E6%9C%AC%E5%9C%B0%E5%AE%8C%E6%95%B4%E5%A4%87%E4%BB%BD%EF%BC%88%E5%88%9B%E5%BB%BA%EF%BC%8C%E5%87%86%E5%A4%87%E5%92%8C%E8%BF%98%E5%8E%9F%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">制作本地完整备份（创建，准备和还原）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%A4%87%E4%BB%BD"><span class="nav-number">1.1.</span> <span class="nav-text">创建备份</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%A4%87%E4%BB%BD"><span class="nav-number">1.2.</span> <span class="nav-text">准备备份</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%98%E5%8E%9F%E5%A4%87%E4%BB%BD"><span class="nav-number">1.3.</span> <span class="nav-text">还原备份</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%B6%E4%BD%9C%E6%B5%81%E5%BC%8F%E5%A4%87%E4%BB%BD"><span class="nav-number">2.</span> <span class="nav-text">制作流式备份</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%B6%E4%BD%9C%E5%A2%9E%E9%87%8F%E5%A4%87%E4%BB%BD"><span class="nav-number">3.</span> <span class="nav-text">制作增量备份</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%B6%E4%BD%9C%E5%8E%8B%E7%BC%A9%E5%A4%87%E4%BB%BD"><span class="nav-number">4.</span> <span class="nav-text">制作压缩备份</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%A4%87%E4%BB%BD-1"><span class="nav-number">4.1.</span> <span class="nav-text">准备备份</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%98%E5%8E%9F%E5%A4%87%E4%BB%BD-1"><span class="nav-number">4.2.</span> <span class="nav-text">还原备份</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%87%E4%BB%BD%E5%92%8C%E8%BF%98%E5%8E%9F%E5%8D%95%E4%B8%AA%E5%88%86%E5%8C%BA"><span class="nav-number">5.</span> <span class="nav-text">备份和还原单个分区</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%A4%87%E4%BB%BD-1"><span class="nav-number">5.1.</span> <span class="nav-text">创建备份</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%A4%87%E4%BB%BD-2"><span class="nav-number">5.2.</span> <span class="nav-text">准备备份</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E8%BF%98%E5%8E%9F%E8%A1%A8"><span class="nav-number">5.3.</span> <span class="nav-text">从备份文件还原表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E7%89%88%E6%9C%AC-5-6-%E4%B8%AD%E8%BF%98%E5%8E%9F%E5%A4%87%E4%BB%BD"><span class="nav-number">5.4.</span> <span class="nav-text">在版本 5.6 中还原备份</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="toypipi"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">toypipi</p>
+  <div class="site-description" itemprop="description">Stay focused, be present</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">289</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">381</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/toypipi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;toypipi" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:275688469@qq.com" title="E-Mail → mailto:275688469@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/04/17/innobackupex-%E7%9A%84%E7%94%A8%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="innobackupex 的用法 | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          innobackupex 的用法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-04-17 10:15:18" itemprop="dateCreated datePublished" datetime="2018-04-17T10:15:18+08:00">2018-04-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2020-11-03 11:44:00" itemprop="dateModified" datetime="2020-11-03T11:44:00+08:00">2020-11-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>13 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<h1 id="制作本地完整备份（创建，准备和还原）"><a href="#制作本地完整备份（创建，准备和还原）" class="headerlink" title="制作本地完整备份（创建，准备和还原）"></a>制作本地完整备份（创建，准备和还原）</h1><h2 id="创建备份"><a href="#创建备份" class="headerlink" title="创建备份"></a>创建备份</h2><p>这是最简单的用例。 它将所有的 <em>MySQL</em> 数据复制到指定的目录中。 以下是如何备份 <code>my.cnf</code> 中指定的 <code>datadir</code> 中的所有数据库。 它会将备份置于 <code>/data/backups/</code> 由时间标记的子目录中，在本例中为 <code>/data/backups/2010-03-13_02-42-44</code>，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ innobackupex /data/backups</span><br></pre></td></tr></table></figure>
+<p>备份过程中有很多输出，但你需要确保在备份结束时看到以下内容。 如果你没有看到这个输出，那么表示你的备份失败：</p>
+<blockquote>
+<p>100313 02:43:07  innobackupex: completed OK!</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="准备备份"><a href="#准备备份" class="headerlink" title="准备备份"></a>准备备份</h2><p>要准备备份，请使用 <code>--apply-log</code> 选项并指定备份的时间戳子目录。 为了加快应用日志的过程，我们推荐使用 <code>--use-memory</code> 选项：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ innobackupex --use-memory=4G --apply-log /data/backups/2010-03-13_02-42-44/</span><br></pre></td></tr></table></figure>
+<p>您应该检查确认消息：</p>
+<blockquote>
+<p>100313 02:51:02  innobackupex: completed OK!</p>
+</blockquote>
+<p>现在，位于 <code>/data/backups/2010-03-13_02-42-44</code> 的文件已经准备好可以使用了。</p>
+<h2 id="还原备份"><a href="#还原备份" class="headerlink" title="还原备份"></a>还原备份</h2><p>要还原刚才准备好的备份，首先需要停止数据库服务器，然后使用 <strong>innobackupex</strong> 函数 <code>--copy-back</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">innobackupex --copy-back /data/backups/2010-03-13_02-42-44/</span><br><span class="line">## Use chmod to correct the permissions, if necessary!</span><br></pre></td></tr></table></figure>
+<p>这将会把数据拷贝回你在 <code>my.cnf</code> 文件中定义的 <code>datadir</code> 目录中。</p>
+<div class="note default"><p>注意<br><code>datadir</code> 目录必须为空; 目录不为空时，<em>Percona XtraBackup</em> <code>innobackupex --copy-back</code> 选项不会复制现有文件，除非指定了 <code>innobackupex --force-non-empty-directories</code> 选项。 另外需要注意的是，在执行恢复之前需要关闭 <em>MySQL</em> 服务器。 您无法将备份还原到一个正在运行的 mysqld 实例的 <code>datadir</code> 目录（导入部分备份时除外）。</p>
+</div>
+
+<p>确认信息：</p>
+<blockquote>
+<p>100313 02:58:44  innobackupex: completed OK!</p>
+</blockquote>
+<p>您应该在复制数据后检查文件权限。 您可能需要使用类似的方法调整它们：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chown -R mysql:mysql /var/lib/mysql</span><br></pre></td></tr></table></figure>
+
+<p>现在 <code>datadir</code> 目录已经包含还原后的数据。 您可以启动服务器了。</p>
+<h1 id="制作流式备份"><a href="#制作流式备份" class="headerlink" title="制作流式备份"></a>制作流式备份</h1><p>流式备份将备份以 tar 格式发送到 <code>STDOUT</code> ，而不是将其复制到第一个参数指定的目录中。 您可以将输出传送到 <strong>gzip</strong>，或通过网络传送到另一台服务器。</p>
+<p>要提取生成的tar文件，<strong>必须</strong>使用 <code>-i</code> 选项，例如 <code>tar -ixvf backup.tar</code>。</p>
+<div class="note danger"><p>警告<br>请记住使用 <code>-i</code> 选项来提取备份的 tar 文件。 有关更多信息，请参阅<a target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/innobackupex/streaming_backups_innobackupex.html">流式备份和压缩备份</a>。</p>
+</div>
+
+<p>以下是使用 <code>tar</code> 选项进行流式处理的一些示例：</p>
+<ul>
+<li><p>将流式备份传输到名为 ‘backup.tar’ 的 tar 归档文件中  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ innobackupex --stream=tar ./ &gt; backup.tar</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>同上，压缩备份文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ innobackupex --stream=tar ./ | gzip - &gt; backup.tar.gz</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>加密备份文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ innobackupex --stream=tar . | gzip - | openssl des3 -salt -k &quot;password&quot; &gt; backup.tar.gz.des3</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将备份文件传输到另一台服务器而不是保存在本地</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ innobackupex --stream=tar ./ | ssh user@desthost &quot;cat - &gt; /data/backups/backup.tar&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用 “netcat” 实现上述功能</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## 在目标主机上执行:</span><br><span class="line">$ nc -l 9999 | cat - &gt; /data/backups/backup.tar</span><br><span class="line">## 在源主机上执行:</span><br><span class="line">$ innobackupex --stream=tar ./ | nc desthost 9999</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>一条指令执行上述功能</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh user@desthost &quot;( nc -l 9999 &gt; /data/backups/backup.tar &amp; )&quot; \</span><br><span class="line">&amp;&amp; innobackupex --stream=tar ./  |  nc desthost 9999</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将吞吐量限制为 10MB 每秒。 这需要 ‘pv’ 工具; 你可以在<a target="_blank" rel="noopener" href="http://www.ivarch.com/programs/quickref/pv.shtml">官方站点</a>找到它或者从分发包安装它（<code>apt-get install pv</code>）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ innobackupex --stream=tar ./ | pv -q -L10m \</span><br><span class="line">| ssh user@desthost &quot;cat - &gt; /data/backups/backup.tar&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在流式备份过程中检查校验和</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">## On the destination host:</span><br><span class="line">$ nc -l 9999 | tee &gt;(sha1sum &gt; destination_checksum) &gt; /data/backups/backup.tar</span><br><span class="line">## On the source host:</span><br><span class="line">$ innobackupex --stream=tar ./ | tee &gt;(sha1sum &gt; source_checksum) | nc desthost 9999</span><br><span class="line">## compare the checksums</span><br><span class="line">## On the source host:</span><br><span class="line">$ cat source_checksum</span><br><span class="line">65e4f916a49c1f216e0887ce54cf59bf3934dbad  -</span><br><span class="line">## On the destination host:</span><br><span class="line">$ destination_checksum</span><br><span class="line">65e4f916a49c1f216e0887ce54cf59bf3934dbad  -</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>使用 <a target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/glossary.html#term-xbstream">xbstream</a> 选项进行流式处理的示例：</p>
+<ul>
+<li><p>将流式备份传输到名为 ‘backup.tar’ 的 tar 归档文件中  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">innobackupex --stream=xbstream ./ &gt; backup.xbstream</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>同上，压缩备份文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">innobackupex --stream=xbstream --compress ./ &gt; backup.xbstream</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解压缩备份文件到当前目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xbstream -x &lt;  backup.xbstream</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>压缩备份文件然后直接传输到另一台服务器并解压缩</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">innobackupex --compress --stream=xbstream ./ | ssh user@otherhost &quot;xbstream -x&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>并行复制备份的并行压缩</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">innobackupex --compress --compress-threads=8 --stream=xbstream --parallel=4 ./ &gt; backup.xbstream</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="制作增量备份"><a href="#制作增量备份" class="headerlink" title="制作增量备份"></a>制作增量备份</h1><p>每次增量备份都需要从一个完整备份开始，我们将之称为 <em>基础备份</em>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">innobackupex --user=USER --password=PASSWORD /path/to/backup/dir/</span><br></pre></td></tr></table></figure>
+
+<p>请注意，完整备份将位于 <code>/path/to/backup/dir/</code>（例如 <code>/path/to/backup/dir/2011-12-24_23-01-00/</code> 中）的时间戳子目录中。</p>
+<p>假设变量 <code>$FULLBACKUP</code> 表示 <code>/path/to/backup/dir/2011-5-23_23-01-18</code> ，让我们在一小时后执行增量备份：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">innobackupex --incremental /path/to/inc/dir \</span><br><span class="line">  --incremental-basedir=$FULLBACKUP --user=USER --password=PASSWORD</span><br></pre></td></tr></table></figure>
+
+<p>现在，增量备份将位于 <code>/path/to/inc/dir/2011-12-25_00-01-00/</code> 中。我们将之称为 <code>$INCREMENTALBACKUP=2011-5-23_23-50-10</code>。</p>
+<p>准备增量备份与准备完整备份稍稍有些不同。</p>
+<p>首先，你必须在每个备份上重放已提交的事务，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">innobackupex --apply-log --redo-only $FULLBACKUP \</span><br><span class="line"> --use-memory=1G --user=USER --password=PASSWORD</span><br></pre></td></tr></table></figure>
+
+<p>201&#x2F;5000<br><code>--use-memory</code> 选项不是必需的，（如果提供的 RAM 数量可用）的话使用它可以加速进程。</p>
+<p>如果一切正常，您应该看到类似于以下的输出：</p>
+<blockquote>
+<p>111225 01:10:12 InnoDB: Shutdown completed; log sequence number 91514213</p>
+</blockquote>
+<p>现在，通过发出以下命令将增量备份应用于基础备份：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">innobackupex --apply-log --redo-only $FULLBACKUP</span><br><span class="line"> --incremental-dir=$INCREMENTALBACKUP</span><br><span class="line"> --use-memory=1G --user=DVADER --password=D4RKS1D3</span><br></pre></td></tr></table></figure>
+<p>注意 <code>$INCREMENTALBACKUP</code> 的使用。</p>
+<p><em>最终数据将位于基础备份目录中</em>，而不是增量备份目录中。在本例中，位于 <code>/path/to/backup/dir/2011-12-24_23-01-00</code> 或 <code>$FULLBACKUP</code> 中。</p>
+<p>如果您想要应用更多增量备份，请重复此步骤。 按照备份完成的时间顺序执行此操作非常重要。</p>
+<p>您可以检查每个备份目录下的文件 xtrabackup_checkpoints。</p>
+<p>它们应该如下所示:(在基础备份中）</p>
+<blockquote>
+<p>backup_type &#x3D; full-backuped<br>from_lsn &#x3D; 0<br>to_lsn &#x3D; 1291135  </p>
+</blockquote>
+<p>在增量备份中：</p>
+<blockquote>
+<p>backup_type &#x3D; incremental<br>from_lsn &#x3D; 1291135<br>to_lsn &#x3D; 1291340  </p>
+</blockquote>
+<p>其中，<code>to_lsn</code> 编号一定与下一次备份的 <code>from_lsn</code> 一致。</p>
+<p>将所有备份放在一起后，您可以再次准备完整备份（此时的完整备份是基础备份和增量备份的集合）以回滚未提交的事务：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">innobackupex-1.5.1 --apply-log $FULLBACKUP --use-memory=1G \</span><br><span class="line">  --user=$USERNAME --password=$PASSWORD</span><br></pre></td></tr></table></figure>
+
+<p>现在，您的备份可以在恢复后立即使用。 这个准备步骤是可选的，如果你没有执行这个步骤，数据库服务器将假设数据库发生了崩溃，并开始回滚未提交的事务（这将会产生一些本可以避免的停机时间）。</p>
+<h1 id="制作压缩备份"><a href="#制作压缩备份" class="headerlink" title="制作压缩备份"></a>制作压缩备份</h1><p>为了制作一个压缩备份，您需要使用 <code>--compress</code> 选项。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ innobackupex --compress /data/backup</span><br></pre></td></tr></table></figure>
+
+<p>如果您想加速压缩，那么可以使用并行压缩，可以使用 <code>--compress-threads=#</code> 选项启用并行压缩。 以下示例将使用四个线程进行压缩：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ innobackupex --compress --compress-threads=4 /data/backup</span><br></pre></td></tr></table></figure>
+
+<p>输出类似于以下内容</p>
+<blockquote>
+<p>…<br>[01] Compressing .&#x2F;imdb&#x2F;comp_cast_type.ibd to &#x2F;data&#x2F;backup&#x2F;2013-08-01_11-24-04&#x2F;.&#x2F;imdb&#x2F;comp_cast_type.ibd.qp<br>[01]        …done<br>[01] Compressing .&#x2F;imdb&#x2F;aka_name.ibd to &#x2F;data&#x2F;backup&#x2F;2013-08-01_11-24-04&#x2F;.&#x2F;imdb&#x2F;aka_name.ibd.qp<br>[01]        …done<br>…<br>130801 11:50:24  innobackupex: completed OK              </p>
+</blockquote>
+<h2 id="准备备份-1"><a href="#准备备份-1" class="headerlink" title="准备备份"></a>准备备份</h2><p>在准备备份之前，您需要使用 <a target="_blank" rel="noopener" href="http://www.quicklz.com/">qpress</a> 解压缩所有文件（可从 <a target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/2.1/installation.html#using-percona-software-repositories">Percona 软件库</a>)中获取）。 您可以使用以下内容来解压缩所有文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ for bf in `find . -iname &quot;*\.qp&quot;`; do qpress -d $bf $(dirname $bf) &amp;&amp; rm $bf; done</span><br></pre></td></tr></table></figure>
+
+<p>在 <em>Percona XtraBackup</em> 2.1.4 中新增了 <code>innobackupex --decompress</code> 选项，可用于解压备份：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ innobackupex --decompress /data/backup/2013-08-01_11-24-04/</span><br></pre></td></tr></table></figure>
+
+<div class="note default"><p>注意<br>为了成功使用 <code>innobackupex --decompress</code> 选项，需要安装 qpress 二进制文件并包含在路径当中。 <code>innobackupex --parallel</code> 可以和 <code>innobackupex --decompress</code> 选项一起使用同时解压缩多个文件。</p>
+</div>
+
+<p>一旦文件解压完成后，您可以使用 <code>--apply-log</code> 准备备份。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ innobackupex --apply-log /data/backup/2013-08-01_11-24-04/</span><br></pre></td></tr></table></figure>
+
+<p>您需要检查备份完成信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">130802 02:51:02  innobackupex: completed OK!</span><br></pre></td></tr></table></figure>
+
+<p>现在，位于 <code>/data/backups/2013-08-01_11-24-0</code> 目录中的文件已经可以被数据库使用了。</p>
+<div class="note default"><p>注意<br><em>Percona XtraBackup</em> 不会自动删除压缩文件。为了清理备份目录，用户需要手动删除 <code>*.qp</code> 文件。</p>
+</div>
+
+<h2 id="还原备份-1"><a href="#还原备份-1" class="headerlink" title="还原备份"></a>还原备份</h2><p>一旦备份准备完成，您可以使用 <code>--copy-back</code> 选项还原备份。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ innobackupex --copy-back /data/backups/2013-08-01_11-24-04/</span><br></pre></td></tr></table></figure>
+
+<p>这将会把准备好的数据拷贝回您在 <code>my.cnf</code> 文件中定义的 <code>datadir</code> 目录中。</p>
+<p>还原后输出确认信息。</p>
+<blockquote>
+<p>130802 02:58:44  innobackupex: completed OK!</p>
+</blockquote>
+<p>您需要在文件拷贝回数据目录中后检查文件的所有权。您可能需要一下命令调整文件的所有权。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chown -R mysql:mysql /var/lib/mysql</span><br></pre></td></tr></table></figure>
+
+<p>现在 <code>datadir</code> 目录中包含还原后的数据。您可以启动数据库了。</p>
+<h1 id="备份和还原单个分区"><a href="#备份和还原单个分区" class="headerlink" title="备份和还原单个分区"></a>备份和还原单个分区</h1><p><em>Percona XtraBackup</em> 具有<a target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/innobackupex/partial_backups_innobackupex.html">部分备份</a>功能，这意味着您可以备份单个分区，因为从存储引擎的角度来看，分区是具有特殊格式名称的常规表。此功能的唯一要求是在服务器中启用 <code>innodb_file_per_table</code> 选项。</p>
+<p>使用这种备份只有一个警告：您无法将准备好的备份复制回数据目录。应通过导入表来恢复部分备份，而不是使用传统的 <code>--copy-back</code> 选项。尽管在某些情况下可以通过复制文件来完成恢复，但这在很多情况下可能会导致数据库不一致，因此建议不要这样做。</p>
+<h2 id="创建备份-1"><a href="#创建备份-1" class="headerlink" title="创建备份"></a>创建备份</h2><p>有三种方式可以指定备份整个数据的哪一部分：正则表达式（<code>--include</code>），在文件中枚举需要备份的表（<code>--tables-file</code>）或提供数据库列表（<code>--databases</code>）。 在这个例子中 <code>--include</code> 选项将被使用。</p>
+<p>提供给此选项的正则表达式将与表的完全限定表名（包括数据库名）匹配，以 <code>databasename.tablename</code> 的形式。</p>
+<p>例如，以下命令将从数据库 <code>imdb</code> 中备份 <code>name</code> 表的 <code>p4</code> 分区：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ innobackupex --include=&#x27;^imdb[.]name#P#p4&#x27; /mnt/backup/</span><br></pre></td></tr></table></figure>
+
+<p>这将创建一个包含 <code>innobackupex</code> 创建的常用文件的时间戳目录，但只有与表相关的数据文件才会被创建。</p>
+<p>innobackupex的输出将列出跳过的表格</p>
+<blockquote>
+<p>…<br>[01] Skipping .&#x2F;imdb&#x2F;person_info.ibd<br>[01] Skipping .&#x2F;imdb&#x2F;name#P#p5.ibd<br>[01] Skipping .&#x2F;imdb&#x2F;name#P#p6.ibd<br>…<br>imdb.person_info.frm is skipped because it does not match ^imdb[.]name#P#p4.<br>imdb.title.frm is skipped because it does not match ^imdb[.]name#P#p4.<br>imdb.company_type.frm is skipped because it does not match ^imdb[.]name#P#p4.<br>…</p>
+</blockquote>
+<p>请注意，此选项将传递给 <code>xtrabackup --tables</code>，并且与每个数据库的每张表匹配，即使没有匹配到，每个数据库的目录也将被创建。</p>
+<h2 id="准备备份-2"><a href="#准备备份-2" class="headerlink" title="准备备份"></a>准备备份</h2><p>准备部分备份，该过程类似于<a target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/innobackupex/restoring_individual_tables_ibk.html">恢复单个表</a>：应用日志并使用 <code>--export</code> 选项：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ innobackupex --apply-log --export /mnt/backup/2012-08-28_10-29-09</span><br></pre></td></tr></table></figure>
+
+<p>您可能会在输出中看到关于表不存在的的警告。 这是因为基于 <em>InnoDB</em> 的引擎将其数据字典存储在除 <code>.frm</code> 文件之外的表空间文件中。 <strong>innobackupex</strong> 将使用 <strong>xtrabackup</strong> 从数据字典中删除缺少的表（指那些未在部分备份中选择的表），以避免将来出现警告或错误：</p>
+<blockquote>
+<p>InnoDB: in InnoDB data dictionary has tablespace id 51,<br>InnoDB: but tablespace with that id or name does not exist. It will be removed from data dictionary.<br>120828 10:25:28  InnoDB: Waiting for the background threads to start<br>120828 10:25:29 Percona XtraDB (<a target="_blank" rel="noopener" href="http://www.percona.com/">http://www.percona.com</a>) 1.1.8-20.1 started; log sequence number 10098323731<br>xtrabackup: export option is specified.<br>xtrabackup: export metadata of table ‘imdb&#x2F;name#P#p4’ to file <code>./imdb/name#P#p4.exp</code> (1 indexes)<br>xtrabackup:     name&#x3D;PRIMARY, id.low&#x3D;73, page&#x3D;3</p>
+</blockquote>
+<p>您还应该看到为部分备份中包含的每张表导入（<code>.exp</code> 文件）所需的创建文件的通知：</p>
+<blockquote>
+<p>xtrabackup: export option is specified.<br>xtrabackup: export metadata of table ‘imdb&#x2F;name#P#p4’ to file <code>./imdb/name#P#p4.exp</code> (1 indexes)<br>xtrabackup:     name&#x3D;PRIMARY, id.low&#x3D;73, page&#x3D;3</p>
+</blockquote>
+<p>请注意，您可以将 <code>--export</code> 选项和 <code>--apply-log</code> 用于已经准备好的备份，以创建 <code>.exp</code> 文件。</p>
+<p>最后，检查输出中的确认消息：</p>
+<blockquote>
+<p>120828 19:25:38  innobackupex: completed OK!</p>
+</blockquote>
+<h2 id="从备份文件还原表"><a href="#从备份文件还原表" class="headerlink" title="从备份文件还原表"></a>从备份文件还原表</h2><p>应通过将部分备份中的表<a target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/innobackupex/restoring_individual_tables_ibk.html">导入服务器</a>来完成还原。</p>
+<div class="note default"><p>注意<br>改进的表&#x2F;分区导入仅在 <em>Percona Server</em> 和 <em>MySQL 5.6</em> 中可用，这意味着也可以导入从不同服务器备份的分区。 对于早于 <em>MySQL 5.6</em> 的版本，只能从该服务器导入分区，并且还有另外一些重要限制。 在进行备份和导入分区之间不应该发出 DROP&#x2F;CREATE&#x2F;TRUNCATE&#x2F;ALTER TABLE 命令。</p>
+</div>
+
+
+<p>第一步是创建要恢复数据的新表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE `name_p4` (</span><br><span class="line">`id` int(11) NOT NULL AUTO_INCREMENT,</span><br><span class="line">`name` text NOT NULL,</span><br><span class="line">`imdb_index` varchar(12) DEFAULT NULL,</span><br><span class="line">`imdb_id` int(11) DEFAULT NULL,</span><br><span class="line">`name_pcode_cf` varchar(5) DEFAULT NULL,</span><br><span class="line">`name_pcode_nf` varchar(5) DEFAULT NULL,</span><br><span class="line">`surname_pcode` varchar(5) DEFAULT NULL,</span><br><span class="line">PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=2812744 DEFAULT CHARSET=utf8</span><br></pre></td></tr></table></figure>
+
+<p>要从备份文件中还原数据，需要丢弃该表的表空间：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;  ALTER TABLE name_p4 DISCARD TABLESPACE;</span><br></pre></td></tr></table></figure>
+
+<p>接下来需要将 <code>.exp</code> 和 <em>ibd</em> 文件从备份目录中拷贝到 <em>MySQL</em> 数据目录中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cp /mnt/backup/2012-08-28_10-29-09/imdb/name#P#p4.exp /var/lib/mysql/imdb/name_p4.exp</span><br><span class="line">$ cp /mnt/backup/2012-08-28_10-29-09/imdb/name#P#p4.ibd /var/lib/mysql/imdb/name_p4.ibd</span><br></pre></td></tr></table></figure>
+
+<div class="note default"><p>注意<br>确保复制的文件可以被运行 <em>MySQL</em> 数据库的用户读取。</p>
+</div>
+
+<p>如果您运行的是 <code>Percona Server</code>,请确保 <em>innodb_import_table_from_xtrabackup</em> 变量已经启用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET GLOBAL innodb_import_table_from_xtrabackup=1;</span><br></pre></td></tr></table></figure>
+
+<p>最后一步是导入表空间：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;  ALTER TABLE name_p4 IMPORT TABLESPACE;</span><br></pre></td></tr></table></figure>
+
+<h2 id="在版本-5-6-中还原备份"><a href="#在版本-5-6-中还原备份" class="headerlink" title="在版本 5.6 中还原备份"></a>在版本 5.6 中还原备份</h2><p>服务器版本高于 5.5 的问题在于没有服务器支持导入单个分区或分区表的所有分区，因此分区只能作为独立表导入。 在 <em>MySQL</em> 和 <em>Percona Server</em>  5.6 中，可以使用 <code>ALTER TABLE ... EXCHANGE PARTITION</code> 命令将单个表变为单个分区。</p>
+<div class="note default"><p>注意<br>在 <em>Percona Server</em> 5.6 中，变量 <code>innodb_import_table_from_xtrabackup</code> 已被删除，以支持 <em>MySQL</em> <a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.6/en/tablespace-copying.html">可传输表空间</a>实现。</p>
+</div>
+
+<p>导入整个分区表时，首先将所有（子）分区导入为独立表：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE `name_p4` (</span><br><span class="line">`id` int(11) NOT NULL AUTO_INCREMENT,</span><br><span class="line">`name` text NOT NULL,</span><br><span class="line">`imdb_index` varchar(12) DEFAULT NULL,</span><br><span class="line">`imdb_id` int(11) DEFAULT NULL,</span><br><span class="line">`name_pcode_cf` varchar(5) DEFAULT NULL,</span><br><span class="line">`name_pcode_nf` varchar(5) DEFAULT NULL,</span><br><span class="line">`surname_pcode` varchar(5) DEFAULT NULL,</span><br><span class="line">PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=2812744 DEFAULT CHARSET=utf8</span><br></pre></td></tr></table></figure>
+
+<p>要从备份文件中还原数据，需要丢弃该表的表空间：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;  ALTER TABLE name_p4 DISCARD TABLESPACE;</span><br></pre></td></tr></table></figure>
+
+<p>接下来需要将 <code>.cfg</code> 和 <em>ibd</em> 文件从备份目录中拷贝到 <em>MySQL</em> 数据目录中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cp /mnt/backup/2013-07-18_10-29-09/imdb/name#P#p4.cfg /var/lib/mysql/imdb/name_p4.cfg</span><br><span class="line">$ cp /mnt/backup/2013-07-18_10-29-09/imdb/name#P#p4.ibd /var/lib/mysql/imdb/name_p4.ibd</span><br></pre></td></tr></table></figure>
+
+<p>最后一步是导入表空间：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;  ALTER TABLE name_p4 IMPORT TABLESPACE;</span><br></pre></td></tr></table></figure>
+
+<p>现在我们可以使用与导入的表完全相同的模式创建空分区表：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE name2 LIKE name;</span><br></pre></td></tr></table></figure>
+
+<p>然后将新创建的表中的空分区与对应于先前步骤中已导出&#x2F;导入的分区的单独表交换</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE name2 EXCHANGE PARTITION p4 WITH TABLE name_p4;</span><br></pre></td></tr></table></figure>
+
+<p>必须满足<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.6/en/partitioning-management-exchange.html">这些条件</a>才能使此操作成功。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.JPG" alt="toypipi 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.JPG" alt="toypipi 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>toypipi
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://toypipi.github.io/2018/04/17/innobackupex-%E7%9A%84%E7%94%A8%E6%B3%95/" title="innobackupex 的用法">https://toypipi.github.io/2018/04/17/innobackupex-的用法/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/innobackupex/" rel="tag"><i class="fa fa-tag"></i> innobackupex</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/04/17/%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97%E5%92%8C%E7%94%A8%E6%B3%95/" rel="prev" title="入门指南和用法">
+                  <i class="fa fa-angle-left"></i> 入门指南和用法
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/05/17/MySQL%E4%B8%AD%E6%89%B9%E9%87%8F%E5%88%9B%E5%BB%BA%E8%A1%A8/" rel="next" title="MySQL 中批量创建表">
+                  MySQL 中批量创建表 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2016 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">toypipi</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">195k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">11:49</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

@@ -199,7 +199,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/03/30/ed911cafeb55/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/03/30/%E5%A2%9E%E9%87%8F%E5%A4%87%E4%BB%BD/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -217,7 +217,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/03/30/ed911cafeb55/" class="post-title-link" itemprop="url">增量备份</a>
+          <a href="/2018/03/30/%E5%A2%9E%E9%87%8F%E5%A4%87%E4%BB%BD/" class="post-title-link" itemprop="url">增量备份</a>
         </h2>
 
         <div class="post-meta-container">
@@ -279,7 +279,7 @@
 <p>增量备份复制那些 LSN 比之前增量备份或完全备份的 LSN 更新的所有页面。有两种算法用于查找要复制的这类页面的集合。第一种算法可用于所有服务器类型和版本，它通过读取所有数据页直接检查页面 LSN。 第二种方法适用于 Percona Server 它启用服务器上<a target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-server/5.6/management/changed_page_tracking.html">更改页面跟踪</a>功能，该功能会在页面被更改时记录下来。这些信息将被写入一个紧凑的单独的所谓的位图文件中。 <strong>xtrabackup</strong> 二进制文件将使用该文件只读取增量备份所需的数据页面，这潜在地节省了很多读取请求。如果<strong>xtrabackup</strong> 程序找到了位图文件，则默认启用后一种算法。即使位图数据可用，也可以指定<code>xtrabackup --incremental-force-scan</code> 来读取所有页面。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2018/03/30/ed911cafeb55/#more" rel="contents">
+              <a class="btn" href="/2018/03/30/%E5%A2%9E%E9%87%8F%E5%A4%87%E4%BB%BD/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -310,7 +310,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/03/28/891769f7dc0c/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/03/28/%E5%A4%87%E4%BB%BD%E5%91%A8%E6%9C%9F-%E5%AE%8C%E6%95%B4%E5%A4%87%E4%BB%BD/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -328,7 +328,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/03/28/891769f7dc0c/" class="post-title-link" itemprop="url">备份周期 - 完整备份</a>
+          <a href="/2018/03/28/%E5%A4%87%E4%BB%BD%E5%91%A8%E6%9C%9F-%E5%AE%8C%E6%95%B4%E5%A4%87%E4%BB%BD/" class="post-title-link" itemprop="url">备份周期 - 完整备份</a>
         </h2>
 
         <div class="post-meta-container">
@@ -392,7 +392,7 @@
 <p>在备份过程中，您应会看到大量输出显示正在复制的数据文件，以及日志文件线程反复扫描日志文件并从中复制日志文件。下面是一个例子，它显示了在后台扫描日志的日志线程以及在 <code>ibdata1</code>  文件上工作的文件复制线程：</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2018/03/28/891769f7dc0c/#more" rel="contents">
+              <a class="btn" href="/2018/03/28/%E5%A4%87%E4%BB%BD%E5%91%A8%E6%9C%9F-%E5%AE%8C%E6%95%B4%E5%A4%87%E4%BB%BD/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -423,7 +423,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/03/28/a7b66cf292d3/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/03/28/%E9%85%8D%E7%BD%AE-xtrabackup/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -441,7 +441,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/03/28/a7b66cf292d3/" class="post-title-link" itemprop="url">配置 xtrabackup</a>
+          <a href="/2018/03/28/%E9%85%8D%E7%BD%AE-xtrabackup/" class="post-title-link" itemprop="url">配置 xtrabackup</a>
         </h2>
 
         <div class="post-meta-container">
@@ -503,7 +503,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[xtrabackup]</span><br><span class="line">target_dir = /data/backups/mysql/</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2018/03/28/a7b66cf292d3/#more" rel="contents">
+              <a class="btn" href="/2018/03/28/%E9%85%8D%E7%BD%AE-xtrabackup/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -534,7 +534,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/03/27/be97fc514e65/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/03/27/Redis-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -552,7 +552,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/03/27/be97fc514e65/" class="post-title-link" itemprop="url">Redis 常用命令</a>
+          <a href="/2018/03/27/Redis-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">Redis 常用命令</a>
         </h2>
 
         <div class="post-meta-container">
@@ -617,7 +617,7 @@
 <p>Redis支持五种数据类型：string（字符串），hash（哈希），list（列表），set（集合）及 zset(sorted set：有序集合)。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2018/03/27/be97fc514e65/#more" rel="contents">
+              <a class="btn" href="/2018/03/27/Redis-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -648,7 +648,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/03/27/7c2785a25621/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/03/27/%E8%A7%A3%E5%86%B3hexo-next-%E4%B8%BB%E9%A2%98%E4%B8%8D%E6%98%BE%E7%A4%BA-hypercomments-%E8%AF%84%E8%AE%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -666,7 +666,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/03/27/7c2785a25621/" class="post-title-link" itemprop="url">解决 hexo next 主题不显示 hypercomments 评论</a>
+          <a href="/2018/03/27/%E8%A7%A3%E5%86%B3hexo-next-%E4%B8%BB%E9%A2%98%E4%B8%8D%E6%98%BE%E7%A4%BA-hypercomments-%E8%AF%84%E8%AE%BA/" class="post-title-link" itemprop="url">解决 hexo next 主题不显示 hypercomments 评论</a>
         </h2>
 
         <div class="post-meta-container">

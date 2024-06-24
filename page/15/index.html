@@ -199,7 +199,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/09/04/7d1c3219b1cc/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/09/04/2694-%E4%BA%8B%E4%BB%B6%E5%8F%91%E5%B0%84%E5%99%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -217,7 +217,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/09/04/7d1c3219b1cc/" class="post-title-link" itemprop="url">2694. 事件发射器</a>
+          <a href="/2023/09/04/2694-%E4%BA%8B%E4%BB%B6%E5%8F%91%E5%B0%84%E5%99%A8/" class="post-title-link" itemprop="url">2694. 事件发射器</a>
         </h2>
 
         <div class="post-meta-container">
@@ -271,7 +271,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">EventEmitter</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 创建一个空对象 events，用于存储事件名称和对应的回调函数数组</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">events</span> = &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 接受两个参数，eventName 事件名称，callback 回调函数</span></span><br><span class="line">  <span class="title function_">subscribe</span>(<span class="params">eventName, callback</span>) &#123;</span><br><span class="line">    <span class="comment">// 如果 evnets 对象中不存在 eventName 对应的数组，则创建一个空数组</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="variable language_">this</span>.<span class="property">events</span>[eventName]) &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">events</span>[eventName] = [];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将回调函数添加到对应事件的数组中</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">events</span>[eventName].<span class="title function_">push</span>(callback);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 返回一个包含 unsubscribe 方法的对象，以允许用户取消订阅</span></span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">unsubscribe</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">      <span class="keyword">const</span> index = <span class="variable language_">this</span>.<span class="property">events</span>[eventName].<span class="title function_">indexOf</span>(callback);</span><br><span class="line">      <span class="keyword">if</span> (index !== -<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">events</span>[eventName].<span class="title function_">splice</span>(index, <span class="number">1</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123; unsubscribe &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 接受两个参数，eventName 事件名称和可选的 args 参数数组</span></span><br><span class="line">  <span class="title function_">emit</span>(<span class="params">eventName, args = []</span>) &#123;</span><br><span class="line">    <span class="comment">// 首先检查 events 对象中是否存在 eventName 对应的数组，如果不存在则返回一个空数组</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="variable language_">this</span>.<span class="property">events</span>[eventName]) &#123;</span><br><span class="line">      <span class="keyword">return</span> [];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> results = [];</span><br><span class="line">    <span class="comment">// 遍历 eventName 对应的数组，依次调用每个回调函数，并将 args 作为参数传递给它们</span></span><br><span class="line">    <span class="comment">// 将每个回调函数的返回值添加到一个结果数组中</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> callback <span class="keyword">of</span> <span class="variable language_">this</span>.<span class="property">events</span>[eventName]) &#123;</span><br><span class="line">      results.<span class="title function_">push</span>(<span class="title function_">callback</span>(...args));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 返回结果数组</span></span><br><span class="line">    <span class="keyword">return</span> results;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 示例用法</span></span><br><span class="line"><span class="keyword">const</span> emitter = <span class="keyword">new</span> <span class="title class_">EventEmitter</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 订阅事件 &quot;myEvent&quot;</span></span><br><span class="line"><span class="keyword">const</span> subscription1 = emitter.<span class="title function_">subscribe</span>(<span class="string">&quot;myEvent&quot;</span>, <span class="function">(<span class="params">arg1, arg2</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Callback 1: <span class="subst">$&#123;arg1&#125;</span>, <span class="subst">$&#123;arg2&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 另一个订阅同一个事件</span></span><br><span class="line"><span class="keyword">const</span> subscription2 = emitter.<span class="title function_">subscribe</span>(<span class="string">&quot;myEvent&quot;</span>, <span class="function">(<span class="params">arg1, arg2</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Callback 2: <span class="subst">$&#123;arg1&#125;</span>, <span class="subst">$&#123;arg2&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 触发事件 &quot;myEvent&quot;，并传递参数</span></span><br><span class="line"><span class="keyword">const</span> results = emitter.<span class="title function_">emit</span>(<span class="string">&quot;myEvent&quot;</span>, [<span class="string">&quot;Hello&quot;</span>, <span class="string">&quot;World&quot;</span>]);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(results); <span class="comment">// 输出结果数组</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 取消订阅第一个回调函数</span></span><br><span class="line">subscription1.<span class="title function_">unsubscribe</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 再次触发事件 &quot;myEvent&quot;</span></span><br><span class="line">emitter.<span class="title function_">emit</span>(<span class="string">&quot;myEvent&quot;</span>, [<span class="string">&quot;Goodbye&quot;</span>, <span class="string">&quot;EventEmitter&quot;</span>]);</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2023/09/04/7d1c3219b1cc/#more" rel="contents">
+              <a class="btn" href="/2023/09/04/2694-%E4%BA%8B%E4%BB%B6%E5%8F%91%E5%B0%84%E5%99%A8/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -302,7 +302,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/08/31/ba4ebfe890f1/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/08/31/2705-%E7%B2%BE%E7%AE%80%E5%AF%B9%E8%B1%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -320,7 +320,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/08/31/ba4ebfe890f1/" class="post-title-link" itemprop="url">2705. 精简对象</a>
+          <a href="/2023/08/31/2705-%E7%B2%BE%E7%AE%80%E5%AF%B9%E8%B1%A1/" class="post-title-link" itemprop="url">2705. 精简对象</a>
         </h2>
 
         <div class="post-meta-container">
@@ -374,7 +374,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> compactObject = <span class="keyword">function</span> (<span class="params">obj</span>) &#123;</span><br><span class="line">  <span class="comment">// 函数首先检查 obj 是否是数组</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="title class_">Array</span>.<span class="title function_">isArray</span>(obj)) &#123;</span><br><span class="line">    <span class="comment">// 如果是数组，它会递归处理数组中的每个元素，并使用 filter(Boolean) 来过滤掉数组中的假值元素</span></span><br><span class="line">    <span class="keyword">return</span> obj.<span class="title function_">map</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> <span class="title function_">compactObject</span>(item)).<span class="title function_">filter</span>(<span class="title class_">Boolean</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 检查 obj 是否是对象</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> obj === <span class="string">&quot;object&quot;</span> &amp;&amp; obj !== <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="comment">// 创建一个新的空对象 result，用于存储精简后的属性</span></span><br><span class="line">    <span class="keyword">const</span> result = &#123;&#125;;</span><br><span class="line">    <span class="comment">// 接下来，函数遍历 obj 的所有属性，并将精简后的属性值存储在 result 中，前提是这个属性值不是假值。</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">      <span class="comment">// 确保只检查 obj 自身的属性，而不受原型链上属性的影响</span></span><br><span class="line">      <span class="keyword">if</span> (<span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">hasOwnProperty</span>.<span class="title function_">call</span>(obj, key)) &#123;</span><br><span class="line">        <span class="comment">// 递归处理每个属性值</span></span><br><span class="line">        <span class="keyword">const</span> compactedValue = <span class="title function_">compactObject</span>(obj[key]);</span><br><span class="line">        <span class="comment">// 如果属性值为真</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="title class_">Boolean</span>(compactedValue)) &#123;</span><br><span class="line">          <span class="comment">// 保存真值属性</span></span><br><span class="line">          result[key] = compactedValue;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 最后，函数检查 result 对象，如果该对象至少包含一个属性，就返回它；否则返回 &#123;&#125;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Object</span>.<span class="title function_">keys</span>(result).<span class="property">length</span> &gt; <span class="number">0</span> ? result : &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> obj;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2023/08/31/ba4ebfe890f1/#more" rel="contents">
+              <a class="btn" href="/2023/08/31/2705-%E7%B2%BE%E7%AE%80%E5%AF%B9%E8%B1%A1/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -405,7 +405,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/08/30/89d4b7832633/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/08/30/2625-%E6%89%81%E5%B9%B3%E5%8C%96%E5%B5%8C%E5%A5%97%E6%95%B0%E7%BB%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -423,7 +423,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/08/30/89d4b7832633/" class="post-title-link" itemprop="url">2625.扁平化嵌套数组</a>
+          <a href="/2023/08/30/2625-%E6%89%81%E5%B9%B3%E5%8C%96%E5%B5%8C%E5%A5%97%E6%95%B0%E7%BB%84/" class="post-title-link" itemprop="url">2625.扁平化嵌套数组</a>
         </h2>
 
         <div class="post-meta-container">
@@ -478,7 +478,7 @@
 <p>网上查了一下 concat 比展开运算法的效率更高，但是程序里面一开始用 concat 就提示超时无法通过，换成展开运算符就可以了。<br>暂时还没搞明白这点，先 mark 一下。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2023/08/30/89d4b7832633/#more" rel="contents">
+              <a class="btn" href="/2023/08/30/2625-%E6%89%81%E5%B9%B3%E5%8C%96%E5%B5%8C%E5%A5%97%E6%95%B0%E7%BB%84/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -509,7 +509,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/08/29/33dfa7bad750/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/08/29/%E6%A0%B9%E6%8D%AE-id-%E5%90%88%E5%B9%B6%E6%95%B0%E7%BB%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -527,7 +527,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/08/29/33dfa7bad750/" class="post-title-link" itemprop="url">根据 id 合并数组</a>
+          <a href="/2023/08/29/%E6%A0%B9%E6%8D%AE-id-%E5%90%88%E5%B9%B6%E6%95%B0%E7%BB%84/" class="post-title-link" itemprop="url">根据 id 合并数组</a>
         </h2>
 
         <div class="post-meta-container">
@@ -580,7 +580,7 @@
 <p>1.<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/join-two-arrays-by-id/?envType=study-plan-v2&envId=30-days-of-javascript">题目描述</a></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2023/08/29/33dfa7bad750/#more" rel="contents">
+              <a class="btn" href="/2023/08/29/%E6%A0%B9%E6%8D%AE-id-%E5%90%88%E5%B9%B6%E6%95%B0%E7%BB%84/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -611,7 +611,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/08/28/5a345906872d/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/08/28/%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -629,7 +629,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/08/28/5a345906872d/" class="post-title-link" itemprop="url">无重复字符的最长子串</a>
+          <a href="/2023/08/28/%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/" class="post-title-link" itemprop="url">无重复字符的最长子串</a>
         </h2>
 
         <div class="post-meta-container">
@@ -684,7 +684,7 @@
 <p>右指针在往右滑的过程中，如果满足条件，就一直滑<br>一旦右指针不满足条件，则滑动左指针，直到右指针满足条件可以继续滑<br>这个过程中，左右指针之间的距离忽大忽小，在这个过程中就能得到最大长度<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV113411v7Ak/?spm_id_from=333.337.search-card.all.click&vd_source=feaed3bcf7c26260dd3b1715d154fdbe">视频讲解 1</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1As4y1D7iJ/?spm_id_from=333.337.search-card.all.click&vd_source=feaed3bcf7c26260dd3b1715d154fdbe">视频讲解 2</a></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2023/08/28/5a345906872d/#more" rel="contents">
+              <a class="btn" href="/2023/08/28/%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>

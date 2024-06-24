@@ -199,7 +199,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2017/09/01/c6d6c2ae0fa1/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2017/09/01/Git-remote-repository/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -217,7 +217,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2017/09/01/c6d6c2ae0fa1/" class="post-title-link" itemprop="url">Git remote repository</a>
+          <a href="/2017/09/01/Git-remote-repository/" class="post-title-link" itemprop="url">Git remote repository</a>
         </h2>
 
         <div class="post-meta-container">
@@ -285,7 +285,7 @@
 </ul>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2017/09/01/c6d6c2ae0fa1/#more" rel="contents">
+              <a class="btn" href="/2017/09/01/Git-remote-repository/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -316,7 +316,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2017/08/30/0e1eebd69199/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2017/08/30/%E5%8C%97%E4%BA%AC%E4%BA%91%E5%B9%B3%E5%8F%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -334,7 +334,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2017/08/30/0e1eebd69199/" class="post-title-link" itemprop="url">北京云平台服务器故障排查过程</a>
+          <a href="/2017/08/30/%E5%8C%97%E4%BA%AC%E4%BA%91%E5%B9%B3%E5%8F%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/" class="post-title-link" itemprop="url">北京云平台服务器故障排查过程</a>
         </h2>
 
         <div class="post-meta-container">
@@ -397,7 +397,7 @@
 <p><strong>解决办法：</strong><br>删除 mysql.sock 文件或者改名，重启 MySQL 服务后恢复正常。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2017/08/30/0e1eebd69199/#more" rel="contents">
+              <a class="btn" href="/2017/08/30/%E5%8C%97%E4%BA%AC%E4%BA%91%E5%B9%B3%E5%8F%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -428,7 +428,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2017/08/17/43a414da923f/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2017/08/17/Linux-LVM-%E6%89%A9%E5%AE%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -446,7 +446,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2017/08/17/43a414da923f/" class="post-title-link" itemprop="url">Linux LVM 扩容</a>
+          <a href="/2017/08/17/Linux-LVM-%E6%89%A9%E5%AE%B9/" class="post-title-link" itemprop="url">Linux LVM 扩容</a>
         </h2>
 
         <div class="post-meta-container">
@@ -505,7 +505,7 @@
 <h4 id="创建一块新的分区"><a href="#创建一块新的分区" class="headerlink" title="创建一块新的分区"></a>创建一块新的分区</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1. fdisk /dev/sda</span><br><span class="line">p    # 打印当前分区</span><br><span class="line">n    # 新建分区</span><br><span class="line">p    # 新建主分区</span><br><span class="line">3    # 分区号，因为前面只建了两个分区</span><br><span class="line">回车  # 使用提供的默认开始磁柱和结束磁柱</span><br><span class="line">t    # 分区类型8e表示LVM分区</span><br><span class="line">8e</span><br><span class="line">w    # 写入分区表</span><br><span class="line"></span><br><span class="line">2. partprobe # 重读分区表，不用重启电脑（PS：我使用这个命令没成功，还是需要重启电脑）</span><br><span class="line"></span><br><span class="line">3. mkfs -t ext4 /dev/sda3 # 格式化新分区</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2017/08/17/43a414da923f/#more" rel="contents">
+              <a class="btn" href="/2017/08/17/Linux-LVM-%E6%89%A9%E5%AE%B9/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -536,7 +536,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2017/07/15/eb76a91ba281/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2017/07/15/Windows-Server-2012-R2-%E5%AE%89%E8%A3%85%E8%A1%A5%E4%B8%81KB2999226%E6%8F%90%E7%A4%BA%E6%AD%A4%E6%9B%B4%E6%96%B0%E4%B8%8D%E9%80%82%E5%90%88%E7%94%A8%E4%BA%8E%E8%AE%A1%E7%AE%97%E6%9C%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -554,7 +554,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2017/07/15/eb76a91ba281/" class="post-title-link" itemprop="url">Windows Server 2012 R2 安装补丁KB2999226提示此更新不适合用于计算机</a>
+          <a href="/2017/07/15/Windows-Server-2012-R2-%E5%AE%89%E8%A3%85%E8%A1%A5%E4%B8%81KB2999226%E6%8F%90%E7%A4%BA%E6%AD%A4%E6%9B%B4%E6%96%B0%E4%B8%8D%E9%80%82%E5%90%88%E7%94%A8%E4%BA%8E%E8%AE%A1%E7%AE%97%E6%9C%BA/" class="post-title-link" itemprop="url">Windows Server 2012 R2 安装补丁KB2999226提示此更新不适合用于计算机</a>
         </h2>
 
         <div class="post-meta-container">
@@ -615,7 +615,7 @@
 <p><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20170715/TIM%E6%88%AA%E5%9B%BE20170715101315.png" alt="Mysql Workbench"><br>该服务器操作系统是Windows Server 2012 R2，已经自带了.NET Framework 4.5，所以只需要安装Visual Studio 2015就行了。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2017/07/15/eb76a91ba281/#more" rel="contents">
+              <a class="btn" href="/2017/07/15/Windows-Server-2012-R2-%E5%AE%89%E8%A3%85%E8%A1%A5%E4%B8%81KB2999226%E6%8F%90%E7%A4%BA%E6%AD%A4%E6%9B%B4%E6%96%B0%E4%B8%8D%E9%80%82%E5%90%88%E7%94%A8%E4%BA%8E%E8%AE%A1%E7%AE%97%E6%9C%BA/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -646,7 +646,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2017/07/04/8703c8809db7/">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2017/07/04/oh-my-zsh%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -664,7 +664,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2017/07/04/8703c8809db7/" class="post-title-link" itemprop="url">oh-my-zsh中文乱码</a>
+          <a href="/2017/07/04/oh-my-zsh%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/" class="post-title-link" itemprop="url">oh-my-zsh中文乱码</a>
         </h2>
 
         <div class="post-meta-container">
@@ -727,7 +727,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locale:Cannot set LC-ALL to default locale:No such file or directory</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2017/07/04/8703c8809db7/#more" rel="contents">
+              <a class="btn" href="/2017/07/04/oh-my-zsh%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="爬取去哪儿网自由行商品数据并保存在 mongodb 数据库中：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 爬取去哪儿网商品数据">
+<meta property="og:url" content="https://toypipi.github.io/2020/04/08/Python-%E7%88%AC%E5%8F%96%E5%8E%BB%E5%93%AA%E5%84%BF%E7%BD%91%E5%95%86%E5%93%81%E6%95%B0%E6%8D%AE/index.html">
+<meta property="og:site_name" content="Toypipi&#39;s blog">
+<meta property="og:description" content="爬取去哪儿网自由行商品数据并保存在 mongodb 数据库中：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-08T10:03:43.000Z">
+<meta property="article:modified_time" content="2020-11-03T03:44:54.210Z">
+<meta property="article:author" content="toypipi">
+<meta property="article:tag" content="爬虫">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://toypipi.github.io/2020/04/08/Python-%E7%88%AC%E5%8F%96%E5%8E%BB%E5%93%AA%E5%84%BF%E7%BD%91%E5%95%86%E5%93%81%E6%95%B0%E6%8D%AE/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://toypipi.github.io/2020/04/08/Python-%E7%88%AC%E5%8F%96%E5%8E%BB%E5%93%AA%E5%84%BF%E7%BD%91%E5%95%86%E5%93%81%E6%95%B0%E6%8D%AE/","path":"2020/04/08/Python-爬取去哪儿网商品数据/","title":"Python 爬取去哪儿网商品数据"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Python 爬取去哪儿网商品数据 | Toypipi's blog</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?c228072b8c3657dfa7236914b308712c"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Toypipi's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%88%AC%E5%8F%96%E5%8E%BB%E5%93%AA%E5%84%BF%E7%BD%91%E8%87%AA%E7%94%B1%E8%A1%8C%E5%95%86%E5%93%81%E6%95%B0%E6%8D%AE%E5%B9%B6%E4%BF%9D%E5%AD%98%E5%9C%A8-mongodb-%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">爬取去哪儿网自由行商品数据并保存在 mongodb 数据库中：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%91%E6%8E%A7%E7%A8%8B%E5%BA%8F"><span class="nav-number">2.</span> <span class="nav-text">数据库监控程序</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="toypipi"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">toypipi</p>
+  <div class="site-description" itemprop="description">Stay focused, be present</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">289</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">381</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/toypipi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;toypipi" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:275688469@qq.com" title="E-Mail → mailto:275688469@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2020/04/08/Python-%E7%88%AC%E5%8F%96%E5%8E%BB%E5%93%AA%E5%84%BF%E7%BD%91%E5%95%86%E5%93%81%E6%95%B0%E6%8D%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Python 爬取去哪儿网商品数据 | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python 爬取去哪儿网商品数据
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-04-08 18:03:43" itemprop="dateCreated datePublished" datetime="2020-04-08T18:03:43+08:00">2020-04-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2020-11-03 11:44:54" itemprop="dateModified" datetime="2020-11-03T11:44:54+08:00">2020-11-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>380</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<h1 id="爬取去哪儿网自由行商品数据并保存在-mongodb-数据库中："><a href="#爬取去哪儿网自由行商品数据并保存在-mongodb-数据库中：" class="headerlink" title="爬取去哪儿网自由行商品数据并保存在 mongodb 数据库中："></a>爬取去哪儿网自由行商品数据并保存在 mongodb 数据库中：</h1><span id="more"></span>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> pymongo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立数据库连接并创建数据库和表</span></span><br><span class="line">client = pymongo.MongoClient(<span class="string">&#x27;192.168.1.123&#x27;</span>, <span class="number">27000</span>)</span><br><span class="line">book_qunar = client[<span class="string">&#x27;qunar&#x27;</span>]</span><br><span class="line">sheet_qunar_zyx = book_qunar[<span class="string">&#x27;qunar_zyx&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取产品列表信息</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_list</span>(<span class="params">dep, item</span>):</span><br><span class="line">    url = <span class="string">&#x27;https://touch.dujia.qunar.com/list?modules=list,bookingInfo,activityDetail&amp;dep=&#123;&#125;&amp;query=&#123;&#125;&amp;dappDealTrace=true&amp;mobFunction=%E6%89%A9%E5%B1%95%E8%87%AA%E7%94%B1%E8%A1%8C&amp;cfrom=zyx&amp;it=dujia_hy_destination&amp;date=&amp;needNoResult=true&amp;originalquery=&#123;&#125;&amp;width=480&amp;height=320&amp;quality=90&amp;limit=0,20&amp;includeAD=true&amp;qsact=search&#x27;</span>.<span class="built_in">format</span>(</span><br><span class="line">        urllib.request.quote(dep), urllib.request.quote(item), urllib.request.quote(item))</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    strhtml = requests.get(url)</span><br><span class="line">    <span class="comment"># 取出产品数</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        routeCount = <span class="built_in">int</span>(strhtml.json()[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;limit&#x27;</span>][<span class="string">&#x27;routeCount&#x27;</span>])</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">for</span> limit <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, routeCount, <span class="number">20</span>):</span><br><span class="line">        url = <span class="string">&#x27;https://touch.dujia.qunar.com/list?modules=list,bookingInfo,activityDetail&amp;dep=&#123;&#125;&amp;query=&#123;&#125;&amp;dappDealTrace=true&amp;mobFunction=%E6%89%A9%E5%B1%95%E8%87%AA%E7%94%B1%E8%A1%8C&amp;cfrom=zyx&amp;it=dujia_hy_destination&amp;date=&amp;needNoResult=true&amp;originalquery=&#123;&#125;&amp;width=480&amp;height=320&amp;quality=90&amp;limit=&#123;&#125;,20&amp;includeAD=true&amp;qsact=search&#x27;</span>.<span class="built_in">format</span>(</span><br><span class="line">            urllib.request.quote(dep), urllib.request.quote(item), urllib.request.quote(item), limit)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        strhtml = requests.get(url)</span><br><span class="line">        result = &#123;</span><br><span class="line">            <span class="string">&#x27;date&#x27;</span>: time.strftime(<span class="string">&#x27;%Y-%m-%d&#x27;</span>, time.localtime(time.time())),</span><br><span class="line">            <span class="string">&#x27;dep&#x27;</span>: dep,</span><br><span class="line">            <span class="string">&#x27;arrive&#x27;</span>: item,</span><br><span class="line">            <span class="string">&#x27;limit&#x27;</span>: limit,</span><br><span class="line">            <span class="string">&#x27;result&#x27;</span>: strhtml.json()</span><br><span class="line">        &#125;</span><br><span class="line">        sheet_qunar_zyx.insert_one(result)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_json</span>(<span class="params">url</span>):</span><br><span class="line">    strhtml = requests.get(url)</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> strhtml.json()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment"># 获取出发地站点</span></span><br><span class="line">    url = <span class="string">&#x27;https://touch.dujia.qunar.com/depCities.qunar&#x27;</span></span><br><span class="line">    dep_dict = get_json(url)</span><br><span class="line">    <span class="keyword">for</span> dep_item <span class="keyword">in</span> dep_dict[<span class="string">&#x27;data&#x27;</span>]:</span><br><span class="line">        <span class="keyword">for</span> dep <span class="keyword">in</span> dep_dict[<span class="string">&#x27;data&#x27;</span>][dep_item]:</span><br><span class="line">            a = []</span><br><span class="line">            <span class="comment"># 根据出发地站点获取目的地</span></span><br><span class="line">            url = <span class="string">&#x27;https://touch.dujia.qunar.com/golfz/sight/arriveRecommend?dep=&#123;&#125;&amp;exclude=&amp;extensionImg=255,175&#x27;</span>.<span class="built_in">format</span>(</span><br><span class="line">                urllib.request.quote(dep))</span><br><span class="line">            arrive_dict = get_json(url)</span><br><span class="line">            <span class="keyword">for</span> arrive_item <span class="keyword">in</span> arrive_dict[<span class="string">&#x27;data&#x27;</span>]:</span><br><span class="line">                <span class="keyword">for</span> arrive_item_1 <span class="keyword">in</span> arrive_item[<span class="string">&#x27;subModules&#x27;</span>]:</span><br><span class="line">                    <span class="keyword">for</span> query <span class="keyword">in</span> arrive_item_1[<span class="string">&#x27;items&#x27;</span>]:</span><br><span class="line">                        <span class="comment"># 对目的地进行去重</span></span><br><span class="line">                        <span class="keyword">if</span> query[<span class="string">&#x27;query&#x27;</span>] <span class="keyword">not</span> <span class="keyword">in</span> a:</span><br><span class="line">                            a.append(query[<span class="string">&#x27;query&#x27;</span>])</span><br><span class="line">            <span class="comment"># 获取产品列表</span></span><br><span class="line">            <span class="keyword">for</span> item <span class="keyword">in</span> a:</span><br><span class="line">                get_list(dep, item)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="数据库监控程序"><a href="#数据库监控程序" class="headerlink" title="数据库监控程序"></a>数据库监控程序</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> get_depart <span class="keyword">import</span> sheet_qunar_zyx</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="built_in">print</span>(sheet_qunar_zyx.find().count())</span><br><span class="line">    time.sleep(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>参考文档：</strong><br><a target="_blank" rel="noopener" href="https://book.douban.com/subject/30190201/">Python 3爬虫、数据清洗与可视化实战</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.JPG" alt="toypipi 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.JPG" alt="toypipi 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>toypipi
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://toypipi.github.io/2020/04/08/Python-%E7%88%AC%E5%8F%96%E5%8E%BB%E5%93%AA%E5%84%BF%E7%BD%91%E5%95%86%E5%93%81%E6%95%B0%E6%8D%AE/" title="Python 爬取去哪儿网商品数据">https://toypipi.github.io/2020/04/08/Python-爬取去哪儿网商品数据/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E7%88%AC%E8%99%AB/" rel="tag"><i class="fa fa-tag"></i> 爬虫</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/04/03/Python-%E8%8E%B7%E5%8F%96%E5%85%A8%E5%9B%BD%E6%89%80%E6%9C%89%E5%9F%8E%E5%B8%82%E5%AE%9E%E6%97%B6%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5/" rel="prev" title="Python 获取全国所有城市实时天气预报">
+                  <i class="fa fa-angle-left"></i> Python 获取全国所有城市实时天气预报
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/04/17/Python-Mysql-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E5%92%8C%E6%9F%A5%E8%AF%A2/" rel="next" title="Python Mysql 数据库连接和查询">
+                  Python Mysql 数据库连接和查询 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2016 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">toypipi</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">195k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">11:49</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
