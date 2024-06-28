@@ -154,7 +154,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">290</span>
+          <span class="site-state-item-count">291</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -165,7 +165,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">381</span>
+        <span class="site-state-item-count">384</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -190,6 +190,110 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/09/28/%E4%B8%80%E4%BA%9B%E6%AF%94%E8%BE%83%E5%A5%BD%E7%9A%84%E7%BC%96%E7%A8%8B%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/09/28/%E4%B8%80%E4%BA%9B%E6%AF%94%E8%BE%83%E5%A5%BD%E7%9A%84%E7%BC%96%E7%A8%8B%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">一些比较好的编程方式总结</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-09-28 09:56:53 / 修改时间：10:10:53" itemprop="dateCreated datePublished" datetime="2023-09-28T09:56:53+08:00">2023-09-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>261</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<h1 id="属性检查"><a href="#属性检查" class="headerlink" title="属性检查"></a>属性检查</h1><p>以下是 vue 中定义的一个获取表格数据的函数，注意获取表格数据时，需要判断表格数据是否存在，如果不存在，则使用空数组。</p>
+<p>可选链运算符（?.）允许读取位于连接对象链深处的属性的值，而不必明确验证链中的每个引用是否有效。?. 运算符的功能类似于 . 链式运算符，不同之处在于，在引用为空 (nullish ) (null 或者 undefined) 的情况下不会引起错误，该表达式短路返回值是 undefined。与函数调用一起使用时，如果给定的函数不存在，则返回 undefined。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">getTableData</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">tableData</span> = [];</span><br><span class="line">  <span class="keyword">const</span> params = &#123;</span><br><span class="line">    <span class="attr">page</span>: <span class="variable language_">this</span>.<span class="property">currentPage</span>,</span><br><span class="line">    <span class="attr">size</span>: <span class="variable language_">this</span>.<span class="property">currentPageSize</span></span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="title function_">getCondition</span>(<span class="title function_">getToken</span>(<span class="string">&quot;productId&quot;</span>), params).<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 从响应中提取数据，如果数据不存在，则使用空数组</span></span><br><span class="line">    <span class="comment">// 可选链运算符使表达式更短，更简明</span></span><br><span class="line">    <span class="keyword">const</span> data = res.<span class="property">data</span>?.<span class="property">data</span>?.<span class="property">list</span> || [];</span><br><span class="line">    <span class="comment">// 遍历数据并构造表格行对象</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> item <span class="keyword">of</span> data) &#123;</span><br><span class="line">      <span class="keyword">const</span> temp = &#123;</span><br><span class="line">        <span class="attr">id</span>: item.<span class="property">id</span>,</span><br><span class="line">        <span class="attr">name</span>: item.<span class="property">name</span>,</span><br><span class="line">        <span class="attr">remark</span>: item.<span class="property">remark</span>,</span><br><span class="line">        <span class="attr">time</span>: <span class="title function_">tampToTime</span>(item.<span class="property">createDate</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">tableData</span>.<span class="title function_">push</span>(temp);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">total</span> = <span class="variable language_">this</span>.<span class="property">tableData</span>.<span class="property">length</span>;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/09/28/%E4%B8%80%E4%BA%9B%E6%AF%94%E8%BE%83%E5%A5%BD%E7%9A%84%E7%BC%96%E7%A8%8B%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -657,122 +761,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/09/22/%E8%8B%B1%E8%AF%AD%E6%B0%B4%E5%B9%B3%E8%83%BD%E5%8A%9B%E6%B5%8B%E8%AF%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="toypipi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Toypipi's blog">
-      <meta itemprop="description" content="Stay focused, be present">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Toypipi's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/09/22/%E8%8B%B1%E8%AF%AD%E6%B0%B4%E5%B9%B3%E8%83%BD%E5%8A%9B%E6%B5%8B%E8%AF%95/" class="post-title-link" itemprop="url">英语水平能力测试</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-22 17:52:21" itemprop="dateCreated datePublished" datetime="2023-09-22T17:52:21+08:00">2023-09-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-26 11:05:20" itemprop="dateModified" datetime="2023-09-26T11:05:20+08:00">2023-09-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%94%9F%E6%B4%BB/" itemprop="url" rel="index"><span itemprop="name">生活</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>215</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<h1 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h1><p>欧洲共同语言参考标准（The Common European Framework of Reference for Languages，简称 CEFR）是被国际认可的描述语言能力和水平的标准。在欧洲，CEFR 被广泛接受，并且越来越多的运用到欧洲以外的世界范围内。</p>
-<p>EF SET 英语测试是现在世界上唯一一套针对所有 CEFR 英语水平等级（从 A1 到 C2 六个级别）设计的试题，可以精确判断出测试者的英文能力属于哪个 CEFR 级别。托福和雅思一般只能判断 B2 及以上，而不是所有的英语程度。</p>
-<p>下面是今天的 15 分钟快测结果，记录一下后续用来对比：</p>
-<img src="/2023/09/22/%E8%8B%B1%E8%AF%AD%E6%B0%B4%E5%B9%B3%E8%83%BD%E5%8A%9B%E6%B5%8B%E8%AF%95/1.png" class="">
-
-<p>可以进一步提高的方法：</p>
-<img src="/2023/09/22/%E8%8B%B1%E8%AF%AD%E6%B0%B4%E5%B9%B3%E8%83%BD%E5%8A%9B%E6%B5%8B%E8%AF%95/2.png" class="">
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/09/22/%E8%8B%B1%E8%AF%AD%E6%B0%B4%E5%B9%B3%E8%83%BD%E5%8A%9B%E6%B5%8B%E8%AF%95/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/58/">58</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/12/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/59/">59</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/12/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
@@ -800,7 +790,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">11:52</span>
+    <span title="站点阅读时长">11:53</span>
   </span>
 </div>
 <div class="busuanzi-count">

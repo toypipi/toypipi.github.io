@@ -154,7 +154,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">290</span>
+          <span class="site-state-item-count">291</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -165,7 +165,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">381</span>
+        <span class="site-state-item-count">384</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -190,6 +190,110 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/05/31/Python-%E7%88%AC%E5%8F%96%E9%81%93%E6%8C%87%E6%88%90%E5%88%86%E8%82%A1%E6%95%B0%E6%8D%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2018/05/31/Python-%E7%88%AC%E5%8F%96%E9%81%93%E6%8C%87%E6%88%90%E5%88%86%E8%82%A1%E6%95%B0%E6%8D%AE/" class="post-title-link" itemprop="url">Python 爬取道指成分股数据</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-05-31 16:10:12" itemprop="dateCreated datePublished" datetime="2018-05-31T16:10:12+08:00">2018-05-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2020-11-03 11:44:00" itemprop="dateModified" datetime="2020-11-03T11:44:00+08:00">2020-11-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>60</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<p>代码来自中国大学慕课 <a target="_blank" rel="noopener" href="https://www.icourse163.org/learn/NJU-1001571005?tid=1002097008#/learn/announce">用 Python 玩转数据</a>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">retrieve_dji_list</span>():</span><br><span class="line">    r = requests.get(<span class="string">&#x27;http://money.cnn.com/data/dow30/&#x27;</span>)</span><br><span class="line">    search_pattern = re.<span class="built_in">compile</span>(<span class="string">&#x27;class=&quot;wsod_symbol&quot;&gt;(.*)&lt;\/a&gt;.*&lt;span.*&quot;&gt;(.*?)&lt;\/span&gt;.*\n.*class=&quot;wsod_stream&quot;&gt;(.*)&lt;\/span&gt;&#x27;</span>)</span><br><span class="line">    dji_list_in_text = re.findall(search_pattern, r.text)</span><br><span class="line">    <span class="keyword">return</span> dji_list_in_text</span><br><span class="line"></span><br><span class="line">dji_list = retrieve_dji_list()</span><br><span class="line"><span class="built_in">print</span>(dji_list)</span><br></pre></td></tr></table></figure>
+
+<p><strong>参考文档：</strong><br><a target="_blank" rel="noopener" href="https://www.icourse163.org/learn/NJU-1001571005?tid=1002097008#/learn/content?type=detail&id=1002858587&cid=1003258763">用 Python 玩转数据</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -623,126 +727,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/04/17/%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97%E5%92%8C%E7%94%A8%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="toypipi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Toypipi's blog">
-      <meta itemprop="description" content="Stay focused, be present">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Toypipi's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/04/17/%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97%E5%92%8C%E7%94%A8%E6%B3%95/" class="post-title-link" itemprop="url">入门指南和用法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2018-04-17 09:15:27" itemprop="dateCreated datePublished" datetime="2018-04-17T09:15:27+08:00">2018-04-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2020-11-03 11:44:00" itemprop="dateModified" datetime="2020-11-03T11:44:00+08:00">2020-11-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>428</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<h1 id="innobackupex-的用法"><a href="#innobackupex-的用法" class="headerlink" title="innobackupex 的用法"></a><a href="https://toypipi.github.io/2018/04/17/innobackupex-%E7%9A%84%E7%94%A8%E6%B3%95/"><strong>innobackupex</strong> 的用法</a></h1><ul>
-<li>制作本地完整备份（创建，准备和还原）</li>
-<li>制作流式备份</li>
-<li>制作增量备份</li>
-<li>制作压缩备份</li>
-<li>备份和还原单个分区</li>
-</ul>
-<h1 id="xtrabackup-的用法"><a href="#xtrabackup-的用法" class="headerlink" title="xtrabackup 的用法"></a><strong>xtrabackup</strong> 的用法</h1><ul>
-<li>制作完整备份</li>
-<li>制作增量备份</li>
-<li>还原备份
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/04/17/%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97%E5%92%8C%E7%94%A8%E6%B3%95/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/41/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/41/">41</a><span class="page-number current">42</span><a class="page-number" href="/page/43/">43</a><span class="space">&hellip;</span><a class="page-number" href="/page/58/">58</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/43/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/41/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/41/">41</a><span class="page-number current">42</span><a class="page-number" href="/page/43/">43</a><span class="space">&hellip;</span><a class="page-number" href="/page/59/">59</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/43/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
@@ -770,7 +756,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">11:52</span>
+    <span title="站点阅读时长">11:53</span>
   </span>
 </div>
 <div class="busuanzi-count">
