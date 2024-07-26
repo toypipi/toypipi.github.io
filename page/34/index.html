@@ -154,7 +154,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">291</span>
+          <span class="site-state-item-count">292</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -165,7 +165,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">384</span>
+        <span class="site-state-item-count">386</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -190,6 +190,110 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2021/11/08/element-ui-el-col-%E5%A5%87%E6%95%B0%E4%BB%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/11/08/element-ui-el-col-%E5%A5%87%E6%95%B0%E4%BB%BD/" class="post-title-link" itemprop="url">element-ui el-col 奇数份</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-11-08 09:35:51" itemprop="dateCreated datePublished" datetime="2021-11-08T09:35:51+08:00">2021-11-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-11-03 10:53:11" itemprop="dateModified" datetime="2023-11-03T10:53:11+08:00">2023-11-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>75</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<p>Element Layout 布局设置奇数份分栏：</p>
+<figure class="highlight javascript"><figcaption><span>1.8</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-col :xs=<span class="string">&quot;12&quot;</span> :sm=<span class="string">&quot;12&quot;</span> :lg=<span class="string">&quot;lgSpan&quot;</span> <span class="keyword">class</span>=<span class="string">&quot;card-panel-col&quot;</span> v-<span class="keyword">for</span>=<span class="string">&quot;item in panelData&quot;</span>&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;card-panel&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;num&quot;</span>&gt;</span>&#123;&#123;item.num&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;name&quot;</span>&gt;</span>&#123;&#123;item.name&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/el-col&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="attr">props</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="attr">lgSpan</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="attr">type</span>: <span class="title class_">Object</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="attr">default</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="keyword">return</span> &#123; <span class="attr">span</span>: <span class="string">&#x27;4-8&#x27;</span> &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">style</span> <span class="attr">lang</span>=<span class="string">&quot;scss&quot;</span> <span class="attr">scoped</span>&gt;</span><span class="language-css"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">    <span class="selector-class">.el-col-lg-4-8</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">        <span class="attribute">width</span>: <span class="number">20%</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">    &#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36262395/article/details/114674476">参考文档</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -621,103 +725,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2021/01/06/Element-DateTimePicker-%E6%8A%A5%E9%94%99-dateStr-match-is-not-a-function/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="toypipi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Toypipi's blog">
-      <meta itemprop="description" content="Stay focused, be present">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Toypipi's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/06/Element-DateTimePicker-%E6%8A%A5%E9%94%99-dateStr-match-is-not-a-function/" class="post-title-link" itemprop="url">Element DateTimePicker 报错 dateStr.match is not a function</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-01-06 17:01:23 / 修改时间：17:25:03" itemprop="dateCreated datePublished" datetime="2021-01-06T17:01:23+08:00">2021-01-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>202</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>如题，百度检索了一圈没发现正确答案，用 google 搜了一下，找到一篇报同样错误的，戳 <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44640323/article/details/108670941">这里</a>，但是也不能解决我的问题。<br>后来仔细分析了一下故障，在点击选择日期的时候报错，点击选择时间是正常的。<br>回看代码，发现这个地方是这么写的(注意代码第三行的 :default-time)：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--开始时间日期选择器--&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">el-date-picker</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">  <span class="attr">v-model</span>=<span class="string">&quot;startTimeDate&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">  <span class="attr">:default-time</span>=<span class="string">&quot;[&#x27;00:00:00&#x27;]&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">  <span class="attr">type</span>=<span class="string">&quot;datetime&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">  <span class="attr">class</span>=<span class="string">&quot;filter-item&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">  <span class="attr">:placeholder</span>=<span class="string">&quot;$t(&#x27;table.startTime&#x27;)&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">  <span class="attr">value-format</span>=<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">el-date-picker</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p>我想可能是由于 :default-time 只初始化了时间，而日期没有初始化，所以导致了此问题，删除 :default-time 这行配置，果然不再报错了。<br>我可真是一个小机灵鬼儿  (๑╹◡╹)ﾉ”””</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/33/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/33/">33</a><span class="page-number current">34</span><a class="page-number" href="/page/35/">35</a><span class="space">&hellip;</span><a class="page-number" href="/page/59/">59</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/35/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -741,13 +748,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">196k</span>
+    <span title="站点总字数">201k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">11:53</span>
+    <span title="站点阅读时长">12:10</span>
   </span>
 </div>
 <div class="busuanzi-count">

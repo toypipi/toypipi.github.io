@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="开发人员编写 JavaScript 代码；浏览器执行 JavaScript 代码。从根本上说，在前端开发中并不需要构建步骤。那么，为什么现代前端开发中会有构建步骤呢？ 随着前端代码库的不断增长，以及开发人员工效变得越来越重要，直接将 JavaScript 源代码发送给客户端会导致两个主要问题： 1. 不支持的语言特性： 因为 JavaScript 在浏览器中运行，而且市面上有多种版本的浏览器，你">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端构建系统阐述-译">
+<meta property="og:url" content="https://toypipi.github.io/2024/07/26/%E5%89%8D%E7%AB%AF%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F%E9%98%90%E8%BF%B0-%E8%AF%91/index.html">
+<meta property="og:site_name" content="Toypipi&#39;s blog">
+<meta property="og:description" content="开发人员编写 JavaScript 代码；浏览器执行 JavaScript 代码。从根本上说，在前端开发中并不需要构建步骤。那么，为什么现代前端开发中会有构建步骤呢？ 随着前端代码库的不断增长，以及开发人员工效变得越来越重要，直接将 JavaScript 源代码发送给客户端会导致两个主要问题： 1. 不支持的语言特性： 因为 JavaScript 在浏览器中运行，而且市面上有多种版本的浏览器，你">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-07-26T03:13:17.000Z">
+<meta property="article:modified_time" content="2024-07-26T09:23:24.662Z">
+<meta property="article:author" content="toypipi">
+<meta property="article:tag" content="前端构建">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://toypipi.github.io/2024/07/26/%E5%89%8D%E7%AB%AF%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F%E9%98%90%E8%BF%B0-%E8%AF%91/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://toypipi.github.io/2024/07/26/%E5%89%8D%E7%AB%AF%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F%E9%98%90%E8%BF%B0-%E8%AF%91/","path":"2024/07/26/前端构建系统阐述-译/","title":"前端构建系统阐述-译"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>前端构建系统阐述-译 | Toypipi's blog</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?c228072b8c3657dfa7236914b308712c"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Toypipi's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E6%9E%84%E5%BB%BA%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.</span> <span class="nav-text">1. 构建步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E8%BD%AC%E8%AF%91"><span class="nav-number">1.1.</span> <span class="nav-text">1.1. 转译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E6%89%93%E5%8C%85"><span class="nav-number">1.2.</span> <span class="nav-text">1.2. 打包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-%E4%BB%A3%E7%A0%81%E6%8B%86%E5%88%86"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1. 代码拆分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-%E6%91%87%E6%A0%91"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2. 摇树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-3-%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90"><span class="nav-number">1.2.3.</span> <span class="nav-text">1.2.3. 静态资源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E5%8E%8B%E7%BC%A9"><span class="nav-number">1.3.</span> <span class="nav-text">1.3. 压缩</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">2. 开发者工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E5%85%83%E6%A1%86%E6%9E%B6%EF%BC%88Meta-Frameworks%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">2.1. 元框架（Meta-Frameworks）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E6%BA%90%E6%98%A0%E5%B0%84%EF%BC%88Sourcemaps%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">2.2. 源映射（Sourcemaps）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E7%83%AD%E9%87%8D%E8%BD%BD"><span class="nav-number">2.3.</span> <span class="nav-text">2.3. 热重载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-%E5%8D%95%E4%B8%80%E4%BB%A3%E7%A0%81%E5%BA%93%EF%BC%88Monorepos%EF%BC%89"><span class="nav-number">2.4.</span> <span class="nav-text">2.4. 单一代码库（Monorepos）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E8%B6%8B%E5%8A%BF"><span class="nav-number">3.</span> <span class="nav-text">3. 趋势</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8E%9F%E6%96%87%E9%93%BE%E6%8E%A5"><span class="nav-number">4.</span> <span class="nav-text">原文链接</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="toypipi"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">toypipi</p>
+  <div class="site-description" itemprop="description">Stay focused, be present</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">292</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">386</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/toypipi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;toypipi" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:275688469@qq.com" title="E-Mail → mailto:275688469@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2024/07/26/%E5%89%8D%E7%AB%AF%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F%E9%98%90%E8%BF%B0-%E8%AF%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="前端构建系统阐述-译 | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          前端构建系统阐述-译
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-07-26 11:13:17 / 修改时间：17:23:24" itemprop="dateCreated datePublished" datetime="2024-07-26T11:13:17+08:00">2024-07-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BF%BB%E8%AF%91/" itemprop="url" rel="index"><span itemprop="name">翻译</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>17 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<p>开发人员编写 JavaScript 代码；浏览器执行 JavaScript 代码。从根本上说，在前端开发中并不需要构建步骤。那么，为什么现代前端开发中会有构建步骤呢？</p>
+<p>随着前端代码库的不断增长，以及开发人员工效变得越来越重要，直接将 JavaScript 源代码发送给客户端会导致两个主要问题：</p>
+<p><strong>1. 不支持的语言特性：</strong> 因为 JavaScript 在浏览器中运行，而且市面上有多种版本的浏览器，你使用的每一种语言特性，都会减少能够执行你的 JavaScript 的客户端数量。此外，像 JSX 这样的语言扩展不是有效的 JavaScript，不能在任何浏览器中运行。</p>
+<p><strong>2. 性能问题：</strong> 浏览器必须单独请求每个 JavaScript 文件。在大型代码库中，这可能导致需要数千个 HTTP 请求来渲染一个页面。在过去，HTTP&#x2F;2 出现之前，这还会导致数千次 TLS 握手。</p>
+<p>此外，可能还需要几次连续的网络往返才能加载完所有的 JavaScript。例如，如果 <code>index.js</code> 导入了 <code>page.js</code>，而 <code>page.js</code> 又导入了 <code>button.js</code>，那么就需要三次连续的网络往返才能完全加载 JavaScript。这被称为瀑布流问题。</p>
+<p>源文件也可能因为长变量名和空白缩进字符而变得不必要地大，增加了带宽使用和网络加载时间。</p>
+<p>前端构建系统处理源代码，并输出一个或多个为发送到浏览器而优化的 JavaScript 文件。生成的<em>分发版</em>通常对人类来说是难以理解的。</p>
+<h1 id="1-构建步骤"><a href="#1-构建步骤" class="headerlink" title="1. 构建步骤"></a>1. 构建步骤</h1><p>前端构建系统通常包括三个步骤：转译、打包和压缩。</p>
+<p>一些应用程序可能不需要所有这三个步骤。例如，较小的代码库可能不需要打包或压缩，开发服务器也可能为了性能而跳过打包和 &#x2F; 或压缩。也可以添加其他自定义步骤。</p>
+<p>一些工具实现了多个构建步骤。特别是打包器通常实现了所有三个步骤，一个打包器单独使用可能就足以构建简单的应用程序。复杂的应用程序可能需要每个构建步骤的专门工具，以提供更大的功能集。</p>
+<span id="more"></span>
+
+<h2 id="1-1-转译"><a href="#1-1-转译" class="headerlink" title="1.1. 转译"></a>1.1. 转译</h2><p>转译解决了不支持的语言特性问题，它通过将使用现代 JavaScript 标准编写的 JavaScript 转换为较旧版本的 JavaScript 标准。如今，ES6&#x2F;ES2015 是一个常见的转译目标。</p>
+<p>框架和工具也可能引入转译步骤。例如，JSX 语法必须转译为 JavaScript。如果一个库提供了 Babel 插件，那通常意味着它需要一个转译步骤。此外，像 TypeScript、CoffeeScript 和 Elm 这样的语言必须转译为 JavaScript。</p>
+<p><a target="_blank" rel="noopener" href="https://wiki.commonjs.org/wiki/Modules">CommonJS 模块</a>（CJS）也必须转译为浏览器兼容的模块系统。自 2018 年浏览器普遍支持 <a target="_blank" rel="noopener" href="https://exploringjs.com/es6/ch_modules.html">ES6 模块</a>（ESM）以来，通常推荐转译为 ESM。ESM 更容易优化和摇树（tree-shake），因为它的导入和导出是静态定义的。</p>
+<p>现在常用的转译器有 Babel、SWC 和 TypeScript 编译器。</p>
+<ol>
+<li><p><a target="_blank" rel="noopener" href="https://babeljs.io/">Babel</a>（2014 年发布）是标准的转译器：一个用 JavaScript 编写的慢速单线程转译器。许多需要转译的框架和库都通过 Babel 插件来进行转译，这要求 Babel 成为构建过程的一部分。然而，Babel 很难调试，而且常常令人困惑。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://swc.rs/">SWC</a>（2020 年发布）是一个用 Rust 编写的快速多线程转译器。它声称比 Babel 快 20 倍；因此，它被较新的框架和构建工具所使用。它支持转译 TypeScript 和 JSX。如果你的应用程序不需要 Babel，SWC 是更好的选择。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/microsoft/TypeScript">TypeScript 编译器（tsc）</a>也支持转译 TypeScript 和 JSX。它是 TypeScript 的参考实现，也是唯一的完全功能的 TypeScript 类型检查器。然而，它非常慢。虽然 TypeScript 应用程序必须使用 TypeScript 编译器进行类型检查，但在构建步骤中，使用另一种转译器会更加高效。</p>
+</li>
+</ol>
+<p>如果你的代码是纯 JavaScript 并且使用 ES6 模块，也可以跳过转译步骤。</p>
+<p>对于不支持语言特性的一个子集，一个替代解决方案是 polyfill。Polyfills 在运行时执行，实现任何缺失的语言特性，然后再执行主应用程序逻辑。然而，这增加了运行时成本，有些语言特性无法 polyfill。参见 <a target="_blank" rel="noopener" href="https://github.com/zloirock/core-js">core-js</a>。</p>
+<p>所有打包器本质上也是转译器，因为它们解析多个 JavaScript 源文件并输出一个新的打包 JavaScript 文件。在这样做的过程中，它们可以选择在输出的 JavaScript 文件中使用哪些语言特性。一些打包器还能够解析 TypeScript 和 JSX 源文件。如果你的应用程序有简单的转译需求，你可能不需要单独的转译器。</p>
+<h2 id="1-2-打包"><a href="#1-2-打包" class="headerlink" title="1.2. 打包"></a>1.2. 打包</h2><p>打包解决了需要进行多次网络请求和瀑布流问题的需求。打包器将多个 JavaScript 源文件合并成一个单一的 JavaScript 输出文件，称为打包文件，而不会改变应用程序的行为。打包文件可以由浏览器在一个单一的往返网络请求中高效加载。</p>
+<p>现在常用的打包器有 Webpack、Parcel、Rollup、esbuild 和 Turbopack。</p>
+<ol>
+<li><p><a target="_blank" rel="noopener" href="https://webpack.js.org/">Webpack</a>（2014 年发布）在 2016 年左右获得了显著的流行度，后来成为标准的打包器。与当时常用的 Browserify 不同，Browserify 通常与 Gulp 任务运行器一起使用，Webpack 开创了 “加载器” 的概念，这些加载器在导入时转换源文件，允许 Webpack 协调整个构建流水线。</p>
+<p>加载器允许开发者在 JavaScript 文件中透明地(简单、直接的)导入静态资源，将所有源文件和静态资源合并到一个依赖图中。使用 Gulp 时，每种类型的静态资源都需要作为单独的任务构建。Webpack 还支持开箱即用的<a target="_blank" rel="noopener" href="https://sunsetglow.net/posts/frontend-build-systems.html#code-splitting">代码拆分</a>，简化了其设置和配置。</p>
+<p>Webpack 是慢速且单线程的，用 JavaScript 编写。它高度可配置，但其许多配置选项可能令人困惑。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://rollupjs.org/">Rollup</a>（2016 年发布）利用了 ES6 模块的广泛浏览器支持和它所启用的优化，即<a target="_blank" rel="noopener" href="https://sunsetglow.net/posts/frontend-build-systems.html#tree-shaking">摇树</a>。它产生的打包文件大小远小于 Webpack，导致 Webpack 后来采用了类似的优化。Rollup 是一个用 JavaScript 编写的单线程打包器，性能略高于 Webpack。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://parceljs.org/">Parcel</a>（2018 年发布）是一个低配置打包器，设计为 “开箱即用”，为构建过程的所有步骤和开发工具需求提供合理的默认配置。它是多线程的，比 Webpack 和 Rollup 快得多。Parcel 2 在后台使用 SWC。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://esbuild.github.io/">Esbuild</a>（2020 年发布）是一个为并行性和最佳性能而构建的打包器，用 Go 语言编写。它的性能比 Webpack、Rollup 和 Parcel 高出几十倍。Esbuild 实现了基本的转译器功能，同时也包含了一个压缩器。然而，它的功能没有其他打包工具那么丰富，提供的插件 API 较为有限，无法直接修改抽象语法树（AST）。与其使用 esbuild 插件来修改源文件，更常见的做法是在将文件传递给 esbuild 之前先对其进行转换。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://turbo.build/pack">Turbopack</a>（2022 年发布）是一个快速的 Rust 打包工具，支持增量重建。这个项目由 Vercel 公司开发，由 Webpack 的创建者领导。它目前处于测试阶段，可以在 Next.js 中选择使用。</p>
+</li>
+</ol>
+<p>如果你的模块非常少或者网络延迟非常低（例如在本地主机上），合理地跳过打包步骤是可行的。一些开发服务器也选择不为开发服务器打包模块。</p>
+<h3 id="1-2-1-代码拆分"><a href="#1-2-1-代码拆分" class="headerlink" title="1.2.1. 代码拆分"></a>1.2.1. 代码拆分</h3><p>默认情况下，客户端 React 应用程序被转换为一个单一的打包文件。对于具有许多页面和功能的大应用程序，打包文件可能非常大，抵消了打包的原始性能优势。</p>
+<p>将打包文件分成几个较小的打包文件，或称为<em>代码拆分</em>，解决了这个问题。一种常见的方法是将每个页面拆分成一个单独的打包文件。有了 HTTP&#x2F;2，共享依赖项也可以被分解到它们自己的打包文件中，以避免重复，几乎没有成本。此外，大型模块可能会拆分成一个单独的打包文件，并按需延迟加载。</p>
+<p>代码拆分后，每个打包文件的文件大小大大减少，但现在需要额外的网络往返，可能会重新引入瀑布流问题。代码拆分是一种权衡。</p>
+<p>由 Next.js 推广的文件系统路由器优化了代码拆分的权衡。Next.js 为每个页面创建单独的打包文件，只包括该页面导入的代码。加载页面会并行预加载该页面使用的所有打包文件。这优化了打包文件大小，而没有重新引入瀑布流问题。文件系统路由器通过为每个页面创建一个入口点（<code>pages/**/*.jsx</code>），而不是传统客户端 React 应用程序的单个入口点（index.jsx）来实现这一点。</p>
+<h3 id="1-2-2-摇树"><a href="#1-2-2-摇树" class="headerlink" title="1.2.2. 摇树"></a>1.2.2. 摇树</h3><p>一个打包文件（bundle）由多个模块组成，每个模块包含一个或多个导出。通常，一个特定的打包文件只会使用它所导入模块的部分导出。打包工具可以通过一个称为 <em>“树摇”（tree shaking）</em> 的过程来移除模块中未使用的导出。这种方式优化了打包文件的大小，从而改善了加载和解析时间。</p>
+<p>摇树依赖于源文件的静态分析，因此当静态分析变得更加具有挑战性时，就会受到阻碍。两个影响摇树的效率主要因素：</p>
+<p><strong>1. 模块系统：</strong> ES6 模块具有静态导出和导入，而 CommonJS 模块具有动态导出和导入。因此，打包器在摇树 ES6 模块时可以更加积极和高效。</p>
+<p><strong>2. 副作用：</strong> <code>package.json</code> 文件中的 <code>sideEffects</code> 属性声明一个模块在导入时是否有副作用。当存在副作用时，由于静态分析的限制，未使用的模块和未使用的导出可能无法被摇树掉。</p>
+<h3 id="1-2-3-静态资源"><a href="#1-2-3-静态资源" class="headerlink" title="1.2.3. 静态资源"></a>1.2.3. 静态资源</h3><p>静态资源，如 CSS、图像和字体，通常在打包步骤中被添加到分发版中。它们也可能在压缩步骤中被优化以减小文件大小。</p>
+<p>在 Webpack 之前，静态资源是作为独立的构建任务与源代码分开构建的。要加载静态资源，应用程序必须通过其在分发版中的最终路径引用它们。因此，通常需要围绕 URL 约定（例如 <code>/assets/css/banner.jpg</code> 和 <code>/assets/fonts/Inter.woff2</code>）仔细组织资源。</p>
+<p>Webpack 的 “加载器” 允许从 JavaScript 导入静态资源，将代码和静态资源统一到一个依赖图中。在打包过程中，Webpack 用分发版中的最终路径替换静态资源导入。这个功能使得静态资源可以与源代码中的相关组件一起组织，并为静态分析创造了新的可能性，例如检测不存在的资源。</p>
+<p>重要的是要认识到，导入静态资源（非 JavaScript 或转译为 JavaScript 的文件）不是 JavaScript 语言的一部分。它需要一个配置了支持该资源类型的打包工具。幸运的是，继 Webpack 之后的打包器也采用了 “加载器（loaders）” 模式，使这个功能变得普遍。</p>
+<h2 id="1-3-压缩"><a href="#1-3-压缩" class="headerlink" title="1.3. 压缩"></a>1.3. 压缩</h2><p>压缩解决了不必要的大文件问题。压缩器在不影响其行为的情况下减小文件的大小。对于 JavaScript 代码和 CSS 资源，压缩器可以缩短变量名、消除空白和注释、删除无用代码，并优化语言特性的使用。对于其他静态资源，压缩器可以执行文件大小优化。压缩器通常在构建过程结束时对打包文件进行处理。</p>
+<p>目前常用的几个 JavaScript 压缩器是 Terser、esbuild 和 SWC。<a target="_blank" rel="noopener" href="https://terser.org/">Terser</a> 是从不再维护的 uglify-es 分叉出来的。它用 JavaScript 编写，速度有点慢。<strong>Esbuild</strong> 和之前提到的 <strong>SWC</strong> 除了其他功能外还实现了压缩器，并且比 Terser 快。</p>
+<p>目前常用的几个 CSS 压缩器是 cssnano、csso 和 Lightning CSS。<a target="_blank" rel="noopener" href="https://cssnano.github.io/cssnano/">Cssnano</a> 和 <a target="_blank" rel="noopener" href="https://github.com/css/csso">csso</a> 是用 JavaScript 编写的纯 CSS 压缩器，因此速度有点慢。<a target="_blank" rel="noopener" href="https://lightningcss.dev/">Lightning CSS</a> 是用 Rust 编写的，声称比 cssnano 快 100 倍。Lightning CSS 还支持 CSS 转换和打包。</p>
+<h1 id="2-开发者工具"><a href="#2-开发者工具" class="headerlink" title="2. 开发者工具"></a>2. 开发者工具</h1><p>上面描述的基本前端构建流程足以创建一个优化的生产分发包。还有几类工具可以增强基本构建流程并改善开发体验。</p>
+<h2 id="2-1-元框架（Meta-Frameworks）"><a href="#2-1-元框架（Meta-Frameworks）" class="headerlink" title="2.1. 元框架（Meta-Frameworks）"></a>2.1. 元框架（Meta-Frameworks）</h2><p>前端领域以其选择 “正确” 包的挑战而闻名。例如，在上述列出的五个打包器中，你应该选择哪一个？</p>
+<p>元框架提供了一组已经选定的包，包括构建工具，它们协同工作并实现专门的应用程序范式。例如，<a target="_blank" rel="noopener" href="https://nextjs.org/">Next.js</a> 专注于服务器端渲染（SSR），而 <a target="_blank" rel="noopener" href="https://nextjs.org/">Remix</a> 专门用于渐进增强。</p>
+<p>元框架通常提供一个预配置的构建系统，无需您自己组合一个。它们的构建系统具有适用于生产和开发服务器的配置。</p>
+<p>像 <a target="_blank" rel="noopener" href="https://vitejs.dev/">Vite</a> 这样的构建工具，与元框架一样，为生产和开发提供了预配置的构建系统。与元框架不同，它们不强制使用专门的应用程序范式。它们适用于通用的前端应用程序。</p>
+<h2 id="2-2-源映射（Sourcemaps）"><a href="#2-2-源映射（Sourcemaps）" class="headerlink" title="2.2. 源映射（Sourcemaps）"></a>2.2. 源映射（Sourcemaps）</h2><p>构建流水线输出的分发版对大多数人来说是不可读的。这使得调试任何发生的错误变得困难，因为它们的追踪信息指向了不可读的代码。</p>
+<p><a target="_blank" rel="noopener" href="https://developer.chrome.com/blog/sourcemaps/">源映射</a>通过将分发版中的代码映射回源代码中的原始位置来解决这个问题。浏览器和故障排除工具（例如 Sentry）使用源映射来恢复并显示原始源代码。在生产中，源映射通常对浏览器隐藏，并且只上传到故障排除工具以避免公开源代码。</p>
+<p>构建流程的每一步都可以输出一个源映射。如果使用多个构建工具构建流水线，源映射将形成一个链（例如 source.js -&gt; transpiler.map -&gt; bundler.map -&gt; minifier.map）。要确定对应于压缩代码的源代码，必须遍历源映射链。</p>
+<p>然而，大多数工具无法解释源映射链；它们期望分发版中每个文件最多有一个源映射。必须将源映射链展平为单个源映射。预配置的构建系统将解决这个问题（见 Vite 的 <a target="_blank" rel="noopener" href="https://github.com/vitejs/vite/blob/feae09fdfab505e58950c915fe5d8dd103d5ffb9/packages/vite/src/node/utils.ts#L831">combineSourcemaps</a> 函数）。</p>
+<h2 id="2-3-热重载"><a href="#2-3-热重载" class="headerlink" title="2.3. 热重载"></a>2.3. 热重载</h2><p>开发服务器通常提供热重载功能，它在源代码更改时自动重新构建一个新的打包文件并重新加载浏览器。虽然比手动重建和重新加载要好得多，但它仍然有点慢，并且在重新加载时所有客户端状态都会丢失。</p>
+<p><a target="_blank" rel="noopener" href="https://webpack.js.org/concepts/hot-module-replacement/">热模块替换</a>通过在运行中的应用中替换更改的打包文件来改进热重载，这是一种就地更新。它保留了未更改模块的客户端状态，并减少了代码更改和更新应用程序之间的延迟。</p>
+<p>然而，每次代码更改都会触发导入它的所有打包文件的重建。这具有与打包文件大小成线性时间复杂度的关系。因此，在大型应用程序中，由于不断增长的重新打包成本，热模块替换可能会变慢。</p>
+<p><a target="_blank" rel="noopener" href="https://vitejs.dev/guide/why.html">无打包范式</a>，目前由 Vite 倡导，通过不对开发服务器进行打包来应对这个问题。相反，Vite 直接将 ESM 模块，每个模块对应于一个源文件，提供给浏览器。在这种范式中，每次代码更改都会触发前端的单个模块替换。这导致相对于应用程序大小的刷新时间复杂度几乎是恒定的。然而，如果你有很多模块，初始页面加载可能需要花费更长的时间。</p>
+<h2 id="2-4-单一代码库（Monorepos）"><a href="#2-4-单一代码库（Monorepos）" class="headerlink" title="2.4. 单一代码库（Monorepos）"></a>2.4. 单一代码库（Monorepos）</h2><p>在拥有多个团队或多个应用程序的组织中，前端代码可能会被分割成多个 JavaScript 包，但这些包仍放在一个代码库里。在这种架构中，每个包都有自己的构建步骤，并且它们共同形成一个包的依赖图。应用程序位于依赖图的顶端。</p>
+<p>单一代码库工具协调构建依赖图。它们通常提供增量重建、并行性和远程缓存等功能。有了这些功能，大型代码库可以享受小型代码库的构建时间。</p>
+<p>更广泛的行业标准单一代码库工具，如 <a target="_blank" rel="noopener" href="https://bazel.build/">Bazel</a>，支持广泛的语言、复杂的构建图和隔离执行。然而，JavaScript 前端是最难完全集成这些工具的生态系统之一，目前几乎没有先例。</p>
+<p>幸运的是，存在几个专门为前端设计的单一代码库工具。不幸的是，它们缺乏 Bazel 等的灵活性和健壮性，最明显的是隔离执行。</p>
+<p>目前常用的前端专用单一代码库工具是 <a target="_blank" rel="noopener" href="https://nx.dev/">Nx</a> 和 <a target="_blank" rel="noopener" href="https://turbo.build/repo">Turborepo</a>。Nx 更成熟、功能更丰富，而 Turborepo 是 Vercel 生态系统的一部分。过去，<a target="_blank" rel="noopener" href="https://lerna.js.org/">Lerna</a> 是将多个 JavaScript 包链接在一起并发布到 NPM 的标准工具。2022 年，Nx 团队接管了 Lerna，Lerna 现在在底层使用 Nx 来驱动构建。</p>
+<h1 id="3-趋势"><a href="#3-趋势" class="headerlink" title="3. 趋势"></a>3. 趋势</h1><p>较新的构建工具是用编译语言编写的，并强调性能。前端构建在 2019 年非常慢，但现代工具已经大大加快了速度。然而，现代工具具有较小的功能集，有时与库不兼容，因此旧代码库通常无法轻松切换到它们。</p>
+<p>服务器端渲染（SSR）在 Next.js 崛起后变得更受欢迎。SSR 没有为前端构建系统引入任何根本性的差异。SSR 应用程序也必须向浏览器提供 JavaScript，因此它们执行相同的构建步骤。</p>
+<h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><p><a target="_blank" rel="noopener" href="https://sunsetglow.net/posts/frontend-build-systems.html">Exposition of Frontend Build Systems</a> 。更多信息请点击链接获取。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.JPG" alt="toypipi 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.JPG" alt="toypipi 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>toypipi
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://toypipi.github.io/2024/07/26/%E5%89%8D%E7%AB%AF%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F%E9%98%90%E8%BF%B0-%E8%AF%91/" title="前端构建系统阐述-译">https://toypipi.github.io/2024/07/26/前端构建系统阐述-译/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E5%89%8D%E7%AB%AF%E6%9E%84%E5%BB%BA/" rel="tag"><i class="fa fa-tag"></i> 前端构建</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/06/28/Visio-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/" rel="prev" title="Visio 使用技巧">
+                  <i class="fa fa-angle-left"></i> Visio 使用技巧
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2016 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">toypipi</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">201k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">12:10</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
