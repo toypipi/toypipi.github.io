@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
@@ -154,7 +154,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">292</span>
+          <span class="site-state-item-count">293</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -165,7 +165,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">386</span>
+        <span class="site-state-item-count">387</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -190,6 +190,104 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/04/28/bootstrap-datepicker-%E8%AE%BE%E7%BD%AE%E5%8F%AF%E9%80%89%E6%97%B6%E9%97%B4%E8%8C%83%E5%9B%B4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/04/28/bootstrap-datepicker-%E8%AE%BE%E7%BD%AE%E5%8F%AF%E9%80%89%E6%97%B6%E9%97%B4%E8%8C%83%E5%9B%B4/" class="post-title-link" itemprop="url">bootstrap-datepicker 设置可选时间范围</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-04-28 11:44:25 / 修改时间：14:52:57" itemprop="dateCreated datePublished" datetime="2023-04-28T11:44:25+08:00">2023-04-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>182</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<p>datepicker 设置未来日期不可选，只能选择一年内日期。一开始通过 endDate 属性设置未来日期不可选，出现了一个奇怪的 bug，然后用如下方法实现该功能。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//初始化</span></span><br><span class="line"><span class="keyword">var</span> ops = &#123;</span><br><span class="line">    <span class="attr">multidate</span>: <span class="literal">true</span>,<span class="comment">//同时可以选中多个日期</span></span><br><span class="line">    <span class="attr">todayHighlight</span>: <span class="literal">true</span>, <span class="comment">//设置当天日期高亮</span></span><br><span class="line">    <span class="attr">language</span>: <span class="string">&#x27;zh-CN&#x27;</span>, <span class="comment">//语言</span></span><br><span class="line">    <span class="attr">autoclose</span>: <span class="literal">true</span>, <span class="comment">//选择后自动关闭</span></span><br><span class="line">    <span class="attr">clearBtn</span>: <span class="literal">true</span>,<span class="comment">//清除按钮</span></span><br><span class="line">    <span class="attr">format</span>: <span class="string">&quot;yyyy-mm-dd&quot;</span>,<span class="comment">//日期格式</span></span><br><span class="line">&#125;;</span><br><span class="line">$(<span class="string">&quot;#itxst&quot;</span>).<span class="title function_">datepicker</span>(ops);</span><br><span class="line"><span class="comment">//设置只能选择一年内日期</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setStartDate</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> dt = <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">setDate</span>(<span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getDate</span>() - <span class="number">365</span>));</span><br><span class="line">    $(<span class="string">&#x27;#itxst&#x27;</span>).<span class="title function_">datepicker</span>(<span class="string">&#x27;setStartDate&#x27;</span>, dt);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//设置不能选择当天日期起之后的日期</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setEndDate</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> dt = <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">setDate</span>(<span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getDate</span>()));</span><br><span class="line">    $(<span class="string">&#x27;#itxst&#x27;</span>).<span class="title function_">datepicker</span>(<span class="string">&#x27;setEndDate&#x27;</span>, dt);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">setStartDate</span>();</span><br><span class="line"><span class="title function_">setEndDate</span>();</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.itxst.com/bootstrap-datepicker/2uqarzaq.html">参考文档</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -606,114 +704,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/04/14/VS-Code-%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="toypipi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Toypipi's blog">
-      <meta itemprop="description" content="Stay focused, be present">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Toypipi's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/04/14/VS-Code-%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="post-title-link" itemprop="url">VS Code 常用快捷键</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-14 09:03:40" itemprop="dateCreated datePublished" datetime="2023-04-14T09:03:40+08:00">2023-04-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-10-13 09:56:32" itemprop="dateModified" datetime="2023-10-13T09:56:32+08:00">2023-10-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.6k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>6 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<h1 id="General-通用"><a href="#General-通用" class="headerlink" title="General 通用"></a>General 通用</h1><p><strong>Ctrl+Shift+P, F1</strong> Show Command Palette 显示命令面板<br><strong>Ctrl+P</strong> Quick Open, Go to File… 快速打开，跳转到文件<br><strong>Ctrl+Shift+N</strong> New window&#x2F;instance 新建窗口&#x2F;实例<br><strong>Ctrl+Shift+W</strong> Close window&#x2F;instance 关闭窗口&#x2F;实例<br><strong>Ctrl+,</strong> User Settings 用户设置<br><strong>Ctrl+K Ctrl+S</strong> Keyboard Shortcuts 键盘快捷键</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/04/14/VS-Code-%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/27/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><span class="page-number current">28</span><a class="page-number" href="/page/29/">29</a><span class="space">&hellip;</span><a class="page-number" href="/page/59/">59</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/29/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -737,13 +727,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">201k</span>
+    <span title="站点总字数">203k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">12:10</span>
+    <span title="站点阅读时长">12:20</span>
   </span>
 </div>
 <div class="busuanzi-count">
