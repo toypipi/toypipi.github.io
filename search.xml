@@ -26,61 +26,6 @@
       </tags>
   </entry>
   <entry>
-    <title>完善Hexo功能</title>
-    <url>/2016/12/21/%E5%AE%8C%E5%96%84Hexo%E5%8A%9F%E8%83%BD/</url>
-    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<blockquote>
-<p>1.给Hexo nexT主题增加多说评论</p>
-</blockquote>
-<p>首先登陆<a href="http://duoshuo.com/">多说官网</a>，点击<strong>我要安装</strong>后，输入以下内容：</p>
-<p>站点名称：自己起，我使用的是github账户名<br>站点地址：github个人主页的ip地址。类似于：<a href="https://username.github.io/">https://username.github.io</a><br>多说域名：自己起，我使用的是github账户名<br>电子邮箱：常用的电子邮箱<br>点击创建按钮。</p>
-<span id="more"></span>
-
-<p>编辑D:\ProgramFiles\hexo_config.yml文件，添加 <code>duoshuo_shortname: toypipi</code> ，其中yourname指的是你在多说官网申请的多说域名。</p>
-<p><strong>参考文档：</strong><br><a href="http://www.voidking.com/2015/05/31/deve-hexo-theme-optimize/">hexo主题优化</a></p>
-<blockquote>
-<p>2.网站地址栏小图标</p>
-</blockquote>
-<p>首先准备一张16X16像素大小的小图标，然后将它放在站点根目录下的hexo&#x2F;source&#x2F;img文件夹下。<br><strong>注意：</strong> 不是放在hexo&#x2F;themes&#x2F;next&#x2F;source&#x2F;img文件下下，如果放在这里将不能正常显示。<br>编辑hexo&#x2F;themes&#x2F;next&#x2F;_config.yml文件，添加 <code>favicon: /img/cat.png</code> 即可。</p>
-<blockquote>
-<p>3.增加百度统计</p>
-</blockquote>
-<p>首先在<a href="http://tongji.baidu.com/web/welcome/login">百度统计官网</a>点击注册，注册百度统计站长版。登陆百度统计后，点击管理，在下面的网站域名右边点击获取代码，找到</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">var</span> _hmt = _hmt || [];</span><br><span class="line">(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> hm = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;script&quot;</span>);</span><br><span class="line">  hm.<span class="property">src</span> = <span class="string">&quot;https://hm.baidu.com/hm.js?4xxxxxxxxxxxxxxxxxxxxxx8&quot;</span>;</span><br><span class="line">  <span class="keyword">var</span> s = <span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;script&quot;</span>)[<span class="number">0</span>];</span><br></pre></td></tr></table></figure>
-<p>其中，4xxxxxxxxxxxxxxxxxxxxxx8就是你的baidu_analytics_id(每个人都不同)，在hexo&#x2F;themes&#x2F;next&#x2F;_config.yml文件中添加 <code>baidu_analytics: 4xxxxxxxxxxxxxxxxxxxxxx8</code> 即可。</p>
-<p><strong>参考文档：</strong><br><a href="http://wayneshawn.github.io/2015/04/07/hexo-config-and-optimization/">hexo 添加百度统计</a></p>
-<blockquote>
-<p>4.增加分类和标签</p>
-</blockquote>
-<p>首先在hexo&#x2F;themes&#x2F;next&#x2F;_config.yml文件中找到如下代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: /</span><br><span class="line">  categories: /categories</span><br><span class="line">  #about: /about</span><br><span class="line">  archives: /archives</span><br><span class="line">  tags: /tags</span><br><span class="line">  #sitemap: /sitemap.xml</span><br><span class="line">  #commonweal: /404.html</span><br></pre></td></tr></table></figure>
-
-<p>将categories和tags前面的#删除，然后在hexo目录下输入命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure>
-<p>该命令会在hexo&#x2F;source文件夹下创建一个categories目录，并在categories目录下生成一个index.md文件，打开这个文件，修改它的内容为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 分类</span><br><span class="line">date: 2016-12-23 11:00:09</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<p>添加标签也是一样，在hexo目录下输入命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
-<p>该命令会在hexo&#x2F;source文件夹下创建一个tags目录，并在tags目录下生成一个index.md文件，打开这个文件，修改它的内容为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 分类</span><br><span class="line">date: 2016-12-23 11:00:09</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<p>这样，在新建博客时，只要头部包含：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">categories:</span><br><span class="line">- your category</span><br><span class="line">tags:</span><br><span class="line">- your tag</span><br><span class="line">- another tag</span><br></pre></td></tr></table></figure>
-<p>文章就能够分类并且生成标签了。</p>
-<p><strong>参考文档：</strong><br><a href="http://blog.csdn.net/lsshlsw/article/details/50322465">Hexo 主题使用进阶</a><br><a href="http://ws905.com/document/2016-07-16/page/hexo-1/">hexo主题NexT的标签与分类</a></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>多说</tag>
-        <tag>百度统计</tag>
-        <tag>分类</tag>
-        <tag>标签</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>IntelliJ IDEA 快捷键</title>
     <url>/2016/12/23/IntelliJ-IDEA-%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
@@ -159,6 +104,61 @@
       <tags>
         <tag>IntelliJ IDEA</tag>
         <tag>快捷键</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>完善Hexo功能</title>
+    <url>/2016/12/21/%E5%AE%8C%E5%96%84Hexo%E5%8A%9F%E8%83%BD/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<blockquote>
+<p>1.给Hexo nexT主题增加多说评论</p>
+</blockquote>
+<p>首先登陆<a href="http://duoshuo.com/">多说官网</a>，点击<strong>我要安装</strong>后，输入以下内容：</p>
+<p>站点名称：自己起，我使用的是github账户名<br>站点地址：github个人主页的ip地址。类似于：<a href="https://username.github.io/">https://username.github.io</a><br>多说域名：自己起，我使用的是github账户名<br>电子邮箱：常用的电子邮箱<br>点击创建按钮。</p>
+<span id="more"></span>
+
+<p>编辑D:\ProgramFiles\hexo_config.yml文件，添加 <code>duoshuo_shortname: toypipi</code> ，其中yourname指的是你在多说官网申请的多说域名。</p>
+<p><strong>参考文档：</strong><br><a href="http://www.voidking.com/2015/05/31/deve-hexo-theme-optimize/">hexo主题优化</a></p>
+<blockquote>
+<p>2.网站地址栏小图标</p>
+</blockquote>
+<p>首先准备一张16X16像素大小的小图标，然后将它放在站点根目录下的hexo&#x2F;source&#x2F;img文件夹下。<br><strong>注意：</strong> 不是放在hexo&#x2F;themes&#x2F;next&#x2F;source&#x2F;img文件下下，如果放在这里将不能正常显示。<br>编辑hexo&#x2F;themes&#x2F;next&#x2F;_config.yml文件，添加 <code>favicon: /img/cat.png</code> 即可。</p>
+<blockquote>
+<p>3.增加百度统计</p>
+</blockquote>
+<p>首先在<a href="http://tongji.baidu.com/web/welcome/login">百度统计官网</a>点击注册，注册百度统计站长版。登陆百度统计后，点击管理，在下面的网站域名右边点击获取代码，找到</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">var</span> _hmt = _hmt || [];</span><br><span class="line">(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> hm = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;script&quot;</span>);</span><br><span class="line">  hm.<span class="property">src</span> = <span class="string">&quot;https://hm.baidu.com/hm.js?4xxxxxxxxxxxxxxxxxxxxxx8&quot;</span>;</span><br><span class="line">  <span class="keyword">var</span> s = <span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;script&quot;</span>)[<span class="number">0</span>];</span><br></pre></td></tr></table></figure>
+<p>其中，4xxxxxxxxxxxxxxxxxxxxxx8就是你的baidu_analytics_id(每个人都不同)，在hexo&#x2F;themes&#x2F;next&#x2F;_config.yml文件中添加 <code>baidu_analytics: 4xxxxxxxxxxxxxxxxxxxxxx8</code> 即可。</p>
+<p><strong>参考文档：</strong><br><a href="http://wayneshawn.github.io/2015/04/07/hexo-config-and-optimization/">hexo 添加百度统计</a></p>
+<blockquote>
+<p>4.增加分类和标签</p>
+</blockquote>
+<p>首先在hexo&#x2F;themes&#x2F;next&#x2F;_config.yml文件中找到如下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: /</span><br><span class="line">  categories: /categories</span><br><span class="line">  #about: /about</span><br><span class="line">  archives: /archives</span><br><span class="line">  tags: /tags</span><br><span class="line">  #sitemap: /sitemap.xml</span><br><span class="line">  #commonweal: /404.html</span><br></pre></td></tr></table></figure>
+
+<p>将categories和tags前面的#删除，然后在hexo目录下输入命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure>
+<p>该命令会在hexo&#x2F;source文件夹下创建一个categories目录，并在categories目录下生成一个index.md文件，打开这个文件，修改它的内容为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 分类</span><br><span class="line">date: 2016-12-23 11:00:09</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>添加标签也是一样，在hexo目录下输入命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
+<p>该命令会在hexo&#x2F;source文件夹下创建一个tags目录，并在tags目录下生成一个index.md文件，打开这个文件，修改它的内容为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 分类</span><br><span class="line">date: 2016-12-23 11:00:09</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>这样，在新建博客时，只要头部包含：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">categories:</span><br><span class="line">- your category</span><br><span class="line">tags:</span><br><span class="line">- your tag</span><br><span class="line">- another tag</span><br></pre></td></tr></table></figure>
+<p>文章就能够分类并且生成标签了。</p>
+<p><strong>参考文档：</strong><br><a href="http://blog.csdn.net/lsshlsw/article/details/50322465">Hexo 主题使用进阶</a><br><a href="http://ws905.com/document/2016-07-16/page/hexo-1/">hexo主题NexT的标签与分类</a></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>多说</tag>
+        <tag>百度统计</tag>
+        <tag>分类</tag>
+        <tag>标签</tag>
       </tags>
   </entry>
   <entry>
@@ -320,6 +320,57 @@
       </tags>
   </entry>
   <entry>
+    <title>发财树发芽了</title>
+    <url>/2016/12/26/%E5%8F%91%E8%B4%A2%E6%A0%91%E5%8F%91%E8%8A%BD%E4%BA%86/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<p>之前在花园里捡到的发财树种子，发芽了。</p>
+<p>我很喜欢养花，也喜欢买花。买花之前总是信心满满的一定可以把它养的很好，买回来一段时间后，热情逐渐消散，最后因为疏于管理，这些花花草草也死的差不多了。</p>
+<p>对事总是三分钟的热情，虽然感觉整天忙忙碌碌的，但是一年下来，取得的成绩并不是很多，反而那些真正喜欢做的事情都没有做。</p>
+<p>那么，改变还不晚，从此刻开始，精简生活，做自己真正喜欢的事。明确自己的目标：</p>
+<span id="more"></span>
+
+<ol>
+<li>努力锻炼身体。</li>
+<li>关心家人朋友。</li>
+<li>做事情有始有终。</li>
+</ol>
+<p>每天早晨起床都要默念这三个目标，努力去实现它们，新的一年我要取得更大的进步。</p>
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>成长感悟</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MySQL Workbench生成ER图</title>
+    <url>/2016/12/30/MySQL-Workbench%E7%94%9F%E6%88%90ER%E5%9B%BE/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<p>在MySQL数据库中创建表以后，可以直接通过MySQL Workbench生成ER图。</p>
+<p><strong>版本</strong>：MySQL Workbench Version 6.3.6 (64bits)</p>
+<p>1.点击Workbench菜单栏的<em>Database</em>，选中下拉框中的<em>Reverse Engineer</em>，如下图所示：</p>
+<p><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20161230/2016-12-30_113753.png" alt="点击菜单栏的Database"></p>
+<p>2.根据向导提示完成配置，如下图所示：</p>
+<span id="more"></span>
+<p><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20161230/QQ%E6%88%AA%E5%9B%BE20161230113830.jpg" alt="根据向导提示完成配置"></p>
+<p>3.生成ER图，如下图所示：</p>
+<p><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20161230/QQ%E6%88%AA%E5%9B%BE20161230114045.jpg" alt="生成ER图"></p>
+<p>4.点击菜单栏的<em>File</em>，选中下拉框中的<em>Export</em>，在弹出框中选中<em>Export as PNG</em>，如下图所示:</p>
+<p><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20161230/2016-12-30_114130.png" alt="保存ER图"></p>
+<p>5.保存为PNG格式的ER图，如下图所示:</p>
+<p><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20161230/ER.png" alt="保存ER图"></p>
+<p>6.完成！</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>MySQL Workbench</tag>
+        <tag>ER图</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Photoshop 常用快捷键大全</title>
     <url>/2016/12/26/Photoshop%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%A4%A7%E5%85%A8/</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
@@ -400,57 +451,6 @@
       <tags>
         <tag>快捷键</tag>
         <tag>Photoshop</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>发财树发芽了</title>
-    <url>/2016/12/26/%E5%8F%91%E8%B4%A2%E6%A0%91%E5%8F%91%E8%8A%BD%E4%BA%86/</url>
-    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>之前在花园里捡到的发财树种子，发芽了。</p>
-<p>我很喜欢养花，也喜欢买花。买花之前总是信心满满的一定可以把它养的很好，买回来一段时间后，热情逐渐消散，最后因为疏于管理，这些花花草草也死的差不多了。</p>
-<p>对事总是三分钟的热情，虽然感觉整天忙忙碌碌的，但是一年下来，取得的成绩并不是很多，反而那些真正喜欢做的事情都没有做。</p>
-<p>那么，改变还不晚，从此刻开始，精简生活，做自己真正喜欢的事。明确自己的目标：</p>
-<span id="more"></span>
-
-<ol>
-<li>努力锻炼身体。</li>
-<li>关心家人朋友。</li>
-<li>做事情有始有终。</li>
-</ol>
-<p>每天早晨起床都要默念这三个目标，努力去实现它们，新的一年我要取得更大的进步。</p>
-]]></content>
-      <categories>
-        <category>生活</category>
-      </categories>
-      <tags>
-        <tag>成长感悟</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MySQL Workbench生成ER图</title>
-    <url>/2016/12/30/MySQL-Workbench%E7%94%9F%E6%88%90ER%E5%9B%BE/</url>
-    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>在MySQL数据库中创建表以后，可以直接通过MySQL Workbench生成ER图。</p>
-<p><strong>版本</strong>：MySQL Workbench Version 6.3.6 (64bits)</p>
-<p>1.点击Workbench菜单栏的<em>Database</em>，选中下拉框中的<em>Reverse Engineer</em>，如下图所示：</p>
-<p><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20161230/2016-12-30_113753.png" alt="点击菜单栏的Database"></p>
-<p>2.根据向导提示完成配置，如下图所示：</p>
-<span id="more"></span>
-<p><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20161230/QQ%E6%88%AA%E5%9B%BE20161230113830.jpg" alt="根据向导提示完成配置"></p>
-<p>3.生成ER图，如下图所示：</p>
-<p><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20161230/QQ%E6%88%AA%E5%9B%BE20161230114045.jpg" alt="生成ER图"></p>
-<p>4.点击菜单栏的<em>File</em>，选中下拉框中的<em>Export</em>，在弹出框中选中<em>Export as PNG</em>，如下图所示:</p>
-<p><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20161230/2016-12-30_114130.png" alt="保存ER图"></p>
-<p>5.保存为PNG格式的ER图，如下图所示:</p>
-<p><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20161230/ER.png" alt="保存ER图"></p>
-<p>6.完成！</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>MySQL Workbench</tag>
-        <tag>ER图</tag>
       </tags>
   </entry>
   <entry>
@@ -965,6 +965,26 @@
       </tags>
   </entry>
   <entry>
+    <title>数据库中用户密码的保存方式</title>
+    <url>/2017/02/22/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81%E7%9A%84%E4%BF%9D%E5%AD%98%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<blockquote>
+<p>本文转载自<a href="https://book.douban.com/subject/10432844/">《Spring 3.x企业应用开发实战》</a>，<strong>作者：</strong>陈雄华 ，<strong>出版社：</strong>电子工业出版社出版,版权归期所有。</p>
+</blockquote>
+<p>在实际应用中，一般不会直接在数据库中以明文的方式保存用户的密码，因为这样很容易造成密码泄密问题。所以需要将密码加密后以密文的方式进行保存；另外一种更有效的办法是仅保存密码的MD5摘要，由于相等的两字符串摘要值也相等，在登录验证时，通过比较摘要的方式就可以判断用户所输入的密码是否正确。由于不能通过密码摘要反推出原来的密码，即使内部人员可以查看用户信息也无法知道用户的密码。所以，摘要存储方式已经成为大部分系统密码存储的通用方式。此外，为了防止黑客通过工具进行密码的暴力破解，目前大多数Web应用都使用了图片验证码功能，验证码具有一次性消费的特征，每次登录都不相同，这样工具暴力破解就无用武之地了。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>密码</tag>
+        <tag>加密</tag>
+        <tag>MD5摘要</tag>
+        <tag>验证码</tag>
+        <tag>暴力破解</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>爬取云图网站图书详细信息</title>
     <url>/2017/02/14/%E7%88%AC%E5%8F%96%E4%BA%91%E5%9B%BE%E7%BD%91%E7%AB%99%E5%9B%BE%E4%B9%A6%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF/</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
@@ -992,150 +1012,6 @@
       </categories>
       <tags>
         <tag>网页爬虫</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据库中用户密码的保存方式</title>
-    <url>/2017/02/22/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81%E7%9A%84%E4%BF%9D%E5%AD%98%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<blockquote>
-<p>本文转载自<a href="https://book.douban.com/subject/10432844/">《Spring 3.x企业应用开发实战》</a>，<strong>作者：</strong>陈雄华 ，<strong>出版社：</strong>电子工业出版社出版,版权归期所有。</p>
-</blockquote>
-<p>在实际应用中，一般不会直接在数据库中以明文的方式保存用户的密码，因为这样很容易造成密码泄密问题。所以需要将密码加密后以密文的方式进行保存；另外一种更有效的办法是仅保存密码的MD5摘要，由于相等的两字符串摘要值也相等，在登录验证时，通过比较摘要的方式就可以判断用户所输入的密码是否正确。由于不能通过密码摘要反推出原来的密码，即使内部人员可以查看用户信息也无法知道用户的密码。所以，摘要存储方式已经成为大部分系统密码存储的通用方式。此外，为了防止黑客通过工具进行密码的暴力破解，目前大多数Web应用都使用了图片验证码功能，验证码具有一次性消费的特征，每次登录都不相同，这样工具暴力破解就无用武之地了。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>密码</tag>
-        <tag>加密</tag>
-        <tag>MD5摘要</tag>
-        <tag>验证码</tag>
-        <tag>暴力破解</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mahout 算法库</title>
-    <url>/2017/02/28/Mahout%E7%AE%97%E6%B3%95%E5%BA%93/</url>
-    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<blockquote>
-<p>聚类算法</p>
-</blockquote>
-<p>聚类分析又称群分析，它是研究（样品或指标）分类问题的一种统计分析方法，同时也是数据挖掘的一个重要算法。<br>聚类（Cluster）分析是由若干模式（Pattern）组成的，通常，模式时一个度量（Measurement）的向量，或者是多维空间中的一个点。<br>聚类分析以相似性为基础，在一个聚类中的模式之间比不在同一聚类中的模式之间具有更多的相似性。</p>
-<table>
-<thead>
-<tr>
-<th>算法类</th>
-<th>算法名</th>
-<th>中文名</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>聚类算法</td>
-<td>Canopy Clustering</td>
-<td>Canopy聚类</td>
-</tr>
-<tr>
-<td></td>
-<td>K-Means Clustering</td>
-<td>K均值算法</td>
-</tr>
-<tr>
-<td></td>
-<td>Fuzzy K-Means</td>
-<td>模糊K均值</td>
-</tr>
-<tr>
-<td></td>
-<td>Expectation Maxmization</td>
-<td>EM聚类（期望最大化聚类）</td>
-</tr>
-<tr>
-<td></td>
-<td>Mean Shift Clustering</td>
-<td>均值漂移聚类</td>
-</tr>
-<tr>
-<td></td>
-<td>Hierarchical Clustering</td>
-<td>层次聚类</td>
-</tr>
-<tr>
-<td></td>
-<td>Dirichlet Process clustering</td>
-<td>狄利克雷过程聚类</td>
-</tr>
-<tr>
-<td></td>
-<td>Latent Dirichlet Allocation</td>
-<td>LDA聚类</td>
-</tr>
-<tr>
-<td></td>
-<td>Spectral clustering</td>
-<td>谱聚类</td>
-</tr>
-</tbody></table>
-<span id="more"></span>
-<blockquote>
-<p>分类算法</p>
-</blockquote>
-<p>分类（Categorization or Classification）就是按照某种标准给对象贴标签（label），再根据标签来区分归类。<br>分类是事先定义好类别，类别数不变。</p>
-<table>
-<thead>
-<tr>
-<th>算法类</th>
-<th>算法名</th>
-<th>中文名</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>分类算法</td>
-<td>Logistic Regression</td>
-<td>逻辑回归</td>
-</tr>
-<tr>
-<td></td>
-<td>Bayesian</td>
-<td>贝叶斯</td>
-</tr>
-<tr>
-<td></td>
-<td>Support Vector Machines</td>
-<td>支持向量机</td>
-</tr>
-<tr>
-<td></td>
-<td>Perceptron and Winnow</td>
-<td>感知器算法</td>
-</tr>
-<tr>
-<td></td>
-<td>Neural Network</td>
-<td>神经网络</td>
-</tr>
-<tr>
-<td></td>
-<td>Random Forests</td>
-<td>随机森林</td>
-</tr>
-<tr>
-<td></td>
-<td>Restricted Boltzmann Machines</td>
-<td>有限玻尔兹曼机</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>协同过滤</p>
-</blockquote>
-<p>协同过滤推荐（Collaborative Filtering recommendation）是在信息过滤和信息系统中正迅速成为一项很受欢迎的技术。与传统的基于内容过滤直接分析内容进行推荐不同，协同过滤分析用户兴趣，在用户群中找到指定用户的相似（兴趣）用户，综合这些相似用户对某一信息的评价，形成系统对该指定用户对此信息的喜好程度预测。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Mahout</tag>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -1532,6 +1408,130 @@
       </categories>
       <tags>
         <tag>统计学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mahout 算法库</title>
+    <url>/2017/02/28/Mahout%E7%AE%97%E6%B3%95%E5%BA%93/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<blockquote>
+<p>聚类算法</p>
+</blockquote>
+<p>聚类分析又称群分析，它是研究（样品或指标）分类问题的一种统计分析方法，同时也是数据挖掘的一个重要算法。<br>聚类（Cluster）分析是由若干模式（Pattern）组成的，通常，模式时一个度量（Measurement）的向量，或者是多维空间中的一个点。<br>聚类分析以相似性为基础，在一个聚类中的模式之间比不在同一聚类中的模式之间具有更多的相似性。</p>
+<table>
+<thead>
+<tr>
+<th>算法类</th>
+<th>算法名</th>
+<th>中文名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>聚类算法</td>
+<td>Canopy Clustering</td>
+<td>Canopy聚类</td>
+</tr>
+<tr>
+<td></td>
+<td>K-Means Clustering</td>
+<td>K均值算法</td>
+</tr>
+<tr>
+<td></td>
+<td>Fuzzy K-Means</td>
+<td>模糊K均值</td>
+</tr>
+<tr>
+<td></td>
+<td>Expectation Maxmization</td>
+<td>EM聚类（期望最大化聚类）</td>
+</tr>
+<tr>
+<td></td>
+<td>Mean Shift Clustering</td>
+<td>均值漂移聚类</td>
+</tr>
+<tr>
+<td></td>
+<td>Hierarchical Clustering</td>
+<td>层次聚类</td>
+</tr>
+<tr>
+<td></td>
+<td>Dirichlet Process clustering</td>
+<td>狄利克雷过程聚类</td>
+</tr>
+<tr>
+<td></td>
+<td>Latent Dirichlet Allocation</td>
+<td>LDA聚类</td>
+</tr>
+<tr>
+<td></td>
+<td>Spectral clustering</td>
+<td>谱聚类</td>
+</tr>
+</tbody></table>
+<span id="more"></span>
+<blockquote>
+<p>分类算法</p>
+</blockquote>
+<p>分类（Categorization or Classification）就是按照某种标准给对象贴标签（label），再根据标签来区分归类。<br>分类是事先定义好类别，类别数不变。</p>
+<table>
+<thead>
+<tr>
+<th>算法类</th>
+<th>算法名</th>
+<th>中文名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>分类算法</td>
+<td>Logistic Regression</td>
+<td>逻辑回归</td>
+</tr>
+<tr>
+<td></td>
+<td>Bayesian</td>
+<td>贝叶斯</td>
+</tr>
+<tr>
+<td></td>
+<td>Support Vector Machines</td>
+<td>支持向量机</td>
+</tr>
+<tr>
+<td></td>
+<td>Perceptron and Winnow</td>
+<td>感知器算法</td>
+</tr>
+<tr>
+<td></td>
+<td>Neural Network</td>
+<td>神经网络</td>
+</tr>
+<tr>
+<td></td>
+<td>Random Forests</td>
+<td>随机森林</td>
+</tr>
+<tr>
+<td></td>
+<td>Restricted Boltzmann Machines</td>
+<td>有限玻尔兹曼机</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>协同过滤</p>
+</blockquote>
+<p>协同过滤推荐（Collaborative Filtering recommendation）是在信息过滤和信息系统中正迅速成为一项很受欢迎的技术。与传统的基于内容过滤直接分析内容进行推荐不同，协同过滤分析用户兴趣，在用户群中找到指定用户的相似（兴趣）用户，综合这些相似用户对某一信息的评价，形成系统对该指定用户对此信息的喜好程度预测。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Mahout</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -2433,22 +2433,6 @@
       </tags>
   </entry>
   <entry>
-    <title>人生最大的财富就是身体健康</title>
-    <url>/2017/05/22/%E4%BA%BA%E7%94%9F%E6%9C%80%E5%A4%A7%E7%9A%84%E8%B4%A2%E5%AF%8C%E5%B0%B1%E6%98%AF%E8%BA%AB%E4%BD%93%E5%81%A5%E5%BA%B7/</url>
-    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>感冒连续一周，不但没有好的迹象，反而更加严重了。于是，周日去了趟医院，本身想要输液的，结果皮试过敏，只能吃药，医生给开了消炎药，吃过药后喉咙好多了，头也不疼了，可以正常思考了。</p>
-<p>每次去医院，都是人满为患，各种大病小病，这时候往往会感慨，人生最大的财富莫过于身体健康！生病了，不仅身体难受，还得做各种检查，吃各种药，严重的甚至还要手术开刀，花钱受罪。有些人甚至患上糖尿病、肾病等终生都难以治愈的疾病。此时，再想想自己，虽然不是百万富翁，但是身体健康，却还常常抱怨这个也没有，那个也想要。真是一点都不知足。往往在生病时会下定决心从今往后好好锻炼身体。但是等感冒好了，坚持不了一个月，就又变懒了，回到家不是看电视就是看手机。</p>
-<p>谨以此文提示今后那个偷懒的我，不要忘记自己当初下的决心。</p>
-]]></content>
-      <categories>
-        <category>生活</category>
-      </categories>
-      <tags>
-        <tag>知足</tag>
-        <tag>健康</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>升级服务器libc-2.12.so</title>
     <url>/2017/06/20/%E5%8D%87%E7%BA%A7%E6%9C%8D%E5%8A%A1%E5%99%A8libc-2-12-so/</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
@@ -2470,6 +2454,22 @@
       <tags>
         <tag>libc-2.12.so</tag>
         <tag>libc.so.6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>人生最大的财富就是身体健康</title>
+    <url>/2017/05/22/%E4%BA%BA%E7%94%9F%E6%9C%80%E5%A4%A7%E7%9A%84%E8%B4%A2%E5%AF%8C%E5%B0%B1%E6%98%AF%E8%BA%AB%E4%BD%93%E5%81%A5%E5%BA%B7/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<p>感冒连续一周，不但没有好的迹象，反而更加严重了。于是，周日去了趟医院，本身想要输液的，结果皮试过敏，只能吃药，医生给开了消炎药，吃过药后喉咙好多了，头也不疼了，可以正常思考了。</p>
+<p>每次去医院，都是人满为患，各种大病小病，这时候往往会感慨，人生最大的财富莫过于身体健康！生病了，不仅身体难受，还得做各种检查，吃各种药，严重的甚至还要手术开刀，花钱受罪。有些人甚至患上糖尿病、肾病等终生都难以治愈的疾病。此时，再想想自己，虽然不是百万富翁，但是身体健康，却还常常抱怨这个也没有，那个也想要。真是一点都不知足。往往在生病时会下定决心从今往后好好锻炼身体。但是等感冒好了，坚持不了一个月，就又变懒了，回到家不是看电视就是看手机。</p>
+<p>谨以此文提示今后那个偷懒的我，不要忘记自己当初下的决心。</p>
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>知足</tag>
+        <tag>健康</tag>
       </tags>
   </entry>
   <entry>
@@ -2521,25 +2521,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux LVM 扩容</title>
-    <url>/2017/08/17/Linux-LVM-%E6%89%A9%E5%AE%B9/</url>
-    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<h4 id="创建一块新的分区"><a href="#创建一块新的分区" class="headerlink" title="创建一块新的分区"></a>创建一块新的分区</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. fdisk /dev/sda</span><br><span class="line">p    # 打印当前分区</span><br><span class="line">n    # 新建分区</span><br><span class="line">p    # 新建主分区</span><br><span class="line">3    # 分区号，因为前面只建了两个分区</span><br><span class="line">回车  # 使用提供的默认开始磁柱和结束磁柱</span><br><span class="line">t    # 分区类型8e表示LVM分区</span><br><span class="line">8e</span><br><span class="line">w    # 写入分区表</span><br><span class="line"></span><br><span class="line">2. partprobe # 重读分区表，不用重启电脑（PS：我使用这个命令没成功，还是需要重启电脑）</span><br><span class="line"></span><br><span class="line">3. mkfs -t ext4 /dev/sda3 # 格式化新分区</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-<h4 id="创建PV，扩容VG、LV"><a href="#创建PV，扩容VG、LV" class="headerlink" title="创建PV，扩容VG、LV"></a>创建PV，扩容VG、LV</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. pvcreate /dev/sda3 # 创建PV</span><br><span class="line"></span><br><span class="line">2. vgdisplay # 查看当前已经存在的VG信息</span><br><span class="line"></span><br><span class="line">3. vgextend vg_s100 /dev/sda3</span><br><span class="line"></span><br><span class="line">4. lvdisplay # 查看已经存在的LV信息</span><br><span class="line"></span><br><span class="line">5. lvextend -L +80G /dev/vg_s100/lv_root</span><br><span class="line"></span><br><span class="line">6. resize2fs /dev/vg_s100/lv_root</span><br><span class="line"></span><br><span class="line">7. df -h # 查看挂载情况，LVM磁盘已经扩容</span><br></pre></td></tr></table></figure>
-
-<p><strong>参考文档：</strong><br><a href="http://www.cnblogs.com/gaojun/archive/2012/08/22/2650229.html">Linux LVM硬盘管理及LVM扩容</a></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>LVM</tag>
-        <tag>扩容</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>北京云平台服务器故障排查过程</title>
     <url>/2017/08/30/%E5%8C%97%E4%BA%AC%E4%BA%91%E5%B9%B3%E5%8F%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
@@ -2565,6 +2546,25 @@
       <tags>
         <tag>服务器</tag>
         <tag>故障</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux LVM 扩容</title>
+    <url>/2017/08/17/Linux-LVM-%E6%89%A9%E5%AE%B9/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<h4 id="创建一块新的分区"><a href="#创建一块新的分区" class="headerlink" title="创建一块新的分区"></a>创建一块新的分区</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. fdisk /dev/sda</span><br><span class="line">p    # 打印当前分区</span><br><span class="line">n    # 新建分区</span><br><span class="line">p    # 新建主分区</span><br><span class="line">3    # 分区号，因为前面只建了两个分区</span><br><span class="line">回车  # 使用提供的默认开始磁柱和结束磁柱</span><br><span class="line">t    # 分区类型8e表示LVM分区</span><br><span class="line">8e</span><br><span class="line">w    # 写入分区表</span><br><span class="line"></span><br><span class="line">2. partprobe # 重读分区表，不用重启电脑（PS：我使用这个命令没成功，还是需要重启电脑）</span><br><span class="line"></span><br><span class="line">3. mkfs -t ext4 /dev/sda3 # 格式化新分区</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+<h4 id="创建PV，扩容VG、LV"><a href="#创建PV，扩容VG、LV" class="headerlink" title="创建PV，扩容VG、LV"></a>创建PV，扩容VG、LV</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. pvcreate /dev/sda3 # 创建PV</span><br><span class="line"></span><br><span class="line">2. vgdisplay # 查看当前已经存在的VG信息</span><br><span class="line"></span><br><span class="line">3. vgextend vg_s100 /dev/sda3</span><br><span class="line"></span><br><span class="line">4. lvdisplay # 查看已经存在的LV信息</span><br><span class="line"></span><br><span class="line">5. lvextend -L +80G /dev/vg_s100/lv_root</span><br><span class="line"></span><br><span class="line">6. resize2fs /dev/vg_s100/lv_root</span><br><span class="line"></span><br><span class="line">7. df -h # 查看挂载情况，LVM磁盘已经扩容</span><br></pre></td></tr></table></figure>
+
+<p><strong>参考文档：</strong><br><a href="http://www.cnblogs.com/gaojun/archive/2012/08/22/2650229.html">Linux LVM硬盘管理及LVM扩容</a></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>LVM</tag>
+        <tag>扩容</tag>
       </tags>
   </entry>
   <entry>
@@ -2845,6 +2845,29 @@
         <tag>Highcharts</tag>
         <tag>最大值</tag>
         <tag>最小值</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2018 新年计划</title>
+    <url>/2018/01/02/2018-%E6%96%B0%E5%B9%B4%E8%AE%A1%E5%88%92/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<p>新的一年开始啦！按照惯例，每年的这个时候都要给自己制定一个新年计划，回顾去年的计划，发现很多都没有完成，总结起来有以下几个原因：</p>
+<div class="note default"><p>1.计划写的太笼统，没有细化到可以执行的步骤。<br>2.目标写的太高，实际无法完成。<br>3.计划写的太多，没有时间和精力去完成。</p>
+</div>
+
+<p>综合以上几点，今年在制定计划时一定要规避这几个问题，并且每月检查实际完成情况，力争今年可以保质保量的完成目标。</p>
+<span id="more"></span>
+<p>2018新年计划如下：</p>
+<div class="note success"><p>1.每周至少五天背单词，每天复习加学习新词数量至少达到20个。<br>2.每周至少五天学习或翻译 Hightcharts 官方文档。<br>3.每周至少五天学习 Tableau 软件的使用和数据分析相关知识。<br>4.今年的阅读量达到 50 本书，包括专业书和其他类型的书。</p>
+</div>
+
+<p>继续努力！</p>
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>新年计划</tag>
       </tags>
   </entry>
   <entry>
@@ -3185,47 +3208,6 @@ table th:nth-of-type(4) {
       </tags>
   </entry>
   <entry>
-    <title>2018 新年计划</title>
-    <url>/2018/01/02/2018-%E6%96%B0%E5%B9%B4%E8%AE%A1%E5%88%92/</url>
-    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>新的一年开始啦！按照惯例，每年的这个时候都要给自己制定一个新年计划，回顾去年的计划，发现很多都没有完成，总结起来有以下几个原因：</p>
-<div class="note default"><p>1.计划写的太笼统，没有细化到可以执行的步骤。<br>2.目标写的太高，实际无法完成。<br>3.计划写的太多，没有时间和精力去完成。</p>
-</div>
-
-<p>综合以上几点，今年在制定计划时一定要规避这几个问题，并且每月检查实际完成情况，力争今年可以保质保量的完成目标。</p>
-<span id="more"></span>
-<p>2018新年计划如下：</p>
-<div class="note success"><p>1.每周至少五天背单词，每天复习加学习新词数量至少达到20个。<br>2.每周至少五天学习或翻译 Hightcharts 官方文档。<br>3.每周至少五天学习 Tableau 软件的使用和数据分析相关知识。<br>4.今年的阅读量达到 50 本书，包括专业书和其他类型的书。</p>
-</div>
-
-<p>继续努力！</p>
-]]></content>
-      <categories>
-        <category>生活</category>
-      </categories>
-      <tags>
-        <tag>新年计划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Highcharts 在新的图表里显示选中的曲线范围</title>
-    <url>/2018/01/03/Highcharts-%E5%9C%A8%E6%96%B0%E7%9A%84%E5%9B%BE%E8%A1%A8%E9%87%8C%E6%98%BE%E7%A4%BA%E9%80%89%E4%B8%AD%E7%9A%84%E6%9B%B2%E7%BA%BF%E8%8C%83%E5%9B%B4/</url>
-    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>总结一下实现方式，两张图表共用一个 chart 图表配置，在图表1中根据选中区域设置 X 轴最大、最小值，图表2同步更新。</p>
-<span id="more"></span>
-
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> chart = <span class="literal">null</span>;</span><br><span class="line">    <span class="comment">// create the chart</span></span><br><span class="line">    $(<span class="string">&#x27;#container&#x27;</span>).<span class="title function_">highcharts</span>(&#123;</span><br><span class="line">        <span class="attr">chart</span>: &#123;</span><br><span class="line">            <span class="attr">events</span>: &#123;</span><br><span class="line">                <span class="attr">selection</span>: <span class="keyword">function</span> (<span class="params">event</span>) &#123;</span><br><span class="line">                    <span class="keyword">var</span> min = event.<span class="property">xAxis</span>[<span class="number">0</span>].<span class="property">min</span>;</span><br><span class="line">                    <span class="keyword">var</span> max = event.<span class="property">xAxis</span>[<span class="number">0</span>].<span class="property">max</span>;</span><br><span class="line">                    chart.<span class="property">xAxis</span>[<span class="number">0</span>].<span class="title function_">setExtremes</span>(<span class="title class_">Math</span>.<span class="title function_">ceil</span>(min), <span class="title class_">Math</span>.<span class="title function_">ceil</span>(max));</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">zoomType</span>: <span class="string">&#x27;x&#x27;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">title</span>: &#123;</span><br><span class="line">            <span class="attr">text</span>: <span class="string">&#x27;Chart selection demo&#x27;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">subtitle</span>: &#123;</span><br><span class="line">            <span class="attr">text</span>: <span class="string">&#x27;Click and drag the plot area to draw a selection&#x27;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">series</span>: [&#123;</span><br><span class="line">            <span class="attr">type</span>: <span class="string">&#x27;column&#x27;</span>,</span><br><span class="line">            <span class="attr">data</span>: [<span class="number">29.9</span>, <span class="number">71.5</span>, <span class="number">106.4</span>, <span class="number">129.2</span>, <span class="number">144.0</span>, <span class="number">176.0</span>, <span class="number">135.6</span>, <span class="number">148.5</span>, <span class="number">216.4</span>, <span class="number">194.1</span>, <span class="number">95.6</span>, <span class="number">54.4</span>]</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            <span class="attr">data</span>: [<span class="number">29.9</span>, <span class="number">71.5</span>, <span class="number">106.4</span>, <span class="number">129.2</span>, <span class="number">144.0</span>, <span class="number">176.0</span>, <span class="number">135.6</span>, <span class="number">148.5</span>, <span class="number">216.4</span>, <span class="number">194.1</span>, <span class="number">95.6</span>, <span class="number">54.4</span>].<span class="title function_">reverse</span>()</span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;);</span><br><span class="line">    $(<span class="string">&#x27;#min-chart&#x27;</span>).<span class="title function_">highcharts</span>(&#123;</span><br><span class="line">        <span class="attr">title</span>: &#123;</span><br><span class="line">            <span class="attr">text</span>: <span class="string">&#x27;&#x27;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">series</span>: [&#123;</span><br><span class="line">            <span class="attr">type</span>: <span class="string">&#x27;column&#x27;</span>,</span><br><span class="line">            <span class="attr">data</span>: [<span class="number">29.9</span>, <span class="number">71.5</span>, <span class="number">106.4</span>, <span class="number">129.2</span>, <span class="number">144.0</span>, <span class="number">176.0</span>, <span class="number">135.6</span>, <span class="number">148.5</span>, <span class="number">216.4</span>, <span class="number">194.1</span>, <span class="number">95.6</span>, <span class="number">54.4</span>]</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            <span class="attr">data</span>: [<span class="number">29.9</span>, <span class="number">71.5</span>, <span class="number">106.4</span>, <span class="number">129.2</span>, <span class="number">144.0</span>, <span class="number">176.0</span>, <span class="number">135.6</span>, <span class="number">148.5</span>, <span class="number">216.4</span>, <span class="number">194.1</span>, <span class="number">95.6</span>, <span class="number">54.4</span>].<span class="title function_">reverse</span>()</span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;, <span class="keyword">function</span>(<span class="params">c</span>) &#123;</span><br><span class="line">        chart = c;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><strong>参考文档：</strong><br><a href="https://code.hcharts.cn/hcharts.cn/hhhG8o">图表缩放</a></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Highcharts</tag>
-        <tag>曲线范围</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Highcharts 字符串、时间日期、数字格式化</title>
     <url>/2018/01/05/Highcharts-%E5%AD%97%E7%AC%A6%E4%B8%B2%E3%80%81%E6%97%B6%E9%97%B4%E6%97%A5%E6%9C%9F%E3%80%81%E6%95%B0%E5%AD%97%E6%A0%BC%E5%BC%8F%E5%8C%96/</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
@@ -3264,6 +3246,24 @@ table th:nth-of-type(4) {
       <tags>
         <tag>Highcharts</tag>
         <tag>格式化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Highcharts 在新的图表里显示选中的曲线范围</title>
+    <url>/2018/01/03/Highcharts-%E5%9C%A8%E6%96%B0%E7%9A%84%E5%9B%BE%E8%A1%A8%E9%87%8C%E6%98%BE%E7%A4%BA%E9%80%89%E4%B8%AD%E7%9A%84%E6%9B%B2%E7%BA%BF%E8%8C%83%E5%9B%B4/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<p>总结一下实现方式，两张图表共用一个 chart 图表配置，在图表1中根据选中区域设置 X 轴最大、最小值，图表2同步更新。</p>
+<span id="more"></span>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> chart = <span class="literal">null</span>;</span><br><span class="line">    <span class="comment">// create the chart</span></span><br><span class="line">    $(<span class="string">&#x27;#container&#x27;</span>).<span class="title function_">highcharts</span>(&#123;</span><br><span class="line">        <span class="attr">chart</span>: &#123;</span><br><span class="line">            <span class="attr">events</span>: &#123;</span><br><span class="line">                <span class="attr">selection</span>: <span class="keyword">function</span> (<span class="params">event</span>) &#123;</span><br><span class="line">                    <span class="keyword">var</span> min = event.<span class="property">xAxis</span>[<span class="number">0</span>].<span class="property">min</span>;</span><br><span class="line">                    <span class="keyword">var</span> max = event.<span class="property">xAxis</span>[<span class="number">0</span>].<span class="property">max</span>;</span><br><span class="line">                    chart.<span class="property">xAxis</span>[<span class="number">0</span>].<span class="title function_">setExtremes</span>(<span class="title class_">Math</span>.<span class="title function_">ceil</span>(min), <span class="title class_">Math</span>.<span class="title function_">ceil</span>(max));</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">zoomType</span>: <span class="string">&#x27;x&#x27;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">title</span>: &#123;</span><br><span class="line">            <span class="attr">text</span>: <span class="string">&#x27;Chart selection demo&#x27;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">subtitle</span>: &#123;</span><br><span class="line">            <span class="attr">text</span>: <span class="string">&#x27;Click and drag the plot area to draw a selection&#x27;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">series</span>: [&#123;</span><br><span class="line">            <span class="attr">type</span>: <span class="string">&#x27;column&#x27;</span>,</span><br><span class="line">            <span class="attr">data</span>: [<span class="number">29.9</span>, <span class="number">71.5</span>, <span class="number">106.4</span>, <span class="number">129.2</span>, <span class="number">144.0</span>, <span class="number">176.0</span>, <span class="number">135.6</span>, <span class="number">148.5</span>, <span class="number">216.4</span>, <span class="number">194.1</span>, <span class="number">95.6</span>, <span class="number">54.4</span>]</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            <span class="attr">data</span>: [<span class="number">29.9</span>, <span class="number">71.5</span>, <span class="number">106.4</span>, <span class="number">129.2</span>, <span class="number">144.0</span>, <span class="number">176.0</span>, <span class="number">135.6</span>, <span class="number">148.5</span>, <span class="number">216.4</span>, <span class="number">194.1</span>, <span class="number">95.6</span>, <span class="number">54.4</span>].<span class="title function_">reverse</span>()</span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;);</span><br><span class="line">    $(<span class="string">&#x27;#min-chart&#x27;</span>).<span class="title function_">highcharts</span>(&#123;</span><br><span class="line">        <span class="attr">title</span>: &#123;</span><br><span class="line">            <span class="attr">text</span>: <span class="string">&#x27;&#x27;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">series</span>: [&#123;</span><br><span class="line">            <span class="attr">type</span>: <span class="string">&#x27;column&#x27;</span>,</span><br><span class="line">            <span class="attr">data</span>: [<span class="number">29.9</span>, <span class="number">71.5</span>, <span class="number">106.4</span>, <span class="number">129.2</span>, <span class="number">144.0</span>, <span class="number">176.0</span>, <span class="number">135.6</span>, <span class="number">148.5</span>, <span class="number">216.4</span>, <span class="number">194.1</span>, <span class="number">95.6</span>, <span class="number">54.4</span>]</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            <span class="attr">data</span>: [<span class="number">29.9</span>, <span class="number">71.5</span>, <span class="number">106.4</span>, <span class="number">129.2</span>, <span class="number">144.0</span>, <span class="number">176.0</span>, <span class="number">135.6</span>, <span class="number">148.5</span>, <span class="number">216.4</span>, <span class="number">194.1</span>, <span class="number">95.6</span>, <span class="number">54.4</span>].<span class="title function_">reverse</span>()</span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;, <span class="keyword">function</span>(<span class="params">c</span>) &#123;</span><br><span class="line">        chart = c;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>参考文档：</strong><br><a href="https://code.hcharts.cn/hcharts.cn/hhhG8o">图表缩放</a></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Highcharts</tag>
+        <tag>曲线范围</tag>
       </tags>
   </entry>
   <entry>
@@ -4006,6 +4006,24 @@ table th:nth-of-type(4) {
       </tags>
   </entry>
   <entry>
+    <title>解决 hexo next 主题不显示 hypercomments 评论</title>
+    <url>/2018/03/27/%E8%A7%A3%E5%86%B3hexo-next-%E4%B8%BB%E9%A2%98%E4%B8%8D%E6%98%BE%E7%A4%BA-hypercomments-%E8%AF%84%E8%AE%BA/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<p>hexo next 使用 hypercomments 很简单，只需要在主题配置文件中的 <code>hypercomments_id: </code> 填上自己在 hypercomments 注册站点后生成的 ID 号即可。我要说的是我按照这个方法填写以后却总是没有显示评论窗口，重新安装主题以后还是不行。<br>后来登录 hypercomments 官网，在设置 -&gt; General -&gt; Website name 栏中，发现我的站点名多了一个 “&#x2F;“ ，删掉它就可以正常显示了。</p>
+<img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20180327/hypercomments.png"/>
+注意：
+<div class="note info"><p>在更新 hexo 主题时一定要先备份原来的主题，不然辛辛苦苦配置的各种效果一不小心就全没了。。。<br>备份以后如果发现新主题不满意，还可以马上切换回原来的主题。</p>
+</div>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>hypercommetns</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>连接和权限</title>
     <url>/2018/03/27/%E8%BF%9E%E6%8E%A5%E5%92%8C%E6%9D%83%E9%99%90/</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
@@ -4065,24 +4083,6 @@ table th:nth-of-type(4) {
       </categories>
       <tags>
         <tag>XtraBackup</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>解决 hexo next 主题不显示 hypercomments 评论</title>
-    <url>/2018/03/27/%E8%A7%A3%E5%86%B3hexo-next-%E4%B8%BB%E9%A2%98%E4%B8%8D%E6%98%BE%E7%A4%BA-hypercomments-%E8%AF%84%E8%AE%BA/</url>
-    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>hexo next 使用 hypercomments 很简单，只需要在主题配置文件中的 <code>hypercomments_id: </code> 填上自己在 hypercomments 注册站点后生成的 ID 号即可。我要说的是我按照这个方法填写以后却总是没有显示评论窗口，重新安装主题以后还是不行。<br>后来登录 hypercomments 官网，在设置 -&gt; General -&gt; Website name 栏中，发现我的站点名多了一个 “&#x2F;“ ，删掉它就可以正常显示了。</p>
-<img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20180327/hypercomments.png"/>
-注意：
-<div class="note info"><p>在更新 hexo 主题时一定要先备份原来的主题，不然辛辛苦苦配置的各种效果一不小心就全没了。。。<br>备份以后如果发现新主题不满意，还可以马上切换回原来的主题。</p>
-</div>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>hypercommetns</tag>
-        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -7535,20 +7535,6 @@ table th:nth-of-type(3) {
       </tags>
   </entry>
   <entry>
-    <title>MariaDB 中开启 TokuDB</title>
-    <url>/2018/05/17/MariaDB%E4%B8%AD%E5%BC%80%E5%90%AFTokuDB/</url>
-    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p><strong>参考文档：</strong><br><a href="https://mariadb.com/kb/en/library/enabling-tokudb/">Enabling TokuDB</a></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>MariaDB</tag>
-        <tag>TokuDB</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>入门指南和用法</title>
     <url>/2018/04/17/%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97%E5%92%8C%E7%94%A8%E6%B3%95/</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
@@ -7593,6 +7579,20 @@ table th:nth-of-type(3) {
       </tags>
   </entry>
   <entry>
+    <title>MariaDB 中开启 TokuDB</title>
+    <url>/2018/05/17/MariaDB%E4%B8%AD%E5%BC%80%E5%90%AFTokuDB/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<p><strong>参考文档：</strong><br><a href="https://mariadb.com/kb/en/library/enabling-tokudb/">Enabling TokuDB</a></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>MariaDB</tag>
+        <tag>TokuDB</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MySQL 中批量创建表</title>
     <url>/2018/05/17/MySQL%E4%B8%AD%E6%89%B9%E9%87%8F%E5%88%9B%E5%BB%BA%E8%A1%A8/</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
@@ -7617,11 +7617,15 @@ table th:nth-of-type(3) {
       </tags>
   </entry>
   <entry>
-    <title>Python 爬取道指成分股数据</title>
-    <url>/2018/05/31/Python-%E7%88%AC%E5%8F%96%E9%81%93%E6%8C%87%E6%88%90%E5%88%86%E8%82%A1%E6%95%B0%E6%8D%AE/</url>
+    <title>Python 爬取豆瓣图书评论</title>
+    <url>/2018/05/31/Python-%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E5%9B%BE%E4%B9%A6%E8%AF%84%E8%AE%BA/</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>代码来自中国大学慕课 <a href="https://www.icourse163.org/learn/NJU-1001571005?tid=1002097008#/learn/announce">用 Python 玩转数据</a>。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">retrieve_dji_list</span>():</span><br><span class="line">    r = requests.get(<span class="string">&#x27;http://money.cnn.com/data/dow30/&#x27;</span>)</span><br><span class="line">    search_pattern = re.<span class="built_in">compile</span>(<span class="string">&#x27;class=&quot;wsod_symbol&quot;&gt;(.*)&lt;\/a&gt;.*&lt;span.*&quot;&gt;(.*?)&lt;\/span&gt;.*\n.*class=&quot;wsod_stream&quot;&gt;(.*)&lt;\/span&gt;&#x27;</span>)</span><br><span class="line">    dji_list_in_text = re.findall(search_pattern, r.text)</span><br><span class="line">    <span class="keyword">return</span> dji_list_in_text</span><br><span class="line"></span><br><span class="line">dji_list = retrieve_dji_list()</span><br><span class="line"><span class="built_in">print</span>(dji_list)</span><br></pre></td></tr></table></figure>
+<p>代码来自中国大学慕课 <a href="https://www.icourse163.org/learn/NJU-1001571005?tid=1002097008#/learn/announce">用 Python 玩转数据</a>。添加了详细的注释，修改了计算平均分的循环条件。</p>
+<div class="note danger"><p><code>time.sleep(5)</code> 一定要加，不然会被豆瓣检测到异常流量而屏蔽 get 请求。</p>
+</div>
+<span id="more"></span>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests,re,time</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">count = <span class="number">0</span> <span class="comment"># 爬取 50 条评论循环</span></span><br><span class="line">i = <span class="number">0</span> <span class="comment"># 控制评论页数</span></span><br><span class="line"><span class="built_in">sum</span> = <span class="number">0</span> <span class="comment"># 50 条评论分数总和</span></span><br><span class="line">count_s = <span class="number">0</span> <span class="comment"># 爬取 50 条评论分数循环</span></span><br><span class="line"><span class="keyword">while</span>(count &lt; <span class="number">50</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        r = requests.get(<span class="string">&#x27;https://book.douban.com/subject/27599965/comments/hot?p=&#x27;</span> + <span class="built_in">str</span>(i+<span class="number">1</span>))</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> err:</span><br><span class="line">        <span class="built_in">print</span>(err)</span><br><span class="line">        <span class="keyword">break</span> </span><br><span class="line">    soup = BeautifulSoup(r.text,<span class="string">&#x27;lxml&#x27;</span>) <span class="comment"># html 解析</span></span><br><span class="line">    comments=soup.find_all(<span class="string">&#x27;p&#x27;</span>,<span class="string">&#x27;comment-content&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> comments:</span><br><span class="line">        count = count + <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> count &gt; <span class="number">50</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="built_in">print</span>(count,item.string) <span class="comment"># 打印输出每条评论</span></span><br><span class="line">    pattern = re.<span class="built_in">compile</span>(<span class="string">&#x27;&lt;span class=&quot;user-stars allstar(.*?) rating&quot;&#x27;</span>) <span class="comment"># 构建获取分数的正则表达式</span></span><br><span class="line">    p = re.findall(pattern, r.text)</span><br><span class="line">    <span class="keyword">for</span> star <span class="keyword">in</span> p:    </span><br><span class="line">        count_s = count_s + <span class="number">1</span></span><br><span class="line">        <span class="built_in">sum</span> += <span class="built_in">int</span>(star)</span><br><span class="line">    time.sleep(<span class="number">5</span>) <span class="comment"># delay request from douban&#x27;s robots.txt</span></span><br><span class="line">    i += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;count: %d&quot;</span>%count)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;count_s: %d&quot;</span>%count_s)</span><br><span class="line"><span class="keyword">if</span> count == <span class="number">51</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">sum</span>/count_s)</span><br></pre></td></tr></table></figure>
 
 <p><strong>参考文档：</strong><br><a href="https://www.icourse163.org/learn/NJU-1001571005?tid=1002097008#/learn/content?type=detail&id=1002858587&cid=1003258763">用 Python 玩转数据</a></p>
 ]]></content>
@@ -7633,15 +7637,11 @@ table th:nth-of-type(3) {
       </tags>
   </entry>
   <entry>
-    <title>Python 爬取豆瓣图书评论</title>
-    <url>/2018/05/31/Python-%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E5%9B%BE%E4%B9%A6%E8%AF%84%E8%AE%BA/</url>
+    <title>Python 爬取道指成分股数据</title>
+    <url>/2018/05/31/Python-%E7%88%AC%E5%8F%96%E9%81%93%E6%8C%87%E6%88%90%E5%88%86%E8%82%A1%E6%95%B0%E6%8D%AE/</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>代码来自中国大学慕课 <a href="https://www.icourse163.org/learn/NJU-1001571005?tid=1002097008#/learn/announce">用 Python 玩转数据</a>。添加了详细的注释，修改了计算平均分的循环条件。</p>
-<div class="note danger"><p><code>time.sleep(5)</code> 一定要加，不然会被豆瓣检测到异常流量而屏蔽 get 请求。</p>
-</div>
-<span id="more"></span>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests,re,time</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">count = <span class="number">0</span> <span class="comment"># 爬取 50 条评论循环</span></span><br><span class="line">i = <span class="number">0</span> <span class="comment"># 控制评论页数</span></span><br><span class="line"><span class="built_in">sum</span> = <span class="number">0</span> <span class="comment"># 50 条评论分数总和</span></span><br><span class="line">count_s = <span class="number">0</span> <span class="comment"># 爬取 50 条评论分数循环</span></span><br><span class="line"><span class="keyword">while</span>(count &lt; <span class="number">50</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        r = requests.get(<span class="string">&#x27;https://book.douban.com/subject/27599965/comments/hot?p=&#x27;</span> + <span class="built_in">str</span>(i+<span class="number">1</span>))</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> err:</span><br><span class="line">        <span class="built_in">print</span>(err)</span><br><span class="line">        <span class="keyword">break</span> </span><br><span class="line">    soup = BeautifulSoup(r.text,<span class="string">&#x27;lxml&#x27;</span>) <span class="comment"># html 解析</span></span><br><span class="line">    comments=soup.find_all(<span class="string">&#x27;p&#x27;</span>,<span class="string">&#x27;comment-content&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> comments:</span><br><span class="line">        count = count + <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> count &gt; <span class="number">50</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="built_in">print</span>(count,item.string) <span class="comment"># 打印输出每条评论</span></span><br><span class="line">    pattern = re.<span class="built_in">compile</span>(<span class="string">&#x27;&lt;span class=&quot;user-stars allstar(.*?) rating&quot;&#x27;</span>) <span class="comment"># 构建获取分数的正则表达式</span></span><br><span class="line">    p = re.findall(pattern, r.text)</span><br><span class="line">    <span class="keyword">for</span> star <span class="keyword">in</span> p:    </span><br><span class="line">        count_s = count_s + <span class="number">1</span></span><br><span class="line">        <span class="built_in">sum</span> += <span class="built_in">int</span>(star)</span><br><span class="line">    time.sleep(<span class="number">5</span>) <span class="comment"># delay request from douban&#x27;s robots.txt</span></span><br><span class="line">    i += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;count: %d&quot;</span>%count)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;count_s: %d&quot;</span>%count_s)</span><br><span class="line"><span class="keyword">if</span> count == <span class="number">51</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">sum</span>/count_s)</span><br></pre></td></tr></table></figure>
+<p>代码来自中国大学慕课 <a href="https://www.icourse163.org/learn/NJU-1001571005?tid=1002097008#/learn/announce">用 Python 玩转数据</a>。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">retrieve_dji_list</span>():</span><br><span class="line">    r = requests.get(<span class="string">&#x27;http://money.cnn.com/data/dow30/&#x27;</span>)</span><br><span class="line">    search_pattern = re.<span class="built_in">compile</span>(<span class="string">&#x27;class=&quot;wsod_symbol&quot;&gt;(.*)&lt;\/a&gt;.*&lt;span.*&quot;&gt;(.*?)&lt;\/span&gt;.*\n.*class=&quot;wsod_stream&quot;&gt;(.*)&lt;\/span&gt;&#x27;</span>)</span><br><span class="line">    dji_list_in_text = re.findall(search_pattern, r.text)</span><br><span class="line">    <span class="keyword">return</span> dji_list_in_text</span><br><span class="line"></span><br><span class="line">dji_list = retrieve_dji_list()</span><br><span class="line"><span class="built_in">print</span>(dji_list)</span><br></pre></td></tr></table></figure>
 
 <p><strong>参考文档：</strong><br><a href="https://www.icourse163.org/learn/NJU-1001571005?tid=1002097008#/learn/content?type=detail&id=1002858587&cid=1003258763">用 Python 玩转数据</a></p>
 ]]></content>
@@ -8201,21 +8201,6 @@ table th:nth-of-type(4) {
       </tags>
   </entry>
   <entry>
-    <title>[Python 3 网络爬虫开发实战] 学习笔记</title>
-    <url>/2019/04/08/Python-3-%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>主要记录学习 [Python 3 网络爬虫开发实战] 一书过程中遇到的问题及解决办法。</p>
-<h1 id="win7-安装-pyspider-报错"><a href="#win7-安装-pyspider-报错" class="headerlink" title="win7 安装 pyspider 报错"></a>win7 安装 pyspider 报错</h1><p>安装过程没问题，但是运行报错如下图：</p>
-<p><img src="https://github.com/toypipi/graph_bed/blob/dfd39c68b75270554def141640f8f60277e1deba/image/20190408/TIM%E5%9B%BE%E7%89%8720190408145431.png?raw=true"></p>
-<p>问题原因：WsgiDAV发布了版本 pre-release 3.x导致的，版本太高不兼容，所以把版本降下来就OK了<br>解决办法：运行 python -m pip install wsgidav&#x3D;&#x3D;2.4.1<br>参考链接：<a href="https://blog.csdn.net/genius_man/article/details/88392912">win安装pyspider遇到的一个问题记录</a></p>
-<span id="more"></span>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>爬虫</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数据库基础知识总结</title>
     <url>/2019/03/29/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
@@ -8373,6 +8358,21 @@ table th:nth-of-type(4) {
         <tag>模式</tag>
         <tag>外模式</tag>
         <tag>内模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[Python 3 网络爬虫开发实战] 学习笔记</title>
+    <url>/2019/04/08/Python-3-%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>主要记录学习 [Python 3 网络爬虫开发实战] 一书过程中遇到的问题及解决办法。</p>
+<h1 id="win7-安装-pyspider-报错"><a href="#win7-安装-pyspider-报错" class="headerlink" title="win7 安装 pyspider 报错"></a>win7 安装 pyspider 报错</h1><p>安装过程没问题，但是运行报错如下图：</p>
+<p><img src="https://github.com/toypipi/graph_bed/blob/dfd39c68b75270554def141640f8f60277e1deba/image/20190408/TIM%E5%9B%BE%E7%89%8720190408145431.png?raw=true"></p>
+<p>问题原因：WsgiDAV发布了版本 pre-release 3.x导致的，版本太高不兼容，所以把版本降下来就OK了<br>解决办法：运行 python -m pip install wsgidav&#x3D;&#x3D;2.4.1<br>参考链接：<a href="https://blog.csdn.net/genius_man/article/details/88392912">win安装pyspider遇到的一个问题记录</a></p>
+<span id="more"></span>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>爬虫</tag>
       </tags>
   </entry>
   <entry>
@@ -8954,17 +8954,36 @@ table th:nth-of-type(4) {
       </tags>
   </entry>
   <entry>
-    <title>iCloud 备忘录不显示中文</title>
-    <url>/2020/03/18/iCloud-%E5%A4%87%E5%BF%98%E5%BD%95%E4%B8%8D%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87/</url>
+    <title>Python 爬取去哪儿网商品数据</title>
+    <url>/2020/04/08/Python-%E7%88%AC%E5%8F%96%E5%8E%BB%E5%93%AA%E5%84%BF%E7%BD%91%E5%95%86%E5%93%81%E6%95%B0%E6%8D%AE/</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>今天在 win7 上使用 chrome 浏览器访问 iCloud 备忘录，发现中文无法显示，只显示数字和图片，换用 firefox 登录也不行。<br>上网检索，没有找到好的解决办法。<br>后来误打误撞升级了一下 ie 浏览器到版本 11 后就可以正常显示了。有需要的朋友可以试试看。</p>
+<h1 id="爬取去哪儿网自由行商品数据并保存在-mongodb-数据库中："><a href="#爬取去哪儿网自由行商品数据并保存在-mongodb-数据库中：" class="headerlink" title="爬取去哪儿网自由行商品数据并保存在 mongodb 数据库中："></a>爬取去哪儿网自由行商品数据并保存在 mongodb 数据库中：</h1><span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> pymongo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立数据库连接并创建数据库和表</span></span><br><span class="line">client = pymongo.MongoClient(<span class="string">&#x27;192.168.1.123&#x27;</span>, <span class="number">27000</span>)</span><br><span class="line">book_qunar = client[<span class="string">&#x27;qunar&#x27;</span>]</span><br><span class="line">sheet_qunar_zyx = book_qunar[<span class="string">&#x27;qunar_zyx&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取产品列表信息</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_list</span>(<span class="params">dep, item</span>):</span><br><span class="line">    url = <span class="string">&#x27;https://touch.dujia.qunar.com/list?modules=list,bookingInfo,activityDetail&amp;dep=&#123;&#125;&amp;query=&#123;&#125;&amp;dappDealTrace=true&amp;mobFunction=%E6%89%A9%E5%B1%95%E8%87%AA%E7%94%B1%E8%A1%8C&amp;cfrom=zyx&amp;it=dujia_hy_destination&amp;date=&amp;needNoResult=true&amp;originalquery=&#123;&#125;&amp;width=480&amp;height=320&amp;quality=90&amp;limit=0,20&amp;includeAD=true&amp;qsact=search&#x27;</span>.<span class="built_in">format</span>(</span><br><span class="line">        urllib.request.quote(dep), urllib.request.quote(item), urllib.request.quote(item))</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    strhtml = requests.get(url)</span><br><span class="line">    <span class="comment"># 取出产品数</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        routeCount = <span class="built_in">int</span>(strhtml.json()[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;limit&#x27;</span>][<span class="string">&#x27;routeCount&#x27;</span>])</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">for</span> limit <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, routeCount, <span class="number">20</span>):</span><br><span class="line">        url = <span class="string">&#x27;https://touch.dujia.qunar.com/list?modules=list,bookingInfo,activityDetail&amp;dep=&#123;&#125;&amp;query=&#123;&#125;&amp;dappDealTrace=true&amp;mobFunction=%E6%89%A9%E5%B1%95%E8%87%AA%E7%94%B1%E8%A1%8C&amp;cfrom=zyx&amp;it=dujia_hy_destination&amp;date=&amp;needNoResult=true&amp;originalquery=&#123;&#125;&amp;width=480&amp;height=320&amp;quality=90&amp;limit=&#123;&#125;,20&amp;includeAD=true&amp;qsact=search&#x27;</span>.<span class="built_in">format</span>(</span><br><span class="line">            urllib.request.quote(dep), urllib.request.quote(item), urllib.request.quote(item), limit)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        strhtml = requests.get(url)</span><br><span class="line">        result = &#123;</span><br><span class="line">            <span class="string">&#x27;date&#x27;</span>: time.strftime(<span class="string">&#x27;%Y-%m-%d&#x27;</span>, time.localtime(time.time())),</span><br><span class="line">            <span class="string">&#x27;dep&#x27;</span>: dep,</span><br><span class="line">            <span class="string">&#x27;arrive&#x27;</span>: item,</span><br><span class="line">            <span class="string">&#x27;limit&#x27;</span>: limit,</span><br><span class="line">            <span class="string">&#x27;result&#x27;</span>: strhtml.json()</span><br><span class="line">        &#125;</span><br><span class="line">        sheet_qunar_zyx.insert_one(result)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_json</span>(<span class="params">url</span>):</span><br><span class="line">    strhtml = requests.get(url)</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> strhtml.json()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment"># 获取出发地站点</span></span><br><span class="line">    url = <span class="string">&#x27;https://touch.dujia.qunar.com/depCities.qunar&#x27;</span></span><br><span class="line">    dep_dict = get_json(url)</span><br><span class="line">    <span class="keyword">for</span> dep_item <span class="keyword">in</span> dep_dict[<span class="string">&#x27;data&#x27;</span>]:</span><br><span class="line">        <span class="keyword">for</span> dep <span class="keyword">in</span> dep_dict[<span class="string">&#x27;data&#x27;</span>][dep_item]:</span><br><span class="line">            a = []</span><br><span class="line">            <span class="comment"># 根据出发地站点获取目的地</span></span><br><span class="line">            url = <span class="string">&#x27;https://touch.dujia.qunar.com/golfz/sight/arriveRecommend?dep=&#123;&#125;&amp;exclude=&amp;extensionImg=255,175&#x27;</span>.<span class="built_in">format</span>(</span><br><span class="line">                urllib.request.quote(dep))</span><br><span class="line">            arrive_dict = get_json(url)</span><br><span class="line">            <span class="keyword">for</span> arrive_item <span class="keyword">in</span> arrive_dict[<span class="string">&#x27;data&#x27;</span>]:</span><br><span class="line">                <span class="keyword">for</span> arrive_item_1 <span class="keyword">in</span> arrive_item[<span class="string">&#x27;subModules&#x27;</span>]:</span><br><span class="line">                    <span class="keyword">for</span> query <span class="keyword">in</span> arrive_item_1[<span class="string">&#x27;items&#x27;</span>]:</span><br><span class="line">                        <span class="comment"># 对目的地进行去重</span></span><br><span class="line">                        <span class="keyword">if</span> query[<span class="string">&#x27;query&#x27;</span>] <span class="keyword">not</span> <span class="keyword">in</span> a:</span><br><span class="line">                            a.append(query[<span class="string">&#x27;query&#x27;</span>])</span><br><span class="line">            <span class="comment"># 获取产品列表</span></span><br><span class="line">            <span class="keyword">for</span> item <span class="keyword">in</span> a:</span><br><span class="line">                get_list(dep, item)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="数据库监控程序"><a href="#数据库监控程序" class="headerlink" title="数据库监控程序"></a>数据库监控程序</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> get_depart <span class="keyword">import</span> sheet_qunar_zyx</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="built_in">print</span>(sheet_qunar_zyx.find().count())</span><br><span class="line">    time.sleep(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>参考文档：</strong><br><a href="https://book.douban.com/subject/30190201/">Python 3爬虫、数据清洗与可视化实战</a></p>
 ]]></content>
       <categories>
         <category>技术</category>
       </categories>
       <tags>
-        <tag>iCloud</tag>
-        <tag>备忘录</tag>
+        <tag>爬虫</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python Mysql 数据库连接和查询</title>
+    <url>/2020/04/17/Python-Mysql-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E5%92%8C%E6%9F%A5%E8%AF%A2/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<h1 id="使用-PyMySQL"><a href="#使用-PyMySQL" class="headerlink" title="使用 PyMySQL"></a>使用 PyMySQL</h1><span id="more"></span>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"></span><br><span class="line">db = pymysql.Connect(</span><br><span class="line">    host=<span class="string">&quot;192.168.1.123&quot;</span>,</span><br><span class="line">    port=<span class="number">3306</span>,</span><br><span class="line">    user=<span class="string">&quot;root&quot;</span>,</span><br><span class="line">    password=<span class="string">&quot;Dp330651!&quot;</span>,</span><br><span class="line">    db=<span class="string">&quot;taobao&quot;</span>,</span><br><span class="line">    charset=<span class="string">&quot;utf8&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询</span></span><br><span class="line">cur = db.cursor()</span><br><span class="line">sql = <span class="string">&#x27;select * from sale_data where 位置 in(%s,%s,%s)&#x27;</span></span><br><span class="line">cur.execute(sql, (<span class="string">&quot;江苏&quot;</span>, <span class="string">&quot;浙江&quot;</span>, <span class="string">&quot;上海&quot;</span>))</span><br><span class="line">result = cur.fetchall()</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> result:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除</span></span><br><span class="line">sql = <span class="string">&#x27;delete from sale_data where 价格 &lt; 100&#x27;</span></span><br><span class="line">cur.execute(sql)</span><br><span class="line">db.commit()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改</span></span><br><span class="line">sql = <span class="string">&#x27;update sale_data set 位置=%s where 位置 in (%s,%s,%s)&#x27;</span></span><br><span class="line">cur.execute(sql,(<span class="string">&quot;江浙沪&quot;</span>,<span class="string">&quot;江苏&quot;</span>, <span class="string">&quot;浙江&quot;</span>, <span class="string">&quot;上海&quot;</span>))</span><br><span class="line">db.commit()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 插入</span></span><br><span class="line">sql = <span class="string">&#x27;insert into sale_data(宝贝,价格,成交量,卖家,位置) values(%s,%s,%s,%s,%s)&#x27;</span></span><br><span class="line">cur.execute(sql,(<span class="string">&quot;2017夏季妈妈装 40-50 岁中老年女装连衣裙&quot;</span>,<span class="number">298</span>,<span class="number">10000</span>,<span class="string">&quot;xxx 天猫旗舰店&quot;</span>,<span class="string">&quot;北京&quot;</span>))</span><br><span class="line">db.commit()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭游标和数据库连接</span></span><br><span class="line">cur.close()</span><br><span class="line">db.close()</span><br></pre></td></tr></table></figure>
+<h1 id="使用-SQLAlchemy"><a href="#使用-SQLAlchemy" class="headerlink" title="使用 SQLAlchemy"></a>使用 SQLAlchemy</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> Column, String, create_engine</span><br><span class="line"><span class="keyword">from</span> sqlalchemy.orm <span class="keyword">import</span> sessionmaker</span><br><span class="line"><span class="keyword">from</span> sqlalchemy.ext.declarative <span class="keyword">import</span> declarative_base</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Procuct</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, <span class="built_in">id</span>, name, <span class="built_in">type</span></span>):</span><br><span class="line">        self.<span class="built_in">id</span> = <span class="built_in">id</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.<span class="built_in">type</span> = <span class="built_in">type</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建对象的基类</span></span><br><span class="line">Base = declarative_base()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义 Product 对象</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Product</span>(<span class="title class_ inherited__">Base</span>):</span><br><span class="line">    <span class="comment"># 表名</span></span><br><span class="line">    __tablename__ = <span class="string">&#x27;Product&#x27;</span></span><br><span class="line">    <span class="comment"># 表结构</span></span><br><span class="line">    <span class="built_in">id</span> = Column(String(<span class="number">20</span>), primary_key=<span class="literal">True</span>)</span><br><span class="line">    name = Column(String(<span class="number">20</span>))</span><br><span class="line">    <span class="built_in">type</span> = Column(String(<span class="number">20</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化数据库连接</span></span><br><span class="line">engine = create_engine(<span class="string">&#x27;mysql+pymysql://root:Dp330651!@192.168.1.123:3306/taobao&#x27;</span>)</span><br><span class="line"><span class="comment"># 创建 DBSession 类型</span></span><br><span class="line">DBSession = sessionmaker(bind=engine)</span><br><span class="line"><span class="comment"># 插入一条记录</span></span><br><span class="line">session = DBSession()</span><br><span class="line">new_user = Product(<span class="built_in">id</span>=<span class="string">&#x27;19558276&#x27;</span>, name=<span class="string">&#x27;北京5天4晚自由行 含双早 入住前门商业街豪华酒店 含双人故宫电子门票&#x27;</span>, <span class="built_in">type</span>=<span class="string">&#x27;景+酒&#x27;</span>)</span><br><span class="line">session.add(new_user)</span><br><span class="line">session.commit()</span><br><span class="line"><span class="comment"># 查询</span></span><br><span class="line">student = session.query(Product).<span class="built_in">filter</span>(Product.<span class="built_in">id</span>==<span class="string">&#x27;19558276&#x27;</span>).one()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;name: &#x27;</span>, student.name)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;type: &#x27;</span>, student.<span class="built_in">type</span>)</span><br><span class="line"><span class="comment"># 更新</span></span><br><span class="line">session.query(Product).<span class="built_in">filter</span>(Product.<span class="built_in">id</span>==<span class="string">&#x27;19558276&#x27;</span>).update(&#123;Product.name:<span class="string">&quot;北京5天4晚自由行，景+酒套餐&quot;</span>&#125;)</span><br><span class="line">session.commit()</span><br><span class="line"><span class="comment"># 删除数据</span></span><br><span class="line">session.query(Product).<span class="built_in">filter</span>(Product.<span class="built_in">id</span>==<span class="string">&#x27;19558276&#x27;</span>).delete()</span><br><span class="line">session.commit()</span><br><span class="line">session.close()</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Mysql</tag>
+        <tag>查询</tag>
+        <tag>连接</tag>
       </tags>
   </entry>
   <entry>
@@ -8987,36 +9006,17 @@ table th:nth-of-type(4) {
       </tags>
   </entry>
   <entry>
-    <title>Python Mysql 数据库连接和查询</title>
-    <url>/2020/04/17/Python-Mysql-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E5%92%8C%E6%9F%A5%E8%AF%A2/</url>
+    <title>iCloud 备忘录不显示中文</title>
+    <url>/2020/03/18/iCloud-%E5%A4%87%E5%BF%98%E5%BD%95%E4%B8%8D%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87/</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<h1 id="使用-PyMySQL"><a href="#使用-PyMySQL" class="headerlink" title="使用 PyMySQL"></a>使用 PyMySQL</h1><span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"></span><br><span class="line">db = pymysql.Connect(</span><br><span class="line">    host=<span class="string">&quot;192.168.1.123&quot;</span>,</span><br><span class="line">    port=<span class="number">3306</span>,</span><br><span class="line">    user=<span class="string">&quot;root&quot;</span>,</span><br><span class="line">    password=<span class="string">&quot;Dp330651!&quot;</span>,</span><br><span class="line">    db=<span class="string">&quot;taobao&quot;</span>,</span><br><span class="line">    charset=<span class="string">&quot;utf8&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询</span></span><br><span class="line">cur = db.cursor()</span><br><span class="line">sql = <span class="string">&#x27;select * from sale_data where 位置 in(%s,%s,%s)&#x27;</span></span><br><span class="line">cur.execute(sql, (<span class="string">&quot;江苏&quot;</span>, <span class="string">&quot;浙江&quot;</span>, <span class="string">&quot;上海&quot;</span>))</span><br><span class="line">result = cur.fetchall()</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> result:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除</span></span><br><span class="line">sql = <span class="string">&#x27;delete from sale_data where 价格 &lt; 100&#x27;</span></span><br><span class="line">cur.execute(sql)</span><br><span class="line">db.commit()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改</span></span><br><span class="line">sql = <span class="string">&#x27;update sale_data set 位置=%s where 位置 in (%s,%s,%s)&#x27;</span></span><br><span class="line">cur.execute(sql,(<span class="string">&quot;江浙沪&quot;</span>,<span class="string">&quot;江苏&quot;</span>, <span class="string">&quot;浙江&quot;</span>, <span class="string">&quot;上海&quot;</span>))</span><br><span class="line">db.commit()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 插入</span></span><br><span class="line">sql = <span class="string">&#x27;insert into sale_data(宝贝,价格,成交量,卖家,位置) values(%s,%s,%s,%s,%s)&#x27;</span></span><br><span class="line">cur.execute(sql,(<span class="string">&quot;2017夏季妈妈装 40-50 岁中老年女装连衣裙&quot;</span>,<span class="number">298</span>,<span class="number">10000</span>,<span class="string">&quot;xxx 天猫旗舰店&quot;</span>,<span class="string">&quot;北京&quot;</span>))</span><br><span class="line">db.commit()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭游标和数据库连接</span></span><br><span class="line">cur.close()</span><br><span class="line">db.close()</span><br></pre></td></tr></table></figure>
-<h1 id="使用-SQLAlchemy"><a href="#使用-SQLAlchemy" class="headerlink" title="使用 SQLAlchemy"></a>使用 SQLAlchemy</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> Column, String, create_engine</span><br><span class="line"><span class="keyword">from</span> sqlalchemy.orm <span class="keyword">import</span> sessionmaker</span><br><span class="line"><span class="keyword">from</span> sqlalchemy.ext.declarative <span class="keyword">import</span> declarative_base</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Procuct</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, <span class="built_in">id</span>, name, <span class="built_in">type</span></span>):</span><br><span class="line">        self.<span class="built_in">id</span> = <span class="built_in">id</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.<span class="built_in">type</span> = <span class="built_in">type</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建对象的基类</span></span><br><span class="line">Base = declarative_base()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义 Product 对象</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Product</span>(<span class="title class_ inherited__">Base</span>):</span><br><span class="line">    <span class="comment"># 表名</span></span><br><span class="line">    __tablename__ = <span class="string">&#x27;Product&#x27;</span></span><br><span class="line">    <span class="comment"># 表结构</span></span><br><span class="line">    <span class="built_in">id</span> = Column(String(<span class="number">20</span>), primary_key=<span class="literal">True</span>)</span><br><span class="line">    name = Column(String(<span class="number">20</span>))</span><br><span class="line">    <span class="built_in">type</span> = Column(String(<span class="number">20</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化数据库连接</span></span><br><span class="line">engine = create_engine(<span class="string">&#x27;mysql+pymysql://root:Dp330651!@192.168.1.123:3306/taobao&#x27;</span>)</span><br><span class="line"><span class="comment"># 创建 DBSession 类型</span></span><br><span class="line">DBSession = sessionmaker(bind=engine)</span><br><span class="line"><span class="comment"># 插入一条记录</span></span><br><span class="line">session = DBSession()</span><br><span class="line">new_user = Product(<span class="built_in">id</span>=<span class="string">&#x27;19558276&#x27;</span>, name=<span class="string">&#x27;北京5天4晚自由行 含双早 入住前门商业街豪华酒店 含双人故宫电子门票&#x27;</span>, <span class="built_in">type</span>=<span class="string">&#x27;景+酒&#x27;</span>)</span><br><span class="line">session.add(new_user)</span><br><span class="line">session.commit()</span><br><span class="line"><span class="comment"># 查询</span></span><br><span class="line">student = session.query(Product).<span class="built_in">filter</span>(Product.<span class="built_in">id</span>==<span class="string">&#x27;19558276&#x27;</span>).one()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;name: &#x27;</span>, student.name)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;type: &#x27;</span>, student.<span class="built_in">type</span>)</span><br><span class="line"><span class="comment"># 更新</span></span><br><span class="line">session.query(Product).<span class="built_in">filter</span>(Product.<span class="built_in">id</span>==<span class="string">&#x27;19558276&#x27;</span>).update(&#123;Product.name:<span class="string">&quot;北京5天4晚自由行，景+酒套餐&quot;</span>&#125;)</span><br><span class="line">session.commit()</span><br><span class="line"><span class="comment"># 删除数据</span></span><br><span class="line">session.query(Product).<span class="built_in">filter</span>(Product.<span class="built_in">id</span>==<span class="string">&#x27;19558276&#x27;</span>).delete()</span><br><span class="line">session.commit()</span><br><span class="line">session.close()</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Mysql</tag>
-        <tag>查询</tag>
-        <tag>连接</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python 爬取去哪儿网商品数据</title>
-    <url>/2020/04/08/Python-%E7%88%AC%E5%8F%96%E5%8E%BB%E5%93%AA%E5%84%BF%E7%BD%91%E5%95%86%E5%93%81%E6%95%B0%E6%8D%AE/</url>
-    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<h1 id="爬取去哪儿网自由行商品数据并保存在-mongodb-数据库中："><a href="#爬取去哪儿网自由行商品数据并保存在-mongodb-数据库中：" class="headerlink" title="爬取去哪儿网自由行商品数据并保存在 mongodb 数据库中："></a>爬取去哪儿网自由行商品数据并保存在 mongodb 数据库中：</h1><span id="more"></span>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> pymongo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立数据库连接并创建数据库和表</span></span><br><span class="line">client = pymongo.MongoClient(<span class="string">&#x27;192.168.1.123&#x27;</span>, <span class="number">27000</span>)</span><br><span class="line">book_qunar = client[<span class="string">&#x27;qunar&#x27;</span>]</span><br><span class="line">sheet_qunar_zyx = book_qunar[<span class="string">&#x27;qunar_zyx&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取产品列表信息</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_list</span>(<span class="params">dep, item</span>):</span><br><span class="line">    url = <span class="string">&#x27;https://touch.dujia.qunar.com/list?modules=list,bookingInfo,activityDetail&amp;dep=&#123;&#125;&amp;query=&#123;&#125;&amp;dappDealTrace=true&amp;mobFunction=%E6%89%A9%E5%B1%95%E8%87%AA%E7%94%B1%E8%A1%8C&amp;cfrom=zyx&amp;it=dujia_hy_destination&amp;date=&amp;needNoResult=true&amp;originalquery=&#123;&#125;&amp;width=480&amp;height=320&amp;quality=90&amp;limit=0,20&amp;includeAD=true&amp;qsact=search&#x27;</span>.<span class="built_in">format</span>(</span><br><span class="line">        urllib.request.quote(dep), urllib.request.quote(item), urllib.request.quote(item))</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    strhtml = requests.get(url)</span><br><span class="line">    <span class="comment"># 取出产品数</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        routeCount = <span class="built_in">int</span>(strhtml.json()[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;limit&#x27;</span>][<span class="string">&#x27;routeCount&#x27;</span>])</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">for</span> limit <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, routeCount, <span class="number">20</span>):</span><br><span class="line">        url = <span class="string">&#x27;https://touch.dujia.qunar.com/list?modules=list,bookingInfo,activityDetail&amp;dep=&#123;&#125;&amp;query=&#123;&#125;&amp;dappDealTrace=true&amp;mobFunction=%E6%89%A9%E5%B1%95%E8%87%AA%E7%94%B1%E8%A1%8C&amp;cfrom=zyx&amp;it=dujia_hy_destination&amp;date=&amp;needNoResult=true&amp;originalquery=&#123;&#125;&amp;width=480&amp;height=320&amp;quality=90&amp;limit=&#123;&#125;,20&amp;includeAD=true&amp;qsact=search&#x27;</span>.<span class="built_in">format</span>(</span><br><span class="line">            urllib.request.quote(dep), urllib.request.quote(item), urllib.request.quote(item), limit)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        strhtml = requests.get(url)</span><br><span class="line">        result = &#123;</span><br><span class="line">            <span class="string">&#x27;date&#x27;</span>: time.strftime(<span class="string">&#x27;%Y-%m-%d&#x27;</span>, time.localtime(time.time())),</span><br><span class="line">            <span class="string">&#x27;dep&#x27;</span>: dep,</span><br><span class="line">            <span class="string">&#x27;arrive&#x27;</span>: item,</span><br><span class="line">            <span class="string">&#x27;limit&#x27;</span>: limit,</span><br><span class="line">            <span class="string">&#x27;result&#x27;</span>: strhtml.json()</span><br><span class="line">        &#125;</span><br><span class="line">        sheet_qunar_zyx.insert_one(result)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_json</span>(<span class="params">url</span>):</span><br><span class="line">    strhtml = requests.get(url)</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> strhtml.json()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment"># 获取出发地站点</span></span><br><span class="line">    url = <span class="string">&#x27;https://touch.dujia.qunar.com/depCities.qunar&#x27;</span></span><br><span class="line">    dep_dict = get_json(url)</span><br><span class="line">    <span class="keyword">for</span> dep_item <span class="keyword">in</span> dep_dict[<span class="string">&#x27;data&#x27;</span>]:</span><br><span class="line">        <span class="keyword">for</span> dep <span class="keyword">in</span> dep_dict[<span class="string">&#x27;data&#x27;</span>][dep_item]:</span><br><span class="line">            a = []</span><br><span class="line">            <span class="comment"># 根据出发地站点获取目的地</span></span><br><span class="line">            url = <span class="string">&#x27;https://touch.dujia.qunar.com/golfz/sight/arriveRecommend?dep=&#123;&#125;&amp;exclude=&amp;extensionImg=255,175&#x27;</span>.<span class="built_in">format</span>(</span><br><span class="line">                urllib.request.quote(dep))</span><br><span class="line">            arrive_dict = get_json(url)</span><br><span class="line">            <span class="keyword">for</span> arrive_item <span class="keyword">in</span> arrive_dict[<span class="string">&#x27;data&#x27;</span>]:</span><br><span class="line">                <span class="keyword">for</span> arrive_item_1 <span class="keyword">in</span> arrive_item[<span class="string">&#x27;subModules&#x27;</span>]:</span><br><span class="line">                    <span class="keyword">for</span> query <span class="keyword">in</span> arrive_item_1[<span class="string">&#x27;items&#x27;</span>]:</span><br><span class="line">                        <span class="comment"># 对目的地进行去重</span></span><br><span class="line">                        <span class="keyword">if</span> query[<span class="string">&#x27;query&#x27;</span>] <span class="keyword">not</span> <span class="keyword">in</span> a:</span><br><span class="line">                            a.append(query[<span class="string">&#x27;query&#x27;</span>])</span><br><span class="line">            <span class="comment"># 获取产品列表</span></span><br><span class="line">            <span class="keyword">for</span> item <span class="keyword">in</span> a:</span><br><span class="line">                get_list(dep, item)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="数据库监控程序"><a href="#数据库监控程序" class="headerlink" title="数据库监控程序"></a>数据库监控程序</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> get_depart <span class="keyword">import</span> sheet_qunar_zyx</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="built_in">print</span>(sheet_qunar_zyx.find().count())</span><br><span class="line">    time.sleep(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
-<p><strong>参考文档：</strong><br><a href="https://book.douban.com/subject/30190201/">Python 3爬虫、数据清洗与可视化实战</a></p>
+<p>今天在 win7 上使用 chrome 浏览器访问 iCloud 备忘录，发现中文无法显示，只显示数字和图片，换用 firefox 登录也不行。<br>上网检索，没有找到好的解决办法。<br>后来误打误撞升级了一下 ie 浏览器到版本 11 后就可以正常显示了。有需要的朋友可以试试看。</p>
 ]]></content>
       <categories>
         <category>技术</category>
       </categories>
       <tags>
-        <tag>爬虫</tag>
+        <tag>iCloud</tag>
+        <tag>备忘录</tag>
       </tags>
   </entry>
   <entry>
@@ -11902,29 +11902,6 @@ table th:nth-of-type(4) {
       </tags>
   </entry>
   <entry>
-    <title>正则表达式中的 &#92;b</title>
-    <url>/2023/07/07/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%AD%E7%9A%84-b/</url>
-    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>正则表达式中的 \b 表示单词边界（word boundary）。它匹配一个位置，该位置位于单词字符和非单词字符之间，或者位于字符串的开头或结尾。单词字符包括字母、数字和下划线。</p>
-<p>下面是一些示例，说明 \b 的使用方式：</p>
-<span id="more"></span>
-
-<p>匹配包含单词 “cat” 的字符串： 正则表达式：\bcat\b 匹配的字符串：”I have a cat.”、”The cat is cute.”、”My cat is black.”</p>
-<p>匹配以字母 “b” 开头的单词： 正则表达式：\bb\w+ 匹配的字符串：”The bird is beautiful.”、”She bought a book.”</p>
-<p>匹配以数字结尾的单词： 正则表达式：\w+\d\b 匹配的字符串：”I have 3 apples.”、”The room number is 205.”</p>
-<p>匹配独立的单词 “at”： 正则表达式：\bat\b 匹配的字符串：”I’m good at swimming.”、”The hat is on the table.”、”He’s a great athlete.”</p>
-<p>需要注意的是，正则表达式中的 \b 是一个转义字符，需要在字符串中使用双斜杠来表示，如 <code>\\bcat\\b</code>。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>正则表达式</tag>
-        <tag>JavaScript</tag>
-        <tag>&#92;b</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JavaScript 基础知识总结2</title>
     <url>/2023/07/25/JavaScript-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%932/</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
@@ -12055,6 +12032,29 @@ table th:nth-of-type(4) {
       </categories>
       <tags>
         <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>正则表达式中的 &#92;b</title>
+    <url>/2023/07/07/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%AD%E7%9A%84-b/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<p>正则表达式中的 \b 表示单词边界（word boundary）。它匹配一个位置，该位置位于单词字符和非单词字符之间，或者位于字符串的开头或结尾。单词字符包括字母、数字和下划线。</p>
+<p>下面是一些示例，说明 \b 的使用方式：</p>
+<span id="more"></span>
+
+<p>匹配包含单词 “cat” 的字符串： 正则表达式：\bcat\b 匹配的字符串：”I have a cat.”、”The cat is cute.”、”My cat is black.”</p>
+<p>匹配以字母 “b” 开头的单词： 正则表达式：\bb\w+ 匹配的字符串：”The bird is beautiful.”、”She bought a book.”</p>
+<p>匹配以数字结尾的单词： 正则表达式：\w+\d\b 匹配的字符串：”I have 3 apples.”、”The room number is 205.”</p>
+<p>匹配独立的单词 “at”： 正则表达式：\bat\b 匹配的字符串：”I’m good at swimming.”、”The hat is on the table.”、”He’s a great athlete.”</p>
+<p>需要注意的是，正则表达式中的 \b 是一个转义字符，需要在字符串中使用双斜杠来表示，如 <code>\\bcat\\b</code>。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>正则表达式</tag>
+        <tag>JavaScript</tag>
+        <tag>&#92;b</tag>
       </tags>
   </entry>
   <entry>
@@ -12582,6 +12582,35 @@ table th:nth-of-type(4) {
       </tags>
   </entry>
   <entry>
+    <title>零矩阵</title>
+    <url>/2023/08/04/%E9%9B%B6%E7%9F%A9%E9%98%B5/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<ol>
+<li>题目描述：</li>
+</ol>
+<p>编写一种算法，若 M × N 矩阵中某个元素为 0，则将其所在的行与列清零。</p>
+<ol start="2">
+<li><a href="https://leetcode.cn/leetbook/read/array-and-string/ciekh/">力扣官方题解</a></li>
+<li>ChatGPT</li>
+</ol>
+<p>遍历整个矩阵，记录所有为 0 的元素的行号和列号。<br>根据记录的行号和列号，将对应的行与列清零。</p>
+<span id="more"></span>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">setZeroes</span>(<span class="params">matrix</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> m = matrix.<span class="property">length</span>; <span class="comment">// 矩阵的行数</span></span><br><span class="line">  <span class="keyword">const</span> n = matrix[<span class="number">0</span>].<span class="property">length</span>; <span class="comment">// 矩阵的列数</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> zeroRows = <span class="keyword">new</span> <span class="title class_">Set</span>(); <span class="comment">// 记录为0的行号</span></span><br><span class="line">  <span class="keyword">const</span> zeroCols = <span class="keyword">new</span> <span class="title class_">Set</span>(); <span class="comment">// 记录为0的列号</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 遍历矩阵，记录为0的元素的行号和列号</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (matrix[i][j] === <span class="number">0</span>) &#123;</span><br><span class="line">        zeroRows.<span class="title function_">add</span>(i);</span><br><span class="line">        zeroCols.<span class="title function_">add</span>(j);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 根据记录的行号和列号，将对应的行与列清零</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (zeroRows.<span class="title function_">has</span>(i) || zeroCols.<span class="title function_">has</span>(j)) &#123;</span><br><span class="line">        matrix[i][j] = <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 示例</span></span><br><span class="line"><span class="keyword">const</span> matrix = [</span><br><span class="line">  [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">  [<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">  [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="title function_">setZeroes</span>(matrix);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(matrix);</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>我的解法</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> setZeroes = <span class="keyword">function</span> (<span class="params">matrix</span>) &#123;</span><br><span class="line">  <span class="comment">// 记录哪些行包含 0</span></span><br><span class="line">  <span class="keyword">let</span> row = [];</span><br><span class="line">  <span class="comment">// 记录哪些列包含 0</span></span><br><span class="line">  <span class="keyword">let</span> column = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; matrix.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; matrix[i].<span class="property">length</span>; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="number">0</span> === matrix[i][j]) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!row.<span class="title function_">includes</span>(i)) &#123;</span><br><span class="line">          row.<span class="title function_">push</span>(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!column.<span class="title function_">includes</span>(j)) &#123;</span><br><span class="line">          column.<span class="title function_">push</span>(j);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (row.<span class="property">length</span> === <span class="number">0</span> &amp;&amp; column.<span class="property">length</span> === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> matrix;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 将所有 0 所在的行清零</span></span><br><span class="line">    row.<span class="title function_">forEach</span>(<span class="function">(<span class="params">row</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; matrix[row].<span class="property">length</span>; i++) &#123;</span><br><span class="line">        matrix[row][i] = <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">// 将所有 0 所在的列清零</span></span><br><span class="line">    column.<span class="title function_">forEach</span>(<span class="function">(<span class="params">column</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; matrix.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        matrix[i][column] = <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> matrix1 = [</span><br><span class="line">  [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">  [<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">  [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">];</span><br><span class="line"><span class="title function_">setZeroes</span>(matrix1);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(matrix1); <span class="comment">// 输出 [[7, 4, 1], [8, 5, 2], [9, 6, 3]]</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>矩阵旋转</title>
     <url>/2023/08/03/%E7%9F%A9%E9%98%B5%E6%97%8B%E8%BD%AC/</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
@@ -12614,35 +12643,6 @@ table th:nth-of-type(4) {
 <p>空间复杂度：O(1)。为原地翻转得到的原地旋转。</p>
 <p>TIPS:</p>
 <p>不要被程序中各种下标唬住，可以带入实际的数字，一步步分析，调试看打印信息。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>零矩阵</title>
-    <url>/2023/08/04/%E9%9B%B6%E7%9F%A9%E9%98%B5/</url>
-    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<ol>
-<li>题目描述：</li>
-</ol>
-<p>编写一种算法，若 M × N 矩阵中某个元素为 0，则将其所在的行与列清零。</p>
-<ol start="2">
-<li><a href="https://leetcode.cn/leetbook/read/array-and-string/ciekh/">力扣官方题解</a></li>
-<li>ChatGPT</li>
-</ol>
-<p>遍历整个矩阵，记录所有为 0 的元素的行号和列号。<br>根据记录的行号和列号，将对应的行与列清零。</p>
-<span id="more"></span>
-
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">setZeroes</span>(<span class="params">matrix</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> m = matrix.<span class="property">length</span>; <span class="comment">// 矩阵的行数</span></span><br><span class="line">  <span class="keyword">const</span> n = matrix[<span class="number">0</span>].<span class="property">length</span>; <span class="comment">// 矩阵的列数</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> zeroRows = <span class="keyword">new</span> <span class="title class_">Set</span>(); <span class="comment">// 记录为0的行号</span></span><br><span class="line">  <span class="keyword">const</span> zeroCols = <span class="keyword">new</span> <span class="title class_">Set</span>(); <span class="comment">// 记录为0的列号</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 遍历矩阵，记录为0的元素的行号和列号</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (matrix[i][j] === <span class="number">0</span>) &#123;</span><br><span class="line">        zeroRows.<span class="title function_">add</span>(i);</span><br><span class="line">        zeroCols.<span class="title function_">add</span>(j);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 根据记录的行号和列号，将对应的行与列清零</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (zeroRows.<span class="title function_">has</span>(i) || zeroCols.<span class="title function_">has</span>(j)) &#123;</span><br><span class="line">        matrix[i][j] = <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 示例</span></span><br><span class="line"><span class="keyword">const</span> matrix = [</span><br><span class="line">  [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">  [<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">  [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="title function_">setZeroes</span>(matrix);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(matrix);</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>我的解法</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> setZeroes = <span class="keyword">function</span> (<span class="params">matrix</span>) &#123;</span><br><span class="line">  <span class="comment">// 记录哪些行包含 0</span></span><br><span class="line">  <span class="keyword">let</span> row = [];</span><br><span class="line">  <span class="comment">// 记录哪些列包含 0</span></span><br><span class="line">  <span class="keyword">let</span> column = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; matrix.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; matrix[i].<span class="property">length</span>; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="number">0</span> === matrix[i][j]) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!row.<span class="title function_">includes</span>(i)) &#123;</span><br><span class="line">          row.<span class="title function_">push</span>(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!column.<span class="title function_">includes</span>(j)) &#123;</span><br><span class="line">          column.<span class="title function_">push</span>(j);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (row.<span class="property">length</span> === <span class="number">0</span> &amp;&amp; column.<span class="property">length</span> === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> matrix;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 将所有 0 所在的行清零</span></span><br><span class="line">    row.<span class="title function_">forEach</span>(<span class="function">(<span class="params">row</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; matrix[row].<span class="property">length</span>; i++) &#123;</span><br><span class="line">        matrix[row][i] = <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">// 将所有 0 所在的列清零</span></span><br><span class="line">    column.<span class="title function_">forEach</span>(<span class="function">(<span class="params">column</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; matrix.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        matrix[i][column] = <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> matrix1 = [</span><br><span class="line">  [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">  [<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">  [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">];</span><br><span class="line"><span class="title function_">setZeroes</span>(matrix1);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(matrix1); <span class="comment">// 输出 [[7, 4, 1], [8, 5, 2], [9, 6, 3]]</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -13819,6 +13819,50 @@ table th:nth-of-type(4) {
       </tags>
   </entry>
   <entry>
+    <title>Git commit message 格式</title>
+    <url>/2023/09/22/Git-commit-message-%E6%A0%BC%E5%BC%8F/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<h1 id="提交规范"><a href="#提交规范" class="headerlink" title="提交规范"></a>提交规范</h1><p>格式: <code>type (scope): subject</code></p>
+<span id="more"></span>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">- type</span><br><span class="line">  - 用于说明 <span class="string">`commit`</span> 的类别，只允许使用下面<span class="number">10</span>个标识。</span><br><span class="line">    - feat：新功能（feature）</span><br><span class="line">    - fix：修补bug</span><br><span class="line">    - docs：文档（documentation）</span><br><span class="line">    - style： 格式（不影响代码运行的变动）</span><br><span class="line">    - refactor：重构（即不是新增功能，也不是修改bug的代码变动）</span><br><span class="line">    - perf：性能优化</span><br><span class="line">    - test：增加测试</span><br><span class="line">    - chore：构建过程或辅助工具的变动</span><br><span class="line">    - revert：回退</span><br><span class="line">    - build：打包</span><br><span class="line">- <span class="title function_">scope</span>(可选)</span><br><span class="line">  - 用于说明 <span class="string">`commit`</span> 影响的范围，比如<span class="title class_">Button</span>组件、store、首页、路由等等，视项目不同而不同。</span><br><span class="line">- <span class="title function_">subject</span>(可选))</span><br><span class="line">  - 是 <span class="string">`commit`</span> 目的的简短描述，不超过<span class="number">50</span>个字符。</span><br><span class="line">    - 以动词开头，使用第一人称现在时，比如change，而不是changed或changes</span><br><span class="line">    - 第一个字母小写</span><br><span class="line">    - 结尾不加句号（.）</span><br></pre></td></tr></table></figure>
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="https://jdf2e.github.io/jdc_fe_guide/docs/git/commit">JDC 前端代码规范</a><br><a href="https://www.conventionalcommits.org/zh-hans/v1.0.0/#%e7%ba%a6%e5%ae%9a%e5%bc%8f%e6%8f%90%e4%ba%a4%e8%a7%84%e8%8c%83">约定式提交</a><br><a href="https://juejin.cn/post/7114673069293043719">自动生成变更日志及规范 git 提交记录(release-it+husky+ commitizen+ commitlint)</a><br><a href="https://semver.org/lang/zh-CN/">语义化版本 2.0.0</a><br>1697080977000</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+        <tag>commit</tag>
+        <tag>格式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>英语水平能力测试</title>
+    <url>/2023/09/22/%E8%8B%B1%E8%AF%AD%E6%B0%B4%E5%B9%B3%E8%83%BD%E5%8A%9B%E6%B5%8B%E8%AF%95/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<h1 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h1><p>欧洲共同语言参考标准（The Common European Framework of Reference for Languages，简称 CEFR）是被国际认可的描述语言能力和水平的标准。在欧洲，CEFR 被广泛接受，并且越来越多的运用到欧洲以外的世界范围内。</p>
+<p>EF SET 英语测试是现在世界上唯一一套针对所有 CEFR 英语水平等级（从 A1 到 C2 六个级别）设计的试题，可以精确判断出测试者的英文能力属于哪个 CEFR 级别。托福和雅思一般只能判断 B2 及以上，而不是所有的英语程度。</p>
+<p>下面是今天的 15 分钟快测结果，记录一下后续用来对比：</p>
+<img src="/2023/09/22/%E8%8B%B1%E8%AF%AD%E6%B0%B4%E5%B9%B3%E8%83%BD%E5%8A%9B%E6%B5%8B%E8%AF%95/1.png" class="">
+
+<p>可以进一步提高的方法：</p>
+<img src="/2023/09/22/%E8%8B%B1%E8%AF%AD%E6%B0%B4%E5%B9%B3%E8%83%BD%E5%8A%9B%E6%B5%8B%E8%AF%95/2.png" class="">
+
+<span id="more"></span>
+
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p><a href="https://www.efset.org/zh/cefr/">CEFR 及 EF SET</a><br>书：《英语自学手册（郝海龙）》</p>
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>英语</tag>
+        <tag>能力测试</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>英语启蒙秘籍</title>
     <url>/2023/09/20/%E8%8B%B1%E8%AF%AD%E5%90%AF%E8%92%99%E7%A7%98%E7%B1%8D/</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
@@ -13987,50 +14031,6 @@ table th:nth-of-type(4) {
         <tag>对象</tag>
         <tag>Vue 2</tag>
         <tag>响应式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git commit message 格式</title>
-    <url>/2023/09/22/Git-commit-message-%E6%A0%BC%E5%BC%8F/</url>
-    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<h1 id="提交规范"><a href="#提交规范" class="headerlink" title="提交规范"></a>提交规范</h1><p>格式: <code>type (scope): subject</code></p>
-<span id="more"></span>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">- type</span><br><span class="line">  - 用于说明 <span class="string">`commit`</span> 的类别，只允许使用下面<span class="number">10</span>个标识。</span><br><span class="line">    - feat：新功能（feature）</span><br><span class="line">    - fix：修补bug</span><br><span class="line">    - docs：文档（documentation）</span><br><span class="line">    - style： 格式（不影响代码运行的变动）</span><br><span class="line">    - refactor：重构（即不是新增功能，也不是修改bug的代码变动）</span><br><span class="line">    - perf：性能优化</span><br><span class="line">    - test：增加测试</span><br><span class="line">    - chore：构建过程或辅助工具的变动</span><br><span class="line">    - revert：回退</span><br><span class="line">    - build：打包</span><br><span class="line">- <span class="title function_">scope</span>(可选)</span><br><span class="line">  - 用于说明 <span class="string">`commit`</span> 影响的范围，比如<span class="title class_">Button</span>组件、store、首页、路由等等，视项目不同而不同。</span><br><span class="line">- <span class="title function_">subject</span>(可选))</span><br><span class="line">  - 是 <span class="string">`commit`</span> 目的的简短描述，不超过<span class="number">50</span>个字符。</span><br><span class="line">    - 以动词开头，使用第一人称现在时，比如change，而不是changed或changes</span><br><span class="line">    - 第一个字母小写</span><br><span class="line">    - 结尾不加句号（.）</span><br></pre></td></tr></table></figure>
-
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="https://jdf2e.github.io/jdc_fe_guide/docs/git/commit">JDC 前端代码规范</a><br><a href="https://www.conventionalcommits.org/zh-hans/v1.0.0/#%e7%ba%a6%e5%ae%9a%e5%bc%8f%e6%8f%90%e4%ba%a4%e8%a7%84%e8%8c%83">约定式提交</a><br><a href="https://juejin.cn/post/7114673069293043719">自动生成变更日志及规范 git 提交记录(release-it+husky+ commitizen+ commitlint)</a><br><a href="https://semver.org/lang/zh-CN/">语义化版本 2.0.0</a><br>1697080977000</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-        <tag>commit</tag>
-        <tag>格式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>英语水平能力测试</title>
-    <url>/2023/09/22/%E8%8B%B1%E8%AF%AD%E6%B0%B4%E5%B9%B3%E8%83%BD%E5%8A%9B%E6%B5%8B%E8%AF%95/</url>
-    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<h1 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h1><p>欧洲共同语言参考标准（The Common European Framework of Reference for Languages，简称 CEFR）是被国际认可的描述语言能力和水平的标准。在欧洲，CEFR 被广泛接受，并且越来越多的运用到欧洲以外的世界范围内。</p>
-<p>EF SET 英语测试是现在世界上唯一一套针对所有 CEFR 英语水平等级（从 A1 到 C2 六个级别）设计的试题，可以精确判断出测试者的英文能力属于哪个 CEFR 级别。托福和雅思一般只能判断 B2 及以上，而不是所有的英语程度。</p>
-<p>下面是今天的 15 分钟快测结果，记录一下后续用来对比：</p>
-<img src="/2023/09/22/%E8%8B%B1%E8%AF%AD%E6%B0%B4%E5%B9%B3%E8%83%BD%E5%8A%9B%E6%B5%8B%E8%AF%95/1.png" class="">
-
-<p>可以进一步提高的方法：</p>
-<img src="/2023/09/22/%E8%8B%B1%E8%AF%AD%E6%B0%B4%E5%B9%B3%E8%83%BD%E5%8A%9B%E6%B5%8B%E8%AF%95/2.png" class="">
-
-<span id="more"></span>
-
-<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p><a href="https://www.efset.org/zh/cefr/">CEFR 及 EF SET</a><br>书：《英语自学手册（郝海龙）》</p>
-]]></content>
-      <categories>
-        <category>生活</category>
-      </categories>
-      <tags>
-        <tag>英语</tag>
-        <tag>能力测试</tag>
       </tags>
   </entry>
   <entry>
@@ -14287,26 +14287,6 @@ table th:nth-of-type(4) {
       </tags>
   </entry>
   <entry>
-    <title>建立冷静角</title>
-    <url>/2023/10/07/%E5%BB%BA%E7%AB%8B%E5%86%B7%E9%9D%99%E8%A7%92/</url>
-    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<h1 id="给冷静角起一个自己喜欢的名字"><a href="#给冷静角起一个自己喜欢的名字" class="headerlink" title="给冷静角起一个自己喜欢的名字"></a>给冷静角起一个自己喜欢的名字</h1><h1 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h1><p>当自己感到难受的时候，待在那里会感到安心，舒服，会慢慢好起来。</p>
-<h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><p>去冷静角待一会，不是面壁思过，不是惩罚。</p>
-<h1 id="可以放"><a href="#可以放" class="headerlink" title="可以放"></a>可以放</h1><p>书籍、解压球、解压玩偶、小枕头、纸笔颜料、视觉提醒海报、能让自己放松的物件</p>
-<h1 id="不要放"><a href="#不要放" class="headerlink" title="不要放"></a>不要放</h1><p>很多玩具、游戏机、会让人情绪高涨的物件、会让人觉得讨厌的物件</p>
-<span id="more"></span>
-
-<h1 id="不要忘记"><a href="#不要忘记" class="headerlink" title="不要忘记"></a>不要忘记</h1><p>去看看自己或者孩子背后的需求是什么，忽略了需求，冷静角可能反而会强化一些行为的出现，例如不想做作业就发脾气，这样就可以去冷静角待着而不用做作业了，如果不去正视做作业过程中的问题，可能这个问题就会逐步加深。</p>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>《徐桂凤亲子养育年课》</p>
-]]></content>
-      <categories>
-        <category>育儿</category>
-      </categories>
-      <tags>
-        <tag>冷静角</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>社交技巧小 tips</title>
     <url>/2023/10/07/%E7%A4%BE%E4%BA%A4%E6%8A%80%E5%B7%A7%E5%B0%8F-tips/</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
@@ -14337,6 +14317,26 @@ table th:nth-of-type(4) {
       </categories>
       <tags>
         <tag>社交</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>建立冷静角</title>
+    <url>/2023/10/07/%E5%BB%BA%E7%AB%8B%E5%86%B7%E9%9D%99%E8%A7%92/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<h1 id="给冷静角起一个自己喜欢的名字"><a href="#给冷静角起一个自己喜欢的名字" class="headerlink" title="给冷静角起一个自己喜欢的名字"></a>给冷静角起一个自己喜欢的名字</h1><h1 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h1><p>当自己感到难受的时候，待在那里会感到安心，舒服，会慢慢好起来。</p>
+<h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><p>去冷静角待一会，不是面壁思过，不是惩罚。</p>
+<h1 id="可以放"><a href="#可以放" class="headerlink" title="可以放"></a>可以放</h1><p>书籍、解压球、解压玩偶、小枕头、纸笔颜料、视觉提醒海报、能让自己放松的物件</p>
+<h1 id="不要放"><a href="#不要放" class="headerlink" title="不要放"></a>不要放</h1><p>很多玩具、游戏机、会让人情绪高涨的物件、会让人觉得讨厌的物件</p>
+<span id="more"></span>
+
+<h1 id="不要忘记"><a href="#不要忘记" class="headerlink" title="不要忘记"></a>不要忘记</h1><p>去看看自己或者孩子背后的需求是什么，忽略了需求，冷静角可能反而会强化一些行为的出现，例如不想做作业就发脾气，这样就可以去冷静角待着而不用做作业了，如果不去正视做作业过程中的问题，可能这个问题就会逐步加深。</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>《徐桂凤亲子养育年课》</p>
+]]></content>
+      <categories>
+        <category>育儿</category>
+      </categories>
+      <tags>
+        <tag>冷静角</tag>
       </tags>
   </entry>
   <entry>
@@ -14392,33 +14392,6 @@ table th:nth-of-type(4) {
         <tag>tabs</tag>
         <tag>组件</tag>
         <tag>钩子函数</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Javascript for...in</title>
-    <url>/2023/10/13/Javascript-for-in/</url>
-    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>for…in 语句以任意顺序迭代一个对象的除 Symbol 以外的可枚举属性，包括继承的可枚举属性。</p>
-<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (variable <span class="keyword">in</span> object) &#123;</span><br><span class="line">  <span class="keyword">if</span>(object.<span class="title function_">hasOwnProperty</span>(<span class="params">variable</span>) &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>variable</code><br>在每次迭代时，variable 会被赋值为不同的属性名。</p>
-<p><code>object</code><br>非 Symbol 类型的可枚举属性被迭代的对象。</p>
-<span id="more"></span>
-
-<h1 id="仅迭代自身的属性"><a href="#仅迭代自身的属性" class="headerlink" title="仅迭代自身的属性"></a>仅迭代自身的属性</h1><p>如果你只要考虑对象本身的属性，而不是它的原型，那么使用 getOwnPropertyNames() 或执行 hasOwnProperty() 来确定某属性是否是对象本身的属性（也能使用 propertyIsEnumerable）。或者，如果你知道不会有任何外部代码干扰，你可以使用检查方法扩展内置原型。</p>
-<p>下面的函数说明了 hasOwnProperty()的用法：继承的属性不显示。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> triangle = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">ColoredTriangle</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">color</span> = <span class="string">&quot;red&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">ColoredTriangle</span>.<span class="property"><span class="keyword">prototype</span></span> = triangle;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="title class_">ColoredTriangle</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> prop <span class="keyword">in</span> obj) &#123;</span><br><span class="line">  <span class="keyword">if</span> (obj.<span class="title function_">hasOwnProperty</span>(prop)) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`obj.<span class="subst">$&#123;prop&#125;</span> = <span class="subst">$&#123;obj[prop]&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Output:</span></span><br><span class="line"><span class="comment">// &quot;obj.color = red&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="为什么用-for-…-in"><a href="#为什么用-for-…-in" class="headerlink" title="为什么用 for … in?"></a>为什么用 for … in?</h1><p>for … in 是为遍历对象属性而构建的，不建议与数组一起使用，数组可以用 Array.prototype.forEach()和 for … of，那么 for … in 的到底有什么用呢？</p>
-<p>它最常用的地方应该是用于调试，可以更方便的去检查对象属性（通过输出到控制台或其他方式）。尽管对于处理存储数据，数组更实用些，但是你在处理有 key-value 数据（比如属性用作“键”），需要检查其中的任何键是否为某值的情况时，还是推荐用 for … in</p>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/for...in">for…in</a></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>遍历对象属性</tag>
-        <tag>for...in</tag>
       </tags>
   </entry>
   <entry>
@@ -14484,6 +14457,33 @@ table th:nth-of-type(4) {
       <tags>
         <tag>每日一练</tag>
         <tag>列表筛选</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Javascript for...in</title>
+    <url>/2023/10/13/Javascript-for-in/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<p>for…in 语句以任意顺序迭代一个对象的除 Symbol 以外的可枚举属性，包括继承的可枚举属性。</p>
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (variable <span class="keyword">in</span> object) &#123;</span><br><span class="line">  <span class="keyword">if</span>(object.<span class="title function_">hasOwnProperty</span>(<span class="params">variable</span>) &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>variable</code><br>在每次迭代时，variable 会被赋值为不同的属性名。</p>
+<p><code>object</code><br>非 Symbol 类型的可枚举属性被迭代的对象。</p>
+<span id="more"></span>
+
+<h1 id="仅迭代自身的属性"><a href="#仅迭代自身的属性" class="headerlink" title="仅迭代自身的属性"></a>仅迭代自身的属性</h1><p>如果你只要考虑对象本身的属性，而不是它的原型，那么使用 getOwnPropertyNames() 或执行 hasOwnProperty() 来确定某属性是否是对象本身的属性（也能使用 propertyIsEnumerable）。或者，如果你知道不会有任何外部代码干扰，你可以使用检查方法扩展内置原型。</p>
+<p>下面的函数说明了 hasOwnProperty()的用法：继承的属性不显示。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> triangle = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">ColoredTriangle</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">color</span> = <span class="string">&quot;red&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">ColoredTriangle</span>.<span class="property"><span class="keyword">prototype</span></span> = triangle;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="title class_">ColoredTriangle</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> prop <span class="keyword">in</span> obj) &#123;</span><br><span class="line">  <span class="keyword">if</span> (obj.<span class="title function_">hasOwnProperty</span>(prop)) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`obj.<span class="subst">$&#123;prop&#125;</span> = <span class="subst">$&#123;obj[prop]&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Output:</span></span><br><span class="line"><span class="comment">// &quot;obj.color = red&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="为什么用-for-…-in"><a href="#为什么用-for-…-in" class="headerlink" title="为什么用 for … in?"></a>为什么用 for … in?</h1><p>for … in 是为遍历对象属性而构建的，不建议与数组一起使用，数组可以用 Array.prototype.forEach()和 for … of，那么 for … in 的到底有什么用呢？</p>
+<p>它最常用的地方应该是用于调试，可以更方便的去检查对象属性（通过输出到控制台或其他方式）。尽管对于处理存储数据，数组更实用些，但是你在处理有 key-value 数据（比如属性用作“键”），需要检查其中的任何键是否为某值的情况时，还是推荐用 for … in</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/for...in">for…in</a></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>遍历对象属性</tag>
+        <tag>for...in</tag>
       </tags>
   </entry>
   <entry>
@@ -15050,6 +15050,24 @@ table th:nth-of-type(4) {
       </tags>
   </entry>
   <entry>
+    <title>合并音频和视频文件</title>
+    <url>/2023/11/27/%E5%90%88%E5%B9%B6%E9%9F%B3%E9%A2%91%E5%92%8C%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<p>今天用暴力猴脚本下载的 youtube 视频音频和视频是分开的，查找了一下解决办法，记录一下：</p>
+<ol>
+<li>首先，win7 安装 ffmpeg。注意配置环境变量，如果环境变量不生效，最好把用户环境变量也配置一下。</li>
+<li>将需要合并的音频和视频文件放在同一个目录下，打开 cmd，输入 <code>ffmpeg -i 1.mp4 -i 2.mp4  -vcodec copy -acodec copy output.mp4</code><br>其中，<code>1.mp4</code> 和 <code>2.mp4</code> 为需要合并的文件名，<code>output.mp4</code> 为输出文件名，可任意修改。</li>
+<li>执行命令后，合并后的文件保存在当前目录下。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>ffmpeg</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Echarts 柱状图下钻两层</title>
     <url>/2023/11/29/Echarts-%E6%9F%B1%E7%8A%B6%E5%9B%BE%E4%B8%8B%E9%92%BB%E4%B8%A4%E5%B1%82/</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
@@ -15081,24 +15099,6 @@ table th:nth-of-type(4) {
         <tag>ECharts</tag>
         <tag>柱状图</tag>
         <tag>下钻</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>合并音频和视频文件</title>
-    <url>/2023/11/27/%E5%90%88%E5%B9%B6%E9%9F%B3%E9%A2%91%E5%92%8C%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>今天用暴力猴脚本下载的 youtube 视频音频和视频是分开的，查找了一下解决办法，记录一下：</p>
-<ol>
-<li>首先，win7 安装 ffmpeg。注意配置环境变量，如果环境变量不生效，最好把用户环境变量也配置一下。</li>
-<li>将需要合并的音频和视频文件放在同一个目录下，打开 cmd，输入 <code>ffmpeg -i 1.mp4 -i 2.mp4  -vcodec copy -acodec copy output.mp4</code><br>其中，<code>1.mp4</code> 和 <code>2.mp4</code> 为需要合并的文件名，<code>output.mp4</code> 为输出文件名，可任意修改。</li>
-<li>执行命令后，合并后的文件保存在当前目录下。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>ffmpeg</tag>
       </tags>
   </entry>
   <entry>
@@ -16177,11 +16177,11 @@ table th:nth-of-type(4) {
   </entry>
   <entry>
     <title>.git 目录的结构和每个部分的作用[译]</title>
-    <url>/2024/09/02/git-%E7%9B%AE%E5%BD%95%E7%9A%84%E7%BB%93%E6%9E%84%E5%92%8C%E6%AF%8F%E4%B8%AA%E9%83%A8%E5%88%86%E7%9A%84%E4%BD%9C%E7%94%A8/</url>
+    <url>/2024/09/02/git-%E7%9B%AE%E5%BD%95%E7%9A%84%E7%BB%93%E6%9E%84%E5%92%8C%E6%AF%8F%E4%B8%AA%E9%83%A8%E5%88%86%E7%9A%84%E4%BD%9C%E7%94%A8-%E8%AF%91/</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
 <p>想必每个程序员都对 git 非常熟悉，但是你是否知道 .git 目录的结构和每个部分的作用呢？今天我翻译的文章是《Inside .git》，作者是 Julia Evans。<a href="https://jvns.ca/blog/2024/01/26/inside-git/">文章</a>详细介绍了 Git 版本控制系统中的 .git 目录的结构和每个部分的作用。以下是对文章的全文翻译，为便于理解，部分内容可能稍作修改：</p>
 <p>你好！这周我在 Mastodon 上发布了一个关于 <code>.git</code> 目录里有什么内容的漫画，有人想要文字版，于是诞生了这篇文章。我还添加了一些额外的注释。下面是漫画图片。它用大约 15 个词解释了你的 <code>.git</code> 目录的每个部分。</p>
-<img src="/2024/09/02/git-%E7%9B%AE%E5%BD%95%E7%9A%84%E7%BB%93%E6%9E%84%E5%92%8C%E6%AF%8F%E4%B8%AA%E9%83%A8%E5%88%86%E7%9A%84%E4%BD%9C%E7%94%A8/inside-git.png" class="">
+
 
 <p>如果你想自己运行这些例子，可以使用 <code>git clone https://github.com/jvns/inside-git</code>。</p>
 <span id="more"></span>
@@ -16274,7 +16274,7 @@ table th:nth-of-type(4) {
 <li>玛丽・罗斯・库克（Mary Rose Cook）的《<a href="https://maryrosecook.com/blog/post/git-from-the-inside-out">Git 从内到外</a>》</li>
 <li>官方 <a href="https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-index">git 存储库布局文档</a></li>
 </ul>
-<h1 id="译者说"><a href="#译者说" class="headerlink" title="译者说"></a>译者说</h1><h2 id="在翻译此文过程中，使用-hexo-的-reference-的脚注插件发现，脚注内容不能包含-双引号，否则会渲染异常。如下图："><a href="#在翻译此文过程中，使用-hexo-的-reference-的脚注插件发现，脚注内容不能包含-双引号，否则会渲染异常。如下图：" class="headerlink" title="在翻译此文过程中，使用 hexo 的 reference 的脚注插件发现，脚注内容不能包含 &quot;&quot; 双引号，否则会渲染异常。如下图："></a>在翻译此文过程中，使用 hexo 的 reference 的脚注插件发现，脚注内容不能包含 <code>&quot;&quot;</code> 双引号，否则会渲染异常。如下图：</h2><img src="/2024/09/02/git-%E7%9B%AE%E5%BD%95%E7%9A%84%E7%BB%93%E6%9E%84%E5%92%8C%E6%AF%8F%E4%B8%AA%E9%83%A8%E5%88%86%E7%9A%84%E4%BD%9C%E7%94%A8/2.png" class="">
+<h1 id="译者说"><a href="#译者说" class="headerlink" title="译者说"></a>译者说</h1><h2 id="在翻译此文过程中，使用-hexo-的-reference-的脚注插件发现，脚注内容不能包含-双引号，否则会渲染异常。如下图："><a href="#在翻译此文过程中，使用-hexo-的-reference-的脚注插件发现，脚注内容不能包含-双引号，否则会渲染异常。如下图：" class="headerlink" title="在翻译此文过程中，使用 hexo 的 reference 的脚注插件发现，脚注内容不能包含 &quot;&quot; 双引号，否则会渲染异常。如下图："></a>在翻译此文过程中，使用 hexo 的 reference 的脚注插件发现，脚注内容不能包含 <code>&quot;&quot;</code> 双引号，否则会渲染异常。如下图：</h2>
 
 <h2 id="Stash-和-Stage-的区别"><a href="#Stash-和-Stage-的区别" class="headerlink" title="Stash 和 Stage 的区别"></a>Stash 和 Stage 的区别</h2><h3 id="Stash（暂存）"><a href="#Stash（暂存）" class="headerlink" title="Stash（暂存）"></a>Stash（暂存）</h3><ul>
 <li>暂存（Stash） 是一个用于临时保存工作进度的特性。当你在开发过程中需要切换到另一个分支，但你不想立即提交当前的工作（可能是因为它不完整或者你还在工作进行中），你可以使用 <code>git stash</code> 将当前的工作进度保存起来。</li>
@@ -16295,10 +16295,127 @@ table th:nth-of-type(4) {
 <h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p><a href="https://jvns.ca/blog/2024/01/26/inside-git/">原文链接</a></p>
 <div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">在 Git 版本控制系统中，blob 是 Binary Large Object 的缩写，但在 Git 的上下文中，它通常指的是存储在仓库中的文件内容。在 Git 的对象存储中，blob 代表文件数据，即文件的具体内容。在 Git 的术语中，当你提交（commit）一个文件到仓库时，Git 会将文件的内容存储为一个 blob 对象。这个 blob 对象包含了文件的数据，但不包含文件的元数据（如文件名或目录结构）。然后，这些 blob 对象被引用在一个 tree 对象中，tree 对象相当于一个目录的快照，它记录了文件的名称、类型（是文件还是子目录）以及对应的 blob 或子 tree 的引用。<a href="#fnref:1" rev="footnote"> ↩</a></span></li></ol></div></div>]]></content>
       <categories>
-        <category>技术</category>
+        <category>翻译</category>
       </categories>
       <tags>
         <tag>.git 目录</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript 中的垃圾回收和闭包[译]</title>
+    <url>/2024/09/11/JavaScript-%E4%B8%AD%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%92%8C%E9%97%AD%E5%8C%85-%E8%AF%91/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<p>在 JavaScript 开发中，垃圾回收和闭包是两个常见但容易被忽视的技术细节。表面上，它们的工作机制看似简单，但在特定情况下，它们可能会导致内存泄漏，甚至影响应用的性能。</p>
+<p>作者 Jake Archibald 在 <a href="https://jakearchibald.com/2024/garbage-collection-and-closures/#an-iife-is-enough-to-trigger-the-leak">《Garbage collection and closures》</a>一文中通过真实的代码示例，深入剖析垃圾回收与闭包之间的复杂关系，帮助你了解如何避免内存泄漏，写出更高效、更可靠的代码。</p>
+<p>以下是文章的全文翻译：</p>
+<p>我和 <a href="https://twitter.com/DasSurma">Surma</a>、<a href="https://twitter.com/_developit">Jason</a> 一起开发时，发现函数内的垃圾回收并不像我们预期的那样工作。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">demo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> bigArrayBuffer = <span class="keyword">new</span> <span class="title class_">ArrayBuffer</span>(<span class="number">100_000_000</span>);</span><br><span class="line">  <span class="keyword">const</span> id = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(bigArrayBuffer.<span class="property">byteLength</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="built_in">clearTimeout</span>(id);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">globalThis.<span class="property">cancelDemo</span> = <span class="title function_">demo</span>();</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<p>在上面的代码中，<code>bigArrayBuffer</code> 会被永远泄漏。我没想到会这样，因为：</p>
+<ul>
+<li>一秒钟后，引用 <code>bigArrayBuffer</code> 的函数将不能调用。</li>
+<li>返回的取消定时函数没有引用 <code>bigArrayBuffer</code>。</li>
+</ul>
+<p>但这并不重要。原因如下：</p>
+<blockquote>
+<p><strong>JavaScript 引擎相当智能</strong></p>
+</blockquote>
+<p>下面这个例子不会发生内存泄漏：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">demo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> bigArrayBuffer = <span class="keyword">new</span> <span class="title class_">ArrayBuffer</span>(<span class="number">100_000_000</span>);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(bigArrayBuffer.<span class="property">byteLength</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">demo</span>();</span><br></pre></td></tr></table></figure>
+
+<p>因为当函数执行后，<code>bigArrayBuffer</code> 就不再需要了，所以它被垃圾回收了。</p>
+<p>下面这个例子也不会发生内存泄漏：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">demo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> bigArrayBuffer = <span class="keyword">new</span> <span class="title class_">ArrayBuffer</span>(<span class="number">100_000_000</span>);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(bigArrayBuffer.<span class="property">byteLength</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">demo</span>();</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中：</p>
+<ol>
+<li>浏览器引擎看到 <code>bigArrayBuffer</code> 被内部函数引用，所以它被保留下来。它与调用 <code>demo()</code> 时创建的作用域关联。</li>
+<li>一秒钟后，引用 <code>bigArrayBuffer</code> 的函数不可再次被调用。</li>
+<li>由于作用域内没有任何可以调用的函数，<code>bigArrayBuffer</code>可以和作用域一起被回收。</li>
+</ol>
+<p>下面这个例子也不会有泄漏：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">demo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> bigArrayBuffer = <span class="keyword">new</span> <span class="title class_">ArrayBuffer</span>(<span class="number">100_000_000</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> id = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="built_in">clearTimeout</span>(id);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">globalThis.<span class="property">cancelDemo</span> = <span class="title function_">demo</span>();</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，引擎知道它不需要保留 <code>bigArrayBuffer</code>，因为它只是定义了，但是并没有被访问。</p>
+<h1 id="问题案例"><a href="#问题案例" class="headerlink" title="问题案例"></a>问题案例</h1><p>下面这个案例就比较复杂了：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">demo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> bigArrayBuffer = <span class="keyword">new</span> <span class="title class_">ArrayBuffer</span>(<span class="number">100_000_000</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> id = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(bigArrayBuffer.<span class="property">byteLength</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="built_in">clearTimeout</span>(id);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">globalThis.<span class="property">cancelDemo</span> = <span class="title function_">demo</span>();</span><br></pre></td></tr></table></figure>
+
+<p>它会泄漏，因为：</p>
+<ol>
+<li>浏览器引擎看到 <code>bigArrayBuffer</code> 被内部函数引用，所以它被保留下来。它与调用 <code>demo()</code> 时创建的作用域关联。</li>
+<li>一秒钟后，引用 <code>bigArrayBuffer</code> 的函数不能再被调用。</li>
+<li>但是，作用域仍然存在，因为 ‘cancel’ 函数仍然可调用。</li>
+<li><code>bigArrayBuffer</code> 与作用域关联，所以它仍然保留在内存中。</li>
+</ol>
+<p>我以为引擎会更智能，即使 <code>bigArrayBuffer</code> 不再可引用，也会进行垃圾回收，但事实并非如此。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">globalThis.<span class="property">cancelDemo</span> = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+
+<p>现在 <code>bigArrayBuffer</code> 可以被垃圾回收了，因为作用域内没有任何可调用的函数。</p>
+<p>这个问题并不局限于定时器，可能在其他场景中也会发生。例如：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">demo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> bigArrayBuffer = <span class="keyword">new</span> <span class="title class_">ArrayBuffer</span>(<span class="number">100_000_000</span>);</span><br><span class="line"></span><br><span class="line">  globalThis.<span class="property">innerFunc1</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(bigArrayBuffer.<span class="property">byteLength</span>);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  globalThis.<span class="property">innerFunc2</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">demo</span>();</span><br><span class="line"><span class="comment">// bigArrayBuffer 被保留，正如预期。</span></span><br><span class="line"></span><br><span class="line">globalThis.<span class="property">innerFunc1</span> = <span class="literal">undefined</span>;</span><br><span class="line"><span class="comment">// bigArrayBuffer 仍然被保留，这是出乎意料的。</span></span><br><span class="line"></span><br><span class="line">globalThis.<span class="property">innerFunc2</span> = <span class="literal">undefined</span>;</span><br><span class="line"><span class="comment">// bigArrayBuffer 现在可以被回收了。</span></span><br></pre></td></tr></table></figure>
+
+<p>我今天才知道！</p>
+<h1 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h1><blockquote>
+<p>一个立即执行的函数表达式（IIFE）足以触发泄漏</p>
+</blockquote>
+<p>我最初认为只有当子函数的生命周期长于其父函数的执行时，才会发生值的捕获，但事实并非如此：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">demo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> bigArrayBuffer = <span class="keyword">new</span> <span class="title class_">ArrayBuffer</span>(<span class="number">100_000_000</span>);</span><br><span class="line">  <span class="comment">// 译者注：IIFE 通过闭包捕获了 bigArrayBuffer，即使 demo 函数执行完毕，IIFE 仍然存在（因为它被立即执行），这导致 bigArrayBuffer 仍然被引用，因此不会被垃圾回收。</span></span><br><span class="line">  <span class="comment">// 这意味着，只要闭包中的函数在父函数执行完毕后仍然存在，它们就会捕获并保留父函数中的变量，即使这些变量在父函数中已经不再需要。</span></span><br><span class="line">  (<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(bigArrayBuffer.<span class="property">byteLength</span>);</span><br><span class="line">  &#125;)();</span><br><span class="line"></span><br><span class="line">  globalThis.<span class="property">innerFunc</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">demo</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// bigArrayBuffer 被保留，这是出乎意料的。</span></span><br></pre></td></tr></table></figure>
+
+<p>在这里，内部的立即执行函数表达式足以触发泄漏。</p>
+<blockquote>
+<p>这是一个跨浏览器的问题</p>
+</blockquote>
+<p>这个问题在所有浏览器中都存在，并且由于性能问题不太可能被修复。</p>
+<ul>
+<li><a href="https://issues.chromium.org/issues/41070945">Chromium 相关问题</a></li>
+<li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=894971">Firefox 相关问题</a></li>
+<li><a href="https://bugs.webkit.org/show_bug.cgi?id=224077">WebKit 相关问题</a></li>
+</ul>
+<blockquote>
+<p>我不是第一个写这个问题的人</p>
+</blockquote>
+<p>Slava Egorov 在 2012 年就这个问题<a href="https://mrale.ph/blog/2012/09/23/grokking-v8-closures-for-fun.html">进行了深入的探讨</a>。<br>David Glasser 在 2013 年<a href="https://point.davidglasser.net/2013/06/27/surprising-javascript-memory-leak.html">发现了这个问题</a>，他是 Meteor 的工程师。<br>Kevin Schiener 在 2024 年 5 月对它<a href="https://point.davidglasser.net/2013/06/27/surprising-javascript-memory-leak.html">进行了 React 中的研究</a>。</p>
+<blockquote>
+<p>不，这不是因为 <code>eval()</code></p>
+</blockquote>
+<p><a href="https://news.ycombinator.com/item?id=41111062">Hacker News</a> 和 Twitter 上的人很快指出，这都是因为 <code>eval()</code>，但事实并非如此。</p>
+<p>eval 是棘手的，因为它意味着代码可以存在于无法静态分析的作用域中：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">demo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> bigArrayBuffer1 = <span class="keyword">new</span> <span class="title class_">ArrayBuffer</span>(<span class="number">100_000_000</span>);</span><br><span class="line">  <span class="keyword">const</span> bigArrayBuffer2 = <span class="keyword">new</span> <span class="title class_">ArrayBuffer</span>(<span class="number">100_000_000</span>);</span><br><span class="line"></span><br><span class="line">  globalThis.<span class="property">innerFunc</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">eval</span>(whatever);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">demo</span>();</span><br></pre></td></tr></table></figure>
+
+<p>是否在 <code>innerFunc</code> 内访问了 <code>bigArrayBuffer1</code> 或者 <code>bigArrayBuffer2</code>？没有办法知道。但浏览器可以静态确定 <code>eval</code> 存在。这会导致去优化(deopt)，然后其父作用域中的所有内容都将被保留。</p>
+<blockquote>
+<p>译者注：<br>由于 eval 的存在，浏览器无法确定 <code>innerFunc</code> 内部是否会访问 <code>bigArrayBuffer1</code> 或 <code>bigArrayBuffer2</code>。因此，浏览器必须假设 <code>innerFunc</code> 可能会访问这些变量。</p>
+<p>这种不确定性导致浏览器在优化代码时采取保守策略，即不优化可能涉及 <code>eval</code> 的代码。这被称为 “去优化”（deopt），意味着浏览器不会对这部分代码进行某些优化，以确保运行时的正确性。</p>
+<p>由于去优化，<code>bigArrayBuffer1</code> 和 <code>bigArrayBuffer2</code> 即使在 <code>demo</code> 函数执行完毕后，也可能不会被垃圾回收，因为浏览器必须保留它们以确保 <code>innerFunc</code> 可以正常访问它们。</p>
+</blockquote>
+<p>但是下面这个案例中，浏览器可以静态分析，因为 <code>eval</code> 的表现有点像关键字：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> customEval = <span class="built_in">eval</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">demo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> bigArrayBuffer1 = <span class="keyword">new</span> <span class="title class_">ArrayBuffer</span>(<span class="number">100_000_000</span>);</span><br><span class="line">  <span class="keyword">const</span> bigArrayBuffer2 = <span class="keyword">new</span> <span class="title class_">ArrayBuffer</span>(<span class="number">100_000_000</span>);</span><br><span class="line"></span><br><span class="line">  globalThis.<span class="property">innerFunc</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">customEval</span>(whatever);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">demo</span>();</span><br></pre></td></tr></table></figure>
+
+<p>…这个例子中去优化不会发生。因为 <code>eval</code> 关键字没有直接使用，<code>whatever</code> 将在全局作用域中执行，而不是在 <code>innerFunc</code> 作用域内。这被称为“间接 eval”，MDN 上有更多<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval#direct_and_indirect_eval">关于这个话题</a>的信息。</p>
+<p>这种行为的存在是为了让浏览器能够将这种去优化限制在可以静态分析的情况下。</p>
+<p><a href="https://github.com/jakearchibald/jakearchibald.com/blob/main/static-build/posts/2024/07/garbage-collection-and-closures/index.md">在 GitHub 上查看此页面</a></p>
+<h1 id="译者注"><a href="#译者注" class="headerlink" title="译者注"></a>译者注</h1><h2 id="IIFE-Immediately-Invoked-Function-Expression"><a href="#IIFE-Immediately-Invoked-Function-Expression" class="headerlink" title="IIFE(Immediately Invoked Function Expression)"></a>IIFE(Immediately Invoked Function Expression)</h2><p>IIFE ，中文可以翻译为 “立即调用的函数表达式”。这是一种在定义后立即执行的 JavaScript 函数，它是一种自执行的匿名函数。</p>
+<p>IIFE 通常用于创建一个封闭的作用域，这样可以避免变量冲突或污染全局命名空间。它的基本语法如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// 函数体内的代码</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
+<p>这个函数没有名字，并且立即执行括号中的代码。由于它立即执行，因此被称为 “立即调用”。</p>
+<p>IIFE 还可以接受参数，并且返回值，就像普通的函数一样：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(<span class="keyword">function</span> (<span class="params">a, b</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;)(<span class="number">1</span>, <span class="number">2</span>); <span class="comment">// 返回 3</span></span><br></pre></td></tr></table></figure>
+
+<p>在 ES6 引入了箭头函数之后，IIFE 的写法可以更简洁：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 函数体内的代码</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
+<p>IIFE 是 JavaScript 编程中常用的一种模式，特别是在模块化开发和库的设计中，用于封装代码和创建私有变量。</p>
+]]></content>
+      <categories>
+        <category>翻译</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>垃圾回收</tag>
+        <tag>闭包</tag>
       </tags>
   </entry>
 </search>

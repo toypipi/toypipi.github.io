@@ -154,7 +154,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">293</span>
+          <span class="site-state-item-count">294</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -165,7 +165,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">387</span>
+        <span class="site-state-item-count">388</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -190,6 +190,108 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/11/02/JavaScript-%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84%E6%95%B0%E6%8D%AE%E5%B9%B3%E9%93%BA%E5%B1%95%E5%BC%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/11/02/JavaScript-%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84%E6%95%B0%E6%8D%AE%E5%B9%B3%E9%93%BA%E5%B1%95%E5%BC%80/" class="post-title-link" itemprop="url">JavaScript 树形结构数据平铺展开</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-11-02 15:05:18 / 修改时间：15:06:23" itemprop="dateCreated datePublished" datetime="2023-11-02T15:05:18+08:00">2023-11-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>154</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原来的树形结构</span></span><br><span class="line"><span class="keyword">const</span> oldTreeData = [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;总部&quot;</span>,</span><br><span class="line">    <span class="attr">place</span>: <span class="string">&quot;一楼&quot;</span>,</span><br><span class="line">    <span class="attr">children</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&quot;财务部&quot;</span>,</span><br><span class="line">        <span class="attr">place</span>: <span class="string">&quot;二楼&quot;</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&quot;生产部&quot;</span>,</span><br><span class="line">        <span class="attr">place</span>: <span class="string">&quot;三楼&quot;</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&quot;开发部&quot;</span>,</span><br><span class="line">        <span class="attr">place</span>: <span class="string">&quot;三楼&quot;</span>,</span><br><span class="line">        <span class="attr">children</span>: [</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="attr">name</span>: <span class="string">&quot;软件部&quot;</span>,</span><br><span class="line">            <span class="attr">place</span>: <span class="string">&quot;四楼&quot;</span>,</span><br><span class="line">            <span class="attr">children</span>: [</span><br><span class="line">              &#123; <span class="attr">name</span>: <span class="string">&quot;后端部&quot;</span>, <span class="attr">place</span>: <span class="string">&quot;五楼&quot;</span> &#125;,</span><br><span class="line">              &#123; <span class="attr">name</span>: <span class="string">&quot;前端部&quot;</span>, <span class="attr">place</span>: <span class="string">&quot;七楼&quot;</span> &#125;,</span><br><span class="line">              &#123; <span class="attr">name</span>: <span class="string">&quot;技术部&quot;</span>, <span class="attr">place</span>: <span class="string">&quot;六楼&quot;</span> &#125;,</span><br><span class="line">            ],</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="attr">name</span>: <span class="string">&quot;硬件部&quot;</span>,</span><br><span class="line">            <span class="attr">place</span>: <span class="string">&quot;四楼&quot;</span>,</span><br><span class="line">            <span class="attr">children</span>: [</span><br><span class="line">              &#123; <span class="attr">name</span>: <span class="string">&quot;DSP部&quot;</span>, <span class="attr">place</span>: <span class="string">&quot;八楼&quot;</span> &#125;,</span><br><span class="line">              &#123; <span class="attr">name</span>: <span class="string">&quot;ARM部&quot;</span>, <span class="attr">place</span>: <span class="string">&quot;二楼&quot;</span> &#125;,</span><br><span class="line">              &#123; <span class="attr">name</span>: <span class="string">&quot;调试部&quot;</span>, <span class="attr">place</span>: <span class="string">&quot;三楼&quot;</span> &#125;,</span><br><span class="line">            ],</span><br><span class="line">          &#125;,</span><br><span class="line">        ],</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 树形结构平铺</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">treeDataAdapter</span>(<span class="params">treeData, lastArrayData = []</span>) &#123;</span><br><span class="line">  treeData.<span class="title function_">forEach</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (item.<span class="property">children</span>) &#123;</span><br><span class="line">      <span class="title function_">treeDataAdapter</span>(item.<span class="property">children</span>, lastArrayData);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> &#123; name, place &#125; = item;</span><br><span class="line">    lastArrayData.<span class="title function_">push</span>(&#123; name, place &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> lastArrayData;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 返回平铺的组织结构</span></span><br><span class="line"><span class="keyword">var</span> data = <span class="title function_">treeDataAdapter</span>(oldTreeData);</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/11/02/JavaScript-%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84%E6%95%B0%E6%8D%AE%E5%B9%B3%E9%93%BA%E5%B1%95%E5%BC%80/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -653,115 +755,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/10/27/Vue-2-x-%E7%9A%84-diff-%E7%AE%97%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="toypipi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Toypipi's blog">
-      <meta itemprop="description" content="Stay focused, be present">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Toypipi's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/10/27/Vue-2-x-%E7%9A%84-diff-%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">Vue 2.x 的 diff 算法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2023-10-27 16:35:28 / 修改时间：16:37:01" itemprop="dateCreated datePublished" datetime="2023-10-27T16:35:28+08:00">2023-10-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>389</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>Vue 2.x 的虚拟 DOM 采用的是基于 Snabbdom 库实现的 diff 算法。其基本思想是通过比较新旧节点，找出它们之间的差异，然后将这些差异应用于真实 DOM 上，从而最小化 DOM 操作次数，提高渲染效率。</p>
-<p>Vue 2.x 的 diff 算法主要分为以下几个步骤：</p>
-<ol>
-<li><p>新旧节点的比较：首先比较新旧节点的类型和标签名，如果不同，则直接替换整个节点；如果相同，则继续比较节点的属性和子节点。</p>
-</li>
-<li><p>属性的比较：对于同一节点，比较它们的属性是否相同，如果不同，则更新属性值。</p>
-</li>
-<li><p>子节点的比较：对于同一节点，比较它们的子节点是否相同，如果不同，则递归地对子节点进行比较。</p>
-</li>
-<li><p>列表的比较：对于列表节点，比较它们的子节点是否相同，如果不同，则使用 diff 算法找出它们之间的差异，然后更新列表。</p>
-</li>
-<li><p>键值的比较：在进行列表比较时，如果节点具有 key 值，则通过 key 值来快速定位节点，从而提高比较效率。</p>
-</li>
-</ol>
-<p>总的来说，Vue 2.x 的 diff 算法是一种高效的算法，可以最小化 DOM 操作次数，提高渲染效率。但是，开发者仍然需要注意一些性能问题，如避免过多的嵌套组件、避免重复渲染等，以优化应用程序的性能。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/59/">59</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/8/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -785,13 +778,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">203k</span>
+    <span title="站点总字数">205k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">12:20</span>
+    <span title="站点阅读时长">12:27</span>
   </span>
 </div>
 <div class="busuanzi-count">
