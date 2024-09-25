@@ -154,7 +154,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">294</span>
+          <span class="site-state-item-count">296</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -165,7 +165,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">388</span>
+        <span class="site-state-item-count">392</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -190,6 +190,214 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/10/30/Range-Extraction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/10/30/Range-Extraction/" class="post-title-link" itemprop="url">Range Extraction</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-10-30 15:49:38 / 修改时间：15:53:55" itemprop="dateCreated datePublished" datetime="2023-10-30T15:49:38+08:00">2023-10-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>248</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<h1 id="DESCRIPTION"><a href="#DESCRIPTION" class="headerlink" title="DESCRIPTION"></a>DESCRIPTION</h1><h1 id="SOLUTION"><a href="#SOLUTION" class="headerlink" title="SOLUTION"></a>SOLUTION</h1><ul>
+<li>方法一：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">solution</span>(<span class="params">list</span>) &#123;</span><br><span class="line">  <span class="comment">// 检查是否为空</span></span><br><span class="line">  <span class="keyword">if</span> (list.<span class="property">length</span> === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 定义 result 保存最终结果的数组</span></span><br><span class="line">  <span class="keyword">let</span> result = [];</span><br><span class="line">  <span class="comment">// 记录连续数字开始值</span></span><br><span class="line">  <span class="keyword">let</span> start = list[<span class="number">0</span>];</span><br><span class="line">  <span class="comment">// 记录连续数字结束值</span></span><br><span class="line">  <span class="keyword">let</span> end = list[<span class="number">0</span>];</span><br><span class="line">  <span class="comment">// 从第二个元素开始遍历 list 中的元素</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> num <span class="keyword">of</span> list.<span class="title function_">slice</span>(<span class="number">1</span>)) &#123;</span><br><span class="line">    <span class="comment">// 如果 num 等于 end + 1,则 num 与前一个元素连续，将 end 更新为 num</span></span><br><span class="line">    <span class="keyword">if</span> (num === end + <span class="number">1</span>) &#123;</span><br><span class="line">      end = num;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 处理连续的 3 个数字或以上，如果 end - start &gt;= 2,则将 `$&#123;start&#125;-$&#123;end&#125;` 添加到 result 中</span></span><br><span class="line">      <span class="keyword">if</span> (end - start &gt;= <span class="number">2</span>) &#123;</span><br><span class="line">        result.<span class="title function_">push</span>(<span class="string">`<span class="subst">$&#123;start&#125;</span>-<span class="subst">$&#123;end&#125;</span>`</span>);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 连个数字以下</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = start; j &lt;= end; j++) &#123;</span><br><span class="line">          result.<span class="title function_">push</span>(j.<span class="title function_">toString</span>());</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 更新 start 和 end 值</span></span><br><span class="line">      start = end = num;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 处理循环结束的最后一组连续数字</span></span><br><span class="line">  <span class="keyword">if</span> (end - start &gt;= <span class="number">2</span>) &#123;</span><br><span class="line">    result.<span class="title function_">push</span>(<span class="string">`<span class="subst">$&#123;start&#125;</span>-<span class="subst">$&#123;end&#125;</span>`</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = start; j &lt;= end; j++) &#123;</span><br><span class="line">      result.<span class="title function_">push</span>(j.<span class="title function_">toString</span>());</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> result.<span class="title function_">join</span>(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/10/30/Range-Extraction/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/10/30/Echarts-map-%E5%88%A0%E9%99%A4%E9%A6%99%E6%B8%AF%E3%80%81%E6%BE%B3%E9%97%A8%E5%92%8C%E5%8F%B0%E6%B9%BE%E6%98%BE%E7%A4%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/10/30/Echarts-map-%E5%88%A0%E9%99%A4%E9%A6%99%E6%B8%AF%E3%80%81%E6%BE%B3%E9%97%A8%E5%92%8C%E5%8F%B0%E6%B9%BE%E6%98%BE%E7%A4%BA/" class="post-title-link" itemprop="url">Echarts map 删除香港、澳门和台湾显示</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-10-30 10:45:40 / 修改时间：11:02:31" itemprop="dateCreated datePublished" datetime="2023-10-30T10:45:40+08:00">2023-10-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>337</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<p>修改 map option，将香港、澳门和台湾的透明度设置为 0，同时不显示标签名：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">series</span>: [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&quot;map&quot;</span>,</span><br><span class="line">    <span class="attr">map</span>: <span class="string">&quot;china&quot;</span>,</span><br><span class="line">    <span class="attr">roam</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">itemStyle</span>: &#123;</span><br><span class="line">      <span class="attr">label</span>: &#123; <span class="attr">show</span>: <span class="literal">true</span>, <span class="attr">areaColor</span>: <span class="string">&quot;#b4e8fe&quot;</span> &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">emphasis</span>: &#123; <span class="attr">label</span>: &#123; <span class="attr">show</span>: <span class="literal">true</span> &#125; &#125;,</span><br><span class="line">    <span class="attr">data</span>: [</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;北京&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">110000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;天津&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">120000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;上海&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">310000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;重庆&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">500000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;河北&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">130000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;河南&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">410000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;云南&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">530000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;辽宁&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">210000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;黑龙江&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">230000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;湖南&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">430000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;安徽&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">340000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;山东&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">370000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;新疆&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">650000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;江苏&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">320000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;浙江&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">330000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;江西&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">360000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;湖北&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">420000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;广西&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">450000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;甘肃&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">620000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;山西&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">140000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;内蒙古&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">150000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;陕西&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">610000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;吉林&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">220000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;福建&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">350000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;贵州&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">520000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;广东&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">440000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;青海&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">630000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;西藏&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">540000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;四川&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">510000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;宁夏&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">640000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;海南&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">460000</span> &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&quot;香港&quot;</span>,</span><br><span class="line">        <span class="attr">itemStyle</span>: &#123;</span><br><span class="line">          <span class="attr">normal</span>: &#123; <span class="attr">opacity</span>: <span class="number">0</span> &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">label</span>: &#123; <span class="attr">show</span>: <span class="literal">false</span> &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&quot;澳门&quot;</span>,</span><br><span class="line">        <span class="attr">itemStyle</span>: &#123;</span><br><span class="line">          <span class="attr">normal</span>: &#123; <span class="attr">opacity</span>: <span class="number">0</span> &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">label</span>: &#123; <span class="attr">show</span>: <span class="literal">false</span> &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&quot;台湾&quot;</span>,</span><br><span class="line">        <span class="attr">itemStyle</span>: &#123;</span><br><span class="line">          <span class="attr">normal</span>: &#123; <span class="attr">opacity</span>: <span class="number">0</span> &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">label</span>: &#123; <span class="attr">show</span>: <span class="literal">false</span> &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;南海诸岛&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">460324</span> &#125;,</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">label</span>: &#123;</span><br><span class="line">      <span class="attr">show</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">fontSize</span>: <span class="number">12</span>,</span><br><span class="line">      <span class="attr">color</span>: <span class="string">&quot;#dcdcdc&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">zoom</span>: <span class="number">1.25</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/10/30/Echarts-map-%E5%88%A0%E9%99%A4%E9%A6%99%E6%B8%AF%E3%80%81%E6%BE%B3%E9%97%A8%E5%92%8C%E5%8F%B0%E6%B9%BE%E6%98%BE%E7%A4%BA/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -518,221 +726,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/10/26/The-Hashtag-Generator/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="toypipi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Toypipi's blog">
-      <meta itemprop="description" content="Stay focused, be present">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Toypipi's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/10/26/The-Hashtag-Generator/" class="post-title-link" itemprop="url">The Hashtag Generator</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2023-10-26 14:39:09 / 修改时间：15:48:30" itemprop="dateCreated datePublished" datetime="2023-10-26T14:39:09+08:00">2023-10-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>272</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<h1 id="The-Hashtag-Generator"><a href="#The-Hashtag-Generator" class="headerlink" title="The Hashtag Generator"></a>The Hashtag Generator</h1><p>The marketing team is spending way too much time typing in hashtags.<br>Let’s help them with our own Hashtag Generator!</p>
-<p>Here’s the deal:</p>
-<p>It must start with a hashtag (#).<br>All words must have their first letter capitalized.<br>If the final result is longer than 140 chars it must return false.<br>If the input or the result is an empty string it must return false.</p>
-<h1 id="SOLUTION"><a href="#SOLUTION" class="headerlink" title="SOLUTION"></a>SOLUTION</h1><ul>
-<li>方法一：普通循环</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">generateHashtag</span>(<span class="params">str</span>) &#123;</span><br><span class="line">  <span class="comment">// 判断是否是空字符串，或只包含多个空格的字符串</span></span><br><span class="line">  <span class="keyword">if</span> (str.<span class="property">length</span> === <span class="number">0</span> || str.<span class="title function_">replace</span>(<span class="regexp">/\s+/g</span>, <span class="string">&quot;&quot;</span>).<span class="property">length</span> === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 将每个单词的首字母大写</span></span><br><span class="line">  <span class="keyword">let</span> words = str.<span class="title function_">split</span>(<span class="string">&quot; &quot;</span>);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; words.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    words[i] = words[i].<span class="title function_">charAt</span>(<span class="number">0</span>).<span class="title function_">toUpperCase</span>() + words[i].<span class="title function_">slice</span>(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 拼接 #</span></span><br><span class="line">  <span class="keyword">let</span> result = <span class="string">&quot;#&quot;</span> + words.<span class="title function_">join</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> result.<span class="property">length</span> &gt; <span class="number">140</span> ? <span class="literal">false</span> : result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/10/26/The-Hashtag-Generator/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/10/24/Roman-Numerals-Decoder/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="toypipi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Toypipi's blog">
-      <meta itemprop="description" content="Stay focused, be present">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Toypipi's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/10/24/Roman-Numerals-Decoder/" class="post-title-link" itemprop="url">Roman Numerals Decoder</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2023-10-24 13:47:28 / 修改时间：14:02:26" itemprop="dateCreated datePublished" datetime="2023-10-24T13:47:28+08:00">2023-10-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>320</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<h1 id="DESCRIPTION"><a href="#DESCRIPTION" class="headerlink" title="DESCRIPTION"></a>DESCRIPTION</h1><p>Create a function that takes a Roman numeral as its argument and returns its value as a numeric decimal integer. You don’t need to validate the form of the Roman numeral.</p>
-<p>Modern Roman numerals are written by expressing each decimal digit of the number to be encoded separately, starting with the leftmost digit and skipping any 0s. So 1990 is rendered “MCMXC” (1000 &#x3D; M, 900 &#x3D; CM, 90 &#x3D; XC) and 2008 is rendered “MMVIII” (2000 &#x3D; MM, 8 &#x3D; VIII). The Roman numeral for 1666, “MDCLXVI”, uses each letter in descending order.</p>
-<p>注意一点：题目没有描述，当较小的值出现在较大的值之前时，将从较大的值中减去该值。可参考文末的引用链接。</p>
-<h1 id="SOLUTION"><a href="#SOLUTION" class="headerlink" title="SOLUTION"></a>SOLUTION</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">solution</span>(<span class="params">roman</span>) &#123;</span><br><span class="line">  <span class="comment">// 定义一个罗马数字到整数的映射</span></span><br><span class="line">  <span class="keyword">const</span> romanMap = &#123;</span><br><span class="line">    <span class="attr">I</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">V</span>: <span class="number">5</span>,</span><br><span class="line">    <span class="attr">X</span>: <span class="number">10</span>,</span><br><span class="line">    <span class="attr">L</span>: <span class="number">50</span>,</span><br><span class="line">    <span class="attr">C</span>: <span class="number">100</span>,</span><br><span class="line">    <span class="attr">D</span>: <span class="number">500</span>,</span><br><span class="line">    <span class="attr">M</span>: <span class="number">1000</span>,</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">// 初始化结果变量，以存储罗马数字的最终值</span></span><br><span class="line">  <span class="keyword">let</span> result = <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// 遍历罗马数字</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; roman.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="comment">// 获取当前字母和下一个字母</span></span><br><span class="line">    <span class="keyword">let</span> letter = roman[i];</span><br><span class="line">    <span class="keyword">let</span> letterAfter = roman[i + <span class="number">1</span>];</span><br><span class="line">    <span class="comment">// 如果当前字母小于后一个字母，则从结果中减去当前字母的值</span></span><br><span class="line">    <span class="keyword">if</span> (romanMap[letter] &lt; romanMap[letterAfter]) &#123;</span><br><span class="line">      result -= romanMap[letter];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 如果当前字母大于后一个字母，则从结果中加上当前字母的值</span></span><br><span class="line">      result += romanMap[letter];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 返回罗马数字的最终值</span></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/10/24/Roman-Numerals-Decoder/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/59/">59</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/9/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/60/">60</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/9/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
@@ -754,13 +749,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">205k</span>
+    <span title="站点总字数">215k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">12:27</span>
+    <span title="站点阅读时长">13:01</span>
   </span>
 </div>
 <div class="busuanzi-count">
