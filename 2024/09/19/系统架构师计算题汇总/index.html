@@ -21,18 +21,22 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="逻辑地址转换成物理地址1.某计算机系统页面大小为 2K，进程 P1 的页面变换表如下所示，若 P1 要访问数据的逻辑地址为十六进制 1B1AH，那么该逻辑地址经过变换后，其对应的物理地址应为十六进制(231AH)。    解题步骤  将逻辑地址 1B1AH 转换为二进制（H 表示十六进制）:1B1AH &#x3D; 0001 1011 0001 1010 (B)由于页面大小为 2K &#x3D;">
+    <meta name="description" content="逻辑地址转换成物理地址某计算机系统页面大小为 2K，进程 P1 的页面变换表如下所示，若 P1 要访问数据的逻辑地址为十六进制 1B1AH，那么该逻辑地址经过变换后，其对应的物理地址应为十六进制(231AH)。   解题步骤  将逻辑地址 1B1AH 转换为二进制（H 表示十六进制）:1B1AH &#x3D; 0001 1011 0001 1010 (B)由于页面大小为 2K &#x3D; 20">
 <meta property="og:type" content="article">
 <meta property="og:title" content="系统架构师计算题汇总">
 <meta property="og:url" content="https://toypipi.github.io/2024/09/19/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="逻辑地址转换成物理地址1.某计算机系统页面大小为 2K，进程 P1 的页面变换表如下所示，若 P1 要访问数据的逻辑地址为十六进制 1B1AH，那么该逻辑地址经过变换后，其对应的物理地址应为十六进制(231AH)。    解题步骤  将逻辑地址 1B1AH 转换为二进制（H 表示十六进制）:1B1AH &#x3D; 0001 1011 0001 1010 (B)由于页面大小为 2K &#x3D;">
+<meta property="og:description" content="逻辑地址转换成物理地址某计算机系统页面大小为 2K，进程 P1 的页面变换表如下所示，若 P1 要访问数据的逻辑地址为十六进制 1B1AH，那么该逻辑地址经过变换后，其对应的物理地址应为十六进制(231AH)。   解题步骤  将逻辑地址 1B1AH 转换为二进制（H 表示十六进制）:1B1AH &#x3D; 0001 1011 0001 1010 (B)由于页面大小为 2K &#x3D; 20">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://toypipi.github.io/2024/09/19/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/1.png">
+<meta property="og:image" content="https://toypipi.github.io/2024/09/19/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/4.png">
 <meta property="og:image" content="https://toypipi.github.io/2024/09/19/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/2.png">
 <meta property="og:image" content="https://toypipi.github.io/2024/09/19/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/3.png">
+<meta property="og:image" content="https://toypipi.github.io/2024/09/19/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/5.jpg">
+<meta property="og:image" content="https://toypipi.github.io/2024/09/19/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/6.jpg">
+<meta property="og:image" content="https://toypipi.github.io/2024/09/19/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/7.jpg">
 <meta property="article:published_time" content="2024-09-19T06:43:40.000Z">
-<meta property="article:modified_time" content="2024-10-28T06:44:47.559Z">
+<meta property="article:modified_time" content="2024-11-01T09:01:13.961Z">
 <meta property="article:author" content="toypipi">
 <meta property="article:tag" content="高项">
 <meta property="article:tag" content="系统架构师">
@@ -149,7 +153,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2%E6%88%90%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80"><span class="nav-number">1.</span> <span class="nav-text">逻辑地址转换成物理地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A3%81%E7%9B%98%E5%8D%95%E7%BC%93%E5%86%B2%E5%8C%BA%E4%B8%8E%E5%8F%8C%E7%BC%93%E5%86%B2%E5%8C%BA%E8%AF%BB%E5%8F%96"><span class="nav-number">2.</span> <span class="nav-text">磁盘单缓冲区与双缓冲区读取</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A3%81%E7%9B%98%E9%98%B5%E5%88%97"><span class="nav-number">3.</span> <span class="nav-text">磁盘阵列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%81%E6%B0%B4%E7%BA%BF%E8%AE%A1%E7%AE%97"><span class="nav-number">4.</span> <span class="nav-text">流水线计算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Armstrong-%E5%85%AC%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="nav-number">5.</span> <span class="nav-text">Armstrong 公理系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2%E6%88%90%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80"><span class="nav-number">1.</span> <span class="nav-text">逻辑地址转换成物理地址</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E9%A1%B5%E9%9D%A2%E5%A4%A7%E5%B0%8F%E4%B8%BA-2K%EF%BC%8C%E8%BF%9B%E7%A8%8B-P1-%E7%9A%84%E9%A1%B5%E9%9D%A2%E5%8F%98%E6%8D%A2%E8%A1%A8%E5%A6%82%E4%B8%8B%E6%89%80%E7%A4%BA%EF%BC%8C%E8%8B%A5-P1-%E8%A6%81%E8%AE%BF%E9%97%AE%E6%95%B0%E6%8D%AE%E7%9A%84%E9%80%BB%E8%BE%91%E5%9C%B0%E5%9D%80%E4%B8%BA%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6-1B1AH%EF%BC%8C%E9%82%A3%E4%B9%88%E8%AF%A5%E9%80%BB%E8%BE%91%E5%9C%B0%E5%9D%80%E7%BB%8F%E8%BF%87%E5%8F%98%E6%8D%A2%E5%90%8E%EF%BC%8C%E5%85%B6%E5%AF%B9%E5%BA%94%E7%9A%84%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80%E5%BA%94%E4%B8%BA%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6-231AH-%E3%80%82"><span class="nav-number">1.1.</span> <span class="nav-text">某计算机系统页面大小为 2K，进程 P1 的页面变换表如下所示，若 P1 要访问数据的逻辑地址为十六进制 1B1AH，那么该逻辑地址经过变换后，其对应的物理地址应为十六进制(231AH)。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%87%E8%AE%BE%E7%B3%BB%E7%BB%9F%E9%87%87%E7%94%A8%E6%AE%B5%E5%BC%8F%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E6%96%B9%E6%B3%95%EF%BC%8C%E8%BF%9B%E7%A8%8B-P-%E7%9A%84%E6%AE%B5%E8%A1%A8%E5%A6%82%E4%B8%8B%E6%89%80%E7%A4%BA%E3%80%82%E9%80%BB%E8%BE%91%E5%9C%B0%E5%9D%80%EF%BC%88%E8%AF%B7%E4%BD%9C%E7%AD%94%E6%AD%A4%E7%A9%BA%EF%BC%89%E4%B8%8D%E8%83%BD%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%AF%B9%E5%BA%94%E7%9A%84%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80%EF%BC%9B%E4%B8%8D%E8%83%BD%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%AF%B9%E5%BA%94%E7%9A%84%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80%E7%9A%84%E5%8E%9F%E5%9B%A0%E6%98%AF%E8%BF%9B%E8%A1%8C%EF%BC%88%EF%BC%89%E3%80%82"><span class="nav-number">1.2.</span> <span class="nav-text">假设系统采用段式存储管理方法，进程 P 的段表如下所示。逻辑地址（请作答此空）不能转换为对应的物理地址；不能转换为对应的物理地址的原因是进行（）。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A3%81%E7%9B%98%E5%8D%95%E7%BC%93%E5%86%B2%E5%8C%BA%E4%B8%8E%E5%8F%8C%E7%BC%93%E5%86%B2%E5%8C%BA%E8%AF%BB%E5%8F%96"><span class="nav-number">2.</span> <span class="nav-text">磁盘单缓冲区与双缓冲区读取</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A3%81%E7%9B%98%E9%98%B5%E5%88%97"><span class="nav-number">3.</span> <span class="nav-text">磁盘阵列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%81%E6%B0%B4%E7%BA%BF%E8%AE%A1%E7%AE%97"><span class="nav-number">4.</span> <span class="nav-text">流水线计算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Armstrong-%E5%85%AC%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="nav-number">5.</span> <span class="nav-text">Armstrong 公理系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%9C%80%E5%A4%A7%E9%95%BF%E5%BA%A6"><span class="nav-number">6.</span> <span class="nav-text">文件最大长度</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%90%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E9%87%87%E7%94%A8%E5%A4%9A%E7%BA%A7%E7%B4%A2%E5%BC%95%E7%BB%93%E6%9E%84%EF%BC%8C%E8%8B%A5%E7%A3%81%E7%9B%98%E5%9D%97%E7%9A%84%E5%A4%A7%E5%B0%8F%E4%B8%BA-512-%E5%AD%97%E8%8A%82%EF%BC%8C%E6%AF%8F%E4%B8%AA%E5%9D%97%E5%8F%B7%E9%9C%80%E5%8D%A0-3-%E5%AD%97%E8%8A%82%EF%BC%8C%E9%82%A3%E4%B9%88%E6%A0%B9%E7%B4%A2%E5%BC%95%E9%87%87%E7%94%A8%E4%B8%80%E7%BA%A7%E7%B4%A2%E5%BC%95%E6%97%B6%E7%9A%84%E6%96%87%E4%BB%B6%E6%9C%80%E5%A4%A7%E9%95%BF%E5%BA%A6%E4%B8%BA%EF%BC%88%E8%AF%B7%E4%BD%9C%E7%AD%94%E6%AD%A4%E7%A9%BA%EF%BC%89K-%E5%AD%97%E8%8A%82%EF%BC%9B%E9%87%87%E7%94%A8%E4%BA%8C%E7%BA%A7%E7%B4%A2%E5%BC%95%E6%97%B6%E7%9A%84%E6%96%87%E4%BB%B6%E6%9C%80%E5%A4%A7%E9%95%BF%E5%BA%A6%E4%B8%BA%EF%BC%88-%EF%BC%89K-%E5%AD%97%E8%8A%82%E3%80%82"><span class="nav-number">6.1.</span> <span class="nav-text">某文件系统采用多级索引结构，若磁盘块的大小为 512 字节，每个块号需占 3 字节，那么根索引采用一级索引时的文件最大长度为（请作答此空）K 字节；采用二级索引时的文件最大长度为（ ）K 字节。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E9%87%8F%E4%B8%8E-PV-%E6%93%8D%E4%BD%9C"><span class="nav-number">7.</span> <span class="nav-text">信号量与 PV 操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B-P1%E3%80%81P2%E3%80%81P3%E3%80%81P4-%E5%92%8C-P5-%E7%9A%84%E5%89%8D%E8%B6%8B%E5%9B%BE%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="nav-number">7.1.</span> <span class="nav-text">进程 P1、P2、P3、P4 和 P5 的前趋图如下：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91"><span class="nav-number">8.</span> <span class="nav-text">最小生成树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%B1%E5%8C%BA%E6%9F%90%E4%B9%A1%E7%9A%84-6-%E4%B8%AA%E6%9D%91%E4%B9%8B%E9%97%B4%E6%9C%89%E5%B1%B1%E8%B7%AF%E5%A6%82%E5%9B%BE%E6%89%80%E7%A4%BA%EF%BC%8C%E5%85%B6%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%97%E6%A0%87%E6%98%8E%E4%BA%86%E5%90%84%E6%9D%A1%E5%B1%B1%E8%B7%AF%E7%9A%84%E9%95%BF%E5%BA%A6%EF%BC%88%E5%8D%83%E7%B1%B3%EF%BC%89%E3%80%82"><span class="nav-number">8.1.</span> <span class="nav-text">山区某乡的 6 个村之间有山路如图所示，其中的数字标明了各条山路的长度（千米）。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">9.</span> <span class="nav-text">其他知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#markdown-%E5%A6%82%E4%BD%95%E5%A6%82%E4%BD%95%E6%89%93%E5%87%BA%E4%B8%8A%E6%A0%87%E3%80%81%E4%B8%8B%E6%A0%87"><span class="nav-number">9.1.</span> <span class="nav-text">markdown 如何如何打出上标、下标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">9.2.</span> <span class="nav-text">开发模型的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE%E6%A8%A1%E5%9E%8B"><span class="nav-number">9.3.</span> <span class="nav-text">视图模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">9.4.</span> <span class="nav-text">需求分析的基本概念</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -246,7 +250,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-10-28 14:44:47" itemprop="dateModified" datetime="2024-10-28T14:44:47+08:00">2024-10-28</time>
+      <time title="修改时间：2024-11-01 17:01:13" itemprop="dateModified" datetime="2024-11-01T17:01:13+08:00">2024-11-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -272,14 +276,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.2k</span>
+      <span>3.1k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
+      <span>11 分钟</span>
     </span>
 </div>
 
@@ -290,8 +294,7 @@
     
     
     <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<h1 id="逻辑地址转换成物理地址"><a href="#逻辑地址转换成物理地址" class="headerlink" title="逻辑地址转换成物理地址"></a>逻辑地址转换成物理地址</h1><p>1.某计算机系统页面大小为 2K，进程 P1 的页面变换表如下所示，若 P1 要访问数据的逻辑地址为十六进制 1B1AH，那么该逻辑地址经过变换后，其对应的物理地址应为十六进制(231AH)。</p>
-<img src="/2024/09/19/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/1.png" class="">
+<h1 id="逻辑地址转换成物理地址"><a href="#逻辑地址转换成物理地址" class="headerlink" title="逻辑地址转换成物理地址"></a>逻辑地址转换成物理地址</h1><h2 id="某计算机系统页面大小为-2K，进程-P1-的页面变换表如下所示，若-P1-要访问数据的逻辑地址为十六进制-1B1AH，那么该逻辑地址经过变换后，其对应的物理地址应为十六进制-231AH-。"><a href="#某计算机系统页面大小为-2K，进程-P1-的页面变换表如下所示，若-P1-要访问数据的逻辑地址为十六进制-1B1AH，那么该逻辑地址经过变换后，其对应的物理地址应为十六进制-231AH-。" class="headerlink" title="某计算机系统页面大小为 2K，进程 P1 的页面变换表如下所示，若 P1 要访问数据的逻辑地址为十六进制 1B1AH，那么该逻辑地址经过变换后，其对应的物理地址应为十六进制(231AH)。"></a>某计算机系统页面大小为 2K，进程 P1 的页面变换表如下所示，若 P1 要访问数据的逻辑地址为十六进制 1B1AH，那么该逻辑地址经过变换后，其对应的物理地址应为十六进制(231AH)。</h2><img src="/2024/09/19/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/1.png" class="">
 
 <blockquote>
 <p>解题步骤</p>
@@ -303,6 +306,17 @@
 <p>视频讲解</p>
 </blockquote>
 <p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1e34y1676D/?spm_id_from=333.337.search-card.all.click&vd_source=feaed3bcf7c26260dd3b1715d154fdbe">如何将逻辑地址转换成物理地址</a></p>
+<h2 id="假设系统采用段式存储管理方法，进程-P-的段表如下所示。逻辑地址（请作答此空）不能转换为对应的物理地址；不能转换为对应的物理地址的原因是进行（）。"><a href="#假设系统采用段式存储管理方法，进程-P-的段表如下所示。逻辑地址（请作答此空）不能转换为对应的物理地址；不能转换为对应的物理地址的原因是进行（）。" class="headerlink" title="假设系统采用段式存储管理方法，进程 P 的段表如下所示。逻辑地址（请作答此空）不能转换为对应的物理地址；不能转换为对应的物理地址的原因是进行（）。"></a>假设系统采用段式存储管理方法，进程 P 的段表如下所示。逻辑地址（请作答此空）不能转换为对应的物理地址；不能转换为对应的物理地址的原因是进行（）。</h2><img src="/2024/09/19/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/4.png" class="">
+
+<p>A.(0，790) 和 (2，88)<br>B.(1，30) 和 (3，290)<br>C.(2，88) 和 (4，98)<br>D.(0，810) 和 (4，120)</p>
+<blockquote>
+<p>解题步骤</p>
+</blockquote>
+<p>物理地址 &#x3D; 段首 + 偏移量<br>逻辑地址（0，810）其中，0 是段号，810 是偏移量<br>选项 D 中，段号 0 的段长为 800，偏移量 810 超过了段长，所以不能转换为对应的物理地址。段号 4 的段长为 100，偏移量 120 超过了段长，所以不能转换为对应的物理地址。<br>故，答案为 D。原因为偏移量超过了段长。</p>
+<blockquote>
+<p>视频讲解</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Qw4m1e7n6/?spm_id_from=333.337.search-card.all.click&vd_source=feaed3bcf7c26260dd3b1715d154fdbe">操作系统期末复习题（段表）</a></p>
 <h1 id="磁盘单缓冲区与双缓冲区读取"><a href="#磁盘单缓冲区与双缓冲区读取" class="headerlink" title="磁盘单缓冲区与双缓冲区读取"></a>磁盘单缓冲区与双缓冲区读取</h1><p>1.某计算机系统输入 &#x2F; 输出采用双缓冲工作方式，其工作过程如下图所示，假设磁盘块与缓冲区大小相同，每个盘块读入缓冲区的时间 T 为 10μs，缓冲区送用户区的时间 M 为 6μs，系统对每个磁盘块数据韵处理时间 C 为 2μs。若用户需要将大小为 10 个磁盘块的 Docl 文件逐块从磁盘读入缓冲区，并送用户区进行处理，那么采用双缓冲需要花费的时间为（请作答此空）μs，比使用单缓冲节约了（ ）μs 时间。</p>
 <img src="/2024/09/19/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/2.png" class="">
 
@@ -345,10 +359,51 @@
 <p>视频讲解</p>
 </blockquote>
 <p>此题看视频解析比较容易理解<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1AcxTe2EKo/?spm_id_from=333.337.search-card.all.click&vd_source=feaed3bcf7c26260dd3b1715d154fdbe">15.8.3. Armstrong 公理系统</a></p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
-<p>markdown 如何如何打出上标、下标<br>Markdown 可以和 HTML 的语法兼容，所以可以采用 HTML 的语法实现效果：</p>
+<h1 id="文件最大长度"><a href="#文件最大长度" class="headerlink" title="文件最大长度"></a>文件最大长度</h1><h2 id="某文件系统采用多级索引结构，若磁盘块的大小为-512-字节，每个块号需占-3-字节，那么根索引采用一级索引时的文件最大长度为（请作答此空）K-字节；采用二级索引时的文件最大长度为（-）K-字节。"><a href="#某文件系统采用多级索引结构，若磁盘块的大小为-512-字节，每个块号需占-3-字节，那么根索引采用一级索引时的文件最大长度为（请作答此空）K-字节；采用二级索引时的文件最大长度为（-）K-字节。" class="headerlink" title="某文件系统采用多级索引结构，若磁盘块的大小为 512 字节，每个块号需占 3 字节，那么根索引采用一级索引时的文件最大长度为（请作答此空）K 字节；采用二级索引时的文件最大长度为（ ）K 字节。"></a>某文件系统采用多级索引结构，若磁盘块的大小为 512 字节，每个块号需占 3 字节，那么根索引采用一级索引时的文件最大长度为（请作答此空）K 字节；采用二级索引时的文件最大长度为（ ）K 字节。</h2><blockquote>
+<p>解题步骤</p>
 </blockquote>
+<p>设块长为 512B，每个块号占 3B，一个物理块可放：512&#x2F;3&#x3D;170 个目录项：<br>一个一级索引可存放的文件大小为：170×512&#x3D;85KB。<br>一个二级索引可存放文件的大小为：170×170×512&#x3D;14450KB。<br>一个三级索引可存放文件的大小为：170×170×170×512&#x3D;2456500KB。</p>
+<blockquote>
+<p>视频讲解<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Nv4y1s7jQ/?spm_id_from=333.337.search-card.all.click&vd_source=feaed3bcf7c26260dd3b1715d154fdbe">【操作系统】【考研真题】2010 年统考第 30 题【物理结构】【多级索引】【间接地址】</a></p>
+</blockquote>
+<h1 id="信号量与-PV-操作"><a href="#信号量与-PV-操作" class="headerlink" title="信号量与 PV 操作"></a>信号量与 PV 操作</h1><h2 id="进程-P1、P2、P3、P4-和-P5-的前趋图如下："><a href="#进程-P1、P2、P3、P4-和-P5-的前趋图如下：" class="headerlink" title="进程 P1、P2、P3、P4 和 P5 的前趋图如下："></a>进程 P1、P2、P3、P4 和 P5 的前趋图如下：</h2><img src="/2024/09/19/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/5.jpg" class="">
+<p>若用 PV 操作控制进程 P1 ～ P5 并发执行的过程，则需要设置 6 个信号 S1、S2、S3、S4、S5 和 S6，且信号量 S1-S6 的初值都等于零。下图中 a 和 b 处应分别填写（请作答此空）；c 和 d 处应分别填写（ ），e 和 f 处应分别填写（ ）。</p>
+<img src="/2024/09/19/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/6.jpg" class="">
+
+<blockquote>
+<p>解题步骤</p>
+</blockquote>
+<p>从图中我们不难看出进程 P1 和 P2 没有前驱，也就是可以首先并发执行，而进程 P3 的前驱是 P1 和 P2，P4 的前驱是 P1 和 P3，P5 的前驱是 P2 和 P3。那么怎么理解前驱呢？其实前驱就是指只有在前驱进程完成后，该进程才能开始执行。<br>在本题的前驱图中我们不难看出，有 6 条路径，分别是 P1-P3，P1-P4，P2-P3，P2-P5，P3-P4，P3-P5。而且题目也告诉我们分别有 6 初值为 0 个信号量（S1-S6），要我们用 PV 操作来控制进程 P1 ～ P5 的并发执行。这里我们就需要清楚 P 与 V 这两种操作。<br>P 原语的主要操作是：<br>（1）信号量（sem）减 1； 　　<br>（2）若相减结果大于等于零，则进程继续执行； 　　<br>（3）若相减结果小于零，则阻塞一个在该信号量上的进程，然后再返回原进程继续执行或转进程调度。<br>V 原语的主要操作是： 　　<br>（1）信号量（sem）加 1； 　　<br>（2）若相加结果大于零，则进程继续执行； 　　<br>（3）若相加结果小于或等于零，则唤醒一阻塞在该信号量上的进程，然后再返回原进程继续执行或转进程调度。<br>总而言之，进行 P 操作的主要目的是阻塞某信号量上的进程，而进行 V 操作的主要目的是唤醒某信号量上的进程。</p>
+<p>对于某个进程来说，如果箭头指向外部，就是 V 操作，如果箭头指向自己，就是 P 操作。出 V +，入 P -。</p>
+<blockquote>
+<p>视频讲解</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1pm411X7D1/?spm_id_from=333.337.search-card.all.click&vd_source=feaed3bcf7c26260dd3b1715d154fdbe">软考高级 (系统分析师）|| 习题讲解：信号量与 PV 操作</a></p>
+<h1 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h1><h2 id="山区某乡的-6-个村之间有山路如图所示，其中的数字标明了各条山路的长度（千米）。"><a href="#山区某乡的-6-个村之间有山路如图所示，其中的数字标明了各条山路的长度（千米）。" class="headerlink" title="山区某乡的 6 个村之间有山路如图所示，其中的数字标明了各条山路的长度（千米）。"></a>山区某乡的 6 个村之间有山路如图所示，其中的数字标明了各条山路的长度（千米）。</h2>
+<p>乡政府决定沿山路架设电话线。为实现村村通电话，电话线总长至少为（14）千米。</p>
+<blockquote>
+<p>解题步骤</p>
+</blockquote>
+<p>此题看视频讲解比较清楚。</p>
+<blockquote>
+<p>视频讲解</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1wG411z79G/?spm_id_from=333.337.search-card.all.click&vd_source=feaed3bcf7c26260dd3b1715d154fdbe">图 - 最小生成树 - Prim (普里姆) 算法和 Kruskal (克鲁斯卡尔) 算法</a></p>
+<h1 id="其他知识点"><a href="#其他知识点" class="headerlink" title="其他知识点"></a>其他知识点</h1><h2 id="markdown-如何如何打出上标、下标"><a href="#markdown-如何如何打出上标、下标" class="headerlink" title="markdown 如何如何打出上标、下标"></a>markdown 如何如何打出上标、下标</h2><p>Markdown 可以和 HTML 的语法兼容，所以可以采用 HTML 的语法实现效果：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10<span class="tag">&lt;<span class="name">sup</span>&gt;</span>2<span class="tag">&lt;/<span class="name">sup</span>&gt;</span> //上标</span><br><span class="line">H<span class="tag">&lt;<span class="name">sub</span>&gt;</span>2<span class="tag">&lt;/<span class="name">sub</span>&gt;</span>O //下标</span><br></pre></td></tr></table></figure>
+
+<h2 id="开发模型的特点"><a href="#开发模型的特点" class="headerlink" title="开发模型的特点"></a>开发模型的特点</h2><img src="/2024/09/19/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/7.jpg" class="">
+
+<h2 id="视图模型"><a href="#视图模型" class="headerlink" title="视图模型"></a>视图模型</h2>
+
+<h2 id="需求分析的基本概念"><a href="#需求分析的基本概念" class="headerlink" title="需求分析的基本概念"></a>需求分析的基本概念</h2><p>需求是多层次的，包括业务需求、用户需求和系统需求，这三个不同层次从目标到具体，从整体到局部，从概念到细节。</p>
+<p>（1）业务需求。业务需求是指反映企业或客户对系统高层次的目标要求，通常来自项目投资人、购买产品的客户、客户单位的管理人员、市场营销部门或产品策划部门等。通过业务需求可以确定项目视图和范围，项目视图和范围文档把业务需求集中在一个简单、紧凑的文档中，该文档为以后的开发工作奠定了基础。</p>
+<p>（2）用户需求。用户需求描述的是用户的具体目标，或用户要求系统必须能完成的任务。也就是说，用户需求描述了用户能使用系统来做些什么。通常采取用户访谈和问卷调查等方式，对用户使用的场景（scenarios）进行整理，从而建立用户需求。</p>
+<p>（3）系统需求。系统需求是从系统的角度来说明软件的需求，包括功能需求、非功能需求和设计约束等。功能需求也称为行为需求，它规定了开发人员必须在系统中实现的软件功能，用户利用这些功能来完成任务，满足业务需要。功能需求通常是通过系统特性的描述表现出来的，所谓特性，是指一组逻辑上相关的功能需求，表示系统为用户提供某项功能（服务），使用户的业务目标得以满足；非功能需求是指系统必须具备的属性或品质，又可细分为软件质量属性（例如，可维护性、可维护性、效率等）和其他非功能需求。</p>
+<p>质量功能部署（Quality Function Deployment，QFD）是一种将用户要求转化成软件需求的技术，其目的是最大限度地提升软件工程过程中用户的满意度。为了达到这个目标，QFD 将软件需求分为三类，分别是常规需求、期望需求和意外需求。</p>
+<p>（1）常规需求。用户认为系统应该做到的功能或性能，实现越多用户会越满意。</p>
+<p>（2）期望需求。用户想当然认为系统应具备的功能或性能，但并不能正确描述自己想要得到的这些功能或性能需求。如果期望需求没有得到实现，会让用户感到不满意。</p>
+<p>（3）意外需求。意外需求也称为兴奋需求，是用户要求范围外的功能或性能（但通常是软件开发人员很乐意赋予系统的技术特性），实现这些需求用户会更高兴，但不实现也不影响其购买的决策。意外需求是控制在开发人员手中的，开发人员可以选择实现更多的意外需求，以便得到高满意、高忠诚度的用户，也可以（出于成本或项目周期的考虑）选择不实现任何意外需求。</p>
 
     </div>
 
@@ -441,13 +496,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">216k</span>
+    <span title="站点总字数">218k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:07</span>
+    <span title="站点阅读时长">13:14</span>
   </span>
 </div>
 <div class="busuanzi-count">
