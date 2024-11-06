@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta property="og:type" content="article">
+<meta property="og:title" content="软件架构风格">
+<meta property="og:url" content="https://toypipi.github.io/2024/11/06/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/index.html">
+<meta property="og:site_name" content="Toypipi&#39;s blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://toypipi.github.io/2024/11/06/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/1.png">
+<meta property="article:published_time" content="2024-11-06T06:18:05.000Z">
+<meta property="article:modified_time" content="2024-11-06T07:03:25.974Z">
+<meta property="article:author" content="toypipi">
+<meta property="article:tag" content="系统架构师">
+<meta property="article:tag" content="软考">
+<meta property="article:tag" content="软件架构风格">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://toypipi.github.io/2024/11/06/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/1.png">
+
+
+<link rel="canonical" href="https://toypipi.github.io/2024/11/06/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://toypipi.github.io/2024/11/06/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/","path":"2024/11/06/软件架构风格/","title":"软件架构风格"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>软件架构风格 | Toypipi's blog</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?c228072b8c3657dfa7236914b308712c"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Toypipi's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%B5%81%E9%A3%8E%E6%A0%BC"><span class="nav-number">1.</span> <span class="nav-text">数据流风格</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%B9%E5%A4%84%E7%90%86"><span class="nav-number">1.1.</span> <span class="nav-text">批处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%A1%E9%81%93%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="nav-number">1.2.</span> <span class="nav-text">管道过滤器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B0%83%E7%94%A8-%E8%BF%94%E5%9B%9E%E9%A3%8E%E6%A0%BC"><span class="nav-number">2.</span> <span class="nav-text">调用&#x2F;返回风格</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E7%A8%8B%E5%BA%8F-%E5%AD%90%E7%A8%8B%E5%BA%8F"><span class="nav-number">2.1.</span> <span class="nav-text">主程序&#x2F;子程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.2.</span> <span class="nav-text">面向对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%82%E6%AC%A1%E5%9E%8B%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-number">2.3.</span> <span class="nav-text">层次型体系结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF-%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">2.4.</span> <span class="nav-text">客户端&#x2F;服务器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8B%AC%E7%AB%8B%E6%9E%84%E4%BB%B6%E9%A3%8E%E6%A0%BC"><span class="nav-number">3.</span> <span class="nav-text">独立构件风格</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1"><span class="nav-number">3.1.</span> <span class="nav-text">进程通信</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E7%B3%BB%E7%BB%9F%EF%BC%88%E9%9A%90%E5%BC%8F%E8%B0%83%E7%94%A8%EF%BC%89"><span class="nav-number">3.2.</span> <span class="nav-text">事件驱动系统（隐式调用）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%93%E5%BA%93%E9%A3%8E%E6%A0%BC%EF%BC%88%E4%BB%A5%E6%95%B0%E6%8D%AE%E4%B8%BA%E4%B8%AD%E5%BF%83%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">仓库风格（以数据为中心）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F"><span class="nav-number">4.1.</span> <span class="nav-text">数据库系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B6%85%E6%96%87%E6%9C%AC%E7%B3%BB%E7%BB%9F"><span class="nav-number">4.2.</span> <span class="nav-text">超文本系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%BB%91%E6%9D%BF%E9%A3%8E%E6%A0%BC%EF%BC%88%E8%AF%AD%E9%9F%B3%E3%80%81%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E3%80%81%E7%9F%A5%E8%AF%86%E6%8E%A8%E7%90%86%EF%BC%89"><span class="nav-number">4.3.</span> <span class="nav-text">黑板风格（语音、模式识别、知识推理）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%A3%8E%E6%A0%BC"><span class="nav-number">5.</span> <span class="nav-text">虚拟机风格</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E9%87%8A%E5%99%A8"><span class="nav-number">5.1.</span> <span class="nav-text">解释器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E8%A7%84%E5%88%99%E7%9A%84%E7%B3%BB%E7%BB%9F"><span class="nav-number">5.2.</span> <span class="nav-text">基于规则的系统</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E9%A3%8E%E6%A0%BC"><span class="nav-number">6.</span> <span class="nav-text">其他风格</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AD%E7%8E%AF%E6%8E%A7%E5%88%B6%EF%BC%88%E8%BF%87%E7%A8%8B%E6%8E%A7%E5%88%B6%EF%BC%89%E5%B7%A5%E6%8E%A7%E9%A2%86%E5%9F%9F"><span class="nav-number">6.1.</span> <span class="nav-text">闭环控制（过程控制）工控领域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C2"><span class="nav-number">6.2.</span> <span class="nav-text">C2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="nav-number">7.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="toypipi"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">toypipi</p>
+  <div class="site-description" itemprop="description">Stay focused, be present</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">298</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">395</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/toypipi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;toypipi" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:275688469@qq.com" title="E-Mail → mailto:275688469@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2024/11/06/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="软件架构风格 | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          软件架构风格
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-11-06 14:18:05 / 修改时间：15:03:25" itemprop="dateCreated datePublished" datetime="2024-11-06T14:18:05+08:00">2024-11-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>11 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<img src="/2024/11/06/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/1.png" class="">
+
+<span id="more"></span>
+
+<h1 id="数据流风格"><a href="#数据流风格" class="headerlink" title="数据流风格"></a>数据流风格</h1><p>没有概念上的程序计数器：指令的可执行性和执行仅基于指令输入参数的可用性来确定。指令执行的顺序是不可预测的，行为是不确定的。<br>早期编译器就是采用的这种架构。要一步一步处理的，均可考虑采用此架构风格。</p>
+<h2 id="批处理"><a href="#批处理" class="headerlink" title="批处理"></a>批处理</h2><p>构件为一系列固定顺序的计算单元，构件之间只通过数据传递交互。<br>每个处理步骤是一个独立的程序，每一步必须在其前一步结束后才能开始，数据必须是完整的，以整体的方式传递。</p>
+<ul>
+<li>场景 1: 日志分析系统<br>案例：Hadoop MapReduce 处理海量日志数据<br>特点：按固定顺序处理大量数据，每步必须等待前一步完成</li>
+<li>场景 2: ETL 数据处理<br>案例：银行每日交易数据的清洗、转换和加载<br>特点：按预定流程处理结构化数据</li>
+</ul>
+<h2 id="管道过滤器"><a href="#管道过滤器" class="headerlink" title="管道过滤器"></a>管道过滤器</h2><p>每个构件都有一组输入和输出，构件读输入的数据流，经过内部处理，然后产生输出数据流。这个过程通常是通过对输入数据流的变换或计算来完成的，包括通过计算和增加信息以丰富数据、通过浓缩和删除以精简数据、通过改变记录方式以转化数据和递增地转化数据等。这里的构件称为过滤器，连接件就是数据流传输的管道，将一个过滤器的输出传到另一个过滤器的输入。</p>
+<ul>
+<li>场景 1: Unix&#x2F;Linux 命令行处理<br>案例：cat file.txt | grep “error” | sort | uniq &gt; output.txt<br>特点：每个命令作为过滤器，通过管道传递数据</li>
+<li>场景 2: 图像处理流水线<br>案例：Instagram 的图片滤镜处理流程<br>特点：图片依次经过裁剪、调色、特效等处理环节</li>
+</ul>
+<h1 id="调用-返回风格"><a href="#调用-返回风格" class="headerlink" title="调用&#x2F;返回风格"></a>调用&#x2F;返回风格</h1><p>构件之间存在互相调用的关系，一般是显式的调用。</p>
+<p>优点 ∶<br>1、这种风格支持基于可增加抽象层的设计，允许将一个复杂问题分解成一个增量步骤序列的实现。<br>2、不同的层次处于不同的抽象级别：越靠近底层，抽象级别越高；越靠近顶层，抽象级别越低；<br>3、由于每一层最多只影响两层，同时只要给相邻层提供相同的接口，允许每层用不同的方法实现，同样为软件复用提供了强大的支持。<br>缺点 ∶<br>1、并不是每个系统都可以很容易地划分为分层的模式。<br>2、很难找到一个合适的、正确的层次抽象方法。</p>
+<h2 id="主程序-子程序"><a href="#主程序-子程序" class="headerlink" title="主程序&#x2F;子程序"></a>主程序&#x2F;子程序</h2><p>单线程控制，把问题划分为若干个处理步骤，构件即为主程序和子程序，子程序通常可合成为模块。过程调用作为交互机制，即充当连接件的角色。调用关系具有层次性，其语义逻辑表现为主程序的正确性取决于它调用的子程序的正确性。</p>
+<ul>
+<li>场景 1: 科学计算软件<br>案例：MATLAB 的数值计算程序<br>特点：主程序调用各种数学函数库</li>
+<li>场景 2: 办公自动化软件<br>案例：Microsoft Word 的文档处理功能<br>特点：主界面程序调用各种文档处理子程序</li>
+</ul>
+<h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><p>构件是对象，对象是抽象数据类型的实例。在抽象数据类型中，数据的表示和它们的相应操作被封装起来，对象的行为体现在其接受和请求的动作。连接件即是对象间交互的方式，对象是通过函数和过程的调用来交互的。</p>
+<ul>
+<li>场景 1: 游戏开发<br>案例：Unity3D 游戏引擎<br>特点：游戏对象之间通过消息传递交互</li>
+<li>场景 2: GUI 应用程序<br>案例：Eclipse IDE<br>特点：界面组件都是对象，通过方法调用交互</li>
+</ul>
+<h2 id="层次型体系结构"><a href="#层次型体系结构" class="headerlink" title="层次型体系结构"></a>层次型体系结构</h2><p>构件组织成一个层次结构，连接件通过决定层间如何交互的协议来定义。每层为上一层提供服务，使用下一层的服务，只能见到与自己邻接的层。通过层次结构，可以将大的问题分解为若干个渐进的小问题逐步解决，可以隐藏问题的复杂度。修改某一层，最多影响其相邻的两层 (通常只能影响上层)。</p>
+<ul>
+<li>场景 1: 网络协议栈<br>案例：TCP&#x2F;IP 协议实现<br>特点：分层处理网络通信</li>
+<li>场景 2: 企业应用架构<br>案例：Spring Framework<br>特点：表现层、业务层、持久层清晰分离</li>
+</ul>
+<h2 id="客户端-服务器"><a href="#客户端-服务器" class="headerlink" title="客户端&#x2F;服务器"></a>客户端&#x2F;服务器</h2><p>两层 C&#x2F;S 体系结构有 3 个主要组成部分：数据库服务器、客户应用程序和网络。服务器（后台）负责数据管理，客户机（前台）完成与用户的交互任务，成为“胖客户机，瘦服务器”。</p>
+<p>三层 C&#x2F;S 结构增加了应用服务器。应用逻辑驻留在应用服务器上，只有表示层存在与客户机上，称为“瘦客户机”。应用功能分为表示层、功能层和数据层三层。三层逻辑上独立。</p>
+<ul>
+<li>场景 1: 网页应用（两层结构）<br>案例：早期的 QQ 桌面客户端<br>特点：胖客户端承担大部分业务逻辑</li>
+<li>场景 2: 企业级应用（三层结构）<br>案例：淘宝网的技术架构<br>特点：表现层、应用层、数据层分离</li>
+</ul>
+<h1 id="独立构件风格"><a href="#独立构件风格" class="headerlink" title="独立构件风格"></a>独立构件风格</h1><p>构件之间是互相独立的，不存在显示的调用关系，而是通过某个事件触发、异步的方式来执行。</p>
+<h2 id="进程通信"><a href="#进程通信" class="headerlink" title="进程通信"></a>进程通信</h2><p>构件是独立的过程，连接件是消息传递。构件通常是命名过程，消息传递的方式可以是点对点、异步或同步方式，以及远程过程 (方法）调用等。</p>
+<ul>
+<li>场景 1: 分布式系统<br>案例：Kubernetes 容器编排系统<br>特点：各组件通过消息队列通信</li>
+<li>场景 2: 微服务架构<br>案例：Netflix 的服务架构<br>特点：服务间通过 API 网关通信</li>
+</ul>
+<h2 id="事件驱动系统（隐式调用）"><a href="#事件驱动系统（隐式调用）" class="headerlink" title="事件驱动系统（隐式调用）"></a>事件驱动系统（隐式调用）</h2><p>构件不直接调用一个过程，而是触发或广播一个或多个事件。构件中的过程在一个或多个事件中注册，当某个事件被触发时，系统自动调用在这个事件中注册的所有过程。一个事件的触发就导致了另一个模块中的过程调用。这种风格中的构件是匿名的过程，它们之间交互的连接件往往是以过程之间的隐式调用来实现的。主要优点是为软件复用提供了强大的支持，为构件的维护和演化带来了方便 ; 其缺点是构件放弃了对系统计算的控制。</p>
+<ul>
+<li>场景 1: GUI 框架<br>案例：JavaScript 的 DOM 事件系统<br>特点：用户操作触发事件回调</li>
+<li>场景 2: 消息中间件<br>案例：RabbitMQ<br>特点：发布者 - 订阅者模式</li>
+</ul>
+<h1 id="仓库风格（以数据为中心）"><a href="#仓库风格（以数据为中心）" class="headerlink" title="仓库风格（以数据为中心）"></a>仓库风格（以数据为中心）</h1><p>以数据为中心，所有的操作都是围绕建立的数据中心进行的。<br>仓库风格中构件分两种：一种是中央数据结构，保存系统的当前状态；另一种是独立构件，对中央数据存储进行操作。<br>现代集成编译环境一般采用这种架构风格。</p>
+<h2 id="数据库系统"><a href="#数据库系统" class="headerlink" title="数据库系统"></a>数据库系统</h2><p>MySQL，Oracle 等数据库。</p>
+<ul>
+<li>场景 1: 企业信息管理<br>案例：SAP ERP 系统<br>特点：所有模块共享中央数据库</li>
+<li>场景 2: 在线交易系统<br>案例：证券交易系统<br>特点：围绕交易数据库进行操作</li>
+</ul>
+<h2 id="超文本系统"><a href="#超文本系统" class="headerlink" title="超文本系统"></a>超文本系统</h2><p>构件以网状链接方式相互连接，用户可以在构件之间进行按照人类的联想思维方式任意跳转到相关构件。超文本是一种非线性的网状信息组织方法，它以结点为基本单位，链作为结点之间的联想式关联。超文本系统通常应用在互联网领域。</p>
+<ul>
+<li>场景 1: 在线文档<br>案例：Wikipedia 维基百科<br>特点：页面间通过超链接关联</li>
+<li>场景 2: 知识管理<br>案例：Notion 笔记系统<br>特点：文档块之间可以相互引用</li>
+</ul>
+<h2 id="黑板风格（语音、模式识别、知识推理）"><a href="#黑板风格（语音、模式识别、知识推理）" class="headerlink" title="黑板风格（语音、模式识别、知识推理）"></a>黑板风格（语音、模式识别、知识推理）</h2><p>包括知识源、黑板和控制三部分。知识源包括若干独立计算的不同单元，提供解决问题的知识。知识源响应黑板的变化，也只修改黑板；黑板是一个全局数据库，包含问题域解空间的全部状态，是知识源相互作用的唯一媒介；知识源响应是通过黑板状态的变化来控制的。黑板系统通常应用在对于解决问题没有确定性算法的软件中 (信号处理、问题规划和编译器优化等)。</p>
+<ul>
+<li>场景 1: AI 推理系统<br>案例：IBM Watson<br>特点：多个知识源协作解决复杂问题</li>
+<li>场景 2: 语音识别<br>案例：讯飞语音识别系统<br>特点：多个识别器配合工作</li>
+</ul>
+<h1 id="虚拟机风格"><a href="#虚拟机风格" class="headerlink" title="虚拟机风格"></a>虚拟机风格</h1><p>自定义了一套规则供使用者使用，使用者基于这个规则来开发构件，能够跨平台适配。</p>
+<h2 id="解释器"><a href="#解释器" class="headerlink" title="解释器"></a>解释器</h2><p>解释器通常包括一个完成解释工作的解释引擎、一个包含将被解释的代码的存储区、一个记录解释引擎当前工作状态的数据结构，以及一个记录源代码被解释执行的进度的数据结构。具有解释器风格的软件中含有一个虚拟机，可以仿真硬件的执行过程和一些关键应用，其缺点是执行效率比较低。</p>
+<ul>
+<li>场景 1: 脚本语言<br>案例：Python 解释器<br>特点：逐行解释执行代码</li>
+<li>场景 2: 浏览器引擎<br>案例：V8 JavaScript 引擎<br>特点：实时解释执行网页脚本</li>
+</ul>
+<h2 id="基于规则的系统"><a href="#基于规则的系统" class="headerlink" title="基于规则的系统"></a>基于规则的系统</h2><p>基于规则的系统包括规则集、规则解释器、规则 &#x2F; 数据选择器和工作内存，一般用在人工智能领域和 DSS(决策支持系统) 中。</p>
+<ul>
+<li>场景 1: 专家系统<br>案例：医疗诊断系统<br>特点：基于预设规则推理</li>
+<li>场景 2: 业务规则引擎<br>案例：Drools 规则引擎<br>特点：可配置业务规则</li>
+</ul>
+<h1 id="其他风格"><a href="#其他风格" class="headerlink" title="其他风格"></a>其他风格</h1><h2 id="闭环控制（过程控制）工控领域"><a href="#闭环控制（过程控制）工控领域" class="headerlink" title="闭环控制（过程控制）工控领域"></a>闭环控制（过程控制）工控领域</h2><p>当软件被用来操作一个物理系统时，软件与硬件之间可以粗略地表示为一个反馈闭环。这个反馈循环通过接受一定的输入，确定一系列的输出，最终使环境达到一个新的状态。适合于嵌入式系统，涉及连续的动作与状态。</p>
+<ul>
+<li>场景 1: 工业控制<br>案例：工业机器人控制系统<br>特点：实时反馈控制</li>
+<li>场景 2: 智能家居<br>案例：智能恒温器<br>特点：基于传感器反馈调节</li>
+</ul>
+<h2 id="C2"><a href="#C2" class="headerlink" title="C2"></a>C2</h2><p>构件和连接件都有一个顶部和一个底部。<br>构件的顶部要连接到连接件的底部，构件的底部要连接到连接件的顶部，构件之间不允许直连。<br>一个连接件可以和任意数目的其它构件和连接件连接。<br>当两个连接件进行直接连接时，必须由其中一个的底部到另一个的顶部。</p>
+<ul>
+<li>场景 1: 可视化建模工具<br>案例：UML 建模工具<br>特点：构件通过连接件分层通信</li>
+<li>场景 2: 图形编辑器<br>案例：Adobe Illustrator<br>特点：工具栏、画布等构件通过消息总线通信</li>
+</ul>
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_33789001/article/details/126058308">软考高级软件架构风格定义以及分类</a><br><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2242448">软考系统架构设计师 (六)：软件架构</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.JPG" alt="toypipi 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.JPG" alt="toypipi 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>toypipi
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://toypipi.github.io/2024/11/06/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/" title="软件架构风格">https://toypipi.github.io/2024/11/06/软件架构风格/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%B8%88/" rel="tag"><i class="fa fa-tag"></i> 系统架构师</a>
+              <a href="/tags/%E8%BD%AF%E8%80%83/" rel="tag"><i class="fa fa-tag"></i> 软考</a>
+              <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/" rel="tag"><i class="fa fa-tag"></i> 软件架构风格</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/10/25/%E9%BB%8E%E6%98%8E%E5%89%8D%E7%9A%84%E4%BB%A3%E7%A0%81%E6%95%91%E8%B5%8E-%E8%AF%91/" rel="prev" title="黎明前的代码救赎：如何用 Git Bisect 拯救我的演示[译]">
+                  <i class="fa fa-angle-left"></i> 黎明前的代码救赎：如何用 Git Bisect 拯救我的演示[译]
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2016 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">toypipi</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">221k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">13:25</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
