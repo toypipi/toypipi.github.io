@@ -154,7 +154,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">303</span>
+          <span class="site-state-item-count">304</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -165,7 +165,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">399</span>
+        <span class="site-state-item-count">400</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -190,6 +190,109 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/09/04/2694-%E4%BA%8B%E4%BB%B6%E5%8F%91%E5%B0%84%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/09/04/2694-%E4%BA%8B%E4%BB%B6%E5%8F%91%E5%B0%84%E5%99%A8/" class="post-title-link" itemprop="url">2694. 事件发射器</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-09-04 14:56:12 / 修改时间：14:57:47" itemprop="dateCreated datePublished" datetime="2023-09-04T14:56:12+08:00">2023-09-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>364</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<p>1.<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/event-emitter/description/">题目描述</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">EventEmitter</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 创建一个空对象 events，用于存储事件名称和对应的回调函数数组</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">events</span> = &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 接受两个参数，eventName 事件名称，callback 回调函数</span></span><br><span class="line">  <span class="title function_">subscribe</span>(<span class="params">eventName, callback</span>) &#123;</span><br><span class="line">    <span class="comment">// 如果 evnets 对象中不存在 eventName 对应的数组，则创建一个空数组</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="variable language_">this</span>.<span class="property">events</span>[eventName]) &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">events</span>[eventName] = [];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将回调函数添加到对应事件的数组中</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">events</span>[eventName].<span class="title function_">push</span>(callback);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 返回一个包含 unsubscribe 方法的对象，以允许用户取消订阅</span></span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">unsubscribe</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">      <span class="keyword">const</span> index = <span class="variable language_">this</span>.<span class="property">events</span>[eventName].<span class="title function_">indexOf</span>(callback);</span><br><span class="line">      <span class="keyword">if</span> (index !== -<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">events</span>[eventName].<span class="title function_">splice</span>(index, <span class="number">1</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123; unsubscribe &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 接受两个参数，eventName 事件名称和可选的 args 参数数组</span></span><br><span class="line">  <span class="title function_">emit</span>(<span class="params">eventName, args = []</span>) &#123;</span><br><span class="line">    <span class="comment">// 首先检查 events 对象中是否存在 eventName 对应的数组，如果不存在则返回一个空数组</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="variable language_">this</span>.<span class="property">events</span>[eventName]) &#123;</span><br><span class="line">      <span class="keyword">return</span> [];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> results = [];</span><br><span class="line">    <span class="comment">// 遍历 eventName 对应的数组，依次调用每个回调函数，并将 args 作为参数传递给它们</span></span><br><span class="line">    <span class="comment">// 将每个回调函数的返回值添加到一个结果数组中</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> callback <span class="keyword">of</span> <span class="variable language_">this</span>.<span class="property">events</span>[eventName]) &#123;</span><br><span class="line">      results.<span class="title function_">push</span>(<span class="title function_">callback</span>(...args));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 返回结果数组</span></span><br><span class="line">    <span class="keyword">return</span> results;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 示例用法</span></span><br><span class="line"><span class="keyword">const</span> emitter = <span class="keyword">new</span> <span class="title class_">EventEmitter</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 订阅事件 &quot;myEvent&quot;</span></span><br><span class="line"><span class="keyword">const</span> subscription1 = emitter.<span class="title function_">subscribe</span>(<span class="string">&quot;myEvent&quot;</span>, <span class="function">(<span class="params">arg1, arg2</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Callback 1: <span class="subst">$&#123;arg1&#125;</span>, <span class="subst">$&#123;arg2&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 另一个订阅同一个事件</span></span><br><span class="line"><span class="keyword">const</span> subscription2 = emitter.<span class="title function_">subscribe</span>(<span class="string">&quot;myEvent&quot;</span>, <span class="function">(<span class="params">arg1, arg2</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Callback 2: <span class="subst">$&#123;arg1&#125;</span>, <span class="subst">$&#123;arg2&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 触发事件 &quot;myEvent&quot;，并传递参数</span></span><br><span class="line"><span class="keyword">const</span> results = emitter.<span class="title function_">emit</span>(<span class="string">&quot;myEvent&quot;</span>, [<span class="string">&quot;Hello&quot;</span>, <span class="string">&quot;World&quot;</span>]);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(results); <span class="comment">// 输出结果数组</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 取消订阅第一个回调函数</span></span><br><span class="line">subscription1.<span class="title function_">unsubscribe</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 再次触发事件 &quot;myEvent&quot;</span></span><br><span class="line">emitter.<span class="title function_">emit</span>(<span class="string">&quot;myEvent&quot;</span>, [<span class="string">&quot;Goodbye&quot;</span>, <span class="string">&quot;EventEmitter&quot;</span>]);</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/09/04/2694-%E4%BA%8B%E4%BB%B6%E5%8F%91%E5%B0%84%E5%99%A8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -604,119 +707,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/08/28/git-stage-%E5%92%8C-git-stash/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="toypipi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Toypipi's blog">
-      <meta itemprop="description" content="Stay focused, be present">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Toypipi's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/08/28/git-stage-%E5%92%8C-git-stash/" class="post-title-link" itemprop="url">git stage 和 git stash</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2023-08-28 09:25:13 / 修改时间：09:28:10" itemprop="dateCreated datePublished" datetime="2023-08-28T09:25:13+08:00">2023-08-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.2k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<p><code>git stage</code> 和 <code>git stash</code> 是 Git 中用于处理工作目录中的更改的两个不同的机制，它们有各自的用途和区别。</p>
-<p><strong><code>git stage</code>（也称为 <code>git add</code>）</strong>:</p>
-<ul>
-<li><p><strong>用途</strong>：<code>git stage</code> 或 <code>git add</code> 用于将工作目录中的更改添加到暂存区（Staging Area）中，以便之后可以提交到版本控制系统。</p>
-</li>
-<li><p><strong>操作</strong>：你可以使用 <code>git add</code> 命令来选择性地添加文件或更改到暂存区。例如，<code>git add file1.txt</code> 将添加名为 <code>file1.txt</code> 的文件的更改到暂存区。</p>
-</li>
-<li><p><strong>持久性</strong>：暂存区的内容是持久的，它们会一直保留，直到你执行 <code>git commit</code> 命令将它们提交到版本控制仓库。</p>
-</li>
-<li><p><strong>用例</strong>：<code>git stage</code> 用于将更改准备好以便提交到版本控制系统。通常在你认为一组更改完成并准备好提交时使用。</p>
-</li>
-<li>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/08/28/git-stage-%E5%92%8C-git-stash/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/17/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/61/">61</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/19/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -740,13 +730,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">226k</span>
+    <span title="站点总字数">227k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:41</span>
+    <span title="站点阅读时长">13:44</span>
   </span>
 </div>
 <div class="busuanzi-count">
