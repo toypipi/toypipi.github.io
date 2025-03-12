@@ -154,7 +154,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">305</span>
+          <span class="site-state-item-count">306</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -190,6 +190,112 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2017/11/08/win7-%E6%89%B9%E5%A4%84%E7%90%86%E5%90%AF%E7%94%A8%E7%A6%81%E7%94%A8%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2017/11/08/win7-%E6%89%B9%E5%A4%84%E7%90%86%E5%90%AF%E7%94%A8%E7%A6%81%E7%94%A8%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5/" class="post-title-link" itemprop="url">win7 批处理启用禁用网络连接</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-11-08 10:48:30" itemprop="dateCreated datePublished" datetime="2017-11-08T10:48:30+08:00">2017-11-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2018-06-08 16:38:48" itemprop="dateModified" datetime="2018-06-08T16:38:48+08:00">2018-06-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>232</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+<p>如果 WIN7 有两张网卡，而且需要连接不同的网络 IP 地址时，可以编写一个批处理脚本，当需要切换 IP 的时候，直接点击对应的脚本，就可以实现快速切换，避免每次输入 IP 地址、子网掩码和网关等信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netsh interface set interface name=&quot;本地连接&quot; admin=ENABLED</span><br><span class="line">netsh interface set interface name=&quot;本地连接 2&quot; admin=DISABLED</span><br></pre></td></tr></table></figure>
+<p>将以上脚本保存为一个后缀为 .bat 的文件，如 NetSwitch.bat ，需要切换的时候直接双击执行就可以了。<br>另付上通过批处理脚本修改 IP 地址、子网掩码和网关的命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">netsh interface ip set address name=&quot;本地连接&quot; source=&quot;static&quot; addr=&quot;192.168.1.110&quot; mask=&quot;255.255.255.0&quot; gateway=&quot;192.168.1.1&quot; gwmetric=&quot;1&quot;</span><br><span class="line">netsh interface ip set dns name=&quot;本地连接&quot; source=static addr=&quot;119.29.29.29&quot;</span><br><span class="line">netsh interface ip set dns name=&quot;本地连接&quot; source=static addr=&quot;182.254.116.116&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>参考文档：</strong><br><a target="_blank" rel="noopener" href="http://www.mamicode.com/info-detail-247745.html">win7如何通过netsh命令禁用启用本地连接</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -629,119 +735,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2017/09/27/CentOS-6-5-%E9%85%8D%E7%BD%AE-git-%E5%B7%A5%E4%BD%9C%E7%A9%BA%E9%97%B4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="toypipi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Toypipi's blog">
-      <meta itemprop="description" content="Stay focused, be present">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Toypipi's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2017/09/27/CentOS-6-5-%E9%85%8D%E7%BD%AE-git-%E5%B7%A5%E4%BD%9C%E7%A9%BA%E9%97%B4/" class="post-title-link" itemprop="url">CentOS 6.5 配置 Git 工作空间</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2017-09-27 10:01:35" itemprop="dateCreated datePublished" datetime="2017-09-27T10:01:35+08:00">2017-09-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2020-11-03 11:44:00" itemprop="dateModified" datetime="2020-11-03T11:44:00+08:00">2020-11-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>96</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<ul>
-<li><p>将 <a target="_blank" rel="noopener" href="http://oio4l6s3j.bkt.clouddn.com/file/20170927/git-completion.bash">git-completion.bash</a>  保存在你的 root 目录中。</p>
-</li>
-<li><p>将 <a target="_blank" rel="noopener" href="http://oio4l6s3j.bkt.clouddn.com/file/20170927/git-prompt.sh">git-prompt.sh</a> 保存在你的 root 中。</p>
-</li>
-<li><p>修改 .bash_profile 文件，添加如下内容。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Enable tab completion</span></span><br><span class="line">source ~/git-completion.bash</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">colors!</span></span><br><span class="line">green=&quot;\[\033[0;32m\]&quot;</span><br><span class="line">blue=&quot;\[\033[0;34m\]&quot;</span><br><span class="line">purple=&quot;\[\033[0;35m\]&quot;</span><br><span class="line">reset=&quot;\[\033[0m\]&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Change <span class="built_in">command</span> prompt</span></span><br><span class="line">source ~/git-prompt.sh</span><br><span class="line"></span><br><span class="line">export GIT_PS1_SHOWDIRTYSTATE=1</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="string">&#x27;\u&#x27;</span> adds the name of the current user to the prompt</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="string">&#x27;\$(__git_ps1)&#x27;</span> adds git-related stuff</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="string">&#x27;\W&#x27;</span> adds the name of the current directory</span></span><br><span class="line">export PS1=&quot;$purple\u$green\$(__git_ps1)$blue \W $ $reset&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Done !</p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/51/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/51/">51</a><span class="page-number current">52</span><a class="page-number" href="/page/53/">53</a><span class="space">&hellip;</span><a class="page-number" href="/page/61/">61</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/53/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/51/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/51/">51</a><span class="page-number current">52</span><a class="page-number" href="/page/53/">53</a><span class="space">&hellip;</span><a class="page-number" href="/page/62/">62</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/53/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
