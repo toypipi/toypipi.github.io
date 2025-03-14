@@ -29,8 +29,11 @@
 <meta property="og:description" content="抢占进程调度1.在一个单 CPU 的计算机系统中，采用按优先级抢占的进程调度方案，且所有任务可以并行使用 I&#x2F;O 设备。现在有三个任务 T1、T2 和 T3，其优先级分别为高、中、低，每个任务需要先占用 CPU 10ms，然后再使用 I&#x2F;O 设备 13ms，最后还需要再占用 CPU 5ms。如果操作系统的开销忽略不计，这三个任务从开始到全部结束所用的总时间为（ 58 ）ms。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://toypipi.github.io/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/1.png">
+<meta property="og:image" content="https://toypipi.github.io/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/2.jpg">
+<meta property="og:image" content="https://toypipi.github.io/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/3.png">
+<meta property="og:image" content="https://toypipi.github.io/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/4.png">
 <meta property="article:published_time" content="2025-03-12T02:09:22.000Z">
-<meta property="article:modified_time" content="2025-03-12T03:04:10.310Z">
+<meta property="article:modified_time" content="2025-03-14T03:12:44.038Z">
 <meta property="article:author" content="toypipi">
 <meta property="article:tag" content="计算题">
 <meta name="twitter:card" content="summary">
@@ -145,7 +148,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%A2%E5%8D%A0%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6"><span class="nav-number">1.</span> <span class="nav-text">抢占进程调度</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%A2%E5%8D%A0%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6"><span class="nav-number">1.</span> <span class="nav-text">抢占进程调度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B2%9F%E9%80%9A%E6%B8%A0%E9%81%93%E8%AE%A1%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">沟通渠道计数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%90%E7%AD%B9%E5%AD%A6"><span class="nav-number">3.</span> <span class="nav-text">运筹学</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -234,9 +237,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2025-03-12 10:09:22 / 修改时间：11:04:10" itemprop="dateCreated datePublished" datetime="2025-03-12T10:09:22+08:00">2025-03-12</time>
+      <time title="创建时间：2025-03-12 10:09:22" itemprop="dateCreated datePublished" datetime="2025-03-12T10:09:22+08:00">2025-03-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-14 11:12:44" itemprop="dateModified" datetime="2025-03-14T11:12:44+08:00">2025-03-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -262,14 +271,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>146</span>
+      <span>578</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>2 分钟</span>
     </span>
 </div>
 
@@ -285,6 +294,31 @@
 <img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/1.png" class="">
 
 <span id="more"></span>
+
+<h1 id="沟通渠道计数"><a href="#沟通渠道计数" class="headerlink" title="沟通渠道计数"></a>沟通渠道计数</h1><p>1.某项目潜在沟通渠道数为 153，则项目干系人数量为（ 18 ）人。</p>
+<p>解析：<br>本题考查沟通渠道数的计算，沟通渠道的计算公式：n*（n-1）&#x2F;2（其中 n 表示人数）</p>
+<h1 id="运筹学"><a href="#运筹学" class="headerlink" title="运筹学"></a>运筹学</h1><p>1.某部门有 3 个生产同类产品的工厂（产地），生产的产品由 4 个销售点（销地）出售，各工厂的生产量（单位：吨）、各销售点的销售量（单位：吨）以及各工厂到各销售点的单位运价（百元 &#x2F; 吨）示于表 4 中。</p>
+<img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/2.jpg" class="">
+
+<p>适当安排调运方案，最小总运费为（ 460）。</p>
+<p>解析：<br>首先要看懂表格中的数字表示的含义，如图所示：</p>
+<img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/3.png" class="">
+
+<ul>
+<li>红色：表示各销售点的单位运价</li>
+<li>蓝色：各工厂的生产量</li>
+<li>绿色：各销售点的销售量</li>
+<li>黄色：表示产销平衡</li>
+</ul>
+<p>采用伏格尔法解题：伏格尔法又称差值法，该方法考虑到，某产地的产品如不能按最小运费就近供应，就考虑次小运费，这就有一个差额。差额越大，说明不能按最小运费调运时，运费增加越多。因而对差额最大处，就应当采用最小运费调运。同理也适用于产销量分配。<br>具体步骤</p>
+<ol>
+<li>计算每行、列中的最小元素和次小元素的差值，标在表的下方（列差）和右方（行差）</li>
+<li>找出差额最大的列或行，将运输量赋予该列或行的最小元素</li>
+<li>删掉满足条件的行或列（只能删掉其中一个）</li>
+<li>继续 1-3</li>
+</ol>
+<p>详细计算过程见图。</p>
+<img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/4.png" class="">
 
     </div>
 
@@ -372,13 +406,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">227k</span>
+    <span title="站点总字数">228k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:46</span>
+    <span title="站点阅读时长">13:48</span>
   </span>
 </div>
 <div class="busuanzi-count">
