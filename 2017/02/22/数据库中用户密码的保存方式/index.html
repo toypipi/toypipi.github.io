@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="本文转载自《Spring 3.x企业应用开发实战》，作者：陈雄华 ，出版社：电子工业出版社出版,版权归期所有。  在实际应用中，一般不会直接在数据库中以明文的方式保存用户的密码，因为这样很容易造成密码泄密问题。所以需要将密码加密后以密文的方式进行保存；另外一种更有效的办法是仅保存密码的MD5摘要，由于相等的两字符串摘要值也相等，在登录验证时，通过比较摘要的方式就可以判断用户所输入的密码是否正确">
+    <meta name="description" content="本文转载自《Spring 3.x企业应用开发实战》，作者：陈雄华 ，出版社：电子工业出版社出版,版权归期所有。  在实际应用中，一般不会直接在数据库中以明文的方式保存用户的密码，因为这样很容易造成密码泄密问题。所以需要将密码加密后以密文的方式进行保存；另外一种更有效的办法是仅保存密码的MD5摘要，由于相等的两字符串摘要值也相等，在登录验证时，通过比较摘要的方式就可以判断用户所输入的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库中用户密码的保存方式">
 <meta property="og:url" content="https://toypipi.github.io/2017/02/22/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81%E7%9A%84%E4%BF%9D%E5%AD%98%E6%96%B9%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="本文转载自《Spring 3.x企业应用开发实战》，作者：陈雄华 ，出版社：电子工业出版社出版,版权归期所有。  在实际应用中，一般不会直接在数据库中以明文的方式保存用户的密码，因为这样很容易造成密码泄密问题。所以需要将密码加密后以密文的方式进行保存；另外一种更有效的办法是仅保存密码的MD5摘要，由于相等的两字符串摘要值也相等，在登录验证时，通过比较摘要的方式就可以判断用户所输入的密码是否正确">
+<meta property="og:description" content="本文转载自《Spring 3.x企业应用开发实战》，作者：陈雄华 ，出版社：电子工业出版社出版,版权归期所有。  在实际应用中，一般不会直接在数据库中以明文的方式保存用户的密码，因为这样很容易造成密码泄密问题。所以需要将密码加密后以密文的方式进行保存；另外一种更有效的办法是仅保存密码的MD5摘要，由于相等的两字符串摘要值也相等，在登录验证时，通过比较摘要的方式就可以判断用户所输入的">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-02-22T02:07:49.000Z">
 <meta property="article:modified_time" content="2020-11-03T03:44:00.464Z">
@@ -286,9 +286,12 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
 <blockquote>
-<p>本文转载自<a target="_blank" rel="noopener" href="https://book.douban.com/subject/10432844/">《Spring 3.x企业应用开发实战》</a>，<strong>作者：</strong>陈雄华 ，<strong>出版社：</strong>电子工业出版社出版,版权归期所有。</p>
+<p>本文转载自<a
+target="_blank" rel="noopener" href="https://book.douban.com/subject/10432844/">《Spring
+3.x企业应用开发实战》</a>，<strong>作者：</strong>陈雄华
+，<strong>出版社：</strong>电子工业出版社出版,版权归期所有。</p>
 </blockquote>
 <p>在实际应用中，一般不会直接在数据库中以明文的方式保存用户的密码，因为这样很容易造成密码泄密问题。所以需要将密码加密后以密文的方式进行保存；另外一种更有效的办法是仅保存密码的MD5摘要，由于相等的两字符串摘要值也相等，在登录验证时，通过比较摘要的方式就可以判断用户所输入的密码是否正确。由于不能通过密码摘要反推出原来的密码，即使内部人员可以查看用户信息也无法知道用户的密码。所以，摘要存储方式已经成为大部分系统密码存储的通用方式。此外，为了防止黑客通过工具进行密码的暴力破解，目前大多数Web应用都使用了图片验证码功能，验证码具有一次性消费的特征，每次登录都不相同，这样工具暴力破解就无用武之地了。</p>
 
@@ -385,13 +388,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -456,6 +459,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

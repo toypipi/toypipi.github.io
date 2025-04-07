@@ -272,16 +272,28 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>Percona XtraBackup 已经实现了对加密备份的支持。它可用于使用 <code>xbstream</code> 选项加密、解密本地备份或流式备份（不支持流式 tar 备份），以便为备份添加另一层保护。加密是通过 <code>libgcrypt</code> 库完成的。</p>
+          <hr />
+<p>Percona XtraBackup 已经实现了对加密备份的支持。它可用于使用
+<code>xbstream</code> 选项加密、解密本地备份或流式备份（不支持流式 tar
+备份），以便为备份添加另一层保护。加密是通过 <code>libgcrypt</code>
+库完成的。</p>
 <p>#创建加密备份</p>
-<p>要创建一个加密备份，需要指定以下选项（选项 <code>xtrabackup --encrypt-key</code> 和 <code>xtrabackup --encrypt-key-file</code> 是互斥的，即只需要提供其中的一个就行）：</p>
+<p>要创建一个加密备份，需要指定以下选项（选项
+<code>xtrabackup --encrypt-key</code> 和
+<code>xtrabackup --encrypt-key-file</code>
+是互斥的，即只需要提供其中的一个就行）：</p>
 <ul>
-<li><code>--encrypt=ALGORITHM</code> - 目前支持的算法有：<code>AES128</code>，<code>AES192</code> 和 <code>AES256</code></li>
-<li><code>--encrypt-key=ENCRYPTION_KEY</code> - 使用适当长度的加密密钥。不建议在通过命令行访问机器的情况下使用此选项，因为该密钥在执行过程中会被打印输出。</li>
-<li><code>--encrypt-key-file=KEYFILE</code> - 可从中读取适当长度的原始密钥的文件的名称。该文件必须是一个简单的二进制（或文本）文件，其中准确存储了需要使用的密钥。</li>
+<li><code>--encrypt=ALGORITHM</code> -
+目前支持的算法有：<code>AES128</code>，<code>AES192</code> 和
+<code>AES256</code></li>
+<li><code>--encrypt-key=ENCRYPTION_KEY</code> -
+使用适当长度的加密密钥。不建议在通过命令行访问机器的情况下使用此选项，因为该密钥在执行过程中会被打印输出。</li>
+<li><code>--encrypt-key-file=KEYFILE</code> -
+可从中读取适当长度的原始密钥的文件的名称。该文件必须是一个简单的二进制（或文本）文件，其中准确存储了需要使用的密钥。</li>
 </ul>
-<p><code>xtrabackup --encrypt-key</code> 选项和<code> xtrabackup --encrypt-key-file</code> 选项均可用于指定加密密钥。加密密钥可以使用如下命令生成：</p>
+<p><code>xtrabackup --encrypt-key</code>
+选项和<code>xtrabackup --encrypt-key-file</code>
+选项均可用于指定加密密钥。加密密钥可以使用如下命令生成：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ openssl rand -base64 24</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
@@ -389,15 +401,19 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>Percona XtraBackup 实现了对压缩备份的支持。它可以使用 <a target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/glossary.html#term-xbstream">xbstream</a> 压缩、解压缩本地备份或流式备份。</p>
-<h1 id="创建压缩备份"><a href="#创建压缩备份" class="headerlink" title="创建压缩备份"></a>创建压缩备份</h1><p>为了进行压缩备份，您需要使用 <code>xtrabackup --compress</code> 选项：</p>
+          <hr />
+<p>Percona XtraBackup 实现了对压缩备份的支持。它可以使用 <a
+target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/glossary.html#term-xbstream">xbstream</a>
+压缩、解压缩本地备份或流式备份。</p>
+<h1 id="创建压缩备份">创建压缩备份</h1>
+<p>为了进行压缩备份，您需要使用 <code>xtrabackup --compress</code>
+选项：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup --backup --compress --target-dir=/data/compressed/</span><br></pre></td></tr></table></figure>
-
-<p>如果您想加快压缩速度，可以使用并行压缩，可以使用 <code>xtrabackup --compress-threads</code> 选项启用并行压缩。以下示例将使用四个线程进行压缩：</p>
+<p>如果您想加快压缩速度，可以使用并行压缩，可以使用
+<code>xtrabackup --compress-threads</code>
+选项启用并行压缩。以下示例将使用四个线程进行压缩：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup --backup --compress --compress-threads=4 \</span><br><span class="line">--target-dir=/data/compressed/</span><br></pre></td></tr></table></figure>
-
-<p>输出看起来像这样</p>
+<p>输出看起来像这样
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/03/31/%E5%8E%8B%E7%BC%A9%E5%A4%87%E4%BB%BD/#more" rel="contents">
@@ -504,11 +520,20 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p><strong>xtrabackup</strong> 和 <strong>innobackupex</strong> 工具都支持增量备份，这意味着它们可以仅复制自上次备份以来发生更改的数据。</p>
+          <hr />
+<p><strong>xtrabackup</strong> 和 <strong>innobackupex</strong>
+工具都支持增量备份，这意味着它们可以仅复制自上次备份以来发生更改的数据。</p>
 <p>您可以在每次完整备份之间执行多次增量备份，因此您可以这样设置备份过程，例如每周一次完整备份和每天增量备份，或者每天完整备份和每小时增量备份。</p>
-<p>增量备份的工作原理是每个 InnoDB 页都包含日志序列号既 LSN。 LSN 是整个数据库的系统版本号。每个页的 LSN 显示了它最近的变化。</p>
-<p>增量备份复制那些 LSN 比之前增量备份或完全备份的 LSN 更新的所有页面。有两种算法用于查找要复制的这类页面的集合。第一种算法可用于所有服务器类型和版本，它通过读取所有数据页直接检查页面 LSN。 第二种方法适用于 Percona Server 它启用服务器上<a target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-server/5.6/management/changed_page_tracking.html">更改页面跟踪</a>功能，该功能会在页面被更改时记录下来。这些信息将被写入一个紧凑的单独的所谓的位图文件中。 <strong>xtrabackup</strong> 二进制文件将使用该文件只读取增量备份所需的数据页面，这潜在地节省了很多读取请求。如果<strong>xtrabackup</strong> 程序找到了位图文件，则默认启用后一种算法。即使位图数据可用，也可以指定<code>xtrabackup --incremental-force-scan</code> 来读取所有页面。</p>
+<p>增量备份的工作原理是每个 InnoDB 页都包含日志序列号既 LSN。 LSN
+是整个数据库的系统版本号。每个页的 LSN 显示了它最近的变化。</p>
+<p>增量备份复制那些 LSN 比之前增量备份或完全备份的 LSN
+更新的所有页面。有两种算法用于查找要复制的这类页面的集合。第一种算法可用于所有服务器类型和版本，它通过读取所有数据页直接检查页面
+LSN。 第二种方法适用于 Percona Server 它启用服务器上<a
+target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-server/5.6/management/changed_page_tracking.html">更改页面跟踪</a>功能，该功能会在页面被更改时记录下来。这些信息将被写入一个紧凑的单独的所谓的位图文件中。
+<strong>xtrabackup</strong>
+二进制文件将使用该文件只读取增量备份所需的数据页面，这潜在地节省了很多读取请求。如果<strong>xtrabackup</strong>
+程序找到了位图文件，则默认启用后一种算法。即使位图数据可用，也可以指定<code>xtrabackup --incremental-force-scan</code>
+来读取所有页面。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/03/30/%E5%A2%9E%E9%87%8F%E5%A4%87%E4%BB%BD/#more" rel="contents">
@@ -615,13 +640,24 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<h1 id="创建备份"><a href="#创建备份" class="headerlink" title="创建备份"></a>创建备份</h1><p>要创建备份，请使用 <code>xtrabackup --backup</code> 选项运行 <strong>xtrabackup</strong> 。您还需要使用 <code>xtrabackup --target-dir</code> 选项指定备份文件存储的目录，如果 InnoDB 数据或日志文件未存储在同一目录中，则还需要指定他们的位置。如果备份的目标目录不存在， <strong>xtrabackup</strong> 会创建它。如果目录确实存在并且为空，则 <strong>xtrabackup</strong> 将成功运行。 如果目录不为空， <strong>xtrabackup</strong> 不会覆盖现有的文件，它会执行失败，并报操作系统错误码17，<code>file exists</code> 。</p>
+          <hr />
+<h1 id="创建备份">创建备份</h1>
+<p>要创建备份，请使用 <code>xtrabackup --backup</code> 选项运行
+<strong>xtrabackup</strong> 。您还需要使用
+<code>xtrabackup --target-dir</code> 选项指定备份文件存储的目录，如果
+InnoDB
+数据或日志文件未存储在同一目录中，则还需要指定他们的位置。如果备份的目标目录不存在，
+<strong>xtrabackup</strong> 会创建它。如果目录确实存在并且为空，则
+<strong>xtrabackup</strong> 将成功运行。 如果目录不为空，
+<strong>xtrabackup</strong>
+不会覆盖现有的文件，它会执行失败，并报操作系统错误码17，<code>file exists</code>
+。</p>
 <p>要开始备份请运行：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ xtrabackup <span class="comment">--backup --target-dir=/data/backups/</span></span><br></pre></td></tr></table></figure>
-
-<p>这会将备份存储在 <code>/data/backups/</code> 目录中。如果您指定的是相对路径，则目标目录将与您当前目录有关。</p>
-<p>在备份过程中，您应会看到大量输出显示正在复制的数据文件，以及日志文件线程反复扫描日志文件并从中复制日志文件。下面是一个例子，它显示了在后台扫描日志的日志线程以及在 <code>ibdata1</code>  文件上工作的文件复制线程：</p>
+<p>这会将备份存储在 <code>/data/backups/</code>
+目录中。如果您指定的是相对路径，则目标目录将与您当前目录有关。</p>
+<p>在备份过程中，您应会看到大量输出显示正在复制的数据文件，以及日志文件线程反复扫描日志文件并从中复制日志文件。下面是一个例子，它显示了在后台扫描日志的日志线程以及在
+<code>ibdata1</code> 文件上工作的文件复制线程：
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/03/28/%E5%A4%87%E4%BB%BD%E5%91%A8%E6%9C%9F-%E5%AE%8C%E6%95%B4%E5%A4%87%E4%BB%BD/#more" rel="contents">
@@ -728,11 +764,20 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>所有 <strong>xtrabackup</strong> 配置都是通过选项完成的，这些选项的行为与标准 MySQL 程序选项完全相同：它们可以在命令行或通过诸如 <code>/etc/my.cnf</code> 的文件中指定。</p>
-<p><strong>xtrabackup</strong> 以 [mysqld] 和 [xtrabackup] 的顺序从任意配置文件中读取配置选项。因此它可以从现有的 MySQL 安装中读取已经配置的选项，例如 datadi r或一些 InnoDB 选项。如果您想要覆盖这些内容，只需在 [xtrabackup] 部分中指定它们，因为它稍后被读取，所以优先级更高。</p>
-<p>如果你不想这么做，你也可以不用在 my.cnf 中添加任何配置。您可以简单地在命令行上指定选项。通常，您可能会发现在 my.cnf 文件中的 [xtrabackup] 使用 target_dir 选项来指定默认备份目录会很方便，例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[xtrabackup]</span><br><span class="line">target_dir = /data/backups/mysql/</span><br></pre></td></tr></table></figure>
+          <hr />
+<p>所有 <strong>xtrabackup</strong>
+配置都是通过选项完成的，这些选项的行为与标准 MySQL
+程序选项完全相同：它们可以在命令行或通过诸如 <code>/etc/my.cnf</code>
+的文件中指定。</p>
+<p><strong>xtrabackup</strong> 以 [mysqld] 和 [xtrabackup]
+的顺序从任意配置文件中读取配置选项。因此它可以从现有的 MySQL
+安装中读取已经配置的选项，例如 datadi r或一些 InnoDB
+选项。如果您想要覆盖这些内容，只需在 [xtrabackup]
+部分中指定它们，因为它稍后被读取，所以优先级更高。</p>
+<p>如果你不想这么做，你也可以不用在 my.cnf
+中添加任何配置。您可以简单地在命令行上指定选项。通常，您可能会发现在
+my.cnf 文件中的 [xtrabackup] 使用 target_dir
+选项来指定默认备份目录会很方便，例如： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[xtrabackup]</span><br><span class="line">target_dir = /data/backups/mysql/</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/03/28/%E9%85%8D%E7%BD%AE-xtrabackup/#more" rel="contents">
@@ -781,13 +826,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -852,6 +897,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="leetcode 题库里面的一道题，官方讲解得很清楚，记录一下。 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出和为目标值 target 的那 两个 整数，并返回它们的数组下标。 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。 你可以按任意顺序返回答案。 解法一，比较容易想到的解法就是暴力求解，嵌套 for 循环，时间复杂度 O（">
+    <meta name="description" content="leetcode 题库里面的一道题，官方讲解得很清楚，记录一下。 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出和为目标值 target 的那 两个 整数，并返回它们的数组下标。 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。 你可以按任意顺序返回答案。 解法一，比较容易想到的解法就是暴力求解，嵌套 for 循环，时">
 <meta property="og:type" content="article">
 <meta property="og:title" content="两数之和">
 <meta property="og:url" content="https://toypipi.github.io/2023/07/27/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="leetcode 题库里面的一道题，官方讲解得很清楚，记录一下。 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出和为目标值 target 的那 两个 整数，并返回它们的数组下标。 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。 你可以按任意顺序返回答案。 解法一，比较容易想到的解法就是暴力求解，嵌套 for 循环，时间复杂度 O（">
+<meta property="og:description" content="leetcode 题库里面的一道题，官方讲解得很清楚，记录一下。 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出和为目标值 target 的那 两个 整数，并返回它们的数组下标。 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。 你可以按任意顺序返回答案。 解法一，比较容易想到的解法就是暴力求解，嵌套 for 循环，时">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://toypipi.github.io/2023/07/27/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C.png">
 <meta property="article:published_time" content="2023-07-27T02:41:19.000Z">
@@ -285,19 +285,26 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>leetcode 题库里面的<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/two-sum/solutions/434597/liang-shu-zhi-he-by-leetcode-solution/">一道题</a>，官方讲解得很清楚，记录一下。</p>
-<p>给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出和为目标值 target 的那 两个 整数，并返回它们的数组下标。</p>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<p>leetcode 题库里面的<a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/two-sum/solutions/434597/liang-shu-zhi-he-by-leetcode-solution/">一道题</a>，官方讲解得很清楚，记录一下。</p>
+<p>给定一个整数数组 nums 和一个整数目标值
+target，请你在该数组中找出和为目标值 target 的那 两个
+整数，并返回它们的数组下标。</p>
 <p>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。</p>
 <p>你可以按任意顺序返回答案。</p>
-<p>解法一，比较容易想到的解法就是暴力求解，嵌套 for 循环，时间复杂度 O（n²），空间复杂度 O(1)。<br>题目要求，数组中同一个元素在答案里不能重复出现，所以，第二层 for 循环只需要在 i 之后的元素中寻找。</p>
+<p>解法一，比较容易想到的解法就是暴力求解，嵌套 for 循环，时间复杂度
+O（n²），空间复杂度 O(1)。
+题目要求，数组中同一个元素在答案里不能重复出现，所以，第二层 for
+循环只需要在 i 之后的元素中寻找。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number[]</span>&#125; <span class="variable">nums</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">target</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">number[]</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> twoSum = <span class="keyword">function</span> (<span class="params">nums, target</span>) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.<span class="property">length</span> - <span class="number">1</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = i + <span class="number">1</span>; j &lt; nums.<span class="property">length</span>; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (nums[i] + nums[j] === target) <span class="keyword">return</span> [i, j];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <span id="more"></span>
-
-<p>解法二，使用 HASH 表取代内层循环，以空间换时间。<br>哈希表中储存的是数组中的数字和数字对应的索引，其中：key 为数组中的数字，value 为数字对应的索引，每次循环判断 target 值减去数字值在不在 key 中，在的话就返回数组下标，不在的话就将数字和下标保存在哈希表中。</p>
+<p>解法二，使用 HASH 表取代内层循环，以空间换时间。
+哈希表中储存的是数组中的数字和数字对应的索引，其中：key
+为数组中的数字，value 为数字对应的索引，每次循环判断 target
+值减去数字值在不在 key
+中，在的话就返回数组下标，不在的话就将数字和下标保存在哈希表中。</p>
 <img src="/2023/07/27/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C.png" class="">
-
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number[]</span>&#125; <span class="variable">nums</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">target</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">number[]</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> twoSum = <span class="keyword">function</span> (<span class="params">nums, target</span>) &#123;</span><br><span class="line">  <span class="comment">// 存储出现过的数字和索引，其中 key 为 数字，value 为索引</span></span><br><span class="line">  <span class="keyword">const</span> hashTable = &#123;&#125;;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="comment">// 当前元素</span></span><br><span class="line">    <span class="keyword">const</span> curNum = nums[i];</span><br><span class="line">    <span class="comment">// 目标元素</span></span><br><span class="line">    <span class="keyword">const</span> anotherNum = target - curNum;</span><br><span class="line">    <span class="comment">// 获取目标元素的索引</span></span><br><span class="line">    <span class="keyword">const</span> anotherNumIndex = hashTable[anotherNum];</span><br><span class="line">    <span class="comment">// 如果哈希表中存在</span></span><br><span class="line">    <span class="keyword">if</span> (anotherNumIndex !== <span class="literal">undefined</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> [i, anotherNumIndex];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      hashTable[curNum] = i;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
     </div>
@@ -390,13 +397,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -461,6 +468,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

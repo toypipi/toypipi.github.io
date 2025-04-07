@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="抢占进程调度1.在一个单 CPU 的计算机系统中，采用按优先级抢占的进程调度方案，且所有任务可以并行使用 I&#x2F;O 设备。现在有三个任务 T1、T2 和 T3，其优先级分别为高、中、低，每个任务需要先占用 CPU 10ms，然后再使用 I&#x2F;O 设备 13ms，最后还需要再占用 CPU 5ms。如果操作系统的开销忽略不计，这三个任务从开始到全部结束所用的总时间为（ 58 ）ms。">
+    <meta name="description" content="抢占进程调度 1.在一个单 CPU 的计算机系统中，采用按优先级抢占的进程调度方案，且所有任务可以并行使用 I&#x2F;O 设备。现在有三个任务 T1、T2 和 T3，其优先级分别为高、中、低，每个任务需要先占用 CPU 10ms，然后再使用 I&#x2F;O 设备 13ms，最后还需要再占用 CPU 5ms。如果操作系统的开销忽略不计，这三个任务从开始到全部结束所用的总时间为（ 58 ）ms。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="信息系统项目管理师计算题汇总">
 <meta property="og:url" content="https://toypipi.github.io/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="抢占进程调度1.在一个单 CPU 的计算机系统中，采用按优先级抢占的进程调度方案，且所有任务可以并行使用 I&#x2F;O 设备。现在有三个任务 T1、T2 和 T3，其优先级分别为高、中、低，每个任务需要先占用 CPU 10ms，然后再使用 I&#x2F;O 设备 13ms，最后还需要再占用 CPU 5ms。如果操作系统的开销忽略不计，这三个任务从开始到全部结束所用的总时间为（ 58 ）ms。">
+<meta property="og:description" content="抢占进程调度 1.在一个单 CPU 的计算机系统中，采用按优先级抢占的进程调度方案，且所有任务可以并行使用 I&#x2F;O 设备。现在有三个任务 T1、T2 和 T3，其优先级分别为高、中、低，每个任务需要先占用 CPU 10ms，然后再使用 I&#x2F;O 设备 13ms，最后还需要再占用 CPU 5ms。如果操作系统的开销忽略不计，这三个任务从开始到全部结束所用的总时间为（ 58 ）ms。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://toypipi.github.io/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/1.png">
 <meta property="og:image" content="https://toypipi.github.io/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/2.jpg">
@@ -52,7 +52,7 @@
 <meta property="og:image" content="https://toypipi.github.io/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/22.png">
 <meta property="og:image" content="https://toypipi.github.io/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/23.png">
 <meta property="article:published_time" content="2025-03-12T02:09:22.000Z">
-<meta property="article:modified_time" content="2025-04-05T10:17:25.534Z">
+<meta property="article:modified_time" content="2025-04-06T07:14:29.924Z">
 <meta property="article:author" content="toypipi">
 <meta property="article:tag" content="计算题">
 <meta name="twitter:card" content="summary">
@@ -167,7 +167,8 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%A2%E5%8D%A0%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6"><span class="nav-number">1.</span> <span class="nav-text">抢占进程调度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B2%9F%E9%80%9A%E6%B8%A0%E9%81%93%E8%AE%A1%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">沟通渠道计数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%90%E7%AD%B9%E5%AD%A6"><span class="nav-number">3.</span> <span class="nav-text">运筹学</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A7%91%E5%AD%A6%E7%AE%A1%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">科学管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8C%A3%E5%80%BC%E7%AE%A1%E7%90%86"><span class="nav-number">5.</span> <span class="nav-text">挣值管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B8%E5%9E%8B%EF%BC%88%E9%A2%98%E7%9B%AE%E4%B8%AD%E5%87%BA%E7%8E%B0%E4%B8%8D%E9%87%87%E5%8F%96%E4%BB%BB%E4%BD%95%E6%8E%AA%E6%96%BD%E3%80%81%E4%BB%8D%E6%8C%89%E7%9B%AE%E5%89%8D%E7%8A%B6%E6%80%81%E3%80%81%E6%8C%89%E5%8E%9F%E7%8A%B6%E6%80%81%E7%BB%A7%E7%BB%AD%E8%BF%9B%E8%A1%8C%E4%B8%BA%E5%85%B8%E5%9E%8B%EF%BC%8C%E6%AF%94%E4%BE%8B%E5%85%B3%E7%B3%BB-%EF%BC%89%E7%9A%84%E6%97%B6%E5%80%99"><span class="nav-number">5.1.</span> <span class="nav-text">典型（题目中出现不采取任何措施、仍按目前状态、按原状态继续进行为典型，比例关系 ）的时候</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B8%E5%9E%8B%E3%80%81%E9%9D%9E%E5%85%B8%E5%9E%8B%EF%BC%88%E9%A2%98%E7%9B%AE%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%89%BE%E5%88%B0%E4%BA%86%E5%8E%9F%E5%9B%A0%EF%BC%8C%E5%B9%B6%E7%BA%A0%E6%AD%A3%E4%BA%86%E5%81%8F%E5%B7%AE%EF%BC%8C%E8%B0%83%E6%95%B4%E6%8E%AA%E6%96%BD%EF%BC%8C%E6%8C%89%E5%8E%9F%E8%AE%A1%E5%88%92%E7%BB%A7%E7%BB%AD%E8%BF%9B%E8%A1%8C%E4%B8%BA%E9%9D%9E%E5%85%B8%E5%9E%8B%EF%BC%89%E5%9D%87%E5%8F%AF%E4%BB%A5%E7%94%A8%EF%BC%8C%E4%BD%86%E6%98%AF%E9%9C%80%E8%A6%81%E5%88%A4%E6%96%AD%E6%AF%8F%E5%A4%A9%E8%8A%B1%E7%9A%84%E9%92%B1%E6%98%AF%E5%A4%9A%E5%B0%91%EF%BC%9F"><span class="nav-number">5.2.</span> <span class="nav-text">典型、非典型（题目中出现找到了原因，并纠正了偏差，调整措施，按原计划继续进行为非典型）均可以用，但是需要判断每天花的钱是多少？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E7%82%B9%E4%BC%B0%E7%AE%97%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">三点估算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92"><span class="nav-number">7.</span> <span class="nav-text">线性规划</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91"><span class="nav-number">8.</span> <span class="nav-text">最小生成树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%95%E8%B5%84%E5%9B%9E%E6%94%B6%E6%9C%9F"><span class="nav-number">9.</span> <span class="nav-text">投资回收期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E8%BF%9B%E5%BA%A6%E7%BD%91%E7%BB%9C%E5%9B%BE"><span class="nav-number">10.</span> <span class="nav-text">项目进度网络图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E6%A0%87%E7%BD%91%E7%BB%9C%E5%9B%BE"><span class="nav-number">10.1.</span> <span class="nav-text">时标网络图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%9F%E6%9C%9B%E8%B4%A7%E5%B8%81%E4%BB%B7%E5%80%BC"><span class="nav-number">11.</span> <span class="nav-text">期望货币价值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%95%E8%B5%84%E6%94%B6%E7%9B%8A%E7%8E%87"><span class="nav-number">12.</span> <span class="nav-text">投资收益率</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%9A%E5%BC%88%E8%AE%BA"><span class="nav-number">13.</span> <span class="nav-text">博弈论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%A2%E5%BE%97%E7%9F%A9%E9%98%B5"><span class="nav-number">13.1.</span> <span class="nav-text">赢得矩阵</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7%E5%86%B3%E7%AD%96"><span class="nav-number">14.</span> <span class="nav-text">不确定性决策</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%A2%E5%8D%A0%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6"><span class="nav-number">1.</span> <span class="nav-text">抢占进程调度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B2%9F%E9%80%9A%E6%B8%A0%E9%81%93%E8%AE%A1%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">沟通渠道计数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%90%E7%AD%B9%E5%AD%A6"><span class="nav-number">3.</span> <span class="nav-text">运筹学</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A7%91%E5%AD%A6%E7%AE%A1%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">科学管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8C%A3%E5%80%BC%E7%AE%A1%E7%90%86"><span class="nav-number">5.</span> <span class="nav-text">挣值管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B8%E5%9E%8B%E9%A2%98%E7%9B%AE%E4%B8%AD%E5%87%BA%E7%8E%B0%E4%B8%8D%E9%87%87%E5%8F%96%E4%BB%BB%E4%BD%95%E6%8E%AA%E6%96%BD%E4%BB%8D%E6%8C%89%E7%9B%AE%E5%89%8D%E7%8A%B6%E6%80%81%E6%8C%89%E5%8E%9F%E7%8A%B6%E6%80%81%E7%BB%A7%E7%BB%AD%E8%BF%9B%E8%A1%8C%E4%B8%BA%E5%85%B8%E5%9E%8B%E6%AF%94%E4%BE%8B%E5%85%B3%E7%B3%BB-%E7%9A%84%E6%97%B6%E5%80%99"><span class="nav-number">5.1.</span> <span class="nav-text">典型（题目中出现不采取任何措施、仍按目前状态、按原状态继续进行为典型，比例关系
+）的时候</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B8%E5%9E%8B%E9%9D%9E%E5%85%B8%E5%9E%8B%E9%A2%98%E7%9B%AE%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%89%BE%E5%88%B0%E4%BA%86%E5%8E%9F%E5%9B%A0%E5%B9%B6%E7%BA%A0%E6%AD%A3%E4%BA%86%E5%81%8F%E5%B7%AE%E8%B0%83%E6%95%B4%E6%8E%AA%E6%96%BD%E6%8C%89%E5%8E%9F%E8%AE%A1%E5%88%92%E7%BB%A7%E7%BB%AD%E8%BF%9B%E8%A1%8C%E4%B8%BA%E9%9D%9E%E5%85%B8%E5%9E%8B%E5%9D%87%E5%8F%AF%E4%BB%A5%E7%94%A8%E4%BD%86%E6%98%AF%E9%9C%80%E8%A6%81%E5%88%A4%E6%96%AD%E6%AF%8F%E5%A4%A9%E8%8A%B1%E7%9A%84%E9%92%B1%E6%98%AF%E5%A4%9A%E5%B0%91"><span class="nav-number">5.2.</span> <span class="nav-text">典型、非典型（题目中出现找到了原因，并纠正了偏差，调整措施，按原计划继续进行为非典型）均可以用，但是需要判断每天花的钱是多少？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E7%82%B9%E4%BC%B0%E7%AE%97%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">三点估算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92"><span class="nav-number">7.</span> <span class="nav-text">线性规划</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91"><span class="nav-number">8.</span> <span class="nav-text">最小生成树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%95%E8%B5%84%E5%9B%9E%E6%94%B6%E6%9C%9F"><span class="nav-number">9.</span> <span class="nav-text">投资回收期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E8%BF%9B%E5%BA%A6%E7%BD%91%E7%BB%9C%E5%9B%BE"><span class="nav-number">10.</span> <span class="nav-text">项目进度网络图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E6%A0%87%E7%BD%91%E7%BB%9C%E5%9B%BE"><span class="nav-number">10.1.</span> <span class="nav-text">时标网络图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%9F%E6%9C%9B%E8%B4%A7%E5%B8%81%E4%BB%B7%E5%80%BC"><span class="nav-number">11.</span> <span class="nav-text">期望货币价值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%95%E8%B5%84%E6%94%B6%E7%9B%8A%E7%8E%87"><span class="nav-number">12.</span> <span class="nav-text">投资收益率</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%9A%E5%BC%88%E8%AE%BA"><span class="nav-number">13.</span> <span class="nav-text">博弈论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%A2%E5%BE%97%E7%9F%A9%E9%98%B5"><span class="nav-number">13.1.</span> <span class="nav-text">赢得矩阵</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7%E5%86%B3%E7%AD%96"><span class="nav-number">14.</span> <span class="nav-text">不确定性决策</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -264,7 +265,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-04-05 18:17:25" itemprop="dateModified" datetime="2025-04-05T18:17:25+08:00">2025-04-05</time>
+      <time title="修改时间：2025-04-06 15:14:29" itemprop="dateModified" datetime="2025-04-06T15:14:29+08:00">2025-04-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -307,30 +308,41 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<h1 id="抢占进程调度"><a href="#抢占进程调度" class="headerlink" title="抢占进程调度"></a>抢占进程调度</h1><p><strong>1.在一个单 CPU 的计算机系统中，采用按优先级抢占的进程调度方案，且所有任务可以并行使用 I&#x2F;O 设备。现在有三个任务 T1、T2 和 T3，其优先级分别为高、中、低，每个任务需要先占用 CPU 10ms，然后再使用 I&#x2F;O 设备 13ms，最后还需要再占用 CPU 5ms。如果操作系统的开销忽略不计，这三个任务从开始到全部结束所用的总时间为（ 58 ）ms。</strong></p>
-<p>解析：<br>如图所示</p>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<h1 id="抢占进程调度">抢占进程调度</h1>
+<p><strong>1.在一个单 CPU
+的计算机系统中，采用按优先级抢占的进程调度方案，且所有任务可以并行使用
+I/O 设备。现在有三个任务 T1、T2 和
+T3，其优先级分别为高、中、低，每个任务需要先占用 CPU 10ms，然后再使用
+I/O 设备 13ms，最后还需要再占用 CPU
+5ms。如果操作系统的开销忽略不计，这三个任务从开始到全部结束所用的总时间为（
+58 ）ms。</strong></p>
+<p>解析： 如图所示</p>
 <img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/1.png" class="">
-
 <span id="more"></span>
-
-<h1 id="沟通渠道计数"><a href="#沟通渠道计数" class="headerlink" title="沟通渠道计数"></a>沟通渠道计数</h1><p><strong>1.某项目潜在沟通渠道数为 153，则项目干系人数量为（ 18 ）人。</strong></p>
-<p>解析：<br>本题考查沟通渠道数的计算，沟通渠道的计算公式：n*（n-1）&#x2F;2（其中 n 表示人数）</p>
-<h1 id="运筹学"><a href="#运筹学" class="headerlink" title="运筹学"></a>运筹学</h1><p><strong>1.某部门有 3 个生产同类产品的工厂（产地），生产的产品由 4 个销售点（销地）出售，各工厂的生产量（单位：吨）、各销售点的销售量（单位：吨）以及各工厂到各销售点的单位运价（百元 &#x2F; 吨）示于表 4 中。</strong></p>
+<h1 id="沟通渠道计数">沟通渠道计数</h1>
+<p><strong>1.某项目潜在沟通渠道数为 153，则项目干系人数量为（ 18
+）人。</strong></p>
+<p>解析：
+本题考查沟通渠道数的计算，沟通渠道的计算公式：n*（n-1）/2（其中 n
+表示人数）</p>
+<h1 id="运筹学">运筹学</h1>
+<p><strong>1.某部门有 3 个生产同类产品的工厂（产地），生产的产品由 4
+个销售点（销地）出售，各工厂的生产量（单位：吨）、各销售点的销售量（单位：吨）以及各工厂到各销售点的单位运价（百元
+/ 吨）示于表 4 中。</strong></p>
 <img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/2.jpg" class="">
-
 <p>适当安排调运方案，最小总运费为（ 460）。</p>
-<p>解析：<br>首先要看懂表格中的数字表示的含义，如图所示：</p>
+<p>解析： 首先要看懂表格中的数字表示的含义，如图所示：</p>
 <img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/3.png" class="">
-
 <ul>
 <li>红色：表示各销售点的单位运价</li>
 <li>蓝色：各工厂的生产量</li>
 <li>绿色：各销售点的销售量</li>
 <li>黄色：表示产销平衡</li>
 </ul>
-<p>采用伏格尔法解题：伏格尔法又称差值法，该方法考虑到，某产地的产品如不能按最小运费就近供应，就考虑次小运费，这就有一个差额。差额越大，说明不能按最小运费调运时，运费增加越多。因而对差额最大处，就应当采用最小运费调运。同理也适用于产销量分配。<br>具体步骤</p>
-<ol>
+<p>采用伏格尔法解题：伏格尔法又称差值法，该方法考虑到，某产地的产品如不能按最小运费就近供应，就考虑次小运费，这就有一个差额。差额越大，说明不能按最小运费调运时，运费增加越多。因而对差额最大处，就应当采用最小运费调运。同理也适用于产销量分配。
+具体步骤</p>
+<ol type="1">
 <li>计算每行、列中的最小元素和次小元素的差值，标在表的下方（列差）和右方（行差）</li>
 <li>找出差额最大的列或行，将运输量赋予该列或行的最小元素</li>
 <li>删掉满足条件的行或列（只能删掉其中一个）</li>
@@ -338,234 +350,223 @@
 </ol>
 <p>详细计算过程见图。</p>
 <img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/4.png" class="">
-
-<p><strong>2.五项任务需要分配到四种不同型号的机器上来执行。四种型号的机器分别有 25、30、20 和 30 台。五项任务的工作量分别是 20、20、30、10 和 25，不能把第四类机器分配到第四项任务上。每项任务当中的每个工作量在执行时需占用任意型号的 1 台机器。各类机器分配到各项任务时所发生的单位成本如下表所示：</strong></p>
+<p><strong>2.五项任务需要分配到四种不同型号的机器上来执行。四种型号的机器分别有
+25、30、20 和 30 台。五项任务的工作量分别是 20、20、30、10 和
+25，不能把第四类机器分配到第四项任务上。每项任务当中的每个工作量在执行时需占用任意型号的
+1
+台机器。各类机器分配到各项任务时所发生的单位成本如下表所示：</strong></p>
 <img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/5.jpg" class="">
-
 <p>任务分配的最优分配方案中，总成本是（ 560 ）。</p>
-<p>解析：<br>在运筹学中，解决分配问题的方法类同于运输问题的解法。 首先，将问题用规范的表格形式表示如下：</p>
+<p>解析： 在运筹学中，解决分配问题的方法类同于运输问题的解法。
+首先，将问题用规范的表格形式表示如下：</p>
 <img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/6.png" class="">
-
-<p>运筹学中解决运输问题或分配问题的方法是先建立初始方案，再逐步优化改进。 可以很容易地建立初始方案：从任务一看，分配给机型二是最经济的。不妨将 20 个工作量全部放在机型二上。从任务三看，分配给机型一最合适，但机型一只有 25 台机器，最多做 25 个工作量，所以任务三的 30 个工作量除了分配 25 个在机型一上外，还可以分配 5 个工作量给机型四。从任务四看，可以将 10 个工作量都分配给机型二。从机型五看，还有 25 个工作量可以分配给任务五。这样，剩余的 20 个工作量只能分配机器三。</p>
-<p>该方案的总成本是 20x5+20x5+25x3+5x13+10x2+25x8&#x3D;560 万元。</p>
-<h1 id="科学管理"><a href="#科学管理" class="headerlink" title="科学管理"></a>科学管理</h1><p><strong>1.一个活动有 4 道工序，一个工人只能负责 1 道工序。每名工人完成各工序所需小时数如表 1 所示，工序间的依赖关系如表 2 所示。完成该活动最少需要（16）小时。</strong></p>
+<p>运筹学中解决运输问题或分配问题的方法是先建立初始方案，再逐步优化改进。
+可以很容易地建立初始方案：从任务一看，分配给机型二是最经济的。不妨将 20
+个工作量全部放在机型二上。从任务三看，分配给机型一最合适，但机型一只有
+25 台机器，最多做 25 个工作量，所以任务三的 30 个工作量除了分配 25
+个在机型一上外，还可以分配 5 个工作量给机型四。从任务四看，可以将 10
+个工作量都分配给机型二。从机型五看，还有 25
+个工作量可以分配给任务五。这样，剩余的 20 个工作量只能分配机器三。</p>
+<p>该方案的总成本是 20x5+20x5+25x3+5x13+10x2+25x8=560 万元。</p>
+<h1 id="科学管理">科学管理</h1>
+<p><strong>1.一个活动有 4 道工序，一个工人只能负责 1
+道工序。每名工人完成各工序所需小时数如表 1 所示，工序间的依赖关系如表 2
+所示。完成该活动最少需要（16）小时。</strong></p>
 <img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/7.png" class="">
-
-<p>解析：<br>第一步：根据工序间的依赖关系表，画图如下：</p>
+<p>解析： 第一步：根据工序间的依赖关系表，画图如下：</p>
 <img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/8.png" class="">
-
 <p>由图片可知，甲做工序一，丁做工序三，可以把这两个工序压倒最短。那么乙和丙只能做工序二和工序三。</p>
 <ul>
 <li>假如乙做工序二 10，丙做工序三 11，由于是并行开展，总时长是 11；</li>
 <li>假如乙做工序三 8，丙做工序二 7，由于是并行开展，总时长是 8。</li>
 </ul>
-<p>由此可知，总工序为：4+8+4 &#x3D; 16.</p>
-<h1 id="挣值管理"><a href="#挣值管理" class="headerlink" title="挣值管理"></a>挣值管理</h1><p>明确含义和计算公式：</p>
-<table>
-<thead>
-<tr>
-<th>缩写</th>
-<th>英文全称</th>
-<th>中文名称</th>
-<th>定义</th>
-<th>计算公式</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>PV</td>
-<td>Planned Value</td>
-<td>计划价值</td>
-<td>在即定时间点前计划完成活动或 WBS 组件工作的预算成本</td>
-<td></td>
-</tr>
-<tr>
-<td>EV</td>
-<td>Earned Value</td>
-<td>挣值</td>
-<td>在即定时间段内实际完工工作的预算成本</td>
-<td></td>
-</tr>
-<tr>
-<td>AC</td>
-<td>Actual Cost</td>
-<td>实际成本</td>
-<td>在即定时间段内实际完成工作发生的实际总成本</td>
-<td></td>
-</tr>
-<tr>
-<td>CV</td>
-<td>Cost Variance</td>
-<td>成本偏差</td>
-<td>已完成工作的计划价值与实际成本之间的差</td>
-<td>CV &#x3D; EV - AC</td>
-</tr>
-<tr>
-<td>SV</td>
-<td>Schedule Variance</td>
-<td>进度偏差</td>
-<td>已完成工作的计划价值与计划完成工作之间的差</td>
-<td>SV &#x3D; EV - PV</td>
-</tr>
-<tr>
-<td>CPI</td>
-<td>Cost Performance Index</td>
-<td>成本绩效指数</td>
-<td>测量成本的指标，表示挣值与实际成本之比</td>
-<td>CPI &#x3D; EV&#x2F;AC</td>
-</tr>
-<tr>
-<td>SPI</td>
-<td>Schedule Performance Index</td>
-<td>进度执行指数</td>
-<td>测量进度的指标，表示挣值与计划价值之比</td>
-<td>SPI &#x3D; EV&#x2F;PV</td>
-</tr>
-<tr>
-<td>BAC</td>
-<td>Budget at Completion</td>
-<td>完工预算</td>
-<td>为执行工作的全部预算总和</td>
-<td></td>
-</tr>
-<tr>
-<td>EAC</td>
-<td>Estimate at Completion</td>
-<td>完工估算</td>
-<td>完成所有工作所需的预算总成本</td>
-<td>非典型、非典型：EAC &#x3D; AC + ETC 选择题：EAC &#x3D; BAC &#x2F; CPI</td>
-</tr>
-<tr>
-<td>ETC</td>
-<td>Estimate to Completion</td>
-<td>完工尚需估算</td>
-<td>完成所有剩余项目工作的预计成本</td>
-<td>非典型 C &#x3D; BAC - EV 典型：ETC &#x3D; (BAC - EV)&#x2F;CPI</td>
-</tr>
-<tr>
-<td>TCPI</td>
-<td>To Complete Performance Index</td>
-<td>完工尚需绩效指数</td>
-<td>是剩余工作所需成本与可用预算之比</td>
-<td>原成本 TCPI &#x3D; （BAC - EV）&#x2F;(BAC - AC) 可变成本 TCPI &#x3D; （BAC - EV)&#x2F; (EAC - AC)</td>
-</tr>
-<tr>
-<td>VAC</td>
-<td>Variance at Completion</td>
-<td>完工偏差</td>
-<td>对预算亏空或盈余的预测，是完工预算与完工估算的差</td>
-<td>VAC &#x3D; BAC - EAC</td>
-</tr>
-</tbody></table>
+<p>由此可知，总工序为：4+8+4 = 16.</p>
+<h1 id="挣值管理">挣值管理</h1>
+<p>明确含义和计算公式： | 缩写 | 英文全称 | 中文名称 | 定义 | 计算公式 |
+| —- | ————————– | ———— | ————————————————— | ———— | | PV | Planned
+Value | 计划价值 | 在即定时间点前计划完成活动或 WBS 组件工作的预算成本 |
+| | EV | Earned Value | 挣值 | 在即定时间段内实际完工工作的预算成本 | |
+| AC | Actual Cost | 实际成本 |
+在即定时间段内实际完成工作发生的实际总成本 | | | CV | Cost Variance |
+成本偏差 | 已完成工作的计划价值与实际成本之间的差 | CV = EV - AC | | SV
+| Schedule Variance | 进度偏差 |
+已完成工作的计划价值与计划完成工作之间的差 | SV = EV - PV | | CPI | Cost
+Performance Index | 成本绩效指数 |
+测量成本的指标，表示挣值与实际成本之比 | CPI = EV/AC | | SPI | Schedule
+Performance Index | 进度执行指数 |
+测量进度的指标，表示挣值与计划价值之比 | SPI = EV/PV | | BAC | Budget at
+Completion | 完工预算 | 为执行工作的全部预算总和 | | | EAC | Estimate at
+Completion | 完工估算 | 完成所有工作所需的预算总成本
+|非典型、非典型：EAC = AC + ETC 选择题：EAC = BAC / CPI | | ETC |
+Estimate to Completion | 完工尚需估算 | 完成所有剩余项目工作的预计成本 |
+非典型 C = BAC - EV 典型：ETC = (BAC - EV)/CPI| | TCPI | To Complete
+Performance Index | 完工尚需绩效指数 | 是剩余工作所需成本与可用预算之比
+| 原成本 TCPI = （BAC - EV）/(BAC - AC) 可变成本 TCPI = （BAC - EV)/
+(EAC - AC) | | VAC | Variance at Completion | 完工偏差 |
+对预算亏空或盈余的预测，是完工预算与完工估算的差 | VAC = BAC - EAC |</p>
 <ul>
 <li>PV 计划价值</li>
 <li>EV 挣值，完成工作的计划值之和</li>
 <li>AC 实际成本</li>
-<li>SV(进度偏差) &#x3D; EV - PV &gt;0 进度超前 &lt;0 进度滞后</li>
-<li>CV(成本偏差) &#x3D; EV - AC &gt;0 成本节省 &lt;0 成本超支</li>
-<li>CPI(成本绩效指数) &#x3D; EV&#x2F;AC &gt;1 成本节约 &lt;1 成本超支</li>
-<li>SPI(进度执行指数) &#x3D; EV&#x2F;PV &gt;1 进度超前 &lt;1 进度滞后</li>
-<li>ETC(完工尚需估算) &#x3D; BAC - EV 当前偏差被看作是非典型的</li>
-<li>ETC(完工尚需估算) &#x3D; (BAC - EV)&#x2F;CPI 当前偏差被看作是代表未来的典型偏差</li>
-<li>EAC(完工估算) &#x3D; AC + ETC –演化为下面两个公式</li>
-<li>EAC(完工估算) &#x3D; AC + BAC -EV 当前偏差被看作是非典型的</li>
-<li>EAC(完工估算) &#x3D; AC + (BAC - EV)&#x2F;CPI 当前偏差被看作是代表未来的典型偏差</li>
-<li>VAC(完工偏差) &#x3D; BAC - EAC，是完工预算与完工估算指差</li>
-<li>TCPI(完工尚需绩效指数) &#x3D; （BAC - EV）&#x2F;(BAC - AC) –按原计划的钱完成项目</li>
-<li>TCPI(完工尚需绩效指数) &#x3D; （BAC - EV)&#x2F; (EAC - AC) –按新计划的钱完成项目</li>
+<li>SV(进度偏差) = EV - PV &gt;0 进度超前 &lt;0 进度滞后</li>
+<li>CV(成本偏差) = EV - AC &gt;0 成本节省 &lt;0 成本超支</li>
+<li>CPI(成本绩效指数) = EV/AC &gt;1 成本节约 &lt;1 成本超支</li>
+<li>SPI(进度执行指数) = EV/PV &gt;1 进度超前 &lt;1 进度滞后</li>
+<li>ETC(完工尚需估算) = BAC - EV 当前偏差被看作是非典型的</li>
+<li>ETC(完工尚需估算) = (BAC - EV)/CPI
+当前偏差被看作是代表未来的典型偏差</li>
+<li>EAC(完工估算) = AC + ETC –演化为下面两个公式</li>
+<li>EAC(完工估算) = AC + BAC -EV 当前偏差被看作是非典型的</li>
+<li>EAC(完工估算) = AC + (BAC - EV)/CPI
+当前偏差被看作是代表未来的典型偏差</li>
+<li>VAC(完工偏差) = BAC - EAC，是完工预算与完工估算指差</li>
+<li>TCPI(完工尚需绩效指数) = （BAC - EV）/(BAC - AC)
+–按原计划的钱完成项目</li>
+<li>TCPI(完工尚需绩效指数) = （BAC - EV)/ (EAC - AC)
+–按新计划的钱完成项目</li>
 </ul>
-<h2 id="典型（题目中出现不采取任何措施、仍按目前状态、按原状态继续进行为典型，比例关系-）的时候"><a href="#典型（题目中出现不采取任何措施、仍按目前状态、按原状态继续进行为典型，比例关系-）的时候" class="headerlink" title="典型（题目中出现不采取任何措施、仍按目前状态、按原状态继续进行为典型，比例关系 ）的时候"></a>典型（题目中出现不采取任何措施、仍按目前状态、按原状态继续进行为典型，比例关系 ）的时候</h2><p>完工工期：计划工期&#x2F;SPI</p>
-<h2 id="典型、非典型（题目中出现找到了原因，并纠正了偏差，调整措施，按原计划继续进行为非典型）均可以用，但是需要判断每天花的钱是多少？"><a href="#典型、非典型（题目中出现找到了原因，并纠正了偏差，调整措施，按原计划继续进行为非典型）均可以用，但是需要判断每天花的钱是多少？" class="headerlink" title="典型、非典型（题目中出现找到了原因，并纠正了偏差，调整措施，按原计划继续进行为非典型）均可以用，但是需要判断每天花的钱是多少？"></a>典型、非典型（题目中出现找到了原因，并纠正了偏差，调整措施，按原计划继续进行为非典型）均可以用，但是需要判断每天花的钱是多少？</h2><p>完工工期：已花时间 + ETC&#x2F;每天花的钱</p>
-<p>预测技术：TCPI &gt; 1 难以完成，TCPI &#x3D; 1 正好完成，TCPI &lt; 1 请以完成。<br>完工工期：已花时间 + ETC&#x2F;每天花的钱。典型、非典型都可以用。<br>完工工期：计划工期&#x2F;SPI,典型的时候用。</p>
-<p>哪个项目最早完工，我们只需要计算 SPI 的值即可。SPI 的值越大，项目的进度就越好。</p>
-<p><strong>1.某软件开发项目包括 A、B、C 三项活动，目前各活动的相关数据如下（单位：万元）则该项目绩效处于（进度提前且成本节约）状态。</strong></p>
+<h2
+id="典型题目中出现不采取任何措施仍按目前状态按原状态继续进行为典型比例关系-的时候">典型（题目中出现不采取任何措施、仍按目前状态、按原状态继续进行为典型，比例关系
+）的时候</h2>
+<p>完工工期：计划工期/SPI</p>
+<h2
+id="典型非典型题目中出现找到了原因并纠正了偏差调整措施按原计划继续进行为非典型均可以用但是需要判断每天花的钱是多少">典型、非典型（题目中出现找到了原因，并纠正了偏差，调整措施，按原计划继续进行为非典型）均可以用，但是需要判断每天花的钱是多少？</h2>
+<p>完工工期：已花时间 + ETC/每天花的钱</p>
+<p>预测技术：TCPI &gt; 1 难以完成，TCPI = 1 正好完成，TCPI &lt; 1
+请以完成。 完工工期：已花时间 + ETC/每天花的钱。典型、非典型都可以用。
+完工工期：计划工期/SPI,典型的时候用。</p>
+<p>哪个项目最早完工，我们只需要计算 SPI 的值即可。SPI
+的值越大，项目的进度就越好。</p>
+<p><strong>1.某软件开发项目包括 A、B、C
+三项活动，目前各活动的相关数据如下（单位：万元）则该项目绩效处于（进度提前且成本节约）状态。</strong></p>
 <img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/9.png" class="">
-
-<p>解析：<br>PMB 是绩效测量基准，等于 BAC（完工预算）。首先需要知道：</p>
+<p>解析： PMB 是绩效测量基准，等于 BAC（完工预算）。首先需要知道：</p>
 <ul>
 <li>PV 计划价值</li>
 <li>EV 挣值，完成工作的计划值之和</li>
 <li>AC 实际成本</li>
-<li>SV(进度偏差) &#x3D; EV - PV &gt;0 进度超前 &lt;0 进度滞后</li>
-<li>CV(成本偏差) &#x3D; EV - AC &gt;0 成本节省 &lt;0 成本超支</li>
+<li>SV(进度偏差) = EV - PV &gt;0 进度超前 &lt;0 进度滞后</li>
+<li>CV(成本偏差) = EV - AC &gt;0 成本节省 &lt;0 成本超支</li>
 </ul>
-<p>由题目可知：<br>PV &#x3D; 20 + 5 &#x3D; 25<br>EV &#x3D; 20*100% + 15*50% + 7*0 &#x3D; 27.5<br>AC &#x3D; 20 + 6 &#x3D; 26<br>SV &#x3D; EV - PV &#x3D; 27.5 - 25 &#x3D; 2.5 &gt; 0 进度超前<br>CV &#x3D; EV - AC &#x3D; 27.5 - 26 &#x3D; 1.5 &gt; 0 成本节约</p>
-<ol start="2">
+<p>由题目可知： PV = 20 + 5 = 25 EV = 20*100% + 15*50% + 7*0 = 27.5 AC =
+20 + 6 = 26 SV = EV - PV = 27.5 - 25 = 2.5 &gt; 0 进度超前 CV = EV - AC
+= 27.5 - 26 = 1.5 &gt; 0 成本节约</p>
+<ol start="2" type="1">
 <li></li>
 </ol>
-<h1 id="三点估算法"><a href="#三点估算法" class="headerlink" title="三点估算法"></a>三点估算法</h1><p><strong>1.某软件开发项目拆分成 3 个模块，项目组对每个模块的开发量（代码行）进行了估计（见下表），该软件项目的总体规模估算为（ 10333 ）代码行。</strong></p>
+<h1 id="三点估算法">三点估算法</h1>
+<p><strong>1.某软件开发项目拆分成 3
+个模块，项目组对每个模块的开发量（代码行）进行了估计（见下表），该软件项目的总体规模估算为（
+10333 ）代码行。</strong></p>
 <img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/10.png" class="">
-
 <p>解析：</p>
-<p>三点估算法计算公式 &#x3D; （最乐观 + 4*最可能 + 最悲观）&#x2F;6<br>(1000+4*1500+2000)&#x2F;6 + (5000+4*6000+8000)&#x2F;6 + (2000+4*2500+4000)&#x2F;6 &#x3D; 10333</p>
-<h1 id="线性规划"><a href="#线性规划" class="headerlink" title="线性规划"></a>线性规划</h1><p><strong>1.某乳制品加工厂用纯牛奶和酸牛奶两种生产原料，加工生产甲、乙两种乳制品。该厂加工每单位乳制品消耗原料数、现有原料数、每单位乳制品的利润如下表所示。则该公司的最大利润为（&nbsp; ）万元。公司获得最大利润时，生产甲的数量是 （&nbsp; ）吨。</strong></p>
+<p>三点估算法计算公式 = （最乐观 + 4*最可能 + 最悲观）/6
+(1000+4*1500+2000)/6 + (5000+4*6000+8000)/6 + (2000+4*2500+4000)/6 =
+10333</p>
+<h1 id="线性规划">线性规划</h1>
+<p><strong>1.某乳制品加工厂用纯牛奶和酸牛奶两种生产原料，加工生产甲、乙两种乳制品。该厂加工每单位乳制品消耗原料数、现有原料数、每单位乳制品的利润如下表所示。则该公司的最大利润为（ 
+）万元。公司获得最大利润时，生产甲的数量是 （  ）吨。</strong></p>
 <img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/11.png" class="">
-
 <p>解析：</p>
-<p>本题考查线性规划内容。设生产甲 X 个；乙 Y 个，列出不等式组：<br>X+2Y≤86；<br>5X+3Y≤150；<br>其中 X、Y 均 ≥0；<br>求函数 3X+4Y 的最大值。<br>消元法求得 X&#x3D;6；Y&#x3D;40；最大值为 178。</p>
-<p><strong>2.某公司打算向它的三个营业区增设 6 个销售店，每个营业区至少增设 1 个。各营业区年增加的利润与增设的销售店个数有关，具体关系如下表所示。可以调整各营业区增设的销售店的个数，使公司总利润增加额最大达（ 490）万元。</strong></p>
+<p>本题考查线性规划内容。设生产甲 X 个；乙 Y 个，列出不等式组：
+X+2Y≤86； 5X+3Y≤150； 其中 X、Y 均 ≥0； 求函数 3X+4Y 的最大值。
+消元法求得 X=6；Y=40；最大值为 178。</p>
+<p><strong>2.某公司打算向它的三个营业区增设 6
+个销售店，每个营业区至少增设 1
+个。各营业区年增加的利润与增设的销售店个数有关，具体关系如下表所示。可以调整各营业区增设的销售店的个数，使公司总利润增加额最大达（
+490）万元。</strong></p>
 <img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/14.png" class="">
-
 <p>解析：</p>
 <p>将每个区可以增加的店铺数量全部列举出来，得出下图：</p>
 <img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/15.png" class="">
-
-<p><a target="_blank" rel="noopener" href="https://wangxiao.xisaiwang.com/tiku2/exam528264648.html">希赛题解</a></p>
-<h1 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h1><p><strong>1.工程师小张需要完成图中所有区域的巡检工作，图中圆圈代表巡检地点，两点之间的连接线为可行的交通线路，连接线上所标识的数字为两点之间所需的交通费用（单位：元），从地点 1 开始完成巡检（不需要按数字顺序也无需返回起点）所需的最少交通费为（400）元。</strong></p>
+<p><a
+target="_blank" rel="noopener" href="https://wangxiao.xisaiwang.com/tiku2/exam528264648.html">希赛题解</a></p>
+<h1 id="最小生成树">最小生成树</h1>
+<p><strong>1.工程师小张需要完成图中所有区域的巡检工作，图中圆圈代表巡检地点，两点之间的连接线为可行的交通线路，连接线上所标识的数字为两点之间所需的交通费用（单位：元），从地点
+1
+开始完成巡检（不需要按数字顺序也无需返回起点）所需的最少交通费为（400）元。</strong></p>
 <img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/12.png" class="">
-
-<p>解析：<br>将途中费用最低的线用红笔画出来：</p>
+<p>解析： 将途中费用最低的线用红笔画出来：</p>
 <ul>
 <li>1.画 1-2 费用 30</li>
 <li>2.画 4-5 费用 50</li>
 <li>3.画 3-4、7-8 费用 60</li>
 <li>……</li>
-<li>直到所有的点都有红线连接，此时出现了一个环路，4-5-6，删除 4-5 这条线，得到最终的巡检路线：1-2-3-4-6-5-7-8</li>
+<li>直到所有的点都有红线连接，此时出现了一个环路，4-5-6，删除 4-5
+这条线，得到最终的巡检路线：1-2-3-4-6-5-7-8</li>
 </ul>
 <img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/13.png" class="">
-
-<p><a target="_blank" rel="noopener" href="https://wangxiao.xisaiwang.com/tiku2/exam528264648.html">希赛题解</a></p>
-<h1 id="投资回收期"><a href="#投资回收期" class="headerlink" title="投资回收期"></a>投资回收期</h1><p>静态投资回收期（不考虑货币的时间价值）&#x3D; 累计净现金流量开始出现正值的年份数–1+| 上年累计净现金流量 |&#x2F; 当年净现金流量</p>
-<p><strong>1.某软件企业 2006 年初计划投资 2000 万人民币开发某产品，预计从 2007 年开始盈利，各年产品销售额如表所示。根据表中的数据，该产品的静态投资回收期是（ 1.8）年，动态投资回收期是（ 2.1）年。（提示：设贴现率为 0.1）</strong></p>
+<p><a
+target="_blank" rel="noopener" href="https://wangxiao.xisaiwang.com/tiku2/exam528264648.html">希赛题解</a></p>
+<h1 id="投资回收期">投资回收期</h1>
+<p>静态投资回收期（不考虑货币的时间价值）=
+累计净现金流量开始出现正值的年份数–1+| 上年累计净现金流量 |/
+当年净现金流量</p>
+<p><strong>1.某软件企业 2006 年初计划投资 2000
+万人民币开发某产品，预计从 2007
+年开始盈利，各年产品销售额如表所示。根据表中的数据，该产品的静态投资回收期是（
+1.8）年，动态投资回收期是（ 2.1）年。（提示：设贴现率为
+0.1）</strong></p>
 <img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/16.jpg" class="">
+<p>解析： TODO 看视频过后补充 <img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/17.jpg" class=""></p>
+<h1 id="项目进度网络图">项目进度网络图</h1>
+<p><strong>总时差</strong>指一项工作在不影响总工期的前提下所具有的机动时间。
+总时差 = 本活动的最迟开始 - 最早开始 = 本活动的最迟结束 - 最早结束</p>
+<p><strong>自由时差</strong>指一项工作在不影响后续工作的情况下所拥有的机动时间。
+自由时差 = min 紧后活动的 ES - 本活动的 EF</p>
+<p>求最早时间用正推法，做加法，遇到几个值的时候选大的。
+求最迟时间用倒推法，做减法，遇到几个值的时候选小的。
+关键路径上的活动的总是差、自由时差都是 0。</p>
+<h2 id="时标网络图">时标网络图</h2>
+<p>从起点到终点，没有波浪线的就是关键路径。工期就是最后的刻度。
+自由时差：该工作所在的波浪线的长度。
+总时差：从起点到终点，把每条路径的波浪线的长度的和求出来，和的最小值就是总时差。</p>
+<p><strong>PERT（Program Evaluation and Review
+Technique，计划评审技术）</strong> 三点估算法：期望值 T1，悲观值
+T2，乐观值 T3，最可能值 T4，求期望值的公式： T1 = （T2 + T3 + 4 *
+T4)/6</p>
+<p>标准差(σ) = （悲观值 - 乐观值）/6 ，贝塔分布用这个公式。
+三角分布用这个公式： T1 = (T2 + T3 + T4)/3</p>
+<p>记住下面这个面积图： <img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/19.jpg" class=""></p>
+<p>时标网络图
+总时差：以该工作为起点，到终点，可能有很多条路径，把每条路径的波浪线的长度的和求出来，和的最小值就是。
+自由时差：波浪线的长度。</p>
+<h1 id="期望货币价值">期望货币价值</h1>
+<p>EMV = 各分支的影响*概率全部加起来。 <img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/24.png" class=""></p>
+<h1 id="投资收益率">投资收益率</h1>
+<p><strong>1.甲、乙、丙、丁 4
+个已完工项目的历史数据如表所示，其中负值代表项目的投资额，正值代表项目的收益。从投资收益率来看，（甲）项目最优。单位：万元</strong></p>
 
-<p>解析：<br>TODO 看视频过后补充</p>
-<img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/17.jpg" class="">
-
-<h1 id="项目进度网络图"><a href="#项目进度网络图" class="headerlink" title="项目进度网络图"></a>项目进度网络图</h1><p><strong>总时差</strong>指一项工作在不影响总工期的前提下所具有的机动时间。<br>总时差 &#x3D; 本活动的最迟开始 - 最早开始 &#x3D; 本活动的最迟结束 - 最早结束</p>
-<p><strong>自由时差</strong>指一项工作在不影响后续工作的情况下所拥有的机动时间。<br>自由时差 &#x3D; min 紧后活动的 ES - 本活动的 EF</p>
-<p>求最早时间用正推法，做加法，遇到几个值的时候选大的。<br>求最迟时间用倒推法，做减法，遇到几个值的时候选小的。<br>关键路径上的活动的总是差、自由时差都是 0。</p>
-<h2 id="时标网络图"><a href="#时标网络图" class="headerlink" title="时标网络图"></a>时标网络图</h2><p>从起点到终点，没有波浪线的就是关键路径。工期就是最后的刻度。<br>自由时差：该工作所在的波浪线的长度。<br>总是差：从起点到终点，把每条路径的波浪线的长度的和求出来，和的最小值就是。</p>
-<p><strong>PERT（Program Evaluation and Review Technique，计划评审技术）</strong><br>三点估算法：期望值 T1，悲观值 T2，乐观值 T3，最可能值 T4，求期望值的公式：<br>T1 &#x3D; （T2 + T3 + 4 * T4)&#x2F;6</p>
-<p>标准差(σ) &#x3D; （悲观值 - 乐观值）&#x2F;6 ，贝塔分布用这个公式。<br>三角分布用这个公式： T1 &#x3D; (T2 + T3 + T4)&#x2F;3</p>
-<p>记住下面这个面积图：</p>
-<img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/19.jpg" class="">
-
-<p>时标网络图<br>总时差：以该工作为起点，到终点，可能有很多条路径，把每条路径的波浪线的长度的和求出来，和的最小值就是。<br>自由时差：波浪线的长度。</p>
-<h1 id="期望货币价值"><a href="#期望货币价值" class="headerlink" title="期望货币价值"></a>期望货币价值</h1><p>EMV &#x3D; 各分支的影响*概率全部加起来。</p>
-<img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/24.png" class="">
-
-<h1 id="投资收益率"><a href="#投资收益率" class="headerlink" title="投资收益率"></a>投资收益率</h1><p><strong>1.甲、乙、丙、丁 4 个已完工项目的历史数据如表所示，其中负值代表项目的投资额，正值代表项目的收益。从投资收益率来看，（甲）项目最优。单位：万元</strong></p>
-
-
-<p>解析：<br>按照第 4 版教程，总投资收益率的计算公式为 ROI&#x3D;EBIT&#x2F;TI。TI 为投资总额，包括固定资产投资和流动资金投资等；EBIT 为项目达产后正常年份的年息税前利润或平均年息税前利润，包括组织的利润总额和利息支出。从表格给的数据来看，数据不是趋于稳定的，所以需要用年均来计算。</p>
+<p>解析： 按照第 4 版教程，总投资收益率的计算公式为 ROI=EBIT/TI。TI
+为投资总额，包括固定资产投资和流动资金投资等；EBIT
+为项目达产后正常年份的年息税前利润或平均年息税前利润，包括组织的利润总额和利息支出。从表格给的数据来看，数据不是趋于稳定的，所以需要用年均来计算。</p>
 <ul>
-<li>甲：（2+23+7）&#x2F;3&#x2F;10≈1.07</li>
-<li>乙：（80+110）&#x2F;2&#x2F;100&#x3D;0.95</li>
-<li>丙：（15+18+30）&#x2F;3&#x2F;20&#x3D;1.05</li>
-<li>丁：（150+150）&#x2F;2&#x2F;150&#x3D;1</li>
+<li>甲：（2+23+7）/3/10≈1.07</li>
+<li>乙：（80+110）/2/100=0.95</li>
+<li>丙：（15+18+30）/3/20=1.05</li>
+<li>丁：（150+150）/2/150=1</li>
 </ul>
-<p><a target="_blank" rel="noopener" href="https://wangxiao.xisaiwang.com/tiku2/exam528291966.html">希赛题解</a></p>
-<h1 id="博弈论"><a href="#博弈论" class="headerlink" title="博弈论"></a>博弈论</h1><h2 id="赢得矩阵"><a href="#赢得矩阵" class="headerlink" title="赢得矩阵"></a>赢得矩阵</h2><p><strong>1.两家企业生产同种产品，为抢占市场规模，每家企业都制定了三个市场推销策略。两家企业的市场策略会影响双方的市场规模占有情况，赢得矩阵如下：</strong></p>
+<p><a
+target="_blank" rel="noopener" href="https://wangxiao.xisaiwang.com/tiku2/exam528291966.html">希赛题解</a></p>
+<h1 id="博弈论">博弈论</h1>
+<h2 id="赢得矩阵">赢得矩阵</h2>
+<p><strong>1.两家企业生产同种产品，为抢占市场规模，每家企业都制定了三个市场推销策略。两家企业的市场策略会影响双方的市场规模占有情况，赢得矩阵如下：</strong></p>
 <img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/20.png" class="">
-
-<p><strong>在这个矩阵中，每个单元格中的正数表示甲企业比乙企业多占的市场规模，负数则表示甲企业比乙企业少占的市场规模。则双方各应采用哪种策略（A. 甲企业选择策略 2，乙企业选择策略 2 ）。</strong></p>
-<p>解析：<br>行小列大，列大行小，取交叉。</p>
-<img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/21.png" class="">
-<p><a target="_blank" rel="noopener" href="https://wangxiao.xisaiwang.com/tiku2/exam528334033.html">希赛题解</a></p>
-<h1 id="不确定性决策"><a href="#不确定性决策" class="headerlink" title="不确定性决策"></a>不确定性决策</h1><p><strong>1.某企业要投产一种新产品，生产方案有四个：A 新建全自动生产线；B 新建半自动生产线；C 购置旧生产设备；D 外包加工生产。未来该产品的销售前景估计为很好、一般和较差三种、不同情况下该产品的收益值如下：（单位：百万元）</strong></p>
+<p><strong>在这个矩阵中，每个单元格中的正数表示甲企业比乙企业多占的市场规模，负数则表示甲企业比乙企业少占的市场规模。则双方各应采用哪种策略（A.
+甲企业选择策略 2，乙企业选择策略 2 ）。</strong></p>
+<p>解析： 行小列大，列大行小，取交叉。 <img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/21.png" class=""> <a
+target="_blank" rel="noopener" href="https://wangxiao.xisaiwang.com/tiku2/exam528334033.html">希赛题解</a></p>
+<h1 id="不确定性决策">不确定性决策</h1>
+<p><strong>1.某企业要投产一种新产品，生产方案有四个：A
+新建全自动生产线；B 新建半自动生产线；C 购置旧生产设备；D
+外包加工生产。未来该产品的销售前景估计为很好、一般和较差三种、不同情况下该产品的收益值如下：（单位：百万元）</strong>
 <img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/22.png" class="">
-<p><strong>用后悔值（在同样的条件下，宣传方案所产生的收益损失值）的方案决策应该选（ B ）方案。</strong></p>
-<p>解析；<br>计算后悔矩阵，先看列，首先找到每列的最大值，然后用该值减去每列的值。比如说销路很好这列，最大值为 800，用 800 减去每列对应的值，分别为 800-800&#x3D;0，800-600&#x3D;200，800-450&#x3D;350，800-300&#x3D;500.再看行，找到每行中的最大后悔值，形成第四列，然后取最大后悔值的最小值。</p>
+<strong>用后悔值（在同样的条件下，宣传方案所产生的收益损失值）的方案决策应该选（
+B ）方案。</strong></p>
+<p>解析；
+计算后悔矩阵，先看列，首先找到每列的最大值，然后用该值减去每列的值。比如说销路很好这列，最大值为
+800，用 800 减去每列对应的值，分别为
+800-800=0，800-600=200，800-450=350，800-300=500.再看行，找到每行中的最大后悔值，形成第四列，然后取最大后悔值的最小值。</p>
 <img src="/2025/03/12/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B8%88%E8%AE%A1%E7%AE%97%E9%A2%98%E6%B1%87%E6%80%BB/23.png" class="">
 
     </div>
@@ -654,13 +655,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -725,6 +726,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

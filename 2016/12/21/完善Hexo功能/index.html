@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="1.给Hexo nexT主题增加多说评论  首先登陆多说官网，点击我要安装后，输入以下内容： 站点名称：自己起，我使用的是github账户名站点地址：github个人主页的ip地址。类似于：https:&#x2F;&#x2F;username.github.io多说域名：自己起，我使用的是github账户名电子邮箱：常用的电子邮箱点击创建按钮。">
+    <meta name="description" content="1.给Hexo nexT主题增加多说评论  首先登陆多说官网，点击我要安装后，输入以下内容： 站点名称：自己起，我使用的是github账户名 站点地址：github个人主页的ip地址。类似于：https:&#x2F;&#x2F;username.github.io 多说域名：自己起，我使用的是github账户名 电子邮箱：常用的电子邮箱 点击创建按钮。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="完善Hexo功能">
 <meta property="og:url" content="https://toypipi.github.io/2016/12/21/%E5%AE%8C%E5%96%84Hexo%E5%8A%9F%E8%83%BD/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="1.给Hexo nexT主题增加多说评论  首先登陆多说官网，点击我要安装后，输入以下内容： 站点名称：自己起，我使用的是github账户名站点地址：github个人主页的ip地址。类似于：https:&#x2F;&#x2F;username.github.io多说域名：自己起，我使用的是github账户名电子邮箱：常用的电子邮箱点击创建按钮。">
+<meta property="og:description" content="1.给Hexo nexT主题增加多说评论  首先登陆多说官网，点击我要安装后，输入以下内容： 站点名称：自己起，我使用的是github账户名 站点地址：github个人主页的ip地址。类似于：https:&#x2F;&#x2F;username.github.io 多说域名：自己起，我使用的是github账户名 电子邮箱：常用的电子邮箱 点击创建按钮。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2016-12-20T16:00:00.000Z">
 <meta property="article:modified_time" content="2020-11-03T03:44:00.145Z">
@@ -286,46 +286,60 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
 <blockquote>
 <p>1.给Hexo nexT主题增加多说评论</p>
 </blockquote>
-<p>首先登陆<a target="_blank" rel="noopener" href="http://duoshuo.com/">多说官网</a>，点击<strong>我要安装</strong>后，输入以下内容：</p>
-<p>站点名称：自己起，我使用的是github账户名<br>站点地址：github个人主页的ip地址。类似于：<a target="_blank" rel="noopener" href="https://username.github.io/">https://username.github.io</a><br>多说域名：自己起，我使用的是github账户名<br>电子邮箱：常用的电子邮箱<br>点击创建按钮。</p>
+<p>首先登陆<a
+target="_blank" rel="noopener" href="http://duoshuo.com/">多说官网</a>，点击<strong>我要安装</strong>后，输入以下内容：</p>
+<p>站点名称：自己起，我使用的是github账户名
+站点地址：github个人主页的ip地址。类似于：https://username.github.io
+多说域名：自己起，我使用的是github账户名 电子邮箱：常用的电子邮箱
+点击创建按钮。</p>
 <span id="more"></span>
-
-<p>编辑D:\ProgramFiles\hexo_config.yml文件，添加 <code>duoshuo_shortname: toypipi</code> ，其中yourname指的是你在多说官网申请的多说域名。</p>
-<p><strong>参考文档：</strong><br><a target="_blank" rel="noopener" href="http://www.voidking.com/2015/05/31/deve-hexo-theme-optimize/">hexo主题优化</a></p>
+<p>编辑D:_config.yml文件，添加 <code>duoshuo_shortname: toypipi</code>
+，其中yourname指的是你在多说官网申请的多说域名。</p>
+<p><strong>参考文档：</strong> <a
+target="_blank" rel="noopener" href="http://www.voidking.com/2015/05/31/deve-hexo-theme-optimize/">hexo主题优化</a></p>
 <blockquote>
 <p>2.网站地址栏小图标</p>
 </blockquote>
-<p>首先准备一张16X16像素大小的小图标，然后将它放在站点根目录下的hexo&#x2F;source&#x2F;img文件夹下。<br><strong>注意：</strong> 不是放在hexo&#x2F;themes&#x2F;next&#x2F;source&#x2F;img文件下下，如果放在这里将不能正常显示。<br>编辑hexo&#x2F;themes&#x2F;next&#x2F;_config.yml文件，添加 <code>favicon: /img/cat.png</code> 即可。</p>
+<p>首先准备一张16X16像素大小的小图标，然后将它放在站点根目录下的hexo/source/img文件夹下。
+<strong>注意：</strong>
+不是放在hexo/themes/next/source/img文件下下，如果放在这里将不能正常显示。
+编辑hexo/themes/next/_config.yml文件，添加
+<code>favicon: /img/cat.png</code> 即可。</p>
 <blockquote>
 <p>3.增加百度统计</p>
 </blockquote>
-<p>首先在<a target="_blank" rel="noopener" href="http://tongji.baidu.com/web/welcome/login">百度统计官网</a>点击注册，注册百度统计站长版。登陆百度统计后，点击管理，在下面的网站域名右边点击获取代码，找到</p>
+<p>首先在<a
+target="_blank" rel="noopener" href="http://tongji.baidu.com/web/welcome/login">百度统计官网</a>点击注册，注册百度统计站长版。登陆百度统计后，点击管理，在下面的网站域名右边点击获取代码，找到
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">var</span> _hmt = _hmt || [];</span><br><span class="line">(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> hm = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;script&quot;</span>);</span><br><span class="line">  hm.<span class="property">src</span> = <span class="string">&quot;https://hm.baidu.com/hm.js?4xxxxxxxxxxxxxxxxxxxxxx8&quot;</span>;</span><br><span class="line">  <span class="keyword">var</span> s = <span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;script&quot;</span>)[<span class="number">0</span>];</span><br></pre></td></tr></table></figure>
-<p>其中，4xxxxxxxxxxxxxxxxxxxxxx8就是你的baidu_analytics_id(每个人都不同)，在hexo&#x2F;themes&#x2F;next&#x2F;_config.yml文件中添加 <code>baidu_analytics: 4xxxxxxxxxxxxxxxxxxxxxx8</code> 即可。</p>
-<p><strong>参考文档：</strong><br><a target="_blank" rel="noopener" href="http://wayneshawn.github.io/2015/04/07/hexo-config-and-optimization/">hexo 添加百度统计</a></p>
+其中，4xxxxxxxxxxxxxxxxxxxxxx8就是你的baidu_analytics_id(每个人都不同)，在hexo/themes/next/_config.yml文件中添加
+<code>baidu_analytics: 4xxxxxxxxxxxxxxxxxxxxxx8</code> 即可。</p>
+<p><strong>参考文档：</strong> <a
+target="_blank" rel="noopener" href="http://wayneshawn.github.io/2015/04/07/hexo-config-and-optimization/">hexo
+添加百度统计</a></p>
 <blockquote>
 <p>4.增加分类和标签</p>
 </blockquote>
-<p>首先在hexo&#x2F;themes&#x2F;next&#x2F;_config.yml文件中找到如下代码：</p>
+<p>首先在hexo/themes/next/_config.yml文件中找到如下代码：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: /</span><br><span class="line">  categories: /categories</span><br><span class="line">  #about: /about</span><br><span class="line">  archives: /archives</span><br><span class="line">  tags: /tags</span><br><span class="line">  #sitemap: /sitemap.xml</span><br><span class="line">  #commonweal: /404.html</span><br></pre></td></tr></table></figure>
-
 <p>将categories和tags前面的#删除，然后在hexo目录下输入命令：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure>
-<p>该命令会在hexo&#x2F;source文件夹下创建一个categories目录，并在categories目录下生成一个index.md文件，打开这个文件，修改它的内容为：</p>
+<p>该命令会在hexo/source文件夹下创建一个categories目录，并在categories目录下生成一个index.md文件，打开这个文件，修改它的内容为：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 分类</span><br><span class="line">date: 2016-12-23 11:00:09</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 <p>添加标签也是一样，在hexo目录下输入命令：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
-<p>该命令会在hexo&#x2F;source文件夹下创建一个tags目录，并在tags目录下生成一个index.md文件，打开这个文件，修改它的内容为：</p>
+<p>该命令会在hexo/source文件夹下创建一个tags目录，并在tags目录下生成一个index.md文件，打开这个文件，修改它的内容为：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 分类</span><br><span class="line">date: 2016-12-23 11:00:09</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
 <p>这样，在新建博客时，只要头部包含：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">categories:</span><br><span class="line">- your category</span><br><span class="line">tags:</span><br><span class="line">- your tag</span><br><span class="line">- another tag</span><br></pre></td></tr></table></figure>
 <p>文章就能够分类并且生成标签了。</p>
-<p><strong>参考文档：</strong><br><a target="_blank" rel="noopener" href="http://blog.csdn.net/lsshlsw/article/details/50322465">Hexo 主题使用进阶</a><br><a target="_blank" rel="noopener" href="http://ws905.com/document/2016-07-16/page/hexo-1/">hexo主题NexT的标签与分类</a></p>
+<p><strong>参考文档：</strong> <a
+target="_blank" rel="noopener" href="http://blog.csdn.net/lsshlsw/article/details/50322465">Hexo
+主题使用进阶</a> <a
+target="_blank" rel="noopener" href="http://ws905.com/document/2016-07-16/page/hexo-1/">hexo主题NexT的标签与分类</a></p>
 
     </div>
 
@@ -420,13 +434,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -491,6 +505,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

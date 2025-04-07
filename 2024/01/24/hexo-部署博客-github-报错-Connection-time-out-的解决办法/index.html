@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="今天在部署 hexo 博客时，发现 github 报错 Connection time out，查了下资料，解决办法如下：  在 Git Bash 中输入：  1ssh -T -p 443 git@ssh.github.com  如果看到以下提示信息 ① 表示可用：  Hi toypipi! You’ve successfully authenticated, but GitHub does n">
+    <meta name="description" content="今天在部署 hexo 博客时，发现 github 报错 Connection time out，查了下资料，解决办法如下：  在 Git Bash 中输入：  1ssh -T -p 443 git@ssh.github.com 如果看到以下提示信息 ① 表示可用：  Hi toypipi! You’ve successfully authenticated, but GitHu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo 部署博客 github 报错 Connection time out 的解决办法">
 <meta property="og:url" content="https://toypipi.github.io/2024/01/24/hexo-%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2-github-%E6%8A%A5%E9%94%99-Connection-time-out-%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="今天在部署 hexo 博客时，发现 github 报错 Connection time out，查了下资料，解决办法如下：  在 Git Bash 中输入：  1ssh -T -p 443 git@ssh.github.com  如果看到以下提示信息 ① 表示可用：  Hi toypipi! You’ve successfully authenticated, but GitHub does n">
+<meta property="og:description" content="今天在部署 hexo 博客时，发现 github 报错 Connection time out，查了下资料，解决办法如下：  在 Git Bash 中输入：  1ssh -T -p 443 git@ssh.github.com 如果看到以下提示信息 ① 表示可用：  Hi toypipi! You’ve successfully authenticated, but GitHu">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-24T08:59:53.000Z">
 <meta property="article:modified_time" content="2024-01-24T09:12:18.169Z">
@@ -144,7 +144,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">1.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#reference"><span class="nav-number">1.</span> <span class="nav-text">Reference</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -278,31 +278,35 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>今天在部署 hexo 博客时，发现 github 报错 Connection time out，查了下资料，解决办法如下：</p>
-<ol>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<p>今天在部署 hexo 博客时，发现 github 报错 Connection time
+out，查了下资料，解决办法如下：</p>
+<ol type="1">
 <li>在 Git Bash 中输入：</li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T -p 443 git@ssh.github.com</span><br></pre></td></tr></table></figure>
-
 <p>如果看到以下提示信息 ① 表示可用：</p>
 <blockquote>
-<p>Hi toypipi! You’ve successfully authenticated, but GitHub does not provide shell access.</p>
+<p>Hi toypipi! You’ve successfully authenticated, but GitHub does not
+provide shell access.</p>
 </blockquote>
-<ol start="2">
-<li>在 Git Bash 中输入 <code>vim ~/.ssh/config</code>, 并添加以下内容：</li>
+<ol start="2" type="1">
+<li>在 Git Bash 中输入 <code>vim ~/.ssh/config</code>,
+并添加以下内容：</li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">Hostname ssh.github.com</span><br><span class="line">Port 443</span><br></pre></td></tr></table></figure>
-
 <span id="more"></span>
-
-<ol start="3">
-<li><p>再次测试 <code>ssh -T git@github.com</code>，如果看到上述提示信息 ①，表明配置成功。</p>
-</li>
-<li><p>最后部署博客，成功！</p>
-</li>
+<ol start="3" type="1">
+<li><p>再次测试 <code>ssh -T git@github.com</code>，如果看到上述提示信息
+①，表明配置成功。</p></li>
+<li><p>最后部署博客，成功！</p></li>
 </ol>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c3aac5024877">解决 git-ssh: connect to host github.com port 22: Connection timed out</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/YR_112233/article/details/122436258">连接 github 报错“ssh: connect to host github.com port 22: Connection timed out”</a></p>
+<h1 id="reference">Reference</h1>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c3aac5024877">解决 git-ssh:
+connect to host github.com port 22: Connection timed out</a> <a
+target="_blank" rel="noopener" href="https://blog.csdn.net/YR_112233/article/details/122436258">连接
+github 报错“ssh: connect to host github.com port 22: Connection timed
+out”</a></p>
 
     </div>
 
@@ -394,13 +398,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -465,6 +469,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

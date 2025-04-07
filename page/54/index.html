@@ -235,7 +235,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2019-02-27 09:52:47" itemprop="dateModified" datetime="2019-02-27T09:52:47+08:00">2019-02-27</time>
+      <time title="修改时间：2025-04-07 10:56:27" itemprop="dateModified" datetime="2025-04-07T10:56:27+08:00">2025-04-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -254,7 +254,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>430</span>
+      <span>431</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -272,10 +272,16 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>近期在内网服务器上安装MySQL Workbench时，遇到了一个小问题。</p>
-<p>由于MySQL Workbench 官网上明确说明安装此软件需要<a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/download/details.aspx?id=30653">“Microsoft .NET Framework 4.5”</a>和<a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/download/details.aspx?id=48145">“Visual C++ Redistributable for Visual Studio 2015”</a>。</p>
-<p><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20170715/TIM%E6%88%AA%E5%9B%BE20170715101315.png" alt="Mysql Workbench"><br>该服务器操作系统是Windows Server 2012 R2，已经自带了.NET Framework 4.5，所以只需要安装Visual Studio 2015就行了。</p>
+          <hr />
+<p>近期在内网服务器上安装 MySQL Workbench 时，遇到了一个小问题。</p>
+<p>由于 MySQL Workbench 官网上明确说明安装此软件需要<a
+target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/download/details.aspx?id=30653">“Microsoft
+.NET Framework 4.5”</a>和<a
+target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/download/details.aspx?id=48145">“Visual
+C++ Redistributable for Visual Studio 2015”</a>。</p>
+<img src="/2017/07/15/Windows-Server-2012-R2-%E5%AE%89%E8%A3%85%E8%A1%A5%E4%B8%81KB2999226%E6%8F%90%E7%A4%BA%E6%AD%A4%E6%9B%B4%E6%96%B0%E4%B8%8D%E9%80%82%E5%90%88%E7%94%A8%E4%BA%8E%E8%AE%A1%E7%AE%97%E6%9C%BA/1.png" class="">
+<p>该服务器操作系统是 Windows Server 2012 R2，已经自带了.NET Framework
+4.5，所以只需要安装 Visual Studio 2015 就行了。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/07/15/Windows-Server-2012-R2-%E5%AE%89%E8%A3%85%E8%A1%A5%E4%B8%81KB2999226%E6%8F%90%E7%A4%BA%E6%AD%A4%E6%9B%B4%E6%96%B0%E4%B8%8D%E9%80%82%E5%90%88%E7%94%A8%E4%BA%8E%E8%AE%A1%E7%AE%97%E6%9C%BA/#more" rel="contents">
@@ -382,12 +388,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>使用oh-my-zsh过程中遇到了中文乱码问题，经过上网查询，多数答案都是修改<code>~/.zshrc</code>文件，增如下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export LC_ALL=en.UTF-8</span><br><span class="line">export LANG=en_US.UTF-8</span><br></pre></td></tr></table></figure>
-<p>然后：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure>
-<p>可是我更改了之后依然是乱码，使用<code>locale</code>命令报如下错误：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locale:Cannot set LC-ALL to default locale:No such file or directory</span><br></pre></td></tr></table></figure>
+          <p>使用oh-my-zsh过程中遇到了中文乱码问题，经过上网查询，多数答案都是修改<code>~/.zshrc</code>文件，增如下内容：
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export LC_ALL=en.UTF-8</span><br><span class="line">export LANG=en_US.UTF-8</span><br></pre></td></tr></table></figure> 然后： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure>
+可是我更改了之后依然是乱码，使用<code>locale</code>命令报如下错误：
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locale:Cannot set LC-ALL to default locale:No such file or directory</span><br></pre></td></tr></table></figure></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/07/04/oh-my-zsh%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/#more" rel="contents">
@@ -494,14 +498,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>今天在服务器桌面环境中安装smartgit时，提示**&#x2F;lib64&#x2F;libc.so.6: version &#96;GLIBC_2.14’ not found**，后来通过上网检索，将libc-2.12.so升级为libc-2.14.so后问题解决，但是后来又看了几篇博客，文中介绍到:</p>
+          <hr />
+<p>今天在服务器桌面环境中安装smartgit时，提示<strong>/lib64/libc.so.6:
+version `GLIBC_2.14’ not
+found</strong>，后来通过上网检索，将libc-2.12.so升级为libc-2.14.so后问题解决，但是后来又看了几篇博客，文中介绍到:
 <details class="note "><summary><p>class_name</p>
 </summary>
 <p>glibc是gnu发布的libc库，即c运行库，glibc是linux系统中最底层的api，几乎其它任何运行库都会依赖于glibc。glibc除了封装linux操作系统所提供的系统服务外，它本身也提供了许多其它一些必要功能服务的实现。</p>
-<p>很多linux的基本命令，比如cp, rm, ll,ln等，都得依赖于它，如果操作错误或者升级失败会导致系统命令不能使用，严重的造成系统退出后无法重新进入，所以操作时候需要慎重。</p>
+<p>很多linux的基本命令，比如cp, rm,
+ll,ln等，都得依赖于它，如果操作错误或者升级失败会导致系统命令不能使用，严重的造成系统退出后无法重新进入，所以操作时候需要慎重。</p>
 
-</details>
+</details></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/06/20/%E5%8D%87%E7%BA%A7%E6%9C%8D%E5%8A%A1%E5%99%A8libc-2-12-so/#more" rel="contents">
@@ -608,7 +615,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
 <p>感冒连续一周，不但没有好的迹象，反而更加严重了。于是，周日去了趟医院，本身想要输液的，结果皮试过敏，只能吃药，医生给开了消炎药，吃过药后喉咙好多了，头也不疼了，可以正常思考了。</p>
 <p>每次去医院，都是人满为患，各种大病小病，这时候往往会感慨，人生最大的财富莫过于身体健康！生病了，不仅身体难受，还得做各种检查，吃各种药，严重的甚至还要手术开刀，花钱受罪。有些人甚至患上糖尿病、肾病等终生都难以治愈的疾病。此时，再想想自己，虽然不是百万富翁，但是身体健康，却还常常抱怨这个也没有，那个也想要。真是一点都不知足。往往在生病时会下定决心从今往后好好锻炼身体。但是等感冒好了，坚持不了一个月，就又变懒了，回到家不是看电视就是看手机。</p>
 <p>谨以此文提示今后那个偷懒的我，不要忘记自己当初下的决心。</p>
@@ -674,7 +681,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2020-11-03 11:44:00" itemprop="dateModified" datetime="2020-11-03T11:44:00+08:00">2020-11-03</time>
+      <time title="修改时间：2025-04-07 10:55:01" itemprop="dateModified" datetime="2025-04-07T10:55:01+08:00">2025-04-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -693,7 +700,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>22</span>
+      <span>21</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -711,9 +718,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>学习慕课网<a target="_blank" rel="noopener" href="http://www.imooc.com/learn/443">项目管理利器——maven</a>总结的知识点。</p>
-<p><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20170526/maven%E7%9F%A5%E8%AF%86%E7%82%B9.png" alt="maven知识点"></p>
+          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<p>学习慕课网<a
+target="_blank" rel="noopener" href="http://www.imooc.com/learn/443">项目管理利器——maven</a>总结的知识点。</p>
+<img src="/2017/05/17/maven%E7%9F%A5%E8%AF%86%E7%82%B9/1.png" class="">
 
       
     </div>
@@ -755,13 +763,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -826,6 +834,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

@@ -272,17 +272,20 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
+          <hr />
 <blockquote>
-<p>本文转载自<a target="_blank" rel="noopener" href="http://jackycode.github.io/blog/categories/datavisualization/">Category: DataVisualization</a>，对于不明白的地方加了自己检索后的说明。</p>
+<p>本文转载自<a
+target="_blank" rel="noopener" href="http://jackycode.github.io/blog/categories/datavisualization/">Category:
+DataVisualization</a>，对于不明白的地方加了自己检索后的说明。</p>
 </blockquote>
 <p>使用demo(graphics)，可以查看R漂亮的图像演示。</p>
-<h1 id="点"><a href="#点" class="headerlink" title="点"></a>点</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set.seed<span class="punctuation">(</span><span class="number">1234</span><span class="punctuation">)</span></span><br><span class="line">x<span class="operator">&lt;-</span>sample<span class="punctuation">(</span><span class="number">1</span><span class="operator">:</span><span class="number">100</span><span class="punctuation">,</span><span class="number">80</span><span class="punctuation">,</span>replace <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">)</span></span><br><span class="line">y<span class="operator">&lt;-</span><span class="number">2</span><span class="operator">*</span>x<span class="operator">+</span><span class="number">20</span><span class="operator">+</span>rnorm<span class="punctuation">(</span><span class="number">80</span><span class="punctuation">,</span><span class="number">0</span><span class="punctuation">,</span><span class="number">10</span><span class="punctuation">)</span></span><br><span class="line">plot<span class="punctuation">(</span>x <span class="operator">=</span> x<span class="punctuation">,</span>y <span class="operator">=</span> y<span class="punctuation">)</span></span><br><span class="line">plot<span class="punctuation">(</span>x<span class="punctuation">,</span>y<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
+<h1 id="点">点</h1>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set.seed<span class="punctuation">(</span><span class="number">1234</span><span class="punctuation">)</span></span><br><span class="line">x<span class="operator">&lt;-</span>sample<span class="punctuation">(</span><span class="number">1</span><span class="operator">:</span><span class="number">100</span><span class="punctuation">,</span><span class="number">80</span><span class="punctuation">,</span>replace <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">)</span></span><br><span class="line">y<span class="operator">&lt;-</span><span class="number">2</span><span class="operator">*</span>x<span class="operator">+</span><span class="number">20</span><span class="operator">+</span>rnorm<span class="punctuation">(</span><span class="number">80</span><span class="punctuation">,</span><span class="number">0</span><span class="punctuation">,</span><span class="number">10</span><span class="punctuation">)</span></span><br><span class="line">plot<span class="punctuation">(</span>x <span class="operator">=</span> x<span class="punctuation">,</span>y <span class="operator">=</span> y<span class="punctuation">)</span></span><br><span class="line">plot<span class="punctuation">(</span>x<span class="punctuation">,</span>y<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
 <p>其中set.seed()，该命令的作用是设定生成随机数的种子，种子是为了让结果具有重复性。如果不设定种子，生成的随机数无法重现。</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sample<span class="punctuation">(</span>x<span class="punctuation">,</span> size<span class="punctuation">,</span> replace <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">,</span> prob <span class="operator">=</span> <span class="literal">NULL</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p>x可以是任何对象，<br>size规定了从对象中抽出多少个数，size应该小于x的规模，否则会报错<br>replace默认是FALSE，表示每次抽取后的数就不能在下一次被抽取；TRUE表示抽取过的数可以继续拿来被抽取</p>
+<p>x可以是任何对象，
+size规定了从对象中抽出多少个数，size应该小于x的规模，否则会报错
+replace默认是FALSE，表示每次抽取后的数就不能在下一次被抽取；TRUE表示抽取过的数可以继续拿来被抽取
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/02/28/R%E8%AF%AD%E8%A8%80%E7%BB%98%E5%9B%BE/#more" rel="contents">
@@ -389,11 +392,13 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
+          <hr />
 <blockquote>
 <p>聚类算法</p>
 </blockquote>
-<p>聚类分析又称群分析，它是研究（样品或指标）分类问题的一种统计分析方法，同时也是数据挖掘的一个重要算法。<br>聚类（Cluster）分析是由若干模式（Pattern）组成的，通常，模式时一个度量（Measurement）的向量，或者是多维空间中的一个点。<br>聚类分析以相似性为基础，在一个聚类中的模式之间比不在同一聚类中的模式之间具有更多的相似性。</p>
+<p>聚类分析又称群分析，它是研究（样品或指标）分类问题的一种统计分析方法，同时也是数据挖掘的一个重要算法。
+聚类（Cluster）分析是由若干模式（Pattern）组成的，通常，模式时一个度量（Measurement）的向量，或者是多维空间中的一个点。
+聚类分析以相似性为基础，在一个聚类中的模式之间比不在同一聚类中的模式之间具有更多的相似性。</p>
 <table>
 <thead>
 <tr>
@@ -402,7 +407,8 @@
 <th>中文名</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>聚类算法</td>
 <td>Canopy Clustering</td>
 <td>Canopy聚类</td>
@@ -447,7 +453,8 @@
 <td>Spectral clustering</td>
 <td>谱聚类</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/02/28/Mahout%E7%AE%97%E6%B3%95%E5%BA%93/#more" rel="contents">
@@ -517,7 +524,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2019-02-27 09:48:34" itemprop="dateModified" datetime="2019-02-27T09:48:34+08:00">2019-02-27</time>
+      <time title="修改时间：2025-04-07 14:56:05" itemprop="dateModified" datetime="2025-04-07T14:56:05+08:00">2025-04-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -554,13 +561,23 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
+          <hr />
 <blockquote>
-<p>学习<a target="_blank" rel="noopener" href="https://book.douban.com/subject/2985995/">《爱上统计学》</a>，为了加深记忆，边读边做笔记。如有侵权，立即删除。</p>
+<p>学习<a
+target="_blank" rel="noopener" href="https://book.douban.com/subject/2985995/">《爱上统计学》</a>，为了加深记忆，边读边做笔记。如有侵权，立即删除。</p>
 </blockquote>
-<h3 id="计算和理解平均数"><a href="#计算和理解平均数" class="headerlink" title="计算和理解平均数"></a>计算和理解平均数</h3><h4 id="描述统计-descriptive-statistics"><a href="#描述统计-descriptive-statistics" class="headerlink" title="描述统计(descriptive statistics)"></a>描述统计(descriptive statistics)</h4><p>描述统计常用于整理、描述所收集数据的特征。如描述大学最流行的的专业是什么。</p>
-<h4 id="推论统计-inferential-statistics"><a href="#推论统计-inferential-statistics" class="headerlink" title="推论统计(inferential statistics)"></a>推论统计(inferential statistics)</h4><p>推论统计通常是（但并非总是）数据收集和汇总的下一步。推论统计常利用较小群体的数据来推论可能的较大群体的特征。</p>
-<h4 id="计算和理解平均数-1"><a href="#计算和理解平均数-1" class="headerlink" title="计算和理解平均数"></a>计算和理解平均数</h4><p>平均数也叫做几种趋势量数（measures 偶发central tendency），一般有三种形式：均值、中位数和众数。参看<a target="_blank" rel="noopener" href="https://www.wikiwand.com/zh-hans/%E5%B9%B3%E5%9D%87%E6%95%B0">Wiki百科</a>。
+<h3 id="计算和理解平均数">计算和理解平均数</h3>
+<h4 id="描述统计descriptive-statistics">描述统计(descriptive
+statistics)</h4>
+<p>描述统计常用于整理、描述所收集数据的特征。如描述大学最流行的的专业是什么。</p>
+<h4 id="推论统计inferential-statistics">推论统计(inferential
+statistics)</h4>
+<p>推论统计通常是（但并非总是）数据收集和汇总的下一步。推论统计常利用较小群体的数据来推论可能的较大群体的特征。</p>
+<h4 id="计算和理解平均数-1">计算和理解平均数</h4>
+<p>平均数也叫做几种趋势量数（measures 偶发 central
+tendency），一般有三种形式：均值、中位数和众数。参看<a
+target="_blank" rel="noopener" href="https://www.wikiwand.com/zh-hans/%E5%B9%B3%E5%9D%87%E6%95%B0">Wiki
+百科</a>。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/02/28/%E3%80%8A%E7%88%B1%E4%B8%8A%E7%BB%9F%E8%AE%A1%E5%AD%A6%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/#more" rel="contents">
@@ -667,9 +684,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
 <blockquote>
-<p>本文转载自<a target="_blank" rel="noopener" href="https://book.douban.com/subject/10432844/">《Spring 3.x企业应用开发实战》</a>，<strong>作者：</strong>陈雄华 ，<strong>出版社：</strong>电子工业出版社出版,版权归期所有。</p>
+<p>本文转载自<a
+target="_blank" rel="noopener" href="https://book.douban.com/subject/10432844/">《Spring
+3.x企业应用开发实战》</a>，<strong>作者：</strong>陈雄华
+，<strong>出版社：</strong>电子工业出版社出版,版权归期所有。</p>
 </blockquote>
 <p>在实际应用中，一般不会直接在数据库中以明文的方式保存用户的密码，因为这样很容易造成密码泄密问题。所以需要将密码加密后以密文的方式进行保存；另外一种更有效的办法是仅保存密码的MD5摘要，由于相等的两字符串摘要值也相等，在登录验证时，通过比较摘要的方式就可以判断用户所输入的密码是否正确。由于不能通过密码摘要反推出原来的密码，即使内部人员可以查看用户信息也无法知道用户的密码。所以，摘要存储方式已经成为大部分系统密码存储的通用方式。此外，为了防止黑客通过工具进行密码的暴力破解，目前大多数Web应用都使用了图片验证码功能，验证码具有一次性消费的特征，每次登录都不相同，这样工具暴力破解就无用武之地了。</p>
 
@@ -771,10 +791,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>最近打算做一个图书管理系统，其中图书的详细信息通过爬虫程序爬取<a target="_blank" rel="noopener" href="http://www.yuntu.io/book/list">云图</a>网站上所有图书的详细信息，有效避免了手动输入，节约了大量的时间。因为Python也是现学现用，程序还存在很多问题，但是目前的主要目的不是写爬虫，等后续有时间了，再来深入学习下Python，并完善我的爬虫程序。</p>
+          <hr />
+<p>最近打算做一个图书管理系统，其中图书的详细信息通过爬虫程序爬取<a
+target="_blank" rel="noopener" href="http://www.yuntu.io/book/list">云图</a>网站上所有图书的详细信息，有效避免了手动输入，节约了大量的时间。因为Python也是现学现用，程序还存在很多问题，但是目前的主要目的不是写爬虫，等后续有时间了，再来深入学习下Python，并完善我的爬虫程序。</p>
 <p>爬取到的信息包括了每本书的：标题、作者、出版社、出版年、ISBN、简介、目录和图书缩略图。并且将这些信息保存在MySQL数据库中，如果有感兴趣的小伙伴可以留言给我哦。</p>
-<p>为什么选择爬取<a target="_blank" rel="noopener" href="http://www.yuntu.io/book/list">云图</a>网站呢？主要是因为我学艺不精(ﾟｰﾟ)，而这个网站很好爬……好了，话不多说，让我们开始吧！</p>
+<p>为什么选择爬取<a
+target="_blank" rel="noopener" href="http://www.yuntu.io/book/list">云图</a>网站呢？主要是因为我学艺不精(ﾟｰﾟ)，而这个网站很好爬……好了，话不多说，让我们开始吧！</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/02/14/%E7%88%AC%E5%8F%96%E4%BA%91%E5%9B%BE%E7%BD%91%E7%AB%99%E5%9B%BE%E4%B9%A6%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF/#more" rel="contents">
@@ -823,13 +845,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -894,6 +916,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="在 JavaScript 中，每个对象都有一个与之关联的原型（prototype）。原型是一个对象，它包含了共享的属性和方法，可以被其他对象继承。通过原型链，JavaScript 对象可以访问到其原型对象上的属性和方法。 当你创建一个对象时，JavaScript 会自动为这个对象关联一个原型。你可以将原型看作是一个对象的”父对象”，它定义了该对象共享的属性和方法。通过原型链，对象可以访问其原型对">
+    <meta name="description" content="在 JavaScript 中，每个对象都有一个与之关联的原型（prototype）。原型是一个对象，它包含了共享的属性和方法，可以被其他对象继承。通过原型链，JavaScript 对象可以访问到其原型对象上的属性和方法。 当你创建一个对象时，JavaScript 会自动为这个对象关联一个原型。你可以将原型看作是一个对象的”父对象”，它定义了该对象共享的属性和方法。通过原型链，对象可以访">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript中的原型">
 <meta property="og:url" content="https://toypipi.github.io/2023/08/09/JavaScript%E4%B8%AD%E7%9A%84%E5%8E%9F%E5%9E%8B/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="在 JavaScript 中，每个对象都有一个与之关联的原型（prototype）。原型是一个对象，它包含了共享的属性和方法，可以被其他对象继承。通过原型链，JavaScript 对象可以访问到其原型对象上的属性和方法。 当你创建一个对象时，JavaScript 会自动为这个对象关联一个原型。你可以将原型看作是一个对象的”父对象”，它定义了该对象共享的属性和方法。通过原型链，对象可以访问其原型对">
+<meta property="og:description" content="在 JavaScript 中，每个对象都有一个与之关联的原型（prototype）。原型是一个对象，它包含了共享的属性和方法，可以被其他对象继承。通过原型链，JavaScript 对象可以访问到其原型对象上的属性和方法。 当你创建一个对象时，JavaScript 会自动为这个对象关联一个原型。你可以将原型看作是一个对象的”父对象”，它定义了该对象共享的属性和方法。通过原型链，对象可以访">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-09T07:35:46.000Z">
 <meta property="article:modified_time" content="2023-08-09T07:39:34.092Z">
@@ -276,17 +276,25 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>在 JavaScript 中，每个对象都有一个与之关联的原型（prototype）。原型是一个对象，它包含了共享的属性和方法，可以被其他对象继承。通过原型链，JavaScript 对象可以访问到其原型对象上的属性和方法。</p>
-<p>当你创建一个对象时，JavaScript 会自动为这个对象关联一个原型。你可以将原型看作是一个对象的”父对象”，它定义了该对象共享的属性和方法。通过原型链，对象可以访问其原型对象的属性和方法。</p>
-<p>每个 JavaScript 对象都有一个隐藏的属性 <code>__proto__</code>，它指向了该对象的原型。在访问一个对象的属性或方法时，如果对象本身没有找到，JavaScript 引擎会沿着原型链去查找对象的原型，然后再去原型的原型，依此类推，直到找到所需的属性或方法或者到达原型链的末端。</p>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<p>在 JavaScript
+中，每个对象都有一个与之关联的原型（prototype）。原型是一个对象，它包含了共享的属性和方法，可以被其他对象继承。通过原型链，JavaScript
+对象可以访问到其原型对象上的属性和方法。</p>
+<p>当你创建一个对象时，JavaScript
+会自动为这个对象关联一个原型。你可以将原型看作是一个对象的”父对象”，它定义了该对象共享的属性和方法。通过原型链，对象可以访问其原型对象的属性和方法。</p>
+<p>每个 JavaScript 对象都有一个隐藏的属性
+<code>__proto__</code>，它指向了该对象的原型。在访问一个对象的属性或方法时，如果对象本身没有找到，JavaScript
+引擎会沿着原型链去查找对象的原型，然后再去原型的原型，依此类推，直到找到所需的属性或方法或者到达原型链的末端。</p>
 <p>例如：</p>
 <span id="more"></span>
-
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个原型对象</span></span><br><span class="line"><span class="keyword">const</span> animalPrototype = &#123;</span><br><span class="line">  <span class="attr">sound</span>: <span class="string">&quot;Animal makes a sound&quot;</span>,</span><br><span class="line">  <span class="attr">makeSound</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">sound</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个对象并关联原型</span></span><br><span class="line"><span class="keyword">const</span> dog = <span class="title class_">Object</span>.<span class="title function_">create</span>(animalPrototype);</span><br><span class="line">dog.<span class="property">sound</span> = <span class="string">&quot;Woof!&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用对象自身的属性和原型链上的方法</span></span><br><span class="line">dog.<span class="title function_">makeSound</span>(); <span class="comment">// 输出 &quot;Woof!&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>在上面的例子中，dog 对象通过 Object.create(animalPrototype) 创建，并且关联了原型对象 animalPrototype。虽然 dog 自身没有定义 makeSound 方法，但它可以通过原型链访问到 animalPrototype 上的 makeSound 方法。</p>
-<p>总之，JavaScript 中的原型是一种机制，它允许对象通过原型链继承共享的属性和方法。这也是 JavaScript 中实现继承的一种方式。</p>
+<p>在上面的例子中，dog 对象通过 Object.create(animalPrototype)
+创建，并且关联了原型对象 animalPrototype。虽然 dog 自身没有定义
+makeSound 方法，但它可以通过原型链访问到 animalPrototype 上的 makeSound
+方法。</p>
+<p>总之，JavaScript
+中的原型是一种机制，它允许对象通过原型链继承共享的属性和方法。这也是
+JavaScript 中实现继承的一种方式。</p>
 
     </div>
 
@@ -377,13 +385,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -448,6 +456,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

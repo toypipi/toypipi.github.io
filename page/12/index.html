@@ -257,16 +257,20 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<h1 id="DESCRIPTION"><a href="#DESCRIPTION" class="headerlink" title="DESCRIPTION"></a>DESCRIPTION</h1><p>Given an integral number, determine if it’s a square number:</p>
+          <hr />
+<h1 id="description">DESCRIPTION</h1>
+<p>Given an integral number, determine if it’s a square number:</p>
 <blockquote>
-<p>In mathematics, a square number or perfect square is an integer that is the square of an integer; in other words, it is the product of some integer with itself.</p>
+<p>In mathematics, a square number or perfect square is an integer that
+is the square of an integer; in other words, it is the product of some
+integer with itself.</p>
 </blockquote>
-<p>The tests will always use some integral number, so don’t worry about that in dynamic typed languages.</p>
+<p>The tests will always use some integral number, so don’t worry about
+that in dynamic typed languages.</p>
 <p>Examples</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-<span class="number">1</span>  =&gt;  <span class="literal">false</span></span><br><span class="line"> <span class="number">0</span>  =&gt;  <span class="literal">true</span></span><br><span class="line"> <span class="number">3</span>  =&gt;  <span class="literal">false</span></span><br><span class="line"> <span class="number">4</span>  =&gt;  <span class="literal">true</span></span><br><span class="line"><span class="number">25</span>  =&gt;  <span class="literal">true</span></span><br><span class="line"><span class="number">26</span>  =&gt;  <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="SOLUTION"><a href="#SOLUTION" class="headerlink" title="SOLUTION"></a>SOLUTION</h1><ul>
+<h1 id="solution">SOLUTION</h1>
+<ul>
 <li>方法一：</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isSquare = <span class="keyword">function</span> (<span class="params">n</span>) &#123;</span><br><span class="line">  <span class="comment">// 求平方根并取整</span></span><br><span class="line">  <span class="keyword">let</span> roundSqrt = <span class="title class_">Math</span>.<span class="title function_">round</span>(<span class="title class_">Math</span>.<span class="title function_">sqrt</span>(n));</span><br><span class="line">  <span class="comment">// 判断平方根相乘的结果是否与传入的数值相等</span></span><br><span class="line">  <span class="keyword">return</span> n === roundSqrt * roundSqrt;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -370,12 +374,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<h1 id="DESCRIPTION"><a href="#DESCRIPTION" class="headerlink" title="DESCRIPTION"></a>DESCRIPTION</h1><p>In this kata you will create a function that takes a list of non-negative integers and strings and returns a new list with the strings filtered out.</p>
+          <hr />
+<h1 id="description">DESCRIPTION</h1>
+<p>In this kata you will create a function that takes a list of
+non-negative integers and strings and returns a new list with the
+strings filtered out.</p>
 <p>Example</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">filter_list</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>]) == [<span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line"><span class="title function_">filter_list</span>([<span class="number">1</span>, <span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="number">0</span>, <span class="number">15</span>]) == [<span class="number">1</span>, <span class="number">0</span>, <span class="number">15</span>];</span><br><span class="line"><span class="title function_">filter_list</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="string">&quot;aasf&quot;</span>, <span class="string">&quot;1&quot;</span>, <span class="string">&quot;123&quot;</span>, <span class="number">123</span>]) == [<span class="number">1</span>, <span class="number">2</span>, <span class="number">123</span>];</span><br></pre></td></tr></table></figure>
-
-<h1 id="SOLUTION"><a href="#SOLUTION" class="headerlink" title="SOLUTION"></a>SOLUTION</h1><ul>
+<h1 id="solution">SOLUTION</h1>
+<ul>
 <li>数组的 <code>filter()</code> 方法</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">filter_list</span>(<span class="params">l</span>) &#123;</span><br><span class="line">  <span class="comment">// Return a new array with the strings filtered out</span></span><br><span class="line">  <span class="keyword">return</span> l.<span class="title function_">filter</span>(<span class="function">(<span class="params">word</span>) =&gt;</span> <span class="keyword">typeof</span> word === <span class="string">&quot;number&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -479,16 +486,24 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<h1 id="DESCRIPTION"><a href="#DESCRIPTION" class="headerlink" title="DESCRIPTION"></a>DESCRIPTION</h1><p>Trolls are attacking your comment section!</p>
-<p>A common way to deal with this situation is to remove all of the vowels from the trolls’ comments, neutralizing the threat.</p>
-<p>Your task is to write a function that takes a string and return a new string with all vowels removed.</p>
-<p>For example, the string “This website is for losers LOL!” would become “Ths wbst s fr lsrs LL!”.</p>
+          <hr />
+<h1 id="description">DESCRIPTION</h1>
+<p>Trolls are attacking your comment section!</p>
+<p>A common way to deal with this situation is to remove all of the
+vowels from the trolls’ comments, neutralizing the threat.</p>
+<p>Your task is to write a function that takes a string and return a new
+string with all vowels removed.</p>
+<p>For example, the string “This website is for losers LOL!” would
+become “Ths wbst s fr lsrs LL!”.</p>
 <p>Note: for this kata y isn’t considered a vowel.</p>
-<h1 id="SOLUTION"><a href="#SOLUTION" class="headerlink" title="SOLUTION"></a>SOLUTION</h1><ul>
-<li>方法一：字符串的 <code>replace()</code> 和 <code>replaceAll()</code> 方法都可，这两个方法都是返回一个新的字符串。</li>
+<h1 id="solution">SOLUTION</h1>
+<ul>
+<li>方法一：字符串的 <code>replace()</code> 和 <code>replaceAll()</code>
+方法都可，这两个方法都是返回一个新的字符串。</li>
 </ul>
-<p><code>replace()</code> 字符串模式只会被替换一次。要执行全局搜索和替换，请使用带有 g 标志的正则表达式或使用 replaceAll()。</p>
+<p><code>replace()</code>
+字符串模式只会被替换一次。要执行全局搜索和替换，请使用带有 g
+标志的正则表达式或使用 replaceAll()。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">disemvowel</span>(<span class="params">str</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> regex = <span class="regexp">/aeiou/gi</span>;</span><br><span class="line">  <span class="keyword">let</span> result = str.<span class="title function_">replace</span>(regex, <span class="string">&quot;&quot;</span>);</span><br><span class="line">  <span class="comment">// let result = str.replaceAll(regex, &quot;&quot;);</span></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
@@ -590,12 +605,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>for…in 语句以任意顺序迭代一个对象的除 Symbol 以外的可枚举属性，包括继承的可枚举属性。</p>
-<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (variable <span class="keyword">in</span> object) &#123;</span><br><span class="line">  <span class="keyword">if</span>(object.<span class="title function_">hasOwnProperty</span>(<span class="params">variable</span>) &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>variable</code><br>在每次迭代时，variable 会被赋值为不同的属性名。</p>
-<p><code>object</code><br>非 Symbol 类型的可枚举属性被迭代的对象。</p>
+          <hr />
+<p>for…in 语句以任意顺序迭代一个对象的除 Symbol
+以外的可枚举属性，包括继承的可枚举属性。</p>
+<h1 id="语法">语法</h1>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (variable <span class="keyword">in</span> object) &#123;</span><br><span class="line">  <span class="keyword">if</span>(object.<span class="title function_">hasOwnProperty</span>(<span class="params">variable</span>) &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>variable</code> 在每次迭代时，variable
+会被赋值为不同的属性名。</p>
+<p><code>object</code> 非 Symbol 类型的可枚举属性被迭代的对象。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/10/13/Javascript-for-in/#more" rel="contents">
@@ -696,8 +713,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>分析原因应该是点击切换标签页时，组件没有销毁。<br>解决办法：给组件添加 <code>v-if</code> 判断，使组件真正的创建和销毁。然后就在组件中定义的 <code>mounted</code> 和 <code>destoryed</code> 钩子函数就可以被正常调用了。</p>
+          <hr />
+<p>分析原因应该是点击切换标签页时，组件没有销毁。 解决办法：给组件添加
+<code>v-if</code> 判断，使组件真正的创建和销毁。然后就在组件中定义的
+<code>mounted</code> 和 <code>destoryed</code>
+钩子函数就可以被正常调用了。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;app-container&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">el-tabs</span> <span class="attr">v-model</span>=<span class="string">&quot;activeName&quot;</span> @<span class="attr">tab-click</span>=<span class="string">&quot;handleClick&quot;</span> <span class="attr">type</span>=<span class="string">&quot;border-card&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="comment">&lt;!--实时状态--&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">el-tab-pane</span> <span class="attr">name</span>=<span class="string">&quot;realTimeState&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">slot</span>=<span class="string">&quot;label&quot;</span>&gt;</span> <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;el-icon-time&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> 实时状态<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">realTimeState</span> <span class="attr">v-if</span>=<span class="string">&quot;activeName === &#x27;realTimeState&#x27;&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">el-tab-pane</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="comment">&lt;!--历史状态--&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">el-tab-pane</span> <span class="attr">name</span>=<span class="string">&quot;historyData&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">slot</span>=<span class="string">&quot;label&quot;</span>&gt;</span> <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;el-icon-document&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> 历史状态<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">historyData</span> <span class="attr">v-if</span>=<span class="string">&quot;activeName === &#x27;historyData&#x27;&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">el-tab-pane</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="comment">&lt;!--基本信息--&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">el-tab-pane</span> <span class="attr">name</span>=<span class="string">&quot;basicInfo&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">slot</span>=<span class="string">&quot;label&quot;</span>&gt;</span> <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;el-icon-info&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> 基本信息<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">basicInfo</span> <span class="attr">v-if</span>=<span class="string">&quot;activeName === &#x27;basicInfo&#x27;&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">el-tab-pane</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="comment">&lt;!--状态导出--&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">el-tab-pane</span> <span class="attr">name</span>=<span class="string">&quot;exportData&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">slot</span>=<span class="string">&quot;label&quot;</span>&gt;</span> <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;el-icon-download&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> 状态导出<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">exportData</span> <span class="attr">v-if</span>=<span class="string">&quot;activeName === &#x27;exportData&#x27;&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">el-tab-pane</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="comment">&lt;!--故障查询--&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">el-tab-pane</span> <span class="attr">name</span>=<span class="string">&quot;error&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">slot</span>=<span class="string">&quot;label&quot;</span>&gt;</span> <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;el-icon-error&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> 故障查询<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">error</span> <span class="attr">v-if</span>=<span class="string">&quot;activeName === &#x27;error&#x27;&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">el-tab-pane</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="comment">&lt;!--预警监测--&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">el-tab-pane</span> <span class="attr">name</span>=<span class="string">&quot;statusPicture&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">slot</span>=<span class="string">&quot;label&quot;</span>&gt;</span> <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;el-icon-picture&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> 预警监测<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">statusPicture</span> <span class="attr">v-if</span>=<span class="string">&quot;activeName === &#x27;statusPicture&#x27;&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">el-tab-pane</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">el-tabs</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
@@ -747,13 +767,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -818,6 +838,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

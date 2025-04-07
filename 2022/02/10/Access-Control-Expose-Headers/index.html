@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Access-Control-Expose-Headers响应首部 Access-Control-Expose-Headers 列出了哪些首部可以作为响应的一部分暴露给外部。 默认情况下，只有七种 simple response headers （简单响应首部）可以暴露给外部：  Cache-Control Content-Language Content-Length Content-Type">
+    <meta name="description" content="Access-Control-Expose-Headers 响应首部 Access-Control-Expose-Headers 列出了哪些首部可以作为响应的一部分暴露给外部。 默认情况下，只有七种 simple response headers （简单响应首部）可以暴露给外部：  Cache-Control Content-Language Content-Length C">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Access-Control-Expose-Headers">
 <meta property="og:url" content="https://toypipi.github.io/2022/02/10/Access-Control-Expose-Headers/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="Access-Control-Expose-Headers响应首部 Access-Control-Expose-Headers 列出了哪些首部可以作为响应的一部分暴露给外部。 默认情况下，只有七种 simple response headers （简单响应首部）可以暴露给外部：  Cache-Control Content-Language Content-Length Content-Type">
+<meta property="og:description" content="Access-Control-Expose-Headers 响应首部 Access-Control-Expose-Headers 列出了哪些首部可以作为响应的一部分暴露给外部。 默认情况下，只有七种 simple response headers （简单响应首部）可以暴露给外部：  Cache-Control Content-Language Content-Length C">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-02-10T05:57:31.000Z">
 <meta property="article:modified_time" content="2022-02-10T06:08:01.037Z">
@@ -145,7 +145,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Access-Control-Expose-Headers"><span class="nav-number">1.</span> <span class="nav-text">Access-Control-Expose-Headers</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4"><span class="nav-number">1.2.</span> <span class="nav-text">指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.3.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F"><span class="nav-number">1.4.</span> <span class="nav-text">注意</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#access-control-expose-headers"><span class="nav-number">1.</span> <span class="nav-text">Access-Control-Expose-Headers</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4"><span class="nav-number">1.2.</span> <span class="nav-text">指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.3.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F"><span class="nav-number">1.4.</span> <span class="nav-text">注意</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -279,36 +279,60 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<h1 id="Access-Control-Expose-Headers"><a href="#Access-Control-Expose-Headers" class="headerlink" title="Access-Control-Expose-Headers"></a>Access-Control-Expose-Headers</h1><p>响应首部 <strong><code>Access-Control-Expose-Headers</code></strong> 列出了哪些首部可以作为响应的一部分暴露给外部。</p>
-<p>默认情况下，只有七种 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Simple_response_header">simple response headers</a> （简单响应首部）可以暴露给外部：</p>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<h1
+id="access-control-expose-headers">Access-Control-Expose-Headers</h1>
+<p>响应首部 <strong><code>Access-Control-Expose-Headers</code></strong>
+列出了哪些首部可以作为响应的一部分暴露给外部。</p>
+<p>默认情况下，只有七种 <a
+target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Simple_response_header">simple
+response headers</a> （简单响应首部）可以暴露给外部：</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Cache-Control"><code>Cache-Control</code></a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Language"><code>Content-Language</code></a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Length"><code>Content-Length</code></a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type"><code>Content-Type</code></a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Expires"><code>Expires</code></a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Last-Modified"><code>Last-Modified</code></a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Pragma"><code>Pragma</code></a></li>
+<li><a
+target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Cache-Control"><code>Cache-Control</code></a></li>
+<li><a
+target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Language"><code>Content-Language</code></a></li>
+<li><a
+target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Length"><code>Content-Length</code></a></li>
+<li><a
+target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type"><code>Content-Type</code></a></li>
+<li><a
+target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Expires"><code>Expires</code></a></li>
+<li><a
+target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Last-Modified"><code>Last-Modified</code></a></li>
+<li><a
+target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Pragma"><code>Pragma</code></a></li>
 </ul>
-<p>如果想要让客户端可以访问到其他的首部信息，可以将它们在 <code>Access-Control-Expose-Headers</code> 里面列出来。</p>
+<p>如果想要让客户端可以访问到其他的首部信息，可以将它们在
+<code>Access-Control-Expose-Headers</code> 里面列出来。</p>
 <span id="more"></span>
-
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Expose-Headers#%E8%AF%AD%E6%B3%95">语法</a></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Expose-Headers: &lt;header-name&gt;, &lt;header-name&gt;, ...</span><br></pre></td></tr></table></figure>
-
-<h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Expose-Headers#%E6%8C%87%E4%BB%A4">指令</a></h2><ul>
-<li><header-name>
-
-包含0个或多个除 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Simple_response_header">simple response headers</a> （简单响应首部）之外的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers">首部名称</a>列表，可以暴露给外部，供页面资源使用。</li>
+<h2 id="语法"><a
+target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Expose-Headers#语法">语法</a></h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Expose-Headers: &lt;header-name&gt;, &lt;header-name&gt;, ...</span><br></pre></td></tr></table></figure>
+<h2 id="指令"><a
+target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Expose-Headers#指令">指令</a></h2>
+<ul>
+<li><p><header-name></p>
+<p>包含0个或多个除 <a
+target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Simple_response_header">simple
+response headers</a> （简单响应首部）之外的<a
+target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers">首部名称</a>列表，可以暴露给外部，供页面资源使用。</p></li>
 </ul>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Expose-Headers#%E7%A4%BA%E4%BE%8B">示例</a></h2><p>想要暴露一个非简单响应首部，可以这样指定：</p>
+<h2 id="示例"><a
+target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Expose-Headers#示例">示例</a></h2>
+<p>想要暴露一个非简单响应首部，可以这样指定：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Expose-Headers: Content-Length</span><br></pre></td></tr></table></figure>
-
-<p>想要额外暴露自定义的首部，例如 <code>X-Kuma-Revision</code>，可以指定多个，用逗号隔开：</p>
+<p>想要额外暴露自定义的首部，例如
+<code>X-Kuma-Revision</code>，可以指定多个，用逗号隔开：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Expose-Headers: Content-Length, X-Kuma-Revision</span><br></pre></td></tr></table></figure>
-
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>当前端实现文件下载功能时，通过 fetch 函数无法获取请求头中的 <code>Content-Disposition</code> 参数时，需要看下后端是否通过 <code>Access-Control-Expose-Headers</code> 暴露了这个参数。</p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Expose-Headers">Access-Control-Expose-Headers</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/PGguoqi/article/details/106824957">js无法获取响应header的Content-Disposition字段（2020）</a></p>
+<h2 id="注意">注意</h2>
+<p>当前端实现文件下载功能时，通过 fetch 函数无法获取请求头中的
+<code>Content-Disposition</code> 参数时，需要看下后端是否通过
+<code>Access-Control-Expose-Headers</code> 暴露了这个参数。</p>
+<p><a
+target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Expose-Headers">Access-Control-Expose-Headers</a>
+<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/PGguoqi/article/details/106824957">js无法获取响应header的Content-Disposition字段（2020）</a></p>
 
     </div>
 
@@ -401,13 +425,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -472,6 +496,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

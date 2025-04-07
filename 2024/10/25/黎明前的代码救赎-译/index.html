@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="那是周一凌晨 2 点，我正在疯狂地调试一个 bug，这个 bug 必须在 7 小时后的演示前解决。我实在想不通为什么会出现这个问题。但我明确知道的是：这个问题在之前的版本中并不存在。 这个项目由两个部分组成：一个运行着我用 C 语言编写的固件的设备，以及一个我用 Swift 语言编写的 iPadOS 应用程序。我相当确定这个 bug 存在于固件方面。   工作版本和有 bug 的版本之间有超过">
+    <meta name="description" content="那是周一凌晨 2 点，我正在疯狂地调试一个 bug，这个 bug 必须在 7 小时后的演示前解决。我实在想不通为什么会出现这个问题。但我明确知道的是：这个问题在之前的版本中并不存在。 这个项目由两个部分组成：一个运行着我用 C 语言编写的固件的设备，以及一个我用 Swift 语言编写的 iPadOS 应用程序。我相当确定这个 bug 存在于固件方面。  工作版本和有 bug 的版本">
 <meta property="og:type" content="article">
 <meta property="og:title" content="黎明前的代码救赎：如何用 Git Bisect 拯救我的演示[译]">
 <meta property="og:url" content="https://toypipi.github.io/2024/10/25/%E9%BB%8E%E6%98%8E%E5%89%8D%E7%9A%84%E4%BB%A3%E7%A0%81%E6%95%91%E8%B5%8E-%E8%AF%91/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="那是周一凌晨 2 点，我正在疯狂地调试一个 bug，这个 bug 必须在 7 小时后的演示前解决。我实在想不通为什么会出现这个问题。但我明确知道的是：这个问题在之前的版本中并不存在。 这个项目由两个部分组成：一个运行着我用 C 语言编写的固件的设备，以及一个我用 Swift 语言编写的 iPadOS 应用程序。我相当确定这个 bug 存在于固件方面。   工作版本和有 bug 的版本之间有超过">
+<meta property="og:description" content="那是周一凌晨 2 点，我正在疯狂地调试一个 bug，这个 bug 必须在 7 小时后的演示前解决。我实在想不通为什么会出现这个问题。但我明确知道的是：这个问题在之前的版本中并不存在。 这个项目由两个部分组成：一个运行着我用 C 语言编写的固件的设备，以及一个我用 Swift 语言编写的 iPadOS 应用程序。我相当确定这个 bug 存在于固件方面。  工作版本和有 bug 的版本">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://toypipi.github.io/2024/10/25/%E9%BB%8E%E6%98%8E%E5%89%8D%E7%9A%84%E4%BB%A3%E7%A0%81%E6%95%91%E8%B5%8E-%E8%AF%91/1.png">
 <meta property="article:published_time" content="2024-10-25T01:01:01.000Z">
@@ -281,35 +281,52 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>那是周一凌晨 2 点，我正在疯狂地调试一个 bug，这个 bug 必须在 7 小时后的演示前解决。我实在想不通为什么会出现这个问题。但我明确知道的是：这个问题在之前的版本中并不存在。</p>
-<p>这个项目由两个部分组成：一个运行着我用 C 语言编写的固件的设备，以及一个我用 Swift 语言编写的 iPadOS 应用程序。我相当确定这个 bug 存在于固件方面。</p>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<p>那是周一凌晨 2 点，我正在疯狂地调试一个 bug，这个 bug 必须在 7
+小时后的演示前解决。我实在想不通为什么会出现这个问题。但我明确知道的是：这个问题在之前的版本中并不存在。</p>
+<p>这个项目由两个部分组成：一个运行着我用 C
+语言编写的固件的设备，以及一个我用 Swift 语言编写的 iPadOS
+应用程序。我相当确定这个 bug 存在于固件方面。</p>
 <img src="/2024/10/25/%E9%BB%8E%E6%98%8E%E5%89%8D%E7%9A%84%E4%BB%A3%E7%A0%81%E6%95%91%E8%B5%8E-%E8%AF%91/1.png" class="">
-
-<p>工作版本和有 bug 的版本之间有超过 100 次的提交，因此无法立即看出是什么更改导致了 bug。</p>
+<p>工作版本和有 bug 的版本之间有超过 100
+次的提交，因此无法立即看出是什么更改导致了 bug。</p>
 <span id="more"></span>
-
-<p>就在这时，我想起了 <strong>git bisect</strong>。这个命令使用二分搜索算法帮助精确定位引入 bug 的确切提交。是时候让它发挥作用了。</p>
+<p>就在这时，我想起了 <strong>git
+bisect</strong>。这个命令使用二分搜索算法帮助精确定位引入 bug
+的确切提交。是时候让它发挥作用了。</p>
 <blockquote>
 <p>译注：原文在此处通过动画演示了 Git Bisect 的工作过程。此处省略。</p>
 </blockquote>
-<p>我首先将当前 HEAD 标记为 “坏的”，将最后一个已知的无故障提交标记为 “好的”：</p>
+<p>我首先将当前 HEAD 标记为 “坏的”，将最后一个已知的无故障提交标记为
+“好的”：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git bisect start</span><br><span class="line">git bisect bad HEAD</span><br><span class="line">git bisect good v1.0.0</span><br></pre></td></tr></table></figure>
-
-<p>然后 Git 检出这两个点之间的一个中间提交。此时二分搜索的魔力就发挥作用了。<strong>git bisect</strong> 不是逐一检查每个提交（这会花费很长时间来筛选超过 100 个提交），而是战略性地选择要测试的提交，将每次迭代的搜索空间减半。</p>
-<p>幸运的是，这是一个我可以用脚本来验证的 bug。所以，我添加了一个脚本来检查 bug 是否存在，并让 git bisect 为每个提交运行测试。</p>
+<p>然后 Git
+检出这两个点之间的一个中间提交。此时二分搜索的魔力就发挥作用了。<strong>git
+bisect</strong> 不是逐一检查每个提交（这会花费很长时间来筛选超过 100
+个提交），而是战略性地选择要测试的提交，将每次迭代的搜索空间减半。</p>
+<p>幸运的是，这是一个我可以用脚本来验证的
+bug。所以，我添加了一个脚本来检查 bug 是否存在，并让 git bisect
+为每个提交运行测试。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git bisect run ./test_for_bug.sh</span><br></pre></td></tr></table></figure>
-
-<p>然后它就开始工作了！Git 检出不同的提交，运行我的脚本，并缩小搜索范围。</p>
+<p>然后它就开始工作了！Git
+检出不同的提交，运行我的脚本，并缩小搜索范围。</p>
 <p>几秒钟后，Git 宣布：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">b1f3d2c is the first bad commit</span><br><span class="line">commit b1f3d2c5e8a9f0d4c3b2a1098765432100fedcba</span><br><span class="line">Author: Mike Buss &lt;mike@mikebuss.com&gt;</span><br><span class="line">Date:   Fri Jun 9 11:23:45 2024 -0700</span><br><span class="line"></span><br><span class="line">    Added a feature that definitely won’t <span class="built_in">break</span> anything</span><br></pre></td></tr></table></figure>
-
-<p>罪魁祸首找到了。结果发现，在我急于优化内存使用的过程中，我在传感器数据处理例程中引入了一个微妙的 bug。这个优化在大多数情况下工作得很好，但在特定条件下失败了 —— 正是我在演示场景中遇到的那种条件。</p>
-<p>识别出有问题的提交后，修复 bug 变得容易多了。我能够精确地定位到导致问题的具体更改，并进行了必要的更正。</p>
+<p>罪魁祸首找到了。结果发现，在我急于优化内存使用的过程中，我在传感器数据处理例程中引入了一个微妙的
+bug。这个优化在大多数情况下工作得很好，但在特定条件下失败了 ——
+正是我在演示场景中遇到的那种条件。</p>
+<p>识别出有问题的提交后，修复 bug
+变得容易多了。我能够精确地定位到导致问题的具体更改，并进行了必要的更正。</p>
 <p>到了凌晨 5 点，也就是我演示前四个小时，bug 被修复了。</p>
-<p>这次经历再次强调了一个宝贵的教训：了解你的工具和了解你的代码一样重要。<strong>git bisect</strong> 将可能需要数小时的手动调试变成了一个命令就可以完成。</p>
-<p>在浩瀚的代码森林中，正确的工具可以是你的指南针。请记住 <strong>git bisect</strong> 的强大功能——它可能是你在下一次调试大冒险中的救命稻草。</p>
-<h1 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h1><p><a target="_blank" rel="noopener" href="https://www.mikebuss.com/posts/debugging-till-dawn">Debugging Till Dawn: How Git Bisect Saved My Demo</a></p>
+<p>这次经历再次强调了一个宝贵的教训：了解你的工具和了解你的代码一样重要。<strong>git
+bisect</strong> 将可能需要数小时的手动调试变成了一个命令就可以完成。</p>
+<p>在浩瀚的代码森林中，正确的工具可以是你的指南针。请记住 <strong>git
+bisect</strong>
+的强大功能——它可能是你在下一次调试大冒险中的救命稻草。</p>
+<h1 id="原文链接">原文链接</h1>
+<p><a
+target="_blank" rel="noopener" href="https://www.mikebuss.com/posts/debugging-till-dawn">Debugging Till
+Dawn: How Git Bisect Saved My Demo</a></p>
 
     </div>
 
@@ -402,13 +419,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -473,6 +490,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="1.题目描述Complete the solution so that it splits the string into pairs of two characters. If the string contains an odd number of characters then it should replace the missing second character of the fi">
+    <meta name="description" content="1.题目描述 Complete the solution so that it splits the string into pairs of two characters. If the string contains an odd number of characters then it should replace the missing second character of t">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Split Strings">
 <meta property="og:url" content="https://toypipi.github.io/2023/08/22/Split-Strings/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="1.题目描述Complete the solution so that it splits the string into pairs of two characters. If the string contains an odd number of characters then it should replace the missing second character of the fi">
+<meta property="og:description" content="1.题目描述 Complete the solution so that it splits the string into pairs of two characters. If the string contains an odd number of characters then it should replace the missing second character of t">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-22T06:52:57.000Z">
 <meta property="article:modified_time" content="2023-08-22T06:59:57.966Z">
@@ -276,16 +276,18 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>1.<a target="_blank" rel="noopener" href="https://www.codewars.com/kata/515de9ae9dcfc28eb6000001/solutions/javascript">题目描述</a><br>Complete the solution so that it splits the string into pairs of two characters. If the string contains an odd number of characters then it should replace the missing second character of the final pair with an underscore (‘_‘).</p>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<p>1.<a
+target="_blank" rel="noopener" href="https://www.codewars.com/kata/515de9ae9dcfc28eb6000001/solutions/javascript">题目描述</a>
+Complete the solution so that it splits the string into pairs of two
+characters. If the string contains an odd number of characters then it
+should replace the missing second character of the final pair with an
+underscore (‘_’).</p>
 <p>Examples:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* &#x27;abc&#x27; =&gt;  [&#x27;ab&#x27;, &#x27;c_&#x27;]</span><br><span class="line">* &#x27;abcdef&#x27; =&gt; [&#x27;ab&#x27;, &#x27;cd&#x27;, &#x27;ef&#x27;]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <p>2.我的解法：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">solution</span>(<span class="params">str</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> pair = [];</span><br><span class="line">  <span class="comment">// 1.将字符串两两分割存入数组</span></span><br><span class="line">  <span class="comment">// Array.prototype.slice(start,end)</span></span><br><span class="line">  <span class="comment">// 如果 end &gt;= array.length 或者省略了 end，则使用 array.length，提取所有元素直到末尾</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; str.<span class="property">length</span>; i += <span class="number">2</span>) &#123;</span><br><span class="line">    pair.<span class="title function_">push</span>(str.<span class="title function_">slice</span>(i, i + <span class="number">2</span>));</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 2.如果字符串长度为奇数，则为 pair 最后一个元素添加下划线</span></span><br><span class="line">  <span class="keyword">if</span> (str.<span class="property">length</span> % <span class="number">2</span> === <span class="number">1</span>) &#123;</span><br><span class="line">    pair[pair.<span class="property">length</span> - <span class="number">1</span>] += <span class="string">&quot;_&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> pair;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <span id="more"></span>
-
 <p>3.学习到的解法：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">solution</span>(<span class="params">s</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (s + <span class="string">&quot;_&quot;</span>).<span class="title function_">match</span>(<span class="regexp">/.&#123;2&#125;/g</span>) || [];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -378,13 +380,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -449,6 +451,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

@@ -272,8 +272,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>Percona XtraBackup 是全球唯一的开源免费MySQL热备软件，可为 InnoDB 和 XtraDB 数据库执行无锁定备份。借助 Percona XtraBackup，您可以获得以下好处：</p>
+          <hr />
+<p>Percona XtraBackup 是全球唯一的开源免费MySQL热备软件，可为 InnoDB 和
+XtraDB 数据库执行无锁定备份。借助 Percona
+XtraBackup，您可以获得以下好处：</p>
 <ul>
 <li>完成快速可靠的备份</li>
 <li>备份期间不间断的事务处理</li>
@@ -281,9 +283,18 @@
 <li>自动备份验证</li>
 <li>由于更快的恢复时间从而使服务器正常运行时间更长</li>
 </ul>
-<p>Percona XtraBackup 为所有版本的 Percona Server，MySQL 和 MariaDB 进行 MySQL 热备份。它可以执行流式，压缩和增量 MySQL 备份。</p>
-<p>Percona XtraBackup 可与 MySQL，MariaDB 和 Percona Server 配合使用。它支持 InnoDB，XtraDB 和 HailDB 存储引擎的完全无锁定备份。此外，它还可以通过在备份结束时暂停写入来备份以下存储引擎：MyISAM，<a target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/glossary.html#term-mrg">Merge</a> 和 <a target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/glossary.html#term-arm">Archive</a>，包括分区表，触发器和数据库选项。</p>
-<p>Percona 的企业级商业 <a target="_blank" rel="noopener" href="https://www.percona.com/services/support/mysql-support">MySQL 支持</a>合同包括对 Percona XtraBackup 的支持。我们建议对关键的生产部署提供支持。</p>
+<p>Percona XtraBackup 为所有版本的 Percona Server，MySQL 和 MariaDB 进行
+MySQL 热备份。它可以执行流式，压缩和增量 MySQL 备份。</p>
+<p>Percona XtraBackup 可与 MySQL，MariaDB 和 Percona Server
+配合使用。它支持 InnoDB，XtraDB 和 HailDB
+存储引擎的完全无锁定备份。此外，它还可以通过在备份结束时暂停写入来备份以下存储引擎：MyISAM，<a
+target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/glossary.html#term-mrg">Merge</a>
+和 <a
+target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/glossary.html#term-arm">Archive</a>，包括分区表，触发器和数据库选项。</p>
+<p>Percona 的企业级商业 <a
+target="_blank" rel="noopener" href="https://www.percona.com/services/support/mysql-support">MySQL
+支持</a>合同包括对 Percona XtraBackup
+的支持。我们建议对关键的生产部署提供支持。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/03/23/%E5%85%B3%E4%BA%8E-Percona-XtraBackup/#more" rel="contents">
@@ -390,14 +401,23 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<div class="note danger"><p>Percona XtraBackup 文档翻译已经迁移到 <a target="_blank" rel="noopener" href="https://toypipi.gitbook.io/percona-xtrabackup-2-4-9/">gitbook</a>，本博客后续将不再更新~~~</p>
+          <hr />
+<div class="note danger"><p>Percona XtraBackup 文档翻译已经迁移到 <a
+target="_blank" rel="noopener" href="https://toypipi.gitbook.io/percona-xtrabackup-2-4-9/">gitbook</a>，本博客后续将不再更新~~~</p>
 </div>
-
-<p>翻译 Percona XtraBackup 官方文档，原文<a target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/index.html">在这</a>。以下为翻译内容：</p>
-<p>Percona XtraBackup 是一款基于 MySQL 服务器的开源热备份实用程序，在备份过程中不会锁定数据库。</p>
-<p>它可以备份 MySQL 5.1（在Percona XtraBackup 2.1 中已经删除了对 InnoDB 5.1 的内置支持），5.5 , 5.6 和 5.7 服务器上的 InnoDB，XtraDB 和 MyISAM 表的数据，以及带有 XtraDB 的 Percona 服务器。有关其许多高级功能（包括功能比较）的高级概述，请参阅 <a target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/intro.html">Percona XtraBackup</a>。</p>
-<p>无论是 24x7 高负载的服务器还是低事务量的环境，Percona XtraBackup 旨在使备份成为无缝过程，而不会中断生产环境中服务器的性能。<a target="_blank" rel="noopener" href="https://www.percona.com/services/support/mysql-support">支持商业合同</a>。</p>
+<p>翻译 Percona XtraBackup 官方文档，原文<a
+target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/index.html">在这</a>。以下为翻译内容：</p>
+<p>Percona XtraBackup 是一款基于 MySQL
+服务器的开源热备份实用程序，在备份过程中不会锁定数据库。</p>
+<p>它可以备份 MySQL 5.1（在Percona XtraBackup 2.1 中已经删除了对 InnoDB
+5.1 的内置支持），5.5 , 5.6 和 5.7 服务器上的 InnoDB，XtraDB 和 MyISAM
+表的数据，以及带有 XtraDB 的 Percona
+服务器。有关其许多高级功能（包括功能比较）的高级概述，请参阅 <a
+target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/intro.html">Percona
+XtraBackup</a>。</p>
+<p>无论是 24x7 高负载的服务器还是低事务量的环境，Percona XtraBackup
+旨在使备份成为无缝过程，而不会中断生产环境中服务器的性能。<a
+target="_blank" rel="noopener" href="https://www.percona.com/services/support/mysql-support">支持商业合同</a>。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/03/22/Percona-XtraBackup-%E6%96%87%E6%A1%A3%E7%BF%BB%E8%AF%91/#more" rel="contents">
@@ -504,22 +524,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>CentOS 6 安装 PERCONA XTRABACKUP MySQL 备份工具。</p>
-<ol>
-<li><p>首先去 <a target="_blank" rel="noopener" href="https://www.percona.com/downloads/XtraBackup/LATEST/">PERCONA</a> 下载并解压安装包。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf Percona-XtraBackup-2.4.9-ra467167cdd4-el7-x86_64-bundle.tar</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>下载并安装 <code>libev.so.4</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget ftp://rpmfind.net/linux/atrpms/el6-x86_64/atrpms/stable/libev-4.04-2.el6.x86_64.rpm</span><br><span class="line">rpm -ivh libev-4.04-2.el6.x86_64.rpm</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>下载并安装 <code>perl-DBD-MySQL</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install  perl-DBD-MySQL</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装 XTRABACKUP</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh percona-xtrabackup-24-2.4.9-1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Done!</p>
+          <hr />
+<p>CentOS 6 安装 PERCONA XTRABACKUP MySQL 备份工具。 1. 首先去 <a
+target="_blank" rel="noopener" href="https://www.percona.com/downloads/XtraBackup/LATEST/">PERCONA</a>
+下载并解压安装包。 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf Percona-XtraBackup-2.4.9-ra467167cdd4-el7-x86_64-bundle.tar</span><br></pre></td></tr></table></figure></p>
+<ol start="2" type="1">
+<li><p>下载并安装 <code>libev.so.4</code> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget ftp://rpmfind.net/linux/atrpms/el6-x86_64/atrpms/stable/libev-4.04-2.el6.x86_64.rpm</span><br><span class="line">rpm -ivh libev-4.04-2.el6.x86_64.rpm</span><br></pre></td></tr></table></figure></p></li>
+<li><p>下载并安装 <code>perl-DBD-MySQL</code> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install  perl-DBD-MySQL</span><br></pre></td></tr></table></figure></p></li>
+<li><p>安装 XTRABACKUP <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh percona-xtrabackup-24-2.4.9-1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure></p></li>
+<li><p>Done!
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/03/21/CentOS6-%E5%AE%89%E8%A3%85-PERCONA-XTRABACKUP/#more" rel="contents">
@@ -626,17 +639,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<ol>
-<li>使用 <code>ssh-keygen -t rsa</code> 生成公钥，一路敲回车。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure></li>
-<li>将生成的公钥发送到远程主机上<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub 192.168.1.135</span><br></pre></td></tr></table></figure></li>
-<li>成功<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@192.168.1.135</span><br></pre></td></tr></table></figure></li>
+          <hr />
+<ol type="1">
+<li>使用 <code>ssh-keygen -t rsa</code> 生成公钥，一路敲回车。
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure></li>
+<li>将生成的公钥发送到远程主机上 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub 192.168.1.135</span><br></pre></td></tr></table></figure></li>
+<li>成功 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@192.168.1.135</span><br></pre></td></tr></table></figure></li>
 </ol>
-<p><strong>注意</strong><br>如果希望 ssh 公钥生效需满足至少下面两个条件：</p>
-<ol>
-<li>ssh 目录的权限必须是700</li>
-<li>ssh&#x2F;authorized_keys 文件权限必须是600</li>
-</ol>
+<p><strong>注意</strong> 如果希望 ssh 公钥生效需满足至少下面两个条件：
+1. ssh 目录的权限必须是700 2. ssh/authorized_keys 文件权限必须是600</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/03/20/Linux-%E9%85%8D%E7%BD%AE%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/#more" rel="contents">
@@ -743,9 +754,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
 <p>使用 Percona Tools 在线工具生成的配置文件。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"># Generated by Percona Configuration Wizard (http://tools.percona.com/) version REL5-20120208</span><br><span class="line"># Configuration name server generated for 275688469@qq.com at 2018-03-06 03:18:19</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line"></span><br><span class="line"># CLIENT #</span><br><span class="line">port                           = 3306</span><br><span class="line">socket                         = /var/lib/mysql/mysql.sock</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line"></span><br><span class="line"># GENERAL #</span><br><span class="line">user                           = mysql</span><br><span class="line">default-storage-engine         = InnoDB</span><br><span class="line">socket                         = /var/lib/mysql/mysql.sock</span><br><span class="line">pid-file                       = /var/lib/mysql/mysql.pid</span><br><span class="line"></span><br><span class="line"># MyISAM #</span><br><span class="line">key-buffer-size                = 32M</span><br><span class="line">myisam-recover-options         = FORCE,BACKUP</span><br><span class="line"></span><br><span class="line"># SAFETY #</span><br><span class="line">max-allowed-packet             = 16M</span><br><span class="line">max-connect-errors             = 1000000</span><br><span class="line">skip-name-resolve</span><br><span class="line"></span><br><span class="line"># DATA STORAGE #</span><br><span class="line">datadir                        = /var/lib/mysql/</span><br><span class="line"></span><br><span class="line"># BINARY LOGGING #</span><br><span class="line">log-bin                        = /var/lib/mysql/mysql-bin</span><br><span class="line">expire-logs-days               = 14</span><br><span class="line">sync-binlog                    = 1</span><br><span class="line"></span><br><span class="line"># CACHES AND LIMITS #</span><br><span class="line">tmp-table-size                 = 32M</span><br><span class="line">max-heap-table-size            = 32M</span><br><span class="line">query-cache-type               = 0</span><br><span class="line">query-cache-size               = 0</span><br><span class="line">max-connections                = 500</span><br><span class="line">thread-cache-size              = 50</span><br><span class="line">open-files-limit               = 65535</span><br><span class="line">table-definition-cache         = 1024</span><br><span class="line">table-open-cache               = 2048</span><br><span class="line"></span><br><span class="line"># INNODB #</span><br><span class="line">innodb-flush-method            = O_DIRECT</span><br><span class="line">innodb-log-files-in-group      = 2</span><br><span class="line">innodb-log-file-size           = 512M</span><br><span class="line">innodb-flush-log-at-trx-commit = 1</span><br><span class="line">innodb-file-per-table          = 1</span><br><span class="line">innodb-buffer-pool-size        = 54G</span><br><span class="line"></span><br><span class="line"># LOGGING #</span><br><span class="line">log-error                      = /var/lib/mysql/mysql-error.log</span><br><span class="line">log-queries-not-using-indexes  = 1</span><br><span class="line">slow-query-log                 = 1</span><br><span class="line">slow-query-log-file            = /var/lib/mysql/mysql-slow.log</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -786,13 +798,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -857,6 +869,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

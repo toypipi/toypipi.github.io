@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="CSS BEM（块元素修饰符）是一种命名约定和方法论，用于在编写可维护和可扩展的 CSS 代码时提供结构和规范。它的目标是解决样式表的命名冲突问题，并提供一种一致性和可重用性的编码方式。  BEM 的命名约定由以下三个部分组成：  块（Block）：代表一个独立的、可重复使用的组件或模块，它是页面上的一个独立单元。块的命名应该简洁、清晰，并用一个单词或短语表示，使用连字符分隔单词（例如：butt">
+    <meta name="description" content="CSS BEM（块元素修饰符）是一种命名约定和方法论，用于在编写可维护和可扩展的 CSS 代码时提供结构和规范。它的目标是解决样式表的命名冲突问题，并提供一种一致性和可重用性的编码方式。  BEM 的命名约定由以下三个部分组成：  块（Block）：代表一个独立的、可重复使用的组件或模块，它是页面上的一个独立单元。块的命名应该简洁、清晰，并用一个单词或短语表示，使用连字符分隔单词">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS 之 BEM 命名规范">
 <meta property="og:url" content="https://toypipi.github.io/2023/06/27/CSS-%E4%B9%8B-BEM-%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="CSS BEM（块元素修饰符）是一种命名约定和方法论，用于在编写可维护和可扩展的 CSS 代码时提供结构和规范。它的目标是解决样式表的命名冲突问题，并提供一种一致性和可重用性的编码方式。  BEM 的命名约定由以下三个部分组成：  块（Block）：代表一个独立的、可重复使用的组件或模块，它是页面上的一个独立单元。块的命名应该简洁、清晰，并用一个单词或短语表示，使用连字符分隔单词（例如：butt">
+<meta property="og:description" content="CSS BEM（块元素修饰符）是一种命名约定和方法论，用于在编写可维护和可扩展的 CSS 代码时提供结构和规范。它的目标是解决样式表的命名冲突问题，并提供一种一致性和可重用性的编码方式。  BEM 的命名约定由以下三个部分组成：  块（Block）：代表一个独立的、可重复使用的组件或模块，它是页面上的一个独立单元。块的命名应该简洁、清晰，并用一个单词或短语表示，使用连字符分隔单词">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-06-27T01:36:27.000Z">
 <meta property="article:modified_time" content="2023-06-27T01:39:18.274Z">
@@ -278,23 +278,31 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>CSS BEM（块元素修饰符）是一种命名约定和方法论，用于在编写可维护和可扩展的 CSS 代码时提供结构和规范。它的目标是解决样式表的命名冲突问题，并提供一种一致性和可重用性的编码方式。</p>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<p>CSS
+BEM（块元素修饰符）是一种命名约定和方法论，用于在编写可维护和可扩展的
+CSS
+代码时提供结构和规范。它的目标是解决样式表的命名冲突问题，并提供一种一致性和可重用性的编码方式。</p>
 <blockquote>
 <p>BEM 的命名约定由以下三个部分组成：</p>
 </blockquote>
 <p><strong>块（Block）</strong>：代表一个独立的、可重复使用的组件或模块，它是页面上的一个独立单元。块的命名应该简洁、清晰，并用一个单词或短语表示，使用连字符分隔单词（例如：button、header）。</p>
-<p><strong>元素（Element）</strong>：代表块的内部元素，它们不能独立存在，必须作为块的一部分存在。元素的命名应该以块的名称为前缀，用两个连下划线 ** 进行分隔（例如：button**text、header__logo）。</p>
-<p><strong>修饰符（Modifier）</strong>：代表块或元素的不同状态或变体。修饰符是可选的，可以通过改变外观、行为或状态来扩展块或元素。修饰符的命名应该以块或元素的名称为前缀，用两个连短划线 – 进行分隔（例如：button–primary、header–fixed）。</p>
+<p><strong>元素（Element）</strong>：代表块的内部元素，它们不能独立存在，必须作为块的一部分存在。元素的命名应该以块的名称为前缀，用两个连下划线
+** 进行分隔（例如：button**text、header__logo）。</p>
+<p><strong>修饰符（Modifier）</strong>：代表块或元素的不同状态或变体。修饰符是可选的，可以通过改变外观、行为或状态来扩展块或元素。修饰符的命名应该以块或元素的名称为前缀，用两个连短划线
+– 进行分隔（例如：button–primary、header–fixed）。</p>
 <span id="more"></span>
-
 <blockquote>
 <p>使用 CSS BEM 的主要优点包括：</p>
 </blockquote>
-<p><strong>可读性：</strong>BEM 提供了一种一致的命名约定，使代码易于理解和阅读，减少团队成员之间的沟通成本。</p>
-<p><strong>可重用性：</strong>BEM 鼓励模块化和组件化的设计思维，使得样式代码更容易重用于不同的场景。</p>
-<p><strong>可维护性：</strong>由于命名规范和模块化的结构，BEM 使得样式表的维护更加简单和可靠。</p>
-<p>总之，CSS BEM 是一种帮助开发人员编写可维护、可扩展和易于理解的 CSS 代码的方法论。它提供了一种命名约定，通过明确的命名规则和结构化的代码组织，促进团队协作和代码质量的提升。</p>
+<p><strong>可读性：</strong>BEM
+提供了一种一致的命名约定，使代码易于理解和阅读，减少团队成员之间的沟通成本。</p>
+<p><strong>可重用性：</strong>BEM
+鼓励模块化和组件化的设计思维，使得样式代码更容易重用于不同的场景。</p>
+<p><strong>可维护性：</strong>由于命名规范和模块化的结构，BEM
+使得样式表的维护更加简单和可靠。</p>
+<p>总之，CSS BEM 是一种帮助开发人员编写可维护、可扩展和易于理解的 CSS
+代码的方法论。它提供了一种命名约定，通过明确的命名规则和结构化的代码组织，促进团队协作和代码质量的提升。</p>
 
     </div>
 
@@ -387,13 +395,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -458,6 +466,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

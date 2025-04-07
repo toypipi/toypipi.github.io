@@ -266,9 +266,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<h1 id="属性检查"><a href="#属性检查" class="headerlink" title="属性检查"></a>属性检查</h1><p>以下是 vue 中定义的一个获取表格数据的函数，注意获取表格数据时，需要判断表格数据是否存在，如果不存在，则使用空数组。</p>
-<p>可选链运算符（?.）允许读取位于连接对象链深处的属性的值，而不必明确验证链中的每个引用是否有效。?. 运算符的功能类似于 . 链式运算符，不同之处在于，在引用为空 (nullish ) (null 或者 undefined) 的情况下不会引起错误，该表达式短路返回值是 undefined。与函数调用一起使用时，如果给定的函数不存在，则返回 undefined。</p>
+          <hr />
+<h1 id="属性检查">属性检查</h1>
+<p>以下是 vue
+中定义的一个获取表格数据的函数，注意获取表格数据时，需要判断表格数据是否存在，如果不存在，则使用空数组。</p>
+<p>可选链运算符（?.）允许读取位于连接对象链深处的属性的值，而不必明确验证链中的每个引用是否有效。?.
+运算符的功能类似于 . 链式运算符，不同之处在于，在引用为空 (nullish )
+(null 或者 undefined) 的情况下不会引起错误，该表达式短路返回值是
+undefined。与函数调用一起使用时，如果给定的函数不存在，则返回
+undefined。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">getTableData</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">tableData</span> = [];</span><br><span class="line">  <span class="keyword">const</span> params = &#123;</span><br><span class="line">    <span class="attr">page</span>: <span class="variable language_">this</span>.<span class="property">currentPage</span>,</span><br><span class="line">    <span class="attr">size</span>: <span class="variable language_">this</span>.<span class="property">currentPageSize</span></span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="title function_">getCondition</span>(<span class="title function_">getToken</span>(<span class="string">&quot;productId&quot;</span>), params).<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 从响应中提取数据，如果数据不存在，则使用空数组</span></span><br><span class="line">    <span class="comment">// 可选链运算符使表达式更短，更简明</span></span><br><span class="line">    <span class="keyword">const</span> data = res.<span class="property">data</span>?.<span class="property">data</span>?.<span class="property">list</span> || [];</span><br><span class="line">    <span class="comment">// 遍历数据并构造表格行对象</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> item <span class="keyword">of</span> data) &#123;</span><br><span class="line">      <span class="keyword">const</span> temp = &#123;</span><br><span class="line">        <span class="attr">id</span>: item.<span class="property">id</span>,</span><br><span class="line">        <span class="attr">name</span>: item.<span class="property">name</span>,</span><br><span class="line">        <span class="attr">remark</span>: item.<span class="property">remark</span>,</span><br><span class="line">        <span class="attr">time</span>: <span class="title function_">tampToTime</span>(item.<span class="property">createDate</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">tableData</span>.<span class="title function_">push</span>(temp);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">total</span> = <span class="variable language_">this</span>.<span class="property">tableData</span>.<span class="property">length</span>;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
@@ -370,8 +376,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<h1 id="完整的-DevOps-流程解决方案流程"><a href="#完整的-DevOps-流程解决方案流程" class="headerlink" title="完整的 DevOps 流程解决方案流程"></a>完整的 DevOps 流程解决方案流程</h1><img src="/2023/09/27/%E5%AE%8C%E6%95%B4%E7%9A%84-DevOps-%E6%B5%81%E7%A8%8B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/1.png" class="">
+          <hr />
+<h1 id="完整的-devops-流程解决方案流程">完整的 DevOps
+流程解决方案流程</h1>
+<img src="/2023/09/27/%E5%AE%8C%E6%95%B4%E7%9A%84-DevOps-%E6%B5%81%E7%A8%8B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/1.png" class="">
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/09/27/%E5%AE%8C%E6%95%B4%E7%9A%84-DevOps-%E6%B5%81%E7%A8%8B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/#more" rel="contents">
@@ -472,23 +480,24 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<h1 id="学前语文怎么学"><a href="#学前语文怎么学" class="headerlink" title="学前语文怎么学"></a>学前语文怎么学</h1><ul>
+          <hr />
+<h1 id="学前语文怎么学">学前语文怎么学</h1>
+<ul>
 <li>不要太早学识字、拼音和背古诗</li>
-<li>2-5 岁属于读图期<ul>
+<li>2-5 岁属于读图期
+<ul>
 <li>此阶段重点培养孩子的读图能力</li>
-</ul>
-</li>
-<li>真正拉开差距的是语文理解力和表达力<ul>
+</ul></li>
+<li>真正拉开差距的是语文理解力和表达力
+<ul>
 <li>越往上，两级分化越明显</li>
-</ul>
-</li>
-<li>阅读不是与生俱来的能力<ul>
+</ul></li>
+<li>阅读不是与生俱来的能力
+<ul>
 <li>必须不断地学习与练习，才能掌握此项技能</li>
-<li>阅读量 !&#x3D; 阅读能力</li>
+<li>阅读量 != 阅读能力</li>
 <li>提问很重要</li>
-</ul>
-</li>
+</ul></li>
 </ul>
           <!--noindex-->
             <div class="post-button">
@@ -596,8 +605,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<h1 id="英语阅读打卡"><a href="#英语阅读打卡" class="headerlink" title="英语阅读打卡"></a>英语阅读打卡</h1><p>20230926 开始，每工作日精读一篇，精读方法参见<a href="https://toypipi.github.io/2023/09/26/%E8%8B%B1%E8%AF%AD%E9%98%85%E8%AF%BB%E4%B9%8B%E8%BE%85%E5%8A%A9%E7%B2%BE%E8%AF%BB%E6%B3%95/">英语阅读之辅助精读法</a>，精读内容来自<a target="_blank" rel="noopener" href="https://web.shanbay.com/reading/web-news/articles">扇贝阅读</a>，难度暂定：中高阶（六级&#x2F;考研）。</p>
+          <hr />
+<h1 id="英语阅读打卡">英语阅读打卡</h1>
+<p>20230926 开始，每工作日精读一篇，精读方法参见<a
+href="https://toypipi.github.io/2023/09/26/%E8%8B%B1%E8%AF%AD%E9%98%85%E8%AF%BB%E4%B9%8B%E8%BE%85%E5%8A%A9%E7%B2%BE%E8%AF%BB%E6%B3%95/">英语阅读之辅助精读法</a>，精读内容来自<a
+target="_blank" rel="noopener" href="https://web.shanbay.com/reading/web-news/articles">扇贝阅读</a>，难度暂定：中高阶（六级/考研）。</p>
 <p>使用扇贝阅读的好处：</p>
 <ul>
 <li>网页端阅读体验更好</li>
@@ -605,24 +617,26 @@
 </ul>
 <p>语法现象使用 anki 记录。</p>
 <p>开始吧！！！</p>
-<hr>
-<h1 id="第一次打卡总结"><a href="#第一次打卡总结" class="headerlink" title="第一次打卡总结"></a>第一次打卡总结</h1><p>文章还是比较有难度的，生词也比较多，光阅读和查词就花费差不多一个小时时间，才读了两遍 ::&gt;_&lt;::</p>
+<hr />
+<h1 id="第一次打卡总结">第一次打卡总结</h1>
+<p>文章还是比较有难度的，生词也比较多，光阅读和查词就花费差不多一个小时时间，才读了两遍
+::&gt;_&lt;::</p>
 <p>后面改成两天读一篇：</p>
 <ul>
-<li>第一天读三遍<ul>
+<li>第一天读三遍
+<ul>
 <li>第一遍通读，掌握文章大意</li>
 <li>第二遍精读，查询所有生词，添加到生词本</li>
 <li>第三遍精读，查漏补缺生词</li>
-</ul>
-</li>
-<li>第二天读三遍<ul>
+</ul></li>
+<li>第二天读三遍
+<ul>
 <li>第一遍精读，使用 chatGPT 查询所有不懂的长难句</li>
 <li>第二遍精读，查漏补缺不懂的语法现象</li>
 <li>第三遍精读</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<hr>
+<hr />
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/09/26/%E8%BE%85%E5%8A%A9%E7%B2%BE%E5%BA%A6%E6%B3%95%E4%B9%8B-100-%E7%AF%87%E6%89%93%E5%8D%A1%E8%AE%A1%E5%88%92/#more" rel="contents">
@@ -723,15 +737,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
+          <hr />
 <p>从第一篇训练文章开始，要让每一篇英文文章读起来就像读汉语一样。通常来说，至少要把一篇文章读七遍。</p>
-<h1 id="第一遍"><a href="#第一遍" class="headerlink" title="第一遍"></a>第一遍</h1><ul>
+<h1 id="第一遍">第一遍</h1>
+<ul>
 <li>把握文章大意</li>
 <li>标记所有生词</li>
 </ul>
 <p>阅读中尽可能推测单词意思，不查词典。</p>
 <p>第一遍读完之后，一次性查出所有生词，并用纸记录下来，只记中文释义，只记当前语境下的意思，而且胡乱的写在纸上。</p>
-<h1 id="第二遍"><a href="#第二遍" class="headerlink" title="第二遍"></a>第二遍</h1><ul>
+<h1 id="第二遍">第二遍</h1>
+<ul>
 <li>修正生词释义</li>
 <li>假如忘记生词</li>
 </ul>
@@ -784,13 +800,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -855,6 +871,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

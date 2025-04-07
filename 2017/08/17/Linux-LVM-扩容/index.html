@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="创建一块新的分区123456789101112131. fdisk &#x2F;dev&#x2F;sdap    # 打印当前分区n    # 新建分区p    # 新建主分区3    # 分区号，因为前面只建了两个分区回车  # 使用提供的默认开始磁柱和结束磁柱t    # 分区类型8e表示LVM分区8ew    # 写入分区表2. partprobe # 重读分区表，不用重启电脑（PS：我使用这个命令没成功，还">
+    <meta name="description" content="创建一块新的分区 123456789101112131. fdisk &#x2F;dev&#x2F;sdap    # 打印当前分区n    # 新建分区p    # 新建主分区3    # 分区号，因为前面只建了两个分区回车  # 使用提供的默认开始磁柱和结束磁柱t    # 分区类型8e表示LVM分区8ew    # 写入分区表2. partprobe # 重读分区表，不用重启电脑（PS：我使用这个命令没成">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux LVM 扩容">
 <meta property="og:url" content="https://toypipi.github.io/2017/08/17/Linux-LVM-%E6%89%A9%E5%AE%B9/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="创建一块新的分区123456789101112131. fdisk &#x2F;dev&#x2F;sdap    # 打印当前分区n    # 新建分区p    # 新建主分区3    # 分区号，因为前面只建了两个分区回车  # 使用提供的默认开始磁柱和结束磁柱t    # 分区类型8e表示LVM分区8ew    # 写入分区表2. partprobe # 重读分区表，不用重启电脑（PS：我使用这个命令没成功，还">
+<meta property="og:description" content="创建一块新的分区 123456789101112131. fdisk &#x2F;dev&#x2F;sdap    # 打印当前分区n    # 新建分区p    # 新建主分区3    # 分区号，因为前面只建了两个分区回车  # 使用提供的默认开始磁柱和结束磁柱t    # 分区类型8e表示LVM分区8ew    # 写入分区表2. partprobe # 重读分区表，不用重启电脑（PS：我使用这个命令没成">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-08-17T05:46:31.000Z">
 <meta property="article:modified_time" content="2020-11-03T03:44:00.505Z">
@@ -144,7 +144,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E5%9D%97%E6%96%B0%E7%9A%84%E5%88%86%E5%8C%BA"><span class="nav-number">1.</span> <span class="nav-text">创建一块新的分区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAPV%EF%BC%8C%E6%89%A9%E5%AE%B9VG%E3%80%81LV"><span class="nav-number">2.</span> <span class="nav-text">创建PV，扩容VG、LV</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E5%9D%97%E6%96%B0%E7%9A%84%E5%88%86%E5%8C%BA"><span class="nav-number">1.</span> <span class="nav-text">创建一块新的分区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BApv%E6%89%A9%E5%AE%B9vglv"><span class="nav-number">2.</span> <span class="nav-text">创建PV，扩容VG、LV</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -284,13 +284,15 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<h4 id="创建一块新的分区"><a href="#创建一块新的分区" class="headerlink" title="创建一块新的分区"></a>创建一块新的分区</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1. fdisk /dev/sda</span><br><span class="line">p    # 打印当前分区</span><br><span class="line">n    # 新建分区</span><br><span class="line">p    # 新建主分区</span><br><span class="line">3    # 分区号，因为前面只建了两个分区</span><br><span class="line">回车  # 使用提供的默认开始磁柱和结束磁柱</span><br><span class="line">t    # 分区类型8e表示LVM分区</span><br><span class="line">8e</span><br><span class="line">w    # 写入分区表</span><br><span class="line"></span><br><span class="line">2. partprobe # 重读分区表，不用重启电脑（PS：我使用这个命令没成功，还是需要重启电脑）</span><br><span class="line"></span><br><span class="line">3. mkfs -t ext4 /dev/sda3 # 格式化新分区</span><br></pre></td></tr></table></figure>
-
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<h4 id="创建一块新的分区">创建一块新的分区</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1. fdisk /dev/sda</span><br><span class="line">p    # 打印当前分区</span><br><span class="line">n    # 新建分区</span><br><span class="line">p    # 新建主分区</span><br><span class="line">3    # 分区号，因为前面只建了两个分区</span><br><span class="line">回车  # 使用提供的默认开始磁柱和结束磁柱</span><br><span class="line">t    # 分区类型8e表示LVM分区</span><br><span class="line">8e</span><br><span class="line">w    # 写入分区表</span><br><span class="line"></span><br><span class="line">2. partprobe # 重读分区表，不用重启电脑（PS：我使用这个命令没成功，还是需要重启电脑）</span><br><span class="line"></span><br><span class="line">3. mkfs -t ext4 /dev/sda3 # 格式化新分区</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h4 id="创建PV，扩容VG、LV"><a href="#创建PV，扩容VG、LV" class="headerlink" title="创建PV，扩容VG、LV"></a>创建PV，扩容VG、LV</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1. pvcreate /dev/sda3 # 创建PV</span><br><span class="line"></span><br><span class="line">2. vgdisplay # 查看当前已经存在的VG信息</span><br><span class="line"></span><br><span class="line">3. vgextend vg_s100 /dev/sda3</span><br><span class="line"></span><br><span class="line">4. lvdisplay # 查看已经存在的LV信息</span><br><span class="line"></span><br><span class="line">5. lvextend -L +80G /dev/vg_s100/lv_root</span><br><span class="line"></span><br><span class="line">6. resize2fs /dev/vg_s100/lv_root</span><br><span class="line"></span><br><span class="line">7. df -h # 查看挂载情况，LVM磁盘已经扩容</span><br></pre></td></tr></table></figure>
-
-<p><strong>参考文档：</strong><br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/gaojun/archive/2012/08/22/2650229.html">Linux LVM硬盘管理及LVM扩容</a></p>
+<h4 id="创建pv扩容vglv">创建PV，扩容VG、LV</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1. pvcreate /dev/sda3 # 创建PV</span><br><span class="line"></span><br><span class="line">2. vgdisplay # 查看当前已经存在的VG信息</span><br><span class="line"></span><br><span class="line">3. vgextend vg_s100 /dev/sda3</span><br><span class="line"></span><br><span class="line">4. lvdisplay # 查看已经存在的LV信息</span><br><span class="line"></span><br><span class="line">5. lvextend -L +80G /dev/vg_s100/lv_root</span><br><span class="line"></span><br><span class="line">6. resize2fs /dev/vg_s100/lv_root</span><br><span class="line"></span><br><span class="line">7. df -h # 查看挂载情况，LVM磁盘已经扩容</span><br></pre></td></tr></table></figure>
+<p><strong>参考文档：</strong> <a
+target="_blank" rel="noopener" href="http://www.cnblogs.com/gaojun/archive/2012/08/22/2650229.html">Linux
+LVM硬盘管理及LVM扩容</a></p>
 
     </div>
 
@@ -382,13 +384,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -453,6 +455,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

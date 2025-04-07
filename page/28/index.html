@@ -266,10 +266,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
 <p>解决办法，在 .eslintrc.js 文件中修改：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//修改前</span></span><br><span class="line"><span class="attr">extends</span>: [<span class="string">&#x27;plugin:vue/recommended&#x27;</span>, <span class="string">&#x27;eslint:recommended&#x27;</span>],</span><br><span class="line"><span class="comment">//修改后</span></span><br><span class="line"> <span class="attr">extends</span>: [<span class="string">&#x27;plugin:vue/recommended&#x27;</span>, <span class="string">&#x27;eslint:recommended&#x27;</span>, <span class="string">&quot;plugin:prettier/recommended&quot;</span>],</span><br></pre></td></tr></table></figure>
-
 <p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7012160233061482532">参考文档</a></p>
 
       
@@ -370,8 +369,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>遇到的问题：VUE 项目里把 data 里定义的对象数组赋值给新的变量，新的变量对数组对象做了一些操作，但却把 data 里面原本的对象数组也修改了。</p>
+          <hr />
+<p>遇到的问题：VUE 项目里把 data
+里定义的对象数组赋值给新的变量，新的变量对数组对象做了一些操作，但却把
+data 里面原本的对象数组也修改了。</p>
 <p>下面举一个简单例子：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">     <span class="keyword">const</span> b = [</span><br><span class="line">       &#123; <span class="attr">name</span>: <span class="string">&quot;John&quot;</span>, <span class="attr">age</span>: <span class="number">25</span> &#125;,</span><br><span class="line">       &#123; <span class="attr">name</span>: <span class="string">&quot;Jane&quot;</span>, <span class="attr">age</span>: <span class="number">30</span> &#125;,</span><br><span class="line">     ];</span><br><span class="line">     <span class="keyword">var</span> a = b</span><br><span class="line"></span><br><span class="line">     <span class="comment">// 修改变量 a 的值</span></span><br><span class="line">     a[<span class="number">0</span>].<span class="property">age</span> = <span class="number">99</span>;</span><br><span class="line"></span><br><span class="line">     <span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">// 输出[&#123;name: &#x27;John&#x27;, age: 99&#125;, &#123;name: &#x27;Jane&#x27;, age: 25&#125;]</span></span><br><span class="line">     <span class="variable language_">console</span>.<span class="title function_">log</span>(b); <span class="comment">// 输出[&#123;name: &#x27;John&#x27;, age: 99&#125;, &#123;name: &#x27;Jane&#x27;, age: 25&#125;]</span></span><br><span class="line">   &#125;;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
@@ -474,13 +475,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<h1 id="BFC-定义"><a href="#BFC-定义" class="headerlink" title="BFC 定义"></a>BFC 定义</h1><ol>
-<li>BFC 是 Block Formatting Context （块级格式上下文），可以理解成元素的一个“特异功能”。</li>
-<li>该 “特异功能”，在默认的情况下处于关闭状态；当元素满足了某些条件后，该“特异功能”被激活。</li>
-<li>所谓激活“特异功能”，专业点说就是：该元素创建了 BFC （又称：开启了 BFC ）。</li>
+          <hr />
+<h1 id="bfc-定义">BFC 定义</h1>
+<ol type="1">
+<li>BFC 是 Block Formatting Context
+（块级格式上下文），可以理解成元素的一个“特异功能”。</li>
+<li>该
+“特异功能”，在默认的情况下处于关闭状态；当元素满足了某些条件后，该“特异功能”被激活。</li>
+<li>所谓激活“特异功能”，专业点说就是：该元素创建了 BFC （又称：开启了
+BFC ）。</li>
 </ol>
-<h1 id="BFC-能解决什么问题"><a href="#BFC-能解决什么问题" class="headerlink" title="BFC 能解决什么问题"></a>BFC 能解决什么问题</h1><ol>
+<h1 id="bfc-能解决什么问题">BFC 能解决什么问题</h1>
+<ol type="1">
 <li>元素开启BFC 后，其子元素不会再产生margin 塌陷问题。</li>
 <li>元素开启BFC 后，自己不会被其他浮动元素所覆盖。</li>
 <li>元素开启BFC 后，就算其子元素浮动，元素自身高度也不会塌陷。</li>
@@ -585,8 +591,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<h1 id="1-常用布局名词"><a href="#1-常用布局名词" class="headerlink" title="1.常用布局名词"></a>1.常用布局名词</h1><img src="/2023/06/05/%E5%B8%B8%E7%94%A8%E5%B8%83%E5%B1%80%E5%90%8D%E8%AF%8D/%E5%B8%B8%E7%94%A8%E5%B8%83%E5%B1%80%E5%90%8D%E8%AF%8D.png" class="">
+          <hr />
+<h1 id="常用布局名词">1.常用布局名词</h1>
+<img src="/2023/06/05/%E5%B8%B8%E7%94%A8%E5%B8%83%E5%B1%80%E5%90%8D%E8%AF%8D/%E5%B8%B8%E7%94%A8%E5%B8%83%E5%B1%80%E5%90%8D%E8%AF%8D.png" class="">
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/06/05/%E5%B8%B8%E7%94%A8%E5%B8%83%E5%B1%80%E5%90%8D%E8%AF%8D/#more" rel="contents">
@@ -678,17 +685,26 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
+          <hr />
 <p><strong>权重是用来确定哪个样式规则应该应用于元素的。权重越高，优先级越高。</strong></p>
-<h1 id="权重计算分为四个等级："><a href="#权重计算分为四个等级：" class="headerlink" title="权重计算分为四个等级："></a>权重计算分为四个等级：</h1><p>行内 &gt; ID 选择器 &gt; 类选择器 &gt; 元素选择器 &gt; 通配选择器 *</p>
+<h1 id="权重计算分为四个等级">权重计算分为四个等级：</h1>
+<p>行内 &gt; ID 选择器 &gt; 类选择器 &gt; 元素选择器 &gt; 通配选择器
+*</p>
 <ul>
 <li>内联样式（Inline styles）：权重为 1000</li>
 <li>ID 选择器（ID selectors）：权重为 100</li>
-<li>类选择器（Class selectors）、属性选择器（Attribute selectors）和伪类选择器（Pseudo-classes）：权重为 10</li>
-<li>元素选择器（Element selectors）和伪元素选择器（Pseudo-elements）：权重为 1</li>
+<li>类选择器（Class selectors）、属性选择器（Attribute
+selectors）和伪类选择器（Pseudo-classes）：权重为 10</li>
+<li>元素选择器（Element
+selectors）和伪元素选择器（Pseudo-elements）：权重为 1</li>
 </ul>
-<h2 id="举例："><a href="#举例：" class="headerlink" title="举例："></a>举例：</h2><p>#my-id：权重为 100（一个ID选择器）<br>.my-class：权重为 10（一个类选择器）<br>div：权重为 1（一个元素选择器）<br>a:hover：权重为 11（一个元素选择器和一个伪类选择器）  </p>
-<p>当有多个选择器应用于同一个元素时，权重最高的选择器将应用其样式。如果权重相同，那么按照选择器在 CSS 中出现的顺序，后出现的选择器将覆盖先前的选择器。</p>
+<h2 id="举例">举例：</h2>
+<p>#my-id：权重为 100（一个ID选择器）<br />
+.my-class：权重为 10（一个类选择器）<br />
+div：权重为 1（一个元素选择器）<br />
+a:hover：权重为 11（一个元素选择器和一个伪类选择器）</p>
+<p>当有多个选择器应用于同一个元素时，权重最高的选择器将应用其样式。如果权重相同，那么按照选择器在
+CSS 中出现的顺序，后出现的选择器将覆盖先前的选择器。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/05/30/CSS-%E9%80%89%E6%8B%A9%E5%99%A8%E6%9D%83%E9%87%8D%E8%AE%A1%E7%AE%97/#more" rel="contents">
@@ -737,13 +753,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -808,6 +824,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

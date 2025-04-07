@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="The Hashtag GeneratorThe marketing team is spending way too much time typing in hashtags.Let’s help them with our own Hashtag Generator! Here’s the deal: It must start with a hashtag (#).All words mu">
+    <meta name="description" content="The Hashtag Generator The marketing team is spending way too much time typing in hashtags. Let’s help them with our own Hashtag Generator! Here’s the deal: It must start with a hashtag (#). All">
 <meta property="og:type" content="article">
 <meta property="og:title" content="The Hashtag Generator">
 <meta property="og:url" content="https://toypipi.github.io/2023/10/26/The-Hashtag-Generator/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="The Hashtag GeneratorThe marketing team is spending way too much time typing in hashtags.Let’s help them with our own Hashtag Generator! Here’s the deal: It must start with a hashtag (#).All words mu">
+<meta property="og:description" content="The Hashtag Generator The marketing team is spending way too much time typing in hashtags. Let’s help them with our own Hashtag Generator! Here’s the deal: It must start with a hashtag (#). All">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-10-26T06:39:09.000Z">
 <meta property="article:modified_time" content="2023-10-26T07:48:30.968Z">
@@ -143,7 +143,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#The-Hashtag-Generator"><span class="nav-number">1.</span> <span class="nav-text">The Hashtag Generator</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SOLUTION"><span class="nav-number">2.</span> <span class="nav-text">SOLUTION</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E5%9B%9E%E6%96%87%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">判断回文数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#the-hashtag-generator"><span class="nav-number">1.</span> <span class="nav-text">The Hashtag Generator</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text">SOLUTION</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E5%9B%9E%E6%96%87%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">判断回文数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -277,30 +277,36 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<h1 id="The-Hashtag-Generator"><a href="#The-Hashtag-Generator" class="headerlink" title="The Hashtag Generator"></a>The Hashtag Generator</h1><p>The marketing team is spending way too much time typing in hashtags.<br>Let’s help them with our own Hashtag Generator!</p>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<h1 id="the-hashtag-generator">The Hashtag Generator</h1>
+<p>The marketing team is spending way too much time typing in hashtags.
+Let’s help them with our own Hashtag Generator!</p>
 <p>Here’s the deal:</p>
-<p>It must start with a hashtag (#).<br>All words must have their first letter capitalized.<br>If the final result is longer than 140 chars it must return false.<br>If the input or the result is an empty string it must return false.</p>
-<h1 id="SOLUTION"><a href="#SOLUTION" class="headerlink" title="SOLUTION"></a>SOLUTION</h1><ul>
+<p>It must start with a hashtag (#). All words must have their first
+letter capitalized. If the final result is longer than 140 chars it must
+return false. If the input or the result is an empty string it must
+return false.</p>
+<h1 id="solution">SOLUTION</h1>
+<ul>
 <li>方法一：普通循环</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">generateHashtag</span>(<span class="params">str</span>) &#123;</span><br><span class="line">  <span class="comment">// 判断是否是空字符串，或只包含多个空格的字符串</span></span><br><span class="line">  <span class="keyword">if</span> (str.<span class="property">length</span> === <span class="number">0</span> || str.<span class="title function_">replace</span>(<span class="regexp">/\s+/g</span>, <span class="string">&quot;&quot;</span>).<span class="property">length</span> === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 将每个单词的首字母大写</span></span><br><span class="line">  <span class="keyword">let</span> words = str.<span class="title function_">split</span>(<span class="string">&quot; &quot;</span>);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; words.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    words[i] = words[i].<span class="title function_">charAt</span>(<span class="number">0</span>).<span class="title function_">toUpperCase</span>() + words[i].<span class="title function_">slice</span>(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 拼接 #</span></span><br><span class="line">  <span class="keyword">let</span> result = <span class="string">&quot;#&quot;</span> + words.<span class="title function_">join</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> result.<span class="property">length</span> &gt; <span class="number">140</span> ? <span class="literal">false</span> : result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <span id="more"></span>
-
 <ul>
 <li>方法二：<code>reduce()</code> 方法</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">generateHashtag</span>(<span class="params">str</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> hashtag = str.<span class="title function_">split</span>(<span class="string">&quot; &quot;</span>).<span class="title function_">reduce</span>(<span class="keyword">function</span> (<span class="params">tag, word</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> tag + word.<span class="title function_">charAt</span>(<span class="number">0</span>).<span class="title function_">toUpperCase</span>() + word.<span class="title function_">substring</span>(<span class="number">1</span>);</span><br><span class="line">  &#125;, <span class="string">&quot;#&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> hashtag.<span class="property">length</span> == <span class="number">1</span> || hashtag.<span class="property">length</span> &gt; <span class="number">140</span> ? <span class="literal">false</span> : hashtag;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>方法三：</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">generateHashtag</span>(<span class="params">str</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (!str.<span class="title function_">trim</span>()) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> result =</span><br><span class="line">    <span class="string">&quot;#&quot;</span> +</span><br><span class="line">    str</span><br><span class="line">      .<span class="title function_">split</span>(<span class="string">&quot; &quot;</span>)</span><br><span class="line">      .<span class="title function_">map</span>(<span class="function">(<span class="params">l</span>) =&gt;</span> l.<span class="title function_">charAt</span>(<span class="number">0</span>).<span class="title function_">toUpperCase</span>() + l.<span class="title function_">slice</span>(<span class="number">1</span>))</span><br><span class="line">      .<span class="title function_">join</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> result.<span class="property">length</span> &gt; <span class="number">140</span> ? <span class="literal">false</span> : result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="判断回文数"><a href="#判断回文数" class="headerlink" title="判断回文数"></a>判断回文数</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isPalindrome = <span class="keyword">function</span> (<span class="params">x</span>) &#123;</span><br><span class="line">  <span class="comment">// 小于零肯定不是回文数</span></span><br><span class="line">  <span class="keyword">if</span> (x &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 反转数字</span></span><br><span class="line">  <span class="keyword">const</span> revertedX = x.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&quot;&quot;</span>).<span class="title function_">reverse</span>().<span class="title function_">join</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">  <span class="comment">// 比较反转后的数字是否相等</span></span><br><span class="line">  <span class="keyword">return</span> x === <span class="built_in">parseInt</span>(revertedX, <span class="number">10</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://www.codewars.com/kata/52449b062fb80683ec000024/solutions/javascript?filter=me&sort=best_practice&invalids=false">The Hashtag Generator</a><br><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/palindrome-number/">9. 回文数</a></p>
+<h1 id="判断回文数">判断回文数</h1>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isPalindrome = <span class="keyword">function</span> (<span class="params">x</span>) &#123;</span><br><span class="line">  <span class="comment">// 小于零肯定不是回文数</span></span><br><span class="line">  <span class="keyword">if</span> (x &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 反转数字</span></span><br><span class="line">  <span class="keyword">const</span> revertedX = x.<span class="title function_">toString</span>().<span class="title function_">split</span>(<span class="string">&quot;&quot;</span>).<span class="title function_">reverse</span>().<span class="title function_">join</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">  <span class="comment">// 比较反转后的数字是否相等</span></span><br><span class="line">  <span class="keyword">return</span> x === <span class="built_in">parseInt</span>(revertedX, <span class="number">10</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="reference">Reference</h1>
+<p><a
+target="_blank" rel="noopener" href="https://www.codewars.com/kata/52449b062fb80683ec000024/solutions/javascript?filter=me&amp;sort=best_practice&amp;invalids=false">The
+Hashtag Generator</a> <a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/palindrome-number/">9. 回文数</a></p>
 
     </div>
 
@@ -391,13 +397,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -462,6 +468,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

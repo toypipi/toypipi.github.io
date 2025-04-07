@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="在 JavaScript 中，Array.prototype.sort() 是一个内置的数组排序方法，用于对数组元素进行排序。它可以接受一个可选的比较函数作为参数，用于定义排序的顺序。 语法： 1array.sort([compareFunction]);  参数： compareFunction：一个可选的函数，用于定义排序顺序。如果省略此参数，数组元素将按照默认的字符串排序顺序进行排序。返回">
+    <meta name="description" content="在 JavaScript 中，Array.prototype.sort() 是一个内置的数组排序方法，用于对数组元素进行排序。它可以接受一个可选的比较函数作为参数，用于定义排序的顺序。 语法： 1array.sort([compareFunction]); 参数： compareFunction：一个可选的函数，用于定义排序顺序。如果省略此参数，数组元素将按照默认的字符串排序顺序进行">
 <meta property="og:type" content="article">
 <meta property="og:title" content="javaScript sort 函数">
 <meta property="og:url" content="https://toypipi.github.io/2023/08/01/javaScript-sort-%E5%87%BD%E6%95%B0/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="在 JavaScript 中，Array.prototype.sort() 是一个内置的数组排序方法，用于对数组元素进行排序。它可以接受一个可选的比较函数作为参数，用于定义排序的顺序。 语法： 1array.sort([compareFunction]);  参数： compareFunction：一个可选的函数，用于定义排序顺序。如果省略此参数，数组元素将按照默认的字符串排序顺序进行排序。返回">
+<meta property="og:description" content="在 JavaScript 中，Array.prototype.sort() 是一个内置的数组排序方法，用于对数组元素进行排序。它可以接受一个可选的比较函数作为参数，用于定义排序的顺序。 语法： 1array.sort([compareFunction]); 参数： compareFunction：一个可选的函数，用于定义排序顺序。如果省略此参数，数组元素将按照默认的字符串排序顺序进行">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-01T05:55:25.000Z">
 <meta property="article:modified_time" content="2023-08-01T05:59:11.043Z">
@@ -276,30 +276,35 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>在 JavaScript 中，Array.prototype.sort() 是一个内置的数组排序方法，用于对数组元素进行排序。它可以接受一个可选的比较函数作为参数，用于定义排序的顺序。</p>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<p>在 JavaScript 中，Array.prototype.sort()
+是一个内置的数组排序方法，用于对数组元素进行排序。它可以接受一个可选的比较函数作为参数，用于定义排序的顺序。</p>
 <p>语法：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array.<span class="title function_">sort</span>([compareFunction]);</span><br></pre></td></tr></table></figure>
-
 <p>参数：</p>
-<p>compareFunction：一个可选的函数，用于定义排序顺序。如果省略此参数，数组元素将按照默认的字符串排序顺序进行排序。<br>返回值：<br>排序后的数组。请注意，sort() 方法会直接修改原始数组，并且不会创建新的副本。</p>
+<p>compareFunction：一个可选的函数，用于定义排序顺序。如果省略此参数，数组元素将按照默认的字符串排序顺序进行排序。
+返回值： 排序后的数组。请注意，sort()
+方法会直接修改原始数组，并且不会创建新的副本。</p>
 <p>比较函数的形式：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">compareFunction</span>(<span class="params">a, b</span>) &#123;</span><br><span class="line">  <span class="comment">// 返回一个负数表示 a 应该在 b 之前</span></span><br><span class="line">  <span class="comment">// 返回 0 表示 a 和 b 相等的排序顺序</span></span><br><span class="line">  <span class="comment">// 返回一个正数表示 a 应该在 b 之后</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <span id="more"></span>
-
 <ul>
-<li>如果 compareFunction(a, b) 返回负数，表示 a 小于 b，a 会排在 b 前面。</li>
-<li>如果 compareFunction(a, b) 返回 0，表示 a 和 b 相等，排序顺序不变。</li>
-<li>如果 compareFunction(a, b) 返回正数，表示 a 大于 b，a 会排在 b 后面。</li>
+<li>如果 compareFunction(a, b) 返回负数，表示 a 小于 b，a 会排在 b
+前面。</li>
+<li>如果 compareFunction(a, b) 返回 0，表示 a 和 b
+相等，排序顺序不变。</li>
+<li>如果 compareFunction(a, b) 返回正数，表示 a 大于 b，a 会排在 b
+后面。</li>
 </ul>
-<p>如果不提供 compareFunction 参数，sort() 方法将按照默认的字符串排序顺序进行排序，例如：</p>
+<p>如果不提供 compareFunction 参数，sort()
+方法将按照默认的字符串排序顺序进行排序，例如：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fruits = [<span class="string">&quot;banana&quot;</span>, <span class="string">&quot;orange&quot;</span>, <span class="string">&quot;apple&quot;</span>, <span class="string">&quot;lemon&quot;</span>];</span><br><span class="line">fruits.<span class="title function_">sort</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fruits); <span class="comment">// 输出 [&#x27;apple&#x27;, &#x27;banana&#x27;, &#x27;lemon&#x27;, &#x27;orange&#x27;]</span></span><br></pre></td></tr></table></figure>
-
-<p>如果提供了 compareFunction 参数，排序顺序将根据该函数的逻辑来确定。例如，对于数字数组：</p>
+<p>如果提供了 compareFunction
+参数，排序顺序将根据该函数的逻辑来确定。例如，对于数字数组：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">10</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">2</span>, <span class="number">1</span>];</span><br><span class="line">numbers.<span class="title function_">sort</span>(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a - b); <span class="comment">// 升序排序</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(numbers); <span class="comment">// 输出 [1, 2, 5, 8, 10]</span></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line">numbers.<span class="title function_">sort</span>(<span class="function">(<span class="params">a, b</span>) =&gt;</span> b - a); <span class="comment">// 降序排序</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(numbers); <span class="comment">// 输出 [10, 8, 5, 2, 1]</span></span><br></pre></td></tr></table></figure>
-
-<p>需要注意的是，sort() 方法会直接修改原始数组，因此请谨慎使用以免造成不必要的副作用。如果需要保留原数组，可以在调用 sort() 前先复制一份原数组。</p>
+<p>需要注意的是，sort()
+方法会直接修改原始数组，因此请谨慎使用以免造成不必要的副作用。如果需要保留原数组，可以在调用
+sort() 前先复制一份原数组。</p>
 
     </div>
 
@@ -390,13 +395,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -461,6 +466,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

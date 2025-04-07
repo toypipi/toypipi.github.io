@@ -266,12 +266,19 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>1.<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/cache-with-time-limit/description/?envType=study-plan-v2&envId=30-days-of-javascript">题目描述</a></p>
-<p>编写一个类，它允许获取和设置键-值对，并且每个键都有一个 过期时间 。</p>
+          <hr />
+<p>1.<a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/cache-with-time-limit/description/?envType=study-plan-v2&amp;envId=30-days-of-javascript">题目描述</a></p>
+<p>编写一个类，它允许获取和设置键-值对，并且每个键都有一个 过期时间
+。</p>
 <p>该类有三个公共方法：</p>
-<p>set(key, value, duration) ：接收参数为整型键 key 、整型值 value 和以毫秒为单位的持续时间 duration 。一旦 duration 到期后，这个键就无法访问。如果相同的未过期键已经存在，该方法将返回 true ，否则返回 false 。如果该键已经存在，则它的值和持续时间都应该被覆盖。</p>
-<p>get(key) ：如果存在一个未过期的键，它应该返回这个键相关的值。否则返回 -1 。</p>
+<p>set(key, value, duration) ：接收参数为整型键 key 、整型值 value
+和以毫秒为单位的持续时间 duration 。一旦 duration
+到期后，这个键就无法访问。如果相同的未过期键已经存在，该方法将返回 true
+，否则返回 false
+。如果该键已经存在，则它的值和持续时间都应该被覆盖。</p>
+<p>get(key) ：如果存在一个未过期的键，它应该返回这个键相关的值。否则返回
+-1 。</p>
 <p>count() ：返回未过期键的总数。</p>
           <!--noindex-->
             <div class="post-button">
@@ -373,10 +380,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>1.<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/promise-time-limit/">题目描述</a></p>
-<p>请你编写一个函数，它接受一个异步函数 fn 和一个以毫秒为单位的时间 t。它应根据限时函数返回一个有 限时 效果的函数。函数 fn 接受提供给 限时 函数的参数。</p>
+          <p>1.<a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/promise-time-limit/">题目描述</a></p>
+<p>请你编写一个函数，它接受一个异步函数 fn 和一个以毫秒为单位的时间
+t。它应根据限时函数返回一个有 限时 效果的函数。函数 fn 接受提供给 限时
+函数的参数。</p>
 <p>限时 函数应遵循以下规则：</p>
-<p>如果 fn 在 t 毫秒的时间限制内完成，限时 函数应返回结果。<br>如果 fn 的执行超过时间限制，限时 函数应拒绝并返回字符串 “Time Limit Exceeded” 。</p>
+<p>如果 fn 在 t 毫秒的时间限制内完成，限时 函数应返回结果。 如果 fn
+的执行超过时间限制，限时 函数应拒绝并返回字符串 “Time Limit Exceeded”
+。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/08/18/%E6%9C%89%E6%97%B6%E9%97%B4%E9%99%90%E5%88%B6%E7%9A%84-Promise-%E5%AF%B9%E8%B1%A1/#more" rel="contents">
@@ -477,10 +489,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>1.<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/execute-cancellable-function-with-delay/description/?envType=study-plan-v2&envId=30-days-of-javascript">题目描述</a></p>
-<p>现给定一个函数 fn ，一个参数数组 args 和一个以毫秒为单位的超时时间 t ，返回一个取消函数 cancelFn 。</p>
-<p>在经过 t 毫秒的延迟后，应该调用 fn 函数，并将 args 作为参数传递。除非 在 t 毫秒的延迟过程中，在 cancelT 毫秒时调用了 cancelFn。并且在这种情况下，fn 函数不应该被调用。</p>
+          <hr />
+<p>1.<a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/execute-cancellable-function-with-delay/description/?envType=study-plan-v2&amp;envId=30-days-of-javascript">题目描述</a></p>
+<p>现给定一个函数 fn ，一个参数数组 args 和一个以毫秒为单位的超时时间 t
+，返回一个取消函数 cancelFn 。</p>
+<p>在经过 t 毫秒的延迟后，应该调用 fn 函数，并将 args 作为参数传递。除非
+在 t 毫秒的延迟过程中，在 cancelT 毫秒时调用了
+cancelFn。并且在这种情况下，fn 函数不应该被调用。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/08/17/%E6%89%A7%E8%A1%8C%E5%8F%AF%E5%8F%96%E6%B6%88%E7%9A%84%E5%BB%B6%E8%BF%9F%E5%87%BD%E6%95%B0/#more" rel="contents">
@@ -581,11 +597,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
+          <hr />
 <p>1.题目描述</p>
-<p>请你编写一个函数，它接收一个函数数组 [f1, f2, f3，…， fn] ，并返回一个新的函数 fn ，它是函数数组的 复合函数 。</p>
-<p>[f(x)， g(x)， h(x)] 的 复合函数 为 fn(x) &#x3D; f(g(h(x))) 。</p>
-<p>一个空函数列表的 复合函数 是 恒等函数 f(x) &#x3D; x 。</p>
+<p>请你编写一个函数，它接收一个函数数组 [f1, f2, f3，…， fn]
+，并返回一个新的函数 fn ，它是函数数组的 复合函数 。</p>
+<p>[f(x)， g(x)， h(x)] 的 复合函数 为 fn(x) = f(g(h(x))) 。</p>
+<p>一个空函数列表的 复合函数 是 恒等函数 f(x) = x 。</p>
 <p>你可以假设数组中的每个函数接受一个整型参数作为输入，并返回一个整型作为输出。</p>
 <p>2.题解</p>
 <p>传统方法：</p>
@@ -690,8 +707,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<ol>
+          <hr />
+<ol type="1">
 <li>HTML-Comment：可以解决 Vue 嵌套注释报错</li>
 <li></li>
 <li></li>
@@ -746,13 +763,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -817,6 +834,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

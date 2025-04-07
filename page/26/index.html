@@ -272,7 +272,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
+          <hr />
 <p><strong>数据类型</strong></p>
 <blockquote>
 <p>分类</p>
@@ -281,7 +281,7 @@
 <ul>
 <li>String：任意字符串</li>
 <li>Number：任意数值</li>
-<li>boolean：true&#x2F;false</li>
+<li>boolean：true/false</li>
 <li>undefined：undefined</li>
 <li>null：null</li>
 </ul>
@@ -295,18 +295,18 @@
 <p>判断</p>
 </blockquote>
 <ul>
-<li>typeof 返回数据类型的字符串表达（小写）<ul>
-<li>可以判断：undefined &#x2F; 数值 &#x2F; 字符串 &#x2F; 布尔值 &#x2F; function</li>
+<li>typeof 返回数据类型的字符串表达（小写）
+<ul>
+<li>可以判断：undefined / 数值 / 字符串 / 布尔值 / function</li>
 <li>不能判断：null 与 object、object 与 array</li>
-</ul>
-</li>
+</ul></li>
 <li>instanceof 判断对象的具体类型</li>
-<li>&#x3D;&#x3D;&#x3D;<ul>
-<li>可以判断：undefined &#x2F; null</li>
+<li>===
+<ul>
+<li>可以判断：undefined / null</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<ol>
+<ol type="1">
 <li>函数高级</li>
 <li>面向对象高级</li>
 <li>线程机制与事件机制</li>
@@ -411,14 +411,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
+          <hr />
 <p>现在有一个需求是：前端根据用户勾选的状态参数绘制多条曲线。</p>
 <p>实现思路：</p>
-<ol>
+<ol type="1">
 <li>前端获取到用户勾选的状态参数。</li>
 <li>将状态参数列表发给后端。</li>
 <li>后端将状态参数的数据发给前端。</li>
-<li>前端根据后端发送的参数，分别构建 legend，X 轴，Y 轴数据，并生成图表需要的 option，更新图表。</li>
+<li>前端根据后端发送的参数，分别构建 legend，X 轴，Y
+轴数据，并生成图表需要的 option，更新图表。</li>
 </ol>
           <!--noindex-->
             <div class="post-button">
@@ -520,9 +521,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>正则表达式中的 \b 表示单词边界（word boundary）。它匹配一个位置，该位置位于单词字符和非单词字符之间，或者位于字符串的开头或结尾。单词字符包括字母、数字和下划线。</p>
-<p>下面是一些示例，说明 \b 的使用方式：</p>
+          <hr />
+<p>正则表达式中的 示单词边界（word
+boundary）。它匹配一个位置，该位置位于单词字符和非单词字符之间，或者位于字符串的开头或结尾。单词字符包括字母、数字和下划线。</p>
+<p>下面是一些示例，说明 使用方式：</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/07/07/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%AD%E7%9A%84-b/#more" rel="contents">
@@ -623,7 +625,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
+          <hr />
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/07/07/JavaScript-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E6%89%A7%E8%A1%8C%E7%AE%80%E5%8D%95%E5%8A%A8%E7%94%BB%E7%9A%84%E5%87%BD%E6%95%B0/#more" rel="contents">
@@ -730,8 +732,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>在 JavaScript 中，可以使用工厂方法（Factory Method）创建对象。工厂方法是一种创建对象的设计模式，它通过一个函数来封装对象的创建过程，并返回新创建的对象。</p>
+          <hr />
+<p>在 JavaScript 中，可以使用工厂方法（Factory
+Method）创建对象。工厂方法是一种创建对象的设计模式，它通过一个函数来封装对象的创建过程，并返回新创建的对象。</p>
 <p>下面是一个简单的示例，演示如何使用工厂方法创建对象：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个工厂方法</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">createPerson</span>(<span class="params">name, age</span>) &#123;</span><br><span class="line">  <span class="comment">// 创建一个新对象</span></span><br><span class="line">  <span class="keyword">var</span> person = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 添加属性和方法到对象</span></span><br><span class="line">  person.<span class="property">name</span> = name;</span><br><span class="line">  person.<span class="property">age</span> = age;</span><br><span class="line">  person.<span class="property">sayHello</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hello, my name is &quot;</span> + <span class="variable language_">this</span>.<span class="property">name</span> + <span class="string">&quot; and I&#x27;m &quot;</span> + <span class="variable language_">this</span>.<span class="property">age</span> + <span class="string">&quot; years old.&quot;</span>);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 返回创建的对象</span></span><br><span class="line">  <span class="keyword">return</span> person;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用工厂方法创建对象</span></span><br><span class="line"><span class="keyword">var</span> john = <span class="title function_">createPerson</span>(<span class="string">&quot;John&quot;</span>, <span class="number">25</span>);</span><br><span class="line"><span class="keyword">var</span> mary = <span class="title function_">createPerson</span>(<span class="string">&quot;Mary&quot;</span>, <span class="number">30</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用对象的方法</span></span><br><span class="line">john.<span class="title function_">sayHello</span>(); <span class="comment">// 输出：Hello, my name is John and I&#x27;m 25 years old.</span></span><br><span class="line">mary.<span class="title function_">sayHello</span>(); <span class="comment">// 输出：Hello, my name is Mary and I&#x27;m 30 years old.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
           <!--noindex-->
@@ -782,13 +785,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -853,6 +856,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="首先可以阅读 Echarts 官网关于坐标轴的相关知识。  必须显示 X 轴第一个和最后一个标签  123456xAxis: &#123;  axisLabel: &#123;    showMinLabel: true,    showMaxLabel: true  &#125;&#125;">
+    <meta name="description" content="首先可以阅读 Echarts 官网关于坐标轴的相关知识。  必须显示 X 轴第一个和最后一个标签  123456xAxis: &#123;  axisLabel: &#123;    showMinLabel: true,    showMaxLabel: true  &#125;&#125;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Echarts 自定义 X 轴标签个数">
 <meta property="og:url" content="https://toypipi.github.io/2023/04/25/Echarts%E8%87%AA%E5%AE%9A%E4%B9%89X%E8%BD%B4%E6%A0%87%E7%AD%BE%E4%B8%AA%E6%95%B0/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="首先可以阅读 Echarts 官网关于坐标轴的相关知识。  必须显示 X 轴第一个和最后一个标签  123456xAxis: &#123;  axisLabel: &#123;    showMinLabel: true,    showMaxLabel: true  &#125;&#125;">
+<meta property="og:description" content="首先可以阅读 Echarts 官网关于坐标轴的相关知识。  必须显示 X 轴第一个和最后一个标签  123456xAxis: &#123;  axisLabel: &#123;    showMinLabel: true,    showMaxLabel: true  &#125;&#125;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-25T09:23:42.000Z">
 <meta property="article:modified_time" content="2023-04-25T09:42:29.553Z">
@@ -277,21 +277,19 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>首先可以阅读 Echarts 官网关于<a target="_blank" rel="noopener" href="https://echarts.apache.org/handbook/zh/concepts/axis/">坐标轴</a>的相关知识。</p>
-<ol>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<p>首先可以阅读 Echarts 官网关于<a
+target="_blank" rel="noopener" href="https://echarts.apache.org/handbook/zh/concepts/axis/">坐标轴</a>的相关知识。</p>
+<ol type="1">
 <li>必须显示 X 轴第一个和最后一个标签</li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">xAxis: &#123;</span><br><span class="line">  axisLabel: &#123;</span><br><span class="line">    showMinLabel: true,</span><br><span class="line">    showMaxLabel: true</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <span id="more"></span>
-
-<ol start="2">
+<ol start="2" type="1">
 <li>显示第一个、最后一个，中间任意个,显示的个数由 num 控制</li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">xAxis: &#123;</span><br><span class="line">  axisLabel: &#123;</span><br><span class="line">    showMinLabel: true,</span><br><span class="line">    showMaxLabel: true,</span><br><span class="line">    interval: Math.ceil(data.length / num)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
+<ol start="3" type="1">
 <li>通过格式化的方式实现</li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">xAxis: &#123;</span><br><span class="line">  data: data,</span><br><span class="line">  axisLabel: &#123;</span><br><span class="line">    formatter(val, i) &#123;</span><br><span class="line">      if (</span><br><span class="line">        i === 0 ||</span><br><span class="line">        i === data.length - 1 ||</span><br><span class="line">        i === Math.ceil(data.length / 2)</span><br><span class="line">      ) &#123;</span><br><span class="line">        return val;</span><br><span class="line">      &#125;</span><br><span class="line">      return &quot;&quot;;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
@@ -386,13 +384,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -457,6 +455,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

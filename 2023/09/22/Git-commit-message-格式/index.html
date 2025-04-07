@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="提交规范格式: type (scope): subject">
+    <meta name="description" content="提交规范 格式: type (scope): subject">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git commit message 格式">
 <meta property="og:url" content="https://toypipi.github.io/2023/09/22/Git-commit-message-%E6%A0%BC%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="提交规范格式: type (scope): subject">
+<meta property="og:description" content="提交规范 格式: type (scope): subject">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-22T05:31:27.000Z">
 <meta property="article:modified_time" content="2023-10-11T05:43:56.283Z">
@@ -145,7 +145,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8F%90%E4%BA%A4%E8%A7%84%E8%8C%83"><span class="nav-number">1.</span> <span class="nav-text">提交规范</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">2.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8F%90%E4%BA%A4%E8%A7%84%E8%8C%83"><span class="nav-number">1.</span> <span class="nav-text">提交规范</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reference"><span class="nav-number">2.</span> <span class="nav-text">Reference</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -285,13 +285,20 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<h1 id="提交规范"><a href="#提交规范" class="headerlink" title="提交规范"></a>提交规范</h1><p>格式: <code>type (scope): subject</code></p>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<h1 id="提交规范">提交规范</h1>
+<p>格式: <code>type (scope): subject</code></p>
 <span id="more"></span>
-
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">- type</span><br><span class="line">  - 用于说明 <span class="string">`commit`</span> 的类别，只允许使用下面<span class="number">10</span>个标识。</span><br><span class="line">    - feat：新功能（feature）</span><br><span class="line">    - fix：修补bug</span><br><span class="line">    - docs：文档（documentation）</span><br><span class="line">    - style： 格式（不影响代码运行的变动）</span><br><span class="line">    - refactor：重构（即不是新增功能，也不是修改bug的代码变动）</span><br><span class="line">    - perf：性能优化</span><br><span class="line">    - test：增加测试</span><br><span class="line">    - chore：构建过程或辅助工具的变动</span><br><span class="line">    - revert：回退</span><br><span class="line">    - build：打包</span><br><span class="line">- <span class="title function_">scope</span>(可选)</span><br><span class="line">  - 用于说明 <span class="string">`commit`</span> 影响的范围，比如<span class="title class_">Button</span>组件、store、首页、路由等等，视项目不同而不同。</span><br><span class="line">- <span class="title function_">subject</span>(可选))</span><br><span class="line">  - 是 <span class="string">`commit`</span> 目的的简短描述，不超过<span class="number">50</span>个字符。</span><br><span class="line">    - 以动词开头，使用第一人称现在时，比如change，而不是changed或changes</span><br><span class="line">    - 第一个字母小写</span><br><span class="line">    - 结尾不加句号（.）</span><br></pre></td></tr></table></figure>
-
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://jdf2e.github.io/jdc_fe_guide/docs/git/commit">JDC 前端代码规范</a><br><a target="_blank" rel="noopener" href="https://www.conventionalcommits.org/zh-hans/v1.0.0/#%e7%ba%a6%e5%ae%9a%e5%bc%8f%e6%8f%90%e4%ba%a4%e8%a7%84%e8%8c%83">约定式提交</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/7114673069293043719">自动生成变更日志及规范 git 提交记录(release-it+husky+ commitizen+ commitlint)</a><br><a target="_blank" rel="noopener" href="https://semver.org/lang/zh-CN/">语义化版本 2.0.0</a><br>1697080977000</p>
+<h1 id="reference">Reference</h1>
+<p><a target="_blank" rel="noopener" href="https://jdf2e.github.io/jdc_fe_guide/docs/git/commit">JDC
+前端代码规范</a> <a
+target="_blank" rel="noopener" href="https://www.conventionalcommits.org/zh-hans/v1.0.0/#%e7%ba%a6%e5%ae%9a%e5%bc%8f%e6%8f%90%e4%ba%a4%e8%a7%84%e8%8c%83">约定式提交</a>
+<a
+target="_blank" rel="noopener" href="https://juejin.cn/post/7114673069293043719">自动生成变更日志及规范
+git 提交记录(release-it+husky+ commitizen+ commitlint)</a> <a
+target="_blank" rel="noopener" href="https://semver.org/lang/zh-CN/">语义化版本 2.0.0</a>
+1697080977000</p>
 
     </div>
 
@@ -384,13 +391,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -455,6 +462,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

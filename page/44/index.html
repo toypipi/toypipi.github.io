@@ -272,10 +272,24 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>在网上找到的安装配置教程都是使用 MySQL 作为数据库，在 cloudera 官网上找到一篇<a target="_blank" rel="noopener" href="https://www.cloudera.com/documentation/enterprise/5-15-x/topics/install_cm_mariadb.html">使用 MariaDB 作为数据库的配置</a>文档，mark 一下。</p>
+          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<p>在网上找到的安装配置教程都是使用 MySQL 作为数据库，在 cloudera
+官网上找到一篇<a
+target="_blank" rel="noopener" href="https://www.cloudera.com/documentation/enterprise/5-15-x/topics/install_cm_mariadb.html">使用
+MariaDB 作为数据库的配置</a>文档，mark 一下。</p>
 <p>使用 MariaDB 作为数据库安装 CDH 失败，换回 MySQL 5.7 安装成功。</p>
-<p><strong>参考文档：</strong><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/xiaolong_4_2/article/details/81668847">在centos7离线安装CDH5.15</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/u013429010/article/details/81744749">CENTOS 7.5离线安装Cloudera Manager 5和CDH5(5.15.0) 完全教程</a><br><a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000013552053">CM5.14启动HUE Load Balancer角色失败</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/yuanhaiwn/article/details/80496316">Hue警告: 必须在 HBase 服务中配置 Thrift Server 角色以使用 Hue HBase Browser 应用程序</a><br><a target="_blank" rel="noopener" href="https://community.cloudera.com/t5/Cloudera-Manager-Installation/How-do-i-set-java-heap-size-for-Secondary-Name-Node/td-p/4077">How do i set java heap size for Secondary Name Node </a></p>
+<p><strong>参考文档：</strong> <a
+target="_blank" rel="noopener" href="https://blog.csdn.net/xiaolong_4_2/article/details/81668847">在centos7离线安装CDH5.15</a>
+<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/u013429010/article/details/81744749">CENTOS
+7.5离线安装Cloudera Manager 5和CDH5(5.15.0) 完全教程</a> <a
+target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000013552053">CM5.14启动HUE Load
+Balancer角色失败</a> <a
+target="_blank" rel="noopener" href="https://blog.csdn.net/yuanhaiwn/article/details/80496316">Hue警告:
+必须在 HBase 服务中配置 Thrift Server 角色以使用 Hue HBase Browser
+应用程序</a> <a
+target="_blank" rel="noopener" href="https://community.cloudera.com/t5/Cloudera-Manager-Installation/How-do-i-set-java-heap-size-for-Secondary-Name-Node/td-p/4077">How
+do i set java heap size for Secondary Name Node</a></p>
 
       
     </div>
@@ -375,13 +389,19 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>MariaDB 和 Keepalived 使用 yum 安装，在验证 Keepalived 时，关闭一台机器上的 MariaDB ， 总是无法杀死 Keepalived 进程，导致虚拟 ip 无法迁移到另外一台服务器上。单独执行 track_script 里配置的脚本，却可以杀死 Keepalived 进程，怀疑是 track_script 里配置的脚本没有执行，所以一开始我以为是 Keepalived 的配置文件写错了，查阅了多篇博客，反复修改还是不行。后来在 Keepalived 日志文件里发现一些提示 <code>Unknown keyword &#39;track_script&#123;</code> 。经过检索，发现是配置文件和大括号之间少了一个空格。加上空格后就可以正常运行了。</p>
-<p>总结一下：</p>
-<ol>
-<li>日志很重要，有些问题从日志里就可以找到答案。其实一开始就发现日志里有这个问题了，但是没有进一步深究，于是浪费了很多时间在其他方面。</li>
-<li>当没有解决思路时，可以放一放，不要一味纠结其中。配置文件我也检查了好几遍，发现了其他没有加空格的地方，唯独单单没发现这点，可能当时自己一心急于解决问题，头脑已经混乱了。</li>
-</ol>
+          <hr />
+<p>MariaDB 和 Keepalived 使用 yum 安装，在验证 Keepalived
+时，关闭一台机器上的 MariaDB ， 总是无法杀死 Keepalived 进程，导致虚拟
+ip 无法迁移到另外一台服务器上。单独执行 track_script
+里配置的脚本，却可以杀死 Keepalived 进程，怀疑是 track_script
+里配置的脚本没有执行，所以一开始我以为是 Keepalived
+的配置文件写错了，查阅了多篇博客，反复修改还是不行。后来在 Keepalived
+日志文件里发现一些提示 <code>Unknown keyword 'track_script&#123;</code>
+。经过检索，发现是配置文件和大括号之间少了一个空格。加上空格后就可以正常运行了。</p>
+<p>总结一下： 1.
+日志很重要，有些问题从日志里就可以找到答案。其实一开始就发现日志里有这个问题了，但是没有进一步深究，于是浪费了很多时间在其他方面。
+2.
+当没有解决思路时，可以放一放，不要一味纠结其中。配置文件我也检查了好几遍，发现了其他没有加空格的地方，唯独单单没发现这点，可能当时自己一心急于解决问题，头脑已经混乱了。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/09/12/MariaDB-Keepalived-%E5%8F%8C%E4%B8%BB%E7%83%AD%E5%A4%87%E4%B9%8B%E9%87%87%E5%9D%91%E8%AE%B0/#more" rel="contents">
@@ -451,7 +471,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2020-11-03 11:44:00" itemprop="dateModified" datetime="2020-11-03T11:44:00+08:00">2020-11-03</time>
+      <time title="修改时间：2025-04-07 15:39:26" itemprop="dateModified" datetime="2025-04-07T15:39:26+08:00">2025-04-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -470,7 +490,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>227</span>
+      <span>229</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -488,11 +508,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>今天使用测试数据库时发现突然无法连接了，然后登录到服务器上查看 MySQL 进程还在，使用命令 <code>service restart mysql</code> 重启 MySQL 报错:</p>
+          <hr />
+<p>今天使用测试数据库时发现突然无法连接了，然后登录到服务器上查看 MySQL
+进程还在，使用命令 <code>service restart mysql</code> 重启 MySQL
+报错:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MySQL server PID file could not be found!     [FAILED]</span><br><span class="line">Starting MySQL...The server quit without updating PID file (/usr/local/mysql/data/mysql.pid).</span><br></pre></td></tr></table></figure>
-
-<p>经过一番网上查询，有说磁盘满会导致此问题，马上检查了一下，果然 <code>/</code> 目录已经使用了 98% ，删除一些不再使用的程序包后。重启 MySQL 还是同样的问题。</p>
+<p>经过一番网上查询，有说磁盘满会导致此问题，马上检查了一下，果然
+<code>/</code> 目录已经使用了 98% ，删除一些不再使用的程序包后。重启
+MySQL 还是同样的问题。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/07/20/MySQL-server-PID-file-could-not-be-found/#more" rel="contents">
@@ -599,7 +622,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
+          <hr />
 <p>记录一下学习的 mooc 课程。</p>
           <!--noindex-->
             <div class="post-button">
@@ -670,7 +693,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2019-02-20 09:48:31" itemprop="dateModified" datetime="2019-02-20T09:48:31+08:00">2019-02-20</time>
+      <time title="修改时间：2025-04-07 11:26:05" itemprop="dateModified" datetime="2025-04-07T11:26:05+08:00">2025-04-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -689,7 +712,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>21</span>
+      <span>20</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -707,9 +730,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><p><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20180630/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%E5%9B%BE%E7%A4%BA.gif" alt="冒泡排序"></p>
-<p><strong>参考文档：</strong><br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/eniac12/p/5329396.html">常用排序算法总结(一)</a></p>
+          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<h3 id="冒泡排序">冒泡排序</h3>
+<img src="/2018/06/30/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E5%9B%BE%E7%A4%BA/1.gif" class="">
+<p><strong>参考文档：</strong> <a
+target="_blank" rel="noopener" href="http://www.cnblogs.com/eniac12/p/5329396.html">常用排序算法总结(一)</a></p>
 
       
     </div>
@@ -751,13 +776,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -822,6 +847,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

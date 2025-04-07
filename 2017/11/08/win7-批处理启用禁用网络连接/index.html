@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="如果 WIN7 有两张网卡，而且需要连接不同的网络 IP 地址时，可以编写一个批处理脚本，当需要切换 IP 的时候，直接点击对应的脚本，就可以实现快速切换，避免每次输入 IP 地址、子网掩码和网关等信息。 12netsh interface set interface name&#x3D;&quot;本地连接&quot; admin&#x3D;ENABLEDnetsh interface set interface">
+    <meta name="description" content="如果 WIN7 有两张网卡，而且需要连接不同的网络 IP 地址时，可以编写一个批处理脚本，当需要切换 IP 的时候，直接点击对应的脚本，就可以实现快速切换，避免每次输入 IP 地址、子网掩码和网关等信息。 12netsh interface set interface name&#x3D;&quot;本地连接&quot; admin&#x3D;ENABLEDnetsh interface set inter">
 <meta property="og:type" content="article">
 <meta property="og:title" content="win7 批处理启用禁用网络连接">
 <meta property="og:url" content="https://toypipi.github.io/2017/11/08/win7-%E6%89%B9%E5%A4%84%E7%90%86%E5%90%AF%E7%94%A8%E7%A6%81%E7%94%A8%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="如果 WIN7 有两张网卡，而且需要连接不同的网络 IP 地址时，可以编写一个批处理脚本，当需要切换 IP 的时候，直接点击对应的脚本，就可以实现快速切换，避免每次输入 IP 地址、子网掩码和网关等信息。 12netsh interface set interface name&#x3D;&quot;本地连接&quot; admin&#x3D;ENABLEDnetsh interface set interface">
+<meta property="og:description" content="如果 WIN7 有两张网卡，而且需要连接不同的网络 IP 地址时，可以编写一个批处理脚本，当需要切换 IP 的时候，直接点击对应的脚本，就可以实现快速切换，避免每次输入 IP 地址、子网掩码和网关等信息。 12netsh interface set interface name&#x3D;&quot;本地连接&quot; admin&#x3D;ENABLEDnetsh interface set inter">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-11-08T02:48:30.000Z">
 <meta property="article:modified_time" content="2018-06-08T08:38:48.515Z">
@@ -284,13 +284,16 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>如果 WIN7 有两张网卡，而且需要连接不同的网络 IP 地址时，可以编写一个批处理脚本，当需要切换 IP 的时候，直接点击对应的脚本，就可以实现快速切换，避免每次输入 IP 地址、子网掩码和网关等信息。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netsh interface set interface name=&quot;本地连接&quot; admin=ENABLED</span><br><span class="line">netsh interface set interface name=&quot;本地连接 2&quot; admin=DISABLED</span><br></pre></td></tr></table></figure>
-<p>将以上脚本保存为一个后缀为 .bat 的文件，如 NetSwitch.bat ，需要切换的时候直接双击执行就可以了。<br>另付上通过批处理脚本修改 IP 地址、子网掩码和网关的命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">netsh interface ip set address name=&quot;本地连接&quot; source=&quot;static&quot; addr=&quot;192.168.1.110&quot; mask=&quot;255.255.255.0&quot; gateway=&quot;192.168.1.1&quot; gwmetric=&quot;1&quot;</span><br><span class="line">netsh interface ip set dns name=&quot;本地连接&quot; source=static addr=&quot;119.29.29.29&quot;</span><br><span class="line">netsh interface ip set dns name=&quot;本地连接&quot; source=static addr=&quot;182.254.116.116&quot;</span><br></pre></td></tr></table></figure>
-
-<p><strong>参考文档：</strong><br><a target="_blank" rel="noopener" href="http://www.mamicode.com/info-detail-247745.html">win7如何通过netsh命令禁用启用本地连接</a></p>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<p>如果 WIN7 有两张网卡，而且需要连接不同的网络 IP
+地址时，可以编写一个批处理脚本，当需要切换 IP
+的时候，直接点击对应的脚本，就可以实现快速切换，避免每次输入 IP
+地址、子网掩码和网关等信息。 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netsh interface set interface name=&quot;本地连接&quot; admin=ENABLED</span><br><span class="line">netsh interface set interface name=&quot;本地连接 2&quot; admin=DISABLED</span><br></pre></td></tr></table></figure> 将以上脚本保存为一个后缀为
+.bat 的文件，如 NetSwitch.bat ，需要切换的时候直接双击执行就可以了。
+另付上通过批处理脚本修改 IP 地址、子网掩码和网关的命令：
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">netsh interface ip set address name=&quot;本地连接&quot; source=&quot;static&quot; addr=&quot;192.168.1.110&quot; mask=&quot;255.255.255.0&quot; gateway=&quot;192.168.1.1&quot; gwmetric=&quot;1&quot;</span><br><span class="line">netsh interface ip set dns name=&quot;本地连接&quot; source=static addr=&quot;119.29.29.29&quot;</span><br><span class="line">netsh interface ip set dns name=&quot;本地连接&quot; source=static addr=&quot;182.254.116.116&quot;</span><br></pre></td></tr></table></figure></p>
+<p><strong>参考文档：</strong> <a
+target="_blank" rel="noopener" href="http://www.mamicode.com/info-detail-247745.html">win7如何通过netsh命令禁用启用本地连接</a></p>
 
     </div>
 
@@ -383,13 +386,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -454,6 +457,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

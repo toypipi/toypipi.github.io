@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="此页面提供有关如何安装 Percona XtraBackup 的信息。以下选项可供选择：  从存储库安装 Percona XtraBackup （推荐） 从已下载的 rpm 或 apt 软件包安装 Percona XtraBackup 从源代码编译和安装  在安装之前，您可能需要阅读 Percona XtraBackup 的发布说明。">
+    <meta name="description" content="此页面提供有关如何安装 Percona XtraBackup 的信息。以下选项可供选择：  从存储库安装 Percona XtraBackup （推荐） 从已下载的 rpm 或 apt 软件包安装 Percona XtraBackup 从源代码编译和安装  在安装之前，您可能需要阅读 Percona XtraBackup 的发布说明。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="安装 Percona XtraBackup 2.4">
 <meta property="og:url" content="https://toypipi.github.io/2018/03/24/%E5%AE%89%E8%A3%85Percona-XtraBackup-2-4/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="此页面提供有关如何安装 Percona XtraBackup 的信息。以下选项可供选择：  从存储库安装 Percona XtraBackup （推荐） 从已下载的 rpm 或 apt 软件包安装 Percona XtraBackup 从源代码编译和安装  在安装之前，您可能需要阅读 Percona XtraBackup 的发布说明。">
+<meta property="og:description" content="此页面提供有关如何安装 Percona XtraBackup 的信息。以下选项可供选择：  从存储库安装 Percona XtraBackup （推荐） 从已下载的 rpm 或 apt 软件包安装 Percona XtraBackup 从源代码编译和安装  在安装之前，您可能需要阅读 Percona XtraBackup 的发布说明。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-03-24T02:27:25.000Z">
 <meta property="article:modified_time" content="2020-11-03T03:44:00.119Z">
@@ -143,7 +143,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8E%E5%AD%98%E5%82%A8%E5%BA%93%E5%AE%89%E8%A3%85-Percona-XtraBackup"><span class="nav-number">1.</span> <span class="nav-text">从存储库安装 Percona XtraBackup</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8E%E6%BA%90%E4%BB%A3%E7%A0%81%E7%BC%96%E8%AF%91%E5%92%8C%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">从源代码编译和安装</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8E%E6%BA%90%E4%BB%A3%E7%A0%81%E7%BC%96%E8%AF%91%E5%92%8C%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">从源代码编译和安装</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -283,24 +283,47 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>此页面提供有关如何安装 Percona XtraBackup 的信息。以下选项可供选择：</p>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<p>此页面提供有关如何安装 Percona XtraBackup
+的信息。以下选项可供选择：</p>
 <ul>
-<li><a href="https://toypipi.github.io/2018/03/26/%E4%BB%8E%E5%AD%98%E5%82%A8%E5%BA%93%E5%AE%89%E8%A3%85-Percona-XtraBackup/">从存储库安装 Percona XtraBackup</a> （推荐）</li>
-<li>从已下载的 <a target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/installation/yum_repo.html#standalone-rpm">rpm</a> 或 <a target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/installation/apt_repo.html#standalone-deb">apt</a> 软件包安装 Percona XtraBackup</li>
-<li><a href="https://toypipi.github.io/2018/03/26/%E4%BB%8E%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%92%8C%E5%AE%89%E8%A3%85/">从源代码编译和安装</a></li>
+<li><a
+href="https://toypipi.github.io/2018/03/26/%E4%BB%8E%E5%AD%98%E5%82%A8%E5%BA%93%E5%AE%89%E8%A3%85-Percona-XtraBackup/">从存储库安装
+Percona XtraBackup</a> （推荐）</li>
+<li>从已下载的 <a
+target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/installation/yum_repo.html#standalone-rpm">rpm</a>
+或 <a
+target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/installation/apt_repo.html#standalone-deb">apt</a>
+软件包安装 Percona XtraBackup</li>
+<li><a
+href="https://toypipi.github.io/2018/03/26/%E4%BB%8E%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%92%8C%E5%AE%89%E8%A3%85/">从源代码编译和安装</a></li>
 </ul>
-<p>在安装之前，您可能需要阅读 <a target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/release-notes.html">Percona XtraBackup 的发布说明</a>。</p>
-<span id="more"></span>
-<h1 id="从存储库安装-Percona-XtraBackup"><a href="#从存储库安装-Percona-XtraBackup" class="headerlink" title="从存储库安装 Percona XtraBackup"></a>从存储库安装 Percona XtraBackup</h1><p>Percona 为 Percona Server，Percona XtraBackup 和 Percona Toolkit 等软件提供 <strong>yum</strong>（用于 Red Hat，CentOS 和 Amazon Linux AMI 的 RPM 软件包）和 <strong>apt</strong>（用于 Ubuntu 和 Debian 的 .deb 软件包）存储库。这使得通过操作系统的软件包管理器安装和更新软件及其依赖关系变得很容易。这是推荐的安装方式。</p>
-<p>以下指南介绍了使用官方 Percona 存储库的 .deb 和 .rpm 软件包的安装过程。</p>
+<p>在安装之前，您可能需要阅读 <a
+target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/release-notes.html">Percona
+XtraBackup 的发布说明</a>。 <span id="more"></span> # 从存储库安装 Percona
+XtraBackup</p>
+<p>Percona 为 Percona Server，Percona XtraBackup 和 Percona Toolkit
+等软件提供 <strong>yum</strong>（用于 Red Hat，CentOS 和 Amazon Linux
+AMI 的 RPM 软件包）和 <strong>apt</strong>（用于 Ubuntu 和 Debian 的
+.deb
+软件包）存储库。这使得通过操作系统的软件包管理器安装和更新软件及其依赖关系变得很容易。这是推荐的安装方式。</p>
+<p>以下指南介绍了使用官方 Percona 存储库的 .deb 和 .rpm
+软件包的安装过程。</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/installation/apt_repo.html">在 Debian 和 Ubuntu 上安装 Percona XtraBackup</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/installation/yum_repo.html">在 Red Hat Enterprise Linux 和 CentOS 上安装 Percona XtraBackup</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/installation/apt_repo.html">在
+Debian 和 Ubuntu 上安装 Percona XtraBackup</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/installation/yum_repo.html">在
+Red Hat Enterprise Linux 和 CentOS 上安装 Percona XtraBackup</a></li>
 </ul>
-<h1 id="从源代码编译和安装"><a href="#从源代码编译和安装" class="headerlink" title="从源代码编译和安装"></a>从源代码编译和安装</h1><p>Percona XtraBackup 是开源的，其代码托管在 <a target="_blank" rel="noopener" href="https://github.com/percona/percona-xtrabackup">Github</a> 。以下指导描述了源代码的编译和安装过程。</p>
+<h1 id="从源代码编译和安装">从源代码编译和安装</h1>
+<p>Percona XtraBackup 是开源的，其代码托管在 <a
+target="_blank" rel="noopener" href="https://github.com/percona/percona-xtrabackup">Github</a>
+。以下指导描述了源代码的编译和安装过程。</p>
 <ul>
-<li><a href="https://toypipi.github.io/2018/03/26/%E4%BB%8E%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%92%8C%E5%AE%89%E8%A3%85/">从源代码编译和安装</a></li>
+<li><a
+href="https://toypipi.github.io/2018/03/26/%E4%BB%8E%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%92%8C%E5%AE%89%E8%A3%85/">从源代码编译和安装</a></li>
 </ul>
 
     </div>
@@ -392,13 +415,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -463,6 +486,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

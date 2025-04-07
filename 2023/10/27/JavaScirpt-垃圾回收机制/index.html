@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="垃圾回收机制JavaScript 的垃圾回收机制是自动的，也就是说，开发者不需要手动释放内存。JavaScript 引擎会自动跟踪内存中所有对象的引用，并在对象没有被引用时自动释放其占用的内存空间。 垃圾回收器会定期扫描内存中的对象，并标记那些被引用的对象。然后，它会删除那些没有被标记的对象，并将它们占用的内存空间释放回系统。这个过程被称为垃圾回收。 JavaScript 中的垃圾回收器使用的是">
+    <meta name="description" content="垃圾回收机制 JavaScript 的垃圾回收机制是自动的，也就是说，开发者不需要手动释放内存。JavaScript 引擎会自动跟踪内存中所有对象的引用，并在对象没有被引用时自动释放其占用的内存空间。 垃圾回收器会定期扫描内存中的对象，并标记那些被引用的对象。然后，它会删除那些没有被标记的对象，并将它们占用的内存空间释放回系统。这个过程被称为垃圾回收。 JavaScript 中的垃圾">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScirpt 垃圾回收机制">
 <meta property="og:url" content="https://toypipi.github.io/2023/10/27/JavaScirpt-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="垃圾回收机制JavaScript 的垃圾回收机制是自动的，也就是说，开发者不需要手动释放内存。JavaScript 引擎会自动跟踪内存中所有对象的引用，并在对象没有被引用时自动释放其占用的内存空间。 垃圾回收器会定期扫描内存中的对象，并标记那些被引用的对象。然后，它会删除那些没有被标记的对象，并将它们占用的内存空间释放回系统。这个过程被称为垃圾回收。 JavaScript 中的垃圾回收器使用的是">
+<meta property="og:description" content="垃圾回收机制 JavaScript 的垃圾回收机制是自动的，也就是说，开发者不需要手动释放内存。JavaScript 引擎会自动跟踪内存中所有对象的引用，并在对象没有被引用时自动释放其占用的内存空间。 垃圾回收器会定期扫描内存中的对象，并标记那些被引用的对象。然后，它会删除那些没有被标记的对象，并将它们占用的内存空间释放回系统。这个过程被称为垃圾回收。 JavaScript 中的垃圾">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-10-27T08:29:52.000Z">
 <meta property="article:modified_time" content="2023-10-27T08:34:38.678Z">
@@ -277,25 +277,31 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<h1 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h1><p>JavaScript 的垃圾回收机制是自动的，也就是说，开发者不需要手动释放内存。JavaScript 引擎会自动跟踪内存中所有对象的引用，并在对象没有被引用时自动释放其占用的内存空间。</p>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<h1 id="垃圾回收机制">垃圾回收机制</h1>
+<p>JavaScript
+的垃圾回收机制是自动的，也就是说，开发者不需要手动释放内存。JavaScript
+引擎会自动跟踪内存中所有对象的引用，并在对象没有被引用时自动释放其占用的内存空间。</p>
 <p>垃圾回收器会定期扫描内存中的对象，并标记那些被引用的对象。然后，它会删除那些没有被标记的对象，并将它们占用的内存空间释放回系统。这个过程被称为垃圾回收。</p>
-<p>JavaScript 中的垃圾回收器使用的是基于标记和清除（Mark and Sweep）算法的垃圾回收机制。这个算法的基本思想是，通过遍历所有的对象，标记那些仍然被引用的对象，然后删除那些没有被标记的对象。</p>
-<p>这个算法有一个缺点，就是在执行标记和清除算法的过程中会暂停 JavaScript 的执行。这个暂停时间的长短取决于需要清理的内存空间的大小。为了解决这个问题，现代浏览器使用了一些优化算法，如增量标记和清除、分代回收等，来减少垃圾回收的暂停时间。</p>
-<p>总的来说，JavaScript 的垃圾回收机制是非常高效和自动化的，开发者不需要手动管理内存。但是，开发者仍然需要注意一些内存泄漏的情况，如循环引用、全局变量等，以避免浪费内存和影响性能。</p>
+<p>JavaScript 中的垃圾回收器使用的是基于标记和清除（Mark and
+Sweep）算法的垃圾回收机制。这个算法的基本思想是，通过遍历所有的对象，标记那些仍然被引用的对象，然后删除那些没有被标记的对象。</p>
+<p>这个算法有一个缺点，就是在执行标记和清除算法的过程中会暂停 JavaScript
+的执行。这个暂停时间的长短取决于需要清理的内存空间的大小。为了解决这个问题，现代浏览器使用了一些优化算法，如增量标记和清除、分代回收等，来减少垃圾回收的暂停时间。</p>
+<p>总的来说，JavaScript
+的垃圾回收机制是非常高效和自动化的，开发者不需要手动管理内存。但是，开发者仍然需要注意一些内存泄漏的情况，如循环引用、全局变量等，以避免浪费内存和影响性能。</p>
 <span id="more"></span>
-
-<h1 id="如何避免内存泄漏"><a href="#如何避免内存泄漏" class="headerlink" title="如何避免内存泄漏"></a>如何避免内存泄漏</h1><ul>
-<li><p>及时清除不再使用的对象和变量：在 JavaScript 中，变量和对象的引用关系是自动管理的，但是如果开发者在代码中使用了全局变量或者闭包，就需要手动清除这些变量或对象的引用，否则它们会一直存在于内存中，占用内存空间。</p>
-</li>
-<li><p>避免循环引用：循环引用指的是两个或多个对象之间相互引用，从而导致它们无法被垃圾回收器识别和清除。为避免循环引用，可以使用弱引用或者手动清除引用。</p>
-</li>
-<li><p>使用事件委托：在 JavaScript 中，事件委托可以避免为每个子元素添加事件处理程序而导致的内存泄漏。事件委托是将事件处理程序绑定到父元素上，当事件被触发时，事件处理程序会根据事件的目标元素来执行相应的操作。</p>
-</li>
-<li><p>避免使用过多的定时器和回调函数：定时器和回调函数会在内存中创建新的对象，如果使用不当，会导致内存泄漏。为避免这种情况，开发者可以使用节流和防抖等技术来优化代码，减少定时器和回调函数的使用。</p>
-</li>
-<li><p>使用 Chrome 开发者工具进行内存分析：Chrome 开发者工具提供了内存分析工具，可以帮助开发者识别和调试内存泄漏问题。开发者可以使用 Heap Profiler 工具来查看内存使用情况和对象分配情况，从而找出内存泄漏的原因。</p>
-</li>
+<h1 id="如何避免内存泄漏">如何避免内存泄漏</h1>
+<ul>
+<li><p>及时清除不再使用的对象和变量：在 JavaScript
+中，变量和对象的引用关系是自动管理的，但是如果开发者在代码中使用了全局变量或者闭包，就需要手动清除这些变量或对象的引用，否则它们会一直存在于内存中，占用内存空间。</p></li>
+<li><p>避免循环引用：循环引用指的是两个或多个对象之间相互引用，从而导致它们无法被垃圾回收器识别和清除。为避免循环引用，可以使用弱引用或者手动清除引用。</p></li>
+<li><p>使用事件委托：在 JavaScript
+中，事件委托可以避免为每个子元素添加事件处理程序而导致的内存泄漏。事件委托是将事件处理程序绑定到父元素上，当事件被触发时，事件处理程序会根据事件的目标元素来执行相应的操作。</p></li>
+<li><p>避免使用过多的定时器和回调函数：定时器和回调函数会在内存中创建新的对象，如果使用不当，会导致内存泄漏。为避免这种情况，开发者可以使用节流和防抖等技术来优化代码，减少定时器和回调函数的使用。</p></li>
+<li><p>使用 Chrome 开发者工具进行内存分析：Chrome
+开发者工具提供了内存分析工具，可以帮助开发者识别和调试内存泄漏问题。开发者可以使用
+Heap Profiler
+工具来查看内存使用情况和对象分配情况，从而找出内存泄漏的原因。</p></li>
 </ul>
 
     </div>
@@ -387,13 +393,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -458,6 +464,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

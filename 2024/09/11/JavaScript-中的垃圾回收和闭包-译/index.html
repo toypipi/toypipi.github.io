@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="在 JavaScript 开发中，垃圾回收和闭包是两个常见但容易被忽视的技术细节。表面上，它们的工作机制看似简单，但在特定情况下，它们可能会导致内存泄漏，甚至影响应用的性能。 作者 Jake Archibald 在 《Garbage collection and closures》一文中通过真实的代码示例，深入剖析垃圾回收与闭包之间的复杂关系，帮助你了解如何避免内存泄漏，写出更高效、更可靠的代码">
+    <meta name="description" content="在 JavaScript 开发中，垃圾回收和闭包是两个常见但容易被忽视的技术细节。表面上，它们的工作机制看似简单，但在特定情况下，它们可能会导致内存泄漏，甚至影响应用的性能。 作者 Jake Archibald 在 《Garbage collection and closures》一文中通过真实的代码示例，深入剖析垃圾回收与闭包之间的复杂关系，帮助你了解如何避免内存泄漏，写出更高效、更">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript 中的垃圾回收和闭包[译]">
 <meta property="og:url" content="https://toypipi.github.io/2024/09/11/JavaScript-%E4%B8%AD%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%92%8C%E9%97%AD%E5%8C%85-%E8%AF%91/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="在 JavaScript 开发中，垃圾回收和闭包是两个常见但容易被忽视的技术细节。表面上，它们的工作机制看似简单，但在特定情况下，它们可能会导致内存泄漏，甚至影响应用的性能。 作者 Jake Archibald 在 《Garbage collection and closures》一文中通过真实的代码示例，深入剖析垃圾回收与闭包之间的复杂关系，帮助你了解如何避免内存泄漏，写出更高效、更可靠的代码">
+<meta property="og:description" content="在 JavaScript 开发中，垃圾回收和闭包是两个常见但容易被忽视的技术细节。表面上，它们的工作机制看似简单，但在特定情况下，它们可能会导致内存泄漏，甚至影响应用的性能。 作者 Jake Archibald 在 《Garbage collection and closures》一文中通过真实的代码示例，深入剖析垃圾回收与闭包之间的复杂关系，帮助你了解如何避免内存泄漏，写出更高效、更">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-09-11T08:19:10.000Z">
 <meta property="article:modified_time" content="2024-09-12T07:06:04.632Z">
@@ -145,7 +145,8 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%A1%88%E4%BE%8B"><span class="nav-number">1.</span> <span class="nav-text">问题案例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0"><span class="nav-number">2.</span> <span class="nav-text">更新</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%91%E8%80%85%E6%B3%A8"><span class="nav-number">3.</span> <span class="nav-text">译者注</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IIFE-Immediately-Invoked-Function-Expression"><span class="nav-number">3.1.</span> <span class="nav-text">IIFE(Immediately Invoked Function Expression)</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%A1%88%E4%BE%8B"><span class="nav-number">1.</span> <span class="nav-text">问题案例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0"><span class="nav-number">2.</span> <span class="nav-text">更新</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%91%E8%80%85%E6%B3%A8"><span class="nav-number">3.</span> <span class="nav-text">译者注</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#iifeimmediately-invoked-function-expression"><span class="nav-number">3.1.</span> <span class="nav-text">IIFE(Immediately
+Invoked Function Expression)</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -285,16 +286,21 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>在 JavaScript 开发中，垃圾回收和闭包是两个常见但容易被忽视的技术细节。表面上，它们的工作机制看似简单，但在特定情况下，它们可能会导致内存泄漏，甚至影响应用的性能。</p>
-<p>作者 Jake Archibald 在 <a target="_blank" rel="noopener" href="https://jakearchibald.com/2024/garbage-collection-and-closures/#an-iife-is-enough-to-trigger-the-leak">《Garbage collection and closures》</a>一文中通过真实的代码示例，深入剖析垃圾回收与闭包之间的复杂关系，帮助你了解如何避免内存泄漏，写出更高效、更可靠的代码。</p>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<p>在 JavaScript
+开发中，垃圾回收和闭包是两个常见但容易被忽视的技术细节。表面上，它们的工作机制看似简单，但在特定情况下，它们可能会导致内存泄漏，甚至影响应用的性能。</p>
+<p>作者 Jake Archibald 在 <a
+target="_blank" rel="noopener" href="https://jakearchibald.com/2024/garbage-collection-and-closures/#an-iife-is-enough-to-trigger-the-leak">《Garbage
+collection and
+closures》</a>一文中通过真实的代码示例，深入剖析垃圾回收与闭包之间的复杂关系，帮助你了解如何避免内存泄漏，写出更高效、更可靠的代码。</p>
 <p>以下是文章的全文翻译：</p>
-<p>我和 <a target="_blank" rel="noopener" href="https://twitter.com/DasSurma">Surma</a>、<a target="_blank" rel="noopener" href="https://twitter.com/_developit">Jason</a> 一起开发时，发现函数内的垃圾回收并不像我们预期的那样工作。</p>
+<p>我和 <a target="_blank" rel="noopener" href="https://twitter.com/DasSurma">Surma</a>、<a
+target="_blank" rel="noopener" href="https://twitter.com/_developit">Jason</a>
+一起开发时，发现函数内的垃圾回收并不像我们预期的那样工作。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">demo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> bigArrayBuffer = <span class="keyword">new</span> <span class="title class_">ArrayBuffer</span>(<span class="number">100_000_000</span>);</span><br><span class="line">  <span class="keyword">const</span> id = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(bigArrayBuffer.<span class="property">byteLength</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="built_in">clearTimeout</span>(id);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">globalThis.<span class="property">cancelDemo</span> = <span class="title function_">demo</span>();</span><br></pre></td></tr></table></figure>
-
 <span id="more"></span>
-
-<p>在上面的代码中，<code>bigArrayBuffer</code> 会被永远泄漏。我没想到会这样，因为：</p>
+<p>在上面的代码中，<code>bigArrayBuffer</code>
+会被永远泄漏。我没想到会这样，因为：</p>
 <ul>
 <li>一秒钟后，引用 <code>bigArrayBuffer</code> 的函数将不能调用。</li>
 <li>返回的取消定时函数没有引用 <code>bigArrayBuffer</code>。</li>
@@ -305,90 +311,127 @@
 </blockquote>
 <p>下面这个例子不会发生内存泄漏：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">demo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> bigArrayBuffer = <span class="keyword">new</span> <span class="title class_">ArrayBuffer</span>(<span class="number">100_000_000</span>);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(bigArrayBuffer.<span class="property">byteLength</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">demo</span>();</span><br></pre></td></tr></table></figure>
-
-<p>因为当函数执行后，<code>bigArrayBuffer</code> 就不再需要了，所以它被垃圾回收了。</p>
+<p>因为当函数执行后，<code>bigArrayBuffer</code>
+就不再需要了，所以它被垃圾回收了。</p>
 <p>下面这个例子也不会发生内存泄漏：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">demo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> bigArrayBuffer = <span class="keyword">new</span> <span class="title class_">ArrayBuffer</span>(<span class="number">100_000_000</span>);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(bigArrayBuffer.<span class="property">byteLength</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">demo</span>();</span><br></pre></td></tr></table></figure>
-
 <p>在这个例子中：</p>
-<ol>
-<li>浏览器引擎看到 <code>bigArrayBuffer</code> 被内部函数引用，所以它被保留下来。它与调用 <code>demo()</code> 时创建的作用域关联。</li>
-<li>一秒钟后，引用 <code>bigArrayBuffer</code> 的函数不可再次被调用。</li>
+<ol type="1">
+<li>浏览器引擎看到 <code>bigArrayBuffer</code>
+被内部函数引用，所以它被保留下来。它与调用 <code>demo()</code>
+时创建的作用域关联。</li>
+<li>一秒钟后，引用 <code>bigArrayBuffer</code>
+的函数不可再次被调用。</li>
 <li>由于作用域内没有任何可以调用的函数，<code>bigArrayBuffer</code>可以和作用域一起被回收。</li>
 </ol>
 <p>下面这个例子也不会有泄漏：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">demo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> bigArrayBuffer = <span class="keyword">new</span> <span class="title class_">ArrayBuffer</span>(<span class="number">100_000_000</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> id = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="built_in">clearTimeout</span>(id);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">globalThis.<span class="property">cancelDemo</span> = <span class="title function_">demo</span>();</span><br></pre></td></tr></table></figure>
-
-<p>在这个例子中，引擎知道它不需要保留 <code>bigArrayBuffer</code>，因为它只是定义了，但是并没有被访问。</p>
-<h1 id="问题案例"><a href="#问题案例" class="headerlink" title="问题案例"></a>问题案例</h1><p>下面这个案例就比较复杂了：</p>
+<p>在这个例子中，引擎知道它不需要保留
+<code>bigArrayBuffer</code>，因为它只是定义了，但是并没有被访问。</p>
+<h1 id="问题案例">问题案例</h1>
+<p>下面这个案例就比较复杂了：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">demo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> bigArrayBuffer = <span class="keyword">new</span> <span class="title class_">ArrayBuffer</span>(<span class="number">100_000_000</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> id = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(bigArrayBuffer.<span class="property">byteLength</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="built_in">clearTimeout</span>(id);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">globalThis.<span class="property">cancelDemo</span> = <span class="title function_">demo</span>();</span><br></pre></td></tr></table></figure>
-
 <p>它会泄漏，因为：</p>
-<ol>
-<li>浏览器引擎看到 <code>bigArrayBuffer</code> 被内部函数引用，所以它被保留下来。它与调用 <code>demo()</code> 时创建的作用域关联。</li>
+<ol type="1">
+<li>浏览器引擎看到 <code>bigArrayBuffer</code>
+被内部函数引用，所以它被保留下来。它与调用 <code>demo()</code>
+时创建的作用域关联。</li>
 <li>一秒钟后，引用 <code>bigArrayBuffer</code> 的函数不能再被调用。</li>
 <li>但是，作用域仍然存在，因为 ‘cancel’ 函数仍然可调用。</li>
-<li><code>bigArrayBuffer</code> 与作用域关联，所以它仍然保留在内存中。</li>
+<li><code>bigArrayBuffer</code>
+与作用域关联，所以它仍然保留在内存中。</li>
 </ol>
-<p>我以为引擎会更智能，即使 <code>bigArrayBuffer</code> 不再可引用，也会进行垃圾回收，但事实并非如此。</p>
+<p>我以为引擎会更智能，即使 <code>bigArrayBuffer</code>
+不再可引用，也会进行垃圾回收，但事实并非如此。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">globalThis.<span class="property">cancelDemo</span> = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
-
-<p>现在 <code>bigArrayBuffer</code> 可以被垃圾回收了，因为作用域内没有任何可调用的函数。</p>
+<p>现在 <code>bigArrayBuffer</code>
+可以被垃圾回收了，因为作用域内没有任何可调用的函数。</p>
 <p>这个问题并不局限于定时器，可能在其他场景中也会发生。例如：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">demo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> bigArrayBuffer = <span class="keyword">new</span> <span class="title class_">ArrayBuffer</span>(<span class="number">100_000_000</span>);</span><br><span class="line"></span><br><span class="line">  globalThis.<span class="property">innerFunc1</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(bigArrayBuffer.<span class="property">byteLength</span>);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  globalThis.<span class="property">innerFunc2</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">demo</span>();</span><br><span class="line"><span class="comment">// bigArrayBuffer 被保留，正如预期。</span></span><br><span class="line"></span><br><span class="line">globalThis.<span class="property">innerFunc1</span> = <span class="literal">undefined</span>;</span><br><span class="line"><span class="comment">// bigArrayBuffer 仍然被保留，这是出乎意料的。</span></span><br><span class="line"></span><br><span class="line">globalThis.<span class="property">innerFunc2</span> = <span class="literal">undefined</span>;</span><br><span class="line"><span class="comment">// bigArrayBuffer 现在可以被回收了。</span></span><br></pre></td></tr></table></figure>
-
 <p>我今天才知道！</p>
-<h1 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h1><blockquote>
+<h1 id="更新">更新</h1>
+<blockquote>
 <p>一个立即执行的函数表达式（IIFE）足以触发泄漏</p>
 </blockquote>
 <p>我最初认为只有当子函数的生命周期长于其父函数的执行时，才会发生值的捕获，但事实并非如此：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">demo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> bigArrayBuffer = <span class="keyword">new</span> <span class="title class_">ArrayBuffer</span>(<span class="number">100_000_000</span>);</span><br><span class="line">  <span class="comment">// 译者注：IIFE 通过闭包捕获了 bigArrayBuffer，即使 demo 函数执行完毕，IIFE 仍然存在（因为它被立即执行），这导致 bigArrayBuffer 仍然被引用，因此不会被垃圾回收。</span></span><br><span class="line">  <span class="comment">// 这意味着，只要闭包中的函数在父函数执行完毕后仍然存在，它们就会捕获并保留父函数中的变量，即使这些变量在父函数中已经不再需要。</span></span><br><span class="line">  (<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(bigArrayBuffer.<span class="property">byteLength</span>);</span><br><span class="line">  &#125;)();</span><br><span class="line"></span><br><span class="line">  globalThis.<span class="property">innerFunc</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">demo</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// bigArrayBuffer 被保留，这是出乎意料的。</span></span><br></pre></td></tr></table></figure>
-
 <p>在这里，内部的立即执行函数表达式足以触发泄漏。</p>
 <blockquote>
 <p>这是一个跨浏览器的问题</p>
 </blockquote>
 <p>这个问题在所有浏览器中都存在，并且由于性能问题不太可能被修复。</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://issues.chromium.org/issues/41070945">Chromium 相关问题</a></li>
-<li><a target="_blank" rel="noopener" href="https://bugzilla.mozilla.org/show_bug.cgi?id=894971">Firefox 相关问题</a></li>
-<li><a target="_blank" rel="noopener" href="https://bugs.webkit.org/show_bug.cgi?id=224077">WebKit 相关问题</a></li>
+<li><a target="_blank" rel="noopener" href="https://issues.chromium.org/issues/41070945">Chromium
+相关问题</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://bugzilla.mozilla.org/show_bug.cgi?id=894971">Firefox
+相关问题</a></li>
+<li><a target="_blank" rel="noopener" href="https://bugs.webkit.org/show_bug.cgi?id=224077">WebKit
+相关问题</a></li>
 </ul>
 <blockquote>
 <p>我不是第一个写这个问题的人</p>
 </blockquote>
-<p>Slava Egorov 在 2012 年就这个问题<a target="_blank" rel="noopener" href="https://mrale.ph/blog/2012/09/23/grokking-v8-closures-for-fun.html">进行了深入的探讨</a>。<br>David Glasser 在 2013 年<a target="_blank" rel="noopener" href="https://point.davidglasser.net/2013/06/27/surprising-javascript-memory-leak.html">发现了这个问题</a>，他是 Meteor 的工程师。<br>Kevin Schiener 在 2024 年 5 月对它<a target="_blank" rel="noopener" href="https://point.davidglasser.net/2013/06/27/surprising-javascript-memory-leak.html">进行了 React 中的研究</a>。</p>
+<p>Slava Egorov 在 2012 年就这个问题<a
+target="_blank" rel="noopener" href="https://mrale.ph/blog/2012/09/23/grokking-v8-closures-for-fun.html">进行了深入的探讨</a>。
+David Glasser 在 2013 年<a
+target="_blank" rel="noopener" href="https://point.davidglasser.net/2013/06/27/surprising-javascript-memory-leak.html">发现了这个问题</a>，他是
+Meteor 的工程师。 Kevin Schiener 在 2024 年 5 月对它<a
+target="_blank" rel="noopener" href="https://point.davidglasser.net/2013/06/27/surprising-javascript-memory-leak.html">进行了
+React 中的研究</a>。</p>
 <blockquote>
 <p>不，这不是因为 <code>eval()</code></p>
 </blockquote>
-<p><a target="_blank" rel="noopener" href="https://news.ycombinator.com/item?id=41111062">Hacker News</a> 和 Twitter 上的人很快指出，这都是因为 <code>eval()</code>，但事实并非如此。</p>
+<p><a target="_blank" rel="noopener" href="https://news.ycombinator.com/item?id=41111062">Hacker
+News</a> 和 Twitter 上的人很快指出，这都是因为
+<code>eval()</code>，但事实并非如此。</p>
 <p>eval 是棘手的，因为它意味着代码可以存在于无法静态分析的作用域中：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">demo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> bigArrayBuffer1 = <span class="keyword">new</span> <span class="title class_">ArrayBuffer</span>(<span class="number">100_000_000</span>);</span><br><span class="line">  <span class="keyword">const</span> bigArrayBuffer2 = <span class="keyword">new</span> <span class="title class_">ArrayBuffer</span>(<span class="number">100_000_000</span>);</span><br><span class="line"></span><br><span class="line">  globalThis.<span class="property">innerFunc</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">eval</span>(whatever);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">demo</span>();</span><br></pre></td></tr></table></figure>
-
-<p>是否在 <code>innerFunc</code> 内访问了 <code>bigArrayBuffer1</code> 或者 <code>bigArrayBuffer2</code>？没有办法知道。但浏览器可以静态确定 <code>eval</code> 存在。这会导致去优化(deopt)，然后其父作用域中的所有内容都将被保留。</p>
+<p>是否在 <code>innerFunc</code> 内访问了 <code>bigArrayBuffer1</code>
+或者 <code>bigArrayBuffer2</code>？没有办法知道。但浏览器可以静态确定
+<code>eval</code>
+存在。这会导致去优化(deopt)，然后其父作用域中的所有内容都将被保留。</p>
 <blockquote>
-<p>译者注：<br>由于 eval 的存在，浏览器无法确定 <code>innerFunc</code> 内部是否会访问 <code>bigArrayBuffer1</code> 或 <code>bigArrayBuffer2</code>。因此，浏览器必须假设 <code>innerFunc</code> 可能会访问这些变量。</p>
-<p>这种不确定性导致浏览器在优化代码时采取保守策略，即不优化可能涉及 <code>eval</code> 的代码。这被称为 “去优化”（deopt），意味着浏览器不会对这部分代码进行某些优化，以确保运行时的正确性。</p>
-<p>由于去优化，<code>bigArrayBuffer1</code> 和 <code>bigArrayBuffer2</code> 即使在 <code>demo</code> 函数执行完毕后，也可能不会被垃圾回收，因为浏览器必须保留它们以确保 <code>innerFunc</code> 可以正常访问它们。</p>
+<p>译者注： 由于 eval 的存在，浏览器无法确定 <code>innerFunc</code>
+内部是否会访问 <code>bigArrayBuffer1</code> 或
+<code>bigArrayBuffer2</code>。因此，浏览器必须假设
+<code>innerFunc</code> 可能会访问这些变量。</p>
+<p>这种不确定性导致浏览器在优化代码时采取保守策略，即不优化可能涉及
+<code>eval</code> 的代码。这被称为
+“去优化”（deopt），意味着浏览器不会对这部分代码进行某些优化，以确保运行时的正确性。</p>
+<p>由于去优化，<code>bigArrayBuffer1</code> 和
+<code>bigArrayBuffer2</code> 即使在 <code>demo</code>
+函数执行完毕后，也可能不会被垃圾回收，因为浏览器必须保留它们以确保
+<code>innerFunc</code> 可以正常访问它们。</p>
 </blockquote>
-<p>但是下面这个案例中，浏览器可以静态分析，因为 <code>eval</code> 的表现有点像关键字：</p>
+<p>但是下面这个案例中，浏览器可以静态分析，因为 <code>eval</code>
+的表现有点像关键字：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> customEval = <span class="built_in">eval</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">demo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> bigArrayBuffer1 = <span class="keyword">new</span> <span class="title class_">ArrayBuffer</span>(<span class="number">100_000_000</span>);</span><br><span class="line">  <span class="keyword">const</span> bigArrayBuffer2 = <span class="keyword">new</span> <span class="title class_">ArrayBuffer</span>(<span class="number">100_000_000</span>);</span><br><span class="line"></span><br><span class="line">  globalThis.<span class="property">innerFunc</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">customEval</span>(whatever);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">demo</span>();</span><br></pre></td></tr></table></figure>
-
-<p>…这个例子中去优化不会发生。因为 <code>eval</code> 关键字没有直接使用，<code>whatever</code> 将在全局作用域中执行，而不是在 <code>innerFunc</code> 作用域内。这被称为“间接 eval”，MDN 上有更多<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval#direct_and_indirect_eval">关于这个话题</a>的信息。</p>
+<p>…这个例子中去优化不会发生。因为 <code>eval</code>
+关键字没有直接使用，<code>whatever</code> 将在全局作用域中执行，而不是在
+<code>innerFunc</code> 作用域内。这被称为“间接 eval”，MDN 上有更多<a
+target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval#direct_and_indirect_eval">关于这个话题</a>的信息。</p>
 <p>这种行为的存在是为了让浏览器能够将这种去优化限制在可以静态分析的情况下。</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/jakearchibald/jakearchibald.com/blob/main/static-build/posts/2024/07/garbage-collection-and-closures/index.md">在 GitHub 上查看此页面</a></p>
-<h1 id="译者注"><a href="#译者注" class="headerlink" title="译者注"></a>译者注</h1><h2 id="IIFE-Immediately-Invoked-Function-Expression"><a href="#IIFE-Immediately-Invoked-Function-Expression" class="headerlink" title="IIFE(Immediately Invoked Function Expression)"></a>IIFE(Immediately Invoked Function Expression)</h2><p>IIFE ，中文可以翻译为 “立即调用的函数表达式”。这是一种在定义后立即执行的 JavaScript 函数，它是一种自执行的匿名函数。</p>
-<p>IIFE 通常用于创建一个封闭的作用域，这样可以避免变量冲突或污染全局命名空间。它的基本语法如下：</p>
+<p><a
+target="_blank" rel="noopener" href="https://github.com/jakearchibald/jakearchibald.com/blob/main/static-build/posts/2024/07/garbage-collection-and-closures/index.md">在
+GitHub 上查看此页面</a></p>
+<h1 id="译者注">译者注</h1>
+<h2 id="iifeimmediately-invoked-function-expression">IIFE(Immediately
+Invoked Function Expression)</h2>
+<p>IIFE ，中文可以翻译为
+“立即调用的函数表达式”。这是一种在定义后立即执行的 JavaScript
+函数，它是一种自执行的匿名函数。</p>
+<p>IIFE
+通常用于创建一个封闭的作用域，这样可以避免变量冲突或污染全局命名空间。它的基本语法如下：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// 函数体内的代码</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-
-<p>这个函数没有名字，并且立即执行括号中的代码。由于它立即执行，因此被称为 “立即调用”。</p>
+<p>这个函数没有名字，并且立即执行括号中的代码。由于它立即执行，因此被称为
+“立即调用”。</p>
 <p>IIFE 还可以接受参数，并且返回值，就像普通的函数一样：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">function</span> (<span class="params">a, b</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;)(<span class="number">1</span>, <span class="number">2</span>); <span class="comment">// 返回 3</span></span><br></pre></td></tr></table></figure>
-
 <p>在 ES6 引入了箭头函数之后，IIFE 的写法可以更简洁：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 函数体内的代码</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-
-<p>IIFE 是 JavaScript 编程中常用的一种模式，特别是在模块化开发和库的设计中，用于封装代码和创建私有变量。</p>
+<p>IIFE 是 JavaScript
+编程中常用的一种模式，特别是在模块化开发和库的设计中，用于封装代码和创建私有变量。</p>
 
     </div>
 
@@ -481,13 +524,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -552,6 +595,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

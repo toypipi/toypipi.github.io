@@ -272,17 +272,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<h4 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h4><p>创建MySQL用户有两种方式：</p>
-<ol>
-<li>通过使用创建用户语句，如 <code>CREATE USER</code> 或 <code>GRANT</code>。首选方式，应为这种方式更加简洁而且更不容易出错。</li>
-<li>通过使用 <code>INSERT, UPDATE, DELETE</code> 修改MySQL授权表。</li>
-</ol>
+          <hr />
+<h4 id="创建用户">创建用户</h4>
+<p>创建MySQL用户有两种方式： 1. 通过使用创建用户语句，如
+<code>CREATE USER</code> 或
+<code>GRANT</code>。首选方式，应为这种方式更加简洁而且更不容易出错。 2.
+通过使用 <code>INSERT, UPDATE, DELETE</code> 修改MySQL授权表。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&#x27;monty&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;some_pass&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<h4 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">USER</span> <span class="string">&#x27;username&#x27;</span>@<span class="string">&#x27;host&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<h4 id="创建一个只允许从本地登录的超级用户jack，并允许将权限赋予别的用户，密码为：jack"><a href="#创建一个只允许从本地登录的超级用户jack，并允许将权限赋予别的用户，密码为：jack" class="headerlink" title="创建一个只允许从本地登录的超级用户jack，并允许将权限赋予别的用户，密码为：jack."></a>创建一个只允许从本地登录的超级用户jack，并允许将权限赋予别的用户，密码为：jack.</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> <span class="operator">*</span>.<span class="operator">*</span> <span class="keyword">TO</span> jack@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED <span class="keyword">BY</span> &quot;jack&quot; <span class="keyword">WITH</span> <span class="keyword">GRANT</span> OPTION;</span><br></pre></td></tr></table></figure>
+<h4 id="删除用户">删除用户</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">USER</span> <span class="string">&#x27;username&#x27;</span>@<span class="string">&#x27;host&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h4
+id="创建一个只允许从本地登录的超级用户jack并允许将权限赋予别的用户密码为jack.">创建一个只允许从本地登录的超级用户jack，并允许将权限赋予别的用户，密码为：jack.</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> <span class="operator">*</span>.<span class="operator">*</span> <span class="keyword">TO</span> jack@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED <span class="keyword">BY</span> &quot;jack&quot; <span class="keyword">WITH</span> <span class="keyword">GRANT</span> OPTION;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/03/28/MySQL%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#more" rel="contents">
@@ -352,7 +353,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2020-11-03 11:44:00" itemprop="dateModified" datetime="2020-11-03T11:44:00+08:00">2020-11-03</time>
+      <time title="修改时间：2025-04-07 15:14:49" itemprop="dateModified" datetime="2025-04-07T15:14:49+08:00">2025-04-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -389,11 +390,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
+          <hr />
 <blockquote>
-<p>学习<a target="_blank" rel="noopener" href="https://book.douban.com/subject/5257905/">《深入浅出数据分析》</a>，为了加深记忆，边读边做笔记。如有侵权，立即删除。</p>
+<p>学习<a
+target="_blank" rel="noopener" href="https://book.douban.com/subject/5257905/">《深入浅出数据分析》</a>，为了加深记忆，边读边做笔记。如有侵权，立即删除。</p>
 </blockquote>
-<h3 id="数据分析引言：分解数据"><a href="#数据分析引言：分解数据" class="headerlink" title="数据分析引言：分解数据"></a>数据分析引言：分解数据</h3><h4 id="数据分析就是仔细推敲证据"><a href="#数据分析就是仔细推敲证据" class="headerlink" title="数据分析就是仔细推敲证据"></a>数据分析就是仔细推敲证据</h4><p>所有优秀的分析师，无论专长及目标如何，都会在工作过程中按顺序执行下面这个<strong>固定基本流程</strong>，同时通过经验数据来仔细推敲各种问题。<br><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20170322/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B.png" alt="数据分析的基本流程"></p>
+<h3 id="数据分析引言分解数据">数据分析引言：分解数据</h3>
+<h4 id="数据分析就是仔细推敲证据">数据分析就是仔细推敲证据</h4>
+<p>所有优秀的分析师，无论专长及目标如何，都会在工作过程中按顺序执行下面这个<strong>固定基本流程</strong>，同时通过经验数据来仔细推敲各种问题。
+<img src="/2017/03/22/%E3%80%8A%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/1.png" class=""></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/03/22/%E3%80%8A%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/#more" rel="contents">
@@ -500,15 +505,21 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
+          <hr />
 <blockquote>
-<p>本文摘自《爱上统计学》，<strong>ISBN：</strong> 9787544268509，版权归其所有，如有侵权，立即删除。</p>
+<p>本文摘自《爱上统计学》，<strong>ISBN：</strong>
+9787544268509，版权归其所有，如有侵权，立即删除。</p>
 </blockquote>
-<p><strong>1.方差分析（Analysis of variance）</strong><br>检验两个或更多均值之间的差异。简单方差分析（ANOVA）只有一个独立变量，而析因方差分析检查一个以上独立变量的均值。一元方差分析检验两个以上的群体之间的均值差异。</p>
-<p><strong>2.算术平均值（Arithmetic mean）</strong><br>集中趋势的一种测量方法，也就是将数据集的所有数值加起来然后除以数值的个数。</p>
-<p><strong>3.渐进性（Asymptotic）</strong><br>正态曲线的性质，也就是曲线的双尾无限接近但永远不会与$x$轴相交。</p>
-<p><strong>4.平均值（Average）</strong><br>一个数据集的最有代表性的值。</p>
-<p><strong>5.钟形曲线（Bell-shaped curve）</strong><br>数据的分布以中均值、中位数和众数为中心是对称，而且双尾具有渐进性。</p>
+<p><strong>1.方差分析（Analysis of variance）</strong>
+检验两个或更多均值之间的差异。简单方差分析（ANOVA）只有一个独立变量，而析因方差分析检查一个以上独立变量的均值。一元方差分析检验两个以上的群体之间的均值差异。</p>
+<p><strong>2.算术平均值（Arithmetic mean）</strong>
+集中趋势的一种测量方法，也就是将数据集的所有数值加起来然后除以数值的个数。</p>
+<p><strong>3.渐进性（Asymptotic）</strong>
+正态曲线的性质，也就是曲线的双尾无限接近但永远不会与<span
+class="math inline"><em>x</em></span>轴相交。</p>
+<p><strong>4.平均值（Average）</strong> 一个数据集的最有代表性的值。</p>
+<p><strong>5.钟形曲线（Bell-shaped curve）</strong>
+数据的分布以中均值、中位数和众数为中心是对称，而且双尾具有渐进性。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/03/21/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E6%9C%AF%E8%AF%AD/#more" rel="contents">
@@ -615,12 +626,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
+          <hr />
 <blockquote>
-<p>阅读<a target="_blank" rel="noopener" href="https://book.douban.com/subject/25775696/">《金字塔原理》</a>，摘录书中附录三的内容，版权归其所有，如有侵权，立即删除。</p>
+<p>阅读<a
+target="_blank" rel="noopener" href="https://book.douban.com/subject/25775696/">《金字塔原理》</a>，摘录书中附录三的内容，版权归其所有，如有侵权，立即删除。</p>
 </blockquote>
-<p>话说这本书理解起来真的有点费劲，可能是自己的逻辑思维不强吧&#x2F;(ㄒoㄒ)&#x2F;~~，摘录书中主要内容，留在今后慢慢理解。</p>
-<h4 id="第1章-为什么要用金字塔结构"><a href="#第1章-为什么要用金字塔结构" class="headerlink" title="第1章 为什么要用金字塔结构"></a>第1章 为什么要用金字塔结构</h4><p>1.为了交流方便，必须将思想（观点、结论、要点、论点、论据、建议、行动、步骤等）归类分组。<br>2.将分组后的思想，按照不同层次，进行抽象提炼、总结概括，搭建金字塔。<br>3.向读者介绍（传递、阐述、论证）思想最有效的途径，是结论先行，自上而下表达。<br>4.金字塔中的思想，应遵守4个基本原则。<br>5.条理清晰的关键，是把你的思想组织成金字塔结构，并在写作前用金字塔原理检查。</p>
+<p>话说这本书理解起来真的有点费劲，可能是自己的逻辑思维不强吧/(ㄒoㄒ)/~~，摘录书中主要内容，留在今后慢慢理解。</p>
+<h4 id="第1章-为什么要用金字塔结构">第1章 为什么要用金字塔结构</h4>
+<p>1.为了交流方便，必须将思想（观点、结论、要点、论点、论据、建议、行动、步骤等）归类分组。
+2.将分组后的思想，按照不同层次，进行抽象提炼、总结概括，搭建金字塔。
+3.向读者介绍（传递、阐述、论证）思想最有效的途径，是结论先行，自上而下表达。
+4.金字塔中的思想，应遵守4个基本原则。
+5.条理清晰的关键，是把你的思想组织成金字塔结构，并在写作前用金字塔原理检查。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/03/21/%E3%80%8A%E9%87%91%E5%AD%97%E5%A1%94%E5%8E%9F%E7%90%86%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/#more" rel="contents">
@@ -727,10 +744,16 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>今天在检索OpenType 1.8的翻译时，找到了一篇很好的文章，内容详实，引入入胜，一口气看完了，特在此标记一下，方便以后回味。</p>
-<p><a target="_blank" rel="noopener" href="http://www.typeisbeautiful.com/2016/09/10968/">参数化设计与字体战争：从 OpenType 1.8 说起</a>来自<a target="_blank" rel="noopener" href="http://www.typeisbeautiful.com/">Type is Beautiful</a>作者<a target="_blank" rel="noopener" href="http://weibo.com/u/2200457335">谭 沛然</a></p>
-<p>相关链接：<br><a target="_blank" rel="noopener" href="https://www.wikiwand.com/zh-hans/%E6%8F%92%E5%80%BC">插值</a></p>
+          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<p>今天在检索OpenType
+1.8的翻译时，找到了一篇很好的文章，内容详实，引入入胜，一口气看完了，特在此标记一下，方便以后回味。</p>
+<p><a
+target="_blank" rel="noopener" href="http://www.typeisbeautiful.com/2016/09/10968/">参数化设计与字体战争：从
+OpenType 1.8 说起</a>来自<a target="_blank" rel="noopener" href="http://www.typeisbeautiful.com/">Type
+is Beautiful</a>作者<a target="_blank" rel="noopener" href="http://weibo.com/u/2200457335">谭
+沛然</a></p>
+<p>相关链接： <a
+target="_blank" rel="noopener" href="https://www.wikiwand.com/zh-hans/%E6%8F%92%E5%80%BC">插值</a></p>
 
       
     </div>
@@ -772,13 +795,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -843,6 +866,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

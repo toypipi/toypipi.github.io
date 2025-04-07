@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="要在已存在的目录下新建 Git 仓库，可以按照以下步骤进行操作：  打开命令行终端并进入要作为 Git 仓库的目录。 运行 git init 命令初始化该目录为 Git 仓库。 将需要进行版本控制的文件添加到 Git 仓库中。可以使用 git add &lt;file&gt; 命令将文件添加到暂存区。 运行 git commit -m &quot;&lt;commit message&gt;&amp;q">
+    <meta name="description" content="要在已存在的目录下新建 Git 仓库，可以按照以下步骤进行操作：  打开命令行终端并进入要作为 Git 仓库的目录。 运行 git init 命令初始化该目录为 Git 仓库。 将需要进行版本控制的文件添加到 Git 仓库中。可以使用 git add &lt;file&gt; 命令将文件添加到暂存区。 运行 git commit -m &quot;&lt;commit message&gt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git 初始化已存在项目并上传 gitlab">
 <meta property="og:url" content="https://toypipi.github.io/2023/04/06/git-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%B7%B2%E5%AD%98%E5%9C%A8%E9%A1%B9%E7%9B%AE%E5%B9%B6%E4%B8%8A%E4%BC%A0-gitlab/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="要在已存在的目录下新建 Git 仓库，可以按照以下步骤进行操作：  打开命令行终端并进入要作为 Git 仓库的目录。 运行 git init 命令初始化该目录为 Git 仓库。 将需要进行版本控制的文件添加到 Git 仓库中。可以使用 git add &lt;file&gt; 命令将文件添加到暂存区。 运行 git commit -m &quot;&lt;commit message&gt;&amp;q">
+<meta property="og:description" content="要在已存在的目录下新建 Git 仓库，可以按照以下步骤进行操作：  打开命令行终端并进入要作为 Git 仓库的目录。 运行 git init 命令初始化该目录为 Git 仓库。 将需要进行版本控制的文件添加到 Git 仓库中。可以使用 git add &lt;file&gt; 命令将文件添加到暂存区。 运行 git commit -m &quot;&lt;commit message&gt;">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://toypipi.github.io/2023/04/06/git-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%B7%B2%E5%AD%98%E5%9C%A8%E9%A1%B9%E7%9B%AE%E5%B9%B6%E4%B8%8A%E4%BC%A0-gitlab/git%E6%8E%A8%E9%80%81%E5%B7%B2%E5%AD%98%E5%9C%A8%E9%A1%B9%E7%9B%AE%E5%88%B0%E8%BF%9C%E7%A8%8B.png">
 <meta property="article:published_time" content="2023-04-06T07:20:07.000Z">
@@ -280,18 +280,21 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
 <p>要在已存在的目录下新建 Git 仓库，可以按照以下步骤进行操作：</p>
-<ol>
+<ol type="1">
 <li>打开命令行终端并进入要作为 Git 仓库的目录。</li>
 <li>运行 <code>git init</code> 命令初始化该目录为 Git 仓库。</li>
-<li>将需要进行版本控制的文件添加到 Git 仓库中。可以使用 <code>git add &lt;file&gt;</code> 命令将文件添加到暂存区。</li>
-<li>运行 <code>git commit -m &quot;&lt;commit message&gt;&quot;</code> 命令提交更改到 Git 仓库中，并添加一条提交说明。</li>
+<li>将需要进行版本控制的文件添加到 Git 仓库中。可以使用
+<code>git add &lt;file&gt;</code> 命令将文件添加到暂存区。</li>
+<li>运行 <code>git commit -m "&lt;commit message&gt;"</code>
+命令提交更改到 Git 仓库中，并添加一条提交说明。</li>
 </ol>
-<p>完成以上步骤后，已经成功在该目录下创建了一个 Git 仓库，并将文件添加到了版本控制中。</p>
-<p>其中 3、4 步骤可以在 sourceTree 中执行。 </p>
-<span id="more"></span>
-<p>在 gitlab 中新建一个项目，不要勾选生成 README.md 文件，因为我们项目里已经有这个文件了。</p>
+<p>完成以上步骤后，已经成功在该目录下创建了一个 Git
+仓库，并将文件添加到了版本控制中。</p>
+<p>其中 3、4 步骤可以在 sourceTree 中执行。 <span id="more"></span> 在 gitlab
+中新建一个项目，不要勾选生成 README.md
+文件，因为我们项目里已经有这个文件了。</p>
 <p>参考以下命令就能实现把本地项目推送到 gitlab 上了！</p>
 <img src="/2023/04/06/git-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%B7%B2%E5%AD%98%E5%9C%A8%E9%A1%B9%E7%9B%AE%E5%B9%B6%E4%B8%8A%E4%BC%A0-gitlab/git%E6%8E%A8%E9%80%81%E5%B7%B2%E5%AD%98%E5%9C%A8%E9%A1%B9%E7%9B%AE%E5%88%B0%E8%BF%9C%E7%A8%8B.png" class="">
 
@@ -386,13 +389,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -457,6 +460,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

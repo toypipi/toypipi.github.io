@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="1.题目描述 请你编写一个函数，接收参数为另一个函数和一个以毫秒为单位的时间 t ，并返回该函数的 函数防抖 后的结果。 函数防抖 方法是一个函数，它的执行被延迟了 t 毫秒，如果在这个时间窗口内再次调用它，它的执行将被取消。你编写的防抖函数也应该接收传递的参数。 例如，假设 t &#x3D; 50ms ，函数分别在 30ms 、 60ms 和 100ms 时调用。前两个函数调用将被取消，第三个">
+    <meta name="description" content="1.题目描述 请你编写一个函数，接收参数为另一个函数和一个以毫秒为单位的时间 t ，并返回该函数的 函数防抖 后的结果。 函数防抖 方法是一个函数，它的执行被延迟了 t 毫秒，如果在这个时间窗口内再次调用它，它的执行将被取消。你编写的防抖函数也应该接收传递的参数。 例如，假设 t &#x3D; 50ms ，函数分别在 30ms 、 60ms 和 100ms 时调用。前两个函数调用将被取消，第">
 <meta property="og:type" content="article">
 <meta property="og:title" content="函数防抖">
 <meta property="og:url" content="https://toypipi.github.io/2023/08/22/%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="1.题目描述 请你编写一个函数，接收参数为另一个函数和一个以毫秒为单位的时间 t ，并返回该函数的 函数防抖 后的结果。 函数防抖 方法是一个函数，它的执行被延迟了 t 毫秒，如果在这个时间窗口内再次调用它，它的执行将被取消。你编写的防抖函数也应该接收传递的参数。 例如，假设 t &#x3D; 50ms ，函数分别在 30ms 、 60ms 和 100ms 时调用。前两个函数调用将被取消，第三个">
+<meta property="og:description" content="1.题目描述 请你编写一个函数，接收参数为另一个函数和一个以毫秒为单位的时间 t ，并返回该函数的 函数防抖 后的结果。 函数防抖 方法是一个函数，它的执行被延迟了 t 毫秒，如果在这个时间窗口内再次调用它，它的执行将被取消。你编写的防抖函数也应该接收传递的参数。 例如，假设 t &#x3D; 50ms ，函数分别在 30ms 、 60ms 和 100ms 时调用。前两个函数调用将被取消，第">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-22T07:54:10.000Z">
 <meta property="article:modified_time" content="2023-08-22T08:10:51.989Z">
@@ -276,13 +276,18 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>1.<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/debounce/description/?envType=study-plan-v2&envId=30-days-of-javascript">题目描述</a></p>
-<p>请你编写一个函数，接收参数为另一个函数和一个以毫秒为单位的时间 t ，并返回该函数的 函数防抖 后的结果。</p>
-<p>函数防抖 方法是一个函数，它的执行被延迟了 t 毫秒，如果在这个时间窗口内再次调用它，它的执行将被取消。你编写的防抖函数也应该接收传递的参数。</p>
-<p>例如，假设 t &#x3D; 50ms ，函数分别在 30ms 、 60ms 和 100ms 时调用。前两个函数调用将被取消，第三个函数调用将在 150ms 执行。如果改为 t &#x3D; 35ms ，则第一个调用将被取消，第二个调用将在 95ms 执行，第三个调用将在 135ms 执行。</p>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<p>1.<a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/debounce/description/?envType=study-plan-v2&amp;envId=30-days-of-javascript">题目描述</a></p>
+<p>请你编写一个函数，接收参数为另一个函数和一个以毫秒为单位的时间 t
+，并返回该函数的 函数防抖 后的结果。</p>
+<p>函数防抖 方法是一个函数，它的执行被延迟了 t
+毫秒，如果在这个时间窗口内再次调用它，它的执行将被取消。你编写的防抖函数也应该接收传递的参数。</p>
+<p>例如，假设 t = 50ms ，函数分别在 30ms 、 60ms 和 100ms
+时调用。前两个函数调用将被取消，第三个函数调用将在 150ms 执行。如果改为
+t = 35ms ，则第一个调用将被取消，第二个调用将在 95ms
+执行，第三个调用将在 135ms 执行。</p>
 <span id="more"></span>
-
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> debounce = <span class="keyword">function</span> (<span class="params">fn, t</span>) &#123;</span><br><span class="line">  <span class="comment">// 定义一个定时器 timeoutID ，保存上一个函数调用时生成的定时器 timeoutID</span></span><br><span class="line">  <span class="keyword">let</span> timeId = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">function</span> (<span class="params">...args</span>) &#123;</span><br><span class="line">    <span class="comment">// 当防抖函数再次被调用时，判断上次定时器 timeoutID 是否存在，存在表示在窗口内再次调用，则更新延迟调用时间</span></span><br><span class="line">    <span class="comment">// 如果 timeoutID 不存在，表示在窗口外调用，将生成的 timeoutID 赋值给 timeId，用于下次调用判断是否在窗口内</span></span><br><span class="line">    <span class="comment">// 一句话总结，如果调用函数在窗口内，则取消上次调用，并设置新的延迟调用；在窗口外则直接设置延迟调用并保存 timeoutID</span></span><br><span class="line">    <span class="keyword">if</span> (timeId) <span class="built_in">clearTimeout</span>(timeId);</span><br><span class="line">    timeId = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="title function_">fn</span>(...args);</span><br><span class="line">    &#125;, t);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
     </div>
@@ -374,13 +379,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -445,6 +450,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

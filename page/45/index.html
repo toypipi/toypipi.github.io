@@ -272,11 +272,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>代码来自中国大学慕课 <a target="_blank" rel="noopener" href="https://www.icourse163.org/learn/NJU-1001571005?tid=1002097008#/learn/announce">用 Python 玩转数据</a>。</p>
+          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<p>代码来自中国大学慕课 <a
+target="_blank" rel="noopener" href="https://www.icourse163.org/learn/NJU-1001571005?tid=1002097008#/learn/announce">用
+Python 玩转数据</a>。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">retrieve_dji_list</span>():</span><br><span class="line">    r = requests.get(<span class="string">&#x27;http://money.cnn.com/data/dow30/&#x27;</span>)</span><br><span class="line">    search_pattern = re.<span class="built_in">compile</span>(<span class="string">&#x27;class=&quot;wsod_symbol&quot;&gt;(.*)&lt;\/a&gt;.*&lt;span.*&quot;&gt;(.*?)&lt;\/span&gt;.*\n.*class=&quot;wsod_stream&quot;&gt;(.*)&lt;\/span&gt;&#x27;</span>)</span><br><span class="line">    dji_list_in_text = re.findall(search_pattern, r.text)</span><br><span class="line">    <span class="keyword">return</span> dji_list_in_text</span><br><span class="line"></span><br><span class="line">dji_list = retrieve_dji_list()</span><br><span class="line"><span class="built_in">print</span>(dji_list)</span><br></pre></td></tr></table></figure>
-
-<p><strong>参考文档：</strong><br><a target="_blank" rel="noopener" href="https://www.icourse163.org/learn/NJU-1001571005?tid=1002097008#/learn/content?type=detail&id=1002858587&cid=1003258763">用 Python 玩转数据</a></p>
+<p><strong>参考文档：</strong> <a
+target="_blank" rel="noopener" href="https://www.icourse163.org/learn/NJU-1001571005?tid=1002097008#/learn/content?type=detail&amp;id=1002858587&amp;cid=1003258763">用
+Python 玩转数据</a></p>
 
       
     </div>
@@ -376,9 +379,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>代码来自中国大学慕课 <a target="_blank" rel="noopener" href="https://www.icourse163.org/learn/NJU-1001571005?tid=1002097008#/learn/announce">用 Python 玩转数据</a>。添加了详细的注释，修改了计算平均分的循环条件。</p>
-<div class="note danger"><p><code>time.sleep(5)</code> 一定要加，不然会被豆瓣检测到异常流量而屏蔽 get 请求。</p>
+          <hr />
+<p>代码来自中国大学慕课 <a
+target="_blank" rel="noopener" href="https://www.icourse163.org/learn/NJU-1001571005?tid=1002097008#/learn/announce">用
+Python 玩转数据</a>。添加了详细的注释，修改了计算平均分的循环条件。
+<div class="note danger"><p><code>time.sleep(5)</code> 一定要加，不然会被豆瓣检测到异常流量而屏蔽
+get 请求。</p>
 </div>
           <!--noindex-->
             <div class="post-button">
@@ -486,8 +492,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p><strong>参考文档：</strong><br><a target="_blank" rel="noopener" href="https://mariadb.com/kb/en/library/enabling-tokudb/">Enabling TokuDB</a></p>
+          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<p><strong>参考文档：</strong> <a
+target="_blank" rel="noopener" href="https://mariadb.com/kb/en/library/enabling-tokudb/">Enabling
+TokuDB</a></p>
 
       
     </div>
@@ -587,8 +595,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>当需要在 MySQL 数据库中创建表名类似于 <code>log_20180101</code>、<code>log_20180102</code> 这样基于日期的数据表时，可以使用下面的存储过程一次创建一个月的数据表：</p>
+          <hr />
+<p>当需要在 MySQL 数据库中创建表名类似于
+<code>log_20180101</code>、<code>log_20180102</code>
+这样基于日期的数据表时，可以使用下面的存储过程一次创建一个月的数据表：
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/05/17/MySQL%E4%B8%AD%E6%89%B9%E9%87%8F%E5%88%9B%E5%BB%BA%E8%A1%A8/#more" rel="contents">
@@ -695,13 +705,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<h1 id="制作本地完整备份（创建，准备和还原）"><a href="#制作本地完整备份（创建，准备和还原）" class="headerlink" title="制作本地完整备份（创建，准备和还原）"></a>制作本地完整备份（创建，准备和还原）</h1><h2 id="创建备份"><a href="#创建备份" class="headerlink" title="创建备份"></a>创建备份</h2><p>这是最简单的用例。 它将所有的 <em>MySQL</em> 数据复制到指定的目录中。 以下是如何备份 <code>my.cnf</code> 中指定的 <code>datadir</code> 中的所有数据库。 它会将备份置于 <code>/data/backups/</code> 由时间标记的子目录中，在本例中为 <code>/data/backups/2010-03-13_02-42-44</code>，</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ innobackupex /data/backups</span><br></pre></td></tr></table></figure>
-<p>备份过程中有很多输出，但你需要确保在备份结束时看到以下内容。 如果你没有看到这个输出，那么表示你的备份失败：</p>
-<blockquote>
-<p>100313 02:43:07  innobackupex: completed OK!</p>
-</blockquote>
+          <hr />
+<h1
+id="制作本地完整备份创建准备和还原">制作本地完整备份（创建，准备和还原）</h1>
+<h2 id="创建备份">创建备份</h2>
+<p>这是最简单的用例。 它将所有的 <em>MySQL</em> 数据复制到指定的目录中。
+以下是如何备份 <code>my.cnf</code> 中指定的 <code>datadir</code>
+中的所有数据库。 它会将备份置于 <code>/data/backups/</code>
+由时间标记的子目录中，在本例中为
+<code>/data/backups/2010-03-13_02-42-44</code>， <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ innobackupex /data/backups</span><br></pre></td></tr></table></figure>
+备份过程中有很多输出，但你需要确保在备份结束时看到以下内容。
+如果你没有看到这个输出，那么表示你的备份失败： &gt; 100313 02:43:07
+innobackupex: completed OK!</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/04/17/innobackupex-%E7%9A%84%E7%94%A8%E6%B3%95/#more" rel="contents">
@@ -750,13 +765,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -821,6 +836,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="在 JavaScript 中，可以使用工厂方法（Factory Method）创建对象。工厂方法是一种创建对象的设计模式，它通过一个函数来封装对象的创建过程，并返回新创建的对象。 下面是一个简单的示例，演示如何使用工厂方法创建对象： 123456789101112131415161718192021222324&#x2F;&#x2F; 定义一个工厂方法function createPerson(name, age)">
+    <meta name="description" content="在 JavaScript 中，可以使用工厂方法（Factory Method）创建对象。工厂方法是一种创建对象的设计模式，它通过一个函数来封装对象的创建过程，并返回新创建的对象。 下面是一个简单的示例，演示如何使用工厂方法创建对象： 123456789101112131415161718192021222324&#x2F;&#x2F; 定义一个工厂方法function createPerson(name,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript 工厂方法创建对象">
 <meta property="og:url" content="https://toypipi.github.io/2023/06/29/JavaScript-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="在 JavaScript 中，可以使用工厂方法（Factory Method）创建对象。工厂方法是一种创建对象的设计模式，它通过一个函数来封装对象的创建过程，并返回新创建的对象。 下面是一个简单的示例，演示如何使用工厂方法创建对象： 123456789101112131415161718192021222324&#x2F;&#x2F; 定义一个工厂方法function createPerson(name, age)">
+<meta property="og:description" content="在 JavaScript 中，可以使用工厂方法（Factory Method）创建对象。工厂方法是一种创建对象的设计模式，它通过一个函数来封装对象的创建过程，并返回新创建的对象。 下面是一个简单的示例，演示如何使用工厂方法创建对象： 123456789101112131415161718192021222324&#x2F;&#x2F; 定义一个工厂方法function createPerson(name,">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-06-29T03:44:55.000Z">
 <meta property="article:modified_time" content="2023-07-07T02:59:57.787Z">
@@ -284,14 +284,15 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>在 JavaScript 中，可以使用工厂方法（Factory Method）创建对象。工厂方法是一种创建对象的设计模式，它通过一个函数来封装对象的创建过程，并返回新创建的对象。</p>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<p>在 JavaScript 中，可以使用工厂方法（Factory
+Method）创建对象。工厂方法是一种创建对象的设计模式，它通过一个函数来封装对象的创建过程，并返回新创建的对象。</p>
 <p>下面是一个简单的示例，演示如何使用工厂方法创建对象：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个工厂方法</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">createPerson</span>(<span class="params">name, age</span>) &#123;</span><br><span class="line">  <span class="comment">// 创建一个新对象</span></span><br><span class="line">  <span class="keyword">var</span> person = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 添加属性和方法到对象</span></span><br><span class="line">  person.<span class="property">name</span> = name;</span><br><span class="line">  person.<span class="property">age</span> = age;</span><br><span class="line">  person.<span class="property">sayHello</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hello, my name is &quot;</span> + <span class="variable language_">this</span>.<span class="property">name</span> + <span class="string">&quot; and I&#x27;m &quot;</span> + <span class="variable language_">this</span>.<span class="property">age</span> + <span class="string">&quot; years old.&quot;</span>);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 返回创建的对象</span></span><br><span class="line">  <span class="keyword">return</span> person;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用工厂方法创建对象</span></span><br><span class="line"><span class="keyword">var</span> john = <span class="title function_">createPerson</span>(<span class="string">&quot;John&quot;</span>, <span class="number">25</span>);</span><br><span class="line"><span class="keyword">var</span> mary = <span class="title function_">createPerson</span>(<span class="string">&quot;Mary&quot;</span>, <span class="number">30</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用对象的方法</span></span><br><span class="line">john.<span class="title function_">sayHello</span>(); <span class="comment">// 输出：Hello, my name is John and I&#x27;m 25 years old.</span></span><br><span class="line">mary.<span class="title function_">sayHello</span>(); <span class="comment">// 输出：Hello, my name is Mary and I&#x27;m 30 years old.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <span id="more"></span>
-
-<p>在上面的示例中，createPerson 是一个工厂方法，它接受参数 name 和 age，并返回一个包含这些属性和方法的新对象。通过调用 createPerson 方法，我们可以创建多个具有相同结构和行为的对象。</p>
+<p>在上面的示例中，createPerson 是一个工厂方法，它接受参数 name 和
+age，并返回一个包含这些属性和方法的新对象。通过调用 createPerson
+方法，我们可以创建多个具有相同结构和行为的对象。</p>
 <p>使用工厂方法创建对象的好处是可以封装对象的创建逻辑，并提供一种统一的方式来创建对象。这样可以简化对象的创建过程，并且在需要时可以对创建过程进行扩展和修改，而不必改变使用对象的代码。</p>
 <p>需要注意的是，工厂方法创建的对象是独立的，每个对象都拥有自己的属性和方法。这与使用原型继承创建的对象不同，后者可以共享同一个原型对象的属性和方法。根据实际需求和设计考虑，可以选择适合的对象创建方式。</p>
 
@@ -386,13 +387,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -457,6 +458,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

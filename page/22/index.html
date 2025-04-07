@@ -266,10 +266,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>在 JavaScript 中，每个对象都有一个与之关联的原型（prototype）。原型是一个对象，它包含了共享的属性和方法，可以被其他对象继承。通过原型链，JavaScript 对象可以访问到其原型对象上的属性和方法。</p>
-<p>当你创建一个对象时，JavaScript 会自动为这个对象关联一个原型。你可以将原型看作是一个对象的”父对象”，它定义了该对象共享的属性和方法。通过原型链，对象可以访问其原型对象的属性和方法。</p>
-<p>每个 JavaScript 对象都有一个隐藏的属性 <code>__proto__</code>，它指向了该对象的原型。在访问一个对象的属性或方法时，如果对象本身没有找到，JavaScript 引擎会沿着原型链去查找对象的原型，然后再去原型的原型，依此类推，直到找到所需的属性或方法或者到达原型链的末端。</p>
+          <hr />
+<p>在 JavaScript
+中，每个对象都有一个与之关联的原型（prototype）。原型是一个对象，它包含了共享的属性和方法，可以被其他对象继承。通过原型链，JavaScript
+对象可以访问到其原型对象上的属性和方法。</p>
+<p>当你创建一个对象时，JavaScript
+会自动为这个对象关联一个原型。你可以将原型看作是一个对象的”父对象”，它定义了该对象共享的属性和方法。通过原型链，对象可以访问其原型对象的属性和方法。</p>
+<p>每个 JavaScript 对象都有一个隐藏的属性
+<code>__proto__</code>，它指向了该对象的原型。在访问一个对象的属性或方法时，如果对象本身没有找到，JavaScript
+引擎会沿着原型链去查找对象的原型，然后再去原型的原型，依此类推，直到找到所需的属性或方法或者到达原型链的末端。</p>
 <p>例如：</p>
           <!--noindex-->
             <div class="post-button">
@@ -371,14 +376,23 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
+          <hr />
 <p>1.题目描述：</p>
-<p>请你写一个函数 createCounter. 这个函数接收一个初始的整数值 init 并返回一个包含三个函数的对象。</p>
+<p>请你写一个函数 createCounter. 这个函数接收一个初始的整数值 init
+并返回一个包含三个函数的对象。</p>
 <p>这三个函数是：</p>
-<p>increment() 将当前值加 1 并返回。<br>decrement() 将当前值减 1 并返回。<br>reset() 将当前值设置为 init 并返回。</p>
+<p>increment() 将当前值加 1 并返回。 decrement() 将当前值减 1 并返回。
+reset() 将当前值设置为 init 并返回。</p>
 <p>示例 1：</p>
-<p>输入：init &#x3D; 5, calls &#x3D; [“increment”,”reset”,”decrement”]<br>输出：[6,5,4]<br>解释：<br>const counter &#x3D; createCounter(5);<br>counter.increment(); &#x2F;&#x2F; 6<br>counter.reset(); &#x2F;&#x2F; 5<br>counter.decrement(); &#x2F;&#x2F; 4<br>示例 2：</p>
-<p>输入：init &#x3D; 0, calls &#x3D; [“increment”,”increment”,”decrement”,”reset”,”reset”]<br>输出：[1,2,1,0,0]<br>解释：<br>const counter &#x3D; createCounter(0);<br>counter.increment(); &#x2F;&#x2F; 1<br>counter.increment(); &#x2F;&#x2F; 2<br>counter.decrement(); &#x2F;&#x2F; 1<br>counter.reset(); &#x2F;&#x2F; 0<br>counter.reset(); &#x2F;&#x2F; 0</p>
+<p>输入：init = 5, calls = [“increment”,“reset”,“decrement”]
+输出：[6,5,4] 解释： const counter = createCounter(5);
+counter.increment(); // 6 counter.reset(); // 5 counter.decrement(); //
+4 示例 2：</p>
+<p>输入：init = 0, calls =
+[“increment”,“increment”,“decrement”,“reset”,“reset”] 输出：[1,2,1,0,0]
+解释： const counter = createCounter(0); counter.increment(); // 1
+counter.increment(); // 2 counter.decrement(); // 1 counter.reset(); //
+0 counter.reset(); // 0</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/08/09/%E8%AE%A1%E6%95%B0%E5%99%A8-%E2%85%A1/#more" rel="contents">
@@ -479,9 +493,13 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>RESTful API 是一种设计风格和架构原则，用于构建网络应用程序中的 Web API。它是 Representational State Transfer（表现层状态转移）的缩写。</p>
-<p>RESTful API 的设计遵循一组约定和原则，这些约定和原则使得 API 更加简单、灵活、易于理解和使用。它借鉴了 HTTP 协议的设计理念，并使用 HTTP 方法来表示不同的操作（GET、POST、PUT、DELETE 等），以及使用 URL 来定位资源。</p>
+          <hr />
+<p>RESTful API 是一种设计风格和架构原则，用于构建网络应用程序中的 Web
+API。它是 Representational State Transfer（表现层状态转移）的缩写。</p>
+<p>RESTful API 的设计遵循一组约定和原则，这些约定和原则使得 API
+更加简单、灵活、易于理解和使用。它借鉴了 HTTP 协议的设计理念，并使用
+HTTP 方法来表示不同的操作（GET、POST、PUT、DELETE 等），以及使用 URL
+来定位资源。</p>
 <p>RESTful API 的含义和特点包括：</p>
           <!--noindex-->
             <div class="post-button">
@@ -583,12 +601,13 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>1.题目描述：<br>编写一个函数来查找字符串数组中的最长公共前缀。</p>
-<p>如果不存在公共前缀，返回空字符串  “”。</p>
+          <hr />
+<p>1.题目描述： 编写一个函数来查找字符串数组中的最长公共前缀。</p>
+<p>如果不存在公共前缀，返回空字符串  ““。</p>
 <p>示例 1：</p>
-<p>输入：strs &#x3D; [“flower”,”flow”,”flight”]<br>输出：”fl”<br>示例 2：</p>
-<p>输入：strs &#x3D; [“dog”,”racecar”,”car”]<br>输出：””<br>解释：输入不存在公共前缀。</p>
+<p>输入：strs = [“flower”,“flow”,“flight”] 输出：“fl” 示例 2：</p>
+<p>输入：strs = [“dog”,“racecar”,“car”] 输出：“”
+解释：输入不存在公共前缀。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/08/08/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/#more" rel="contents">
@@ -689,13 +708,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<ol>
+          <hr />
+<ol type="1">
 <li><p>题目描述：</p>
-<p>给你一个大小为 m x n 的矩阵 mat ，请以对角线遍历的顺序，用一个数组返回这个矩阵中的所有元素。</p>
+<p>给你一个大小为 m x n 的矩阵 mat
+，请以对角线遍历的顺序，用一个数组返回这个矩阵中的所有元素。</p>
 <img src="/2023/08/07/%E5%AF%B9%E8%A7%92%E7%BA%BF%E9%81%8D%E5%8E%86/diag1-grid.jpg" class="">
-<p>输入：mat &#x3D; [[1,2,3],[4,5,6],[7,8,9]]<br>输出：[1,2,4,7,5,3,6,8,9]<br>示例 2：</p>
-<p>输入：mat &#x3D; [[1,2],[3,4]]<br>输出：[1,2,3,4]</p>
+<p>输入：mat = [[1,2,3],[4,5,6],[7,8,9]] 输出：[1,2,4,7,5,3,6,8,9] 示例
+2：</p>
+<p>输入：mat = [[1,2],[3,4]] 输出：[1,2,3,4]</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/08/07/%E5%AF%B9%E8%A7%92%E7%BA%BF%E9%81%8D%E5%8E%86/#more" rel="contents">
@@ -744,13 +765,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -815,6 +836,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

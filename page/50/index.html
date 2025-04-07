@@ -235,7 +235,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2020-11-03 11:44:00" itemprop="dateModified" datetime="2020-11-03T11:44:00+08:00">2020-11-03</time>
+      <time title="修改时间：2025-04-07 15:35:59" itemprop="dateModified" datetime="2025-04-07T15:35:59+08:00">2025-04-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -254,7 +254,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>218</span>
+      <span>224</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -272,8 +272,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p><img src="https://raw.githubusercontent.com/toypipi/graph_bed/master/image/20180116/TIM%E6%88%AA%E5%9B%BE20180116165547.png"><br>上图为 SQLYog 点击改变表后的视图，其中 update_time 的类型为 timestamp ，默认值为 CURRENT_TIMESTAMP, CURRENT_TIMESTAMP 想必大家都知道，如果在插入数据时没有给 update_time 赋值，会默认使用系统当前时间。</p>
+          <hr />
+<img src="/2018/01/16/MySQL-TIMESTAMP-%E7%9A%84%E5%9D%91/1.png" class="">
+<p>上图为 SQLYog 点击改变表后的视图，其中 update_time 的类型为 timestamp
+，默认值为 CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
+想必大家都知道，如果在插入数据时没有给 update_time
+赋值，会默认使用系统当前时间。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/01/16/MySQL-TIMESTAMP-%E7%9A%84%E5%9D%91/#more" rel="contents">
@@ -343,7 +347,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2020-11-03 11:44:00" itemprop="dateModified" datetime="2020-11-03T11:44:00+08:00">2020-11-03</time>
+      <time title="修改时间：2025-04-07 11:16:03" itemprop="dateModified" datetime="2025-04-07T11:16:03+08:00">2025-04-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -362,7 +366,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>152</span>
+      <span>161</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -380,9 +384,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>可以使用 <em>myisampack</em> 对 MyISAM 表进行压缩。压缩表是不能进行修改的（除非先将压缩表解除压缩，修改数据，然后再次压缩）。压缩表可以极大地减少磁盘空间占用，因此也可以减少磁盘 I&#x2F;O ，从而提升查询性能。压缩表也支持索引，但索引也是只读的。</p>
-<h2 id="压缩表"><a href="#压缩表" class="headerlink" title="压缩表"></a>压缩表</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myisampack /home/mysql/data/test2/slave_status_20171108.MYI</span><br></pre></td></tr></table></figure>
+          <hr />
+<p>可以使用 <em>myisampack</em> 对 MyISAM
+表进行压缩。压缩表是不能进行修改的（除非先将压缩表解除压缩，修改数据，然后再次压缩）。压缩表可以极大地减少磁盘空间占用，因此也可以减少磁盘
+I/O ，从而提升查询性能。压缩表也支持索引，但索引也是只读的。</p>
+<h2 id="压缩表">压缩表</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myisampack /home/mysql/data/test2/slave_status_20171108.MYI</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/01/10/MySQL-MyISAM-%E5%BC%95%E6%93%8E%E5%8E%8B%E7%BC%A9%E8%A1%A8/#more" rel="contents">
@@ -489,10 +496,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<h2 id="ALTER-TABLE"><a href="#ALTER-TABLE" class="headerlink" title="ALTER TABLE"></a>ALTER TABLE</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span>  mytable ENGINE <span class="operator">=</span> InnoDB;</span><br></pre></td></tr></table></figure>
+          <hr />
+<h2 id="alter-table">ALTER TABLE</h2>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span>  mytable ENGINE <span class="operator">=</span> InnoDB;</span><br></pre></td></tr></table></figure>
 <p>缺点：执行时间很长。</p>
-<h2 id="导出与导入"><a href="#导出与导入" class="headerlink" title="导出与导入"></a>导出与导入</h2><p>使用 <em>mysqldump</em> 工具将数据导出到文件，然后修改文件中创建表的引擎，同时注意修改表名，删除 DROP TABLE 语句，再导入数据库。</p>
+<h2 id="导出与导入">导出与导入</h2>
+<p>使用 <em>mysqldump</em>
+工具将数据导出到文件，然后修改文件中创建表的引擎，同时注意修改表名，删除
+DROP TABLE 语句，再导入数据库。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/01/10/MySQL-%E8%BD%AC%E6%8D%A2%E8%A1%A8%E5%BC%95%E6%93%8E%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/#more" rel="contents">
@@ -562,7 +573,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2020-11-03 11:44:00" itemprop="dateModified" datetime="2020-11-03T11:44:00+08:00">2020-11-03</time>
+      <time title="修改时间：2025-04-07 11:12:07" itemprop="dateModified" datetime="2025-04-07T11:12:07+08:00">2025-04-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -581,7 +592,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>601</span>
+      <span>604</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -599,8 +610,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>格式化字符串是包含了变量的标签模板。具体的使用实例是在 xAxis.labels.format、tooltip.pointFormat 及 legend.labelFormat.<br>变量是格式化中用大括号包括的字符，例如 “The point value at {point.x} is {point.y}”.</p>
+          <hr />
+<p>格式化字符串是包含了变量的标签模板。具体的使用实例是在
+xAxis.labels.format、tooltip.pointFormat 及 legend.labelFormat.
+变量是格式化中用大括号包括的字符，例如 “The point value at {point.x} is
+{point.y}”.</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/01/05/Highcharts-%E5%AD%97%E7%AC%A6%E4%B8%B2%E3%80%81%E6%97%B6%E9%97%B4%E6%97%A5%E6%9C%9F%E3%80%81%E6%95%B0%E5%AD%97%E6%A0%BC%E5%BC%8F%E5%8C%96/#more" rel="contents">
@@ -707,8 +721,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>总结一下实现方式，两张图表共用一个 chart 图表配置，在图表1中根据选中区域设置 X 轴最大、最小值，图表2同步更新。</p>
+          <hr />
+<p>总结一下实现方式，两张图表共用一个 chart
+图表配置，在图表1中根据选中区域设置 X 轴最大、最小值，图表2同步更新。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/01/03/Highcharts-%E5%9C%A8%E6%96%B0%E7%9A%84%E5%9B%BE%E8%A1%A8%E9%87%8C%E6%98%BE%E7%A4%BA%E9%80%89%E4%B8%AD%E7%9A%84%E6%9B%B2%E7%BA%BF%E8%8C%83%E5%9B%B4/#more" rel="contents">
@@ -757,13 +772,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -828,6 +843,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

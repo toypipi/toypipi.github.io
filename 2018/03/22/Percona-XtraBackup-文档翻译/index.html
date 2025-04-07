@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Percona XtraBackup 文档翻译已经迁移到 gitbook，本博客后续将不再更新~~~   翻译 Percona XtraBackup 官方文档，原文在这。以下为翻译内容： Percona XtraBackup 是一款基于 MySQL 服务器的开源热备份实用程序，在备份过程中不会锁定数据库。 它可以备份 MySQL 5.1（在Percona XtraBackup 2.1 中已经删除">
+    <meta name="description" content="Percona XtraBackup 文档翻译已经迁移到 gitbook，本博客后续将不再更新~~~  翻译 Percona XtraBackup 官方文档，原文在这。以下为翻译内容： Percona XtraBackup 是一款基于 MySQL 服务器的开源热备份实用程序，在备份过程中不会锁定数据库。 它可以备份 MySQL 5.1（在Percona XtraBackup 2.1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Percona XtraBackup 文档翻译">
 <meta property="og:url" content="https://toypipi.github.io/2018/03/22/Percona-XtraBackup-%E6%96%87%E6%A1%A3%E7%BF%BB%E8%AF%91/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="Percona XtraBackup 文档翻译已经迁移到 gitbook，本博客后续将不再更新~~~   翻译 Percona XtraBackup 官方文档，原文在这。以下为翻译内容： Percona XtraBackup 是一款基于 MySQL 服务器的开源热备份实用程序，在备份过程中不会锁定数据库。 它可以备份 MySQL 5.1（在Percona XtraBackup 2.1 中已经删除">
+<meta property="og:description" content="Percona XtraBackup 文档翻译已经迁移到 gitbook，本博客后续将不再更新~~~  翻译 Percona XtraBackup 官方文档，原文在这。以下为翻译内容： Percona XtraBackup 是一款基于 MySQL 服务器的开源热备份实用程序，在备份过程中不会锁定数据库。 它可以备份 MySQL 5.1（在Percona XtraBackup 2.1">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-03-22T09:16:29.000Z">
 <meta property="article:modified_time" content="2020-11-03T03:44:00.476Z">
@@ -145,7 +145,15 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E-Percona-XtraBackup"><span class="nav-number">1.1.</span> <span class="nav-text">关于 Percona XtraBackup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Percona-XtraBackup-%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.2.</span> <span class="nav-text">Percona XtraBackup 如何工作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Percona-XtraBackup-2-4"><span class="nav-number">2.1.</span> <span class="nav-text">安装Percona XtraBackup 2.4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E5%AD%98%E5%82%A8%E5%BA%93%E5%AE%89%E8%A3%85-Percona-XtraBackup"><span class="nav-number">2.2.</span> <span class="nav-text">从存储库安装 Percona XtraBackup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%92%8C%E5%AE%89%E8%A3%85"><span class="nav-number">2.3.</span> <span class="nav-text">从源码编译和安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">必要条件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E5%92%8C%E6%9D%83%E9%99%90"><span class="nav-number">3.1.</span> <span class="nav-text">连接和权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-xtrabackup"><span class="nav-number">3.2.</span> <span class="nav-text">配置 xtrabackup</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%87%E4%BB%BD%E6%96%B9%E6%A1%88"><span class="nav-number">4.</span> <span class="nav-text">备份方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%87%E4%BB%BD%E5%91%A8%E6%9C%9F-%E5%AE%8C%E6%95%B4%E5%A4%87%E4%BB%BD"><span class="nav-number">4.1.</span> <span class="nav-text">备份周期 - 完整备份</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A2%9E%E9%87%8F%E5%A4%87%E4%BB%BD"><span class="nav-number">4.2.</span> <span class="nav-text">增量备份</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E5%A4%87%E4%BB%BD"><span class="nav-number">4.3.</span> <span class="nav-text">压缩备份</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86%E5%A4%87%E4%BB%BD"><span class="nav-number">4.4.</span> <span class="nav-text">加密备份</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C"><span class="nav-number">5.</span> <span class="nav-text">用户手册</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Percona-XtraBackup-%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C"><span class="nav-number">5.1.</span> <span class="nav-text">Percona XtraBackup 用户手册</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD"><span class="nav-number">6.</span> <span class="nav-text">高级功能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8A%82%E6%B5%81%E5%A4%87%E4%BB%BD"><span class="nav-number">6.1.</span> <span class="nav-text">节流备份</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E9%94%81%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF"><span class="nav-number">6.2.</span> <span class="nav-text">无锁二进制日志信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86%E7%9A%84-InnoDB-%E8%A1%A8%E7%A9%BA%E9%97%B4%E5%A4%87%E4%BB%BD"><span class="nav-number">6.3.</span> <span class="nav-text">加密的 InnoDB 表空间备份</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%99%E7%A8%8B%EF%BC%8C%E6%96%B9%E6%B3%95%EF%BC%8C%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97"><span class="nav-number">7.</span> <span class="nav-text">教程，方法，入门指南</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#xtrabackup-%E7%9A%84%E7%94%A8%E6%B3%95"><span class="nav-number">7.1.</span> <span class="nav-text">xtrabackup 的用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#innobackupex-%E7%9A%84%E7%94%A8%E6%B3%95"><span class="nav-number">7.2.</span> <span class="nav-text">innobackupex 的用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97"><span class="nav-number">7.3.</span> <span class="nav-text">入门指南</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%85%E5%8A%A9%E6%8C%87%E5%8D%97"><span class="nav-number">7.4.</span> <span class="nav-text">辅助指南</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">8.</span> <span class="nav-text">参考</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#xtrabackup-%E9%80%89%E9%A1%B9%E5%8F%82%E8%80%83"><span class="nav-number">8.1.</span> <span class="nav-text">xtrabackup 选项参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#innobackupex-%E9%80%89%E9%A1%B9%E5%8F%82%E8%80%83"><span class="nav-number">8.2.</span> <span class="nav-text">innobackupex 选项参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xbcloud-%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6"><span class="nav-number">8.3.</span> <span class="nav-text">xbcloud 二进制文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xbcrypt-%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6"><span class="nav-number">8.4.</span> <span class="nav-text">xbcrypt 二进制文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xbstream-%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6"><span class="nav-number">8.5.</span> <span class="nav-text">xbstream 二进制文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%B2%E7%9F%A5%E7%9A%84%E9%97%AE%E9%A2%98%E5%92%8C%E9%99%90%E5%88%B6"><span class="nav-number">8.6.</span> <span class="nav-text">已知的问题和限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E9%97%AE%E9%97%AE%E9%A2%98"><span class="nav-number">8.7.</span> <span class="nav-text">常问问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Percona-XtraBackup-%E5%8F%91%E8%A1%8C%E8%AF%B4%E6%98%8E"><span class="nav-number">8.8.</span> <span class="nav-text">Percona XtraBackup 发行说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%8D%E6%B1%87%E8%A1%A8"><span class="nav-number">8.9.</span> <span class="nav-text">词汇表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B1-Percona-XtraBackup-%E5%88%9B%E5%BB%BA%E7%9A%84%E6%96%87%E4%BB%B6%E7%B4%A2%E5%BC%95"><span class="nav-number">8.10.</span> <span class="nav-text">由 Percona XtraBackup 创建的文件索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%95%86%E6%A0%87%E6%94%BF%E7%AD%96"><span class="nav-number">8.11.</span> <span class="nav-text">商标政策</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E5%92%8C%E9%99%84%E5%BD%95"><span class="nav-number">9.</span> <span class="nav-text">索引和附录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95"><span class="nav-number">9.1.</span> <span class="nav-text">索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E9%A1%B5%E9%9D%A2"><span class="nav-number">9.2.</span> <span class="nav-text">搜索页面</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E-percona-xtrabackup"><span class="nav-number">1.</span> <span class="nav-text">关于
+Percona XtraBackup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#percona-xtrabackup-%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">Percona
+XtraBackup 如何工作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number"></span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85percona-xtrabackup-2.4"><span class="nav-number">1.</span> <span class="nav-text">安装Percona
+XtraBackup 2.4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E5%AD%98%E5%82%A8%E5%BA%93%E5%AE%89%E8%A3%85-percona-xtrabackup"><span class="nav-number">2.</span> <span class="nav-text">从存储库安装 Percona
+XtraBackup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%92%8C%E5%AE%89%E8%A3%85"><span class="nav-number">3.</span> <span class="nav-text">从源码编译和安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6"><span class="nav-number"></span> <span class="nav-text">必要条件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E5%92%8C%E6%9D%83%E9%99%90"><span class="nav-number">1.</span> <span class="nav-text">连接和权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-xtrabackup"><span class="nav-number">2.</span> <span class="nav-text">配置
+xtrabackup</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%87%E4%BB%BD%E6%96%B9%E6%A1%88"><span class="nav-number"></span> <span class="nav-text">备份方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%87%E4%BB%BD%E5%91%A8%E6%9C%9F---%E5%AE%8C%E6%95%B4%E5%A4%87%E4%BB%BD"><span class="nav-number">1.</span> <span class="nav-text">备份周期
+- 完整备份</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A2%9E%E9%87%8F%E5%A4%87%E4%BB%BD"><span class="nav-number">2.</span> <span class="nav-text">增量备份</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E5%A4%87%E4%BB%BD"><span class="nav-number">3.</span> <span class="nav-text">压缩备份</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86%E5%A4%87%E4%BB%BD"><span class="nav-number">4.</span> <span class="nav-text">加密备份</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C"><span class="nav-number"></span> <span class="nav-text">用户手册</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#percona-xtrabackup-%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C"><span class="nav-number">1.</span> <span class="nav-text">Percona
+XtraBackup 用户手册</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD"><span class="nav-number"></span> <span class="nav-text">高级功能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8A%82%E6%B5%81%E5%A4%87%E4%BB%BD"><span class="nav-number">1.</span> <span class="nav-text">节流备份</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E9%94%81%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF"><span class="nav-number">2.</span> <span class="nav-text">无锁二进制日志信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86%E7%9A%84-innodb-%E8%A1%A8%E7%A9%BA%E9%97%B4%E5%A4%87%E4%BB%BD"><span class="nav-number">3.</span> <span class="nav-text">加密的 InnoDB 表空间备份</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%99%E7%A8%8B%E6%96%B9%E6%B3%95%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97"><span class="nav-number"></span> <span class="nav-text">教程，方法，入门指南</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#xtrabackup-%E7%9A%84%E7%94%A8%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">xtrabackup 的用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#innobackupex-%E7%9A%84%E7%94%A8%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">innobackupex 的用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97"><span class="nav-number">3.</span> <span class="nav-text">入门指南</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%85%E5%8A%A9%E6%8C%87%E5%8D%97"><span class="nav-number">4.</span> <span class="nav-text">辅助指南</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number"></span> <span class="nav-text">参考</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#xtrabackup-%E9%80%89%E9%A1%B9%E5%8F%82%E8%80%83"><span class="nav-number">1.</span> <span class="nav-text">xtrabackup 选项参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#innobackupex-%E9%80%89%E9%A1%B9%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">innobackupex 选项参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xbcloud-%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">xbcloud 二进制文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xbcrypt-%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">xbcrypt 二进制文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xbstream-%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6"><span class="nav-number">5.</span> <span class="nav-text">xbstream 二进制文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%B2%E7%9F%A5%E7%9A%84%E9%97%AE%E9%A2%98%E5%92%8C%E9%99%90%E5%88%B6"><span class="nav-number">6.</span> <span class="nav-text">已知的问题和限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E9%97%AE%E9%97%AE%E9%A2%98"><span class="nav-number">7.</span> <span class="nav-text">常问问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#percona-xtrabackup-%E5%8F%91%E8%A1%8C%E8%AF%B4%E6%98%8E"><span class="nav-number">8.</span> <span class="nav-text">Percona XtraBackup 发行说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%8D%E6%B1%87%E8%A1%A8"><span class="nav-number">9.</span> <span class="nav-text">词汇表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B1-percona-xtrabackup-%E5%88%9B%E5%BB%BA%E7%9A%84%E6%96%87%E4%BB%B6%E7%B4%A2%E5%BC%95"><span class="nav-number">10.</span> <span class="nav-text">由 Percona XtraBackup
+创建的文件索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%95%86%E6%A0%87%E6%94%BF%E7%AD%96"><span class="nav-number">11.</span> <span class="nav-text">商标政策</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E5%92%8C%E9%99%84%E5%BD%95"><span class="nav-number"></span> <span class="nav-text">索引和附录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95"><span class="nav-number">1.</span> <span class="nav-text">索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E9%A1%B5%E9%9D%A2"><span class="nav-number">2.</span> <span class="nav-text">搜索页面</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -285,16 +293,83 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<div class="note danger"><p>Percona XtraBackup 文档翻译已经迁移到 <a target="_blank" rel="noopener" href="https://toypipi.gitbook.io/percona-xtrabackup-2-4-9/">gitbook</a>，本博客后续将不再更新~~~</p>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<div class="note danger"><p>Percona XtraBackup 文档翻译已经迁移到 <a
+target="_blank" rel="noopener" href="https://toypipi.gitbook.io/percona-xtrabackup-2-4-9/">gitbook</a>，本博客后续将不再更新~~~</p>
 </div>
+<p>翻译 Percona XtraBackup 官方文档，原文<a
+target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/index.html">在这</a>。以下为翻译内容：</p>
+<p>Percona XtraBackup 是一款基于 MySQL
+服务器的开源热备份实用程序，在备份过程中不会锁定数据库。</p>
+<p>它可以备份 MySQL 5.1（在Percona XtraBackup 2.1 中已经删除了对 InnoDB
+5.1 的内置支持），5.5 , 5.6 和 5.7 服务器上的 InnoDB，XtraDB 和 MyISAM
+表的数据，以及带有 XtraDB 的 Percona
+服务器。有关其许多高级功能（包括功能比较）的高级概述，请参阅 <a
+target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/intro.html">Percona
+XtraBackup</a>。</p>
+<p>无论是 24x7 高负载的服务器还是低事务量的环境，Percona XtraBackup
+旨在使备份成为无缝过程，而不会中断生产环境中服务器的性能。<a
+target="_blank" rel="noopener" href="https://www.percona.com/services/support/mysql-support">支持商业合同</a>。
+<span id="more"></span> # 介绍</p>
+<h2 id="关于-percona-xtrabackup"><a
+href="https://toypipi.github.io/2018/03/23/%E5%85%B3%E4%BA%8E-Percona-XtraBackup/">关于
+Percona XtraBackup</a></h2>
+<h2 id="percona-xtrabackup-如何工作"><a
+href="https://toypipi.github.io/2018/03/23/Percona-XtraBackup-%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C/">Percona
+XtraBackup 如何工作</a></h2>
+<h1 id="安装">安装</h1>
+<h2 id="安装percona-xtrabackup-2.4"><a
+href="https://toypipi.github.io/2018/03/24/%E5%AE%89%E8%A3%85Percona-XtraBackup-2-4/">安装Percona
+XtraBackup 2.4</a></h2>
+<h2 id="从存储库安装-percona-xtrabackup">从存储库安装 Percona
+XtraBackup</h2>
+<h2 id="从源码编译和安装">从源码编译和安装</h2>
+<h1 id="必要条件">必要条件</h1>
+<h2 id="连接和权限"><a
+href="https://toypipi.github.io/2018/03/27/%E8%BF%9E%E6%8E%A5%E5%92%8C%E6%9D%83%E9%99%90/">连接和权限</a></h2>
+<h2 id="配置-xtrabackup"><a
+href="https://toypipi.github.io/2018/03/28/%E9%85%8D%E7%BD%AE-xtrabackup/">配置
+xtrabackup</a></h2>
+<h1 id="备份方案">备份方案</h1>
+<h2 id="备份周期---完整备份"><a
+href="https://toypipi.github.io/2018/03/28/%E5%A4%87%E4%BB%BD%E5%91%A8%E6%9C%9F-%E5%AE%8C%E6%95%B4%E5%A4%87%E4%BB%BD/">备份周期
+- 完整备份</a></h2>
+<h2 id="增量备份"><a
+href="https://toypipi.github.io/2018/03/30/%E5%A2%9E%E9%87%8F%E5%A4%87%E4%BB%BD/">增量备份</a></h2>
+<h2 id="压缩备份"><a
+href="https://toypipi.github.io/2018/03/31/%E5%8E%8B%E7%BC%A9%E5%A4%87%E4%BB%BD/">压缩备份</a></h2>
+<h2 id="加密备份"><a
+href="https://toypipi.github.io/2018/04/02/%E5%8A%A0%E5%AF%86%E5%A4%87%E4%BB%BD/">加密备份</a></h2>
+<h1 id="用户手册">用户手册</h1>
+<h2 id="percona-xtrabackup-用户手册"><a
+href="https://toypipi.github.io/2018/04/03/Percona-XtraBackup-%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C/">Percona
+XtraBackup 用户手册</a></h2>
+<h1 id="高级功能">高级功能</h1>
+<h2 id="节流备份">节流备份</h2>
+<h2 id="无锁二进制日志信息">无锁二进制日志信息</h2>
+<h2 id="加密的-innodb-表空间备份">加密的 InnoDB 表空间备份</h2>
+<h1 id="教程方法入门指南">教程，方法，入门指南</h1>
+<h2 id="xtrabackup-的用法">xtrabackup 的用法</h2>
+<h2 id="innobackupex-的用法">innobackupex 的用法</h2>
+<h2 id="入门指南">入门指南</h2>
+<h2 id="辅助指南">辅助指南</h2>
+<h1 id="参考">参考</h1>
+<h2 id="xtrabackup-选项参考">xtrabackup 选项参考</h2>
+<h2 id="innobackupex-选项参考">innobackupex 选项参考</h2>
+<h2 id="xbcloud-二进制文件">xbcloud 二进制文件</h2>
+<h2 id="xbcrypt-二进制文件">xbcrypt 二进制文件</h2>
+<h2 id="xbstream-二进制文件">xbstream 二进制文件</h2>
+<h2 id="已知的问题和限制">已知的问题和限制</h2>
+<h2 id="常问问题">常问问题</h2>
+<h2 id="percona-xtrabackup-发行说明">Percona XtraBackup 发行说明</h2>
+<h2 id="词汇表">词汇表</h2>
+<h2 id="由-percona-xtrabackup-创建的文件索引">由 Percona XtraBackup
+创建的文件索引</h2>
+<h2 id="商标政策">商标政策</h2>
+<h1 id="索引和附录">索引和附录</h1>
+<h2 id="索引">索引</h2>
+<h2 id="搜索页面">搜索页面</h2>
 
-<p>翻译 Percona XtraBackup 官方文档，原文<a target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/index.html">在这</a>。以下为翻译内容：</p>
-<p>Percona XtraBackup 是一款基于 MySQL 服务器的开源热备份实用程序，在备份过程中不会锁定数据库。</p>
-<p>它可以备份 MySQL 5.1（在Percona XtraBackup 2.1 中已经删除了对 InnoDB 5.1 的内置支持），5.5 , 5.6 和 5.7 服务器上的 InnoDB，XtraDB 和 MyISAM 表的数据，以及带有 XtraDB 的 Percona 服务器。有关其许多高级功能（包括功能比较）的高级概述，请参阅 <a target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-xtrabackup/LATEST/intro.html">Percona XtraBackup</a>。</p>
-<p>无论是 24x7 高负载的服务器还是低事务量的环境，Percona XtraBackup 旨在使备份成为无缝过程，而不会中断生产环境中服务器的性能。<a target="_blank" rel="noopener" href="https://www.percona.com/services/support/mysql-support">支持商业合同</a>。</p>
-<span id="more"></span>
-<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><h2 id="关于-Percona-XtraBackup"><a href="#关于-Percona-XtraBackup" class="headerlink" title="关于 Percona XtraBackup"></a><a href="https://toypipi.github.io/2018/03/23/%E5%85%B3%E4%BA%8E-Percona-XtraBackup/">关于 Percona XtraBackup</a></h2><h2 id="Percona-XtraBackup-如何工作"><a href="#Percona-XtraBackup-如何工作" class="headerlink" title="Percona XtraBackup 如何工作"></a><a href="https://toypipi.github.io/2018/03/23/Percona-XtraBackup-%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C/">Percona XtraBackup 如何工作</a></h2><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="安装Percona-XtraBackup-2-4"><a href="#安装Percona-XtraBackup-2-4" class="headerlink" title="安装Percona XtraBackup 2.4"></a><a href="https://toypipi.github.io/2018/03/24/%E5%AE%89%E8%A3%85Percona-XtraBackup-2-4/">安装Percona XtraBackup 2.4</a></h2><h2 id="从存储库安装-Percona-XtraBackup"><a href="#从存储库安装-Percona-XtraBackup" class="headerlink" title="从存储库安装 Percona XtraBackup"></a>从存储库安装 Percona XtraBackup</h2><h2 id="从源码编译和安装"><a href="#从源码编译和安装" class="headerlink" title="从源码编译和安装"></a>从源码编译和安装</h2><h1 id="必要条件"><a href="#必要条件" class="headerlink" title="必要条件"></a>必要条件</h1><h2 id="连接和权限"><a href="#连接和权限" class="headerlink" title="连接和权限"></a><a href="https://toypipi.github.io/2018/03/27/%E8%BF%9E%E6%8E%A5%E5%92%8C%E6%9D%83%E9%99%90/">连接和权限</a></h2><h2 id="配置-xtrabackup"><a href="#配置-xtrabackup" class="headerlink" title="配置 xtrabackup"></a><a href="https://toypipi.github.io/2018/03/28/%E9%85%8D%E7%BD%AE-xtrabackup/">配置 xtrabackup</a></h2><h1 id="备份方案"><a href="#备份方案" class="headerlink" title="备份方案"></a>备份方案</h1><h2 id="备份周期-完整备份"><a href="#备份周期-完整备份" class="headerlink" title="备份周期 - 完整备份"></a><a href="https://toypipi.github.io/2018/03/28/%E5%A4%87%E4%BB%BD%E5%91%A8%E6%9C%9F-%E5%AE%8C%E6%95%B4%E5%A4%87%E4%BB%BD/">备份周期 - 完整备份</a></h2><h2 id="增量备份"><a href="#增量备份" class="headerlink" title="增量备份"></a><a href="https://toypipi.github.io/2018/03/30/%E5%A2%9E%E9%87%8F%E5%A4%87%E4%BB%BD/">增量备份</a></h2><h2 id="压缩备份"><a href="#压缩备份" class="headerlink" title="压缩备份"></a><a href="https://toypipi.github.io/2018/03/31/%E5%8E%8B%E7%BC%A9%E5%A4%87%E4%BB%BD/">压缩备份</a></h2><h2 id="加密备份"><a href="#加密备份" class="headerlink" title="加密备份"></a><a href="https://toypipi.github.io/2018/04/02/%E5%8A%A0%E5%AF%86%E5%A4%87%E4%BB%BD/">加密备份</a></h2><h1 id="用户手册"><a href="#用户手册" class="headerlink" title="用户手册"></a>用户手册</h1><h2 id="Percona-XtraBackup-用户手册"><a href="#Percona-XtraBackup-用户手册" class="headerlink" title="Percona XtraBackup 用户手册"></a><a href="https://toypipi.github.io/2018/04/03/Percona-XtraBackup-%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C/">Percona XtraBackup 用户手册</a></h2><h1 id="高级功能"><a href="#高级功能" class="headerlink" title="高级功能"></a>高级功能</h1><h2 id="节流备份"><a href="#节流备份" class="headerlink" title="节流备份"></a>节流备份</h2><h2 id="无锁二进制日志信息"><a href="#无锁二进制日志信息" class="headerlink" title="无锁二进制日志信息"></a>无锁二进制日志信息</h2><h2 id="加密的-InnoDB-表空间备份"><a href="#加密的-InnoDB-表空间备份" class="headerlink" title="加密的 InnoDB 表空间备份"></a>加密的 InnoDB 表空间备份</h2><h1 id="教程，方法，入门指南"><a href="#教程，方法，入门指南" class="headerlink" title="教程，方法，入门指南"></a>教程，方法，入门指南</h1><h2 id="xtrabackup-的用法"><a href="#xtrabackup-的用法" class="headerlink" title="xtrabackup 的用法"></a>xtrabackup 的用法</h2><h2 id="innobackupex-的用法"><a href="#innobackupex-的用法" class="headerlink" title="innobackupex 的用法"></a>innobackupex 的用法</h2><h2 id="入门指南"><a href="#入门指南" class="headerlink" title="入门指南"></a>入门指南</h2><h2 id="辅助指南"><a href="#辅助指南" class="headerlink" title="辅助指南"></a>辅助指南</h2><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><h2 id="xtrabackup-选项参考"><a href="#xtrabackup-选项参考" class="headerlink" title="xtrabackup 选项参考"></a>xtrabackup 选项参考</h2><h2 id="innobackupex-选项参考"><a href="#innobackupex-选项参考" class="headerlink" title="innobackupex 选项参考"></a>innobackupex 选项参考</h2><h2 id="xbcloud-二进制文件"><a href="#xbcloud-二进制文件" class="headerlink" title="xbcloud 二进制文件"></a>xbcloud 二进制文件</h2><h2 id="xbcrypt-二进制文件"><a href="#xbcrypt-二进制文件" class="headerlink" title="xbcrypt 二进制文件"></a>xbcrypt 二进制文件</h2><h2 id="xbstream-二进制文件"><a href="#xbstream-二进制文件" class="headerlink" title="xbstream 二进制文件"></a>xbstream 二进制文件</h2><h2 id="已知的问题和限制"><a href="#已知的问题和限制" class="headerlink" title="已知的问题和限制"></a>已知的问题和限制</h2><h2 id="常问问题"><a href="#常问问题" class="headerlink" title="常问问题"></a>常问问题</h2><h2 id="Percona-XtraBackup-发行说明"><a href="#Percona-XtraBackup-发行说明" class="headerlink" title="Percona XtraBackup 发行说明"></a>Percona XtraBackup 发行说明</h2><h2 id="词汇表"><a href="#词汇表" class="headerlink" title="词汇表"></a>词汇表</h2><h2 id="由-Percona-XtraBackup-创建的文件索引"><a href="#由-Percona-XtraBackup-创建的文件索引" class="headerlink" title="由 Percona XtraBackup 创建的文件索引"></a>由 Percona XtraBackup 创建的文件索引</h2><h2 id="商标政策"><a href="#商标政策" class="headerlink" title="商标政策"></a>商标政策</h2><h1 id="索引和附录"><a href="#索引和附录" class="headerlink" title="索引和附录"></a>索引和附录</h1><h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><h2 id="搜索页面"><a href="#搜索页面" class="headerlink" title="搜索页面"></a>搜索页面</h2>
     </div>
 
     
@@ -386,13 +461,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -457,6 +532,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="最近将操作系统从 win7 升级到 win10 了，然后将 Node 等软件全部升级成最新版，顺便把博客版本也更新一下。在查看 Hexo 升级的相关文档时，碰巧看到了 utterances ，无跟踪、无广告，永远免费，所有数据直接存储在自己的 github 仓库，深得我爱。立马开始部署！ 搜索、阅读了大量博客，如 Hexo 博客添加评论功能，都说直接在主题的配置文件下，新增如下配置即可：">
+    <meta name="description" content="最近将操作系统从 win7 升级到 win10 了，然后将 Node 等软件全部升级成最新版，顺便把博客版本也更新一下。在查看 Hexo 升级的相关文档时，碰巧看到了 utterances ，无跟踪、无广告，永远免费，所有数据直接存储在自己的 github 仓库，深得我爱。立马开始部署！ 搜索、阅读了大量博客，如 Hexo 博客添加评论功能，都说直接在主题的配置文件下，新增如下配置">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo NexT 主题配置 utterances 评论">
 <meta property="og:url" content="https://toypipi.github.io/2024/06/21/Hexo-Next-%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE-utterances-%E8%AF%84%E8%AE%BA/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="最近将操作系统从 win7 升级到 win10 了，然后将 Node 等软件全部升级成最新版，顺便把博客版本也更新一下。在查看 Hexo 升级的相关文档时，碰巧看到了 utterances ，无跟踪、无广告，永远免费，所有数据直接存储在自己的 github 仓库，深得我爱。立马开始部署！ 搜索、阅读了大量博客，如 Hexo 博客添加评论功能，都说直接在主题的配置文件下，新增如下配置即可：">
+<meta property="og:description" content="最近将操作系统从 win7 升级到 win10 了，然后将 Node 等软件全部升级成最新版，顺便把博客版本也更新一下。在查看 Hexo 升级的相关文档时，碰巧看到了 utterances ，无跟踪、无广告，永远免费，所有数据直接存储在自己的 github 仓库，深得我爱。立马开始部署！ 搜索、阅读了大量博客，如 Hexo 博客添加评论功能，都说直接在主题的配置文件下，新增如下配置">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-06-21T09:59:24.000Z">
 <meta property="article:modified_time" content="2024-06-24T02:51:39.387Z">
@@ -146,7 +146,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">配置过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-utterances-swig"><span class="nav-number">1.1.</span> <span class="nav-text">创建 utterances.swig</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-utterances-js"><span class="nav-number">1.2.</span> <span class="nav-text">创建 utterances.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.</span> <span class="nav-text">修改主题配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-utterances-%E6%8F%92%E4%BB%B6"><span class="nav-number">1.4.</span> <span class="nav-text">配置 utterances 插件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-number">2.</span> <span class="nav-text">后记</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="nav-number">3.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">配置过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-utterances.swig"><span class="nav-number">1.1.</span> <span class="nav-text">创建 utterances.swig</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-utterances.js"><span class="nav-number">1.2.</span> <span class="nav-text">创建 utterances.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.</span> <span class="nav-text">修改主题配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-utterances-%E6%8F%92%E4%BB%B6"><span class="nav-number">1.4.</span> <span class="nav-text">配置 utterances 插件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-number">2.</span> <span class="nav-text">后记</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="nav-number">3.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -286,29 +286,50 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>最近将操作系统从 win7 升级到 win10 了，然后将 Node 等软件全部升级成最新版，顺便把博客版本也更新一下。在查看 Hexo 升级的相关文档时，碰巧看到了 <a target="_blank" rel="noopener" href="https://utteranc.es/">utterances</a> ，无跟踪、无广告，永远免费，所有数据直接存储在自己的 github 仓库，深得我爱。立马开始部署！</p>
-<p>搜索、阅读了大量博客，如 <a target="_blank" rel="noopener" href="https://pengtech.net/hexo/hexo_blog_comments.html">Hexo 博客添加评论功能</a>，都说直接在主题的配置文件下，新增如下配置即可：</p>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<p>最近将操作系统从 win7 升级到 win10 了，然后将 Node
+等软件全部升级成最新版，顺便把博客版本也更新一下。在查看 Hexo
+升级的相关文档时，碰巧看到了 <a
+target="_blank" rel="noopener" href="https://utteranc.es/">utterances</a>
+，无跟踪、无广告，永远免费，所有数据直接存储在自己的 github
+仓库，深得我爱。立马开始部署！</p>
+<p>搜索、阅读了大量博客，如 <a
+target="_blank" rel="noopener" href="https://pengtech.net/hexo/hexo_blog_comments.html">Hexo
+博客添加评论功能</a>，都说直接在主题的配置文件下，新增如下配置即可：</p>
 <span id="more"></span>
-
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Utterances</span></span><br><span class="line"><span class="comment"># For more information: https://utteranc.es</span></span><br><span class="line"><span class="attr">utterances:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">yoour_github_id/the_repo_name_to_store_comments</span> <span class="comment"># Github repository name</span></span><br><span class="line">  <span class="comment"># Available values: pathname | url | title | og:title</span></span><br><span class="line">  <span class="attr">issue_term:</span> <span class="string">pathname</span></span><br><span class="line">  <span class="comment"># Available values: github-light | github-dark | preferred-color-scheme | github-dark-orange | icy-dark | dark-blue | photon-dark | boxy-light</span></span><br><span class="line">  <span class="attr">theme:</span> <span class="string">github-light</span></span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next/pull/764">NexT</a> 官方仓库也说直接这样配置就行。</p>
-<p>我配置了但是没没有生效，搜索了好久终于按照这篇 <a target="_blank" rel="noopener" href="https://nekodaemon.com/2020/05/20/Hexo-Next%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0Utterances%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/">Hexo Next 主题添加 Utterances 评论系统</a> 搞定了。</p>
-<p>究其原因就是我现在用的 NexT 版本：7.8.0 没有集成 utterances 插件（在 VSCode 里面全文搜索 utterance 也搜不到任何内容），所以尽管添加了配置但还是无法显示评论框。</p>
-<p>NexT GitHub 仓库的<a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next/issues">官方文档</a> 不全，大部分配置可以参照老版本，其他功能只能靠网页搜索。</p>
-<h1 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h1><h2 id="创建-utterances-swig"><a href="#创建-utterances-swig" class="headerlink" title="创建 utterances.swig"></a>创建 utterances.swig</h2><p>在 layout&#x2F;_third-party&#x2F;comments 里创建 utterances.swig，内容如下：</p>
+<p><a
+target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next/pull/764">NexT</a>
+官方仓库也说直接这样配置就行。</p>
+<p>我配置了但是没没有生效，搜索了好久终于按照这篇 <a
+target="_blank" rel="noopener" href="https://nekodaemon.com/2020/05/20/Hexo-Next%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0Utterances%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/">Hexo
+Next 主题添加 Utterances 评论系统</a> 搞定了。</p>
+<p>究其原因就是我现在用的 NexT 版本：7.8.0 没有集成 utterances 插件（在
+VSCode 里面全文搜索 utterance
+也搜不到任何内容），所以尽管添加了配置但还是无法显示评论框。</p>
+<p>NexT GitHub 仓库的<a
+target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next/issues">官方文档</a>
+不全，大部分配置可以参照老版本，其他功能只能靠网页搜索。</p>
+<h1 id="配置过程">配置过程</h1>
+<h2 id="创建-utterances.swig">创建 utterances.swig</h2>
+<p>在 layout/_third-party/comments 里创建
+utterances.swig，内容如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;%- if page.comments %&#125;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">NexT.utils.loadComments(document.querySelector(&#x27;#utterances-container&#x27;), () =&gt; &#123;</span><br><span class="line">    // if (typeof parcelRequire === &#x27;function&#x27;) &#123; return; &#125;</span><br><span class="line">    var js = document.createElement(&#x27;script&#x27;);</span><br><span class="line">    js.type = &#x27;text/javascript&#x27;;</span><br><span class="line">    js.src = &#x27;https://utteranc.es/client.js&#x27;;</span><br><span class="line">    js.async = true;</span><br><span class="line">    js.crossorigin = &#x27;anonymous&#x27;;</span><br><span class="line">    js.setAttribute(&#x27;repo&#x27;, &#x27;&#123;&#123; theme.utterances.repo &#125;&#125;&#x27;);</span><br><span class="line">    js.setAttribute(&#x27;issue-term&#x27;, &#x27;&#123;&#123; theme.utterances.issue_term &#125;&#125;&#x27;);</span><br><span class="line">    js.setAttribute(&#x27;theme&#x27;, &#x27;&#123;&#123; theme.utterances.theme &#125;&#125;&#x27;);</span><br><span class="line">    document.getElementById(&#x27;utterances-container&#x27;).appendChild(js);</span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&#123;%- endif %&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="创建-utterances-js"><a href="#创建-utterances-js" class="headerlink" title="创建 utterances.js"></a>创建 utterances.js</h2><p>在 scripts&#x2F;filters&#x2F;comment 下创建 utterances.js，内容如下：</p>
+<h2 id="创建-utterances.js">创建 utterances.js</h2>
+<p>在 scripts/filters/comment 下创建 utterances.js，内容如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/* global hexo */</span><br><span class="line"></span><br><span class="line">&#x27;use strict&#x27;;</span><br><span class="line"></span><br><span class="line">const path = require(&#x27;path&#x27;);</span><br><span class="line"></span><br><span class="line">// Add comment</span><br><span class="line">hexo.extend.filter.register(&#x27;theme_inject&#x27;, injects =&gt; &#123;</span><br><span class="line">  let theme = hexo.theme.config;</span><br><span class="line">  if (!theme.utterances.enable) return;</span><br><span class="line"></span><br><span class="line">  injects.comment.raw(&#x27;utterances&#x27;, &#x27;&lt;div class=&quot;comments&quot; id=&quot;utterances-container&quot;&gt;&lt;/div&gt;&#x27;, &#123;&#125;, &#123;cache: true&#125;);</span><br><span class="line"></span><br><span class="line">  injects.bodyEnd.file(&#x27;utterances&#x27;, path.join(hexo.theme_dir, &#x27;layout/_third-party/comments/utterances.swig&#x27;));</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="修改主题配置文件"><a href="#修改主题配置文件" class="headerlink" title="修改主题配置文件"></a>修改主题配置文件</h2><p>在主题配置文件中添加：</p>
+<h2 id="修改主题配置文件">修改主题配置文件</h2>
+<p>在主题配置文件中添加：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">utterances:</span><br><span class="line">  enable: true</span><br><span class="line">  repo: owner/repo # 这里需要修改为 你的 GitHub 用户名/刚刚创建的，用户保存博客评论的 GitHub 仓库名</span><br><span class="line">  issue_term: pathname</span><br><span class="line">  theme: github-light</span><br></pre></td></tr></table></figure>
-
-<h2 id="配置-utterances-插件"><a href="#配置-utterances-插件" class="headerlink" title="配置 utterances 插件"></a>配置 utterances 插件</h2><p>在 GitHub 中创建一个公开仓库用于保存博客的评论，点击 <a target="_blank" rel="noopener" href="https://github.com/apps/utterances">utterances app</a> 安装 utterances 。</p>
-<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>在写作这篇博客的时候又检索到了 NexT 主题已经升级到了 8.20.0 ，是在另外一个仓库，这个仓库的文档比较全。接下来再研究下把博客升级到这个版本吧……</p>
-<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
+<h2 id="配置-utterances-插件">配置 utterances 插件</h2>
+<p>在 GitHub 中创建一个公开仓库用于保存博客的评论，点击 <a
+target="_blank" rel="noopener" href="https://github.com/apps/utterances">utterances app</a> 安装
+utterances 。</p>
+<h1 id="后记">后记</h1>
+<p>在写作这篇博客的时候又检索到了 NexT 主题已经升级到了 8.20.0
+，是在另外一个仓库，这个仓库的文档比较全。接下来再研究下把博客升级到这个版本吧……</p>
+<h1 id="参考文档">参考文档</h1>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/theme-next">NexT</a></li>
 <li><a target="_blank" rel="noopener" href="https://theme-next.org/docs.html">Documentation</a></li>
 <li><a target="_blank" rel="noopener" href="https://utteranc.es/">utterances</a></li>
@@ -406,13 +427,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -477,6 +498,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

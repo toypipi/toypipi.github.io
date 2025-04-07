@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="想必每个程序员都对 git 非常熟悉，但是你是否知道 .git 目录的结构和每个部分的作用呢？今天我翻译的文章是《Inside .git》，作者是 Julia Evans。文章详细介绍了 Git 版本控制系统中的 .git 目录的结构和每个部分的作用。以下是对文章的全文翻译，为便于理解，部分内容可能稍作修改： 你好！这周我在 Mastodon 上发布了一个关于 .git 目录里有什么内容的漫画，">
+    <meta name="description" content="想必每个程序员都对 git 非常熟悉，但是你是否知道 .git 目录的结构和每个部分的作用呢？今天我翻译的文章是《Inside .git》，作者是 Julia Evans。文章详细介绍了 Git 版本控制系统中的 .git 目录的结构和每个部分的作用。以下是对文章的全文翻译，为便于理解，部分内容可能稍作修改： 你好！这周我在 Mastodon 上发布了一个关于 .git 目录里有什">
 <meta property="og:type" content="article">
 <meta property="og:title" content=".git 目录的结构和每个部分的作用[译]">
 <meta property="og:url" content="https://toypipi.github.io/2024/09/02/git-%E7%9B%AE%E5%BD%95%E7%9A%84%E7%BB%93%E6%9E%84%E5%92%8C%E6%AF%8F%E4%B8%AA%E9%83%A8%E5%88%86%E7%9A%84%E4%BD%9C%E7%94%A8-%E8%AF%91/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="想必每个程序员都对 git 非常熟悉，但是你是否知道 .git 目录的结构和每个部分的作用呢？今天我翻译的文章是《Inside .git》，作者是 Julia Evans。文章详细介绍了 Git 版本控制系统中的 .git 目录的结构和每个部分的作用。以下是对文章的全文翻译，为便于理解，部分内容可能稍作修改： 你好！这周我在 Mastodon 上发布了一个关于 .git 目录里有什么内容的漫画，">
+<meta property="og:description" content="想必每个程序员都对 git 非常熟悉，但是你是否知道 .git 目录的结构和每个部分的作用呢？今天我翻译的文章是《Inside .git》，作者是 Julia Evans。文章详细介绍了 Git 版本控制系统中的 .git 目录的结构和每个部分的作用。以下是对文章的全文翻译，为便于理解，部分内容可能稍作修改： 你好！这周我在 Mastodon 上发布了一个关于 .git 目录里有什">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-09-02T08:29:38.000Z">
 <meta property="article:modified_time" content="2024-09-11T08:19:52.763Z">
@@ -143,7 +143,14 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HEAD-git-head"><span class="nav-number">1.</span> <span class="nav-text">HEAD: .git&#x2F;head</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E6%94%AF-branch-git-refs-heads-main"><span class="nav-number">2.</span> <span class="nav-text">分支(branch): .git&#x2F;refs&#x2F;heads&#x2F;main</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8F%90%E4%BA%A4-commit-git-objects-10-93da429%E2%80%A6"><span class="nav-number">3.</span> <span class="nav-text">提交(commit): .git&#x2F;objects&#x2F;10&#x2F;93da429…</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%91-tree-git-objects-9f-83ee7550%E2%80%A6"><span class="nav-number">4.</span> <span class="nav-text">树(tree): .git&#x2F;objects&#x2F;9f&#x2F;83ee7550…</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#blob-git-objects-5a-475762c%E2%80%A6"><span class="nav-number">5.</span> <span class="nav-text">blob: .git&#x2F;objects&#x2F;5a&#x2F;475762c…</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E6%97%A5%E5%BF%97-reflog-git-logs-refs-heads-main"><span class="nav-number">6.</span> <span class="nav-text">引用日志(reflog): .git&#x2F;logs&#x2F;refs&#x2F;heads&#x2F;main</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E8%B7%9F%E8%B8%AA%E5%88%86%E6%94%AF-git-refs-remotes-origin-main"><span class="nav-number">7.</span> <span class="nav-text">远程跟踪分支: .git&#x2F;refs&#x2F;remotes&#x2F;origin&#x2F;main</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE-tags-git-refs-tags-v1-0"><span class="nav-number">8.</span> <span class="nav-text">标签(tags): .git&#x2F;refs&#x2F;tags&#x2F;v1.0</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#stash-git-refs-stash"><span class="nav-number">9.</span> <span class="nav-text">stash: .git&#x2F;refs&#x2F;stash</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git-config"><span class="nav-number">10.</span> <span class="nav-text">.git&#x2F;config</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%92%A9%E5%AD%90-git-hooks-pre-commit"><span class="nav-number">11.</span> <span class="nav-text">钩子: .git&#x2F;hooks&#x2F;pre-commit</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-staging-area-git-index"><span class="nav-number">12.</span> <span class="nav-text">the staging area: .git&#x2F;index</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%99%E4%B8%8D%E6%98%AF%E7%9B%AE%E5%BD%95%E4%B8%AD%E7%9A%84%E5%85%A8%E9%83%A8%E5%86%85%E5%AE%B9"><span class="nav-number">13.</span> <span class="nav-text">这不是目录中的全部内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%99%E5%B9%B6%E4%B8%8D%E6%84%8F%E5%91%B3%E7%9D%80%E5%AE%8C%E5%85%A8%E8%A7%A3%E9%87%8A%E4%BA%86-git"><span class="nav-number">14.</span> <span class="nav-text">这并不意味着完全解释了 git</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%85%B6%E4%BB%96%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%EF%BC%9A"><span class="nav-number">15.</span> <span class="nav-text">一些其他参考资料：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%91%E8%80%85%E8%AF%B4"><span class="nav-number">16.</span> <span class="nav-text">译者说</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E7%BF%BB%E8%AF%91%E6%AD%A4%E6%96%87%E8%BF%87%E7%A8%8B%E4%B8%AD%EF%BC%8C%E4%BD%BF%E7%94%A8-hexo-%E7%9A%84-reference-%E7%9A%84%E8%84%9A%E6%B3%A8%E6%8F%92%E4%BB%B6%E5%8F%91%E7%8E%B0%EF%BC%8C%E8%84%9A%E6%B3%A8%E5%86%85%E5%AE%B9%E4%B8%8D%E8%83%BD%E5%8C%85%E5%90%AB-%E5%8F%8C%E5%BC%95%E5%8F%B7%EF%BC%8C%E5%90%A6%E5%88%99%E4%BC%9A%E6%B8%B2%E6%9F%93%E5%BC%82%E5%B8%B8%E3%80%82%E5%A6%82%E4%B8%8B%E5%9B%BE%EF%BC%9A"><span class="nav-number">16.1.</span> <span class="nav-text">在翻译此文过程中，使用 hexo 的 reference 的脚注插件发现，脚注内容不能包含 &quot;&quot; 双引号，否则会渲染异常。如下图：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stash-%E5%92%8C-Stage-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">16.2.</span> <span class="nav-text">Stash 和 Stage 的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Stash%EF%BC%88%E6%9A%82%E5%AD%98%EF%BC%89"><span class="nav-number">16.2.1.</span> <span class="nav-text">Stash（暂存）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stage%EF%BC%88%E6%9A%82%E5%AD%98%E5%8C%BA%EF%BC%89"><span class="nav-number">16.2.2.</span> <span class="nav-text">Stage（暂存区）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%BA%E5%88%AB%E6%80%BB%E7%BB%93"><span class="nav-number">16.2.3.</span> <span class="nav-text">区别总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="nav-number">17.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#head-.githead"><span class="nav-number">1.</span> <span class="nav-text">HEAD: .git&#x2F;head</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E6%94%AFbranch-.gitrefsheadsmain"><span class="nav-number">2.</span> <span class="nav-text">分支(branch):
+.git&#x2F;refs&#x2F;heads&#x2F;main</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8F%90%E4%BA%A4commit-.gitobjects1093da429"><span class="nav-number">3.</span> <span class="nav-text">提交(commit):
+.git&#x2F;objects&#x2F;10&#x2F;93da429…</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%91tree-.gitobjects9f83ee7550"><span class="nav-number">4.</span> <span class="nav-text">树(tree):
+.git&#x2F;objects&#x2F;9f&#x2F;83ee7550…</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#blob-.gitobjects5a475762c"><span class="nav-number">5.</span> <span class="nav-text">blob: .git&#x2F;objects&#x2F;5a&#x2F;475762c…</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E6%97%A5%E5%BF%97reflog-.gitlogsrefsheadsmain"><span class="nav-number">6.</span> <span class="nav-text">引用日志(reflog):
+.git&#x2F;logs&#x2F;refs&#x2F;heads&#x2F;main</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E8%B7%9F%E8%B8%AA%E5%88%86%E6%94%AF-.gitrefsremotesoriginmain"><span class="nav-number">7.</span> <span class="nav-text">远程跟踪分支:
+.git&#x2F;refs&#x2F;remotes&#x2F;origin&#x2F;main</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%87%E7%AD%BEtags-.gitrefstagsv1.0"><span class="nav-number">8.</span> <span class="nav-text">标签(tags): .git&#x2F;refs&#x2F;tags&#x2F;v1.0</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#stash-.gitrefsstash"><span class="nav-number">9.</span> <span class="nav-text">stash: .git&#x2F;refs&#x2F;stash</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gitconfig"><span class="nav-number">10.</span> <span class="nav-text">.git&#x2F;config</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%92%A9%E5%AD%90-.githookspre-commit"><span class="nav-number">11.</span> <span class="nav-text">钩子: .git&#x2F;hooks&#x2F;pre-commit</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-staging-area-.gitindex"><span class="nav-number">12.</span> <span class="nav-text">the staging area: .git&#x2F;index</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%99%E4%B8%8D%E6%98%AF%E7%9B%AE%E5%BD%95%E4%B8%AD%E7%9A%84%E5%85%A8%E9%83%A8%E5%86%85%E5%AE%B9"><span class="nav-number">13.</span> <span class="nav-text">这不是目录中的全部内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%99%E5%B9%B6%E4%B8%8D%E6%84%8F%E5%91%B3%E7%9D%80%E5%AE%8C%E5%85%A8%E8%A7%A3%E9%87%8A%E4%BA%86-git"><span class="nav-number">14.</span> <span class="nav-text">这并不意味着完全解释了 git</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%85%B6%E4%BB%96%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">15.</span> <span class="nav-text">一些其他参考资料：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%91%E8%80%85%E8%AF%B4"><span class="nav-number">16.</span> <span class="nav-text">译者说</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E7%BF%BB%E8%AF%91%E6%AD%A4%E6%96%87%E8%BF%87%E7%A8%8B%E4%B8%AD%E4%BD%BF%E7%94%A8-hexo-%E7%9A%84-reference-%E7%9A%84%E8%84%9A%E6%B3%A8%E6%8F%92%E4%BB%B6%E5%8F%91%E7%8E%B0%E8%84%9A%E6%B3%A8%E5%86%85%E5%AE%B9%E4%B8%8D%E8%83%BD%E5%8C%85%E5%90%AB-%E5%8F%8C%E5%BC%95%E5%8F%B7%E5%90%A6%E5%88%99%E4%BC%9A%E6%B8%B2%E6%9F%93%E5%BC%82%E5%B8%B8%E5%A6%82%E4%B8%8B%E5%9B%BE"><span class="nav-number">16.1.</span> <span class="nav-text">在翻译此文过程中，使用
+hexo 的 reference 的脚注插件发现，脚注内容不能包含 &quot;&quot;
+双引号，否则会渲染异常。如下图：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stash-%E5%92%8C-stage-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">16.2.</span> <span class="nav-text">Stash 和 Stage 的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#stash%E6%9A%82%E5%AD%98"><span class="nav-number">16.2.1.</span> <span class="nav-text">Stash（暂存）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stage%E6%9A%82%E5%AD%98%E5%8C%BA"><span class="nav-number">16.2.2.</span> <span class="nav-text">Stage（暂存区）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%BA%E5%88%AB%E6%80%BB%E7%BB%93"><span class="nav-number">16.2.3.</span> <span class="nav-text">区别总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="nav-number">17.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -283,122 +290,222 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>想必每个程序员都对 git 非常熟悉，但是你是否知道 .git 目录的结构和每个部分的作用呢？今天我翻译的文章是《Inside .git》，作者是 Julia Evans。<a target="_blank" rel="noopener" href="https://jvns.ca/blog/2024/01/26/inside-git/">文章</a>详细介绍了 Git 版本控制系统中的 .git 目录的结构和每个部分的作用。以下是对文章的全文翻译，为便于理解，部分内容可能稍作修改：</p>
-<p>你好！这周我在 Mastodon 上发布了一个关于 <code>.git</code> 目录里有什么内容的漫画，有人想要文字版，于是诞生了这篇文章。我还添加了一些额外的注释。下面是漫画图片。它用大约 15 个词解释了你的 <code>.git</code> 目录的每个部分。</p>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<p>想必每个程序员都对 git 非常熟悉，但是你是否知道 .git
+目录的结构和每个部分的作用呢？今天我翻译的文章是《Inside .git》，作者是
+Julia Evans。<a
+target="_blank" rel="noopener" href="https://jvns.ca/blog/2024/01/26/inside-git/">文章</a>详细介绍了
+Git 版本控制系统中的 .git
+目录的结构和每个部分的作用。以下是对文章的全文翻译，为便于理解，部分内容可能稍作修改：</p>
+<p>你好！这周我在 Mastodon 上发布了一个关于 <code>.git</code>
+目录里有什么内容的漫画，有人想要文字版，于是诞生了这篇文章。我还添加了一些额外的注释。下面是漫画图片。它用大约
+15 个词解释了你的 <code>.git</code> 目录的每个部分。</p>
 
-
-<p>如果你想自己运行这些例子，可以使用 <code>git clone https://github.com/jvns/inside-git</code>。</p>
+<p>如果你想自己运行这些例子，可以使用
+<code>git clone https://github.com/jvns/inside-git</code>。</p>
 <span id="more"></span>
-
 <p>这里有一个目录：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">HEAD: .git/head</span><br><span class="line">branch: .git/refs/heads/main</span><br><span class="line">commit: .git/objects/10/93da429…</span><br><span class="line">tree: .git/objects/9f/83ee7550…</span><br><span class="line">blobs: .git/objects/5a/475762c…</span><br><span class="line">reflog: .git/logs/refs/heads/main</span><br><span class="line">remote-tracking branches: .git/refs/remotes/origin/main</span><br><span class="line">tags: .git/refs/tags/v1.0</span><br><span class="line">the stash: .git/refs/stash</span><br><span class="line">.git/config</span><br><span class="line">hooks: .git/hooks/pre-commit</span><br><span class="line">the staging area: .git/index</span><br><span class="line">this isn’t exhaustive</span><br><span class="line">this isn’t meant to completely explain git</span><br></pre></td></tr></table></figure>
-
 <p>前五个部分（HEAD，分支，提交，树，快照）是 git 的核心。</p>
-<h1 id="HEAD-git-head"><a href="#HEAD-git-head" class="headerlink" title="HEAD: .git&#x2F;head"></a>HEAD: .git&#x2F;head</h1><p><code>HEAD</code> 是一个非常小的文件，只包含你当前<strong>分支</strong>的名称。</p>
+<h1 id="head-.githead">HEAD: .git/head</h1>
+<p><code>HEAD</code>
+是一个非常小的文件，只包含你当前<strong>分支</strong>的名称。</p>
 <p>示例内容：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cat</span> .git/HEAD</span></span><br><span class="line">ref: refs/heads/main</span><br></pre></td></tr></table></figure>
-
-<p><code>HEAD</code> 也可以是一个提交 ID，这被称为 “分离 HEAD 状态(detached HEAD state)”。</p>
-<h1 id="分支-branch-git-refs-heads-main"><a href="#分支-branch-git-refs-heads-main" class="headerlink" title="分支(branch): .git&#x2F;refs&#x2F;heads&#x2F;main"></a>分支(branch): .git&#x2F;refs&#x2F;heads&#x2F;main</h1><p><strong>分支</strong>也被存储到一个小文件中，只包含一个<strong>提交 ID</strong>。它被存储在名为 <code>refs/heads</code> 的文件夹中。</p>
+<p><code>HEAD</code> 也可以是一个提交 ID，这被称为 “分离 HEAD
+状态(detached HEAD state)”。</p>
+<h1 id="分支branch-.gitrefsheadsmain">分支(branch):
+.git/refs/heads/main</h1>
+<p><strong>分支</strong>也被存储到一个小文件中，只包含一个<strong>提交
+ID</strong>。它被存储在名为 <code>refs/heads</code> 的文件夹中。</p>
 <p>示例内容：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cat</span> .git/refs/heads/main</span></span><br><span class="line">1093da429f08e0e54cdc2b31526159e745d98ce0</span><br></pre></td></tr></table></figure>
-
-<h1 id="提交-commit-git-objects-10-93da429…"><a href="#提交-commit-git-objects-10-93da429…" class="headerlink" title="提交(commit): .git&#x2F;objects&#x2F;10&#x2F;93da429…"></a>提交(commit): .git&#x2F;objects&#x2F;10&#x2F;93da429…</h1><p><strong>提交</strong>是一个小文件，包含它的父项、提交信息、<strong>树</strong>和作者。</p>
+<h1 id="提交commit-.gitobjects1093da429">提交(commit):
+.git/objects/10/93da429…</h1>
+<p><strong>提交</strong>是一个小文件，包含它的父项、提交信息、<strong>树</strong>和作者。</p>
 <p>示例内容：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git cat-file -p 1093da429f08e0e54cdc2b31526159e745d98ce0</span></span><br><span class="line">tree 9f83ee7550919867e9219a75c23624c92ab5bd83</span><br><span class="line">parent 33a0481b440426f0268c613d036b820bc064cdea</span><br><span class="line">author Julia Evans &lt;julia@example.com&gt; 1706120622 -0500</span><br><span class="line">committer Julia Evans &lt;julia@example.com&gt; 1706120622 -0500</span><br><span class="line"></span><br><span class="line">add hello.py</span><br></pre></td></tr></table></figure>
-
-<p>这些文件是压缩的，查看对象的最佳方式是使用 <code>git cat-file -p HASH</code>。</p>
-<h1 id="树-tree-git-objects-9f-83ee7550…"><a href="#树-tree-git-objects-9f-83ee7550…" class="headerlink" title="树(tree): .git&#x2F;objects&#x2F;9f&#x2F;83ee7550…"></a>树(tree): .git&#x2F;objects&#x2F;9f&#x2F;83ee7550…</h1><p><strong>树</strong>是包含目录列表的小文件。其中的文件称为 blob<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="在 Git 版本控制系统中，blob 是 Binary Large Object 的缩写，但在 Git 的上下文中，它通常指的是存储在仓库中的文件内容。在 Git 的对象存储中，blob 代表文件数据，即文件的具体内容。在 Git 的术语中，当你提交（commit）一个文件到仓库时，Git 会将文件的内容存储为一个 blob 对象。这个 blob 对象包含了文件的数据，但不包含文件的元数据（如文件名或目录结构）。然后，这些 blob 对象被引用在一个 tree 对象中，tree 对象相当于一个目录的快照，它记录了文件的名称、类型（是文件还是子目录）以及对应的 blob 或子 tree 的引用。
+<p>这些文件是压缩的，查看对象的最佳方式是使用
+<code>git cat-file -p HASH</code>。</p>
+<h1 id="树tree-.gitobjects9f83ee7550">树(tree):
+.git/objects/9f/83ee7550…</h1>
+<p><strong>树</strong>是包含目录列表的小文件。其中的文件称为
+blob<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span
+class="hint--top hint--error hint--medium hint--rounded hint--bounce"
+aria-label="在 Git 版本控制系统中，blob 是 Binary Large Object 的缩写，但在 Git 的上下文中，它通常指的是存储在仓库中的文件内容。在 Git 的对象存储中，blob 代表文件数据，即文件的具体内容。在 Git 的术语中，当你提交（commit）一个文件到仓库时，Git 会将文件的内容存储为一个 blob 对象。这个 blob 对象包含了文件的数据，但不包含文件的元数据（如文件名或目录结构）。然后，这些 blob 对象被引用在一个 tree 对象中，tree 对象相当于一个目录的快照，它记录了文件的名称、类型（是文件还是子目录）以及对应的 blob 或子 tree 的引用。
 ">[1]</span></a></sup>。</p>
 <p>示例内容：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git cat-file -p 9f83ee7550919867e9219a75c23624c92ab5bd83</span></span><br><span class="line">100644 blob e69de29bb2d1d6434b8b29ae775ad8c2e48c5391 .gitignore</span><br><span class="line">100644 blob 665c637a360874ce43bf74018768a96d2d4d219a hello.py</span><br><span class="line">040000 tree 24420a1530b1f4ec20ddb14c76df8c78c48f76a6 lib</span><br></pre></td></tr></table></figure>
-
-<p>这里的权限<strong>看起来</strong>像是 Unix 权限，但实际上非常受限，只允许 644 和 755。</p>
-<h1 id="blob-git-objects-5a-475762c…"><a href="#blob-git-objects-5a-475762c…" class="headerlink" title="blob: .git&#x2F;objects&#x2F;5a&#x2F;475762c…"></a>blob: .git&#x2F;objects&#x2F;5a&#x2F;475762c…</h1><p><strong>blob</strong> 是包含你实际代码的那些文件。</p>
+<p>这里的权限<strong>看起来</strong>像是 Unix
+权限，但实际上非常受限，只允许 644 和 755。</p>
+<h1 id="blob-.gitobjects5a475762c">blob: .git/objects/5a/475762c…</h1>
+<p><strong>blob</strong> 是包含你实际代码的那些文件。</p>
 <p>示例内容：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git cat-file -p 665c637a360874ce43bf74018768a96d2d4d219a</span></span><br><span class="line">print(&quot;hello world!&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>每次更改都存储一个新的 blob 可能会使其变得很大，所以 <a target="_blank" rel="noopener" href="https://codewords.recurse.com/issues/three/unpacking-git-packfiles">git gc</a> 会定期在 <code>.git/objects/pack</code> 中打包它们以提高效率。</p>
-<h1 id="引用日志-reflog-git-logs-refs-heads-main"><a href="#引用日志-reflog-git-logs-refs-heads-main" class="headerlink" title="引用日志(reflog): .git&#x2F;logs&#x2F;refs&#x2F;heads&#x2F;main"></a>引用日志(reflog): .git&#x2F;logs&#x2F;refs&#x2F;heads&#x2F;main</h1><p>引用日志存储每个分支、标签和 HEAD 的历史。对于 <code>.git/refs</code> 中的每个文件，通常在 <code>.git/logs/refs</code> 中都有一个对应的日志文件，但不是绝对的，可能存在一些例外情况。</p>
+<p>每次更改都存储一个新的 blob 可能会使其变得很大，所以 <a
+target="_blank" rel="noopener" href="https://codewords.recurse.com/issues/three/unpacking-git-packfiles">git
+gc</a> 会定期在 <code>.git/objects/pack</code>
+中打包它们以提高效率。</p>
+<h1 id="引用日志reflog-.gitlogsrefsheadsmain">引用日志(reflog):
+.git/logs/refs/heads/main</h1>
+<p>引用日志存储每个分支、标签和 HEAD 的历史。对于 <code>.git/refs</code>
+中的每个文件，通常在 <code>.git/logs/refs</code>
+中都有一个对应的日志文件，但不是绝对的，可能存在一些例外情况。</p>
 <p>示例内容，对于 main 分支来说：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">tail</span> -n 1 .git/logs/refs/heads/main</span></span><br><span class="line">33a0481b440426f0268c613d036b820bc064cdea</span><br><span class="line">1093da429f08e0e54cdc2b31526159e745d98ce0</span><br><span class="line">Julia Evans &lt;julia@example.com&gt;</span><br><span class="line">1706119866 -0500</span><br><span class="line">commit: add hello.py</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>译者注：tail -n 1 这个命令的意思是显示文件的最后 1 行。</p>
 </blockquote>
 <p>引用日志的每一行包含：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">提交前后的 ID</span><br><span class="line">用户</span><br><span class="line">时间戳</span><br><span class="line">日志消息</span><br></pre></td></tr></table></figure>
-
 <p>通常它都是一行，我只是为了方便阅读而在这里换行。</p>
-<h1 id="远程跟踪分支-git-refs-remotes-origin-main"><a href="#远程跟踪分支-git-refs-remotes-origin-main" class="headerlink" title="远程跟踪分支: .git&#x2F;refs&#x2F;remotes&#x2F;origin&#x2F;main"></a>远程跟踪分支: .git&#x2F;refs&#x2F;remotes&#x2F;origin&#x2F;main</h1><p><strong>远程跟踪分支</strong>（remote-tracking branches）保存了你最后一次从远程仓库获取（fetch）或拉取（pull）时，远程分支上的提交 ID（commit ID）。</p>
+<h1 id="远程跟踪分支-.gitrefsremotesoriginmain">远程跟踪分支:
+.git/refs/remotes/origin/main</h1>
+<p><strong>远程跟踪分支</strong>（remote-tracking
+branches）保存了你最后一次从远程仓库获取（fetch）或拉取（pull）时，远程分支上的提交
+ID（commit ID）。</p>
 <p>示例内容：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cat</span> .git/refs/remotes/origin/main</span></span><br><span class="line">fcdeb177797e8ad8ad4c5381b97fc26bc8ddd5a2</span><br></pre></td></tr></table></figure>
-
-<p>当你运行 git status 命令时，如果 Git 提示 “你与 <code>origin/main</code> 同步” ，Git 只是检查了这个文件。它通常已经过时了，你可以使用 <code>git fetch origin main</code> 来更新该文件。</p>
-<h1 id="标签-tags-git-refs-tags-v1-0"><a href="#标签-tags-git-refs-tags-v1-0" class="headerlink" title="标签(tags): .git&#x2F;refs&#x2F;tags&#x2F;v1.0"></a>标签(tags): .git&#x2F;refs&#x2F;tags&#x2F;v1.0</h1><p>标签是 <code>.git/refs/tags</code> 中包含提交 ID 的一个小文件。</p>
+<p>当你运行 git status 命令时，如果 Git 提示 “你与
+<code>origin/main</code> 同步” ，Git
+只是检查了这个文件。它通常已经过时了，你可以使用
+<code>git fetch origin main</code> 来更新该文件。</p>
+<h1 id="标签tags-.gitrefstagsv1.0">标签(tags): .git/refs/tags/v1.0</h1>
+<p>标签是 <code>.git/refs/tags</code> 中包含提交 ID 的一个小文件。</p>
 <p>示例内容：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cat</span> .git/refs/tags/v1.0</span></span><br><span class="line">1093da429f08e0e54cdc2b31526159e745d98ce0</span><br></pre></td></tr></table></figure>
-
 <p>与分支不同，当你进行新的提交时，标签不会更新。</p>
-<h1 id="stash-git-refs-stash"><a href="#stash-git-refs-stash" class="headerlink" title="stash: .git&#x2F;refs&#x2F;stash"></a>stash: .git&#x2F;refs&#x2F;stash</h1><p>stash 是一个名为 <code>.git/refs/stash</code> 的小文件。它包含当你运行 <code>git stash</code> 时创建的提交 ID。</p>
+<h1 id="stash-.gitrefsstash">stash: .git/refs/stash</h1>
+<p>stash 是一个名为 <code>.git/refs/stash</code>
+的小文件。它包含当你运行 <code>git stash</code> 时创建的提交 ID。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat .git/refs/stash</span><br><span class="line">62caf3d918112d54bcfa24f3c78a94c224283a78</span><br></pre></td></tr></table></figure>
-
-<p>stash 是一个栈，以前的值存储在 <code>.git/logs/refs/stash</code>（stash 的引用日志）中。</p>
+<p>stash 是一个栈，以前的值存储在
+<code>.git/logs/refs/stash</code>（stash 的引用日志）中。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat .git/logs/refs/stash</span><br><span class="line">62caf3d9 e85c950f Julia Evans &lt;julia@example.com&gt; 1706290652 -0500 WIP on main: 1093da4 add hello.py</span><br><span class="line">00000000 62caf3d9 Julia Evans &lt;julia@example.com&gt; 1706290668 -0500 WIP on main: 1093da4 add hello.py</span><br></pre></td></tr></table></figure>
-
-<p>与分支和标签不同，如果你从 stash 中 <code>git stash pop</code> 一个提交，它会从引用日志中删除，所以几乎不可能再次找到它。stash 是 git 中唯一一个被添加后很快就会被删除的引用日志。（在 Git 中，默认情况下，引用日志的条目大约保留 90 天后会被自动清除。）</p>
+<p>与分支和标签不同，如果你从 stash 中 <code>git stash pop</code>
+一个提交，它会从引用日志中删除，所以几乎不可能再次找到它。stash 是 git
+中唯一一个被添加后很快就会被删除的引用日志。（在 Git
+中，默认情况下，引用日志的条目大约保留 90 天后会被自动清除。）</p>
 <p><strong>关于引用的说明</strong>：</p>
-<p>到目前为止，你可能已经注意到很多东西（例如分支、远程跟踪分支、标签和 stash）都是 <code>.git/refs</code> 中的提交 ID。它们被称为 “引用(references)” 或 “refs”。每个引用都是一个提交 ID，但是 git 以<strong>非常</strong>不同的方式处理不同类型的引用，即使它们都使用相同的文件格式，我发现将它们分开考虑很有用。例如，git 会从 stash 引用日志中删除日志，但不会删除分支或标签引用日志。</p>
-<h1 id="git-config"><a href="#git-config" class="headerlink" title=".git&#x2F;config"></a>.git&#x2F;config</h1><p><code>.git/config</code> 是存储库的配置文件。这是你配置远程仓库的地方。</p>
+<p>到目前为止，你可能已经注意到很多东西（例如分支、远程跟踪分支、标签和
+stash）都是 <code>.git/refs</code> 中的提交 ID。它们被称为
+“引用(references)” 或 “refs”。每个引用都是一个提交 ID，但是 git
+以<strong>非常</strong>不同的方式处理不同类型的引用，即使它们都使用相同的文件格式，我发现将它们分开考虑很有用。例如，git
+会从 stash 引用日志中删除日志，但不会删除分支或标签引用日志。</p>
+<h1 id="gitconfig">.git/config</h1>
+<p><code>.git/config</code>
+是存储库的配置文件。这是你配置远程仓库的地方。</p>
 <p>示例内容：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[remote &quot;origin&quot;]</span><br><span class="line">url = git@github.com: jvns/int-exposed</span><br><span class="line">fetch = +refs/heads/_: refs/remotes/origin/_</span><br><span class="line">[branch &quot;main&quot;]</span><br><span class="line">remote = origin</span><br><span class="line">merge refs/heads/main</span><br></pre></td></tr></table></figure>
-
-<p>该配置分为本地和全局设置，本地设置在这里，全局设置在 <code>~/.gitconfig</code> 目录中。</p>
-<h1 id="钩子-git-hooks-pre-commit"><a href="#钩子-git-hooks-pre-commit" class="headerlink" title="钩子: .git&#x2F;hooks&#x2F;pre-commit"></a>钩子: .git&#x2F;hooks&#x2F;pre-commit</h1><p>钩子是可选的脚本，意味着你可以根据需要（例如提交前）选择是否使用它们。</p>
+<p>该配置分为本地和全局设置，本地设置在这里，全局设置在
+<code>~/.gitconfig</code> 目录中。</p>
+<h1 id="钩子-.githookspre-commit">钩子: .git/hooks/pre-commit</h1>
+<p>钩子是可选的脚本，意味着你可以根据需要（例如提交前）选择是否使用它们。</p>
 <p>示例内容：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line">any-commands-you-want</span><br></pre></td></tr></table></figure>
-
 <p>（这显然不是一个真正的 pre-commit 钩子）</p>
-<h1 id="the-staging-area-git-index"><a href="#the-staging-area-git-index" class="headerlink" title="the staging area: .git&#x2F;index"></a>the staging area: .git&#x2F;index</h1><p>the staging area 存储你准备提交的文件。与 git 中大多数纯文本文件不同的是，它是一个二进制文件。</p>
-<p>据我所知，查看索引内容的最佳方式是使用 <code>git ls-files --stage</code>：</p>
+<h1 id="the-staging-area-.gitindex">the staging area: .git/index</h1>
+<p>the staging area 存储你准备提交的文件。与 git
+中大多数纯文本文件不同的是，它是一个二进制文件。</p>
+<p>据我所知，查看索引内容的最佳方式是使用
+<code>git ls-files --stage</code>：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git ls-files --stage</span></span><br><span class="line">100644 e69de29bb2d1d6434b8b29ae775ad8c2e48c5391 0 .gitignore</span><br><span class="line">100644 665c637a360874ce43bf74018768a96d2d4d219a 0 hello.py</span><br><span class="line">100644 e69de29bb2d1d6434b8b29ae775ad8c2e48c5391 0 lib/empty.py</span><br></pre></td></tr></table></figure>
-
-<h1 id="这不是目录中的全部内容"><a href="#这不是目录中的全部内容" class="headerlink" title="这不是目录中的全部内容"></a>这不是目录中的全部内容</h1><p>.git 中还有其他一些东西，比如 FETCH_HEAD、worktrees 和 info。我只包含了那些我认为有助于理解的内容。</p>
-<h1 id="这并不意味着完全解释了-git"><a href="#这并不意味着完全解释了-git" class="headerlink" title="这并不意味着完全解释了 git"></a>这并不意味着完全解释了 git</h1><p>我听到的关于 git 的最常见的建议之一是“只要学会 .git 目录的结构，然后你就会理解一切！”</p>
-<p>我比任何人都更喜欢理解事物的内部，但是“.git 目录的结构”并不能解释<strong>很多</strong>东西，比如：</p>
+<h1 id="这不是目录中的全部内容">这不是目录中的全部内容</h1>
+<p>.git 中还有其他一些东西，比如 FETCH_HEAD、worktrees 和
+info。我只包含了那些我认为有助于理解的内容。</p>
+<h1 id="这并不意味着完全解释了-git">这并不意味着完全解释了 git</h1>
+<p>我听到的关于 git 的最常见的建议之一是“只要学会 .git
+目录的结构，然后你就会理解一切！”</p>
+<p>我比任何人都更喜欢理解事物的内部，但是“.git
+目录的结构”并不能解释<strong>很多</strong>东西，比如：</p>
 <ul>
-<li>合并(merges)和变基(rebases)是如何工作的，以及它们可能出错的地方（例如这个<a target="_blank" rel="noopener" href="https://jvns.ca/blog/2023/11/06/rebasing-what-can-go-wrong-/">关于变基可能出错</a>的列表）</li>
-<li>你的同事是如何使用 git 的，以及你应该遵循什么指导方针才能成功地与他们合作</li>
-<li>从其他存储库推送 &#x2F; 拉取代码是如何工作的</li>
+<li>合并(merges)和变基(rebases)是如何工作的，以及它们可能出错的地方（例如这个<a
+target="_blank" rel="noopener" href="https://jvns.ca/blog/2023/11/06/rebasing-what-can-go-wrong-/">关于变基可能出错</a>的列表）</li>
+<li>你的同事是如何使用 git
+的，以及你应该遵循什么指导方针才能成功地与他们合作</li>
+<li>从其他存储库推送 / 拉取代码是如何工作的</li>
 <li>如何处理合并冲突</li>
 </ul>
 <p>虽然提供的信息可能不全面，不过，希望这些信息对于那些需要它的人是有帮助的。</p>
-<h1 id="一些其他参考资料："><a href="#一些其他参考资料：" class="headerlink" title="一些其他参考资料："></a>一些其他参考资料：</h1><ul>
-<li>詹姆斯・科格兰（James Coglan）的《<a target="_blank" rel="noopener" href="https://shop.jcoglan.com/building-git/">构建 Git</a>》一书（顺便说一句：看起来在一月份的剩余时间里这本书有 <a target="_blank" rel="noopener" href="https://mastodon.social/@jcoglan/111807463940323655">50% 的折扣</a>）</li>
-<li>玛丽・罗斯・库克（Mary Rose Cook）的《<a target="_blank" rel="noopener" href="https://maryrosecook.com/blog/post/git-from-the-inside-out">Git 从内到外</a>》</li>
-<li>官方 <a target="_blank" rel="noopener" href="https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-index">git 存储库布局文档</a></li>
+<h1 id="一些其他参考资料">一些其他参考资料：</h1>
+<ul>
+<li>詹姆斯・科格兰（James Coglan）的《<a
+target="_blank" rel="noopener" href="https://shop.jcoglan.com/building-git/">构建
+Git</a>》一书（顺便说一句：看起来在一月份的剩余时间里这本书有 <a
+target="_blank" rel="noopener" href="https://mastodon.social/@jcoglan/111807463940323655">50%
+的折扣</a>）</li>
+<li>玛丽・罗斯・库克（Mary Rose Cook）的《<a
+target="_blank" rel="noopener" href="https://maryrosecook.com/blog/post/git-from-the-inside-out">Git
+从内到外</a>》</li>
+<li>官方 <a
+target="_blank" rel="noopener" href="https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-index">git
+存储库布局文档</a></li>
 </ul>
-<h1 id="译者说"><a href="#译者说" class="headerlink" title="译者说"></a>译者说</h1><h2 id="在翻译此文过程中，使用-hexo-的-reference-的脚注插件发现，脚注内容不能包含-双引号，否则会渲染异常。如下图："><a href="#在翻译此文过程中，使用-hexo-的-reference-的脚注插件发现，脚注内容不能包含-双引号，否则会渲染异常。如下图：" class="headerlink" title="在翻译此文过程中，使用 hexo 的 reference 的脚注插件发现，脚注内容不能包含 &quot;&quot; 双引号，否则会渲染异常。如下图："></a>在翻译此文过程中，使用 hexo 的 reference 的脚注插件发现，脚注内容不能包含 <code>&quot;&quot;</code> 双引号，否则会渲染异常。如下图：</h2>
+<h1 id="译者说">译者说</h1>
+<h2
+id="在翻译此文过程中使用-hexo-的-reference-的脚注插件发现脚注内容不能包含-双引号否则会渲染异常如下图">在翻译此文过程中，使用
+hexo 的 reference 的脚注插件发现，脚注内容不能包含 <code>""</code>
+双引号，否则会渲染异常。如下图：</h2>
 
-<h2 id="Stash-和-Stage-的区别"><a href="#Stash-和-Stage-的区别" class="headerlink" title="Stash 和 Stage 的区别"></a>Stash 和 Stage 的区别</h2><h3 id="Stash（暂存）"><a href="#Stash（暂存）" class="headerlink" title="Stash（暂存）"></a>Stash（暂存）</h3><ul>
-<li>暂存（Stash） 是一个用于临时保存工作进度的特性。当你在开发过程中需要切换到另一个分支，但你不想立即提交当前的工作（可能是因为它不完整或者你还在工作进行中），你可以使用 <code>git stash</code> 将当前的工作进度保存起来。</li>
-<li>被 stash 的更改会从工作目录和暂存区移除，这样你的工作目录就会变得干净，可以进行其他操作，如切换分支或拉取最新的更改。<br>你可以有多个 stash，每个 stash 都保存了工作进度的不同快照。</li>
-<li>通过 <code>git stash list</code> 可以查看所有的 stash，使用 <code>git stash apply</code> 可以重新应用 stash 的更改，或者使用 <code>git stash pop</code> 应用并从列表中移除这个 stash。</li>
+<h2 id="stash-和-stage-的区别">Stash 和 Stage 的区别</h2>
+<h3 id="stash暂存">Stash（暂存）</h3>
+<ul>
+<li>暂存（Stash）
+是一个用于临时保存工作进度的特性。当你在开发过程中需要切换到另一个分支，但你不想立即提交当前的工作（可能是因为它不完整或者你还在工作进行中），你可以使用
+<code>git stash</code> 将当前的工作进度保存起来。</li>
+<li>被 stash
+的更改会从工作目录和暂存区移除，这样你的工作目录就会变得干净，可以进行其他操作，如切换分支或拉取最新的更改。
+你可以有多个 stash，每个 stash 都保存了工作进度的不同快照。</li>
+<li>通过 <code>git stash list</code> 可以查看所有的 stash，使用
+<code>git stash apply</code> 可以重新应用 stash 的更改，或者使用
+<code>git stash pop</code> 应用并从列表中移除这个 stash。</li>
 </ul>
-<h3 id="Stage（暂存区）"><a href="#Stage（暂存区）" class="headerlink" title="Stage（暂存区）"></a>Stage（暂存区）</h3><ul>
-<li>暂存区 是 Git 工作流程中的一个中间步骤，用于准备下一次提交。当你对文件做了更改后，你需要使用 git add 命令将这些更改添加到暂存区。</li>
-<li>暂存区是一个文件（.git&#x2F;index），它记录了你准备在下一次提交中包含的文件列表和这些文件的当前状态。</li>
-<li>暂存区的状态可以通过 <code>git status</code> 查看，它会显示哪些文件已经被暂存，哪些文件还在工作目录中等待暂存。</li>
-<li>一旦你使用 git commit 提交了更改，暂存区的内容就会被写入一个新的提交，并且暂存区会被清空。</li>
+<h3 id="stage暂存区">Stage（暂存区）</h3>
+<ul>
+<li>暂存区 是 Git
+工作流程中的一个中间步骤，用于准备下一次提交。当你对文件做了更改后，你需要使用
+git add 命令将这些更改添加到暂存区。</li>
+<li>暂存区是一个文件（.git/index），它记录了你准备在下一次提交中包含的文件列表和这些文件的当前状态。</li>
+<li>暂存区的状态可以通过 <code>git status</code>
+查看，它会显示哪些文件已经被暂存，哪些文件还在工作目录中等待暂存。</li>
+<li>一旦你使用 git commit
+提交了更改，暂存区的内容就会被写入一个新的提交，并且暂存区会被清空。</li>
 </ul>
-<h3 id="区别总结"><a href="#区别总结" class="headerlink" title="区别总结"></a>区别总结</h3><ul>
-<li>目的不同：Stash 用于临时保存和恢复工作进度，而 Stage 用于准备和审查即将提交的更改。</li>
-<li>工作方式不同：Stash 会将更改保存在栈中，可以随时应用或丢弃；Stage 是一个准备区，用于在提交前组织和检查更改。</li>
-<li>状态影响不同：使用 Stash 后，工作目录会被清空，而 Stage 后，更改会被标记为待提交，但仍然保留在工作目录中。</li>
+<h3 id="区别总结">区别总结</h3>
+<ul>
+<li>目的不同：Stash 用于临时保存和恢复工作进度，而 Stage
+用于准备和审查即将提交的更改。</li>
+<li>工作方式不同：Stash 会将更改保存在栈中，可以随时应用或丢弃；Stage
+是一个准备区，用于在提交前组织和检查更改。</li>
+<li>状态影响不同：使用 Stash 后，工作目录会被清空，而 Stage
+后，更改会被标记为待提交，但仍然保留在工作目录中。</li>
 </ul>
-<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p><a target="_blank" rel="noopener" href="https://jvns.ca/blog/2024/01/26/inside-git/">原文链接</a></p>
-<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">在 Git 版本控制系统中，blob 是 Binary Large Object 的缩写，但在 Git 的上下文中，它通常指的是存储在仓库中的文件内容。在 Git 的对象存储中，blob 代表文件数据，即文件的具体内容。在 Git 的术语中，当你提交（commit）一个文件到仓库时，Git 会将文件的内容存储为一个 blob 对象。这个 blob 对象包含了文件的数据，但不包含文件的元数据（如文件名或目录结构）。然后，这些 blob 对象被引用在一个 tree 对象中，tree 对象相当于一个目录的快照，它记录了文件的名称、类型（是文件还是子目录）以及对应的 blob 或子 tree 的引用。<a href="#fnref:1" rev="footnote"> ↩</a></span></li></ol></div></div>
+<h1 id="参考文档">参考文档</h1>
+<p><a
+target="_blank" rel="noopener" href="https://jvns.ca/blog/2024/01/26/inside-git/">原文链接</a></p>
+<div id="footnotes">
+<hr>
+<div id="footnotelist">
+<ol style="list-style: none; padding-left: 0; margin-left: 40px">
+<li id="fn:1">
+<span
+style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span
+style="display: inline-block; vertical-align: top; margin-left: 10px;">在
+Git 版本控制系统中，blob 是 Binary Large Object 的缩写，但在 Git
+的上下文中，它通常指的是存储在仓库中的文件内容。在 Git
+的对象存储中，blob 代表文件数据，即文件的具体内容。在 Git
+的术语中，当你提交（commit）一个文件到仓库时，Git
+会将文件的内容存储为一个 blob 对象。这个 blob
+对象包含了文件的数据，但不包含文件的元数据（如文件名或目录结构）。然后，这些
+blob 对象被引用在一个 tree 对象中，tree
+对象相当于一个目录的快照，它记录了文件的名称、类型（是文件还是子目录）以及对应的
+blob 或子 tree 的引用。<a href="#fnref:1" rev="footnote"> ↩︎</a></span>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
     </div>
 
     
@@ -488,13 +595,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -559,6 +666,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

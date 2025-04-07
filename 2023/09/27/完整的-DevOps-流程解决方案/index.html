@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="完整的 DevOps 流程解决方案流程">
+    <meta name="description" content="完整的 DevOps 流程解决方案流程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="完整的 DevOps 流程解决方案">
 <meta property="og:url" content="https://toypipi.github.io/2023/09/27/%E5%AE%8C%E6%95%B4%E7%9A%84-DevOps-%E6%B5%81%E7%A8%8B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="完整的 DevOps 流程解决方案流程">
+<meta property="og:description" content="完整的 DevOps 流程解决方案流程">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://toypipi.github.io/2023/09/27/%E5%AE%8C%E6%95%B4%E7%9A%84-DevOps-%E6%B5%81%E7%A8%8B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/1.png">
 <meta property="og:image" content="https://toypipi.github.io/2023/09/27/%E5%AE%8C%E6%95%B4%E7%9A%84-DevOps-%E6%B5%81%E7%A8%8B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/2.png">
@@ -146,7 +146,8 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E7%9A%84-DevOps-%E6%B5%81%E7%A8%8B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">完整的 DevOps 流程解决方案流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E9%A1%B5%E8%AF%B7%E6%B1%82%E5%85%B3%E9%94%AE%E9%93%BE%E8%B7%AF"><span class="nav-number">2.</span> <span class="nav-text">网页请求关键链路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue-%E7%BB%84%E4%BB%B6%E5%BA%93%E5%BB%BA%E8%AE%BE%E5%AE%9E%E8%B7%B5"><span class="nav-number">3.</span> <span class="nav-text">Vue 组件库建设实践</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E7%9A%84-devops-%E6%B5%81%E7%A8%8B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">完整的 DevOps
+流程解决方案流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E9%A1%B5%E8%AF%B7%E6%B1%82%E5%85%B3%E9%94%AE%E9%93%BE%E8%B7%AF"><span class="nav-number">2.</span> <span class="nav-text">网页请求关键链路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vue-%E7%BB%84%E4%BB%B6%E5%BA%93%E5%BB%BA%E8%AE%BE%E5%AE%9E%E8%B7%B5"><span class="nav-number">3.</span> <span class="nav-text">Vue 组件库建设实践</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -280,45 +281,50 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<h1 id="完整的-DevOps-流程解决方案流程"><a href="#完整的-DevOps-流程解决方案流程" class="headerlink" title="完整的 DevOps 流程解决方案流程"></a>完整的 DevOps 流程解决方案流程</h1><img src="/2023/09/27/%E5%AE%8C%E6%95%B4%E7%9A%84-DevOps-%E6%B5%81%E7%A8%8B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/1.png" class="">
-
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<h1 id="完整的-devops-流程解决方案流程">完整的 DevOps
+流程解决方案流程</h1>
+<img src="/2023/09/27/%E5%AE%8C%E6%95%B4%E7%9A%84-DevOps-%E6%B5%81%E7%A8%8B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/1.png" class="">
 <span id="more"></span>
-
-<h1 id="网页请求关键链路"><a href="#网页请求关键链路" class="headerlink" title="网页请求关键链路"></a>网页请求关键链路</h1><img src="/2023/09/27/%E5%AE%8C%E6%95%B4%E7%9A%84-DevOps-%E6%B5%81%E7%A8%8B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/2.png" class="">
-
-<h1 id="Vue-组件库建设实践"><a href="#Vue-组件库建设实践" class="headerlink" title="Vue 组件库建设实践"></a>Vue 组件库建设实践</h1><ul>
+<h1 id="网页请求关键链路">网页请求关键链路</h1>
+<img src="/2023/09/27/%E5%AE%8C%E6%95%B4%E7%9A%84-DevOps-%E6%B5%81%E7%A8%8B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/2.png" class="">
+<h1 id="vue-组件库建设实践">Vue 组件库建设实践</h1>
+<ul>
 <li>[]《程序员修炼之道》</li>
 <li>DRY 原则：Don’t repeat yourself</li>
-<li>Rule of three 《重构》改善已有代码段额设计<ul>
-<li>Rule of three 称为”三次原则”，指的是当某个功能第三次出现时，才进行”抽象化”。 这是软件开发大家 Martin Fowler 在《Refactoring》一书中提出的。 它的涵义是，第一次用到某个功能时，你写一个特定的解决方法；第二次又用到的时候，你拷贝上一次的代码；第三次出现的时候，你才着手”抽象化”，写出通用的解决方法。</li>
-</ul>
-</li>
-<li>CRP 共同复用原则（The Common Reuse Principle）<ul>
+<li>Rule of three 《重构》改善已有代码段额设计
+<ul>
+<li>Rule of three
+称为”三次原则”，指的是当某个功能第三次出现时，才进行”抽象化”。
+这是软件开发大家 Martin Fowler 在《Refactoring》一书中提出的。
+它的涵义是，第一次用到某个功能时，你写一个特定的解决方法；第二次又用到的时候，你拷贝上一次的代码；第三次出现的时候，你才着手”抽象化”，写出通用的解决方法。</li>
+</ul></li>
+<li>CRP 共同复用原则（The Common Reuse Principle）
+<ul>
 <li>共同复用原则（CRP）是指，如果某个功能被多个项目使用，那么应该把它抽象成公共组件，而不是在每个项目中都写一遍。</li>
-</ul>
-</li>
-<li>SRP 单一职责原则（The Single Responsibility Principle）<ul>
+</ul></li>
+<li>SRP 单一职责原则（The Single Responsibility Principle）
+<ul>
 <li>单一职责原则（SRP）是指，每个组件只负责一个功能领域中的相应职责。</li>
-</ul>
-</li>
-<li>CCP 公用封闭原则（The Common Closed Principle）<ul>
+</ul></li>
+<li>CCP 公用封闭原则（The Common Closed Principle）
+<ul>
 <li>公用封闭原则（CCP）是指，如果某个功能被多个项目使用，那么这个功能应该保持稳定，不要随意修改。</li>
 <li>一个组件不应该包含多个引起它变化的原因</li>
-</ul>
-</li>
+</ul></li>
 <li>代码的可维护性大于复用性</li>
-<li>SDP 稳定依赖原则（The Stable Dependency Principle）<ul>
+<li>SDP 稳定依赖原则（The Stable Dependency Principle）
+<ul>
 <li>稳定依赖原则（SDP）是指，如果某个功能被多个项目使用，那么这个功能应该保持稳定，不要随意修改。</li>
-</ul>
-</li>
-<li>SAP 稳定抽象原则（The Stable Abstractions Principle）<ul>
+</ul></li>
+<li>SAP 稳定抽象原则（The Stable Abstractions Principle）
+<ul>
 <li>一个稳定的组件应该时抽象的</li>
-</ul>
-</li>
+</ul></li>
 <li>[]《DevOps 实践指南》</li>
 </ul>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>《大厂前端案例》PPT</p>
+<h1 id="reference">Reference</h1>
+<p>《大厂前端案例》PPT</p>
 
     </div>
 
@@ -409,13 +415,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -480,6 +486,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

@@ -266,17 +266,21 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>作用域简单来说就是一个变量的作用范围。<br>在 JavaScript 中作用域分成两种：</p>
+          <hr />
+<p>作用域简单来说就是一个变量的作用范围。 在 JavaScript
+中作用域分成两种：</p>
 <blockquote>
 <p>全局作用域</p>
 </blockquote>
 <ul>
 <li>直接在 script 标签中编写的代码都运行在全局作用域中</li>
 <li>全局作用域在打开页面时创建，在页面关闭时销毁</li>
-<li>全局作用域中有一个全局对象 window，window 对象由浏览器提供,可以在页面中直接使用，它代表的是整个的浏览器的窗口</li>
-<li>在全局作用域中创建的<strong>变量</strong>都会作为 window 对象的<strong>属性</strong>保存</li>
-<li>在全局作用域中创建的<strong>函数</strong>都会作为 window 对象的<strong>方法</strong>保存</li>
+<li>全局作用域中有一个全局对象 window，window
+对象由浏览器提供,可以在页面中直接使用，它代表的是整个的浏览器的窗口</li>
+<li>在全局作用域中创建的<strong>变量</strong>都会作为 window
+对象的<strong>属性</strong>保存</li>
+<li>在全局作用域中创建的<strong>函数</strong>都会作为 window
+对象的<strong>方法</strong>保存</li>
 <li>在全局作用域中创建的变量和函数可以在页面的任意位置访问,在函数作用域中也可以访问到全局作用域的变量。</li>
 <li>尽量不要在全局中创建变量</li>
 </ul>
@@ -380,12 +384,13 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>在 JavaScript 中，可以使用匿名函数的直接调用（Immediately Invoked Function Expression，IIFE）来立即执行函数。</p>
+          <hr />
+<p>在 JavaScript 中，可以使用匿名函数的直接调用（Immediately Invoked
+Function Expression，IIFE）来立即执行函数。</p>
 <p>下面是一个使用匿名函数直接调用的示例：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// 在这里编写需要执行的代码</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;这是一个匿名函数的直接调用示例。&quot;</span>);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-
-<p>在上面的示例中，我们使用 (function() { … })() 的语法来创建一个匿名函数，并立即调用它。函数体内的代码会立即执行。</p>
+<p>在上面的示例中，我们使用 (function() { … })()
+的语法来创建一个匿名函数，并立即调用它。函数体内的代码会立即执行。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/06/29/JavaScript-%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0%E7%9A%84%E7%9B%B4%E6%8E%A5%E8%B0%83%E7%94%A8/#more" rel="contents">
@@ -486,14 +491,19 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>CSS BEM（块元素修饰符）是一种命名约定和方法论，用于在编写可维护和可扩展的 CSS 代码时提供结构和规范。它的目标是解决样式表的命名冲突问题，并提供一种一致性和可重用性的编码方式。</p>
+          <hr />
+<p>CSS
+BEM（块元素修饰符）是一种命名约定和方法论，用于在编写可维护和可扩展的
+CSS
+代码时提供结构和规范。它的目标是解决样式表的命名冲突问题，并提供一种一致性和可重用性的编码方式。</p>
 <blockquote>
 <p>BEM 的命名约定由以下三个部分组成：</p>
 </blockquote>
 <p><strong>块（Block）</strong>：代表一个独立的、可重复使用的组件或模块，它是页面上的一个独立单元。块的命名应该简洁、清晰，并用一个单词或短语表示，使用连字符分隔单词（例如：button、header）。</p>
-<p><strong>元素（Element）</strong>：代表块的内部元素，它们不能独立存在，必须作为块的一部分存在。元素的命名应该以块的名称为前缀，用两个连下划线 ** 进行分隔（例如：button**text、header__logo）。</p>
-<p><strong>修饰符（Modifier）</strong>：代表块或元素的不同状态或变体。修饰符是可选的，可以通过改变外观、行为或状态来扩展块或元素。修饰符的命名应该以块或元素的名称为前缀，用两个连短划线 – 进行分隔（例如：button–primary、header–fixed）。</p>
+<p><strong>元素（Element）</strong>：代表块的内部元素，它们不能独立存在，必须作为块的一部分存在。元素的命名应该以块的名称为前缀，用两个连下划线
+** 进行分隔（例如：button**text、header__logo）。</p>
+<p><strong>修饰符（Modifier）</strong>：代表块或元素的不同状态或变体。修饰符是可选的，可以通过改变外观、行为或状态来扩展块或元素。修饰符的命名应该以块或元素的名称为前缀，用两个连短划线
+– 进行分隔（例如：button–primary、header–fixed）。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/06/27/CSS-%E4%B9%8B-BEM-%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/#more" rel="contents">
@@ -594,7 +604,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
+          <hr />
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-card <span class="keyword">class</span>=<span class="string">&quot;box-card&quot;</span> @mouseente native=<span class="string">&quot;enter&quot;</span> @mouseleave.<span class="property">native</span>=<span class="string">&#x27;leave&#x27;</span>&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">slot</span>=<span class="string">&quot;header&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">   <span class="tag">&lt;<span class="name">span</span>&gt;</span>卡片名称<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">   <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">style</span>=<span class="string">&quot;float: right; padding: 3px 0&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span>&gt;</span>操作按钮<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">&quot;o in 4&quot;</span> <span class="attr">:key</span>=<span class="string">&quot;o&quot;</span> <span class="attr">class</span>=<span class="string">&quot;text item&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">   &#123;&#123;&#x27;列表内容 &#x27; + o &#125;&#125;</span></span><br><span class="line"><span class="language-xml"> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/el-card&gt;</span><br><span class="line"></span><br><span class="line"><span class="attr">methods</span>: &#123;</span><br><span class="line"> <span class="title function_">enter</span>(<span class="params"></span>)&#123;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;enter&#x27;</span>)</span><br><span class="line"> &#125;,</span><br><span class="line"> <span class="title function_">leave</span>(<span class="params"></span>)&#123;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;leave&#x27;</span>)</span><br><span class="line"> &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
@@ -696,11 +706,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
+          <hr />
 <p>先说结论，可以通过 computed 和 watch 结合的方法实现监听复杂对象！</p>
-<p>需求：有一个单选框按钮组（手动&#x2F;自动），当点击手动时，输入框可以输入数值，当点击自动时，输入框禁用。</p>
+<p>需求：有一个单选框按钮组（手动/自动），当点击手动时，输入框可以输入数值，当点击自动时，输入框禁用。</p>
 <p>解决办法：</p>
-<p>1.首先给单选框添加 change 事件（Element 组件库），实现当单选框按钮值改变时是否禁用输入框。<br>2.由于单选框的值会根据后端回传数据改变，所以通过 watch 方法监听单选框值改变，实现当后端回传数据导致单选框按钮值改变，而输入框未实现同步禁用的问题。</p>
+<p>1.首先给单选框添加 change 事件（Element
+组件库），实现当单选框按钮值改变时是否禁用输入框。
+2.由于单选框的值会根据后端回传数据改变，所以通过 watch
+方法监听单选框值改变，实现当后端回传数据导致单选框按钮值改变，而输入框未实现同步禁用的问题。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/06/21/Vue-%E5%A6%82%E4%BD%95%E7%9B%91%E5%90%AC%E5%A4%8D%E6%9D%82%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E5%80%BC%E6%94%B9%E5%8F%98/#more" rel="contents">
@@ -749,13 +762,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -820,6 +833,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

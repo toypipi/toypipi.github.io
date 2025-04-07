@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="dependencies指定项目依赖，值为包名加上版本号。 版本号可以指定一个范围，有以下语法。  version：精确的版本，例如 1.0.0 &gt;version：大于 version &gt;&#x3D;version：大于等于 &lt;version: 小于 &lt;&#x3D;version: 小于等于 ~version: 允许补丁级别的变化，例如 ~1.2.3 表示 &gt;&#x3D;1.2.3 &lt;1.">
+    <meta name="description" content="dependencies 指定项目依赖，值为包名加上版本号。 版本号可以指定一个范围，有以下语法。  version：精确的版本，例如 1.0.0 &gt;version：大于 version &gt;&#x3D;version：大于等于 &lt;version: 小于 &lt;&#x3D;version: 小于等于 ~version: 允许补丁级别的变化，例如 ~1.2.3 表示 &gt;&#x3D;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="package.json dependencies 指定项目依赖">
 <meta property="og:url" content="https://toypipi.github.io/2022/03/04/package-json-dependencies-%E6%8C%87%E5%AE%9A%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="dependencies指定项目依赖，值为包名加上版本号。 版本号可以指定一个范围，有以下语法。  version：精确的版本，例如 1.0.0 &gt;version：大于 version &gt;&#x3D;version：大于等于 &lt;version: 小于 &lt;&#x3D;version: 小于等于 ~version: 允许补丁级别的变化，例如 ~1.2.3 表示 &gt;&#x3D;1.2.3 &lt;1.">
+<meta property="og:description" content="dependencies 指定项目依赖，值为包名加上版本号。 版本号可以指定一个范围，有以下语法。  version：精确的版本，例如 1.0.0 &gt;version：大于 version &gt;&#x3D;version：大于等于 &lt;version: 小于 &lt;&#x3D;version: 小于等于 ~version: 允许补丁级别的变化，例如 ~1.2.3 表示 &gt;&#x3D;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-04T06:22:01.000Z">
 <meta property="article:modified_time" content="2022-03-04T06:29:18.458Z">
@@ -279,8 +279,9 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<h2 id="dependencies"><a href="#dependencies" class="headerlink" title="dependencies"></a>dependencies</h2><p>指定项目依赖，值为包名加上版本号。</p>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<h2 id="dependencies">dependencies</h2>
+<p>指定项目依赖，值为包名加上版本号。</p>
 <p>版本号可以指定一个范围，有以下语法。</p>
 <ul>
 <li><code>version</code>：精确的版本，例如 <code>1.0.0</code></li>
@@ -288,15 +289,19 @@
 <li><code>&gt;=version</code>：大于等于</li>
 <li><code>&lt;version</code>: 小于</li>
 <li><code>&lt;=version</code>: 小于等于</li>
-<li><code>~version</code>: 允许补丁级别的变化，例如 <code>~1.2.3</code> 表示 <code>&gt;=1.2.3 &lt;1.3.0</code></li>
-<li><code>^version</code>：允许不更改最左侧非0版本号数字的变化，例如 <code>^1.2.3</code> 表示 <code>&gt;=1.2.3 &lt;2.0.0</code></li>
+<li><code>~version</code>: 允许补丁级别的变化，例如 <code>~1.2.3</code>
+表示 <code>&gt;=1.2.3 &lt;1.3.0</code></li>
+<li><code>^version</code>：允许不更改最左侧非0版本号数字的变化，例如
+<code>^1.2.3</code> 表示 <code>&gt;=1.2.3 &lt;2.0.0</code></li>
 <li><code>1.2.x</code></li>
 <li><code>http://...</code></li>
 <li><code>*</code></li>
-<li><code>version1 - version2</code> 等同于 <code>&gt;=version1 &lt;=version2</code></li>
+<li><code>version1 - version2</code> 等同于
+<code>&gt;=version1 &lt;=version2</code></li>
 </ul>
 <span id="more"></span>
-<p><a target="_blank" rel="noopener" href="https://docs.npmjs.com/cli/v6/configuring-npm/package-json">参考文档</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://docs.npmjs.com/cli/v6/configuring-npm/package-json">参考文档</a></p>
 
     </div>
 
@@ -389,13 +394,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -460,6 +465,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

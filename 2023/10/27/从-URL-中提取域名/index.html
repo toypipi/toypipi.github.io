@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="DESCRIPTIONWrite a function that when given a URL as a string, parses out just the domain name and returns it as a string. SOLUTION 方法一：  12345678910111213141516function domainName(url) &#123;  let d">
+    <meta name="description" content="DESCRIPTION Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. SOLUTION  方法一：  12345678910111213141516function domainName(url) &amp;#1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从 URL 中提取域名">
 <meta property="og:url" content="https://toypipi.github.io/2023/10/27/%E4%BB%8E-URL-%E4%B8%AD%E6%8F%90%E5%8F%96%E5%9F%9F%E5%90%8D/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="DESCRIPTIONWrite a function that when given a URL as a string, parses out just the domain name and returns it as a string. SOLUTION 方法一：  12345678910111213141516function domainName(url) &#123;  let d">
+<meta property="og:description" content="DESCRIPTION Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. SOLUTION  方法一：  12345678910111213141516function domainName(url) &amp;#1">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-10-27T03:22:43.000Z">
 <meta property="article:modified_time" content="2024-05-17T02:03:05.816Z">
@@ -143,7 +143,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DESCRIPTION"><span class="nav-number">1.</span> <span class="nav-text">DESCRIPTION</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SOLUTION"><span class="nav-number">2.</span> <span class="nav-text">SOLUTION</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#description"><span class="nav-number">1.</span> <span class="nav-text">DESCRIPTION</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text">SOLUTION</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -283,21 +283,25 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<h1 id="DESCRIPTION"><a href="#DESCRIPTION" class="headerlink" title="DESCRIPTION"></a>DESCRIPTION</h1><p>Write a function that when given a URL as a string, parses out just the domain name and returns it as a string.</p>
-<h1 id="SOLUTION"><a href="#SOLUTION" class="headerlink" title="SOLUTION"></a>SOLUTION</h1><ul>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<h1 id="description">DESCRIPTION</h1>
+<p>Write a function that when given a URL as a string, parses out just
+the domain name and returns it as a string.</p>
+<h1 id="solution">SOLUTION</h1>
+<ul>
 <li>方法一：</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">domainName</span>(<span class="params">url</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> domain;</span><br><span class="line">  <span class="comment">// find &amp; remove protocol (http, ftp, etc.) and get domain</span></span><br><span class="line">  <span class="keyword">if</span> (url.<span class="title function_">indexOf</span>(<span class="string">&quot;://&quot;</span>) &gt; -<span class="number">1</span>) &#123;</span><br><span class="line">    domain = url.<span class="title function_">split</span>(<span class="string">&quot;/&quot;</span>)[<span class="number">2</span>];</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    domain = url.<span class="title function_">split</span>(<span class="string">&quot;/&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// remove port number if any</span></span><br><span class="line">  domain = domain.<span class="title function_">split</span>(<span class="string">&quot;:&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">  <span class="comment">// remove www if any</span></span><br><span class="line">  domain = domain.<span class="title function_">replace</span>(<span class="string">&quot;www.&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">  <span class="comment">// remove .com if any</span></span><br><span class="line">  domain = domain.<span class="title function_">replace</span>(<span class="string">&quot;.com&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> domain.<span class="title function_">split</span>(<span class="string">&quot;.&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <span id="more"></span>
-
 <ul>
-<li>方法二：先删除域名前的字符串然后根据 <code>.</code> 分割，第一个就是我们要的域名啦！</li>
+<li>方法二：先删除域名前的字符串然后根据 <code>.</code>
+分割，第一个就是我们要的域名啦！</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">domainName</span>(<span class="params">url</span>) &#123;</span><br><span class="line">  url = url.<span class="title function_">replace</span>(<span class="string">&quot;https://&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">  url = url.<span class="title function_">replace</span>(<span class="string">&quot;http://&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">  url = url.<span class="title function_">replace</span>(<span class="string">&quot;www.&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> url.<span class="title function_">split</span>(<span class="string">&quot;.&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://www.codewars.com/kata/514a024011ea4fb54200004b/solutions/javascript?filter=me&sort=best_practice&invalids=false">Extract the domain name from a URL</a></p>
+<h1 id="reference">Reference</h1>
+<p><a
+target="_blank" rel="noopener" href="https://www.codewars.com/kata/514a024011ea4fb54200004b/solutions/javascript?filter=me&amp;sort=best_practice&amp;invalids=false">Extract
+the domain name from a URL</a></p>
 
     </div>
 
@@ -388,13 +392,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -459,6 +463,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

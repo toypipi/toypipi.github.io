@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="今天打算开始我的视频剪辑之旅，首先需要下载一个 win7 支持的 OBS 版本，别问为什么是 win7，问就是公司电脑……申请新电脑及装系统贼麻烦 o(╥﹏╥)o我下载的是OBS-Studio-27.2.4.exe 版本，如果找不到可以留言获取哦~ 安装完成后打开软件开始录制，发现软件报错：">
+    <meta name="description" content="今天打算开始我的视频剪辑之旅，首先需要下载一个 win7 支持的 OBS 版本，别问为什么是 win7，问就是公司电脑……申请新电脑及装系统贼麻烦 o(╥﹏╥)o 我下载的是OBS-Studio-27.2.4.exe 版本，如果找不到可以留言获取哦~ 安装完成后打开软件开始录制，发现软件报错：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OBS Failed to open NVENC Codec: Function not implemented">
 <meta property="og:url" content="https://toypipi.github.io/2024/05/16/OBS-Failed-to-open-NVENC-Codec-Function-not-implemented/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="今天打算开始我的视频剪辑之旅，首先需要下载一个 win7 支持的 OBS 版本，别问为什么是 win7，问就是公司电脑……申请新电脑及装系统贼麻烦 o(╥﹏╥)o我下载的是OBS-Studio-27.2.4.exe 版本，如果找不到可以留言获取哦~ 安装完成后打开软件开始录制，发现软件报错：">
+<meta property="og:description" content="今天打算开始我的视频剪辑之旅，首先需要下载一个 win7 支持的 OBS 版本，别问为什么是 win7，问就是公司电脑……申请新电脑及装系统贼麻烦 o(╥﹏╥)o 我下载的是OBS-Studio-27.2.4.exe 版本，如果找不到可以留言获取哦~ 安装完成后打开软件开始录制，发现软件报错：">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://toypipi.github.io/2024/05/16/OBS-Failed-to-open-NVENC-Codec-Function-not-implemented/1.png">
 <meta property="article:published_time" content="2024-05-16T10:19:11.000Z">
@@ -286,18 +286,22 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>今天打算开始我的视频剪辑之旅，首先需要下载一个 win7 支持的 OBS 版本，别问为什么是 win7，问就是公司电脑……申请新电脑及装系统贼麻烦 o(╥﹏╥)o<br>我下载的是<code>OBS-Studio-27.2.4.exe</code> 版本，如果找不到可以留言获取哦~</p>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<p>今天打算开始我的视频剪辑之旅，首先需要下载一个 win7 支持的 OBS
+版本，别问为什么是 win7，问就是公司电脑……申请新电脑及装系统贼麻烦
+o(╥﹏╥)o<br />
+我下载的是<code>OBS-Studio-27.2.4.exe</code>
+版本，如果找不到可以留言获取哦~</p>
 <p>安装完成后打开软件开始录制，发现软件报错：</p>
 <img src="/2024/05/16/OBS-Failed-to-open-NVENC-Codec-Function-not-implemented/1.png" class="">
-
 <span id="more"></span>
-
 <p>google 一下你就知道 😁 第一条就是解决办法：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. Open OBS</span><br><span class="line">2. Click Settings in the lower right.</span><br><span class="line">3. Click Output, then look for the &quot;Recording&quot; box.</span><br><span class="line">4. Click &quot;Encoder&quot; and switch it to Software instead of NVENC, then apply.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <p>大功告成 🎉</p>
-<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p><a target="_blank" rel="noopener" href="https://obsproject.com/forum/threads/obs-failed-to-open-nvenc-codec-function-not-implemented.124430/">OBS Failed to open NVENC Codec: Function not implemented</a></p>
+<h1 id="参考文档">参考文档</h1>
+<p><a
+target="_blank" rel="noopener" href="https://obsproject.com/forum/threads/obs-failed-to-open-nvenc-codec-function-not-implemented.124430/">OBS
+Failed to open NVENC Codec: Function not implemented</a></p>
 
     </div>
 
@@ -389,13 +393,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -460,6 +464,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

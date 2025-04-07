@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="柯里化（Currying）是一种函数式编程技术，它将一个多参数的函数转换为一系列单参数函数的嵌套调用。具体来说，柯里化可以将一个接受多个参数的函数 f(x, y, z) 转换成一个接受单个参数的函数 g(x)，其中 g(x) 返回一个接受单个参数的函数 h(y)，h(y) 返回一个接受单个参数的函数 i(z)，最终 i(z) 返回 f(x, y, z) 的结果。 通过柯里化，我们可以将一个多参数">
+    <meta name="description" content="柯里化（Currying）是一种函数式编程技术，它将一个多参数的函数转换为一系列单参数函数的嵌套调用。具体来说，柯里化可以将一个接受多个参数的函数 f(x, y, z) 转换成一个接受单个参数的函数 g(x)，其中 g(x) 返回一个接受单个参数的函数 h(y)，h(y) 返回一个接受单个参数的函数 i(z)，最终 i(z) 返回 f(x, y, z) 的结果。 通过柯里化，我们可以将">
 <meta property="og:type" content="article">
 <meta property="og:title" content="柯里化（Currying）">
 <meta property="og:url" content="https://toypipi.github.io/2023/05/23/%E6%9F%AF%E9%87%8C%E5%8C%96%EF%BC%88Currying%EF%BC%89/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="柯里化（Currying）是一种函数式编程技术，它将一个多参数的函数转换为一系列单参数函数的嵌套调用。具体来说，柯里化可以将一个接受多个参数的函数 f(x, y, z) 转换成一个接受单个参数的函数 g(x)，其中 g(x) 返回一个接受单个参数的函数 h(y)，h(y) 返回一个接受单个参数的函数 i(z)，最终 i(z) 返回 f(x, y, z) 的结果。 通过柯里化，我们可以将一个多参数">
+<meta property="og:description" content="柯里化（Currying）是一种函数式编程技术，它将一个多参数的函数转换为一系列单参数函数的嵌套调用。具体来说，柯里化可以将一个接受多个参数的函数 f(x, y, z) 转换成一个接受单个参数的函数 g(x)，其中 g(x) 返回一个接受单个参数的函数 h(y)，h(y) 返回一个接受单个参数的函数 i(z)，最终 i(z) 返回 f(x, y, z) 的结果。 通过柯里化，我们可以将">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-05-23T09:14:37.000Z">
 <meta property="article:modified_time" content="2023-05-23T09:22:09.835Z">
@@ -277,14 +277,24 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>柯里化（Currying）是一种函数式编程技术，它将一个多参数的函数转换为一系列单参数函数的嵌套调用。具体来说，柯里化可以将一个接受多个参数的函数 f(x, y, z) 转换成一个接受单个参数的函数 g(x)，其中 g(x) 返回一个接受单个参数的函数 h(y)，h(y) 返回一个接受单个参数的函数 i(z)，最终 i(z) 返回 f(x, y, z) 的结果。</p>
-<p>通过柯里化，我们可以将一个多参数的函数变成一系列单参数函数的组合，这样可以更方便地组合复杂的函数，也可以更容易地进行函数复用。此外，柯里化还可以帮助我们实现函数的部分应用，即将一个多参数函数的一部分参数固定下来，得到一个新的单参数函数。</p>
-<span id="more"></span>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">x, y, z</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> x + y + z;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">curry</span>(<span class="params">fn</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">function</span> <span class="title function_">curried</span>(<span class="params">...args</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (args.<span class="property">length</span> &gt;= fn.<span class="property">length</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> fn.<span class="title function_">apply</span>(<span class="variable language_">this</span>, args);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">function</span>(<span class="params">...moreArgs</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> curried.<span class="title function_">apply</span>(<span class="variable language_">this</span>, args.<span class="title function_">concat</span>(moreArgs));</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> curriedAdd = <span class="title function_">curry</span>(add);</span><br><span class="line"><span class="keyword">const</span> add5 = <span class="title function_">curriedAdd</span>(<span class="number">5</span>);</span><br><span class="line"><span class="keyword">const</span> add5and6 = <span class="title function_">add5</span>(<span class="number">6</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">add5and6</span>(<span class="number">7</span>)); <span class="comment">// 输出 18</span></span><br></pre></td></tr></table></figure>
-<p>在上述代码中，我们首先定义了一个接受三个参数的函数 add(x, y, z)，然后定义了一个通用的柯里化函数 curry(fn)，它接受一个函数作为参数，返回一个新的柯里化后的函数。</p>
-<p>在 curry() 函数内部，我们使用了递归的方式来实现柯里化。如果函数的参数个数已经达到了原函数的参数个数，就直接调用原函数并返回结果；否则，返回一个新的函数，它接受更多的参数，并将之前的参数和新的参数合并起来，继续等待下一次调用。</p>
-<p>然后，我们使用 curry() 函数将 add() 函数进行柯里化，并得到一个新的柯里化后的函数 curriedAdd()。接着，我们使用 curriedAdd(5) 得到一个新的函数 add5()，它可以将 5 与其它两个参数相加。最后，我们使用 add5(6) 得到一个新的函数 add5and6()，它可以将 5、6 和一个额外的参数相加，并返回结果。</p>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<p>柯里化（Currying）是一种函数式编程技术，它将一个多参数的函数转换为一系列单参数函数的嵌套调用。具体来说，柯里化可以将一个接受多个参数的函数
+f(x, y, z) 转换成一个接受单个参数的函数 g(x)，其中 g(x)
+返回一个接受单个参数的函数 h(y)，h(y) 返回一个接受单个参数的函数
+i(z)，最终 i(z) 返回 f(x, y, z) 的结果。</p>
+<p>通过柯里化，我们可以将一个多参数的函数变成一系列单参数函数的组合，这样可以更方便地组合复杂的函数，也可以更容易地进行函数复用。此外，柯里化还可以帮助我们实现函数的部分应用，即将一个多参数函数的一部分参数固定下来，得到一个新的单参数函数。
+<span id="more"></span> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">x, y, z</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> x + y + z;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">curry</span>(<span class="params">fn</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">function</span> <span class="title function_">curried</span>(<span class="params">...args</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (args.<span class="property">length</span> &gt;= fn.<span class="property">length</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> fn.<span class="title function_">apply</span>(<span class="variable language_">this</span>, args);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">function</span>(<span class="params">...moreArgs</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> curried.<span class="title function_">apply</span>(<span class="variable language_">this</span>, args.<span class="title function_">concat</span>(moreArgs));</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> curriedAdd = <span class="title function_">curry</span>(add);</span><br><span class="line"><span class="keyword">const</span> add5 = <span class="title function_">curriedAdd</span>(<span class="number">5</span>);</span><br><span class="line"><span class="keyword">const</span> add5and6 = <span class="title function_">add5</span>(<span class="number">6</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">add5and6</span>(<span class="number">7</span>)); <span class="comment">// 输出 18</span></span><br></pre></td></tr></table></figure>
+在上述代码中，我们首先定义了一个接受三个参数的函数 add(x, y,
+z)，然后定义了一个通用的柯里化函数
+curry(fn)，它接受一个函数作为参数，返回一个新的柯里化后的函数。</p>
+<p>在 curry()
+函数内部，我们使用了递归的方式来实现柯里化。如果函数的参数个数已经达到了原函数的参数个数，就直接调用原函数并返回结果；否则，返回一个新的函数，它接受更多的参数，并将之前的参数和新的参数合并起来，继续等待下一次调用。</p>
+<p>然后，我们使用 curry() 函数将 add()
+函数进行柯里化，并得到一个新的柯里化后的函数
+curriedAdd()。接着，我们使用 curriedAdd(5) 得到一个新的函数
+add5()，它可以将 5 与其它两个参数相加。最后，我们使用 add5(6)
+得到一个新的函数 add5and6()，它可以将 5、6
+和一个额外的参数相加，并返回结果。</p>
 <p>在这个例子中，我们展示了柯里化的一个重要特性：部分应用。通过柯里化，我们可以将原本接受多个参数的函数转换为一系列接受单个参数的函数，然后将其中一部分参数固定下来，得到一个新的函数。这种技术可以帮助我们更方便地进行函数复用和组合。</p>
 
     </div>
@@ -377,13 +387,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -448,6 +458,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

@@ -266,7 +266,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
+          <hr />
 <p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
 <p>请必须使用时间复杂度为 O(log n) 的算法。</p>
 <p>自己想到的解法,时间复杂度为 O(n)：</p>
@@ -377,19 +377,23 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<ol>
+          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<ol type="1">
 <li>修改文档背景色</li>
 </ol>
-<p>参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/annuusheli/article/details/122397114">原文</a>，记录备查！</p>
-<p>修改路径：打开 Acrobat DC 点击编辑 &#x3D;&#x3D;&gt; 首选项 &#x3D;&#x3D;&gt; 辅助工具 &#x3D;&#x3D;&gt; 文档颜色选项 &#x3D;&#x3D;&gt; 自定义颜色。</p>
+<p>参考<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/annuusheli/article/details/122397114">原文</a>，记录备查！</p>
+<p>修改路径：打开 Acrobat DC 点击编辑 ==&gt; 首选项 ==&gt; 辅助工具
+==&gt; 文档颜色选项 ==&gt; 自定义颜色。</p>
 <p>几种柔和的背景色配色方案:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Typora颜色：（255,251,232）</span><br><span class="line">下面的颜色部分转载于（https://www.jianshu.com/p/bbe9ce62e5a2）</span><br><span class="line">河白色 FFFFFF rgb(255, 255, 255)</span><br><span class="line">杏仁黄 FAF9DE rgb(250, 249, 222)</span><br><span class="line">秋叶褐 FFF2E2 rgb(255, 242, 226)</span><br><span class="line">胭脂红 FDE6E0 rgb(253, 230, 224)</span><br><span class="line">青草绿 E3EDCD rgb(227, 237, 205)</span><br><span class="line">海天蓝 DCE2F1 rgb(220, 226, 241)</span><br><span class="line">葛巾紫 E9EBFE rgb(233, 235, 254)</span><br><span class="line">极光灰 EAEAEF rgb(234, 234, 239)</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
+<ol start="2" type="1">
 <li>快速高亮文本</li>
 </ol>
-<p>参考<a target="_blank" rel="noopener" href="https://helpx.adobe.com/cn/acrobat/using/keyboard-shortcuts.html">原文</a>，要启用单键快捷方式，请打开“首选项”对话框（“编辑”&gt;“首选项”），然后在“一般”下，选择“使用单键加速键访问工具”选项。<br>展开页面右侧导航，选择 注释 ，点击 高亮文本 工具，可实现鼠标左键双击高亮文本。</p>
+<p>参考<a
+target="_blank" rel="noopener" href="https://helpx.adobe.com/cn/acrobat/using/keyboard-shortcuts.html">原文</a>，要启用单键快捷方式，请打开“首选项”对话框（“编辑”&gt;“首选项”），然后在“一般”下，选择“使用单键加速键访问工具”选项。
+展开页面右侧导航，选择 注释 ，点击 高亮文本
+工具，可实现鼠标左键双击高亮文本。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">选定当前高亮标记工具 U</span><br></pre></td></tr></table></figure>
 
       
@@ -490,10 +494,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
+          <hr />
 <p>自己想到的解法，就是循环遍历数组中的每一个元素，求出左侧数之和和右侧数之和，然后判断是否相等。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pivotIndex = <span class="keyword">function</span> (<span class="params">nums</span>) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> sumLeft = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> sumRight = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1.求左侧数之和</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> l = <span class="number">0</span>; l &lt; i; l++) &#123;</span><br><span class="line">      sumLeft += nums[l];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2.求右侧数之和</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> r = i + <span class="number">1</span>; r &lt; nums.<span class="property">length</span>; r++) &#123;</span><br><span class="line">      sumRight += nums[r];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 判断</span></span><br><span class="line">    <span class="keyword">if</span> (sumLeft === sumRight) &#123;</span><br><span class="line">      <span class="keyword">return</span> i;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i === nums.<span class="property">length</span> - <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">nums = [<span class="number">1</span>, <span class="number">7</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">6</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">pivotIndex</span>(nums));</span><br></pre></td></tr></table></figure>
-
 <p>由于使用了嵌套的 for 循环，所以时间复杂度为 O(n²)。</p>
           <!--noindex-->
             <div class="post-button">
@@ -601,13 +604,24 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<h1 id="英文原版书"><a href="#英文原版书" class="headerlink" title="英文原版书"></a>英文原版书</h1><ul>
-<li><input checked="" disabled="" type="checkbox"> 1.<a target="_blank" rel="noopener" href="https://www.amazon.com/Dinosaurs-Before-Dark-Magic-House/dp/0679824111/ref=sr_1_1?crid=1A9XM3ZS88ZC2&keywords=dinosaurs+before+dark+magic+tree+house,+no.+1&qid=1690514336&sprefix=,aps,442&sr=8-1">Dinosaurs Before Dark (Magic Tree House, No. 1)</a></li>
-<li><input checked="" disabled="" type="checkbox"> 2.<a target="_blank" rel="noopener" href="https://www.amazon.com/Knight-Dawn-Magic-Tree-House/dp/067982412X/ref=sr_1_1?keywords=the+knight+at+dawn&qid=1690856230&s=books&sprefix=the+knight+at+,stripbooks-intl-ship,474&sr=1-1">The Knight at Dawn (Magic Tree House, No. 2)</a></li>
-<li><input checked="" disabled="" type="checkbox"> 3.<a target="_blank" rel="noopener" href="https://www.amazon.com/Mummies-Morning-Magic-Tree-House/dp/0679824243/ref=sr_1_1?keywords=mummies+in+the+morning&qid=1691631796&s=books&sprefix=mum,stripbooks-intl-ship,295&sr=1-1">Mummies in the Morning</a></li>
-<li><input checked="" disabled="" type="checkbox"> 4.<a target="_blank" rel="noopener" href="https://www.amazon.com/gp/product/0679824251?ref_=dbs_m_mng_rwt_calw_tpbk_3&storeType=ebooks&qid=1691631796&sr=1-1">Pirates Past Noon</a></li>
-<li><input checked="" disabled="" type="checkbox"> 5.<a target="_blank" rel="noopener" href="https://www.amazon.com/gp/product/0679863710?ref_=dbs_m_mng_rwt_calw_tpbk_4&storeType=ebooks&qid=1691631796&sr=1-1">Night of the Ninjas</a></li>
+          <hr />
+<h1 id="英文原版书">英文原版书</h1>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="" />1.<a
+target="_blank" rel="noopener" href="https://www.amazon.com/Dinosaurs-Before-Dark-Magic-House/dp/0679824111/ref=sr_1_1?crid=1A9XM3ZS88ZC2&amp;keywords=dinosaurs+before+dark+magic+tree+house%2C+no.+1&amp;qid=1690514336&amp;sprefix=%2Caps%2C442&amp;sr=8-1">Dinosaurs
+Before Dark (Magic Tree House, No. 1)</a></label></li>
+<li><label><input type="checkbox" checked="" />2.<a
+target="_blank" rel="noopener" href="https://www.amazon.com/Knight-Dawn-Magic-Tree-House/dp/067982412X/ref=sr_1_1?keywords=the+knight+at+dawn&amp;qid=1690856230&amp;s=books&amp;sprefix=the+knight+at+%2Cstripbooks-intl-ship%2C474&amp;sr=1-1">The
+Knight at Dawn (Magic Tree House, No. 2)</a></label></li>
+<li><label><input type="checkbox" checked="" />3.<a
+target="_blank" rel="noopener" href="https://www.amazon.com/Mummies-Morning-Magic-Tree-House/dp/0679824243/ref=sr_1_1?keywords=mummies+in+the+morning&amp;qid=1691631796&amp;s=books&amp;sprefix=mum%2Cstripbooks-intl-ship%2C295&amp;sr=1-1">Mummies
+in the Morning</a></label></li>
+<li><label><input type="checkbox" checked="" />4.<a
+target="_blank" rel="noopener" href="https://www.amazon.com/gp/product/0679824251?ref_=dbs_m_mng_rwt_calw_tpbk_3&amp;storeType=ebooks&amp;qid=1691631796&amp;sr=1-1">Pirates
+Past Noon</a></label></li>
+<li><label><input type="checkbox" checked="" />5.<a
+target="_blank" rel="noopener" href="https://www.amazon.com/gp/product/0679863710?ref_=dbs_m_mng_rwt_calw_tpbk_4&amp;storeType=ebooks&amp;qid=1691631796&amp;sr=1-1">Night
+of the Ninjas</a></label></li>
 </ul>
           <!--noindex-->
             <div class="post-button">
@@ -715,54 +729,50 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<ol>
+          <hr />
+<ol type="1">
 <li><p>作用域与作用域链</p>
 <ul>
 <li><p>作用域</p>
 <ul>
-<li>理解<ul>
+<li>理解
+<ul>
 <li>代码段所在的区域</li>
 <li>它是静态的（相对于上下文对象），在编写代码时就确定了</li>
-</ul>
-</li>
-<li>分类<ul>
+</ul></li>
+<li>分类
+<ul>
 <li>全局作用域</li>
 <li>函数作用域</li>
 <li>块作用域</li>
-</ul>
-</li>
-<li>作用<ul>
+</ul></li>
+<li>作用
+<ul>
 <li>隔离变量，不同作用域下同名变量不会有冲突</li>
-</ul>
-</li>
-</ul>
-</li>
+</ul></li>
+</ul></li>
 <li><p>作用域与执行上下文</p>
 <ul>
-<li>区别 1<ul>
+<li>区别 1
+<ul>
 <li>全局作用域外，每个函数都会创建自己的作用域，作用域在函数定义时就已经确定了，而不是在调用时确定</li>
 <li>全局执行上下文环境是在全局作用域确定后，js 代码马上执行之前创建</li>
 <li>函数执行上下文环境是在调用函数时，函数体代码执行之前创建</li>
-</ul>
-</li>
-<li>区别 2<ul>
+</ul></li>
+<li>区别 2
+<ul>
 <li>作用域是静态的，只要函数定义好了就一直存在，且不会变化</li>
 <li>上下文环境是动态的，调用函数时创建，函数调用结束时上下文环境就自动释放</li>
-</ul>
-</li>
-<li>联系<ul>
+</ul></li>
+<li>联系
+<ul>
 <li>执行上下文环境（对象）是从属于所在的作用域</li>
-<li>全局上下文环境 &#x3D;&#x3D;&gt; 全局作用域</li>
-<li>函数上下文环境 &#x3D;&#x3D;&gt; 对应的函数使用域</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>作用域链</p>
-</li>
-</ul>
-</li>
+<li>全局上下文环境 ==&gt; 全局作用域</li>
+<li>函数上下文环境 ==&gt; 对应的函数使用域</li>
+</ul></li>
+</ul></li>
+<li><p>作用域链</p></li>
+</ul></li>
 </ol>
           <!--noindex-->
             <div class="post-button">
@@ -812,13 +822,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -883,6 +893,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

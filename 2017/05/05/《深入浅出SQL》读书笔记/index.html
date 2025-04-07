@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="学习《深入浅出SQL》，为了加深记忆，边读边做笔记。如有侵权，立即删除。  1.数据和表：保存所有东西的地方什么是数据库数据库是保存表和其他相关SQL结构的容器。 数据库包含关联数据数据库中所有的表应该能以某种方式相互关联。列是存储在表中的一列数据。行是一组能够描述某个事物的列的集合。列和行构成了表。">
+    <meta name="description" content="学习《深入浅出SQL》，为了加深记忆，边读边做笔记。如有侵权，立即删除。  1.数据和表：保存所有东西的地方 什么是数据库 数据库是保存表和其他相关SQL结构的容器。 ### 数据库包含关联数据 数据库中所有的表应该能以某种方式相互关联。 列是存储在表中的一列数据。行是一组能够描述某个事物的列的集合。列和行构成了表。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《深入浅出SQL》读书笔记">
 <meta property="og:url" content="https://toypipi.github.io/2017/05/05/%E3%80%8A%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BASQL%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="学习《深入浅出SQL》，为了加深记忆，边读边做笔记。如有侵权，立即删除。  1.数据和表：保存所有东西的地方什么是数据库数据库是保存表和其他相关SQL结构的容器。 数据库包含关联数据数据库中所有的表应该能以某种方式相互关联。列是存储在表中的一列数据。行是一组能够描述某个事物的列的集合。列和行构成了表。">
+<meta property="og:description" content="学习《深入浅出SQL》，为了加深记忆，边读边做笔记。如有侵权，立即删除。  1.数据和表：保存所有东西的地方 什么是数据库 数据库是保存表和其他相关SQL结构的容器。 ### 数据库包含关联数据 数据库中所有的表应该能以某种方式相互关联。 列是存储在表中的一列数据。行是一组能够描述某个事物的列的集合。列和行构成了表。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-05-05T01:26:26.000Z">
 <meta property="article:modified_time" content="2020-11-03T03:44:00.369Z">
@@ -144,7 +144,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%95%B0%E6%8D%AE%E5%92%8C%E8%A1%A8%EF%BC%9A%E4%BF%9D%E5%AD%98%E6%89%80%E6%9C%89%E4%B8%9C%E8%A5%BF%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="nav-number">1.</span> <span class="nav-text">1.数据和表：保存所有东西的地方</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.1.</span> <span class="nav-text">什么是数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8C%85%E5%90%AB%E5%85%B3%E8%81%94%E6%95%B0%E6%8D%AE"><span class="nav-number">1.2.</span> <span class="nav-text">数据库包含关联数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-SELECT%E8%AF%AD%E5%8F%A5%EF%BC%9A%E5%8F%96%E5%BE%97%E7%B2%BE%E7%BE%8E%E5%8C%85%E8%A3%85%E9%87%8C%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="nav-number">2.</span> <span class="nav-text">2.SELECT语句：取得精美包装里的数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E5%BC%95%E5%8F%B7%E6%98%AF%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6"><span class="nav-number">2.1.</span> <span class="nav-text">单引号是特殊字符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-DELETE%E5%92%8CUPDATE%EF%BC%9A%E6%94%B9%E5%8F%98%E6%98%AF%E4%BB%B6%E5%A5%BD%E4%BA%8B"><span class="nav-number">3.</span> <span class="nav-text">3.DELETE和UPDATE：改变是件好事</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E8%81%AA%E6%98%8E%E7%9A%84%E8%AE%BE%E8%AE%A1%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%A7%84%E8%8C%83%E5%8C%96"><span class="nav-number">4.</span> <span class="nav-text">4.聪明的设计：为什么要规范化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-ALTER%EF%BC%9A%E6%94%B9%E5%86%99%E5%8E%86%E5%8F%B2"><span class="nav-number">5.</span> <span class="nav-text">5.ALTER：改写历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-SELECT%E8%BF%9B%E9%98%B6%EF%BC%9A%E4%BB%A5%E6%96%B0%E8%A7%86%E8%A7%92%E7%9C%8B%E4%BD%A0%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="nav-number">6.</span> <span class="nav-text">6.SELECT进阶：以新视角看你的数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E5%A4%9A%E5%BC%A0%E8%A1%A8%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%EF%BC%9A%E6%89%A9%E5%B1%95%E4%BD%A0%E7%9A%84%E8%A1%A8"><span class="nav-number">7.</span> <span class="nav-text">7.多张表的数据库设计：扩展你的表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%E8%81%94%E6%8E%A5%E4%B8%8E%E5%A4%9A%E5%BC%A0%E8%A1%A8%E7%9A%84%E6%93%8D%E4%BD%9C%EF%BC%9A%E4%B8%8D%E8%83%BD%E5%8D%95%E7%8B%AC%E5%AD%98%E5%9C%A8%E5%90%97%EF%BC%9F"><span class="nav-number">8.</span> <span class="nav-text">8.联接与多张表的操作：不能单独存在吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-%E5%AD%90%E6%9F%A5%E8%AF%A2%EF%BC%9A%E6%9F%A5%E8%AF%A2%E4%B8%AD%E7%9A%84%E6%9F%A5%E8%AF%A2"><span class="nav-number">9.</span> <span class="nav-text">9.子查询：查询中的查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-%E5%A4%96%E8%81%94%E6%8E%A5%E3%80%81%E8%87%AA%E8%81%94%E6%8E%A5%E4%B8%8E%E8%81%94%E5%90%88%EF%BC%9A%E6%96%B0%E7%AD%96%E7%95%A5"><span class="nav-number">10.</span> <span class="nav-text">10.外联接、自联接与联合：新策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-%E7%BA%A6%E6%9D%9F%E3%80%81%E8%A7%86%E5%9B%BE%E4%B8%8E%E4%BA%8B%E5%8A%A1%EF%BC%9A%E4%BA%BA%E5%A4%9A%E6%89%8B%E6%9D%82%EF%BC%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%97%E4%B8%8D%E4%BA%86"><span class="nav-number">11.</span> <span class="nav-text">11.约束、视图与事务：人多手杂，数据库受不了</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-%E5%AE%89%E5%85%A8%E6%80%A7%EF%BC%9A%E4%BF%9D%E6%8A%A4%E4%BD%A0%E7%9A%84%E8%B5%84%E4%BA%A7"><span class="nav-number">12.</span> <span class="nav-text">12.安全性：保护你的资产</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%92%8C%E8%A1%A8%E4%BF%9D%E5%AD%98%E6%89%80%E6%9C%89%E4%B8%9C%E8%A5%BF%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="nav-number">1.</span> <span class="nav-text">1.数据和表：保存所有东西的地方</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.1.</span> <span class="nav-text">什么是数据库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#select%E8%AF%AD%E5%8F%A5%E5%8F%96%E5%BE%97%E7%B2%BE%E7%BE%8E%E5%8C%85%E8%A3%85%E9%87%8C%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="nav-number">2.</span> <span class="nav-text">2.SELECT语句：取得精美包装里的数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E5%BC%95%E5%8F%B7%E6%98%AF%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6"><span class="nav-number">2.1.</span> <span class="nav-text">单引号是特殊字符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete%E5%92%8Cupdate%E6%94%B9%E5%8F%98%E6%98%AF%E4%BB%B6%E5%A5%BD%E4%BA%8B"><span class="nav-number">3.</span> <span class="nav-text">3.DELETE和UPDATE：改变是件好事</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -284,28 +284,35 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
 <blockquote>
-<p>学习<a target="_blank" rel="noopener" href="https://book.douban.com/subject/3069630/">《深入浅出SQL》</a>，为了加深记忆，边读边做笔记。如有侵权，立即删除。</p>
+<p>学习<a
+target="_blank" rel="noopener" href="https://book.douban.com/subject/3069630/">《深入浅出SQL》</a>，为了加深记忆，边读边做笔记。如有侵权，立即删除。</p>
 </blockquote>
-<h2 id="1-数据和表：保存所有东西的地方"><a href="#1-数据和表：保存所有东西的地方" class="headerlink" title="1.数据和表：保存所有东西的地方"></a>1.数据和表：保存所有东西的地方</h2><h3 id="什么是数据库"><a href="#什么是数据库" class="headerlink" title="什么是数据库"></a>什么是数据库</h3><p>数据库是保存表和其他相关SQL结构的容器。</p>
-<h3 id="数据库包含关联数据"><a href="#数据库包含关联数据" class="headerlink" title="数据库包含关联数据"></a>数据库包含关联数据</h3><p>数据库中所有的表应该能以某种方式相互关联。<br><strong>列</strong>是存储在表中的一列数据。行是一组能够描述某个事物的列的集合。列和行构成了表。</p>
-<span id="more"></span>
-<p>创建数据库和表</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE gregs_list;</span><br><span class="line">USE gregs_list;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> my_contacts</span><br><span class="line">(</span><br><span class="line">last_name <span class="type">VARBINARY</span>(<span class="number">30</span>),</span><br><span class="line">first_name <span class="type">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">email <span class="type">VARCHAR</span>(<span class="number">50</span>),</span><br><span class="line">gender <span class="type">CHAR</span>(<span class="number">1</span>),</span><br><span class="line">birthday <span class="type">DATE</span>,</span><br><span class="line">profession <span class="type">VARCHAR</span>(<span class="number">50</span>),</span><br><span class="line">location <span class="type">VARBINARY</span>(<span class="number">50</span>),</span><br><span class="line">status <span class="type">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">interests <span class="type">VARBINARY</span>(<span class="number">100</span>),</span><br><span class="line">seeking <span class="type">VARCHAR</span>(<span class="number">100</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p>检查创建的数据库表</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DESC</span> my_contacts;</span><br></pre></td></tr></table></figure>
-
-<p>删除已经创建的表</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE my_contacts;</span><br></pre></td></tr></table></figure>
-
+<h2 id="数据和表保存所有东西的地方">1.数据和表：保存所有东西的地方</h2>
+<h3 id="什么是数据库">什么是数据库</h3>
+<p>数据库是保存表和其他相关SQL结构的容器。 ### 数据库包含关联数据
+数据库中所有的表应该能以某种方式相互关联。
+<strong>列</strong>是存储在表中的一列数据。行是一组能够描述某个事物的列的集合。列和行构成了表。
+<span id="more"></span> 创建数据库和表 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE gregs_list;</span><br><span class="line">USE gregs_list;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> my_contacts</span><br><span class="line">(</span><br><span class="line">last_name <span class="type">VARBINARY</span>(<span class="number">30</span>),</span><br><span class="line">first_name <span class="type">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">email <span class="type">VARCHAR</span>(<span class="number">50</span>),</span><br><span class="line">gender <span class="type">CHAR</span>(<span class="number">1</span>),</span><br><span class="line">birthday <span class="type">DATE</span>,</span><br><span class="line">profession <span class="type">VARCHAR</span>(<span class="number">50</span>),</span><br><span class="line">location <span class="type">VARBINARY</span>(<span class="number">50</span>),</span><br><span class="line">status <span class="type">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">interests <span class="type">VARBINARY</span>(<span class="number">100</span>),</span><br><span class="line">seeking <span class="type">VARCHAR</span>(<span class="number">100</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<p>检查创建的数据库表 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DESC</span> my_contacts;</span><br></pre></td></tr></table></figure></p>
+<p>删除已经创建的表 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE my_contacts;</span><br></pre></td></tr></table></figure></p>
 <p><strong>NULL</strong>是未定义的值。它不等于零，也不等于空值。</p>
-<h2 id="2-SELECT语句：取得精美包装里的数据"><a href="#2-SELECT语句：取得精美包装里的数据" class="headerlink" title="2.SELECT语句：取得精美包装里的数据"></a>2.SELECT语句：取得精美包装里的数据</h2><h3 id="单引号是特殊字符"><a href="#单引号是特殊字符" class="headerlink" title="单引号是特殊字符"></a>单引号是特殊字符</h3><p>在试着插入包含单引号的VARCHAR、CHAR、BLOB数据时，必须对RDBMS说明，这些数据值中的单引号并非表示文本的结束，而是文本的一部分，应该保留在行中。在单引号字符的前面加上反斜线就能达到说明的效果。</p>
-<h2 id="3-DELETE和UPDATE：改变是件好事"><a href="#3-DELETE和UPDATE：改变是件好事" class="headerlink" title="3.DELETE和UPDATE：改变是件好事"></a>3.DELETE和UPDATE：改变是件好事</h2><p>使用DELETE语句需要注意，当不加WHERE条件时，将删除表中的所有行。</p>
+<h2
+id="select语句取得精美包装里的数据">2.SELECT语句：取得精美包装里的数据</h2>
+<h3 id="单引号是特殊字符">单引号是特殊字符</h3>
+<p>在试着插入包含单引号的VARCHAR、CHAR、BLOB数据时，必须对RDBMS说明，这些数据值中的单引号并非表示文本的结束，而是文本的一部分，应该保留在行中。在单引号字符的前面加上反斜线就能达到说明的效果。</p>
+<h2 id="delete和update改变是件好事">3.DELETE和UPDATE：改变是件好事</h2>
+<p>使用DELETE语句需要注意，当不加WHERE条件时，将删除表中的所有行。
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> your_table;</span><br></pre></td></tr></table></figure>
-<p>除非你非常确定WHERE子句只会删除你打算删除的行，否则都应该用SELECT确认情况。这是一个确保不会意外删除所需数据的安全方式，而且也有助于选出所有要删除的记录。</p>
-<h2 id="4-聪明的设计：为什么要规范化"><a href="#4-聪明的设计：为什么要规范化" class="headerlink" title="4.聪明的设计：为什么要规范化"></a>4.聪明的设计：为什么要规范化</h2><h2 id="5-ALTER：改写历史"><a href="#5-ALTER：改写历史" class="headerlink" title="5.ALTER：改写历史"></a>5.ALTER：改写历史</h2><h2 id="6-SELECT进阶：以新视角看你的数据"><a href="#6-SELECT进阶：以新视角看你的数据" class="headerlink" title="6.SELECT进阶：以新视角看你的数据"></a>6.SELECT进阶：以新视角看你的数据</h2><h2 id="7-多张表的数据库设计：扩展你的表"><a href="#7-多张表的数据库设计：扩展你的表" class="headerlink" title="7.多张表的数据库设计：扩展你的表"></a>7.多张表的数据库设计：扩展你的表</h2><h2 id="8-联接与多张表的操作：不能单独存在吗？"><a href="#8-联接与多张表的操作：不能单独存在吗？" class="headerlink" title="8.联接与多张表的操作：不能单独存在吗？"></a>8.联接与多张表的操作：不能单独存在吗？</h2><h2 id="9-子查询：查询中的查询"><a href="#9-子查询：查询中的查询" class="headerlink" title="9.子查询：查询中的查询"></a>9.子查询：查询中的查询</h2><h2 id="10-外联接、自联接与联合：新策略"><a href="#10-外联接、自联接与联合：新策略" class="headerlink" title="10.外联接、自联接与联合：新策略"></a>10.外联接、自联接与联合：新策略</h2><h2 id="11-约束、视图与事务：人多手杂，数据库受不了"><a href="#11-约束、视图与事务：人多手杂，数据库受不了" class="headerlink" title="11.约束、视图与事务：人多手杂，数据库受不了"></a>11.约束、视图与事务：人多手杂，数据库受不了</h2><h2 id="12-安全性：保护你的资产"><a href="#12-安全性：保护你的资产" class="headerlink" title="12.安全性：保护你的资产"></a>12.安全性：保护你的资产</h2>
+除非你非常确定WHERE子句只会删除你打算删除的行，否则都应该用SELECT确认情况。这是一个确保不会意外删除所需数据的安全方式，而且也有助于选出所有要删除的记录。
+## 4.聪明的设计：为什么要规范化 ## 5.ALTER：改写历史 ##
+6.SELECT进阶：以新视角看你的数据 ## 7.多张表的数据库设计：扩展你的表 ##
+8.联接与多张表的操作：不能单独存在吗？ ## 9.子查询：查询中的查询 ##
+10.外联接、自联接与联合：新策略 ##
+11.约束、视图与事务：人多手杂，数据库受不了 ##
+12.安全性：保护你的资产</p>
+
     </div>
 
     
@@ -396,13 +403,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -467,6 +474,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

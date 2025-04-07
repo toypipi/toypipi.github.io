@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="最近在在 Linux 服务器上总是遇到已经配置了 JAVA 环境变量，却还是提示 “command not found”，于是特意查了下 Linux 配置环境变量的几个文件的加载顺序。  &#x2F;etc&#x2F;profile -&gt; (~&#x2F;.bash_profile | ~&#x2F;.bash_login | ~&#x2F;.profile) -&gt; ~&#x2F;.">
+    <meta name="description" content="最近在在 Linux 服务器上总是遇到已经配置了 JAVA 环境变量，却还是提示 “command not found”，于是特意查了下 Linux 配置环境变量的几个文件的加载顺序。  &#x2F;etc&#x2F;profile -&gt; (~&#x2F;.bash_profile | ~&#x2F;.bash_login | ~&#x2F;.profile) -&gt; ~&#x2F;.bashrc -&gt; &#x2F;etc&#x2F;bashrc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux 环境变量作用及其加载顺序">
 <meta property="og:url" content="https://toypipi.github.io/2017/10/12/Linux-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%8F%8A%E5%85%B6%E5%8A%A0%E8%BD%BD%E9%A1%BA%E5%BA%8F/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="最近在在 Linux 服务器上总是遇到已经配置了 JAVA 环境变量，却还是提示 “command not found”，于是特意查了下 Linux 配置环境变量的几个文件的加载顺序。  &#x2F;etc&#x2F;profile -&gt; (~&#x2F;.bash_profile | ~&#x2F;.bash_login | ~&#x2F;.profile) -&gt; ~&#x2F;.">
+<meta property="og:description" content="最近在在 Linux 服务器上总是遇到已经配置了 JAVA 环境变量，却还是提示 “command not found”，于是特意查了下 Linux 配置环境变量的几个文件的加载顺序。  &#x2F;etc&#x2F;profile -&gt; (~&#x2F;.bash_profile | ~&#x2F;.bash_login | ~&#x2F;.profile) -&gt; ~&#x2F;.bashrc -&gt; &#x2F;etc&#x2F;bashrc">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-10-12T03:28:26.000Z">
 <meta property="article:modified_time" content="2020-11-03T03:44:00.353Z">
@@ -282,23 +282,39 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>最近在在 Linux 服务器上总是遇到已经配置了 JAVA 环境变量，却还是提示 “command not found”，于是特意查了下 Linux 配置环境变量的几个文件的加载顺序。</p>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<p>最近在在 Linux 服务器上总是遇到已经配置了 JAVA 环境变量，却还是提示
+“command not found”，于是特意查了下 Linux
+配置环境变量的几个文件的加载顺序。</p>
 <blockquote>
-<p><strong>&#x2F;etc&#x2F;profile -&gt; (~&#x2F;.bash_profile | ~&#x2F;.bash_login | ~&#x2F;.profile) -&gt; ~&#x2F;.bashrc -&gt; &#x2F;etc&#x2F;bashrc -&gt; ~&#x2F;.bash_logout</strong></p>
+<p><strong>/etc/profile -&gt; (~/.bash_profile | ~/.bash_login |
+~/.profile) -&gt; ~/.bashrc -&gt; /etc/bashrc -&gt;
+~/.bash_logout</strong></p>
 </blockquote>
 <p>其中，几个文件的作用如下：</p>
-<p><strong>系统级：</strong><br>1.&#x2F;etc&#x2F;environment:是系统在登录时读取的第一个文件，该文件设置的是整个系统的环境，只要启动系统就会读取该文件，用于为所有进程设置环境变量。系统使用此文件时并不是执行此文件中的命令，而是根据而是根据KEY&#x3D;VALUE模式的代码，对KEY赋值以VALUE，因此文件中如果要定义PATH环境变量，只需加入一行形如 PATH&#x3D;$PATH:&#x2F;xxx&#x2F;bin的代码即可。</p>
-<p>2.&#x2F;etc&#x2F;profile:此文件是系统登录时执行的第二个文件。 为系统的每个用户设置环境信息，当用户第一次登录时，该文件被执行。并从&#x2F;etc&#x2F;profile.d目录的配置文件中搜集shell的设置。（&#x2F;etc&#x2F;profile可以用于设定针对全系统所有用户的环境变量，环境变量周期是永久性）。</p>
-<p>3.&#x2F;etc&#x2F;bashrc:是针对所有用户的bash初始化文件，在此中设定的环境变量将应用于所有用户的shell中，此文件会在用户每次打开shell时执行一次。（即每次新开一个终端，都会执行&#x2F;etc&#x2F;bashrc）。</p>
-<span id="more"></span>
-
-<p><strong>用户级（这些文件处于家目录下）：</strong><br>1.~&#x2F;.profile:对应当前登录用户的profile文件，用于定制当前用户的个人工作环境(变量是永久性)，每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,执行用户的.bashrc文件。<strong>这里是推荐放置个人设置的地方。</strong></p>
-<p>2.<del>&#x2F;.bashrc:该文件包含专用于你的bash shell的bash信息，当登录时以及每次打开新的shell时，该文件被读取。(</del>&#x2F;.bashrc只针对当前用户，变量的生命周期是永久的)。<strong>不推荐放到这儿，因为每开一个shell，这个文件会读取一次，效率肯定有影响。</strong></p>
-<p>3.<del>&#x2F;.bash_profile or ~.&#x2F;bash_login:</del>&#x2F;.bash_profile是交互式login 方式进入 bash 运行的，<del>&#x2F;.bashrc 是交互式 non-login 方式进入 bash 运行的通常二者设置大致相同，所以通常前者会调用后者。每个用户都可使用该文件输入专用于自己使用的shell信息，当用户登录时，该文件仅仅执行一次。默认情况下，他设置一些环境变量，执行用户的.bashrc文件。（如果</del>&#x2F;目录下没有.bash_profile则新建立一个）<strong>这里是推荐放置个人设置的地方</strong>。当一个shell关闭时，在bash_profile中定义的系统变量则会失效。因此，每打开一个新的shell时都要运行一次source bash_profile.而且针对当前用户。</p>
-<p>4.~&#x2F;.pam_environment:用户级的环境变量设置文件，没有做测试，不知道管不管用。</p>
-<p>5.<del>&#x2F;.bash_logout:当每次退出系统（退出bash shell）时，执行该文件。另外,&#x2F;etc&#x2F;profile中设定的变量(全局)的可以作用于任何用户,而</del>&#x2F;.bashrc等中设定的变量(局部)只能继承 &#x2F;etc&#x2F;profile中的变量,他们是”父子”关系。</p>
-<p><strong>参考文档：</strong><br><a target="_blank" rel="noopener" href="http://blog.csdn.net/u010533843/article/details/54986646">Linux 常用环境变量及作用和环境变量文件的详细介绍及其加载执行顺序</a></p>
+<p><strong>系统级：</strong>
+1./etc/environment:是系统在登录时读取的第一个文件，该文件设置的是整个系统的环境，只要启动系统就会读取该文件，用于为所有进程设置环境变量。系统使用此文件时并不是执行此文件中的命令，而是根据而是根据KEY=VALUE模式的代码，对KEY赋值以VALUE，因此文件中如果要定义PATH环境变量，只需加入一行形如
+PATH=$PATH:/xxx/bin的代码即可。</p>
+<p>2./etc/profile:此文件是系统登录时执行的第二个文件。
+为系统的每个用户设置环境信息，当用户第一次登录时，该文件被执行。并从/etc/profile.d目录的配置文件中搜集shell的设置。（/etc/profile可以用于设定针对全系统所有用户的环境变量，环境变量周期是永久性）。</p>
+<p>3./etc/bashrc:是针对所有用户的bash初始化文件，在此中设定的环境变量将应用于所有用户的shell中，此文件会在用户每次打开shell时执行一次。（即每次新开一个终端，都会执行/etc/bashrc）。
+<span id="more"></span></p>
+<p><strong>用户级（这些文件处于家目录下）：</strong>
+1.~/.profile:对应当前登录用户的profile文件，用于定制当前用户的个人工作环境(变量是永久性)，每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,执行用户的.bashrc文件。<strong>这里是推荐放置个人设置的地方。</strong></p>
+<p>2.~/.bashrc:该文件包含专用于你的bash
+shell的bash信息，当登录时以及每次打开新的shell时，该文件被读取。(~/.bashrc只针对当前用户，变量的生命周期是永久的)。<strong>不推荐放到这儿，因为每开一个shell，这个文件会读取一次，效率肯定有影响。</strong></p>
+<p>3.~/.bash_profile or
+<sub>./bash_login:</sub>/.bash_profile是交互式login 方式进入 bash
+运行的，~/.bashrc 是交互式 non-login 方式进入 bash
+运行的通常二者设置大致相同，所以通常前者会调用后者。每个用户都可使用该文件输入专用于自己使用的shell信息，当用户登录时，该文件仅仅执行一次。默认情况下，他设置一些环境变量，执行用户的.bashrc文件。（如果~/目录下没有.bash_profile则新建立一个）<strong>这里是推荐放置个人设置的地方</strong>。当一个shell关闭时，在bash_profile中定义的系统变量则会失效。因此，每打开一个新的shell时都要运行一次source
+bash_profile.而且针对当前用户。</p>
+<p>4.~/.pam_environment:用户级的环境变量设置文件，没有做测试，不知道管不管用。</p>
+<p>5.~/.bash_logout:当每次退出系统（退出bash
+shell）时，执行该文件。另外,/etc/profile中设定的变量(全局)的可以作用于任何用户,而~/.bashrc等中设定的变量(局部)只能继承
+/etc/profile中的变量,他们是”父子”关系。</p>
+<p><strong>参考文档：</strong> <a
+target="_blank" rel="noopener" href="http://blog.csdn.net/u010533843/article/details/54986646">Linux
+常用环境变量及作用和环境变量文件的详细介绍及其加载执行顺序</a></p>
 
     </div>
 
@@ -389,13 +405,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -460,6 +476,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

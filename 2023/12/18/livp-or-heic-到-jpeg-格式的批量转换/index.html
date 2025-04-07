@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="首先将 .livp 格式的文件修改后缀名为 .zip。可以使用一个批处理文件（.bat 文件）来完成这个操作。在任意一个文本编辑器中新建一个文件，输入以下命令：  1ren *.livp *.zip  然后将这个文件保存为 .bat 格式，例如 rename_to_zip.bat。将这个文件放到需要修改后缀名的文件夹中，双击运行即可。  使用 WinRAR 软件批量解压缩 .zip 格式的文件">
+    <meta name="description" content="首先将 .livp 格式的文件修改后缀名为 .zip。可以使用一个批处理文件（.bat 文件）来完成这个操作。在任意一个文本编辑器中新建一个文件，输入以下命令：  1ren *.livp *.zip 然后将这个文件保存为 .bat 格式，例如 rename_to_zip.bat。将这个文件放到需要修改后缀名的文件夹中，双击运行即可。  使用 WinRAR 软件批量解压缩 .">
 <meta property="og:type" content="article">
 <meta property="og:title" content="livp or heic 到 jpeg 格式的批量转换">
 <meta property="og:url" content="https://toypipi.github.io/2023/12/18/livp-or-heic-%E5%88%B0-jpeg-%E6%A0%BC%E5%BC%8F%E7%9A%84%E6%89%B9%E9%87%8F%E8%BD%AC%E6%8D%A2/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="首先将 .livp 格式的文件修改后缀名为 .zip。可以使用一个批处理文件（.bat 文件）来完成这个操作。在任意一个文本编辑器中新建一个文件，输入以下命令：  1ren *.livp *.zip  然后将这个文件保存为 .bat 格式，例如 rename_to_zip.bat。将这个文件放到需要修改后缀名的文件夹中，双击运行即可。  使用 WinRAR 软件批量解压缩 .zip 格式的文件">
+<meta property="og:description" content="首先将 .livp 格式的文件修改后缀名为 .zip。可以使用一个批处理文件（.bat 文件）来完成这个操作。在任意一个文本编辑器中新建一个文件，输入以下命令：  1ren *.livp *.zip 然后将这个文件保存为 .bat 格式，例如 rename_to_zip.bat。将这个文件放到需要修改后缀名的文件夹中，双击运行即可。  使用 WinRAR 软件批量解压缩 .">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-12-18T08:28:16.000Z">
 <meta property="article:modified_time" content="2023-12-18T08:42:00.797Z">
@@ -146,7 +146,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">1.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#reference"><span class="nav-number">1.</span> <span class="nav-text">Reference</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -280,22 +280,30 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<ol>
-<li>首先将 <code>.livp</code> 格式的文件修改后缀名为 <code>.zip</code>。可以使用一个批处理文件（<code>.bat</code> 文件）来完成这个操作。在任意一个文本编辑器中新建一个文件，输入以下命令：</li>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<ol type="1">
+<li>首先将 <code>.livp</code> 格式的文件修改后缀名为
+<code>.zip</code>。可以使用一个批处理文件（<code>.bat</code>
+文件）来完成这个操作。在任意一个文本编辑器中新建一个文件，输入以下命令：</li>
 </ol>
 <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ren</span> *.livp *.zip</span><br></pre></td></tr></table></figure>
-
-<p>然后将这个文件保存为 <code>.bat</code> 格式，例如 <code>rename_to_zip.bat</code>。将这个文件放到需要修改后缀名的文件夹中，双击运行即可。</p>
-<ol start="2">
-<li><p>使用 WinRAR 软件批量解压缩 <code>.zip</code> 格式的文件。下载并安装 WinRAR 软件，然后选中需要解压缩的文件夹，右键点击选择“解压到指定文件夹”，选择目标文件夹，点击“确定”即可完成批量解压缩。</p>
-</li>
-<li><p>使用 HEIC Utility 软件批量将 <code>.heic</code> 格式的文件转换为 <code>.jpeg</code> 格式。下载并安装 HEIC Utility 软件，打开软件，在菜单栏选择 更多 -&gt; 批量转换，点击右上角的 <code>+</code> 号，选择上一步解压的文件夹里的所有 <code>.heic</code> 格式的文件，在左下角设置输出目录和输出质量，最后点击“开始转换”按钮即可完成批量转换。</p>
-</li>
+<p>然后将这个文件保存为 <code>.bat</code> 格式，例如
+<code>rename_to_zip.bat</code>。将这个文件放到需要修改后缀名的文件夹中，双击运行即可。</p>
+<ol start="2" type="1">
+<li><p>使用 WinRAR 软件批量解压缩 <code>.zip</code>
+格式的文件。下载并安装 WinRAR
+软件，然后选中需要解压缩的文件夹，右键点击选择“解压到指定文件夹”，选择目标文件夹，点击“确定”即可完成批量解压缩。</p></li>
+<li><p>使用 HEIC Utility 软件批量将 <code>.heic</code> 格式的文件转换为
+<code>.jpeg</code> 格式。下载并安装 HEIC Utility
+软件，打开软件，在菜单栏选择 更多 -&gt; 批量转换，点击右上角的
+<code>+</code> 号，选择上一步解压的文件夹里的所有 <code>.heic</code>
+格式的文件，在左下角设置输出目录和输出质量，最后点击“开始转换”按钮即可完成批量转换。</p></li>
 </ol>
 <span id="more"></span>
-
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/goodgoodstudy___/article/details/125294762">livp\heic 到 jpeg 格式的批量转换</a></p>
+<h1 id="reference">Reference</h1>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/goodgoodstudy___/article/details/125294762">livp到
+jpeg 格式的批量转换</a></p>
 
     </div>
 
@@ -389,13 +397,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -460,6 +468,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

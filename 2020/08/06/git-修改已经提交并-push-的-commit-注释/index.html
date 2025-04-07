@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="修改倒数第 1 次的 commitscript1$ git rebase -i HEAD~1 修改 pick 为 edit">
+    <meta name="description" content="修改倒数第 1 次的 commit script1$ git rebase -i HEAD~1 修改 pick 为 edit">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git 修改已经提交并 push 的 commit 注释">
 <meta property="og:url" content="https://toypipi.github.io/2020/08/06/git-%E4%BF%AE%E6%94%B9%E5%B7%B2%E7%BB%8F%E6%8F%90%E4%BA%A4%E5%B9%B6-push-%E7%9A%84-commit-%E6%B3%A8%E9%87%8A/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="修改倒数第 1 次的 commitscript1$ git rebase -i HEAD~1 修改 pick 为 edit">
+<meta property="og:description" content="修改倒数第 1 次的 commit script1$ git rebase -i HEAD~1 修改 pick 为 edit">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-08-06T02:58:44.000Z">
 <meta property="article:modified_time" content="2020-11-03T03:44:54.194Z">
@@ -283,24 +283,28 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<h1 id="修改倒数第-1-次的-commit"><a href="#修改倒数第-1-次的-commit" class="headerlink" title="修改倒数第 1 次的 commit"></a>修改倒数第 1 次的 commit</h1><figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git rebase -i HEAD~1</span></span><br></pre></td></tr></table></figure>
-<h1 id="修改-pick-为-edit"><a href="#修改-pick-为-edit" class="headerlink" title="修改 pick 为 edit"></a>修改 pick 为 edit</h1><span id="more"></span>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<h1 id="修改倒数第-1-次的-commit">修改倒数第 1 次的 commit</h1>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git rebase -i HEAD~1</span></span><br></pre></td></tr></table></figure>
+<h1 id="修改-pick-为-edit">修改 pick 为 edit</h1>
+<span id="more"></span>
 <ul>
 <li>按 i 进入编辑模式</li>
 <li>将要修改的那一条的pick修改成edit</li>
 <li>按 esc 退出编辑模式，输入 :wq 保存并退出</li>
 </ul>
-<h1 id="修改commit注释内容"><a href="#修改commit注释内容" class="headerlink" title="修改commit注释内容"></a>修改commit注释内容</h1><figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git commit --amend</span></span><br></pre></td></tr></table></figure>
+<h1 id="修改commit注释内容">修改commit注释内容</h1>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git commit --amend</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>按 i 进入编辑模式</li>
 <li>将要修改的那一条的pick修改成edit</li>
 <li>按 esc 退出编辑模式，输入 :wq 保存并退出</li>
 </ul>
 <figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git rebase --<span class="built_in">continue</span></span></span><br></pre></td></tr></table></figure>
-<h1 id="强制push"><a href="#强制push" class="headerlink" title="强制push"></a>强制push</h1><figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git push --force github</span></span><br></pre></td></tr></table></figure>
-
-<p>** 参考文档 **<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/superjishere/p/11578130.html">git——修改已经提交并push后的commit注释</a></p>
+<h1 id="强制push">强制push</h1>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git push --force github</span></span><br></pre></td></tr></table></figure>
+<p>** 参考文档 ** <a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/superjishere/p/11578130.html">git——修改已经提交并push后的commit注释</a></p>
 
     </div>
 
@@ -391,13 +395,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -462,6 +466,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

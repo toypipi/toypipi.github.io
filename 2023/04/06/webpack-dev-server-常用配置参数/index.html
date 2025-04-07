@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Webpack Dev Server的一些常用配置参数： host：指定服务器的主机名，默认为 localhost。 port：指定服务器运行的端口号，默认为 8080。 contentBase&#x2F;publicPath：指定静态文件的路径。contentBase参数用于指定提供文件的根目录，而publicPath则用于指定浏览器请求资源的基础路径。默认情况下，两个参数都指向项目根目录。">
+    <meta name="description" content="Webpack Dev Server的一些常用配置参数： host：指定服务器的主机名，默认为 localhost。 port：指定服务器运行的端口号，默认为 8080。 contentBase&#x2F;publicPath：指定静态文件的路径。contentBase参数用于指定提供文件的根目录，而publicPath则用于指定浏览器请求资源的基础路径。默认情况下，两个参数都指向项目根目录。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpack-dev-server 常用配置参数">
 <meta property="og:url" content="https://toypipi.github.io/2023/04/06/webpack-dev-server-%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="Webpack Dev Server的一些常用配置参数： host：指定服务器的主机名，默认为 localhost。 port：指定服务器运行的端口号，默认为 8080。 contentBase&#x2F;publicPath：指定静态文件的路径。contentBase参数用于指定提供文件的根目录，而publicPath则用于指定浏览器请求资源的基础路径。默认情况下，两个参数都指向项目根目录。">
+<meta property="og:description" content="Webpack Dev Server的一些常用配置参数： host：指定服务器的主机名，默认为 localhost。 port：指定服务器运行的端口号，默认为 8080。 contentBase&#x2F;publicPath：指定静态文件的路径。contentBase参数用于指定提供文件的根目录，而publicPath则用于指定浏览器请求资源的基础路径。默认情况下，两个参数都指向项目根目录。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-06T06:51:35.000Z">
 <meta property="article:modified_time" content="2023-04-06T07:39:51.602Z">
@@ -277,18 +277,19 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
 <p>Webpack Dev Server的一些常用配置参数：</p>
 <p>host：指定服务器的主机名，默认为 localhost。</p>
 <p>port：指定服务器运行的端口号，默认为 8080。</p>
-<p>contentBase&#x2F;publicPath：指定静态文件的路径。contentBase参数用于指定提供文件的根目录，而publicPath则用于指定浏览器请求资源的基础路径。默认情况下，两个参数都指向项目根目录。</p>
-<p>hot：启用热模块替换（Hot Module Replacement），允许在不刷新整个页面的情况下更新模块。值为true或false。</p>
-<p>historyApiFallback：启用 HTML5 的历史记录 API ，解决使用单页应用时路由跳转404问题。值为true或false。</p>
-<span id="more"></span>
-<p>proxy：设置代理服务器。可以将客户端请求代理到后端API服务器以避免跨域问题。</p>
+<p>contentBase/publicPath：指定静态文件的路径。contentBase参数用于指定提供文件的根目录，而publicPath则用于指定浏览器请求资源的基础路径。默认情况下，两个参数都指向项目根目录。</p>
+<p>hot：启用热模块替换（Hot Module
+Replacement），允许在不刷新整个页面的情况下更新模块。值为true或false。</p>
+<p>historyApiFallback：启用 HTML5 的历史记录 API
+，解决使用单页应用时路由跳转404问题。值为true或false。 <span id="more"></span>
+proxy：设置代理服务器。可以将客户端请求代理到后端API服务器以避免跨域问题。</p>
 <p>compress：启用gzip压缩来减小文件传输大小。值为true或false。</p>
 <p>watchOptions：配置监视文件变化的选项，例如轮询间隔、忽略某些文件等。</p>
-<p>clientLogLevel：设置日志级别。可选的值有none&#x2F;error&#x2F;warning&#x2F;info。</p>
+<p>clientLogLevel：设置日志级别。可选的值有none/error/warning/info。</p>
 <p>open：启动dev server时是否自动打开浏览器。值为true或false。</p>
 <p>可以在webpack配置文件中通过devServer对象进行设置。</p>
 
@@ -382,13 +383,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -453,6 +454,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

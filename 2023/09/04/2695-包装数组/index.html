@@ -276,10 +276,10 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>1.<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/array-wrapper/description/">题目描述</a></p>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<p>1.<a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/array-wrapper/description/">题目描述</a></p>
 <span id="more"></span>
-
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="title class_">ArrayWrapper</span> = <span class="keyword">function</span> (<span class="params">nums</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">nums</span> = nums;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 重写valueOf方法，使对象可以通过+运算符相加</span></span><br><span class="line"><span class="title class_">ArrayWrapper</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">valueOf</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">nums</span>.<span class="property">length</span> === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">nums</span>.<span class="title function_">reduce</span>(<span class="function">(<span class="params">sum, num</span>) =&gt;</span> sum + num, <span class="number">0</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 重写 toString 方法，使对象在使用 String() 函数时返回逗号分隔的字符串</span></span><br><span class="line"><span class="title class_">ArrayWrapper</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`[<span class="subst">$&#123;<span class="variable language_">this</span>.nums.join(<span class="string">&quot;,&quot;</span>)&#125;</span>]`</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 示例用法</span></span><br><span class="line"><span class="keyword">const</span> obj1 = <span class="keyword">new</span> <span class="title class_">ArrayWrapper</span>([<span class="number">1</span>, <span class="number">2</span>]);</span><br><span class="line"><span class="keyword">const</span> obj2 = <span class="keyword">new</span> <span class="title class_">ArrayWrapper</span>([<span class="number">3</span>, <span class="number">4</span>]);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1 + obj2); <span class="comment">// 输出：10</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>(obj1)); <span class="comment">// 输出：&quot;[1,2]&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj3 = <span class="keyword">new</span> <span class="title class_">ArrayWrapper</span>([<span class="number">23</span>, <span class="number">98</span>, <span class="number">42</span>, <span class="number">70</span>]);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>(obj3)); <span class="comment">// 输出：&quot;[23,98,42,70]&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj4 = <span class="keyword">new</span> <span class="title class_">ArrayWrapper</span>([]);</span><br><span class="line"><span class="keyword">const</span> obj5 = <span class="keyword">new</span> <span class="title class_">ArrayWrapper</span>([]);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj4 + obj5); <span class="comment">// 输出：0</span></span><br></pre></td></tr></table></figure>
 
     </div>
@@ -371,13 +371,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -442,6 +442,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

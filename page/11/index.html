@@ -266,11 +266,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<h1 id="The-Hashtag-Generator"><a href="#The-Hashtag-Generator" class="headerlink" title="The Hashtag Generator"></a>The Hashtag Generator</h1><p>The marketing team is spending way too much time typing in hashtags.<br>Let’s help them with our own Hashtag Generator!</p>
+          <hr />
+<h1 id="the-hashtag-generator">The Hashtag Generator</h1>
+<p>The marketing team is spending way too much time typing in hashtags.
+Let’s help them with our own Hashtag Generator!</p>
 <p>Here’s the deal:</p>
-<p>It must start with a hashtag (#).<br>All words must have their first letter capitalized.<br>If the final result is longer than 140 chars it must return false.<br>If the input or the result is an empty string it must return false.</p>
-<h1 id="SOLUTION"><a href="#SOLUTION" class="headerlink" title="SOLUTION"></a>SOLUTION</h1><ul>
+<p>It must start with a hashtag (#). All words must have their first
+letter capitalized. If the final result is longer than 140 chars it must
+return false. If the input or the result is an empty string it must
+return false.</p>
+<h1 id="solution">SOLUTION</h1>
+<ul>
 <li>方法一：普通循环</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">generateHashtag</span>(<span class="params">str</span>) &#123;</span><br><span class="line">  <span class="comment">// 判断是否是空字符串，或只包含多个空格的字符串</span></span><br><span class="line">  <span class="keyword">if</span> (str.<span class="property">length</span> === <span class="number">0</span> || str.<span class="title function_">replace</span>(<span class="regexp">/\s+/g</span>, <span class="string">&quot;&quot;</span>).<span class="property">length</span> === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 将每个单词的首字母大写</span></span><br><span class="line">  <span class="keyword">let</span> words = str.<span class="title function_">split</span>(<span class="string">&quot; &quot;</span>);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; words.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    words[i] = words[i].<span class="title function_">charAt</span>(<span class="number">0</span>).<span class="title function_">toUpperCase</span>() + words[i].<span class="title function_">slice</span>(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 拼接 #</span></span><br><span class="line">  <span class="keyword">let</span> result = <span class="string">&quot;#&quot;</span> + words.<span class="title function_">join</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> result.<span class="property">length</span> &gt; <span class="number">140</span> ? <span class="literal">false</span> : result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -374,11 +380,19 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<h1 id="DESCRIPTION"><a href="#DESCRIPTION" class="headerlink" title="DESCRIPTION"></a>DESCRIPTION</h1><p>Create a function that takes a Roman numeral as its argument and returns its value as a numeric decimal integer. You don’t need to validate the form of the Roman numeral.</p>
-<p>Modern Roman numerals are written by expressing each decimal digit of the number to be encoded separately, starting with the leftmost digit and skipping any 0s. So 1990 is rendered “MCMXC” (1000 &#x3D; M, 900 &#x3D; CM, 90 &#x3D; XC) and 2008 is rendered “MMVIII” (2000 &#x3D; MM, 8 &#x3D; VIII). The Roman numeral for 1666, “MDCLXVI”, uses each letter in descending order.</p>
+          <hr />
+<h1 id="description">DESCRIPTION</h1>
+<p>Create a function that takes a Roman numeral as its argument and
+returns its value as a numeric decimal integer. You don’t need to
+validate the form of the Roman numeral.</p>
+<p>Modern Roman numerals are written by expressing each decimal digit of
+the number to be encoded separately, starting with the leftmost digit
+and skipping any 0s. So 1990 is rendered “MCMXC” (1000 = M, 900 = CM, 90
+= XC) and 2008 is rendered “MMVIII” (2000 = MM, 8 = VIII). The Roman
+numeral for 1666, “MDCLXVI”, uses each letter in descending order.</p>
 <p>注意一点：题目没有描述，当较小的值出现在较大的值之前时，将从较大的值中减去该值。可参考文末的引用链接。</p>
-<h1 id="SOLUTION"><a href="#SOLUTION" class="headerlink" title="SOLUTION"></a>SOLUTION</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">solution</span>(<span class="params">roman</span>) &#123;</span><br><span class="line">  <span class="comment">// 定义一个罗马数字到整数的映射</span></span><br><span class="line">  <span class="keyword">const</span> romanMap = &#123;</span><br><span class="line">    <span class="attr">I</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">V</span>: <span class="number">5</span>,</span><br><span class="line">    <span class="attr">X</span>: <span class="number">10</span>,</span><br><span class="line">    <span class="attr">L</span>: <span class="number">50</span>,</span><br><span class="line">    <span class="attr">C</span>: <span class="number">100</span>,</span><br><span class="line">    <span class="attr">D</span>: <span class="number">500</span>,</span><br><span class="line">    <span class="attr">M</span>: <span class="number">1000</span>,</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">// 初始化结果变量，以存储罗马数字的最终值</span></span><br><span class="line">  <span class="keyword">let</span> result = <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// 遍历罗马数字</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; roman.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="comment">// 获取当前字母和下一个字母</span></span><br><span class="line">    <span class="keyword">let</span> letter = roman[i];</span><br><span class="line">    <span class="keyword">let</span> letterAfter = roman[i + <span class="number">1</span>];</span><br><span class="line">    <span class="comment">// 如果当前字母小于后一个字母，则从结果中减去当前字母的值</span></span><br><span class="line">    <span class="keyword">if</span> (romanMap[letter] &lt; romanMap[letterAfter]) &#123;</span><br><span class="line">      result -= romanMap[letter];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 如果当前字母大于后一个字母，则从结果中加上当前字母的值</span></span><br><span class="line">      result += romanMap[letter];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 返回罗马数字的最终值</span></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="solution">SOLUTION</h1>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">solution</span>(<span class="params">roman</span>) &#123;</span><br><span class="line">  <span class="comment">// 定义一个罗马数字到整数的映射</span></span><br><span class="line">  <span class="keyword">const</span> romanMap = &#123;</span><br><span class="line">    <span class="attr">I</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">V</span>: <span class="number">5</span>,</span><br><span class="line">    <span class="attr">X</span>: <span class="number">10</span>,</span><br><span class="line">    <span class="attr">L</span>: <span class="number">50</span>,</span><br><span class="line">    <span class="attr">C</span>: <span class="number">100</span>,</span><br><span class="line">    <span class="attr">D</span>: <span class="number">500</span>,</span><br><span class="line">    <span class="attr">M</span>: <span class="number">1000</span>,</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">// 初始化结果变量，以存储罗马数字的最终值</span></span><br><span class="line">  <span class="keyword">let</span> result = <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// 遍历罗马数字</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; roman.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="comment">// 获取当前字母和下一个字母</span></span><br><span class="line">    <span class="keyword">let</span> letter = roman[i];</span><br><span class="line">    <span class="keyword">let</span> letterAfter = roman[i + <span class="number">1</span>];</span><br><span class="line">    <span class="comment">// 如果当前字母小于后一个字母，则从结果中减去当前字母的值</span></span><br><span class="line">    <span class="keyword">if</span> (romanMap[letter] &lt; romanMap[letterAfter]) &#123;</span><br><span class="line">      result -= romanMap[letter];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 如果当前字母大于后一个字母，则从结果中加上当前字母的值</span></span><br><span class="line">      result += romanMap[letter];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 返回罗马数字的最终值</span></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/10/24/Roman-Numerals-Decoder/#more" rel="contents">
@@ -479,11 +493,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<h1 id="DESCRIPTION"><a href="#DESCRIPTION" class="headerlink" title="DESCRIPTION"></a>DESCRIPTION</h1><p>Write a function dirReduc which will take an array of strings and returns an array of strings with the needless directions removed (W&lt;-&gt;E or S&lt;-&gt;N side by side).</p>
-<p>The Haskell version takes a list of directions with data Direction &#x3D; North | East | West | South.<br>The Clojure version returns nil when the path is reduced to nothing.<br>The Rust version takes a slice of enum Direction {North, East, West, South}.</p>
+          <hr />
+<h1 id="description">DESCRIPTION</h1>
+<p>Write a function dirReduc which will take an array of strings and
+returns an array of strings with the needless directions removed
+(W&lt;-&gt;E or S&lt;-&gt;N side by side).</p>
+<p>The Haskell version takes a list of directions with data Direction =
+North | East | West | South. The Clojure version returns nil when the
+path is reduced to nothing. The Rust version takes a slice of enum
+Direction {North, East, West, South}.</p>
 <p>详细描述可以查看文档底部的引用链接。</p>
-<h1 id="SOLUTION"><a href="#SOLUTION" class="headerlink" title="SOLUTION"></a>SOLUTION</h1><ul>
+<h1 id="solution">SOLUTION</h1>
+<ul>
 <li>方法一：模拟栈的方式。</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">dirReduc</span>(<span class="params">arr</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> opposites = &#123;</span><br><span class="line">    <span class="attr">NORTH</span>: <span class="string">&quot;SOUTH&quot;</span>,</span><br><span class="line">    <span class="attr">SOUTH</span>: <span class="string">&quot;NORTH&quot;</span>,</span><br><span class="line">    <span class="attr">EAST</span>: <span class="string">&quot;WEST&quot;</span>,</span><br><span class="line">    <span class="attr">WEST</span>: <span class="string">&quot;EAST&quot;</span>,</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">// 创建一个数组用来模拟一个栈，用于跟踪方向</span></span><br><span class="line">  <span class="keyword">const</span> stack = [];</span><br><span class="line">  <span class="comment">// 遍历输入的方向数组</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> direction <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="comment">// 获取当前方向的反方向</span></span><br><span class="line">    <span class="keyword">const</span> opposite = opposites[direction];</span><br><span class="line">    <span class="comment">// 如果栈顶方向等于当前方向的反方向，则弹出栈顶方向</span></span><br><span class="line">    <span class="keyword">if</span> (stack[stack.<span class="property">length</span> - <span class="number">1</span>] === opposite) &#123;</span><br><span class="line">      stack.<span class="title function_">pop</span>();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 否则，将当前方向压入栈顶</span></span><br><span class="line">      stack.<span class="title function_">push</span>(direction);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 最终，栈中剩下的方向就是去掉不必要的相反方向后的结果</span></span><br><span class="line">  <span class="keyword">return</span> stack;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -587,13 +608,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<h1 id="DESCRIPTION"><a href="#DESCRIPTION" class="headerlink" title="DESCRIPTION"></a>DESCRIPTION</h1><p>Write a function that accepts an array of 10 integers (between 0 and 9), that returns a string of those numbers in the form of a phone number.</p>
+          <hr />
+<h1 id="description">DESCRIPTION</h1>
+<p>Write a function that accepts an array of 10 integers (between 0 and
+9), that returns a string of those numbers in the form of a phone
+number.</p>
 <p>Example</p>
-<p><code>createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // =&gt; returns &quot;(123) 456-7890&quot;</code></p>
-<p>The returned format must be correct in order to complete this challenge.</p>
+<p><code>createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // =&gt; returns "(123) 456-7890"</code></p>
+<p>The returned format must be correct in order to complete this
+challenge.</p>
 <p>Don’t forget the space after the closing parentheses!</p>
-<h1 id="SOLUTION"><a href="#SOLUTION" class="headerlink" title="SOLUTION"></a>SOLUTION</h1><ul>
+<h1 id="solution">SOLUTION</h1>
+<ul>
 <li>方法一：数组的 <code>slice()</code> 方法</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">createPhoneNumber</span>(<span class="params">numbers</span>) &#123;</span><br><span class="line">  <span class="comment">// Create an array of the different parts of the phone number</span></span><br><span class="line">  <span class="keyword">const</span> areaCode = <span class="string">`(<span class="subst">$&#123;numbers.slice(<span class="number">0</span>, <span class="number">3</span>).join(<span class="string">&quot;&quot;</span>)&#125;</span>)`</span>;</span><br><span class="line">  <span class="keyword">const</span> prefix = numbers.<span class="title function_">slice</span>(<span class="number">3</span>, <span class="number">6</span>).<span class="title function_">join</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">  <span class="keyword">const</span> suffix = numbers.<span class="title function_">slice</span>(<span class="number">6</span>, <span class="number">10</span>).<span class="title function_">join</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Combine the parts into the final phone number string</span></span><br><span class="line">  <span class="keyword">const</span> phoneNumber = <span class="string">`<span class="subst">$&#123;areaCode&#125;</span> <span class="subst">$&#123;prefix&#125;</span>-<span class="subst">$&#123;suffix&#125;</span>`</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> phoneNumber;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -697,13 +723,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<h1 id="DESCRIPTION"><a href="#DESCRIPTION" class="headerlink" title="DESCRIPTION"></a>DESCRIPTION</h1><p>Your goal in this kata is to implement a difference function, which subtracts one list from another and returns the result.</p>
-<p>It should remove all values from list a, which are present in list b keeping their order.</p>
+          <hr />
+<h1 id="description">DESCRIPTION</h1>
+<p>Your goal in this kata is to implement a difference function, which
+subtracts one list from another and returns the result.</p>
+<p>It should remove all values from list a, which are present in list b
+keeping their order.</p>
 <p><code>arrayDiff([1,2],[1]) == [2]</code></p>
-<p>If a value is present in b, all of its occurrences must be removed from the other:</p>
+<p>If a value is present in b, all of its occurrences must be removed
+from the other:</p>
 <p><code>arrayDiff([1,2,2,2,3],[2]) == [1,3]</code></p>
-<h1 id="SOLUTION"><a href="#SOLUTION" class="headerlink" title="SOLUTION"></a>SOLUTION</h1><ul>
+<h1 id="solution">SOLUTION</h1>
+<ul>
 <li>方法一：</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">arrDiff</span>(<span class="params">a, b</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> a.<span class="title function_">filter</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> !b.<span class="title function_">includes</span>(item));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -755,13 +786,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -826,6 +857,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

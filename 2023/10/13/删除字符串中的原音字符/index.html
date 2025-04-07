@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="DESCRIPTIONTrolls are attacking your comment section! A common way to deal with this situation is to remove all of the vowels from the trolls’ comments, neutralizing the threat. Your task is to write">
+    <meta name="description" content="DESCRIPTION Trolls are attacking your comment section! A common way to deal with this situation is to remove all of the vowels from the trolls’ comments, neutralizing the threat. Your task is to">
 <meta property="og:type" content="article">
 <meta property="og:title" content="删除字符串中的原音字符">
 <meta property="og:url" content="https://toypipi.github.io/2023/10/13/%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%8E%9F%E9%9F%B3%E5%AD%97%E7%AC%A6/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="DESCRIPTIONTrolls are attacking your comment section! A common way to deal with this situation is to remove all of the vowels from the trolls’ comments, neutralizing the threat. Your task is to write">
+<meta property="og:description" content="DESCRIPTION Trolls are attacking your comment section! A common way to deal with this situation is to remove all of the vowels from the trolls’ comments, neutralizing the threat. Your task is to">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-10-13T07:11:21.000Z">
 <meta property="article:modified_time" content="2023-10-13T07:27:52.311Z">
@@ -145,7 +145,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DESCRIPTION"><span class="nav-number">1.</span> <span class="nav-text">DESCRIPTION</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SOLUTION"><span class="nav-number">2.</span> <span class="nav-text">SOLUTION</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tips"><span class="nav-number">3.</span> <span class="nav-text">Tips</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#description"><span class="nav-number">1.</span> <span class="nav-text">DESCRIPTION</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text">SOLUTION</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tips"><span class="nav-number">3.</span> <span class="nav-text">Tips</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -279,33 +279,50 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<h1 id="DESCRIPTION"><a href="#DESCRIPTION" class="headerlink" title="DESCRIPTION"></a>DESCRIPTION</h1><p>Trolls are attacking your comment section!</p>
-<p>A common way to deal with this situation is to remove all of the vowels from the trolls’ comments, neutralizing the threat.</p>
-<p>Your task is to write a function that takes a string and return a new string with all vowels removed.</p>
-<p>For example, the string “This website is for losers LOL!” would become “Ths wbst s fr lsrs LL!”.</p>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<h1 id="description">DESCRIPTION</h1>
+<p>Trolls are attacking your comment section!</p>
+<p>A common way to deal with this situation is to remove all of the
+vowels from the trolls’ comments, neutralizing the threat.</p>
+<p>Your task is to write a function that takes a string and return a new
+string with all vowels removed.</p>
+<p>For example, the string “This website is for losers LOL!” would
+become “Ths wbst s fr lsrs LL!”.</p>
 <p>Note: for this kata y isn’t considered a vowel.</p>
-<h1 id="SOLUTION"><a href="#SOLUTION" class="headerlink" title="SOLUTION"></a>SOLUTION</h1><ul>
-<li>方法一：字符串的 <code>replace()</code> 和 <code>replaceAll()</code> 方法都可，这两个方法都是返回一个新的字符串。</li>
+<h1 id="solution">SOLUTION</h1>
+<ul>
+<li>方法一：字符串的 <code>replace()</code> 和 <code>replaceAll()</code>
+方法都可，这两个方法都是返回一个新的字符串。</li>
 </ul>
-<p><code>replace()</code> 字符串模式只会被替换一次。要执行全局搜索和替换，请使用带有 g 标志的正则表达式或使用 replaceAll()。</p>
+<p><code>replace()</code>
+字符串模式只会被替换一次。要执行全局搜索和替换，请使用带有 g
+标志的正则表达式或使用 replaceAll()。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">disemvowel</span>(<span class="params">str</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> regex = <span class="regexp">/aeiou/gi</span>;</span><br><span class="line">  <span class="keyword">let</span> result = str.<span class="title function_">replace</span>(regex, <span class="string">&quot;&quot;</span>);</span><br><span class="line">  <span class="comment">// let result = str.replaceAll(regex, &quot;&quot;);</span></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <span id="more"></span>
-
 <ul>
 <li>方法二：全部写在一行！</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">disemvowel</span>(<span class="params">str</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> str.<span class="title function_">replace</span>(<span class="regexp">/[aeiou]/gi</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>方法三：箭头函数。</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">disemvowel = <span class="function">(<span class="params">str</span>) =&gt;</span> str.<span class="title function_">replace</span>(<span class="regexp">/[aeiou]/gi</span>, <span class="string">&quot;&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<h1 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h1><p>正则表达式:</p>
-<p>元字符 [xyz] 字符集合。匹配所包含的任意一个字符。例如， ‘[abc]’ 可以匹配 “plain” 中的 ‘a’。<br>修饰符 i ignore - 不区分大小写 将匹配设置为不区分大小写，搜索时不区分大小写: A 和 a 没有区别。<br>修饰符 g global - 全局匹配 查找所有的匹配项。</p>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://www.codewars.com/kata/52fba66badcd10859f00097e/train/javascript">Disemvowel Trolls</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace">String.prototype.replace()</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll">String.prototype.replaceAll()</a><br><a href="runoob.com/regexp/regexp-metachar.html">正则表达式 - 元字符</a><br><a target="_blank" rel="noopener" href="https://www.runoob.com/regexp/regexp-flags.html">正则表达式 - 修饰符（标记）</a></p>
+<h1 id="tips">Tips</h1>
+<p>正则表达式:</p>
+<p>元字符 [xyz] 字符集合。匹配所包含的任意一个字符。例如， ‘[abc]’
+可以匹配 “plain” 中的 ‘a’。 修饰符 i ignore - 不区分大小写
+将匹配设置为不区分大小写，搜索时不区分大小写: A 和 a 没有区别。 修饰符 g
+global - 全局匹配 查找所有的匹配项。</p>
+<h1 id="reference">Reference</h1>
+<p><a
+target="_blank" rel="noopener" href="https://www.codewars.com/kata/52fba66badcd10859f00097e/train/javascript">Disemvowel
+Trolls</a> <a
+target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace">String.prototype.replace()</a>
+<a
+target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll">String.prototype.replaceAll()</a>
+<a href="runoob.com/regexp/regexp-metachar.html">正则表达式 - 元字符</a>
+<a target="_blank" rel="noopener" href="https://www.runoob.com/regexp/regexp-flags.html">正则表达式 -
+修饰符（标记）</a></p>
 
     </div>
 
@@ -398,13 +415,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -469,6 +486,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

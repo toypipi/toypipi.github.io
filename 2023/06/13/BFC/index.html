@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="BFC 定义 BFC 是 Block Formatting Context （块级格式上下文），可以理解成元素的一个“特异功能”。 该 “特异功能”，在默认的情况下处于关闭状态；当元素满足了某些条件后，该“特异功能”被激活。 所谓激活“特异功能”，专业点说就是：该元素创建了 BFC （又称：开启了 BFC ）。  BFC 能解决什么问题 元素开启BFC 后，其子元素不会再产生margin 塌陷问">
+    <meta name="description" content="BFC 定义  BFC 是 Block Formatting Context （块级格式上下文），可以理解成元素的一个“特异功能”。 该 “特异功能”，在默认的情况下处于关闭状态；当元素满足了某些条件后，该“特异功能”被激活。 所谓激活“特异功能”，专业点说就是：该元素创建了 BFC （又称：开启了 BFC ）。  BFC 能解决什么问题  元素开启BFC 后，其子元素不">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BFC">
 <meta property="og:url" content="https://toypipi.github.io/2023/06/13/BFC/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="BFC 定义 BFC 是 Block Formatting Context （块级格式上下文），可以理解成元素的一个“特异功能”。 该 “特异功能”，在默认的情况下处于关闭状态；当元素满足了某些条件后，该“特异功能”被激活。 所谓激活“特异功能”，专业点说就是：该元素创建了 BFC （又称：开启了 BFC ）。  BFC 能解决什么问题 元素开启BFC 后，其子元素不会再产生margin 塌陷问">
+<meta property="og:description" content="BFC 定义  BFC 是 Block Formatting Context （块级格式上下文），可以理解成元素的一个“特异功能”。 该 “特异功能”，在默认的情况下处于关闭状态；当元素满足了某些条件后，该“特异功能”被激活。 所谓激活“特异功能”，专业点说就是：该元素创建了 BFC （又称：开启了 BFC ）。  BFC 能解决什么问题  元素开启BFC 后，其子元素不">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-06-13T01:52:37.000Z">
 <meta property="article:modified_time" content="2023-06-13T01:58:47.821Z">
@@ -144,7 +144,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BFC-%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">BFC 定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BFC-%E8%83%BD%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">BFC 能解决什么问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF-BFC"><span class="nav-number">3.</span> <span class="nav-text">如何开启 BFC</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#bfc-%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">BFC 定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bfc-%E8%83%BD%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">BFC 能解决什么问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF-bfc"><span class="nav-number">3.</span> <span class="nav-text">如何开启 BFC</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -278,32 +278,40 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<h1 id="BFC-定义"><a href="#BFC-定义" class="headerlink" title="BFC 定义"></a>BFC 定义</h1><ol>
-<li>BFC 是 Block Formatting Context （块级格式上下文），可以理解成元素的一个“特异功能”。</li>
-<li>该 “特异功能”，在默认的情况下处于关闭状态；当元素满足了某些条件后，该“特异功能”被激活。</li>
-<li>所谓激活“特异功能”，专业点说就是：该元素创建了 BFC （又称：开启了 BFC ）。</li>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<h1 id="bfc-定义">BFC 定义</h1>
+<ol type="1">
+<li>BFC 是 Block Formatting Context
+（块级格式上下文），可以理解成元素的一个“特异功能”。</li>
+<li>该
+“特异功能”，在默认的情况下处于关闭状态；当元素满足了某些条件后，该“特异功能”被激活。</li>
+<li>所谓激活“特异功能”，专业点说就是：该元素创建了 BFC （又称：开启了
+BFC ）。</li>
 </ol>
-<h1 id="BFC-能解决什么问题"><a href="#BFC-能解决什么问题" class="headerlink" title="BFC 能解决什么问题"></a>BFC 能解决什么问题</h1><ol>
+<h1 id="bfc-能解决什么问题">BFC 能解决什么问题</h1>
+<ol type="1">
 <li>元素开启BFC 后，其子元素不会再产生margin 塌陷问题。</li>
 <li>元素开启BFC 后，自己不会被其他浮动元素所覆盖。</li>
 <li>元素开启BFC 后，就算其子元素浮动，元素自身高度也不会塌陷。</li>
 </ol>
 <span id="more"></span>
-
-<h1 id="如何开启-BFC"><a href="#如何开启-BFC" class="headerlink" title="如何开启 BFC"></a>如何开启 BFC</h1><ul>
+<h1 id="如何开启-bfc">如何开启 BFC</h1>
+<ul>
 <li>根元素</li>
 <li>浮动元素</li>
 <li>绝对定位、固定定位的元素</li>
 <li>行内块元素</li>
-<li>表格单元格： table 、thead 、tbody 、tfoot 、th 、td 、tr 、caption</li>
+<li>表格单元格： table 、thead 、tbody 、tfoot 、th 、td 、tr
+、caption</li>
 <li>overflow 的值不为 visible 的块元素</li>
 <li>伸缩项目</li>
 <li>多列容器</li>
 <li>column-span 为 all 的元素（即使该元素没有包裹在多列容器中）</li>
 <li>display 的值，设置为flow-root</li>
 </ul>
-<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1p84y1P7Z5?p=199&vd_source=feaed3bcf7c26260dd3b1715d154fdbe">禹神的 2023 最新前端 html5+css3 视频</a>，强烈推荐！！！</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1p84y1P7Z5?p=199&amp;vd_source=feaed3bcf7c26260dd3b1715d154fdbe">禹神的
+2023 最新前端 html5+css3 视频</a>，强烈推荐！！！</p>
 
     </div>
 
@@ -395,13 +403,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -466,6 +474,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

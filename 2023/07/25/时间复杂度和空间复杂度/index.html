@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="时间复杂度和空间复杂度是用于衡量算法效率的概念。  时间复杂度：时间复杂度描述了算法运行时间随输入规模增长而增加的速率。它表示算法执行所需的时间与输入数据的大小之间的关系。通常用大 O 符号（O）来表示时间复杂度。例如，如果一个算法的时间复杂度为 O(n)，意味着随着输入数据的大小 n 增加，算法的运行时间会线性增长。如果时间复杂度为 O(n^2)，则表示随着输入数据的大小 n 增加，算法的运行">
+    <meta name="description" content="时间复杂度和空间复杂度是用于衡量算法效率的概念。  时间复杂度： 时间复杂度描述了算法运行时间随输入规模增长而增加的速率。它表示算法执行所需的时间与输入数据的大小之间的关系。通常用大 O 符号（O）来表示时间复杂度。 例如，如果一个算法的时间复杂度为 O(n)，意味着随着输入数据的大小 n 增加，算法的运行时间会线性增长。如果时间复杂度为 O(n^2)，则表示随着输入数据的大小">
 <meta property="og:type" content="article">
 <meta property="og:title" content="时间复杂度和空间复杂度">
 <meta property="og:url" content="https://toypipi.github.io/2023/07/25/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%92%8C%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="时间复杂度和空间复杂度是用于衡量算法效率的概念。  时间复杂度：时间复杂度描述了算法运行时间随输入规模增长而增加的速率。它表示算法执行所需的时间与输入数据的大小之间的关系。通常用大 O 符号（O）来表示时间复杂度。例如，如果一个算法的时间复杂度为 O(n)，意味着随着输入数据的大小 n 增加，算法的运行时间会线性增长。如果时间复杂度为 O(n^2)，则表示随着输入数据的大小 n 增加，算法的运行">
+<meta property="og:description" content="时间复杂度和空间复杂度是用于衡量算法效率的概念。  时间复杂度： 时间复杂度描述了算法运行时间随输入规模增长而增加的速率。它表示算法执行所需的时间与输入数据的大小之间的关系。通常用大 O 符号（O）来表示时间复杂度。 例如，如果一个算法的时间复杂度为 O(n)，意味着随着输入数据的大小 n 增加，算法的运行时间会线性增长。如果时间复杂度为 O(n^2)，则表示随着输入数据的大小">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-07-25T06:53:12.000Z">
 <meta property="article:modified_time" content="2023-08-17T08:16:38.032Z">
@@ -284,13 +284,22 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
 <p>时间复杂度和空间复杂度是用于衡量算法效率的概念。</p>
-<ol>
-<li><p>时间复杂度：<br>时间复杂度描述了算法运行时间随输入规模增长而增加的速率。它表示算法执行所需的时间与输入数据的大小之间的关系。通常用大 O 符号（O）来表示时间复杂度。<br>例如，如果一个算法的时间复杂度为 O(n)，意味着随着输入数据的大小 n 增加，算法的运行时间会线性增长。如果时间复杂度为 O(n^2)，则表示随着输入数据的大小 n 增加，算法的运行时间会按二次方增长。一般而言，时间复杂度越低，算法执行速度越快。</p>
-</li>
-<li><p>空间复杂度：<br>空间复杂度描述了算法执行所需的额外空间随输入规模增长而增加的速率。它表示算法使用的额外内存空间与输入数据的大小之间的关系。通常也用大 O 符号（O）来表示空间复杂度。<br>例如，如果一个算法的空间复杂度为 O(n)，意味着随着输入数据的大小 n 增加，算法使用的额外内存空间也会线性增长。如果空间复杂度为 O(1)，则表示算法使用的额外内存空间是常数，与输入数据的大小无关。</p>
-</li>
+<ol type="1">
+<li><p>时间复杂度：
+时间复杂度描述了算法运行时间随输入规模增长而增加的速率。它表示算法执行所需的时间与输入数据的大小之间的关系。通常用大
+O 符号（O）来表示时间复杂度。 例如，如果一个算法的时间复杂度为
+O(n)，意味着随着输入数据的大小 n
+增加，算法的运行时间会线性增长。如果时间复杂度为
+O(n^2)，则表示随着输入数据的大小 n
+增加，算法的运行时间会按二次方增长。一般而言，时间复杂度越低，算法执行速度越快。</p></li>
+<li><p>空间复杂度：
+空间复杂度描述了算法执行所需的额外空间随输入规模增长而增加的速率。它表示算法使用的额外内存空间与输入数据的大小之间的关系。通常也用大
+O 符号（O）来表示空间复杂度。 例如，如果一个算法的空间复杂度为
+O(n)，意味着随着输入数据的大小 n
+增加，算法使用的额外内存空间也会线性增长。如果空间复杂度为
+O(1)，则表示算法使用的额外内存空间是常数，与输入数据的大小无关。</p></li>
 </ol>
 <p>在进行算法分析时，我们通常关注算法的时间复杂度和空间复杂度，以便评估算法的效率和资源利用情况。较低的时间复杂度和空间复杂度通常意味着更优秀的算法。然而，要根据具体情况选择合适的算法，因为某些情况下可能需要在时间和空间之间进行权衡。</p>
 <span id="more"></span>
@@ -386,13 +395,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -457,6 +466,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>

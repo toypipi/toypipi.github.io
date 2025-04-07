@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="假设你需要使用 JavaScript 在服务器上读取多个文件。对于像 Node.js 这样的运行时，读取文件的方法有很多种。哪一种方法最好呢？让我们来考虑各种不同的方式。 使用 fs.promises12345const fs &#x3D; require(&#x27;fs&#x2F;promises&#x27;);const readFile &#x3D; fs.readFile;readFile(&quot;lipsum">
+    <meta name="description" content="假设你需要使用 JavaScript 在服务器上读取多个文件。对于像 Node.js 这样的运行时，读取文件的方法有很多种。哪一种方法最好呢？让我们来考虑各种不同的方式。 使用 fs.promises 12345const fs &#x3D; require(&#x27;fs&#x2F;promises&#x27;);const readFile &#x3D; fs.readFile;readFile(&quot;l">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何用 JavaScript 快速读取文件[译]">
 <meta property="og:url" content="https://toypipi.github.io/2024/06/25/%E5%A6%82%E4%BD%95%E7%94%A8-JavaScript-%E5%BF%AB%E9%80%9F%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6-%E8%AF%91/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
-<meta property="og:description" content="假设你需要使用 JavaScript 在服务器上读取多个文件。对于像 Node.js 这样的运行时，读取文件的方法有很多种。哪一种方法最好呢？让我们来考虑各种不同的方式。 使用 fs.promises12345const fs &#x3D; require(&#x27;fs&#x2F;promises&#x27;);const readFile &#x3D; fs.readFile;readFile(&quot;lipsum">
+<meta property="og:description" content="假设你需要使用 JavaScript 在服务器上读取多个文件。对于像 Node.js 这样的运行时，读取文件的方法有很多种。哪一种方法最好呢？让我们来考虑各种不同的方式。 使用 fs.promises 12345const fs &#x3D; require(&#x27;fs&#x2F;promises&#x27;);const readFile &#x3D; fs.readFile;readFile(&quot;l">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://toypipi.github.io/2024/06/25/%E5%A6%82%E4%BD%95%E7%94%A8-JavaScript-%E5%BF%AB%E9%80%9F%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6-%E8%AF%91/1.png">
 <meta property="article:published_time" content="2024-06-25T07:33:48.000Z">
@@ -146,7 +146,8 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-fs-promises"><span class="nav-number">1.</span> <span class="nav-text">使用 fs.promises</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-fs-readFile-%E5%92%8C-util-promisify"><span class="nav-number">2.</span> <span class="nav-text">使用 fs.readFile 和 util.promisify</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-fs-readFileSync"><span class="nav-number">3.</span> <span class="nav-text">使用 fs.readFileSync</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-await-fs-readFileSync"><span class="nav-number">4.</span> <span class="nav-text">使用 await fs.readFileSync</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-fs-readFile"><span class="nav-number">5.</span> <span class="nav-text">使用 fs.readFile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E5%87%86"><span class="nav-number">6.</span> <span class="nav-text">基准</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-fs.promises"><span class="nav-number">1.</span> <span class="nav-text">使用 fs.promises</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-fs.readfile-%E5%92%8C-util.promisify"><span class="nav-number">2.</span> <span class="nav-text">使用 fs.readFile 和
+util.promisify</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-fs.readfilesync"><span class="nav-number">3.</span> <span class="nav-text">使用 fs.readFileSync</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-await-fs.readfilesync"><span class="nav-number">4.</span> <span class="nav-text">使用 await fs.readFileSync</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-fs.readfile"><span class="nav-number">5.</span> <span class="nav-text">使用 fs.readFile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E5%87%86"><span class="nav-number">6.</span> <span class="nav-text">基准</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -286,29 +287,48 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr>
-<p>假设你需要使用 JavaScript 在服务器上读取多个文件。对于像 Node.js 这样的运行时，读取文件的方法有很多种。哪一种方法最好呢？让我们来考虑各种不同的方式。</p>
-<h1 id="使用-fs-promises"><a href="#使用-fs-promises" class="headerlink" title="使用 fs.promises"></a>使用 fs.promises</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs/promises&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> readFile = fs.<span class="property">readFile</span>;</span><br><span class="line"><span class="title function_">readFile</span>(<span class="string">&quot;lipsum.txt&quot;</span>, &#123; <span class="attr">encoding</span>: <span class="string">&#x27;utf-8&#x27;</span> &#125;)</span><br><span class="line">.<span class="title function_">then</span>(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;...&#125;)</span><br><span class="line">.<span class="title function_">catch</span>(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;...&#125;)</span><br></pre></td></tr></table></figure>
-
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<p>假设你需要使用 JavaScript 在服务器上读取多个文件。对于像 Node.js
+这样的运行时，读取文件的方法有很多种。哪一种方法最好呢？让我们来考虑各种不同的方式。</p>
+<h1 id="使用-fs.promises">使用 fs.promises</h1>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs/promises&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> readFile = fs.<span class="property">readFile</span>;</span><br><span class="line"><span class="title function_">readFile</span>(<span class="string">&quot;lipsum.txt&quot;</span>, &#123; <span class="attr">encoding</span>: <span class="string">&#x27;utf-8&#x27;</span> &#125;)</span><br><span class="line">.<span class="title function_">then</span>(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;...&#125;)</span><br><span class="line">.<span class="title function_">catch</span>(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;...&#125;)</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-
-<h1 id="使用-fs-readFile-和-util-promisify"><a href="#使用-fs-readFile-和-util-promisify" class="headerlink" title="使用 fs.readFile 和 util.promisify"></a>使用 fs.readFile 和 util.promisify</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> util = <span class="built_in">require</span>(<span class="string">&#x27;util&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> readFile = util.<span class="title function_">promisify</span>(fs.<span class="property">readFile</span>);</span><br><span class="line"><span class="title function_">readFile</span>(<span class="string">&quot;lipsum.txt&quot;</span>, &#123; <span class="attr">encoding</span>: <span class="string">&#x27;utf-8&#x27;</span> &#125;)</span><br><span class="line">.<span class="title function_">then</span>(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;...&#125;)</span><br><span class="line">.<span class="title function_">catch</span>(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;...&#125;)</span><br></pre></td></tr></table></figure>
-
-<h1 id="使用-fs-readFileSync"><a href="#使用-fs-readFileSync" class="headerlink" title="使用 fs.readFileSync"></a>使用 fs.readFileSync</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> readFileSync = fs.<span class="property">readFileSync</span>;</span><br><span class="line"><span class="keyword">var</span> data = <span class="title function_">readFileSync</span>(<span class="string">&quot;lipsum.txt&quot;</span>, &#123; <span class="attr">encoding</span>: <span class="string">&quot;utf-8&quot;</span> &#125;);</span><br></pre></td></tr></table></figure>
-
-<h1 id="使用-await-fs-readFileSync"><a href="#使用-await-fs-readFileSync" class="headerlink" title="使用 await fs.readFileSync"></a>使用 await fs.readFileSync</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> readFileSync = fs.<span class="property">readFileSync</span>;</span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">name, options</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">readFileSync</span>(name, options);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="使用-fs-readFile"><a href="#使用-fs-readFile" class="headerlink" title="使用 fs.readFile"></a>使用 fs.readFile</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> readFile = fs.<span class="property">readFile</span>;</span><br><span class="line">fs.<span class="title function_">readFile</span>(<span class="string">&#x27;lipsum.txt&#x27;</span>, <span class="keyword">function</span> <span class="title function_">read</span>(<span class="params">err, data</span>) &#123;...&#125;);</span><br></pre></td></tr></table></figure>
-
-<h1 id="基准"><a href="#基准" class="headerlink" title="基准"></a>基准</h1><p><a target="_blank" rel="noopener" href="https://github.com/lemire/Code-used-on-Daniel-Lemire-s-blog/tree/master/2024/03/12">我编写了一个小型基准测试，用于反复从磁盘读取一个文件</a>。这个测试是一个简单的循环，每次都访问同一个文件。我记录了读取该文件 5 万次所需的毫秒数。该文件相对较小，略多于 1 千字节。我使用了一台拥有数十个 Ice Lake Intel 核心和充足内存的大型服务器。所使用的运行时是 Node.js 20.1 和 Bun 1.0.14。<a target="_blank" rel="noopener" href="https://bun.sh/">Bun 是一个与 Node.js 竞争的 JavaScript 运行时</a>。</p>
+<h1 id="使用-fs.readfile-和-util.promisify">使用 fs.readFile 和
+util.promisify</h1>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> util = <span class="built_in">require</span>(<span class="string">&#x27;util&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> readFile = util.<span class="title function_">promisify</span>(fs.<span class="property">readFile</span>);</span><br><span class="line"><span class="title function_">readFile</span>(<span class="string">&quot;lipsum.txt&quot;</span>, &#123; <span class="attr">encoding</span>: <span class="string">&#x27;utf-8&#x27;</span> &#125;)</span><br><span class="line">.<span class="title function_">then</span>(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;...&#125;)</span><br><span class="line">.<span class="title function_">catch</span>(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;...&#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="使用-fs.readfilesync">使用 fs.readFileSync</h1>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> readFileSync = fs.<span class="property">readFileSync</span>;</span><br><span class="line"><span class="keyword">var</span> data = <span class="title function_">readFileSync</span>(<span class="string">&quot;lipsum.txt&quot;</span>, &#123; <span class="attr">encoding</span>: <span class="string">&quot;utf-8&quot;</span> &#125;);</span><br></pre></td></tr></table></figure>
+<h1 id="使用-await-fs.readfilesync">使用 await fs.readFileSync</h1>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> readFileSync = fs.<span class="property">readFileSync</span>;</span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">name, options</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">readFileSync</span>(name, options);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="使用-fs.readfile">使用 fs.readFile</h1>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> readFile = fs.<span class="property">readFile</span>;</span><br><span class="line">fs.<span class="title function_">readFile</span>(<span class="string">&#x27;lipsum.txt&#x27;</span>, <span class="keyword">function</span> <span class="title function_">read</span>(<span class="params">err, data</span>) &#123;...&#125;);</span><br></pre></td></tr></table></figure>
+<h1 id="基准">基准</h1>
+<p><a
+target="_blank" rel="noopener" href="https://github.com/lemire/Code-used-on-Daniel-Lemire-s-blog/tree/master/2024/03/12">我编写了一个小型基准测试，用于反复从磁盘读取一个文件</a>。这个测试是一个简单的循环，每次都访问同一个文件。我记录了读取该文件
+5 万次所需的毫秒数。该文件相对较小，略多于 1
+千字节。我使用了一台拥有数十个 Ice Lake Intel
+核心和充足内存的大型服务器。所使用的运行时是 Node.js 20.1 和 Bun
+1.0.14。<a target="_blank" rel="noopener" href="https://bun.sh/">Bun 是一个与 Node.js 竞争的 JavaScript
+运行时</a>。</p>
 <p>我多次运行了基准测试，并记录了所有情况下的最佳结果。你的结果可能会与我的不同。</p>
 <img src="/2024/06/25/%E5%A6%82%E4%BD%95%E7%94%A8-JavaScript-%E5%BF%AB%E9%80%9F%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6-%E8%AF%91/1.png" class="">
-
-<p>至少在我的系统上，在这次测试中使用 Node.js 时，fs.promises 的开销显著高于其他方法。在此次测试中，Bun 运行时比 Node.js 快得多。</p>
-<p>从某种意义和上讲，fs.promises 的表现比表面上看起来更糟。因为我发现 readFileSync 使用了 300 毫秒的 CPU 时间，而 fs.promises 使用了 7 秒的 CPU 时间。这是因为在基准测试期间，fs.promises 利用多个 CPU 核心并行执行这些操作。</p>
-<p>即使将文件大小增加到例如 32kB，也不会改变结论。如果使用更大的文件，许多 Node.js 的案例会出现 “heap limit Allocation failed” 的错误。而 Bun 即使处理大文件也能继续运行。在我的测试中，使用 Bun 时，fs.readFile 始终表现得更快，即使在处理大文件时。</p>
-<p><strong>致谢</strong>。我的基准测试受到 Evgenii Stulnikov 提供的测试用例的启发。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>原文链接 <a target="_blank" rel="noopener" href="https://lemire.me/blog/2024/03/12/how-to-read-files-quickly-in-javascript/">How to read files quickly in JavaScript</a> 。更多信息请点击链接获取。</p>
+<p>至少在我的系统上，在这次测试中使用 Node.js 时，fs.promises
+的开销显著高于其他方法。在此次测试中，Bun 运行时比 Node.js 快得多。</p>
+<p>从某种意义和上讲，fs.promises 的表现比表面上看起来更糟。因为我发现
+readFileSync 使用了 300 毫秒的 CPU 时间，而 fs.promises 使用了 7 秒的
+CPU 时间。这是因为在基准测试期间，fs.promises 利用多个 CPU
+核心并行执行这些操作。</p>
+<p>即使将文件大小增加到例如
+32kB，也不会改变结论。如果使用更大的文件，许多 Node.js 的案例会出现
+“heap limit Allocation failed” 的错误。而 Bun
+即使处理大文件也能继续运行。在我的测试中，使用 Bun 时，fs.readFile
+始终表现得更快，即使在处理大文件时。</p>
+<p><strong>致谢</strong>。我的基准测试受到 Evgenii Stulnikov
+提供的测试用例的启发。</p>
+<h1 id="参考">参考</h1>
+<p>原文链接 <a
+target="_blank" rel="noopener" href="https://lemire.me/blog/2024/03/12/how-to-read-files-quickly-in-javascript/">How
+to read files quickly in JavaScript</a> 。更多信息请点击链接获取。</p>
 
     </div>
 
@@ -400,13 +420,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">231k</span>
+    <span title="站点总字数">232k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:01</span>
+    <span title="站点阅读时长">14:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -471,6 +491,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 <script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>
