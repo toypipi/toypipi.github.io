@@ -26,15 +26,20 @@
 <meta property="og:url" content="https://toypipi.github.io/2024/11/06/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/index.html">
 <meta property="og:site_name" content="Toypipi&#39;s blog">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://toypipi.github.io/2024/11/06/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/6.png">
 <meta property="og:image" content="https://toypipi.github.io/2024/11/06/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/1.png">
+<meta property="og:image" content="https://toypipi.github.io/2024/11/06/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/2.png">
+<meta property="og:image" content="https://toypipi.github.io/2024/11/06/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/3.png">
+<meta property="og:image" content="https://toypipi.github.io/2024/11/06/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/5.png">
+<meta property="og:image" content="https://toypipi.github.io/2024/11/06/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/4.png">
 <meta property="article:published_time" content="2024-11-06T06:18:05.000Z">
-<meta property="article:modified_time" content="2024-11-06T07:03:25.974Z">
+<meta property="article:modified_time" content="2025-05-06T03:21:36.877Z">
 <meta property="article:author" content="toypipi">
 <meta property="article:tag" content="系统架构师">
 <meta property="article:tag" content="软考">
 <meta property="article:tag" content="软件架构风格">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://toypipi.github.io/2024/11/06/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/1.png">
+<meta name="twitter:image" content="https://toypipi.github.io/2024/11/06/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/6.png">
 
 
 <link rel="canonical" href="https://toypipi.github.io/2024/11/06/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/">
@@ -234,9 +239,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2024-11-06 14:18:05 / 修改时间：15:03:25" itemprop="dateCreated datePublished" datetime="2024-11-06T14:18:05+08:00">2024-11-06</time>
+      <time title="创建时间：2024-11-06 14:18:05" itemprop="dateCreated datePublished" datetime="2024-11-06T14:18:05+08:00">2024-11-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-05-06 11:21:36" itemprop="dateModified" datetime="2025-05-06T11:21:36+08:00">2025-05-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -280,11 +291,12 @@
     
     
     <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
-<img src="/2024/11/06/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/1.png" class="">
+<img src="/2024/11/06/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/6.png" class="">
 <span id="more"></span>
 <h1 id="数据流风格">数据流风格</h1>
 <p>没有概念上的程序计数器：指令的可执行性和执行仅基于指令输入参数的可用性来确定。指令执行的顺序是不可预测的，行为是不确定的。
-早期编译器就是采用的这种架构。要一步一步处理的，均可考虑采用此架构风格。</p>
+早期编译器就是采用的这种架构。要一步一步处理的，均可考虑采用此架构风格。
+<img src="/2024/11/06/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/1.png" class=""></p>
 <h2 id="批处理">批处理</h2>
 <p>构件为一系列固定顺序的计算单元，构件之间只通过数据传递交互。
 每个处理步骤是一个独立的程序，每一步必须在其前一步结束后才能开始，数据必须是完整的，以整体的方式传递。</p>
@@ -304,7 +316,7 @@ sort | uniq &gt; output.txt
 特点：图片依次经过裁剪、调色、特效等处理环节</li>
 </ul>
 <h1 id="调用返回风格">调用/返回风格</h1>
-<p>构件之间存在互相调用的关系，一般是显式的调用。</p>
+<p>构件之间存在互相调用的关系，一般是显式的调用。 <img src="/2024/11/06/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/2.png" class=""></p>
 <p>优点 ∶
 1、这种风格支持基于可增加抽象层的设计，允许将一个复杂问题分解成一个增量步骤序列的实现。
 2、不同的层次处于不同的抽象级别：越靠近底层，抽象级别越高；越靠近顶层，抽象级别越低；
@@ -347,7 +359,8 @@ sort | uniq &gt; output.txt
 特点：表现层、应用层、数据层分离</li>
 </ul>
 <h1 id="独立构件风格">独立构件风格</h1>
-<p>构件之间是互相独立的，不存在显示的调用关系，而是通过某个事件触发、异步的方式来执行。</p>
+<p>构件之间是互相独立的，不存在显示的调用关系，而是通过某个事件触发、异步的方式来执行。
+<img src="/2024/11/06/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/3.png" class=""></p>
 <h2 id="进程通信">进程通信</h2>
 <p>构件是独立的过程，连接件是消息传递。构件通常是命名过程，消息传递的方式可以是点对点、异步或同步方式，以及远程过程
 (方法）调用等。</p>
@@ -368,7 +381,7 @@ sort | uniq &gt; output.txt
 <h1 id="仓库风格以数据为中心">仓库风格（以数据为中心）</h1>
 <p>以数据为中心，所有的操作都是围绕建立的数据中心进行的。
 仓库风格中构件分两种：一种是中央数据结构，保存系统的当前状态；另一种是独立构件，对中央数据存储进行操作。
-现代集成编译环境一般采用这种架构风格。</p>
+现代集成编译环境一般采用这种架构风格。 <img src="/2024/11/06/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/5.png" class=""></p>
 <h2 id="数据库系统">数据库系统</h2>
 <p>MySQL，Oracle 等数据库。</p>
 <ul>
@@ -396,7 +409,8 @@ id="黑板风格语音模式识别知识推理">黑板风格（语音、模式�
 特点：多个识别器配合工作</li>
 </ul>
 <h1 id="虚拟机风格">虚拟机风格</h1>
-<p>自定义了一套规则供使用者使用，使用者基于这个规则来开发构件，能够跨平台适配。</p>
+<p>自定义了一套规则供使用者使用，使用者基于这个规则来开发构件，能够跨平台适配。
+<img src="/2024/11/06/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/4.png" class=""></p>
 <h2 id="解释器">解释器</h2>
 <p>解释器通常包括一个完成解释工作的解释引擎、一个包含将被解释的代码的存储区、一个记录解释引擎当前工作状态的数据结构，以及一个记录源代码被解释执行的进度的数据结构。具有解释器风格的软件中含有一个虚拟机，可以仿真硬件的执行过程和一些关键应用，其缺点是执行效率比较低。</p>
 <ul>
