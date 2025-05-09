@@ -154,7 +154,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">307</span>
+          <span class="site-state-item-count">308</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -190,6 +190,148 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/11/02/HTTP-1-0%E3%80%811-1%E3%80%812-0%E3%80%81HTTPS-%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%89%B9%E6%80%A7%E5%8F%8A%E5%8C%BA%E5%88%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/11/02/HTTP-1-0%E3%80%811-1%E3%80%812-0%E3%80%81HTTPS-%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%89%B9%E6%80%A7%E5%8F%8A%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">HTTP 1.0、1.1、2.0、HTTPS 协议的特性及区别</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-11-02 13:35:23" itemprop="dateCreated datePublished" datetime="2023-11-02T13:35:23+08:00">2023-11-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-11-03 09:22:11" itemprop="dateModified" datetime="2023-11-03T09:22:11+08:00">2023-11-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>870</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr />
+<p>HTTP（Hypertext Transfer
+Protocol）是用于传输超文本的应用层协议，它被用于在客户端和服务器之间传输和呈现超文本。</p>
+<ol type="1">
+<li><p><strong>HTTP 1.0</strong>：</p>
+<ul>
+<li><strong>特性</strong>：
+<ul>
+<li>使用明文传输数据，不提供数据加密。</li>
+<li>请求-响应模型，每个请求都需要服务器单独响应。</li>
+<li>不支持持久连接，每个请求/响应都需要建立新的 TCP 连接。</li>
+<li>无法复用连接，每个请求都会在单独的连接上处理。</li>
+<li>不支持请求的优先级，请求之间平等对待。</li>
+</ul></li>
+<li><strong>缺点</strong>：
+<ul>
+<li>性能较差，多次连接建立和拆除的开销。</li>
+<li>安全性差，数据明文传输容易被窃听和篡改。</li>
+</ul></li>
+</ul></li>
+<li><p><strong>HTTP 1.1</strong>：</p>
+<ul>
+<li><strong>特性</strong>：
+<ul>
+<li>引入持久连接，减少了连接的建立和拆除开销。</li>
+<li>引入请求的优先级，可以根据需求标识请求的优先级。</li>
+<li>支持管道化，允许多个请求/响应在一个连接上同时处理。</li>
+<li>引入分块传输编码，允许数据分块传输。</li>
+</ul></li>
+<li><strong>缺点</strong>：
+<ul>
+<li>依然使用明文传输，存在安全风险。</li>
+<li>性能提升有限，管道化和请求优先级的支持不够强大。</li>
+</ul></li>
+</ul></li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/11/02/HTTP-1-0%E3%80%811-1%E3%80%812-0%E3%80%81HTTPS-%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%89%B9%E6%80%A7%E5%8F%8A%E5%8C%BA%E5%88%AB/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -625,118 +767,6 @@ diff 算法找出它们之间的差异，然后更新列表。</p></li>
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/10/27/JavaScirpt-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="toypipi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Toypipi's blog">
-      <meta itemprop="description" content="Stay focused, be present">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Toypipi's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/10/27/JavaScirpt-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/" class="post-title-link" itemprop="url">JavaScirpt 垃圾回收机制</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2023-10-27 16:29:52 / 修改时间：16:34:38" itemprop="dateCreated datePublished" datetime="2023-10-27T16:29:52+08:00">2023-10-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>827</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr />
-<h1 id="垃圾回收机制">垃圾回收机制</h1>
-<p>JavaScript
-的垃圾回收机制是自动的，也就是说，开发者不需要手动释放内存。JavaScript
-引擎会自动跟踪内存中所有对象的引用，并在对象没有被引用时自动释放其占用的内存空间。</p>
-<p>垃圾回收器会定期扫描内存中的对象，并标记那些被引用的对象。然后，它会删除那些没有被标记的对象，并将它们占用的内存空间释放回系统。这个过程被称为垃圾回收。</p>
-<p>JavaScript 中的垃圾回收器使用的是基于标记和清除（Mark and
-Sweep）算法的垃圾回收机制。这个算法的基本思想是，通过遍历所有的对象，标记那些仍然被引用的对象，然后删除那些没有被标记的对象。</p>
-<p>这个算法有一个缺点，就是在执行标记和清除算法的过程中会暂停 JavaScript
-的执行。这个暂停时间的长短取决于需要清理的内存空间的大小。为了解决这个问题，现代浏览器使用了一些优化算法，如增量标记和清除、分代回收等，来减少垃圾回收的暂停时间。</p>
-<p>总的来说，JavaScript
-的垃圾回收机制是非常高效和自动化的，开发者不需要手动管理内存。但是，开发者仍然需要注意一些内存泄漏的情况，如循环引用、全局变量等，以避免浪费内存和影响性能。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/10/27/JavaScirpt-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/62/">62</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/11/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -760,13 +790,13 @@ Sweep）算法的垃圾回收机制。这个算法的基本思想是，通过遍
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">235k</span>
+    <span title="站点总字数">236k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14:13</span>
+    <span title="站点阅读时长">14:17</span>
   </span>
 </div>
 <div class="busuanzi-count">
