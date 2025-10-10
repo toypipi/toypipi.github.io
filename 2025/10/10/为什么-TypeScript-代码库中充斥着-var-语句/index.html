@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="原文：The Temporal Dead Zone, or why the TypeScript codebase is littered with var statements  如果您使用 JavaScript 已经有一段时间，您可能知道有几种不同的方式来初始化变量。现在，我们通常使用： 1const password &#x3D; &quot;hunter2&quot;; 并且偶">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为什么 TypeScript 代码库中充斥着 var 语句">
+<meta property="og:url" content="https://toypipi.github.io/2025/10/10/%E4%B8%BA%E4%BB%80%E4%B9%88-TypeScript-%E4%BB%A3%E7%A0%81%E5%BA%93%E4%B8%AD%E5%85%85%E6%96%A5%E7%9D%80-var-%E8%AF%AD%E5%8F%A5/index.html">
+<meta property="og:site_name" content="Toypipi&#39;s blog">
+<meta property="og:description" content="原文：The Temporal Dead Zone, or why the TypeScript codebase is littered with var statements  如果您使用 JavaScript 已经有一段时间，您可能知道有几种不同的方式来初始化变量。现在，我们通常使用： 1const password &#x3D; &quot;hunter2&quot;; 并且偶">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-10-10T02:14:40.000Z">
+<meta property="article:modified_time" content="2025-10-10T02:35:44.465Z">
+<meta property="article:author" content="toypipi">
+<meta property="article:tag" content="Var">
+<meta property="article:tag" content="TDZ">
+<meta property="article:tag" content="Temporal Dead Zone">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://toypipi.github.io/2025/10/10/%E4%B8%BA%E4%BB%80%E4%B9%88-TypeScript-%E4%BB%A3%E7%A0%81%E5%BA%93%E4%B8%AD%E5%85%85%E6%96%A5%E7%9D%80-var-%E8%AF%AD%E5%8F%A5/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://toypipi.github.io/2025/10/10/%E4%B8%BA%E4%BB%80%E4%B9%88-TypeScript-%E4%BB%A3%E7%A0%81%E5%BA%93%E4%B8%AD%E5%85%85%E6%96%A5%E7%9D%80-var-%E8%AF%AD%E5%8F%A5/","path":"2025/10/10/为什么-TypeScript-代码库中充斥着-var-语句/","title":"为什么 TypeScript 代码库中充斥着 var 语句"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>为什么 TypeScript 代码库中充斥着 var 语句 | Toypipi's blog</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?c228072b8c3657dfa7236914b308712c"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Toypipi's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%91%E6%B3%A8"><span class="nav-number">1.</span> <span class="nav-text">译注</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9A%82%E6%97%B6%E6%80%A7%E6%AD%BB%E5%8C%BA%E7%9A%84%E6%A0%B8%E5%BF%83%E7%90%86%E8%A7%A3"><span class="nav-number">1.1.</span> <span class="nav-text">暂时性死区的核心理解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#var-%E7%9A%84%E8%A1%8C%E4%B8%BA%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87-hoisting"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. var
+的行为：变量提升 (Hoisting)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#let-%E5%92%8C-const-%E7%9A%84%E8%A1%8C%E4%B8%BAtdz-%E4%BF%9D%E6%8A%A4"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. let 和
+const 的行为：TDZ 保护</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E4%B8%8E-tdz-%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">示例与 TDZ 的作用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%A6%E6%9C%89-tdz-%E7%9A%84-const%E5%AE%89%E5%85%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">带有 TDZ 的
+const（安全）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B2%A1%E6%9C%89-tdz-%E7%9A%84-var%E5%8D%B1%E9%99%A9"><span class="nav-number">1.2.2.</span> <span class="nav-text">没有 TDZ 的 var（危险）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.2.3.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="toypipi"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">toypipi</p>
+  <div class="site-description" itemprop="description">Stay focused, be present</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">310</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">408</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/toypipi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;toypipi" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:275688469@qq.com" title="E-Mail → mailto:275688469@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2025/10/10/%E4%B8%BA%E4%BB%80%E4%B9%88-TypeScript-%E4%BB%A3%E7%A0%81%E5%BA%93%E4%B8%AD%E5%85%85%E6%96%A5%E7%9D%80-var-%E8%AF%AD%E5%8F%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="为什么 TypeScript 代码库中充斥着 var 语句 | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          为什么 TypeScript 代码库中充斥着 var 语句
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-10-10 10:14:40 / 修改时间：10:35:44" itemprop="dateCreated datePublished" datetime="2025-10-10T10:14:40+08:00">2025-10-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BF%BB%E8%AF%91/" itemprop="url" rel="index"><span itemprop="name">翻译</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<blockquote>
+<p>原文：<a target="_blank" rel="noopener" href="https://vincentrolfs.dev/blog/ts-var">The Temporal
+Dead Zone, or why the TypeScript codebase is littered with var
+statements</a></p>
+</blockquote>
+<p>如果您使用 JavaScript
+已经有一段时间，您可能知道有几种不同的方式来初始化变量。现在，我们通常使用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> password = <span class="string">&quot;hunter2&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p>并且偶尔的，当状态可变时我们使用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> password = <span class="string">&quot;hunter2&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p>这些声明方式已经存在一段时间了，它们拥有合理的块级作用域规则：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">example</span>(<span class="params">measurement</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(calculation); <span class="comment">// ReferenceError（引用错误）</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(anotherCalc); <span class="comment">// ReferenceError（引用错误）</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (measurement &gt; <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> calculation = measurement + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">let</span> anotherCalc = measurement * <span class="number">2</span>;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(calculation); <span class="comment">// ReferenceError（引用错误）</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(anotherCalc); <span class="comment">// ReferenceError（引用错误）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>但是，如果您使用 JS
+的时间<strong>真的</strong>很长，您可能还记得那时这些声明方式都不存在。我们所拥有的只有
+<code>var</code>。而 <code>var</code>
+非常糟糕。不仅每个变量都是可变的，无法强制实现不变性，更糟的是，<code>var</code>
+会泄漏到块级作用域之外：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">example</span>(<span class="params">measurement</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(calculation); <span class="comment">// undefined - 可访问！calculation 泄漏了</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(i); <span class="comment">// undefined - 可访问！i 泄漏了</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (measurement &gt; <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> calculation = measurement + <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(calculation); <span class="comment">// 1 - 可访问！calculation 泄漏了</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(i); <span class="comment">// 3 - 可访问！i 泄漏了</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>太糟糕了！</p>
+<p>因此，当我发现 <strong>TypeScript 的代码库</strong>（它本身是用
+TypeScript 编写的——至少<a
+target="_blank" rel="noopener" href="https://devblogs.microsoft.com/typescript/typescript-native-port/">目前</a>是）<a
+target="_blank" rel="noopener" href="https://github.com/microsoft/TypeScript/blob/968d5deb8b5fd4af3ce85433872bdefc1eb17f10/src/compiler/scanner.ts#L1033">中充斥着像
+2003 年那样的大量 var 语句</a>时，我感到非常惊讶：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** <span class="doctag">@internal</span> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">createSourceMapGenerator</span>(<span class="params"></span></span><br><span class="line"><span class="params">  host: EmitHost,</span></span><br><span class="line"><span class="params">  file: <span class="built_in">string</span>,</span></span><br><span class="line"><span class="params">  sourceRoot: <span class="built_in">string</span>,</span></span><br><span class="line"><span class="params">  sourcesDirectoryPath: <span class="built_in">string</span>,</span></span><br><span class="line"><span class="params">  generatorOptions: SourceMapGeneratorOptions</span></span><br><span class="line"><span class="params"></span>): <span class="title class_">SourceMapGenerator</span> &#123;</span><br><span class="line">  <span class="comment">/* eslint-disable no-var */</span></span><br><span class="line">  <span class="keyword">var</span> &#123; enter, exit &#125; = generatorOptions.<span class="property">extendedDiagnostics</span></span><br><span class="line">    ? performance.<span class="title function_">createTimer</span>(<span class="string">&quot;Source Map&quot;</span>, <span class="string">&quot;beforeSourcemap&quot;</span>, <span class="string">&quot;afterSourcemap&quot;</span>)</span><br><span class="line">    : performance.<span class="property">nullTimer</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Current source map file and its index in the sources list</span></span><br><span class="line">  <span class="keyword">var</span> <span class="attr">rawSources</span>: <span class="built_in">string</span>[] = [];</span><br><span class="line">  <span class="keyword">var</span> <span class="attr">sources</span>: <span class="built_in">string</span>[] = [];</span><br><span class="line">  <span class="keyword">var</span> sourceToSourceIndexMap = <span class="keyword">new</span> <span class="title class_">Map</span>&lt;<span class="built_in">string</span>, <span class="built_in">number</span>&gt;();</span><br><span class="line">  <span class="keyword">var</span> <span class="attr">sourcesContent</span>: (<span class="built_in">string</span> | <span class="literal">null</span>)[] | <span class="literal">undefined</span>; <span class="comment">// eslint-disable-line no-restricted-syntax</span></span><br><span class="line">  <span class="keyword">var</span> <span class="attr">names</span>: <span class="built_in">string</span>[] = [];</span><br><span class="line">  <span class="keyword">var</span> <span class="attr">nameToNameIndexMap</span>: <span class="title class_">Map</span>&lt;<span class="built_in">string</span>, <span class="built_in">number</span>&gt; | <span class="literal">undefined</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> <span class="attr">mappingCharCodes</span>: <span class="built_in">number</span>[] = [];</span><br><span class="line">  <span class="keyword">var</span> mappings = <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Last recorded and encoded mappings</span></span><br><span class="line">  <span class="keyword">var</span> lastGeneratedLine = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">var</span> lastGeneratedCharacter = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">var</span> lastSourceIndex = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">var</span> lastSourceLine = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">var</span> lastSourceCharacter = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">var</span> lastNameIndex = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">var</span> hasLast = <span class="literal">false</span>;</span><br><span class="line">  <span class="comment">// ... 等等</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原因与所谓的<a
+target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#temporal_dead_zone_tdz">暂时性死区（Temporal
+Dead Zone，简称 TDZ）</a>有关。</p>
+<p>对于代码中的每个变量，都存在一个区域，在这个区域内变量已被声明，但<strong>尚未初始化</strong>。下面的例子可以清楚地说明这一点：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">example</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> result = <span class="title class_">Math</span>.<span class="title function_">random</span>() &lt; <span class="number">0.5</span> ? <span class="title function_">useX</span>() : <span class="number">1</span>; <span class="comment">// 50% 的概率出现 ReferenceError</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> x = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">useX</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在上面的例子中，将 <code>useX</code>
+声明在函数的底部是完全有效的。问题出在当你在 <code>x</code>
+尚未初始化之前就调用它时——换句话说，当解释器仍处于 <code>x</code> 的
+<strong>TDZ</strong> 中时。解释器拒绝让您访问 <code>x</code>
+并抛出一个错误。</p>
+<p>这一点非常好！因为如果您在这个例子中使用 <code>var</code> 而不是
+<code>const</code>，就不会报错，函数只会简单地返回
+<code>undefined</code>！</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">example</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> result = <span class="title function_">useX</span>(); <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> x = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> result; <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">useX</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">example</span>()); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<p>太糟糕了！</p>
+<p>所以 TDZ 实际上是 <code>const</code> 和 <code>let</code>
+带来的一个<strong>超有用的特性</strong>。那么为什么 TypeScript
+不愿意使用它呢？</p>
+<p><strong>答案是性能（Performance）。</strong></p>
+<p>判断是否处于变量的 TDZ
+中，对解释器来说是一项繁重的工作。正如您在上面看到的，它不能静态完成，而是取决于<strong>非确定性的运行时行为</strong>。这会带来显著的性能开销，这对
+TypeScript 代码库来说是至关重要的。</p>
+<p>在将大量声明迁移回 <code>var</code>
+之后，他们在某些基准测试中看到了<a
+target="_blank" rel="noopener" href="https://github.com/microsoft/TypeScript/issues/52924">8%
+的性能提升</a>。</p>
+<p>对我个人而言，我很高兴不必再使用 <code>var</code> 了。而对于
+TypeScript，我确信这只是他们<a
+target="_blank" rel="noopener" href="https://devblogs.microsoft.com/typescript/typescript-native-port/">将代码库迁移到
+Go 语言</a>的又一个理由。</p>
+<h1 id="译注">译注</h1>
+<p>文章中提到的“暂时性死区”（Temporal Dead Zone，简称 TDZ）是理解
+JavaScript 中 <code>let</code> 和 <code>const</code>
+行为的关键概念。</p>
+<p>简单来说，TDZ
+是指<strong>变量已经存在于作用域中，但你不能访问它的时间段。</strong></p>
+<hr />
+<h2 id="暂时性死区的核心理解">暂时性死区的核心理解</h2>
+<p>要理解 TDZ，我们需要先了解 <code>var</code>、<code>let</code> 和
+<code>const</code> 在作用域内的声明过程。</p>
+<h3 id="var-的行为变量提升-hoisting">1. <code>var</code>
+的行为：变量提升 (Hoisting)</h3>
+<p>使用 <code>var</code>
+声明的变量，在代码执行前，会被“提升”到其所在作用域（函数作用域）的顶部。在实际执行代码时，它虽然被提升了，但<strong>会默认被初始化为
+<code>undefined</code></strong>。</p>
+<ul>
+<li><strong>代码：</strong> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(myVar); <span class="comment">// 输出：undefined (没有报错)</span></span><br><span class="line"><span class="keyword">var</span> myVar = <span class="number">10</span>;</span><br></pre></td></tr></table></figure></li>
+<li><strong>TDZ 视角：</strong> <code>var</code> 没有
+TDZ。它被提升并初始化为
+<code>undefined</code>，所以你可以在它声明之前访问它，虽然得到的是一个无效值。</li>
+</ul>
+<h3 id="let-和-const-的行为tdz-保护">2. <code>let</code> 和
+<code>const</code> 的行为：TDZ 保护</h3>
+<p><code>let</code> 和 <code>const</code>
+声明的变量也会被提升到其块级作用域的顶部，但与 <code>var</code>
+不同的是，<strong>它们不会被默认初始化</strong>。它们的状态会经历以下三个阶段：</p>
+<ol type="1">
+<li><strong>被创建 (Created)：</strong>
+变量进入作用域，但未初始化。</li>
+<li><strong>暂时性死区 (TDZ)：</strong>
+从变量被创建，到代码执行到它的声明语句为止的这段时间。在这段时间内访问变量，会立即抛出
+<code>ReferenceError</code>。</li>
+<li><strong>被初始化 (Initialized)：</strong> 代码执行到
+<code>let</code> 或 <code>const</code>
+的声明行，变量被赋予一个值（或等待赋值）。</li>
+</ol>
+<hr />
+<h2 id="示例与-tdz-的作用">示例与 TDZ 的作用</h2>
+<p>让我们通过文章中的例子，来明确 TDZ 如何“保护”你的代码：</p>
+<h3 id="带有-tdz-的-const安全">带有 TDZ 的
+<code>const</code>（安全）</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">example</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// ---- x 的 TDZ 开始 ----</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 试图在 TDZ 内访问 x</span></span><br><span class="line">  <span class="keyword">const</span> result = <span class="title class_">Math</span>.<span class="title function_">random</span>() &lt; <span class="number">0.5</span> ? <span class="title function_">useX</span>() : <span class="number">1</span>; <span class="comment">// 约 50% 概率调用 useX()</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 假设 useX() 尝试访问 x</span></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">useX</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> x; <span class="comment">// &lt;-- 如果在这里访问，就会抛出 ReferenceError！</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ---- 代码执行到这里，x 离开 TDZ，并被初始化 ----</span></span><br><span class="line">  <span class="keyword">const</span> x = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>TDZ 的好处：</strong>
+它强制你在变量被赋予有效值（即初始化）之后才能使用它，避免了使用<strong>未定义状态</strong>的变量，从而帮助你捕获潜在的运行时错误，让代码更加可靠。</p>
+<h3 id="没有-tdz-的-var危险">没有 TDZ 的 <code>var</code>（危险）</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">example</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> result = <span class="title function_">useX</span>(); <span class="comment">// useX() 访问 x，但 x 此时是 undefined</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">useX</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> x; <span class="comment">// 访问的是 undefined</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> x = <span class="number">10</span>; <span class="comment">// 即使在这里赋值，也于事无补</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> result; <span class="comment">// 返回 undefined，但程序没有报错</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong><code>var</code> 的问题：</strong> 由于 <code>var</code>
+在提升时自动初始化为
+<code>undefined</code>，程序虽然逻辑错误，但没有抛出错误，而是返回了
+<code>undefined</code>，这会使错误更难被发现和调试。</p>
+<h3 id="总结">总结</h3>
+<p>TDZ 不是一个物理空间，而是一个<strong>时间概念</strong>。它是
+JavaScript
+引擎设计用来确保程序在变量被正确初始化之前不会意外使用它的安全机制。</p>
+<p>至于文章中提到的 TypeScript <strong>为了性能而避免
+TDZ</strong>，是因为在复杂的代码库中，解释器在运行时跟踪变量是否在 TDZ
+中会带来额外的性能负担。这是大型项目在<strong>代码执行速度</strong>和<strong>代码安全性/现代性</strong>之间做出的一个权衡。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.JPG" alt="toypipi 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.JPG" alt="toypipi 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>toypipi
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://toypipi.github.io/2025/10/10/%E4%B8%BA%E4%BB%80%E4%B9%88-TypeScript-%E4%BB%A3%E7%A0%81%E5%BA%93%E4%B8%AD%E5%85%85%E6%96%A5%E7%9D%80-var-%E8%AF%AD%E5%8F%A5/" title="为什么 TypeScript 代码库中充斥着 var 语句">https://toypipi.github.io/2025/10/10/为什么-TypeScript-代码库中充斥着-var-语句/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Var/" rel="tag"><i class="fa fa-tag"></i> Var</a>
+              <a href="/tags/TDZ/" rel="tag"><i class="fa fa-tag"></i> TDZ</a>
+              <a href="/tags/Temporal-Dead-Zone/" rel="tag"><i class="fa fa-tag"></i> Temporal Dead Zone</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/06/21/%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/" rel="prev" title="工厂方法模式">
+                  <i class="fa fa-angle-left"></i> 工厂方法模式
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2016 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">toypipi</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">241k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">14:38</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js","integrity":"sha256-stuqcu2FrjYCXDOytWFA5SoUE/r3nkp6gTglzNSlavU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
