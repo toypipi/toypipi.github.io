@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="原文：The beauty of OLAP SQL  我的日常工作是构建分析仪表板的后端系统。这些仪表板通过数据可视化，帮助用户深入洞察其业务数据。今天，我将分享一个利用 SQL 编写强大 OLAP 查询的真实案例。 请设想您正在运营一系列披萨品牌，目标是评估您的产品货架份额与主要竞争对手的差距。您最关心的业务问题可能包括：  您在披萨品类中的铺货份额（Share of As">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OLAP SQL 之美">
+<meta property="og:url" content="https://toypipi.github.io/2025/10/15/OLAP-SQL-%E4%B9%8B%E7%BE%8E/index.html">
+<meta property="og:site_name" content="Toypipi&#39;s blog">
+<meta property="og:description" content="原文：The beauty of OLAP SQL  我的日常工作是构建分析仪表板的后端系统。这些仪表板通过数据可视化，帮助用户深入洞察其业务数据。今天，我将分享一个利用 SQL 编写强大 OLAP 查询的真实案例。 请设想您正在运营一系列披萨品牌，目标是评估您的产品货架份额与主要竞争对手的差距。您最关心的业务问题可能包括：  您在披萨品类中的铺货份额（Share of As">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-10-15T01:26:28.000Z">
+<meta property="article:modified_time" content="2025-10-20T04:12:03.601Z">
+<meta property="article:author" content="toypipi">
+<meta property="article:tag" content="数据分析">
+<meta property="article:tag" content="SQL">
+<meta property="article:tag" content="OLAP">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://toypipi.github.io/2025/10/15/OLAP-SQL-%E4%B9%8B%E7%BE%8E/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://toypipi.github.io/2025/10/15/OLAP-SQL-%E4%B9%8B%E7%BE%8E/","path":"2025/10/15/OLAP-SQL-之美/","title":"OLAP SQL 之美"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>OLAP SQL 之美 | Toypipi's blog</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?c228072b8c3657dfa7236914b308712c"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Toypipi's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%99%E4%B8%A4%E5%91%A8%E5%86%85%E6%89%80%E6%9C%89%E9%9B%B6%E5%94%AE%E5%95%86%E4%B8%AD%E6%AF%8F%E4%B8%AA%E5%88%B6%E9%80%A0%E5%95%86%E5%88%86%E9%94%80%E4%BA%86%E5%A4%9A%E5%B0%91%E7%A7%8D%E7%8B%AC%E7%89%B9%E4%BA%A7%E5%93%81"><span class="nav-number">1.</span> <span class="nav-text">1)
+这两周内所有零售商中，每个制造商分销了多少种独特产品？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E4%BA%A7%E5%93%81%E5%9C%A8%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%88%AB%E4%B8%AD%E7%9A%84%E5%88%86%E5%B8%83%E6%83%85%E5%86%B5%E5%A6%82%E4%BD%95"><span class="nav-number">2.</span> <span class="nav-text">2)
+我的产品在不同类别中的分布情况如何？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E7%B1%BB%E5%88%AB-3-%E5%92%8C-4-%E4%B8%AD%E6%88%91%E4%BB%AC%E7%9A%84%E7%AB%9E%E4%BA%89%E5%AF%B9%E6%89%8B%E6%98%AF%E8%B0%81"><span class="nav-number">3.</span> <span class="nav-text">3) 在类别 3 和 4
+中，我们的竞争对手是谁？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E5%B1%82%E6%AC%A1%E5%88%86%E9%94%80%E4%BA%A7%E5%93%81%E5%88%86%E6%9E%90"><span class="nav-number">4.</span> <span class="nav-text">4) 多层次分销产品分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A2%E7%84%B6%E6%88%91%E7%9A%84%E4%B8%BB%E6%88%98%E5%9C%BA%E6%98%AF%E7%B1%BB%E5%88%AB-3-%E5%92%8C-4%E6%88%91%E7%9A%84%E9%93%BA%E8%B4%A7%E4%BB%BD%E9%A2%9D-soa%E6%98%AF%E5%A4%9A%E5%B0%91"><span class="nav-number">5.</span> <span class="nav-text">5)
+既然我的主战场是类别 3 和 4，我的铺货份额 (SOA)是多少？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E6%BC%94%E5%8F%98"><span class="nav-number">6.</span> <span class="nav-text">6) 时间演变！</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B6%E9%9D%9E%E6%89%80%E6%9C%89%E9%9B%B6%E5%94%AE%E5%95%86%E9%83%BD%E6%98%AF%E5%B9%B3%E7%AD%89%E7%9A%84"><span class="nav-number">7.</span> <span class="nav-text">7) 并非所有零售商都是平等的！</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="toypipi"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">toypipi</p>
+  <div class="site-description" itemprop="description">Stay focused, be present</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">311</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">409</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/toypipi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;toypipi" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:275688469@qq.com" title="E-Mail → mailto:275688469@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2025/10/15/OLAP-SQL-%E4%B9%8B%E7%BE%8E/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="OLAP SQL 之美 | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          OLAP SQL 之美
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-10-15 09:26:28" itemprop="dateCreated datePublished" datetime="2025-10-15T09:26:28+08:00">2025-10-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-10-20 12:12:03" itemprop="dateModified" datetime="2025-10-20T12:12:03+08:00">2025-10-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BF%BB%E8%AF%91/" itemprop="url" rel="index"><span itemprop="name">翻译</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>14 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<blockquote>
+<p>原文：<a
+target="_blank" rel="noopener" href="https://taki-mekhalfa.github.io/misc/2024/04/14/beauty_of_olap_sql.html">The
+beauty of OLAP SQL</a></p>
+</blockquote>
+<p>我的日常工作是构建分析仪表板的后端系统。这些仪表板通过数据可视化，帮助用户深入洞察其业务数据。今天，我将分享一个利用
+SQL 编写强大 OLAP 查询的真实案例。</p>
+<p>请设想您正在运营一系列披萨品牌，目标是评估您的产品货架份额与主要竞争对手的差距。您最关心的业务问题可能包括：</p>
+<ul>
+<li>您在披萨品类中的铺货份额（Share of Assortment,
+SOA）是多少？在沃尔玛分销的披萨产品中，有 <strong>50%</strong>
+是您的吗？还是只有 <strong>5%</strong>？</li>
+<li>平均而言，您的披萨产品有多少在 Kroger 进行了分销？您有
+<strong>5</strong> 种不同的产品，但平均只有 <strong>2</strong>
+种有售？是更多还是更少？</li>
+<li>您的铺货份额随时间推移是如何变化的？与去年/上个月相比，是增加
+<strong>10%</strong> 还是减少 <strong>5%</strong>？</li>
+<li>哪些竞争对手占据了大部分货架份额？您与他们的比较如何？</li>
+<li>谁正在投放新产品？谁在减少投放？</li>
+<li>您的哪个品牌是成功的？哪个需要撤市或通过广告/更优惠的价格等进行改进？</li>
+</ul>
+<p>数据结构如下所示（已匿名化）：</p>
+<table>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 20%" />
+<col style="width: 13%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 11%" />
+<col style="width: 26%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: center;">p_id</th>
+<th style="text-align: center;">manufacturer</th>
+<th style="text-align: center;">category</th>
+<th style="text-align: center;">brand</th>
+<th style="text-align: center;">retailer</th>
+<th style="text-align: center;">period</th>
+<th style="text-align: center;">distributed_days</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">i64</td>
+<td style="text-align: center;">i64</td>
+<td style="text-align: center;">i64</td>
+<td style="text-align: center;">i64</td>
+<td style="text-align: center;">i64</td>
+<td style="text-align: center;">str</td>
+<td style="text-align: center;">i64</td>
+</tr>
+<tr>
+<td style="text-align: center;">6581</td>
+<td style="text-align: center;">61</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">273</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2023_52</td>
+<td style="text-align: center;">31407</td>
+</tr>
+<tr>
+<td style="text-align: center;">8563</td>
+<td style="text-align: center;">34</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">274</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2023_52</td>
+<td style="text-align: center;">27515</td>
+</tr>
+<tr>
+<td style="text-align: center;">8411</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">276</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2023_52</td>
+<td style="text-align: center;">30693</td>
+</tr>
+<tr>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">…</td>
+</tr>
+</tbody>
+</table>
+<span id="more"></span>
+<p>数据代表了从零售商网站（如 Walmart、Kroger
+等）抓取的产品数据的一个子集。在这个具体的案例中，我们对分析每个品牌制造商的产品组合份额相对于不同变量的情况感兴趣。</p>
+<p>每行包含有关产品的数据：</p>
+<ul>
+<li><strong>p_id</strong>: 产品的唯一 ID。</li>
+<li><strong>manufacturer</strong>: 制造商 ID。</li>
+<li><strong>category</strong>:
+产品类别，例如：<code>牙膏</code>、<code>除臭剂</code>、<code>酱料</code>等。</li>
+<li><strong>brand</strong>: 产品品牌，例如：Dove、Pepsi、KitKat
+等。</li>
+<li><strong>retailer</strong> 和 <strong>period</strong>: 零售商 ID
+和数据爬取的周（这里的数据代表 2023 年的最后一周和 2024
+年的第一周）。</li>
+<li><strong>distributed_days</strong>:
+在此期间内，产品在该零售商网站上的所有商店中被看到的天数总和。例如，如果沃尔玛在美国有
+<strong>1000</strong>
+家商店，并且产品在一整周内在所有商店都有售，那么分销天数将是
+<strong>1000 * 7 = 7000</strong>
+天。我们稍后会看到如何使用它来计算铺货份额。</li>
+</ul>
+<p>在接下来的内容中，我将使用 <strong><a
+target="_blank" rel="noopener" href="https://duckdb.org/">DuckDB</a></strong>，一个令人惊叹且强大的嵌入式查询引擎。</p>
+<h3 id="这两周内所有零售商中每个制造商分销了多少种独特产品">1)
+这两周内所有零售商中，每个制造商分销了多少种独特产品？</h3>
+<p>这是一个简单的查询，我们只需获取不同的产品并按制造商分组：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    manufacturer,</span><br><span class="line">    <span class="built_in">COUNT</span>(<span class="keyword">DISTINCT</span> p_id) <span class="keyword">AS</span> nb_unique_products <span class="comment">-- 独特产品的数量</span></span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    product_details</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">    <span class="keyword">ALL</span> <span class="comment">-- DuckDB 提供的强大结构</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">    nb_unique_products <span class="keyword">DESC</span></span><br><span class="line">LIMIT</span><br><span class="line">    <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ┌──────────────┬────────────────────┐</span></span><br><span class="line"><span class="comment">-- │ manufacturer │ nb_unique_products │</span></span><br><span class="line"><span class="comment">-- │    int64     │       int64        │</span></span><br><span class="line"><span class="comment">-- ├──────────────┼────────────────────┤</span></span><br><span class="line"><span class="comment">-- │            7 │               3463 │ &lt;-- The big players</span></span><br><span class="line"><span class="comment">-- │           34 │               2688 │</span></span><br><span class="line"><span class="comment">-- │            2 │               2368 │</span></span><br><span class="line"><span class="comment">-- │           26 │               1227 │</span></span><br><span class="line"><span class="comment">-- │           39 │                978 │</span></span><br><span class="line"><span class="comment">-- │            6 │                783 │</span></span><br><span class="line"><span class="comment">-- │           58 │                727 │</span></span><br><span class="line"><span class="comment">-- │           21 │                499 │</span></span><br><span class="line"><span class="comment">-- │           57 │                372 │ &lt;-- Let&#x27;s say this is me</span></span><br><span class="line"><span class="comment">-- │            3 │                333 │</span></span><br><span class="line"><span class="comment">-- ├──────────────┴────────────────────┤</span></span><br><span class="line"><span class="comment">-- │ 10 rows                 2 columns │</span></span><br><span class="line"><span class="comment">-- └───────────────────────────────────┘</span></span><br></pre></td></tr></table></figure>
+<p><strong>结果示例：</strong> 制造商 7、34、2
+是主要的参与者。假设制造商 <strong>57</strong> 是“我”（有 372
+种独特产品）。</p>
+<h3 id="我的产品在不同类别中的分布情况如何">2)
+我的产品在不同类别中的分布情况如何？</h3>
+<p>只筛选我的产品，然后按产品类别分组并计算独特产品数量。</p>
+<p>查看每个类别所占的百分比是很重要的。窗口函数是一个很棒的工具。它可以在一个行窗口上应用类似聚合的计算。</p>
+<p><strong>重要提示：</strong> 窗口函数考虑的行是经过
+<code>WHERE</code>、<code>GROUP BY</code> 和 <code>HAVING</code>
+子句（如果有的话）处理后产生的行。你可以认为窗口函数是最后运行的。</p>
+<p><code>nb_unique_products / SUM(nb_unique_products) OVER ()</code>
+的含义是：</p>
+<blockquote>
+<p>取当前行的 <code>nb_unique_products</code>，并将其除以窗口中所有行
+<code>nb_unique_products</code> 的总和。这里的窗口是所有类别。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    category,</span><br><span class="line">    <span class="comment">-- 1. 计算每个类别中的独特产品数量</span></span><br><span class="line">    <span class="built_in">COUNT</span>(<span class="keyword">DISTINCT</span> p_id) <span class="keyword">AS</span> nb_unique_products,</span><br><span class="line">    <span class="comment">-- 2. 计算该类别产品数量占总产品数量的百分比</span></span><br><span class="line">    ROUND(</span><br><span class="line">        <span class="comment">---OVER ()：这是定义 “窗口” 的部分。一个空的 () 括号意味着窗口包含 GROUP BY 之后的所有行。</span></span><br><span class="line">        <span class="number">100</span> <span class="operator">*</span> nb_unique_products <span class="operator">/</span> <span class="built_in">SUM</span>(nb_unique_products) <span class="keyword">OVER</span> (),</span><br><span class="line">        <span class="number">2</span></span><br><span class="line">    ) <span class="keyword">AS</span> &quot;% of products&quot;</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    product_details</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">    manufacturer <span class="operator">=</span> <span class="number">57</span> <span class="comment">-- 筛选我的产品</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">    category</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">    nb_unique_products <span class="keyword">DESC</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- ┌──────────┬────────────────────┬───────────────┐</span></span><br><span class="line"><span class="comment">-- │ category │ nb_unique_products │ % of products │</span></span><br><span class="line"><span class="comment">-- │  int64   │       int64        │    double     │</span></span><br><span class="line"><span class="comment">-- ├──────────┼────────────────────┼───────────────┤</span></span><br><span class="line"><span class="comment">-- │        4 │                203 │         54.57 │&lt; products concentrated on</span></span><br><span class="line"><span class="comment">-- │        3 │                 50 │         13.44 │&lt; these two categories.</span></span><br><span class="line"><span class="comment">-- │       18 │                 23 │          6.18 │</span></span><br><span class="line"><span class="comment">-- │       16 │                 22 │          5.91 │</span></span><br><span class="line"><span class="comment">-- │       22 │                 22 │          5.91 │</span></span><br><span class="line"><span class="comment">-- │        2 │                 22 │          5.91 │</span></span><br><span class="line"><span class="comment">-- │        1 │                 18 │          4.84 │</span></span><br><span class="line"><span class="comment">-- │       11 │                 10 │          2.69 │</span></span><br><span class="line"><span class="comment">-- │        5 │                  2 │          0.54 │</span></span><br><span class="line"><span class="comment">-- └──────────┴────────────────────┴───────────────┘</span></span><br></pre></td></tr></table></figure>
+<p><strong>问题：</strong> 假设您只负责类别 <strong>1、2、3</strong> 和
+<strong>4</strong>。您不希望看到其他类别。您可能会尝试添加
+<code>AND category IN (1, 2, 3, 4)</code> 到 <code>WHERE</code>
+子句中。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    category,</span><br><span class="line">    <span class="built_in">COUNT</span>(<span class="keyword">DISTINCT</span> p_id) <span class="keyword">AS</span> nb_unique_products,</span><br><span class="line">    ROUND(</span><br><span class="line">        <span class="number">100</span> <span class="operator">*</span> nb_unique_products <span class="operator">/</span> <span class="built_in">SUM</span>(nb_unique_products) <span class="keyword">OVER</span> (),</span><br><span class="line">        <span class="number">2</span></span><br><span class="line">    ) <span class="keyword">AS</span> &quot;% of products&quot;</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    product_details</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">    manufacturer <span class="operator">=</span> <span class="number">57</span></span><br><span class="line">    <span class="keyword">AND</span> category <span class="keyword">IN</span> (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>) <span class="comment">-- 你添加了这行</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">    category</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">    nb_unique_products <span class="keyword">DESC</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- which gives:</span></span><br><span class="line"><span class="comment">-- ┌──────────┬────────────────────┬───────────────┐</span></span><br><span class="line"><span class="comment">-- │ category │ nb_unique_products │ % of products │</span></span><br><span class="line"><span class="comment">-- │  int64   │       int64        │    double     │</span></span><br><span class="line"><span class="comment">-- ├──────────┼────────────────────┼───────────────┤</span></span><br><span class="line"><span class="comment">-- │        4 │                203 │         69.28 │</span></span><br><span class="line"><span class="comment">-- │        3 │                 50 │         17.06 │</span></span><br><span class="line"><span class="comment">-- │        2 │                 22 │          7.51 │</span></span><br><span class="line"><span class="comment">-- │        1 │                 18 │          6.14 │</span></span><br><span class="line"><span class="comment">-- └──────────┴────────────────────┴───────────────┘</span></span><br></pre></td></tr></table></figure>
+<p>这样做会导致百分比（铺货份额）从 <strong>54.57%</strong> 变为
+<strong>69.28%</strong>。</p>
+<p><strong>原因：</strong> 如前所述，窗口函数在 <code>WHERE</code> 和
+<code>GROUP BY</code>
+子句执行后对行进行评估。在这种情况下，意味着您仅针对（1、2、3 和
+4）这些类别计算份额。</p>
+<p>有两种方法可以解决这个问题：</p>
+<ol type="1">
+<li><strong>使用子查询：</strong> 在外部查询中筛选类别。</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line"> (<span class="operator">&lt;</span>PREVIOUS QUERY<span class="operator">&gt;</span>)</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">  category <span class="keyword">IN</span> (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+<ol start="2" type="1">
+<li><strong>使用 DuckDB 提供的 <code>QUALIFY</code>：</strong>
+在计算窗口函数后进行筛选。</li>
+</ol>
+<!-- end list -->
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  category,</span><br><span class="line">  <span class="built_in">COUNT</span>(<span class="keyword">DISTINCT</span> p_id) <span class="keyword">AS</span> nb_unique_products,</span><br><span class="line">  ROUND(</span><br><span class="line">      <span class="number">100</span> <span class="operator">*</span> nb_unique_products <span class="operator">/</span> <span class="built_in">SUM</span>(nb_unique_products) <span class="keyword">OVER</span> (),</span><br><span class="line">      <span class="number">2</span></span><br><span class="line">  ) <span class="keyword">AS</span> &quot;% of products&quot;</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">  product_details</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">  manufacturer <span class="operator">=</span> <span class="number">57</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">  category</span><br><span class="line">QUALIFY <span class="comment">-- At last, filter on window function result using the following:</span></span><br><span class="line">  category <span class="keyword">IN</span> (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">  nb_unique_products <span class="keyword">DESC</span></span><br><span class="line"><span class="comment">-- ┌──────────┬────────────────────┬───────────────┐</span></span><br><span class="line"><span class="comment">-- │ category │ nb_unique_products │ % of products │</span></span><br><span class="line"><span class="comment">-- │  int64   │       int64        │    double     │</span></span><br><span class="line"><span class="comment">-- ├──────────┼────────────────────┼───────────────┤</span></span><br><span class="line"><span class="comment">-- │        4 │                203 │         54.57 │</span></span><br><span class="line"><span class="comment">-- │        3 │                 50 │         13.44 │</span></span><br><span class="line"><span class="comment">-- │        2 │                 22 │          5.91 │</span></span><br><span class="line"><span class="comment">-- │        1 │                 18 │          4.84 │</span></span><br><span class="line"><span class="comment">-- └──────────┴────────────────────┴───────────────┘</span></span><br></pre></td></tr></table></figure>
+<p>使用 <code>QUALIFY</code>
+后，结果将显示在<strong>所有类别总数</strong>中的份额（例如
+54.57%），同时只返回您感兴趣的类别行。</p>
+<h3 id="在类别-3-和-4-中我们的竞争对手是谁">3) 在类别 3 和 4
+中，我们的竞争对手是谁？</h3>
+<p>我们主要在两个类别中分销产品（假设是 <code>牙膏</code> 和
+<code>漱口水</code>）。我们应该更关注这些类别的竞争对手。</p>
+<p>我们先来看一个简单的例子：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    category,</span><br><span class="line">    manufacturer,</span><br><span class="line">    <span class="built_in">COUNT</span>( <span class="keyword">DISTINCT</span> p_id) <span class="keyword">as</span> nb_unique_products</span><br><span class="line"><span class="keyword">FROM</span> product_details</span><br><span class="line"><span class="keyword">WHERE</span> category <span class="keyword">IN</span> (<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">ALL</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> category, nb_unique_products <span class="keyword">DESC</span></span><br><span class="line">LIMIT <span class="number">5</span>;</span><br><span class="line"><span class="comment">-- ┌──────────┬──────────────┬────────────────────┐</span></span><br><span class="line"><span class="comment">-- │ category │ manufacturer │ nb_unique_products │</span></span><br><span class="line"><span class="comment">-- │  int64   │    int64     │       int64        │</span></span><br><span class="line"><span class="comment">-- ├──────────┼──────────────┼────────────────────┤</span></span><br><span class="line"><span class="comment">-- │        3 │            2 │                196 │</span></span><br><span class="line"><span class="comment">-- │        3 │           39 │                185 │</span></span><br><span class="line"><span class="comment">-- │        3 │           41 │                124 │</span></span><br><span class="line"><span class="comment">-- │        3 │           67 │                119 │</span></span><br><span class="line"><span class="comment">-- │        3 │           34 │                 92 │</span></span><br><span class="line"><span class="comment">-- └──────────┴──────────────┴────────────────────┘</span></span><br></pre></td></tr></table></figure>
+<p>这样我们就得到了所有制造商在类别 3 和 4 中分销的独特产品数量。<br />
+接下来，我们尝试只筛选出每个类别中排名前三的制造商，因为这些才是我们最需要重点关注的竞争对手。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    category,</span><br><span class="line">    manufacturer,</span><br><span class="line">    <span class="built_in">COUNT</span>(<span class="keyword">DISTINCT</span> p_id) <span class="keyword">as</span> nb_unique_products, <span class="comment">-- over the category+manufacturer,</span></span><br><span class="line">    <span class="built_in">row_number</span>() <span class="keyword">OVER</span> (</span><br><span class="line">        <span class="keyword">PARTITION</span> <span class="keyword">BY</span> category <span class="comment">-- rank inside the category</span></span><br><span class="line">        <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="comment">-- more products = better position</span></span><br><span class="line">            nb_unique_products <span class="keyword">DESC</span></span><br><span class="line">    ) <span class="keyword">as</span> position,</span><br><span class="line">    ROUND(</span><br><span class="line">        <span class="number">100</span> <span class="operator">*</span> nb_unique_products <span class="operator">/</span> <span class="built_in">SUM</span>(nb_unique_products) <span class="keyword">OVER</span> (</span><br><span class="line">            <span class="keyword">PARTITION</span> <span class="keyword">BY</span> category</span><br><span class="line">        ),</span><br><span class="line">        <span class="number">2</span></span><br><span class="line">    ) <span class="keyword">as</span> &quot;% of the market&quot;</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    product_details</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">    category <span class="keyword">IN</span> (<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">    category,</span><br><span class="line">    manufacturer</span><br><span class="line">QUALIFY</span><br><span class="line">    position <span class="operator">&lt;=</span> <span class="number">3</span> <span class="comment">-- top 3 competitors</span></span><br><span class="line">    <span class="keyword">OR</span> manufacturer <span class="operator">=</span> <span class="number">57</span> <span class="comment">-- and me please</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">    category,</span><br><span class="line">    position</span><br><span class="line"><span class="comment">-- ┌──────────┬──────────────┬────────────────────┬──────────┬─────────────────┐</span></span><br><span class="line"><span class="comment">-- │ category │ manufacturer │ nb_unique_products │ position │ % of the market │</span></span><br><span class="line"><span class="comment">-- │  int64   │    int64     │       int64        │  int64   │     double      │</span></span><br><span class="line"><span class="comment">-- ├──────────┼──────────────┼────────────────────┼──────────┼─────────────────┤</span></span><br><span class="line"><span class="comment">-- │        3 │            2 │                196 │        1 │           18.23 │</span></span><br><span class="line"><span class="comment">-- │        3 │           39 │                185 │        2 │           17.21 │</span></span><br><span class="line"><span class="comment">-- │        3 │           41 │                124 │        3 │           11.53 │</span></span><br><span class="line"><span class="comment">-- │        3 │           57 │                 50 │        7 │            4.65 │&lt; this is me</span></span><br><span class="line"><span class="comment">-- │        4 │           34 │                452 │        1 │           23.12 │</span></span><br><span class="line"><span class="comment">-- │        4 │            7 │                303 │        2 │            15.5 │</span></span><br><span class="line"><span class="comment">-- │        4 │            2 │                278 │        3 │           14.22 │</span></span><br><span class="line"><span class="comment">-- │        4 │           57 │                203 │        5 │           10.38 │&lt; this is me</span></span><br><span class="line"><span class="comment">-- └──────────┴──────────────┴────────────────────┴──────────┴─────────────────┘</span></span><br></pre></td></tr></table></figure>
+<p>这样一来，你就能看到（例如）你在类别 4
+中排名第五，并且还能知道是谁占据了最高的份额。
+我们来拆解一下这个查询：</p>
+<ol type="1">
+<li><code>WHERE</code>: 筛选出类别 3 和 4 的数据。</li>
+<li><code>GROUP BY</code>:
+获取每个制造商在每个类别中的独特产品数量。</li>
+<li><code>row_number()</code>:
+对每个制造商在所属类别内进行排名。这是在一个窗口内完成的，该窗口按类别进行分区（partitioned
+by category），并按我们在第 1 步中计算的独特产品数量进行排序（ordered
+by…）。我们必须按类别分区，这是为了确保两个类别分开计算。因此，每个制造商将会有
+2 个排名：一个在类别 3，另一个在类别 4。（注：原文提到类别 2 和
+3，根据上下文应为类别 3 和 4）。</li>
+<li><code>SUM() OVER (PARTITION BY category)</code>:
+计算每个制造商在给定类别中的产品份额。</li>
+<li><code>QUALIFY</code>: 仅返回前 3 名竞争对手和制造商 57。</li>
+</ol>
+<hr />
+<h3 id="多层次分销产品分析">4) 多层次分销产品分析</h3>
+<p>假设您想获取您的独特产品数量，并从以下多个维度进行汇总：</p>
+<ul>
+<li>按零售商和类别</li>
+<li>按零售商（涵盖所有类别）</li>
+<li>按类别（涵盖所有零售商）</li>
+<li>按所有零售商和所有类别（总计）</li>
+</ul>
+<p>您可以独立计算每一项，然后将所有结果进行合并（UNION），但其实有一个更简单的方法。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    <span class="built_in">COALESCE</span>(retailer, <span class="number">0</span>) <span class="keyword">AS</span> retailer, <span class="comment">-- 将空值转换为可读的 ID</span></span><br><span class="line">    <span class="built_in">COALESCE</span>(category, <span class="number">0</span>) <span class="keyword">AS</span> category, <span class="comment">-- 将空值转换为可读的 ID</span></span><br><span class="line">    <span class="built_in">COUNT</span>(<span class="keyword">DISTINCT</span> p_id) <span class="keyword">AS</span> nb_unique_products</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    product_details</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">    <span class="keyword">GROUPING</span> SETS (</span><br><span class="line">        <span class="comment">-- 按零售商和类别（进行分组） (即，计算每个零售商在每个类别中的总数)</span></span><br><span class="line">        (category, retailer),</span><br><span class="line">        <span class="comment">-- 按类别（涵盖所有零售商） (即，计算每个类别在所有零售商中的总数)</span></span><br><span class="line">        (category),</span><br><span class="line">        <span class="comment">-- 按零售商（涵盖所有类别） (即，计算每个零售商在所有类别中的总数)</span></span><br><span class="line">        (retailer),</span><br><span class="line">        <span class="comment">-- 按所有类别和所有零售商（ (即，计算总计总数)</span></span><br><span class="line">        ()</span><br><span class="line">    )</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">    <span class="keyword">ALL</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- ┌──────────┬──────────┬────────────────────┐</span></span><br><span class="line"><span class="comment">-- │ retailer │ category │ nb_unique_products │</span></span><br><span class="line"><span class="comment">-- │  int64   │  int64   │       int64        │</span></span><br><span class="line"><span class="comment">-- ├──────────┼──────────┼────────────────────┤</span></span><br><span class="line"><span class="comment">-- │        0 │        0 │              17428 │</span></span><br><span class="line"><span class="comment">-- │        0 │        1 │                136 │</span></span><br><span class="line"><span class="comment">-- │        0 │        2 │               2105 │</span></span><br><span class="line"><span class="comment">-- │        0 │        3 │               1075 │</span></span><br><span class="line"><span class="comment">-- │        0 │        4 │               1955 │</span></span><br><span class="line"><span class="comment">-- │        · │        · │                 ·  │</span></span><br><span class="line"><span class="comment">-- │        · │        · │                 ·  │</span></span><br><span class="line"><span class="comment">-- │        · │        · │                 ·  │</span></span><br><span class="line"><span class="comment">-- │        2 │       11 │                346 │</span></span><br><span class="line"><span class="comment">-- ├──────────┴──────────┴────────────────────┤</span></span><br><span class="line"><span class="comment">-- │ x rows (xx shown)              3 columns │</span></span><br><span class="line"><span class="comment">-- └──────────────────────────────────────────┘</span></span><br></pre></td></tr></table></figure>
+<p>GROUPING SETS 等同于将多个不同的 GROUP BY
+查询的结果进行合并（UNION）。</p>
+<p>对于未包含在分组集中的维度，结果中将显示
+<code>NULL</code>。因此，针对分组集
+<code>(category)</code>（仅按类别汇总）产生的结果行，其
+<code>retailer</code> 字段的值将被设置为 <code>NULL</code>。</p>
+<p>如果你需要使用所有可能的分组集（即所有维度及其组合，包括总计），那么你可以使用
+CUBE 关键字来简化语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    <span class="built_in">COALESCE</span>(retailer, <span class="number">0</span>) <span class="keyword">AS</span> retailer,</span><br><span class="line">    <span class="built_in">COALESCE</span>(category, <span class="number">0</span>) <span class="keyword">AS</span> category,</span><br><span class="line">    <span class="built_in">COUNT</span>(<span class="keyword">DISTINCT</span> p_id) <span class="keyword">AS</span> nb_unique_products</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    product_details</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">    <span class="comment">-- 这等同于所有可能的分组集:</span></span><br><span class="line">    <span class="comment">-- (category, retailer), (category), (retailer), (category), ()</span></span><br><span class="line">    <span class="keyword">CUBE</span>(retailer, category)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">    <span class="keyword">ALL</span></span><br></pre></td></tr></table></figure>
+<p><code>ROLLUP</code> 是另一种分组结构，但它与 <code>CUBE</code>
+的工作方式不同，因为它会限制可能的分组集。</p>
+<p><code>ROLLUP(x, y)</code> 的定义如下：</p>
+<ul>
+<li><code>(x, y)</code></li>
+<li><code>(x)</code></li>
+<li><code>()</code></li>
+</ul>
+<p><code>(y)</code> 这一分组集会被 <code>CUBE</code> 包含，但不会被
+<code>ROLLUP</code> 包含。</p>
+<p>当不同维度之间存在<strong>层次关系</strong>时，<code>ROLLUP</code>
+更加有用，例如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">SUM</span>(population) <span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">ROLLUP</span>(county, region, city) <span class="comment">-- (国家, 地区, 城市)</span></span><br></pre></td></tr></table></figure>
+<p>在这种情况下，分组集
+<code>(region)</code>（仅按地区汇总）的意义就不大，因为它与
+<code>(country, region)</code>（按国家和地区汇总）是等价的，因为一个地区（region）总是隶属于一个国家（county）。</p>
+<h3 id="既然我的主战场是类别-3-和-4我的铺货份额-soa是多少">5)
+既然我的主战场是类别 3 和 4，我的铺货份额 (SOA)是多少？</h3>
+<p>在第三问中，我们看到了用来统计类别 <strong>3 和 4
+中</strong>独特的分销产品数量。</p>
+<p>但是，拥有更多的独特分销产品数量，与你的铺货份额（Share of
+Assortment, SOA）并非完全正相关。</p>
+<p>想象一下，你拥有 <strong>15</strong>
+种独特的冷冻食品，而你的竞争对手只有 <strong>3</strong>
+种，并且市场上只有你们两家。</p>
+<p>如果在某个零售商（比如沃尔玛），他们总是上架竞争对手的
+<strong>2</strong> 种产品和你的 <strong>1</strong>
+种产品。在这种情况下，你的 SOA <strong>只有 <span
+class="math inline">1/3 = 33%</span></strong>，而你的竞争对手将占据冷冻食品货架
+<strong><span class="math inline">2/3 = 77%</span></strong>
+的份额。尽管你在独特产品数量上拥有巨大的份额 <strong><span
+class="math inline">15/18 = 83%</span></strong>，但你在实际货架占比上却被竞争对手超越了。</p>
+<p>铺货份额（SOA）可以定义为：</p>
+<p><span class="math display">$$\text {SOA} = \frac {\text {SUM}(\text
+{我的产品的分销天数})}{\text {SUM}(\text {我的产品} + \text
+{竞争对手产品的分销天数})}$$</span></p>
+<p>（<em>注：这里的“分销天数”（distributed
+days）是衡量产品实际占有货架空间和时间的关键指标。</em>）</p>
+<p>以下是针对类别 3 和 4，按 SOA 排名获取前 3 名竞争对手的查询：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span> soa_per_category_per_manufacturer <span class="keyword">AS</span> (</span><br><span class="line">    <span class="keyword">SELECT</span></span><br><span class="line">        category,</span><br><span class="line">        manufacturer,</span><br><span class="line">        <span class="built_in">SUM</span>(distributed_days) <span class="keyword">AS</span> _total_ddays, <span class="comment">-- 每个制造商的总分销天数</span></span><br><span class="line">        ROUND(</span><br><span class="line">            <span class="number">100</span> <span class="operator">*</span> _total_ddays <span class="operator">/</span> <span class="built_in">SUM</span>(_total_ddays) <span class="keyword">OVER</span> (<span class="keyword">PARTITION</span> <span class="keyword">BY</span> category),</span><br><span class="line">            <span class="number">2</span></span><br><span class="line">        ) <span class="keyword">AS</span> soa <span class="comment">-- 这正是 SOA 公式</span></span><br><span class="line">    <span class="keyword">FROM</span></span><br><span class="line">        product_details</span><br><span class="line">    <span class="keyword">WHERE</span></span><br><span class="line">        category <span class="keyword">IN</span> (<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line">    <span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">        category,</span><br><span class="line">        manufacturer</span><br><span class="line">)</span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    <span class="operator">*</span> EXCLUDE(_total_ddays), <span class="comment">-- 感谢 DuckDB 的 EXCLUDE :)</span></span><br><span class="line">    <span class="built_in">row_number</span>() <span class="keyword">OVER</span> (</span><br><span class="line">        <span class="keyword">PARTITION</span> <span class="keyword">BY</span> category</span><br><span class="line">        <span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">            soa <span class="keyword">DESC</span></span><br><span class="line">    ) <span class="keyword">AS</span> position <span class="comment">-- 然后按类别上的 soa 排序</span></span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    soa_per_category_per_manufacturer</span><br><span class="line">QUALIFY</span><br><span class="line">    position <span class="operator">&lt;=</span> <span class="number">3</span> <span class="comment">-- 前 3 名竞争对手</span></span><br><span class="line">    <span class="keyword">OR</span> manufacturer <span class="operator">=</span> <span class="number">57</span> <span class="comment">-- 加上我</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- ┌──────────┬──────────────┬────────┬──────────┐</span></span><br><span class="line"><span class="comment">-- │ category │ manufacturer │  soa   │ position │</span></span><br><span class="line"><span class="comment">-- │  int64   │    int64     │ double │  int64   │</span></span><br><span class="line"><span class="comment">-- ├──────────┼──────────────┼────────┼──────────┤</span></span><br><span class="line"><span class="comment">-- │        3 │           39 │  22.12 │        1 │</span></span><br><span class="line"><span class="comment">-- │        3 │            2 │  16.04 │        2 │</span></span><br><span class="line"><span class="comment">-- │        3 │           67 │  14.36 │        3 │</span></span><br><span class="line"><span class="comment">-- │        3 │           57 │   3.95 │        8 │&lt; I am no longer 7th on the market</span></span><br><span class="line"><span class="comment">-- │        4 │           34 │   24.6 │        1 │</span></span><br><span class="line"><span class="comment">-- │        4 │            7 │  17.27 │        2 │</span></span><br><span class="line"><span class="comment">-- │        4 │            2 │   10.9 │        3 │</span></span><br><span class="line"><span class="comment">-- │        4 │           57 │  10.36 │        5 │&lt; Still 5th</span></span><br><span class="line"><span class="comment">-- └──────────┴──────────────┴────────┴──────────┘</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>该查询使用了 公共表表达式（CTEs, Common Table
+Expressions），这是一种组织查询的方式，可以使其更具可读性。在某些情况下，如果
+CTE
+被物化并在多个地方使用，还能避免一遍又一遍地重复计算相同的结果（请查阅
+<a
+target="_blank" rel="noopener" href="https://duckdb.org/docs/sql/query_syntax/with#materialized-ctes">物化
+CTEs</a>）。</p>
+<h3 id="时间演变">6) 时间演变！</h3>
+<p>现在，假设你想比较你的产品类别在当前选定的周<code>2024_1</code>与前一周<code>2023_52</code>之间的铺货份额（SOA）变化。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span> soa_per_period_category_per_manufacturer <span class="keyword">AS</span> (</span><br><span class="line">    <span class="keyword">SELECT</span></span><br><span class="line">        <span class="keyword">period</span>,</span><br><span class="line">        category,</span><br><span class="line">        manufacturer,</span><br><span class="line">        <span class="built_in">SUM</span>(distributed_days) <span class="keyword">as</span> _total_ddays,</span><br><span class="line">        ROUND(</span><br><span class="line">            <span class="number">100</span> <span class="operator">*</span> _total_ddays <span class="operator">/</span> <span class="built_in">SUM</span>(_total_ddays) <span class="keyword">OVER</span> (</span><br><span class="line">                <span class="keyword">PARTITION</span> <span class="keyword">BY</span></span><br><span class="line">                <span class="keyword">period</span>, <span class="comment">-- 注意这里加入了 period :)</span></span><br><span class="line">                category</span><br><span class="line">            ),</span><br><span class="line">            <span class="number">2</span></span><br><span class="line">        ) <span class="keyword">as</span> soa,</span><br><span class="line">    <span class="keyword">FROM</span></span><br><span class="line">        product_details</span><br><span class="line">    <span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">        <span class="keyword">period</span>, <span class="comment">-- 这里也是 :)</span></span><br><span class="line">        category,</span><br><span class="line">        manufacturer),</span><br><span class="line">soa_variation <span class="keyword">AS</span> (</span><br><span class="line">    <span class="keyword">SELECT</span></span><br><span class="line">        <span class="operator">*</span> EXCLUDE (_total_ddays),</span><br><span class="line">        <span class="comment">-- 注意使用已定义的窗口来简化查询，</span></span><br><span class="line">        <span class="comment">-- 特别是当窗口在多个地方使用时。</span></span><br><span class="line">        soa <span class="operator">-</span> <span class="built_in">lag</span>(soa, <span class="number">1</span>, <span class="number">0</span>) <span class="keyword">OVER</span> period_window <span class="keyword">as</span> variation_soa,</span><br><span class="line">    <span class="keyword">FROM</span></span><br><span class="line">        soa_per_period_category_per_manufacturer</span><br><span class="line">        <span class="comment">-- 定义窗口并为其指定名称</span></span><br><span class="line">        <span class="keyword">WINDOW</span> period_window <span class="keyword">AS</span> (</span><br><span class="line">            <span class="keyword">PARTITION</span> <span class="keyword">BY</span> category,</span><br><span class="line">            <span class="comment">-- 注意，这里需要制造商（manufacturer），</span></span><br><span class="line">            <span class="comment">-- 因为变化是按制造商和类别计算的</span></span><br><span class="line">            manufacturer</span><br><span class="line">            <span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">                <span class="comment">-- 这非常重要，因为变化是：当前 soa - 之前的 soa。</span></span><br><span class="line">                <span class="comment">-- 窗口中的值必须按此顺序排列，才能使用 soa - lag(soa, 1, 0)。</span></span><br><span class="line">                <span class="comment">-- 另外请注意 &#x27;2023_52&#x27; &lt; &#x27;2024_1&#x27;</span></span><br><span class="line">                <span class="keyword">period</span></span><br><span class="line">        )</span><br><span class="line">        <span class="comment">-- 在窗口函数计算后，只取本周数据，</span></span><br><span class="line">        <span class="comment">-- 因为变化量是与本周挂钩的。</span></span><br><span class="line">        QUALIFY <span class="keyword">period</span> <span class="operator">=</span> <span class="string">&#x27;2024_1&#x27;</span></span><br><span class="line">    <span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">        <span class="keyword">period</span>)</span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    <span class="comment">-- 感谢 DuckDB 的 EXCLUDE/REPLACE :)</span></span><br><span class="line">    <span class="operator">*</span> EXCLUDE (<span class="keyword">period</span>) REPLACE (ROUND(variation_soa, <span class="number">2</span>) <span class="keyword">as</span> variation_soa),</span><br><span class="line">    <span class="built_in">row_number</span>() <span class="keyword">OVER</span> (</span><br><span class="line">        <span class="keyword">PARTITION</span> <span class="keyword">BY</span> category</span><br><span class="line">        <span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">            variation_soa <span class="keyword">DESC</span></span><br><span class="line">    ) <span class="keyword">as</span> position <span class="comment">-- 然后按类别上的 soa 变化量排序</span></span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    <span class="comment">-- 筛选出每个类别中排名第一的制造商</span></span><br><span class="line">    soa_variation QUALIFY position <span class="operator">=</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">    category</span><br><span class="line">LIMIT</span><br><span class="line">    <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ┌──────────┬──────────────┬────────┬───────────────┬──────────┐</span></span><br><span class="line"><span class="comment">-- │ category │ manufacturer │  soa   │ variation_soa │ position │</span></span><br><span class="line"><span class="comment">-- ├──────────┼──────────────┼────────┼───────────────┼──────────┤</span></span><br><span class="line"><span class="comment">-- │        1 │           39 │  34.19 │          3.11 │        1 │&lt; 39 正在变好</span></span><br><span class="line"><span class="comment">-- │        2 │           39 │  11.68 │          1.37 │        1 │&lt; 跨多个类别</span></span><br><span class="line"><span class="comment">-- │        3 │           39 │   24.8 │          5.64 │        1 │</span></span><br><span class="line"><span class="comment">-- │        4 │            6 │  11.84 │          2.41 │        1 │</span></span><br><span class="line"><span class="comment">-- │        5 │           39 │  40.07 │          6.52 │        1 │</span></span><br><span class="line"><span class="comment">-- │        6 │           39 │  42.08 │         10.42 │        1 │&lt; 这是一个很好的提升</span></span><br><span class="line"><span class="comment">-- │        7 │           34 │   6.29 │          3.65 │        1 │</span></span><br><span class="line"><span class="comment">-- │        8 │            6 │  51.29 │          0.86 │        1 │</span></span><br><span class="line"><span class="comment">-- │        9 │            3 │  52.69 │          9.33 │        1 │</span></span><br><span class="line"><span class="comment">-- │       10 │            3 │  42.24 │          6.81 │        1 │</span></span><br><span class="line"><span class="comment">-- └──────────┴──────────────┴────────┴───────────────┴──────────┘</span></span><br></pre></td></tr></table></figure>
+<p>这个查询获取了在每个类别中 SOA
+变化量最大的制造商。请注意，这里使用了多个 <code>CTE</code> 来组织查询。
+<code>LAG(n)</code> 是一个窗口函数，它允许你使用窗口内前第 <span
+class="math inline"><em>n</em></span> 行的值。</p>
+<hr />
+<h3 id="并非所有零售商都是平等的">7) 并非所有零售商都是平等的！</h3>
+<p>假设你拥有按零售商计算的
+SOA，现在你想计算一个平均值，但不是一个简单的普通平均值。因为零售商的重要性（商店数量、区域、合同等）并不相同，你需要计算一个加权平均值（Weighted
+Average）。</p>
+<p>假设你拥有以下权重（权重数据在 <code>retailer_w</code> 表中）：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> retailer_w;</span><br><span class="line"><span class="comment">-- ┌──────────┬────────┐</span></span><br><span class="line"><span class="comment">-- │ retailer │   w    │</span></span><br><span class="line"><span class="comment">-- ├──────────┼────────┤</span></span><br><span class="line"><span class="comment">-- │       2  │    1.0 │</span></span><br><span class="line"><span class="comment">-- │       1  │    3.0 │&lt; 重要性是零售商 2 的 3 倍</span></span><br><span class="line"><span class="comment">-- └──────────┴────────┘</span></span><br></pre></td></tr></table></figure>
+<p>那么，加权平均 SOA 可定义为：</p>
+<p><span class="math display">$$\text{avg_soa} = \frac{\sum
+(\text{零售商}_{i} \times \text{权重}_{i})}{\sum (\text{权重}_{i})}
+\quad \text{对于所有} (\text{零售商}_{i}, \text{权重}_{i})$$</span></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span> soa_per_retailer_per_manufacturer <span class="keyword">AS</span> (</span><br><span class="line">    <span class="keyword">SELECT</span></span><br><span class="line">        retailer,</span><br><span class="line">        manufacturer,</span><br><span class="line">        <span class="built_in">SUM</span>(distributed_days) <span class="keyword">as</span> _total_ddays,</span><br><span class="line">        <span class="comment">-- 每个制造商的总分销天数</span></span><br><span class="line">        ROUND(</span><br><span class="line">            <span class="number">100</span> <span class="operator">*</span> _total_ddays <span class="operator">/</span> <span class="built_in">SUM</span>(_total_ddays) <span class="keyword">OVER</span> (<span class="keyword">PARTITION</span> <span class="keyword">BY</span> retailer),</span><br><span class="line">            <span class="number">2</span></span><br><span class="line">        ) <span class="keyword">as</span> soa <span class="comment">-- 这正是 SOA 公式</span></span><br><span class="line">    <span class="keyword">FROM</span></span><br><span class="line">        product_details</span><br><span class="line">    <span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">        retailer,</span><br><span class="line">        manufacturer)</span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    manufacturer,</span><br><span class="line">    ROUND(</span><br><span class="line">        <span class="comment">-- 我们按制造商分组，因此可以直接进行以下计算</span></span><br><span class="line">        <span class="comment">-- 来获取加权平均值</span></span><br><span class="line">        <span class="built_in">SUM</span>(soa <span class="operator">*</span> w) <span class="operator">/</span> <span class="built_in">SUM</span>(w),</span><br><span class="line">        <span class="number">2</span></span><br><span class="line">    ) <span class="keyword">as</span> avg_soa</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    soa_per_retailer_per_manufacturer</span><br><span class="line">    <span class="keyword">JOIN</span> retailer_w <span class="keyword">USING</span>(retailer) <span class="comment">-- 将 SOA 结果与权重表连接</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">    manufacturer</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> avg_soa <span class="keyword">DESC</span></span><br><span class="line">LIMIT <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ┌──────────────┬─────────┐</span></span><br><span class="line"><span class="comment">-- │ manufacturer │ avg_soa │</span></span><br><span class="line"><span class="comment">-- ├──────────────┼─────────┤</span></span><br><span class="line"><span class="comment">-- │            7 │   22.52 │</span></span><br><span class="line"><span class="comment">-- │           34 │   16.03 │</span></span><br><span class="line"><span class="comment">-- │            2 │    12.8 │</span></span><br><span class="line"><span class="comment">-- │           26 │    7.56 │</span></span><br><span class="line"><span class="comment">-- │           39 │    6.72 │</span></span><br><span class="line"><span class="comment">-- └──────────────┴─────────┘</span></span><br></pre></td></tr></table></figure>
+<p>全文完！希望你阅读愉快 :)</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.JPG" alt="toypipi 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.JPG" alt="toypipi 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>toypipi
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://toypipi.github.io/2025/10/15/OLAP-SQL-%E4%B9%8B%E7%BE%8E/" title="OLAP SQL 之美">https://toypipi.github.io/2025/10/15/OLAP-SQL-之美/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag"><i class="fa fa-tag"></i> 数据分析</a>
+              <a href="/tags/SQL/" rel="tag"><i class="fa fa-tag"></i> SQL</a>
+              <a href="/tags/OLAP/" rel="tag"><i class="fa fa-tag"></i> OLAP</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/10/10/%E4%B8%BA%E4%BB%80%E4%B9%88-TypeScript-%E4%BB%A3%E7%A0%81%E5%BA%93%E4%B8%AD%E5%85%85%E6%96%A5%E7%9D%80-var-%E8%AF%AD%E5%8F%A5/" rel="prev" title="为什么 TypeScript 代码库中充斥着 var 语句">
+                  <i class="fa fa-angle-left"></i> 为什么 TypeScript 代码库中充斥着 var 语句
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2016 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">toypipi</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">245k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">14:52</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js","integrity":"sha256-stuqcu2FrjYCXDOytWFA5SoUE/r3nkp6gTglzNSlavU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
