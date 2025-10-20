@@ -154,7 +154,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">311</span>
+          <span class="site-state-item-count">312</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -165,7 +165,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">409</span>
+        <span class="site-state-item-count">410</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -190,6 +190,117 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2017/04/22/MySQL%E4%B8%AD%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E8%AE%B0%E5%BD%95%EF%BC%88%E5%A4%9A%E4%B8%AA%E5%AD%97%E6%AE%B5%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2017/04/22/MySQL%E4%B8%AD%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E8%AE%B0%E5%BD%95%EF%BC%88%E5%A4%9A%E4%B8%AA%E5%AD%97%E6%AE%B5%EF%BC%89/" class="post-title-link" itemprop="url">MySQL中删除重复记录（多个字段）</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-04-22 16:07:41" itemprop="dateCreated datePublished" datetime="2017-04-22T16:07:41+08:00">2017-04-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2020-11-03 11:44:00" itemprop="dateModified" datetime="2020-11-03T11:44:00+08:00">2020-11-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>317</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr />
+<p>今天在将多个分表合并为一个表时，遇到了一个问题。这些分表由业务人员创建，其中一部分未加UNIQUE索引，导致这些表中的部分数据重复，需要删除其中的重复数据。</p>
+<p>思路为：首先将数据按照字段A、B、C、D分组（如果A、B、C、D相同就认为数据重复），求出记录大于1的最大id，然后删除这个id的数据。sql语句如下:
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> test <span class="keyword">WHERE</span> id <span class="keyword">IN</span></span><br><span class="line">(<span class="keyword">SELECT</span> id <span class="keyword">FROM</span></span><br><span class="line">(<span class="keyword">SELECT</span>  <span class="built_in">MAX</span>(id) <span class="keyword">AS</span> id,<span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">AS</span> COUNT <span class="keyword">FROM</span> test <span class="keyword">GROUP</span> <span class="keyword">BY</span> A,B,C,D <span class="keyword">HAVING</span> COUNT <span class="operator">&gt;</span><span class="number">1</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> COUNT <span class="keyword">DESC</span>) <span class="keyword">AS</span> tab );</span><br></pre></td></tr></table></figure></p>
+<p><strong>备注：因为每次只删除重复数据的最大id，所以如果重复数据有多条的情况，需要执行多次delete。</strong></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2017/04/22/MySQL%E4%B8%AD%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E8%AE%B0%E5%BD%95%EF%BC%88%E5%A4%9A%E4%B8%AA%E5%AD%97%E6%AE%B5%EF%BC%89/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -646,115 +757,6 @@ target="_blank" rel="noopener" href="https://book.douban.com/subject/25775696/">
             </div>
           <!--/noindex-->
         
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2017/03/10/%E5%85%B3%E4%BA%8EOpenType-1-8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="toypipi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Toypipi's blog">
-      <meta itemprop="description" content="Stay focused, be present">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Toypipi's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2017/03/10/%E5%85%B3%E4%BA%8EOpenType-1-8/" class="post-title-link" itemprop="url">关于OpenType 1.8</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2017-03-10 15:59:31" itemprop="dateCreated datePublished" datetime="2017-03-10T15:59:31+08:00">2017-03-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2018-06-08 16:38:48" itemprop="dateModified" datetime="2018-06-08T16:38:48+08:00">2018-06-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>79</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
-<p>今天在检索OpenType
-1.8的翻译时，找到了一篇很好的文章，内容详实，引入入胜，一口气看完了，特在此标记一下，方便以后回味。</p>
-<p><a
-target="_blank" rel="noopener" href="http://www.typeisbeautiful.com/2016/09/10968/">参数化设计与字体战争：从
-OpenType 1.8 说起</a>来自<a target="_blank" rel="noopener" href="http://www.typeisbeautiful.com/">Type
-is Beautiful</a>作者<a target="_blank" rel="noopener" href="http://weibo.com/u/2200457335">谭
-沛然</a></p>
-<p>相关链接： <a
-target="_blank" rel="noopener" href="https://www.wikiwand.com/zh-hans/%E6%8F%92%E5%80%BC">插值</a></p>
-
       
     </div>
 
