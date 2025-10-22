@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="原文：Adding Keyboard Shortcuts to a 24 Year Old Government Website with Userscripts  背景 (Background) 在过去的一年里，我一直在清理美国食品药品监督管理局（FDA）的 510k 数据库的数据[1]。 该数据库收录了 510k 项目[7]的申请，包含 FDA 的审批流程，几乎所有（">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用用户脚本为拥有 24 年历史的政府网站添加键盘快捷键">
+<meta property="og:url" content="https://toypipi.github.io/2025/10/20/%E4%BD%BF%E7%94%A8%E7%94%A8%E6%88%B7%E8%84%9A%E6%9C%AC%E4%B8%BA%E6%8B%A5%E6%9C%89-24-%E5%B9%B4%E5%8E%86%E5%8F%B2%E7%9A%84%E6%94%BF%E5%BA%9C%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E9%94%AE/index.html">
+<meta property="og:site_name" content="Toypipi&#39;s blog">
+<meta property="og:description" content="原文：Adding Keyboard Shortcuts to a 24 Year Old Government Website with Userscripts  背景 (Background) 在过去的一年里，我一直在清理美国食品药品监督管理局（FDA）的 510k 数据库的数据[1]。 该数据库收录了 510k 项目[7]的申请，包含 FDA 的审批流程，几乎所有（">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://toypipi.github.io/2025/10/20/%E4%BD%BF%E7%94%A8%E7%94%A8%E6%88%B7%E8%84%9A%E6%9C%AC%E4%B8%BA%E6%8B%A5%E6%9C%89-24-%E5%B9%B4%E5%8E%86%E5%8F%B2%E7%9A%84%E6%94%BF%E5%BA%9C%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E9%94%AE/1.png">
+<meta property="og:image" content="https://toypipi.github.io/2025/10/20/%E4%BD%BF%E7%94%A8%E7%94%A8%E6%88%B7%E8%84%9A%E6%9C%AC%E4%B8%BA%E6%8B%A5%E6%9C%89-24-%E5%B9%B4%E5%8E%86%E5%8F%B2%E7%9A%84%E6%94%BF%E5%BA%9C%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E9%94%AE/2.png">
+<meta property="og:image" content="https://toypipi.github.io/2025/10/20/%E4%BD%BF%E7%94%A8%E7%94%A8%E6%88%B7%E8%84%9A%E6%9C%AC%E4%B8%BA%E6%8B%A5%E6%9C%89-24-%E5%B9%B4%E5%8E%86%E5%8F%B2%E7%9A%84%E6%94%BF%E5%BA%9C%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E9%94%AE/3.png">
+<meta property="og:image" content="https://toypipi.github.io/2025/10/20/%E4%BD%BF%E7%94%A8%E7%94%A8%E6%88%B7%E8%84%9A%E6%9C%AC%E4%B8%BA%E6%8B%A5%E6%9C%89-24-%E5%B9%B4%E5%8E%86%E5%8F%B2%E7%9A%84%E6%94%BF%E5%BA%9C%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E9%94%AE/4.png">
+<meta property="article:published_time" content="2025-10-20T06:08:53.000Z">
+<meta property="article:modified_time" content="2025-10-22T03:16:41.462Z">
+<meta property="article:author" content="toypipi">
+<meta property="article:tag" content="快捷键">
+<meta property="article:tag" content="用户脚本">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://toypipi.github.io/2025/10/20/%E4%BD%BF%E7%94%A8%E7%94%A8%E6%88%B7%E8%84%9A%E6%9C%AC%E4%B8%BA%E6%8B%A5%E6%9C%89-24-%E5%B9%B4%E5%8E%86%E5%8F%B2%E7%9A%84%E6%94%BF%E5%BA%9C%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E9%94%AE/1.png">
+
+
+<link rel="canonical" href="https://toypipi.github.io/2025/10/20/%E4%BD%BF%E7%94%A8%E7%94%A8%E6%88%B7%E8%84%9A%E6%9C%AC%E4%B8%BA%E6%8B%A5%E6%9C%89-24-%E5%B9%B4%E5%8E%86%E5%8F%B2%E7%9A%84%E6%94%BF%E5%BA%9C%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E9%94%AE/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://toypipi.github.io/2025/10/20/%E4%BD%BF%E7%94%A8%E7%94%A8%E6%88%B7%E8%84%9A%E6%9C%AC%E4%B8%BA%E6%8B%A5%E6%9C%89-24-%E5%B9%B4%E5%8E%86%E5%8F%B2%E7%9A%84%E6%94%BF%E5%BA%9C%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E9%94%AE/","path":"2025/10/20/使用用户脚本为拥有-24-年历史的政府网站添加键盘快捷键/","title":"使用用户脚本为拥有 24 年历史的政府网站添加键盘快捷键"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>使用用户脚本为拥有 24 年历史的政府网站添加键盘快捷键 | Toypipi's blog</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?c228072b8c3657dfa7236914b308712c"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Toypipi's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%83%8C%E6%99%AF-background"><span class="nav-number">1.</span> <span class="nav-text">背景 (Background)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BD%95%E5%85%A5"><span class="nav-number">2.</span> <span class="nav-text">数据录入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E8%84%9A%E6%9C%AC"><span class="nav-number">3.</span> <span class="nav-text">用户脚本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#violentmonkey"><span class="nav-number">4.</span> <span class="nav-text">ViolentMonkey</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">5.</span> <span class="nav-text">快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%93%E5%BC%80%E6%90%9C%E7%B4%A2%E9%A1%B5%E9%9D%A2"><span class="nav-number">5.1.</span> <span class="nav-text">打开搜索页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%81%9A%E7%84%A6%E6%90%9C%E7%B4%A2%E8%BE%93%E5%85%A5%E6%A1%86"><span class="nav-number">5.2.</span> <span class="nav-text">聚焦搜索输入框</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E5%88%B6%E5%99%A8%E6%A2%B0-id"><span class="nav-number">5.3.</span> <span class="nav-text">复制器械 ID</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-number">6.</span> <span class="nav-text">结论</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%84%9A%E6%B3%A8-footnotes"><span class="nav-number">7.</span> <span class="nav-text">脚注 (Footnotes)</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="toypipi"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">toypipi</p>
+  <div class="site-description" itemprop="description">Stay focused, be present</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">313</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">411</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/toypipi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;toypipi" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:275688469@qq.com" title="E-Mail → mailto:275688469@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2025/10/20/%E4%BD%BF%E7%94%A8%E7%94%A8%E6%88%B7%E8%84%9A%E6%9C%AC%E4%B8%BA%E6%8B%A5%E6%9C%89-24-%E5%B9%B4%E5%8E%86%E5%8F%B2%E7%9A%84%E6%94%BF%E5%BA%9C%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E9%94%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="使用用户脚本为拥有 24 年历史的政府网站添加键盘快捷键 | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用用户脚本为拥有 24 年历史的政府网站添加键盘快捷键
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-10-20 14:08:53" itemprop="dateCreated datePublished" datetime="2025-10-20T14:08:53+08:00">2025-10-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-10-22 11:16:41" itemprop="dateModified" datetime="2025-10-22T11:16:41+08:00">2025-10-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BF%BB%E8%AF%91/" itemprop="url" rel="index"><span itemprop="name">翻译</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<blockquote>
+<p>原文：<a
+target="_blank" rel="noopener" href="https://wcedmisten.fyi/post/keyboard-shortcuts-userscripts/">Adding
+Keyboard Shortcuts to a 24 Year Old Government Website with
+Userscripts</a></p>
+</blockquote>
+<h1 id="背景-background">背景 (Background)</h1>
+<p>在过去的一年里，我一直在清理美国食品药品监督管理局（FDA）的 510k
+数据库的数据<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span
+class="hint--top hint--error hint--medium hint--rounded hint--bounce"
+aria-label="https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm
+">[1]</span></a></sup>。</p>
+<p>该数据库收录了 510k
+项目<sup id="fnref:7"><a href="#fn:7" rel="footnote"><span
+class="hint--top hint--error hint--medium hint--rounded hint--bounce"
+aria-label="510k 项目 是美国食品药品监督管理局（FDA）针对大多数医疗器械在美国上市前要求进行的一项审批流程
+">[7]</span></a></sup>的申请，包含 FDA
+的审批流程，几乎所有（99%）供人使用的医疗器械都采用这一程序。<sup id="fnref:2"><a href="#fn:2" rel="footnote"><span
+class="hint--top hint--error hint--medium hint--rounded hint--bounce"
+aria-label="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10465388/
+">[2]</span></a></sup>。</p>
+<p>在 archive.org<sup id="fnref:3"><a href="#fn:3" rel="footnote"><span
+class="hint--top hint--error hint--medium hint--rounded hint--bounce"
+aria-label="https://web.archive.org/web/20001015000000*/https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm
+">[3]</span></a></sup> 上的搜索显示，这个网站至少从 2000 年 10 月 18
+日就存在了。事实上，我们甚至可以看到它当年的样子。顶上配有官方的 Comic
+Sans 字体设计的标志。</p>
+<img src="/2025/10/20/%E4%BD%BF%E7%94%A8%E7%94%A8%E6%88%B7%E8%84%9A%E6%9C%AC%E4%B8%BA%E6%8B%A5%E6%9C%89-24-%E5%B9%B4%E5%8E%86%E5%8F%B2%E7%9A%84%E6%94%BF%E5%BA%9C%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E9%94%AE/1.png" class="">
+<span id="more"></span>
+<p>这是截至 2024 年的网站。令人惊讶的是，在过去的 24
+年里，它的外观竟然没什么变化。</p>
+<img src="/2025/10/20/%E4%BD%BF%E7%94%A8%E7%94%A8%E6%88%B7%E8%84%9A%E6%9C%AC%E4%B8%BA%E6%8B%A5%E6%9C%89-24-%E5%B9%B4%E5%8E%86%E5%8F%B2%E7%9A%84%E6%94%BF%E5%BA%9C%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E9%94%AE/2.png" class="">
+<p>从那时起，其主界面几乎没什么变化，更像一个简单时代的活化石。它的样式相当简陋，并且页面都是服务器渲染的。除了用于日期选择器的一些代码，它几乎不包含任何
+JavaScript。</p>
+<p>根据 .cfm 文件扩展名，它似乎是由一个 1995 年的构建工具 Adobe
+ColdFusion 构建的<sup id="fnref:4"><a href="#fn:4" rel="footnote"><span
+class="hint--top hint--error hint--medium hint--rounded hint--bounce"
+aria-label="https://en.wikipedia.org/wiki/Adobe_ColdFusion
+">[4]</span></a></sup>。</p>
+<h1 id="数据录入">数据录入</h1>
+<p>为了清理数据，我使用该数据库的搜索功能按名称查找医疗器械。</p>
+<p>然而，数据中存在一些问题，减慢了我的速度。</p>
+<p>器械和公司名称没有标准化，可能存在缩写、首字母缩略词或常见的拼写错误。该网站的搜索功能不提供模糊字符串匹配，因此查找一个器械通常需要反复试错。我的工作流程是点击搜索输入框，输入一个名称（可能会输入几次），然后用鼠标高亮文本并将其复制到另一个程序中。</p>
+<p>这个过程感觉非常低效。每次搜索，我都必须将手从鼠标和键盘之间多次移动。</p>
+<p>我手动搜索了数千个器械，因此优化流程的每一步都是值得的。此外，写代码比手动录入数据更有趣，这给了我一个有趣的休息机会。</p>
+<p>我的目标是扩展网站的功能，以便我可以在不离开键盘的情况下完成大部分任务。</p>
+<h1 id="用户脚本">用户脚本</h1>
+<p>什么是用户脚本？用户脚本<sup id="fnref:5"><a href="#fn:5" rel="footnote"><span
+class="hint--top hint--error hint--medium hint--rounded hint--bounce"
+aria-label="https://en.wikipedia.org/wiki/Userscript
+">[5]</span></a></sup>实际上是一个用 JavaScript
+编写的程序，旨在为网站提供原始开发者意图之外的附加功能。</p>
+<p>在这个案例中，是为了给 FDA 的 510k 数据库网站提供键盘快捷键。</p>
+<p>我想要实现以下任务的快捷键：</p>
+<ul>
+<li>打开搜索页面</li>
+<li>聚焦到“器械名称”的搜索输入框</li>
+<li>复制器械的 510K ID 号码</li>
+</ul>
+<h1 id="violentmonkey">ViolentMonkey</h1>
+<p>有许多支持用户脚本的浏览器扩展，但我使用的是一个名为
+<strong>ViolentMonkey</strong> 的工具。它是更流行的扩展 TamperMonkey
+的开源替代品。</p>
+<p>这个工具提供了一种在不同网站上运行自定义 JavaScript
+的好方法。它提供了一个浏览器内的 JavaScript
+编辑器，也允许用户从各种用户脚本库安装其他人的脚本。</p>
+<p>幸运的是，由于网站使用的是非常简单的
+HTML，因此编写这些快捷键的代码非常简单。</p>
+<h1 id="快捷键">快捷键</h1>
+<p>ViolentMonkey
+通过它的快捷键扩展<sup id="fnref:6"><a href="#fn:6" rel="footnote"><span
+class="hint--top hint--error hint--medium hint--rounded hint--bounce"
+aria-label="https://github.com/violentmonkey/vm-shortcut
+">[6]</span></a></sup>，使得注册快捷键变得非常容易。通过在头部（header）添加这一行代码，我可以轻松注册快捷键：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// @require https://cdn.jsdelivr.net/npm/@violentmonkey/shortcut@1</span></span><br></pre></td></tr></table></figure>
+<h2 id="打开搜索页面">打开搜索页面</h2>
+<p>这是最容易写的快捷键了。我们只需将位置（location）设置为搜索页面的
+URL。当按下 <code>Ctrl + Alt + N</code>
+时，该标签页会被重定向到搜索页面。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">VM</span>.<span class="property">shortcut</span>.<span class="title function_">register</span>(<span class="string">&quot;ctrl-alt-n&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  location.<span class="property">href</span> =</span><br><span class="line">    <span class="string">&quot;https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfPMN/pmn.cfm&quot;</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="聚焦搜索输入框">聚焦搜索输入框</h2>
+<p>打开搜索页面后，我想要聚焦到器械名称输入字段。</p>
+<p>这是此输入框的 HTML 代码。开发人员很有帮助地给了它一个
+ID：<code>DeviceName</code>，所以我们可以使用
+<code>document.getElementById()</code> 在页面上找到它。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`&lt;input type=&quot;text&quot; name=&quot;DeviceName&quot; id=&quot;DeviceName&quot; size=&quot;20&quot; maxlength=&quot;20&quot;&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这是用户脚本。我们找到该元素，然后使用 <code>focus()</code>
+将我们的浏览器焦点放在它上面。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">VM</span>.<span class="property">shortcut</span>.<span class="title function_">register</span>(<span class="string">&quot;ctrl-alt-s&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> input = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;DeviceName&quot;</span>);</span><br><span class="line">  input.<span class="title function_">focus</span>();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="复制器械-id">复制器械 ID</h2>
+<p>最后一个快捷键稍微复杂一些，因为它必须处理两种情况。在网站上提交搜索表单后，下一个页面可能以两种方式渲染：</p>
+<ol type="1">
+<li>如果只有一个结果，网站会显示该结果的详细信息，包括 510k 编号。
+<img src="/2025/10/20/%E4%BD%BF%E7%94%A8%E7%94%A8%E6%88%B7%E8%84%9A%E6%9C%AC%E4%B8%BA%E6%8B%A5%E6%9C%89-24-%E5%B9%B4%E5%8E%86%E5%8F%B2%E7%9A%84%E6%94%BF%E5%BA%9C%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E9%94%AE/3.png" class=""></li>
+<li>如果有多个结果，网站会显示一个表格，其中包含每个 510k
+编号以及指向每个提交详情的链接。 <img src="/2025/10/20/%E4%BD%BF%E7%94%A8%E7%94%A8%E6%88%B7%E8%84%9A%E6%9C%AC%E4%B8%BA%E6%8B%A5%E6%9C%89-24-%E5%B9%B4%E5%8E%86%E5%8F%B2%E7%9A%84%E6%94%BF%E5%BA%9C%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E9%94%AE/4.png" class=""></li>
+</ol>
+<p>在我们的代码中，我们检查 URL 中是否存在字符串
+<code>?ID=</code>，该字符串仅出现在单结果详情页面上。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (location.<span class="property">href</span>.<span class="title function_">includes</span>(<span class="string">&quot;?ID=&quot;</span>)) &#123;</span><br><span class="line">  <span class="comment">// 复制详情页中的ID</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// 复制表格中的结果</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不幸的是，显示器械 510k 编号的 HTML 元素没有使用 <code>id</code>
+属性。因此，我们需要使用该元素的 <strong>xpath(XML Path
+Language)</strong>。</p>
+<p>xpath
+描述如何从树的根部（文档的起点）走到树上某个特定成员（某个节点）的
+“地址” 或 “导航路线”。如果元素在页面上移动，xpath
+将不再准确。幸运的是，由于该页面是服务器模板化（server templated）的
+HTML，该元素在页面上并不会真正移动。如果这是一个现代的 JavaScript
+网页应用，我们就要使用一种不同的方法。</p>
+<p>我们可以使用 Firefox 方便的开发者工具中的“复制
+xpath”选项来快速找到这个值。</p>
+<p>现在我们可以使用 <code>window.navigator.clipboard.writeText()</code>
+将该节点的 <code>innerText</code> 值复制到我们的剪贴板。</p>
+<p>目前我们有了：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (location.<span class="property">href</span>.<span class="title function_">includes</span>(<span class="string">&quot;?ID=&quot;</span>)) &#123;</span><br><span class="line">  <span class="comment">// 复制详情页中的ID</span></span><br><span class="line">  <span class="keyword">var</span> xpath =</span><br><span class="line">    <span class="string">&quot;/html/body/div[3]/maxamineignore/div[2]/div[2]/span[2]/table[2]/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[2]/td&quot;</span>;</span><br><span class="line">  <span class="comment">// 根据提供的 XPath 路径，在文档对象模型（DOM）树中查找并选择匹配的节点</span></span><br><span class="line">  <span class="keyword">var</span> deviceId = <span class="variable language_">document</span>.evaluate(</span><br><span class="line">    xpath,</span><br><span class="line">    <span class="variable language_">document</span>,</span><br><span class="line">    <span class="literal">null</span>,</span><br><span class="line">    <span class="title class_">XPathResult</span>.<span class="property">FIRST_ORDERED_NODE_TYPE</span>,</span><br><span class="line">    <span class="literal">null</span></span><br><span class="line">  ).<span class="property">singleNodeValue</span>.<span class="property">innerText</span>;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">navigator</span>.<span class="property">clipboard</span>.<span class="title function_">writeText</span>(deviceId);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// 复制表格中的最后一个结果</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在我们处理有多个响应的情况。有时我们对同一个器械有多个 510k
+提交。我武断地使用最旧的一个值作为打破僵局的规则，所以我的脚本也会这样做。</p>
+<p>与之前类似，我们使用表格的 xpath
+在文档中找到它。然后我们找到表格的最后一行，并获取它的第三个子元素，即包含
+510K
+编号的列。一旦我们有了这一列，我们就获取它的第一个子元素，并将其文本写入剪贴板。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// 复制表格中的最后一个结果</span></span><br><span class="line">  <span class="keyword">var</span> xpath = <span class="string">&#x27;/html/body/div[3]/maxamineignore/div[2]/div[2]/span[2]/table[2]/tbody/tr/td/table/tbody&#x27;</span>;</span><br><span class="line">  <span class="keyword">var</span> table = <span class="variable language_">document</span>.evaluate(</span><br><span class="line">    xpath,</span><br><span class="line">    <span class="variable language_">document</span>,</span><br><span class="line">    <span class="literal">null</span>,</span><br><span class="line">    <span class="title class_">XPathResult</span>.<span class="property">FIRST_ORDERED_NODE_TYPE</span>,</span><br><span class="line">    <span class="literal">null</span></span><br><span class="line">  ).<span class="property">singleNodeValue</span>;</span><br><span class="line">  <span class="keyword">var</span> tableLength = table.<span class="property">children</span>.<span class="property">length</span>;</span><br><span class="line">  <span class="keyword">var</span> lastRow = table.<span class="property">children</span>[tableLength-<span class="number">1</span>]</span><br><span class="line">  <span class="comment">// 从最后一个元素获取ID</span></span><br><span class="line">  <span class="keyword">var</span> deviceId = lastRow.<span class="property">children</span>[<span class="number">2</span>].<span class="property">firstChild</span>.<span class="property">text</span>;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">navigator</span>.<span class="property">clipboard</span>.<span class="title function_">writeText</span>(deviceId);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后，我们将这段代码封装在 <code>VM.shortcut.register()</code>
+的回调函数中，以获得我们的最终脚本。现在，当我按下
+<code>Ctrl + Shift + C</code> 时，510k
+编号会自动写入我的剪贴板，省去了我必须用鼠标手动高亮 510k
+编号的麻烦。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">VM</span>.<span class="property">shortcut</span>.<span class="title function_">register</span>(<span class="string">&quot;ctrl-shift-c&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (location.<span class="property">href</span>.<span class="title function_">includes</span>(<span class="string">&quot;?ID=&quot;</span>)) &#123;</span><br><span class="line">    <span class="comment">// 复制详情页中的ID</span></span><br><span class="line">    <span class="keyword">var</span> xpath =</span><br><span class="line">      <span class="string">&quot;/html/body/div[3]/maxamineignore/div[2]/div[2]/span[2]/table[2]/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr/td/table/tbody/tr[2]/td&quot;</span>;</span><br><span class="line">    <span class="keyword">var</span> deviceId = <span class="variable language_">document</span>.evaluate(</span><br><span class="line">      xpath,</span><br><span class="line">      <span class="variable language_">document</span>,</span><br><span class="line">      <span class="literal">null</span>,</span><br><span class="line">      <span class="title class_">XPathResult</span>.<span class="property">FIRST_ORDERED_NODE_TYPE</span>,</span><br><span class="line">      <span class="literal">null</span></span><br><span class="line">    ).<span class="property">singleNodeValue</span>.<span class="property">innerText</span>;</span><br><span class="line">    <span class="variable language_">window</span>.<span class="property">navigator</span>.<span class="property">clipboard</span>.<span class="title function_">writeText</span>(deviceId);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 复制表格中的最后一个结果</span></span><br><span class="line">    <span class="keyword">var</span> xpath =</span><br><span class="line">      <span class="string">&quot;/html/body/div[3]/maxamineignore/div[2]/div[2]/span[2]/table[2]/tbody/tr/td/table/tbody&quot;</span>;</span><br><span class="line">    <span class="keyword">var</span> table = <span class="variable language_">document</span>.evaluate(</span><br><span class="line">      xpath,</span><br><span class="line">      <span class="variable language_">document</span>,</span><br><span class="line">      <span class="literal">null</span>,</span><br><span class="line">      <span class="title class_">XPathResult</span>.<span class="property">FIRST_ORDERED_NODE_TYPE</span>,</span><br><span class="line">      <span class="literal">null</span></span><br><span class="line">    ).<span class="property">singleNodeValue</span>;</span><br><span class="line">    <span class="keyword">var</span> tableLength = table.<span class="property">children</span>.<span class="property">length</span>;</span><br><span class="line">    <span class="keyword">var</span> lastRow = table.<span class="property">children</span>[tableLength - <span class="number">1</span>];</span><br><span class="line">    <span class="comment">// 从最后一个元素获取ID</span></span><br><span class="line">    <span class="keyword">var</span> deviceId = lastRow.<span class="property">children</span>[<span class="number">2</span>].<span class="property">firstChild</span>.<span class="property">text</span>;</span><br><span class="line">    <span class="variable language_">window</span>.<span class="property">navigator</span>.<span class="property">clipboard</span>.<span class="title function_">writeText</span>(deviceId);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h1 id="结论">结论</h1>
+<p>如果你发现自己被网站上一些重复性的任务所困扰，我强烈建议尝试用用户脚本来自动化其中的一部分。</p>
+<p>最酷的部分在于你可以自己动手解决这个问题，并为自己节省一些时间。</p>
+<p>很难量化我在这里为自己节省了多少时间，但现在我减少了将手离开键盘的次数，我的工作流程无疑变得更轻松了。</p>
+<h1 id="脚注-footnotes">脚注 (Footnotes)</h1>
+<div id="footnotes">
+<hr>
+<div id="footnotelist">
+<ol style="list-style: none; padding-left: 0; margin-left: 40px">
+<li id="fn:1">
+<span
+style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span
+style="display: inline-block; vertical-align: top; margin-left: 10px;">https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm<a href="#fnref:1" rev="footnote">
+↩︎</a></span>
+</li>
+<li id="fn:2">
+<span
+style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">2.</span><span
+style="display: inline-block; vertical-align: top; margin-left: 10px;">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10465388/<a href="#fnref:2" rev="footnote">
+↩︎</a></span>
+</li>
+<li id="fn:3">
+<span
+style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">3.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">https://web.archive.org/web/20001015000000*/https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm<a href="#fnref:3" rev="footnote">
+↩︎</a></span>
+</li>
+<li id="fn:4">
+<span
+style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">4.</span><span
+style="display: inline-block; vertical-align: top; margin-left: 10px;">https://en.wikipedia.org/wiki/Adobe_ColdFusion<a href="#fnref:4" rev="footnote">
+↩︎</a></span>
+</li>
+<li id="fn:5">
+<span
+style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">5.</span><span
+style="display: inline-block; vertical-align: top; margin-left: 10px;">https://en.wikipedia.org/wiki/Userscript<a href="#fnref:5" rev="footnote">
+↩︎</a></span>
+</li>
+<li id="fn:6">
+<span
+style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">6.</span><span
+style="display: inline-block; vertical-align: top; margin-left: 10px;">https://github.com/violentmonkey/vm-shortcut<a href="#fnref:6" rev="footnote">
+↩︎</a></span>
+</li>
+<li id="fn:7">
+<span
+style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">7.</span><span
+style="display: inline-block; vertical-align: top; margin-left: 10px;">510k
+项目
+是美国食品药品监督管理局（FDA）针对大多数医疗器械在美国上市前要求进行的一项审批流程<a href="#fnref:7" rev="footnote">
+↩︎</a></span>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.JPG" alt="toypipi 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.JPG" alt="toypipi 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>toypipi
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://toypipi.github.io/2025/10/20/%E4%BD%BF%E7%94%A8%E7%94%A8%E6%88%B7%E8%84%9A%E6%9C%AC%E4%B8%BA%E6%8B%A5%E6%9C%89-24-%E5%B9%B4%E5%8E%86%E5%8F%B2%E7%9A%84%E6%94%BF%E5%BA%9C%E7%BD%91%E7%AB%99%E6%B7%BB%E5%8A%A0%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E9%94%AE/" title="使用用户脚本为拥有 24 年历史的政府网站添加键盘快捷键">https://toypipi.github.io/2025/10/20/使用用户脚本为拥有-24-年历史的政府网站添加键盘快捷键/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag"><i class="fa fa-tag"></i> 快捷键</a>
+              <a href="/tags/%E7%94%A8%E6%88%B7%E8%84%9A%E6%9C%AC/" rel="tag"><i class="fa fa-tag"></i> 用户脚本</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/10/20/hexo-%E4%B8%AD%E6%B8%B2%E6%9F%93%E5%85%AC%E5%BC%8F/" rel="prev" title="hexo 中渲染公式">
+                  <i class="fa fa-angle-left"></i> hexo 中渲染公式
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2016 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">toypipi</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">248k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">15:01</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js","integrity":"sha256-stuqcu2FrjYCXDOytWFA5SoUE/r3nkp6gTglzNSlavU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
