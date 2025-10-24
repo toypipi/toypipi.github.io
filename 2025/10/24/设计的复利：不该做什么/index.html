@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="原文：The compound interest of design: what not to build  在设计领域摸爬滚打了二十五年后，Dave Snyder 认为，最明智的设计策略不是追逐潮流，而是种下一棵树，让时间来发挥作用。 编者注：这是 Dave Snyder 为《Design Juice》 撰写的第一篇评论文章。请务必阅读到最后。 我从事数字产品设计已经有 2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计的复利：不该做什么">
+<meta property="og:url" content="https://toypipi.github.io/2025/10/24/%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%A4%8D%E5%88%A9%EF%BC%9A%E4%B8%8D%E8%AF%A5%E5%81%9A%E4%BB%80%E4%B9%88/index.html">
+<meta property="og:site_name" content="Toypipi&#39;s blog">
+<meta property="og:description" content="原文：The compound interest of design: what not to build  在设计领域摸爬滚打了二十五年后，Dave Snyder 认为，最明智的设计策略不是追逐潮流，而是种下一棵树，让时间来发挥作用。 编者注：这是 Dave Snyder 为《Design Juice》 撰写的第一篇评论文章。请务必阅读到最后。 我从事数字产品设计已经有 2">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-10-24T03:05:08.000Z">
+<meta property="article:modified_time" content="2025-10-24T03:31:07.376Z">
+<meta property="article:author" content="toypipi">
+<meta property="article:tag" content="设计">
+<meta property="article:tag" content="复利">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://toypipi.github.io/2025/10/24/%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%A4%8D%E5%88%A9%EF%BC%9A%E4%B8%8D%E8%AF%A5%E5%81%9A%E4%BB%80%E4%B9%88/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://toypipi.github.io/2025/10/24/%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%A4%8D%E5%88%A9%EF%BC%9A%E4%B8%8D%E8%AF%A5%E5%81%9A%E4%BB%80%E4%B9%88/","path":"2025/10/24/设计的复利：不该做什么/","title":"设计的复利：不该做什么"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>设计的复利：不该做什么 | Toypipi's blog</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?c228072b8c3657dfa7236914b308712c"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Toypipi's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="toypipi"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">toypipi</p>
+  <div class="site-description" itemprop="description">Stay focused, be present</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">315</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">414</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/toypipi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;toypipi" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:275688469@qq.com" title="E-Mail → mailto:275688469@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2025/10/24/%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%A4%8D%E5%88%A9%EF%BC%9A%E4%B8%8D%E8%AF%A5%E5%81%9A%E4%BB%80%E4%B9%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="设计的复利：不该做什么 | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          设计的复利：不该做什么
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-10-24 11:05:08 / 修改时间：11:31:07" itemprop="dateCreated datePublished" datetime="2025-10-24T11:05:08+08:00">2025-10-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BF%BB%E8%AF%91/" itemprop="url" rel="index"><span itemprop="name">翻译</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<blockquote>
+<p>原文：<a
+target="_blank" rel="noopener" href="https://designobserver.com/the-compound-interest-of-design-what-not-to-build/">The
+compound interest of design: what not to build</a></p>
+</blockquote>
+<p>在设计领域摸爬滚打了二十五年后，Dave Snyder
+认为，最明智的设计策略不是追逐潮流，而是种下一棵树，让时间来发挥作用。</p>
+<p><em>编者注：这是 Dave Snyder 为《Design Juice》
+撰写的第一篇评论文章。请务必阅读到最后。</em></p>
+<p>我从事数字产品设计已经有 25 年了。我记得当时最大的决定是，从 800×600
+像素升级到 1024
+像素。我经历了多轮虚拟现实（VR）炒热潮，见证了网络从静态页面发展到社交网络，再到现在的“万物皆
+AI”。我曾推出过失败惨重的的产品，也有一些产品取得了巨大的成功。</p>
+<p>树木不会在明天就带来回报。它们需要十年才能结出果实。它们静静地成长，让周围的一切变得更好：提供荫凉、价值、美感和长久生命力。而大多数产品呢？我们把它们当作灌木。种下二十个功能，希望有一个能存活。这不过是打着“创新”旗号的功能臃肿。这是急躁且愚蠢的做法。</p>
+<span id="more"></span>
+<p>更明智的做法是保持克制。种下一棵树。解决一个核心问题。投入匠心。然后，让时间和真实的用户行为来完成剩下的工作。</p>
+<p>以 Shopify 的 Shop
+应用为例。七年前推出时，它并没有试图满足所有人的需求。它出色地解决了一个核心问题：包裹追踪。这就是它的树。正因为他们抵制了立即添加支付、社交功能或任何其他流行趋势的冲动，他们得以专注于使这一核心体验变得更加出色。它的枝干自然生长，首先是在结账时添加了“Shop”按钮，接着是个性化推荐，最终发展成一个完整的市场。每一次新增功能都建立在最初的基础之上。</p>
+<p>再看看像 Duolingo
+的“下拉刷新”交互设计这样的小细节。他们没有在语言学习应用中硬塞更多功能，而是将精力投入到了一个大多数团队都会视为次要的微交互上。正是这个带来愉悦感的小细节，以十个新功能永远无法做到的方式，在个性塑造、习惯养成和用户留存方面实现了复利增长。</p>
+<p>最难的部分不是确定要构建什么，而是确定不该构建什么。在披萨外卖应用
+Slice
+中，我们不断面临着将业务扩展到披萨以外的压力：中餐怎么样？墨西哥卷饼呢？每一种餐厅类型似乎都是一个明显的机会。但正是专注于披萨，让我们能够针对披萨爱好者看重的事情进行优化：轻松地重新订购你常点的披萨、搭配合理的配料，以及展示披萨的真实图片。我们可以构建像“重新订购您最近三次的订单”这样的功能，因为我们理解披萨顾客有自己的习惯，而不是因为我们试图服务所有人。</p>
+<p>这就是设计的复利——不仅仅是金融上的，更是人与人之间的。良好的基础性选择会随着时间的推移带来成倍的回报。它们产生的回报会让用户不断回归、深入使用并分享给朋友。</p>
+<p>大多数团队认为复利意味着构建一个接一个堆叠起来的功能。但我学到的是，它实际上意味着投资于那些让用户愿意回来的基础性细节。那个让你微笑的下拉刷新。那个运行流畅的重新订购流程。那个真正帮助你做出决定的图片。</p>
+<p>你事先做的每一个猜测都是一种负担。你每一次刻意的克制都是一种投资。重要的事情需要时间，这恰恰是没人愿意投入的原因。但二十五年观察产品的成败经历告诉我：不要耍小聪明，不要贪婪。选一件重要的事情，把它做好，然后让进化战胜预测。</p>
+<p>种下那该死的树。</p>
+<hr />
+<p><em>作者简介：Dave Snyder 是 Siberia
+的合伙人兼首席设计官。他是一位屡获殊荣的设计高管，拥有超过 23
+年的经验，致力于发展高效的内部和代理团队，专注于构建现代的、数十亿美元的品牌和数字产品。他的工作范围广泛，从数字优先、整合营销活动和内容，到
+VR 和 AR
+中的沉浸式互动体验，以及在电子商务和数字产品领域的长期职业生涯，服务过的品牌包括
+Twitter、Flexport 和
+Slice。他最大的动力是发现公司表达其目标的新方式——无论是新的产品愿景和叙事、设计系统、新功能，还是
+UI
+元素的微交互。正是这种对工艺的热情和奉献，使他和他的团队能够有意义地推动业务向前发展，并在此过程中赢得了一些值得注意的奖项。Dave
+在布鲁克林外约一小时的地方有一栋海滨小屋，他在那里养殖自己的牡蛎、玩滑板，并喜欢重建老式路虎。</em></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.JPG" alt="toypipi 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.JPG" alt="toypipi 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>toypipi
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://toypipi.github.io/2025/10/24/%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%A4%8D%E5%88%A9%EF%BC%9A%E4%B8%8D%E8%AF%A5%E5%81%9A%E4%BB%80%E4%B9%88/" title="设计的复利：不该做什么">https://toypipi.github.io/2025/10/24/设计的复利：不该做什么/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%BE%E8%AE%A1/" rel="tag"><i class="fa fa-tag"></i> 设计</a>
+              <a href="/tags/%E5%A4%8D%E5%88%A9/" rel="tag"><i class="fa fa-tag"></i> 复利</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/10/23/%E8%AE%A9%E4%BD%A0%E7%9C%9F%E6%AD%A3%E5%90%AC%E6%87%82%E8%8B%B1%E8%AF%AD%E7%9A%84%E7%A7%98%E8%AF%80/" rel="prev" title="让你真正听懂英语的秘诀">
+                  <i class="fa fa-angle-left"></i> 让你真正听懂英语的秘诀
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2016 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">toypipi</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">250k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">15:08</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js","integrity":"sha256-stuqcu2FrjYCXDOytWFA5SoUE/r3nkp6gTglzNSlavU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

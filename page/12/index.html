@@ -154,7 +154,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">313</span>
+          <span class="site-state-item-count">315</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -165,7 +165,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">411</span>
+        <span class="site-state-item-count">414</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -190,6 +190,219 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/10/30/Echarts-map-%E5%88%A0%E9%99%A4%E9%A6%99%E6%B8%AF%E3%80%81%E6%BE%B3%E9%97%A8%E5%92%8C%E5%8F%B0%E6%B9%BE%E6%98%BE%E7%A4%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/10/30/Echarts-map-%E5%88%A0%E9%99%A4%E9%A6%99%E6%B8%AF%E3%80%81%E6%BE%B3%E9%97%A8%E5%92%8C%E5%8F%B0%E6%B9%BE%E6%98%BE%E7%A4%BA/" class="post-title-link" itemprop="url">Echarts map 删除香港、澳门和台湾显示</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-10-30 10:45:40 / 修改时间：11:02:31" itemprop="dateCreated datePublished" datetime="2023-10-30T10:45:40+08:00">2023-10-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>337</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr />
+<p>修改 map option，将香港、澳门和台湾的透明度设置为
+0，同时不显示标签名：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">series</span>: [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&quot;map&quot;</span>,</span><br><span class="line">    <span class="attr">map</span>: <span class="string">&quot;china&quot;</span>,</span><br><span class="line">    <span class="attr">roam</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">itemStyle</span>: &#123;</span><br><span class="line">      <span class="attr">label</span>: &#123; <span class="attr">show</span>: <span class="literal">true</span>, <span class="attr">areaColor</span>: <span class="string">&quot;#b4e8fe&quot;</span> &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">emphasis</span>: &#123; <span class="attr">label</span>: &#123; <span class="attr">show</span>: <span class="literal">true</span> &#125; &#125;,</span><br><span class="line">    <span class="attr">data</span>: [</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;北京&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">110000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;天津&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">120000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;上海&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">310000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;重庆&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">500000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;河北&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">130000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;河南&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">410000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;云南&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">530000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;辽宁&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">210000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;黑龙江&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">230000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;湖南&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">430000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;安徽&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">340000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;山东&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">370000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;新疆&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">650000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;江苏&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">320000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;浙江&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">330000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;江西&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">360000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;湖北&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">420000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;广西&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">450000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;甘肃&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">620000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;山西&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">140000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;内蒙古&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">150000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;陕西&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">610000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;吉林&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">220000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;福建&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">350000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;贵州&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">520000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;广东&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">440000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;青海&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">630000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;西藏&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">540000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;四川&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">510000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;宁夏&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">640000</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;海南&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">460000</span> &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&quot;香港&quot;</span>,</span><br><span class="line">        <span class="attr">itemStyle</span>: &#123;</span><br><span class="line">          <span class="attr">normal</span>: &#123; <span class="attr">opacity</span>: <span class="number">0</span> &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">label</span>: &#123; <span class="attr">show</span>: <span class="literal">false</span> &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&quot;澳门&quot;</span>,</span><br><span class="line">        <span class="attr">itemStyle</span>: &#123;</span><br><span class="line">          <span class="attr">normal</span>: &#123; <span class="attr">opacity</span>: <span class="number">0</span> &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">label</span>: &#123; <span class="attr">show</span>: <span class="literal">false</span> &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&quot;台湾&quot;</span>,</span><br><span class="line">        <span class="attr">itemStyle</span>: &#123;</span><br><span class="line">          <span class="attr">normal</span>: &#123; <span class="attr">opacity</span>: <span class="number">0</span> &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">label</span>: &#123; <span class="attr">show</span>: <span class="literal">false</span> &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">&quot;南海诸岛&quot;</span>, <span class="attr">value</span>: <span class="number">0</span>, <span class="attr">id</span>: <span class="number">460324</span> &#125;,</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">label</span>: &#123;</span><br><span class="line">      <span class="attr">show</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">fontSize</span>: <span class="number">12</span>,</span><br><span class="line">      <span class="attr">color</span>: <span class="string">&quot;#dcdcdc&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">zoom</span>: <span class="number">1.25</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/10/30/Echarts-map-%E5%88%A0%E9%99%A4%E9%A6%99%E6%B8%AF%E3%80%81%E6%BE%B3%E9%97%A8%E5%92%8C%E5%8F%B0%E6%B9%BE%E6%98%BE%E7%A4%BA/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/10/27/Vue-2-x-%E7%9A%84-diff-%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/10/27/Vue-2-x-%E7%9A%84-diff-%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">Vue 2.x 的 diff 算法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-10-27 16:35:28 / 修改时间：16:37:01" itemprop="dateCreated datePublished" datetime="2023-10-27T16:35:28+08:00">2023-10-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>389</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<p>Vue 2.x 的虚拟 DOM 采用的是基于 Snabbdom 库实现的 diff
+算法。其基本思想是通过比较新旧节点，找出它们之间的差异，然后将这些差异应用于真实
+DOM 上，从而最小化 DOM 操作次数，提高渲染效率。</p>
+<p>Vue 2.x 的 diff 算法主要分为以下几个步骤：</p>
+<ol type="1">
+<li><p>新旧节点的比较：首先比较新旧节点的类型和标签名，如果不同，则直接替换整个节点；如果相同，则继续比较节点的属性和子节点。</p></li>
+<li><p>属性的比较：对于同一节点，比较它们的属性是否相同，如果不同，则更新属性值。</p></li>
+<li><p>子节点的比较：对于同一节点，比较它们的子节点是否相同，如果不同，则递归地对子节点进行比较。</p></li>
+<li><p>列表的比较：对于列表节点，比较它们的子节点是否相同，如果不同，则使用
+diff 算法找出它们之间的差异，然后更新列表。</p></li>
+<li><p>键值的比较：在进行列表比较时，如果节点具有 key 值，则通过 key
+值来快速定位节点，从而提高比较效率。</p></li>
+</ol>
+<p>总的来说，Vue 2.x 的 diff 算法是一种高效的算法，可以最小化 DOM
+操作次数，提高渲染效率。但是，开发者仍然需要注意一些性能问题，如避免过多的嵌套组件、避免重复渲染等，以优化应用程序的性能。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -532,234 +745,6 @@ return false.</p>
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/10/24/Roman-Numerals-Decoder/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="toypipi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Toypipi's blog">
-      <meta itemprop="description" content="Stay focused, be present">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Toypipi's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/10/24/Roman-Numerals-Decoder/" class="post-title-link" itemprop="url">Roman Numerals Decoder</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2023-10-24 13:47:28 / 修改时间：14:02:26" itemprop="dateCreated datePublished" datetime="2023-10-24T13:47:28+08:00">2023-10-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>320</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr />
-<h1 id="description">DESCRIPTION</h1>
-<p>Create a function that takes a Roman numeral as its argument and
-returns its value as a numeric decimal integer. You don’t need to
-validate the form of the Roman numeral.</p>
-<p>Modern Roman numerals are written by expressing each decimal digit of
-the number to be encoded separately, starting with the leftmost digit
-and skipping any 0s. So 1990 is rendered “MCMXC” (1000 = M, 900 = CM, 90
-= XC) and 2008 is rendered “MMVIII” (2000 = MM, 8 = VIII). The Roman
-numeral for 1666, “MDCLXVI”, uses each letter in descending order.</p>
-<p>注意一点：题目没有描述，当较小的值出现在较大的值之前时，将从较大的值中减去该值。可参考文末的引用链接。</p>
-<h1 id="solution">SOLUTION</h1>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">solution</span>(<span class="params">roman</span>) &#123;</span><br><span class="line">  <span class="comment">// 定义一个罗马数字到整数的映射</span></span><br><span class="line">  <span class="keyword">const</span> romanMap = &#123;</span><br><span class="line">    <span class="attr">I</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">V</span>: <span class="number">5</span>,</span><br><span class="line">    <span class="attr">X</span>: <span class="number">10</span>,</span><br><span class="line">    <span class="attr">L</span>: <span class="number">50</span>,</span><br><span class="line">    <span class="attr">C</span>: <span class="number">100</span>,</span><br><span class="line">    <span class="attr">D</span>: <span class="number">500</span>,</span><br><span class="line">    <span class="attr">M</span>: <span class="number">1000</span>,</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">// 初始化结果变量，以存储罗马数字的最终值</span></span><br><span class="line">  <span class="keyword">let</span> result = <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// 遍历罗马数字</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; roman.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="comment">// 获取当前字母和下一个字母</span></span><br><span class="line">    <span class="keyword">let</span> letter = roman[i];</span><br><span class="line">    <span class="keyword">let</span> letterAfter = roman[i + <span class="number">1</span>];</span><br><span class="line">    <span class="comment">// 如果当前字母小于后一个字母，则从结果中减去当前字母的值</span></span><br><span class="line">    <span class="keyword">if</span> (romanMap[letter] &lt; romanMap[letterAfter]) &#123;</span><br><span class="line">      result -= romanMap[letter];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 如果当前字母大于后一个字母，则从结果中加上当前字母的值</span></span><br><span class="line">      result += romanMap[letter];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 返回罗马数字的最终值</span></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/10/24/Roman-Numerals-Decoder/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/10/20/Directions-Reduction/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="toypipi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Toypipi's blog">
-      <meta itemprop="description" content="Stay focused, be present">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Toypipi's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/10/20/Directions-Reduction/" class="post-title-link" itemprop="url">Directions Reduction</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2023-10-20 16:09:13 / 修改时间：16:14:05" itemprop="dateCreated datePublished" datetime="2023-10-20T16:09:13+08:00">2023-10-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>271</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr />
-<h1 id="description">DESCRIPTION</h1>
-<p>Write a function dirReduc which will take an array of strings and
-returns an array of strings with the needless directions removed
-(W&lt;-&gt;E or S&lt;-&gt;N side by side).</p>
-<p>The Haskell version takes a list of directions with data Direction =
-North | East | West | South. The Clojure version returns nil when the
-path is reduced to nothing. The Rust version takes a slice of enum
-Direction {North, East, West, South}.</p>
-<p>详细描述可以查看文档底部的引用链接。</p>
-<h1 id="solution">SOLUTION</h1>
-<ul>
-<li>方法一：模拟栈的方式。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">dirReduc</span>(<span class="params">arr</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> opposites = &#123;</span><br><span class="line">    <span class="attr">NORTH</span>: <span class="string">&quot;SOUTH&quot;</span>,</span><br><span class="line">    <span class="attr">SOUTH</span>: <span class="string">&quot;NORTH&quot;</span>,</span><br><span class="line">    <span class="attr">EAST</span>: <span class="string">&quot;WEST&quot;</span>,</span><br><span class="line">    <span class="attr">WEST</span>: <span class="string">&quot;EAST&quot;</span>,</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">// 创建一个数组用来模拟一个栈，用于跟踪方向</span></span><br><span class="line">  <span class="keyword">const</span> stack = [];</span><br><span class="line">  <span class="comment">// 遍历输入的方向数组</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> direction <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="comment">// 获取当前方向的反方向</span></span><br><span class="line">    <span class="keyword">const</span> opposite = opposites[direction];</span><br><span class="line">    <span class="comment">// 如果栈顶方向等于当前方向的反方向，则弹出栈顶方向</span></span><br><span class="line">    <span class="keyword">if</span> (stack[stack.<span class="property">length</span> - <span class="number">1</span>] === opposite) &#123;</span><br><span class="line">      stack.<span class="title function_">pop</span>();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 否则，将当前方向压入栈顶</span></span><br><span class="line">      stack.<span class="title function_">push</span>(direction);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 最终，栈中剩下的方向就是去掉不必要的相反方向后的结果</span></span><br><span class="line">  <span class="keyword">return</span> stack;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/10/20/Directions-Reduction/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/63/">63</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/13/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -783,13 +768,13 @@ Direction {North, East, West, South}.</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">248k</span>
+    <span title="站点总字数">250k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">15:01</span>
+    <span title="站点阅读时长">15:08</span>
   </span>
 </div>
 <div class="busuanzi-count">
