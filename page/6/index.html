@@ -154,7 +154,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">315</span>
+          <span class="site-state-item-count">317</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -165,7 +165,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">414</span>
+        <span class="site-state-item-count">415</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -190,6 +190,240 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2024/07/26/%E5%89%8D%E7%AB%AF%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F%E9%98%90%E8%BF%B0-%E8%AF%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/07/26/%E5%89%8D%E7%AB%AF%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F%E9%98%90%E8%BF%B0-%E8%AF%91/" class="post-title-link" itemprop="url">前端构建系统阐述[译]</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-26 11:13:17" itemprop="dateCreated datePublished" datetime="2024-07-26T11:13:17+08:00">2024-07-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-09-04 09:22:53" itemprop="dateModified" datetime="2024-09-04T09:22:53+08:00">2024-09-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BF%BB%E8%AF%91/" itemprop="url" rel="index"><span itemprop="name">翻译</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>17 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr />
+<p>开发人员编写 JavaScript 代码；浏览器执行 JavaScript
+代码。从根本上说，在前端开发中并不需要构建步骤。那么，为什么现代前端开发中会有构建步骤呢？</p>
+<p>随着前端代码库的不断增长，以及开发人员工效变得越来越重要，直接将
+JavaScript 源代码发送给客户端会导致两个主要问题：</p>
+<p><strong>1. 不支持的语言特性：</strong> 因为 JavaScript
+在浏览器中运行，而且市面上有多种版本的浏览器，你使用的每一种语言特性，都会减少能够执行你的
+JavaScript 的客户端数量。此外，像 JSX 这样的语言扩展不是有效的
+JavaScript，不能在任何浏览器中运行。</p>
+<p><strong>2. 性能问题：</strong> 浏览器必须单独请求每个 JavaScript
+文件。在大型代码库中，这可能导致需要数千个 HTTP
+请求来渲染一个页面。在过去，HTTP/2 出现之前，这还会导致数千次 TLS
+握手。</p>
+<p>此外，可能还需要几次连续的网络往返才能加载完所有的
+JavaScript。例如，如果 <code>index.js</code> 导入了
+<code>page.js</code>，而 <code>page.js</code> 又导入了
+<code>button.js</code>，那么就需要三次连续的网络往返才能完全加载
+JavaScript。这被称为瀑布流问题。</p>
+<p>源文件也可能因为长变量名和空白缩进字符而变得不必要地大，增加了带宽使用和网络加载时间。</p>
+<p>前端构建系统处理源代码，并输出一个或多个为发送到浏览器而优化的
+JavaScript 文件。生成的<em>分发版</em>通常对人类来说是难以理解的。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/07/26/%E5%89%8D%E7%AB%AF%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F%E9%98%90%E8%BF%B0-%E8%AF%91/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2024/06/28/Visio-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/06/28/Visio-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">Visio 使用技巧</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-06-28 17:13:13 / 修改时间：18:14:25" itemprop="dateCreated datePublished" datetime="2024-06-28T17:13:13+08:00">2024-06-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>159</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr />
+<p>本文配置依赖如下版本： <div class="note info"><p>Winddows 10 Visio 2021</p>
+</div></p>
+<h1 id="visio-快速给多条连接线添加箭头">Visio
+快速给多条连接线添加箭头</h1>
+<p>使用 Visio
+编辑流程图时，往往需要插入多条连接线，给每一个连接线设置箭头非常麻烦。想要同时给多条连接线设置箭头，可以这样做。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/06/28/Visio-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -529,232 +763,8 @@ target="_blank" rel="noopener" href="https://pengtech.net/hexo/hexo_blog_comment
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2024/06/07/%E5%B8%83%E5%B0%94%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%88%E9%95%BF%E5%8F%88%E5%A4%8D%E6%9D%82-%E8%AF%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="toypipi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Toypipi's blog">
-      <meta itemprop="description" content="Stay focused, be present">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Toypipi's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/06/07/%E5%B8%83%E5%B0%94%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%88%E9%95%BF%E5%8F%88%E5%A4%8D%E6%9D%82-%E8%AF%91/" class="post-title-link" itemprop="url">布尔表达式又长又复杂[译]</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-06-07 13:52:46 / 修改时间：14:49:45" itemprop="dateCreated datePublished" datetime="2024-06-07T13:52:46+08:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BF%BB%E8%AF%91/" itemprop="url" rel="index"><span itemprop="name">翻译</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>704</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr />
-<p>这是我们 <a
-target="_blank" rel="noopener" href="https://testing.googleblog.com/2017/04/code-health-googles-internal-code.html">代码健康</a>
-系列中的另一篇文章。此文章的一个版本最初作为“Google <a
-target="_blank" rel="noopener" href="https://testing.googleblog.com/2007/01/introducing-testing-on-toilet.html">马桶测试</a>”
-系列的一集出现在全球的 Google 浴室中。您可以下载 <a
-target="_blank" rel="noopener" href="https://docs.google.com/document/d/11nk0lxX6DHBq8AJtMtJnnLKf5CG3KTcntUBhVTKWRLg/edit">适合打印的版本</a><sup id="fnref:1"><a href="#fn:1" rel="footnote"><span
-class="hint--top hint--error hint--medium hint--rounded hint--bounce"
-aria-label="Google 的马桶声名在外，不仅仅因为技术含量高，还因为从 2006 年开始，它们就被用来确保 Google 的产品完美无瑕，工程师们还会将软件测试题打印出来贴在厕所里，这是被内部员工称为 “马桶上的测试” 的企业文化。  
-">[1]</span></a></sup> 以在办公室中显示。</p>
-<p>作者 孙一鸣</p>
-<p>您可能在代码库中遇到过一些复杂、难以阅读的布尔表达式，并希望它们更容易理解。例如，假设我们想要确定披萨是否美味：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Decide whether this pizza is fantastic.</span></span><br><span class="line"><span class="comment">// 判断这个披萨是否美味。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ((!pepperoniService.<span class="title function_">empty</span>() || sausages.<span class="title function_">size</span>() &gt; <span class="number">0</span>)</span><br><span class="line">    &amp;&amp; (useOnionFlag.<span class="title function_">get</span>() || <span class="title function_">hasMushroom</span>(<span class="variable constant_">ENOKI</span>, <span class="variable constant_">PORTOBELLO</span>)) &amp;&amp; <span class="title function_">hasCheese</span>()) &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/06/07/%E5%B8%83%E5%B0%94%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%88%E9%95%BF%E5%8F%88%E5%A4%8D%E6%9D%82-%E8%AF%91/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2024/06/06/%E3%80%8A%E6%88%91%E5%9C%A8-100-%E5%A4%A9%E5%86%85%E8%87%AA%E5%AD%A6%E8%8B%B1%E6%96%87%E7%BF%BB%E8%BD%AC%E4%BA%BA%E7%94%9F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="toypipi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Toypipi's blog">
-      <meta itemprop="description" content="Stay focused, be present">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Toypipi's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/06/06/%E3%80%8A%E6%88%91%E5%9C%A8-100-%E5%A4%A9%E5%86%85%E8%87%AA%E5%AD%A6%E8%8B%B1%E6%96%87%E7%BF%BB%E8%BD%AC%E4%BA%BA%E7%94%9F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">《我在 100 天内自学英文翻转人生》读书笔记</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-06-06 16:28:46 / 修改时间：17:22:28" itemprop="dateCreated datePublished" datetime="2024-06-06T16:28:46+08:00">2024-06-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">阅读</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.7k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>6 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr />
-<p>本书内容总结如下，其余内容都是作者打鸡血的鸡汤文，不看也罢。</p>
-<p>作者分享的方法是通过反复观看一部电影，模仿跟读 100
-遍，其实就是把台词都背下来，结合场景，可以做到脱口而出。和之前看到的<a
-href="https://toypipi.github.io/2023/11/09/d6021f53d529/">英语学习方法</a>类似。</p>
-<p>按照之前总结的学习方法，听力和阅读水平正在稳步提高，但是口语一直没有练习，没有进步。打算按照作者介绍的方法开始练习口语，不过暂时不选影片作为练习材料。还是采用之前听过的
-EnglishPod 作为练习材料，每天下班回去跟读，坚持打卡。</p>
-<p>学英语没有捷径，踏踏实实，不浮躁，只要你花时间付出，就一定能有回报。延伸阅读的视频可以看一下。</p>
-<p>钟道隆，浙江浦江人，中国人民解放军少将、通信工程专家、逆向英语创始人、复读机发明者。上大学是优等生，工作是优秀科技工作者，管教学是学生的良师诤友，退休后是优秀退休干部。45
-岁自学英语，一年后成为翻译。从视频中可以看出钟老是那种喜欢钻研的人，有问题喜欢刨根问底，一直琢磨，我和他老人家这点还挺像，哈哈哈。</p>
-<p>他学英语的时候，克服任何困难，每天学习七八个小时。当你坚持不了，想要放弃时，回头再看看这个视频，可以让你重拾信心。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/06/06/%E3%80%8A%E6%88%91%E5%9C%A8-100-%E5%A4%A9%E5%86%85%E8%87%AA%E5%AD%A6%E8%8B%B1%E6%96%87%E7%BF%BB%E8%BD%AC%E4%BA%BA%E7%94%9F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/63/">63</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/7/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/64/">64</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
@@ -782,7 +792,7 @@ EnglishPod 作为练习材料，每天下班回去跟读，坚持打卡。</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">15:08</span>
+    <span title="站点阅读时长">15:10</span>
   </span>
 </div>
 <div class="busuanzi-count">
