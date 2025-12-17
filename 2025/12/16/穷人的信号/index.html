@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"toypipi.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="原文：Poor man’s signals  信号（Signals）目前正风靡一时。所有人都开始使用它们：Angular、Solid、Preact，对于那些还没有内置信号的框架，也可以使用第三方包。甚至还有将它们添加到语言规范中的提案，如果该提案通过，那么所有框架内置信号就只是时间问题了。 消息闭塞 如果你一直对这些新技术一无所知，下面是一个来自 Preact 文档的例子，它简">
+<meta property="og:type" content="article">
+<meta property="og:title" content="穷人的信号">
+<meta property="og:url" content="https://toypipi.github.io/2025/12/16/%E7%A9%B7%E4%BA%BA%E7%9A%84%E4%BF%A1%E5%8F%B7/index.html">
+<meta property="og:site_name" content="Toypipi&#39;s blog">
+<meta property="og:description" content="原文：Poor man’s signals  信号（Signals）目前正风靡一时。所有人都开始使用它们：Angular、Solid、Preact，对于那些还没有内置信号的框架，也可以使用第三方包。甚至还有将它们添加到语言规范中的提案，如果该提案通过，那么所有框架内置信号就只是时间问题了。 消息闭塞 如果你一直对这些新技术一无所知，下面是一个来自 Preact 文档的例子，它简">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-16T02:40:18.000Z">
+<meta property="article:modified_time" content="2025-12-17T02:09:51.045Z">
+<meta property="article:author" content="toypipi">
+<meta property="article:tag" content="signal">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://toypipi.github.io/2025/12/16/%E7%A9%B7%E4%BA%BA%E7%9A%84%E4%BF%A1%E5%8F%B7/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://toypipi.github.io/2025/12/16/%E7%A9%B7%E4%BA%BA%E7%9A%84%E4%BF%A1%E5%8F%B7/","path":"2025/12/16/穷人的信号/","title":"穷人的信号"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>穷人的信号 | Toypipi's blog</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?c228072b8c3657dfa7236914b308712c"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Toypipi's blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E9%97%AD%E5%A1%9E"><span class="nav-number">1.</span> <span class="nav-text">消息闭塞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%85%E4%BB%85%E6%98%AF%E4%B8%80%E4%B8%AA%E5%8C%85%E8%A3%85%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">仅仅是一个包装器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E6%B3%95%E8%AE%A1%E7%AE%97"><span class="nav-number">3.</span> <span class="nav-text">无法计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E8%83%BD%E6%8A%8A%E5%AE%83%E7%94%A8%E5%9C%A8%E5%AE%9E%E9%99%85%E5%9C%BA%E6%99%AF%E4%B8%AD%E5%90%97"><span class="nav-number">4.</span> <span class="nav-text">你能把它用在实际场景中吗？</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="toypipi"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">toypipi</p>
+  <div class="site-description" itemprop="description">Stay focused, be present</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">321</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">421</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/toypipi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;toypipi" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:275688469@qq.com" title="E-Mail → mailto:275688469@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2025/12/16/%E7%A9%B7%E4%BA%BA%E7%9A%84%E4%BF%A1%E5%8F%B7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="穷人的信号 | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          穷人的信号
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-12-16 10:40:18" itemprop="dateCreated datePublished" datetime="2025-12-16T10:40:18+08:00">2025-12-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-12-17 10:09:51" itemprop="dateModified" datetime="2025-12-17T10:09:51+08:00">2025-12-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BF%BB%E8%AF%91/" itemprop="url" rel="index"><span itemprop="name">翻译</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><hr />
+<blockquote>
+<p>原文：<a
+target="_blank" rel="noopener" href="https://plainvanillaweb.com/blog/articles/2024-08-30-poor-mans-signals/">Poor
+man’s signals</a></p>
+</blockquote>
+<p>信号（Signals）目前正风靡一时。所有人都开始使用它们：Angular、Solid、Preact，对于那些还没有内置信号的框架，也可以使用第三方包。甚至还有将它们添加到语言规范中的提案，如果该提案通过，那么所有框架内置信号就只是时间问题了。</p>
+<h2 id="消息闭塞">消息闭塞</h2>
+<p>如果你一直对这些新技术一无所知，下面是一个来自 Preact
+文档的例子，它简洁地概括了信号的作用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; signal, computed, effect &#125; <span class="keyword">from</span> <span class="string">&quot;@preact/signals&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> name = <span class="title function_">signal</span>(<span class="string">&quot;Jane&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> surname = <span class="title function_">signal</span>(<span class="string">&quot;Doe&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fullName = <span class="title function_">computed</span>(<span class="function">() =&gt;</span> <span class="string">`<span class="subst">$&#123;name.value&#125;</span> <span class="subst">$&#123;surname.value&#125;</span>`</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 每次 name 变化时都会打印：</span></span><br><span class="line"><span class="title function_">effect</span>(<span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(fullName.<span class="property">value</span>));</span><br><span class="line"><span class="comment">// 打印: &quot;Jane Doe&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 更新 `name` 会更新 `fullName`，从而再次触发 effect：</span></span><br><span class="line">name.<span class="property">value</span> = <span class="string">&quot;John&quot;</span>;</span><br><span class="line"><span class="comment">// 打印: &quot;John Doe&quot;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>简而言之，信号将值和计算结果包裹起来，使我们能够轻松响应这些值和结果的每一个变化，而不像我们在
+React
+中那样必须重新渲染整个应用程序。总而言之，信号是一种高效且有针对性地响应变化的方法，无需进行状态比较和
+DOM 差异（DOM-diffing）计算。</p>
+<p>好的，既然信号如此强大，我为什么要在 Vanilla Web
+开发博客上向你推销它们呢？别担心！Vanilla Web 开发者也可以拥有信号。</p>
+<h2 id="仅仅是一个包装器">仅仅是一个包装器</h2>
+<p>信号的本质不过是一个值的包装器，当这个值发生变化时，它会发送事件。使用一个不太为人所知但非常方便的基类
+<code>EventTarget</code>，就可以轻松解决这个问题。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Signal</span> <span class="keyword">extends</span> <span class="title class_ inherited__">EventTarget</span> &#123;</span><br><span class="line">  #value;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">get</span> <span class="title function_">value</span>() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.#value;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">set</span> <span class="title function_">value</span>(<span class="params">value</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">this</span>.#value === value) <span class="keyword">return</span>;</span><br><span class="line">    <span class="variable language_">this</span>.#value = value;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">dispatchEvent</span>(<span class="keyword">new</span> <span class="title class_">CustomEvent</span>(<span class="string">&quot;change&quot;</span>));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">value</span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>();</span><br><span class="line">    <span class="variable language_">this</span>.#value = value;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这为我们提供了一个最基本的信号体验：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="keyword">new</span> <span class="title class_">Signal</span>(<span class="string">&quot;Jane&quot;</span>);</span><br><span class="line">name.<span class="title function_">addEventListener</span>(<span class="string">&quot;change&quot;</span>, <span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(name.<span class="property">value</span>));</span><br><span class="line">name.<span class="property">value</span> = <span class="string">&quot;John&quot;</span>; <span class="comment">// 打印: John</span></span><br></pre></td></tr></table></figure>
+<p>但这有点丑陋。<code>new</code> 关键字在十年前就过时了，而且
+<code>addEventListener</code>
+确实很笨重。所以，我们来添加一点语法糖。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Signal</span> <span class="keyword">extends</span> <span class="title class_ inherited__">EventTarget</span> &#123;</span><br><span class="line">  #value;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">get</span> <span class="title function_">value</span>() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.#value;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">set</span> <span class="title function_">value</span>(<span class="params">value</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">this</span>.#value === value) <span class="keyword">return</span>;</span><br><span class="line">    <span class="variable language_">this</span>.#value = value;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">dispatchEvent</span>(<span class="keyword">new</span> <span class="title class_">CustomEvent</span>(<span class="string">&quot;change&quot;</span>));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">value</span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>();</span><br><span class="line">    <span class="variable language_">this</span>.#value = value;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">effect</span>(<span class="params">fn</span>) &#123;</span><br><span class="line">    <span class="title function_">fn</span>();</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;change&quot;</span>, fn);</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="variable language_">this</span>.<span class="title function_">removeEventListener</span>(<span class="string">&quot;change&quot;</span>, fn);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">valueOf</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.#value;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">toString</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">String</span>(<span class="variable language_">this</span>.#value);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">signal</span> = (<span class="params">_</span>) =&gt; <span class="keyword">new</span> <span class="title class_">Signal</span>(_);</span><br></pre></td></tr></table></figure>
+<p>现在，我们的基本示例使用起来舒服多了：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="title function_">signal</span>(<span class="string">&quot;Jane&quot;</span>);</span><br><span class="line">name.<span class="title function_">effect</span>(<span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(name.<span class="property">value</span>)); <span class="comment">// 打印: Jane</span></span><br><span class="line">name.<span class="property">value</span> = <span class="string">&quot;John&quot;</span>; <span class="comment">// 打印: John</span></span><br></pre></td></tr></table></figure>
+<p><code>effect(fn)</code>
+方法会调用指定的函数，并将其订阅到信号值的变化。</p>
+<p>它还会返回一个 <code>dispose</code> 函数，可用于注销
+<code>effect</code>。然而，使用 <code>EventTarget</code>
+和浏览器内置事件作为响应性原语的一个很好的副作用是，当信号超出作用域（比如所在页面组件被销毁了，没有变量再指向这个信号）时，浏览器可以智能地对信号及其
+<code>effect</code> 进行垃圾回收。这意味着即使我们从不调用
+<code>dispose</code> 函数，也减少了内存泄漏的机会。</p>
+<p>最后，<code>toString</code> 和 <code>valueOf</code>
+魔法方法允许我们在大多数使用信号值的地方省略
+<code>.value</code>。（但在本例中不行，因为控制台会打印出整个对象的内部细节。）</p>
+<h2 id="无法计算">无法计算</h2>
+<p>这个信号实现已经很有用了，但在某些时候，基于多个信号的
+<code>effect</code> 可能会很方便。这意味着需要支持计算值（computed
+values）。基础信号是对值的包装器，而计算信号是对函数的包装器。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Computed</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Signal</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">fn, deps</span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(<span class="title function_">fn</span>(...deps));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> dep <span class="keyword">of</span> deps) &#123;</span><br><span class="line">      <span class="keyword">if</span> (dep <span class="keyword">instanceof</span> <span class="title class_">Signal</span>)</span><br><span class="line">        dep.<span class="title function_">addEventListener</span>(<span class="string">&quot;change&quot;</span>, <span class="function">() =&gt;</span> (<span class="variable language_">this</span>.<span class="property">value</span> = <span class="title function_">fn</span>(...deps)));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">computed</span> = (<span class="params">fn, deps</span>) =&gt; <span class="keyword">new</span> <span class="title class_">Computed</span>(fn, deps);</span><br></pre></td></tr></table></figure>
+<p>计算信号根据一个函数计算其值。它也依赖于其他信号，当它们变化时，它会重新计算其值。必须将它所依赖的信号作为附加参数传递有点烦人，但是，嘿，我这篇文章的标题可不是“富人的信号”。</p>
+<p>这使得将 Preact 的信号示例移植到原生 JS 成为可能。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="title function_">signal</span>(<span class="string">&quot;Jane&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> surname = <span class="title function_">signal</span>(<span class="string">&quot;Doe&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> fullName = <span class="title function_">computed</span>(<span class="function">() =&gt;</span> <span class="string">`<span class="subst">$&#123;name&#125;</span> <span class="subst">$&#123;surname&#125;</span>`</span>, [name, surname]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 每次 name 变化时都会打印：</span></span><br><span class="line">fullName.<span class="title function_">effect</span>(<span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(fullName.<span class="property">value</span>)); <span class="comment">// -&gt; Jane Doe</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 更新 `name` 会更新 `fullName`，从而再次触发 effect：</span></span><br><span class="line">name.<span class="property">value</span> = <span class="string">&quot;John&quot;</span>; <span class="comment">// -&gt; John Doe</span></span><br></pre></td></tr></table></figure>
+<h2 id="你能把它用在实际场景中吗">你能把它用在实际场景中吗？</h2>
+<p>你可能会想，所有这些 <code>console.log</code>
+示例都很好，但你如何在实际的 Web
+开发中使用这些东西呢？这个简单的加法器演示了信号如何与 Web Components
+结合：</p>
+<p><code>adder.js</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; signal, computed &#125; <span class="keyword">from</span> <span class="string">&quot;./signals.js&quot;</span>;</span><br><span class="line"></span><br><span class="line">customElements.<span class="title function_">define</span>(</span><br><span class="line">  <span class="string">&quot;x-adder&quot;</span>,</span><br><span class="line">  <span class="keyword">class</span> <span class="title class_">extends</span> <span class="title class_">HTMLElement</span> &#123;</span><br><span class="line">    a = <span class="title function_">signal</span>(<span class="number">1</span>);</span><br><span class="line">    b = <span class="title function_">signal</span>(<span class="number">2</span>);</span><br><span class="line">    result = <span class="title function_">computed</span>(<span class="function">(<span class="params">a, b</span>) =&gt;</span> <span class="string">`<span class="subst">$&#123;a&#125;</span> + <span class="subst">$&#123;b&#125;</span> = <span class="subst">$&#123;+a + +b&#125;</span>`</span>, [<span class="variable language_">this</span>.<span class="property">a</span>, <span class="variable language_">this</span>.<span class="property">b</span>]);</span><br><span class="line"></span><br><span class="line">    <span class="title function_">connectedCallback</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;input&quot;</span>)) <span class="keyword">return</span>;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">innerHTML</span> = <span class="string">`</span></span><br><span class="line"><span class="string">      &lt;input type=&quot;number&quot; name=&quot;a&quot; value=&quot;<span class="subst">$&#123;<span class="variable language_">this</span>.a&#125;</span>&quot;&gt;</span></span><br><span class="line"><span class="string">      &lt;input type=&quot;number&quot; name=&quot;b&quot; value=&quot;<span class="subst">$&#123;<span class="variable language_">this</span>.b&#125;</span>&quot;&gt;</span></span><br><span class="line"><span class="string">      &lt;p&gt;&lt;/p&gt;</span></span><br><span class="line"><span class="string">    `</span>;</span><br><span class="line"></span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">result</span>.<span class="title function_">effect</span>(</span><br><span class="line">        <span class="function">() =&gt;</span> (<span class="variable language_">this</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;p&quot;</span>).<span class="property">textContent</span> = <span class="variable language_">this</span>.<span class="property">result</span>)</span><br><span class="line">      );</span><br><span class="line"></span><br><span class="line">      <span class="variable language_">this</span>.<span class="title function_">addEventListener</span>(</span><br><span class="line">        <span class="string">&quot;input&quot;</span>,</span><br><span class="line">        <span class="function">(<span class="params">e</span>) =&gt;</span> (<span class="variable language_">this</span>[e.<span class="property">target</span>.<span class="property">name</span>].<span class="property">value</span> = e.<span class="property">target</span>.<span class="property">value</span>)</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>这是一个实时演示： （略）</p>
+<p>如果你想知道，这里的 <code>if</code>
+语句是为了防止在组件已经渲染时调用 <code>connectedCallback</code> 导致
+<code>effect</code> 被添加两次。</p>
+<p>完整的“穷人的信号”代码（总共 36 行）可以在 Github 上的 <a
+target="_blank" rel="noopener" href="https://www.google.com/search?q=https://github.com/plainvanillaweb/tiny-signals">tiny-signals
+仓库</a>中找到。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.JPG" alt="toypipi 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.JPG" alt="toypipi 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>toypipi
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://toypipi.github.io/2025/12/16/%E7%A9%B7%E4%BA%BA%E7%9A%84%E4%BF%A1%E5%8F%B7/" title="穷人的信号">https://toypipi.github.io/2025/12/16/穷人的信号/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/signal/" rel="tag"><i class="fa fa-tag"></i> signal</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/12/15/new-URL-%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%8C%E4%BB%A5%E5%8F%8A-URL-parse-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%AE%83/" rel="prev" title="new URL() 的问题，以及 URL.parse() 如何解决它">
+                  <i class="fa fa-angle-left"></i> new URL() 的问题，以及 URL.parse() 如何解决它
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2016 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">toypipi</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">256k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">15:30</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js","integrity":"sha256-stuqcu2FrjYCXDOytWFA5SoUE/r3nkp6gTglzNSlavU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"toypipi/BlogComments","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
