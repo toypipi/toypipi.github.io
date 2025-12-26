@@ -154,7 +154,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">321</span>
+          <span class="site-state-item-count">322</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -165,7 +165,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">421</span>
+        <span class="site-state-item-count">423</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -190,6 +190,126 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/03/28/%E9%85%8D%E7%BD%AE-xtrabackup/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2018/03/28/%E9%85%8D%E7%BD%AE-xtrabackup/" class="post-title-link" itemprop="url">配置 xtrabackup</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-03-28 09:25:15" itemprop="dateCreated datePublished" datetime="2018-03-28T09:25:15+08:00">2018-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2020-11-03 11:44:00" itemprop="dateModified" datetime="2020-11-03T11:44:00+08:00">2020-11-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>509</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr />
+<p>所有 <strong>xtrabackup</strong>
+配置都是通过选项完成的，这些选项的行为与标准 MySQL
+程序选项完全相同：它们可以在命令行或通过诸如 <code>/etc/my.cnf</code>
+的文件中指定。</p>
+<p><strong>xtrabackup</strong> 以 [mysqld] 和 [xtrabackup]
+的顺序从任意配置文件中读取配置选项。因此它可以从现有的 MySQL
+安装中读取已经配置的选项，例如 datadi r或一些 InnoDB
+选项。如果您想要覆盖这些内容，只需在 [xtrabackup]
+部分中指定它们，因为它稍后被读取，所以优先级更高。</p>
+<p>如果你不想这么做，你也可以不用在 my.cnf
+中添加任何配置。您可以简单地在命令行上指定选项。通常，您可能会发现在
+my.cnf 文件中的 [xtrabackup] 使用 target_dir
+选项来指定默认备份目录会很方便，例如： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[xtrabackup]</span><br><span class="line">target_dir = /data/backups/mysql/</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/03/28/%E9%85%8D%E7%BD%AE-xtrabackup/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -660,135 +780,6 @@ XtraBackup 的发布说明</a>。
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2018/03/23/Percona-XtraBackup-%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="toypipi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Toypipi's blog">
-      <meta itemprop="description" content="Stay focused, be present">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Toypipi's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/03/23/Percona-XtraBackup-%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C/" class="post-title-link" itemprop="url">Percona XtraBackup 如何工作</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2018-03-23 10:30:14" itemprop="dateCreated datePublished" datetime="2018-03-23T10:30:14+08:00">2018-03-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2020-11-03 11:44:00" itemprop="dateModified" datetime="2020-11-03T11:44:00+08:00">2020-11-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.2k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr />
-<p>Percona XtraBackup 基于 InnoDB 的崩溃恢复功能。它复制你的 InnoDB
-数据文件时，会导致内部不一致的数据;但是它会对文件执行崩溃恢复，以使其再次成为一个一致的可用数据库。</p>
-<p>这是可行的，因为 InnoDB 维护一个重做日志，也称为事务日志。它包含对
-InnoDB 数据的每个变更的记录。当 InnoDB
-启动时，它会检查数据文件和事务日志，并执行两个步骤。它将已提交的事务日志条目应用于数据文件，并对任何修改了数据但未提交的事务执行撤销操作。</p>
-<p>Percona XtraBackup
-通过在启动时记住日志序列号（LSN）来工作，然后复制数据文件。这需要一些时间来完成，所以如果文件正在改变，那么它们会在不同的时间点反映数据库的状态。与此同时，Percona
-XtraBackup 运行一个后台进程，用于监视事务日志文件，并从中复制更改。
-Percona XtraBackup
-需要不断做到这一点，因为事务日志是以循环方式写入的，并且可以在一段时间后重新使用。
-Percona XtraBackup
-自启动以后，每次对数据文件的更改都需要事务日志记录。</p>
-<p>Percona XtraBackup 将使用<a
-target="_blank" rel="noopener" href="https://www.percona.com/doc/percona-server/5.6/management/backup_locks.html">备份锁</a>作为
-<code>FLUSH TABLES WITH READ LOCK</code> 的轻量级替代产品。此功能在
-Percona Server 5.6+ 中可用。 Percona XtraBackup 自动使用它来复制非
-InnoDB 数据，以避免阻止修改 InnoDB
-表的DML查询。当服务器支持备份锁时，xtrabackup 将首先复制 InnoDB
-数据，运行 <code>LOCK TABLES FOR BACKUP</code> 并复制 MyISAM 表和 .frm
-文件。一旦完成，文件的备份将开始。它将备份
-.frm，.MRG，.MYD，.MYI，.TRG，.TRN，.ARM，.ARZ，.CSM，.CSV，.par 和 .opt
-文件。
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/03/23/Percona-XtraBackup-%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/50/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/50/">50</a><span class="page-number current">51</span><a class="page-number" href="/page/52/">52</a><span class="space">&hellip;</span><a class="page-number" href="/page/65/">65</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/52/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -812,13 +803,13 @@ InnoDB 数据，以避免阻止修改 InnoDB
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">256k</span>
+    <span title="站点总字数">257k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">15:30</span>
+    <span title="站点阅读时长">15:33</span>
   </span>
 </div>
 <div class="busuanzi-count">
