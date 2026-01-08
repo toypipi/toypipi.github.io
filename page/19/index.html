@@ -41,6 +41,9 @@
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>Toypipi's blog</title>
   
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-5PS83K9C"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"GTM-5PS83K9C","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
 
   <script src="/js/third-party/analytics/baidu-analytics.js"></script>
   <script async src="https://hm.baidu.com/hm.js?c228072b8c3657dfa7236914b308712c"></script>
@@ -154,7 +157,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">323</span>
+          <span class="site-state-item-count">324</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -165,7 +168,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">423</span>
+        <span class="site-state-item-count">425</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -190,6 +193,149 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/09/21/Vue-%E7%BB%99%E5%AF%B9%E8%B1%A1%E6%B7%BB%E5%8A%A0%E6%96%B0%E5%B1%9E%E6%80%A7%E6%97%B6%E8%A7%86%E5%9B%BE%E4%B8%8D%E6%9B%B4%E6%96%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="toypipi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Toypipi's blog">
+      <meta itemprop="description" content="Stay focused, be present">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Toypipi's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/09/21/Vue-%E7%BB%99%E5%AF%B9%E8%B1%A1%E6%B7%BB%E5%8A%A0%E6%96%B0%E5%B1%9E%E6%80%A7%E6%97%B6%E8%A7%86%E5%9B%BE%E4%B8%8D%E6%9B%B4%E6%96%B0/" class="post-title-link" itemprop="url">Vue 给对象添加新属性时视图不更新</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-21 17:55:35" itemprop="dateCreated datePublished" datetime="2023-09-21T17:55:35+08:00">2023-09-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-22 15:00:04" itemprop="dateModified" datetime="2023-09-22T15:00:04+08:00">2023-09-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>637</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr />
+<h1 id="vue2.x-的响应式">vue2.x 的响应式</h1>
+<ul>
+<li><p>实现原理：</p>
+<ul>
+<li><p>对象类型：通过 <code>Object.defineProperty()</code>
+对属性的读取、修改进行拦截（数据劫持）。</p></li>
+<li><p>数组类型：通过重写更新数组的一系列方法来实现拦截。（对数组的变更方法进行了包裹）。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(data, <span class="string">&quot;count&quot;</span>, &#123;</span><br><span class="line">  <span class="title function_">get</span>(<span class="params"></span>) &#123;&#125;,</span><br><span class="line">  <span class="title function_">set</span>(<span class="params"></span>) &#123;&#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><p>存在问题：</p>
+<ul>
+<li>新增属性、删除属性, 界面不会更新。</li>
+<li>直接通过下标修改数组, 界面不会自动更新。</li>
+</ul></li>
+</ul>
+<h1 id="vue3.0-的响应式">Vue3.0 的响应式</h1>
+<ul>
+<li><p>实现原理:</p>
+<ul>
+<li><p>通过 Proxy（代理）: 拦截对象中任意属性的变化,
+包括：属性值的读写、属性的添加、属性的删除等。</p></li>
+<li><p>通过 Reflect（反射）: 对源对象的属性进行操作。</p></li>
+<li><p>MDN 文档中描述的 Proxy 与 Reflect：</p>
+<ul>
+<li><p>Proxy：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy</p></li>
+<li><p>Reflect：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Proxy</span>(data, &#123;</span><br><span class="line">  <span class="comment">// 拦截读取属性值</span></span><br><span class="line">  <span class="title function_">get</span>(<span class="params">target, prop</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Reflect</span>.<span class="title function_">get</span>(target, prop);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 拦截设置属性值或添加新属性</span></span><br><span class="line">  <span class="title function_">set</span>(<span class="params">target, prop, value</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Reflect</span>.<span class="title function_">set</span>(target, prop, value);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 拦截删除属性</span></span><br><span class="line">  <span class="title function_">deleteProperty</span>(<span class="params">target, prop</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Reflect</span>.<span class="title function_">deleteProperty</span>(target, prop);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">proxy.<span class="property">name</span> = <span class="string">&quot;tom&quot;</span>;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul></li>
+</ul>
+<h1 id="解决办法">解决办法</h1>
+<p>在 Vue 2 中，当你向一个对象添加新属性时，Vue
+不会自动触发视图的更新，因为 Vue
+只会追踪已经存在于数据对象中的属性。如果你需要在视图中响应新属性的变化，你可以使用
+Vue 的 <code>$set</code> 方法或 JavaScript 的 <code>Object.assign</code>
+来更新对象，从而触发视图的刷新。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/09/21/Vue-%E7%BB%99%E5%AF%B9%E8%B1%A1%E6%B7%BB%E5%8A%A0%E6%96%B0%E5%B1%9E%E6%80%A7%E6%97%B6%E8%A7%86%E5%9B%BE%E4%B8%8D%E6%9B%B4%E6%96%B0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -648,118 +794,6 @@ X</li>
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://toypipi.github.io/2023/09/19/JS-%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="toypipi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Toypipi's blog">
-      <meta itemprop="description" content="Stay focused, be present">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Toypipi's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/09/19/JS-%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/" class="post-title-link" itemprop="url">JS 数组常用方法汇总</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-19 09:41:26" itemprop="dateCreated datePublished" datetime="2023-09-19T09:41:26+08:00">2023-09-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-20 15:14:04" itemprop="dateModified" datetime="2023-09-20T15:14:04+08:00">2023-09-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>410</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr />
-<h1 id="两个数组对象求差集">两个数组对象求差集</h1>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个名为 arrayDifference 的函数，接受两个数组作为参数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">arrayDifference</span>(<span class="params">arr1, arr2</span>) &#123;</span><br><span class="line">  <span class="comment">// 创建一个空数组，用于存储 arr2 中包含的 id</span></span><br><span class="line">  <span class="keyword">const</span> ids2 = arr2.<span class="title function_">map</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> item.<span class="property">id</span>);</span><br><span class="line">  <span class="comment">// 使用 filter() 方法过滤 arr1 中的元素，以排除 arr2 中的元素</span></span><br><span class="line">  <span class="keyword">const</span> difference = arr1.<span class="title function_">filter</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> !ids2.<span class="title function_">includes</span>(item.<span class="property">id</span>));</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> difference;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 示例：</span></span><br><span class="line"><span class="keyword">const</span> array1 = [</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">&quot;A&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">name</span>: <span class="string">&quot;B&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">name</span>: <span class="string">&quot;C&quot;</span> &#125;,</span><br><span class="line">];</span><br><span class="line"><span class="keyword">const</span> array2 = [</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">name</span>: <span class="string">&quot;B&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">name</span>: <span class="string">&quot;C&quot;</span> &#125;,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> result = <span class="title function_">arrayDifference</span>(array1, array2);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result); <span class="comment">// 输出: [&#123; id: 1, name: &#x27;A&#x27; &#125;]</span></span><br></pre></td></tr></table></figure>
-<p>这段代码首先从每个数组对象中提取 id 属性，然后使用 filter 函数找出在
-array1 中存在但不在 array2 中的对象，从而得到它们的差集。最后，result
-将包含差集的数组对象。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/09/19/JS-%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/18/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/65/">65</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/20/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -789,7 +823,7 @@ array1 中存在但不在 array2 中的对象，从而得到它们的差集。�
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">15:33</span>
+    <span title="站点阅读时长">15:34</span>
   </span>
 </div>
 <div class="busuanzi-count">
